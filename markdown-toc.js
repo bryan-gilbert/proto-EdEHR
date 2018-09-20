@@ -30,7 +30,7 @@ function processMd(f) {
       dst = path.resolve('.',fn);
     fs.readFile(src, 'utf8', function(err,contents) {
       let lines = contents.split('\n');
-      let toc = ['<a id="toc" class="anchor" aria-hidden="true" href="#toc">'];
+      let toc = ['# Table of Contents  <a id="toc" class="anchor" aria-hidden="true" href="#toc">\n\n'];
       let insertIndex = -1;
       lines.forEach( (aLine,inx) => {
         let r = new RegExp('(#+)([^#]*)(#+)','g');
@@ -51,7 +51,7 @@ function processMd(f) {
 
 
           //let newLine = m[1] + ' <a id="#'+key+'"></a>' + title + ' ' + m[1];
-          lines[inx] = m[0] + '\n<a href="#toc">Top</a>';
+          lines[inx] = m[0] + '\n<a href="#toc">Top</a>\n';
           let link = ' '.repeat(level-1) + '* [' + title + '](#' + key + ')'
           toc.push(link);
           }
