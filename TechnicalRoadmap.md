@@ -1,6 +1,7 @@
 Title: TechnicalRoadmap  
 Author: Bryan Gilbert
 
+<a id="toc" class="anchor" aria-hidden="true" href="#toc">
 * [Technical Elements](#user-content-technical-elements)
  * [Application Requirements](#user-content-application-requirements)
  * [Planning & Management](#user-content-planning--management)
@@ -33,11 +34,14 @@ Author: Bryan Gilbert
   * [Media Attachments](#user-content-media-attachments)
   * [Email system](#user-content-email-system)
   * [Analytics](#user-content-analytics)
+ 
 # Technical Elements #
+<a href="#toc">Top</a>
 
 ----
 
 ## Application Requirements ##
+<a href="#toc">Top</a>
 
 The following contains assumptions that need to be verified by the team ….  
 Institutions
@@ -115,10 +119,12 @@ Here are the suggested default minimum versions as used by the above plugin. Not
 ----
 
 ## Planning & Management ##
+<a href="#toc">Top</a>
 
 ----
 
-### Open Source ###  
+### Open Source ###
+<a href="#toc">Top</a>
 Open Source Licensing
 TBD
 Open Source is a primary requirement for every aspect of this project
@@ -158,7 +164,8 @@ Recommendation: GNU Affero General Public License v3.0
 
 ----
 
-### Agile ###  
+### Agile ###
+<a href="#toc">Top</a>
 Requirements
 Agile planning needs to capture “stuff to do” in a place that can “backlog” or “park” the task until it is time to work on the task.  
 Before a task can be started it must be the “right size”. Normally, this means it is a task that can be accomplished in a timeframe that is short enough that the doer doesn’t get distracted. I.e. a time period of a ‘day’ is big. Perhaps two or three days but not more. Ideally, it’s a task that can be DONE in a few hours.
@@ -180,6 +187,7 @@ Put all immediate tasks in Trello.  These are small achievable tasks that are pl
 ----
 
 ### Defect tracking ###
+<a href="#toc">Top</a>
 
 Requirements
 Defect tracking tool needs to allow the team to add, edit, comment, and resolve issues as the prototype evolves and for when it is in place.  The tool ought to be suitable for non-technical users to resolve issues.
@@ -188,7 +196,8 @@ Recommendation: Github
 
 ----
 
-### Source Control ###  
+### Source Control ###
+<a href="#toc">Top</a>
 Git Github
 EdEHR will use Git and Github because it is the industry standard and fits the project charter requirement to be open source.
 I have started a repro here: https://github.com/bryan-gilbert/proto-EdEHR
@@ -201,16 +210,19 @@ Question: Does BCcampus have a repro?
 ----
 
 ## Coding ##
+<a href="#toc">Top</a>
 
 ----
 
-### Client side code ###  
+### Client side code ###
+<a href="#toc">Top</a>
 Client side coding language, for in the browser, is Javascript. There is no other choice. 
 
 
 ----
 
-#### Generators ####  
+#### Generators ####
+<a href="#toc">Top</a>
 Server side generation for client side
 This section pertains to the code written for the client side (the UI).  For example, if the pages are generated on the server (e.g. PhP) or transpiled into static web resources (React, Vue, etc). Simply put:  choose between server side generation or static resources with web services. 
 
@@ -377,7 +389,8 @@ For a new project with no legacy and a developer team that has equal experience 
 
 ----
 
-### Server side code ###  
+### Server side code ###
+<a href="#toc">Top</a>
 Requirements
 Support for Single Page Applications, Mobile Computing and Browsers (DSL support)
 Industry standard. 
@@ -448,6 +461,7 @@ Use Javascript ECMA 2016 or better.
 ----
 
 ### Code Standards and Linting ###
+<a href="#toc">Top</a>
 
 As every language, JavaScript has many code style guides.  Consider the following.  
 Google Javascript Standard for ECMA 6th edition
@@ -491,7 +505,8 @@ That said we may cherry pick guidelines from the other style guides as we go.   
 
 ----
 
-### CSS ###  
+### CSS ###
+<a href="#toc">Top</a>
 Styleguide for CSS SASS
 TBD
 AirBnB is a possible style guide for CSS and SASS https://github.com/airbnb/css
@@ -518,10 +533,12 @@ https://bulma.io/documentation/overview/
 ----
 
 ## Data storage ##
+<a href="#toc">Top</a>
 
 ----
 
-### Database - Application ###  
+### Database - Application ###
+<a href="#toc">Top</a>
 Requirements for EdEHR databases
 WIP
 Flexible: because this is a rapid development prototype project it is essential that we can easily augment and change the schema without spending a lot of time on writing transformation scripts or working with transformation tooling. 
@@ -557,7 +574,8 @@ Many today consider RDMS to be unable to meet the expectations from today’s da
 
 ----
 
-## Installation ##  
+## Installation ##
+<a href="#toc">Top</a>
 Npm install
 The system will be built to make installation as simple as:
 1. Git clone
@@ -568,12 +586,14 @@ The system will be built to make installation as simple as:
 ----
 
 ## Testing ##
+<a href="#toc">Top</a>
 
 Look to work out the requirements of the testing system after some other questions that have project risk are answered.  In other words, let’s get some answers to those risky issues and then come back to stuff that is relatively straight forward, although important
 
 ----
 
 ### Testing Security ###
+<a href="#toc">Top</a>
 
 WIP  
 BURP suite security testing
@@ -581,6 +601,7 @@ BURP suite security testing
 ----
 
 ### Testing UI ###
+<a href="#toc">Top</a>
 
 WIP
 
@@ -599,6 +620,7 @@ https://jmeter.apache.org/usermanual/get-started.html
 ----
 
 ### Testing Server Side ###
+<a href="#toc">Top</a>
 
 WIP
 Must implement automated testing for server side and ideally client side code.  This is expensive to do but invaluable in later stages of development.  Acknowledge that 100% coverage is not possible so testing, inherently, has trade-offs.  Testing the core functionality along with all edge cases that surfaced as defects should be considered core.  This at least provides confidence if at some later stage we need to refactor or adjust code that is new the core functionality.  
@@ -613,6 +635,7 @@ Testing is related to the topic of Automated Testing
 ----
 
 ## CI CD ##
+<a href="#toc">Top</a>
 
 Look to work out the requirements of the CI CD system after some other questions that have project risk are answered.  In other words, let’s get some answers to those risky issues and then come back to stuff that is relatively straight forward, although important
 Continuous Integration: automated testing as part of the development lifecycle
@@ -620,7 +643,8 @@ Continuous Delivery: incrementally add value on a continuous basis.
 
 ----
 
-### Deployment Environments ###  
+### Deployment Environments ###
+<a href="#toc">Top</a>
 Linux based
 We will not be tied to any particular version of linux. Debian, Ubunto, etc are all fine.
 
@@ -651,18 +675,21 @@ Network connectivity.
 ----
 
 ### Docker ###
+<a href="#toc">Top</a>
 
 WIP
 
 ----
 
 ### Jenkins ###
+<a href="#toc">Top</a>
 
 WIP
 
 ----
 
 ### Task runners ###
+<a href="#toc">Top</a>
 
 During development it is optimal to automate serval tasks. Including:
 SASS to CSS
@@ -679,10 +706,12 @@ Webpack is an open-source JavaScript module bundler. Its main purpose is to bund
 ----
 
 ## Product Systems ##
+<a href="#toc">Top</a>
 
 ----
 
 ### Interoperability ###
+<a href="#toc">Top</a>
 
 I found a few resources to help get started with LTI:
 
@@ -711,6 +740,7 @@ http://www.proprofs.com/c/lms/exclusive-learning-management-system-best-practice
 ----
 
 ### Document management, upload ###
+<a href="#toc">Top</a>
 
 Multer to support multi-part document uploads
 Seperately mounted disk for storage outside of application code space
@@ -719,6 +749,7 @@ Seperately mounted disk for storage outside of application code space
 ----
 
 ### Authorization ###
+<a href="#toc">Top</a>
 
 Depends on LMS and LTI research  
 Shibboleth
@@ -762,6 +793,7 @@ CAS, SAML, OAuth
 ----
 
 ### Media Attachments ###
+<a href="#toc">Top</a>
 
 Depends on how much video is required and if this is required for MVP.  It will be relatively easy to provide links to video hosted on external sites. To serve video from inside EdEHR requires special consideration, research, tooling and servers that have both the space and capability. Probably would need to consider seperate servers to stream video to maintain performance in the main application.
 
@@ -773,6 +805,7 @@ https://bccampus.ca/2013/05/23/wrangling-videos-in-one-location-just-got-a-lot-e
 ----
 
 ### Email system ###
+<a href="#toc">Top</a>
 
 To be considered after LTI and LMS research.  Perhaps the email function can be provided by the LMS
 
@@ -782,7 +815,8 @@ Flask-Mailer (Python)
 
 ----
 
-### Analytics ###  
+### Analytics ###
+<a href="#toc">Top</a>
 Learning Analytics
 Look at Experience API (xAPI) at https://xapi.com
 Do this after LMS and LTI because the LMS ought to provide analytics.
