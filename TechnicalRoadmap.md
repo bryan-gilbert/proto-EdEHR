@@ -1,43 +1,43 @@
 Title: TechnicalRoadmap  
 Author: Bryan Gilbert
 
-* [Technical Elements](#technicalElements)
- * [Application Requirements](#applicationRequirements)
- * [Planning & Management](#planningManagement)
-  * [Open Source](#openSource)
-  * [Agile](#agile)
-  * [Defect tracking](#defecttracking)
-  * [Source Control](#sourceControl)
- * [Coding](#coding)
-  * [Client side code](#clientsidecode)
-   * [Generators](#generators)
-  * [Server side code](#serversidecode)
-  * [Code Standards and Linting](#codeStandardsandLinting)
-  * [CSS](#css)
- * [Data storage](#datastorage)
-  * [Database - Application](#databaseApplication)
- * [Installation](#installation)
- * [Testing](#testing)
-  * [Testing Security](#testingSecurity)
-  * [Testing UI](#testingUi)
-  * [Testing Server Side](#testingServerSide)
- * [CI CD](#cicd)
-  * [Deployment Environments](#deploymentEnvironments)
-  * [Docker](#docker)
-  * [Jenkins](#jenkins)
-  * [Task runners](#taskrunners)
- * [Product Systems](#productSystems)
-  * [Interoperability](#interoperability)
-  * [Document management, upload](#documentmanagementupload)
-  * [Authorization](#authorization)
-  * [Media Attachments](#mediaAttachments)
-  * [Email system](#emailsystem)
-  * [Analytics](#analytics)
-# <a id="#technicalElements"></a>Technical Elements #
+* [Technical Elements](#user-content-technical-elements)
+ * [Application Requirements](#user-content-application-requirements)
+ * [Planning & Management](#user-content-planning--management)
+  * [Open Source](#user-content-open-source)
+  * [Agile](#user-content-agile)
+  * [Defect tracking](#user-content-defect-tracking)
+  * [Source Control](#user-content-source-control)
+ * [Coding](#user-content-coding)
+  * [Client side code](#user-content-client-side-code)
+   * [Generators](#user-content-generators)
+  * [Server side code](#user-content-server-side-code)
+  * [Code Standards and Linting](#user-content-code-standards-and-linting)
+  * [CSS](#user-content-css)
+ * [Data storage](#user-content-data-storage)
+  * [Database - Application](#user-content-database--application)
+ * [Installation](#user-content-installation)
+ * [Testing](#user-content-testing)
+  * [Testing Security](#user-content-testing-security)
+  * [Testing UI](#user-content-testing-ui)
+  * [Testing Server Side](#user-content-testing-server-side)
+ * [CI CD](#user-content-ci-cd)
+  * [Deployment Environments](#user-content-deployment-environments)
+  * [Docker](#user-content-docker)
+  * [Jenkins](#user-content-jenkins)
+  * [Task runners](#user-content-task-runners)
+ * [Product Systems](#user-content-product-systems)
+  * [Interoperability](#user-content-interoperability)
+  * [Document management, upload](#user-content-document-management-upload)
+  * [Authorization](#user-content-authorization)
+  * [Media Attachments](#user-content-media-attachments)
+  * [Email system](#user-content-email-system)
+  * [Analytics](#user-content-analytics)
+# Technical Elements #
 
 ----
 
-## <a id="#applicationRequirements"></a>Application Requirements ##
+## Application Requirements ##
 
 The following contains assumptions that need to be verified by the team ….  
 Institutions
@@ -114,11 +114,11 @@ Here are the suggested default minimum versions as used by the above plugin. Not
 
 ----
 
-## <a id="#planningManagement"></a>Planning & Management ##
+## Planning & Management ##
 
 ----
 
-### <a id="#openSource"></a>Open Source ###
+### Open Source ###  
 Open Source Licensing
 TBD
 Open Source is a primary requirement for every aspect of this project
@@ -158,7 +158,7 @@ Recommendation: GNU Affero General Public License v3.0
 
 ----
 
-### <a id="#agile"></a>Agile ###
+### Agile ###  
 Requirements
 Agile planning needs to capture “stuff to do” in a place that can “backlog” or “park” the task until it is time to work on the task.  
 Before a task can be started it must be the “right size”. Normally, this means it is a task that can be accomplished in a timeframe that is short enough that the doer doesn’t get distracted. I.e. a time period of a ‘day’ is big. Perhaps two or three days but not more. Ideally, it’s a task that can be DONE in a few hours.
@@ -179,7 +179,7 @@ Put all immediate tasks in Trello.  These are small achievable tasks that are pl
 
 ----
 
-### <a id="#defecttracking"></a>Defect tracking ###
+### Defect tracking ###
 
 Requirements
 Defect tracking tool needs to allow the team to add, edit, comment, and resolve issues as the prototype evolves and for when it is in place.  The tool ought to be suitable for non-technical users to resolve issues.
@@ -188,7 +188,7 @@ Recommendation: Github
 
 ----
 
-### <a id="#sourceControl"></a>Source Control ###
+### Source Control ###  
 Git Github
 EdEHR will use Git and Github because it is the industry standard and fits the project charter requirement to be open source.
 I have started a repro here: https://github.com/bryan-gilbert/proto-EdEHR
@@ -200,17 +200,17 @@ Question: Does BCcampus have a repro?
 
 ----
 
-## <a id="#coding"></a>Coding ##
+## Coding ##
 
 ----
 
-### <a id="#clientsidecode"></a>Client side code ###
+### Client side code ###  
 Client side coding language, for in the browser, is Javascript. There is no other choice. 
 
 
 ----
 
-#### <a id="#generators"></a>Generators ####
+#### Generators ####  
 Server side generation for client side
 This section pertains to the code written for the client side (the UI).  For example, if the pages are generated on the server (e.g. PhP) or transpiled into static web resources (React, Vue, etc). Simply put:  choose between server side generation or static resources with web services. 
 
@@ -377,7 +377,7 @@ For a new project with no legacy and a developer team that has equal experience 
 
 ----
 
-### <a id="#serversidecode"></a>Server side code ###
+### Server side code ###  
 Requirements
 Support for Single Page Applications, Mobile Computing and Browsers (DSL support)
 Industry standard. 
@@ -447,7 +447,7 @@ Use Javascript ECMA 2016 or better.
 
 ----
 
-### <a id="#codeStandardsandLinting"></a>Code Standards and Linting ###
+### Code Standards and Linting ###
 
 As every language, JavaScript has many code style guides.  Consider the following.  
 Google Javascript Standard for ECMA 6th edition
@@ -491,7 +491,7 @@ That said we may cherry pick guidelines from the other style guides as we go.   
 
 ----
 
-### <a id="#css"></a>CSS ###
+### CSS ###  
 Styleguide for CSS SASS
 TBD
 AirBnB is a possible style guide for CSS and SASS https://github.com/airbnb/css
@@ -517,11 +517,11 @@ https://bulma.io/documentation/overview/
 
 ----
 
-## <a id="#datastorage"></a>Data storage ##
+## Data storage ##
 
 ----
 
-### <a id="#databaseApplication"></a>Database - Application ###
+### Database - Application ###  
 Requirements for EdEHR databases
 WIP
 Flexible: because this is a rapid development prototype project it is essential that we can easily augment and change the schema without spending a lot of time on writing transformation scripts or working with transformation tooling. 
@@ -557,7 +557,7 @@ Many today consider RDMS to be unable to meet the expectations from today’s da
 
 ----
 
-## <a id="#installation"></a>Installation ##
+## Installation ##  
 Npm install
 The system will be built to make installation as simple as:
 1. Git clone
@@ -567,20 +567,20 @@ The system will be built to make installation as simple as:
 
 ----
 
-## <a id="#testing"></a>Testing ##
+## Testing ##
 
 Look to work out the requirements of the testing system after some other questions that have project risk are answered.  In other words, let’s get some answers to those risky issues and then come back to stuff that is relatively straight forward, although important
 
 ----
 
-### <a id="#testingSecurity"></a>Testing Security ###
+### Testing Security ###
 
 WIP  
 BURP suite security testing
 
 ----
 
-### <a id="#testingUi"></a>Testing UI ###
+### Testing UI ###
 
 WIP
 
@@ -598,7 +598,7 @@ https://jmeter.apache.org/usermanual/get-started.html
 
 ----
 
-### <a id="#testingServerSide"></a>Testing Server Side ###
+### Testing Server Side ###
 
 WIP
 Must implement automated testing for server side and ideally client side code.  This is expensive to do but invaluable in later stages of development.  Acknowledge that 100% coverage is not possible so testing, inherently, has trade-offs.  Testing the core functionality along with all edge cases that surfaced as defects should be considered core.  This at least provides confidence if at some later stage we need to refactor or adjust code that is new the core functionality.  
@@ -612,7 +612,7 @@ Testing is related to the topic of Automated Testing
 
 ----
 
-## <a id="#cicd"></a>CI CD ##
+## CI CD ##
 
 Look to work out the requirements of the CI CD system after some other questions that have project risk are answered.  In other words, let’s get some answers to those risky issues and then come back to stuff that is relatively straight forward, although important
 Continuous Integration: automated testing as part of the development lifecycle
@@ -620,7 +620,7 @@ Continuous Delivery: incrementally add value on a continuous basis.
 
 ----
 
-### <a id="#deploymentEnvironments"></a>Deployment Environments ###
+### Deployment Environments ###  
 Linux based
 We will not be tied to any particular version of linux. Debian, Ubunto, etc are all fine.
 
@@ -650,19 +650,19 @@ Network connectivity.
 
 ----
 
-### <a id="#docker"></a>Docker ###
+### Docker ###
 
 WIP
 
 ----
 
-### <a id="#jenkins"></a>Jenkins ###
+### Jenkins ###
 
 WIP
 
 ----
 
-### <a id="#taskrunners"></a>Task runners ###
+### Task runners ###
 
 During development it is optimal to automate serval tasks. Including:
 SASS to CSS
@@ -678,11 +678,11 @@ Webpack is an open-source JavaScript module bundler. Its main purpose is to bund
 
 ----
 
-## <a id="#productSystems"></a>Product Systems ##
+## Product Systems ##
 
 ----
 
-### <a id="#interoperability"></a>Interoperability ###
+### Interoperability ###
 
 I found a few resources to help get started with LTI:
 
@@ -710,7 +710,7 @@ http://www.proprofs.com/c/lms/exclusive-learning-management-system-best-practice
 
 ----
 
-### <a id="#documentmanagementupload"></a>Document management, upload ###
+### Document management, upload ###
 
 Multer to support multi-part document uploads
 Seperately mounted disk for storage outside of application code space
@@ -718,7 +718,7 @@ Seperately mounted disk for storage outside of application code space
 
 ----
 
-### <a id="#authorization"></a>Authorization ###
+### Authorization ###
 
 Depends on LMS and LTI research  
 Shibboleth
@@ -761,7 +761,7 @@ CAS, SAML, OAuth
 
 ----
 
-### <a id="#mediaAttachments"></a>Media Attachments ###
+### Media Attachments ###
 
 Depends on how much video is required and if this is required for MVP.  It will be relatively easy to provide links to video hosted on external sites. To serve video from inside EdEHR requires special consideration, research, tooling and servers that have both the space and capability. Probably would need to consider seperate servers to stream video to maintain performance in the main application.
 
@@ -772,7 +772,7 @@ https://bccampus.ca/2013/05/23/wrangling-videos-in-one-location-just-got-a-lot-e
 
 ----
 
-### <a id="#emailsystem"></a>Email system ###
+### Email system ###
 
 To be considered after LTI and LMS research.  Perhaps the email function can be provided by the LMS
 
@@ -782,7 +782,7 @@ Flask-Mailer (Python)
 
 ----
 
-### <a id="#analytics"></a>Analytics ###
+### Analytics ###  
 Learning Analytics
 Look at Experience API (xAPI) at https://xapi.com
 Do this after LMS and LTI because the LMS ought to provide analytics.

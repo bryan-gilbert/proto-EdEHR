@@ -41,12 +41,16 @@ function processMd(f) {
           }
           let level = m[1].length;
           let title = m[2].trim();
-          let key = camelCase(title.replace(/(\W+)/g,''));
+          let key = title.replace(/([!@#$%^&*(),\.:;"'{}[\]_\-\+=]+)/g,'')
+          key = 'user content ' + key.toLowerCase();
+          key = key.replace(/\s/g,'-');
+          console.log(key);
           // ### <a name="tith"></a>This is the Heading
-          let newLine = m[1] + ' <a id="#'+key+'"></a>' + title + ' ' + m[1];
+          // user-content-planning--management
+          //let newLine = m[1] + ' <a id="#'+key+'"></a>' + title + ' ' + m[1];
+          //lines[inx] = newLine;
           let link = ' '.repeat(level-1) + '* [' + title + '](#' + key + ')'
           toc.push(link);
-          lines[inx] = newLine;
           }
       })
       insertIndex = insertIndex < 0 ? 0 : insertIndex
