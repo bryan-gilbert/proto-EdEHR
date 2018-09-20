@@ -860,4 +860,4 @@ Do this after LMS and LTI because the LMS ought to provide analytics.
 Google Analytics
 Oh hold pending answers around privacy policies.
 
-[PastedGraphic]: ./scrivner/output/TechnicalRoadmap.md/PastedGraphic.tiff
+[PastedGraphic]: scrivner/output/TechnicalRoadmap.md/PastedGraphic.tiff
