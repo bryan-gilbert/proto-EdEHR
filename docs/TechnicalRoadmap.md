@@ -47,7 +47,7 @@ Author: Bryan Gilbert
 <a href="#toc">Top</a>
 
 
-The following contains assumptions that need to be verified by the team ….  
+The following contains assumptions that need to be verified by the team.  
 Institutions
 TBD
 The MVP needs to support four institutions with a possibility of adding in two more.  
@@ -511,7 +511,12 @@ JavaScript style guide, with linter & automatic code fixer. No configuration. Au
 This style guide is used by many tech companies including NPM, GitHub, mongoDB, and ZenDesk.
 
 To add a badge to the project readme include this markup
+```
+
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
+
+```
+
 ![][PastedGraphic]
 
 EdEHR will use Javascript Standard because it’s simple, automatice and just works.  End of debate means we can get coding ;-)
@@ -860,4 +865,4 @@ Do this after LMS and LTI because the LMS ought to provide analytics.
 Google Analytics
 Oh hold pending answers around privacy policies.
 
-[PastedGraphic]: ./scrivner/output/TechnicalRoadmap.md/PastedGraphic.tiff
+[PastedGraphic]: PastedGraphic.tiff
