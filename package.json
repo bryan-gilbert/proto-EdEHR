@@ -1,0 +1,22 @@
+{
+  "name": "proto-edehr",
+  "version": "1.0.0",
+  "description": "Prototype EdEHR",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bryan-gilbert/proto-EdEHR.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bryan-gilbert/proto-EdEHR/issues"
+  },
+  "homepage": "https://github.com/bryan-gilbert/proto-EdEHR#readme",
+  "dependencies": {
+    "camelcase": "^5.0.0"
+  }
+}
