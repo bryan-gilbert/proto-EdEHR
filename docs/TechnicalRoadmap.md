@@ -56,45 +56,48 @@ How many institutions in total will a single instance need to support?
 What is the long term goals?  For example would each institution have run their own instance of the application.  Or is there to be one instance for the world.
 
 Recommendation:  The application should be simple enough to be hosted at each individual institution.
+
 This simplifies issues around privacy and it simplifies the performance requirements and database schema and more.  Accepting this recommendation will remove some project risk. 
 
 Assumptions
-Prototype: 1 institution per instance
-Long term:  ditto
+*  Prototype: 1 institution per instance
+*  Long term:  ditto
 
 Courses
 TBD
 How many courses might this application be expected to support for the prototype stage?  For the long term?
 
 Assumption: prototype stage has one course.
+
 Beyond that the application may be extended, if further case studies are developed, to extend to many courses in one field of study.
+
 Beyond that the application may be extended to support more than one field of study (e.g. doctor vs nurse vs specialist vs etc.)
 
 Assumptions
-Prototype:   1 course
-Long term:  3 - 5 fields of study over 3 - 4 years ( 3 x 3 = 9, 5 x 4 = 20) up to 20 courses.
+*  Prototype:   1 course
+*  Long term:  3 - 5 fields of study over 3 - 4 years ( 3 x 3 = 9, 5 x 4 = 20) up to 20 courses.
 
 Classes
 TBD
 Within a course how many classes might there be? 
+
 Assumptions 
-Prototype:  1
-Long term:  5
+*  Prototype:  1
+*  Long term:  5
 
 Students
 TBD
 How may students are typically in a class?
 
 Assumptions
-Prototype: 20 - 30 students per class
-Long term: up to 50 students per class
+*  Prototype: 20 - 30 students per class
+*  Long term: up to 50 students per class
 
 Summary based on assumptions
 TBD
 Per instance 
-Prototype: 1 institution per instance (perhaps 4-6), 1 course, 1 class, 2-30 students
-
-Long term:  1 institution, 20 courses (over 4 years and 5 fields of study),  up to 5 classes each, up to 50 students in each class.   This does not mean there are 20 x 5 x 50 = 5,000 students in total because the total number of students will be much less.  It may be more like 1,000 students enrolled   across those 20 courses.  
+*  Prototype: 1 institution per instance (perhaps 4-6), 1 course, 1 class, 2-30 students
+*  Long term:  1 institution, 20 courses (over 4 years and 5 fields of study),  up to 5 classes each, up to 50 students in each class.   This does not mean there are 20 x 5 x 50 = 5,000 students in total because the total number of students will be much less.  It may be more like 1,000 students enrolled   across those 20 courses.  
 
 Thus, for example, the prototype needs to support 30 concurrent student users and long term the application may have up to a 1,000 concurrent users.
 
@@ -109,16 +112,16 @@ We might include a feature to warn users if they have an outdated browser.
 https://www.npmjs.com/package/outdated-browser-rework
 
 Here are the suggested default minimum versions as used by the above plugin. Note that IE is not included.
-		'Chrome': 57, // Includes Chrome for mobile devices
-		'Edge': 39,
-		'Safari': 10,
-		'Mobile Safari': 10,
-		'Firefox': 50,
-		'Opera': 50,
-		'Vivaldi': 1,
-		// You could specify a version here if you still support IE in 2017.
-		// You could also instead seriously consider what you're doing with your time and budget
-		'IE': false
+*  		'Chrome': 57, // Includes Chrome for mobile devices
+*  		'Edge': 39,
+*  		'Safari': 10,
+*  		'Mobile Safari': 10,
+*  		'Firefox': 50,
+*  		'Opera': 50,
+*  		'Vivaldi': 1,
+*  		// You could specify a version here if you still support IE in 2017.
+*  		// You could also instead seriously consider what you're doing with your time and budget
+*  		'IE': false
 
 ----
 
@@ -135,38 +138,38 @@ Open Source Licensing
 TBD
 Open Source is a primary requirement for every aspect of this project
 
-https://opensource.org/licenses
+From https://opensource.org/licenses 
 The following OSI-approved licenses are popular, widely used, or have strong communities:
-Apache License 2.0
-BSD 3-Clause "New" or "Revised" license
-BSD 2-Clause "Simplified" or "FreeBSD" license
-GNU General Public License (GPL)
-GNU Library or "Lesser" General Public License (LGPL)
-MIT license
-Mozilla Public License 2.0
-Common Development and Distribution License
-Eclipse Public License
+*  Apache License 2.0
+*  BSD 3-Clause "New" or "Revised" license
+*  BSD 2-Clause "Simplified" or "FreeBSD" license
+*  GNU General Public License (GPL)
+*  GNU Library or "Lesser" General Public License (LGPL)
+*  MIT license
+*  Mozilla Public License 2.0
+*  Common Development and Distribution License
+*  Eclipse Public License
 
 https://en.wikipedia.org/wiki/Comparison_of_free_and_open-source_software_licenses
 
 GNU General Public License Version 3, 29 June 2007. (GNU GPLv3)
+
 https://choosealicense.com/licenses/gpl-3.0/
 
 GNU Affero General Public License v3.0
+
 https://choosealicense.com/licenses/agpl-3.0/
+
 The GNU Affero General Public License is a modified version of the ordinary GNU GPL version 3. It has one added requirement: if you run a modified program on a server and let other users communicate with it there, your server must also allow them to download the source code corresponding to the modified version running there.
 https://www.gnu.org/licenses/why-affero-gpl.html
 
 Recommendation
+
 The GNU Affero seems to fit the intention of BCCampas’s mandate to provide open source educational tools and promote the development of more open source tools.  
-https://bccampus.ca/2018/05/08/copyright-and-open-licences-an-excerpt-from-the-bccampus-open-education-self-publishing-guide/
-https://bccampus.ca/2013/04/02/walking-the-talk-open-resources-at-rru/
-
-
+*  https://bccampus.ca/2018/05/08/copyright-and-open-licences-an-excerpt-from-the-bccampus-open-education-self-publishing-guide/
+*  https://bccampus.ca/2013/04/02/walking-the-talk-open-resources-at-rru/
 
 Recommendation: GNU Affero General Public License v3.0
-
-
 
 ----
 
@@ -174,21 +177,33 @@ Recommendation: GNU Affero General Public License v3.0
 <a href="#toc">Top</a>
 
 Requirements
+
 Agile planning needs to capture “stuff to do” in a place that can “backlog” or “park” the task until it is time to work on the task.  
+
 Before a task can be started it must be the “right size”. Normally, this means it is a task that can be accomplished in a timeframe that is short enough that the doer doesn’t get distracted. I.e. a time period of a ‘day’ is big. Perhaps two or three days but not more. Ideally, it’s a task that can be DONE in a few hours.
+
 The project contains many big tasks that need to be decomposed into smaller, achievable and understandable tasks.  This break down does happens just in time for the work to begin.
+
 The project planning tool needs to allow the composition and ordering of both “big items” and the smaller items; quickly and efficiently.  The tool needs to let the user get everything written down quickly so they can save the thought (park it or back log it) until the time is right to work.  And then get back to work.
 
 Scrivener
+
 Scrivener is a tool that allows one to describe the forest and fly into the forest and visit a few trees and dive in further and visit a branch of a tree and go further and visit the bugs on the leaf of a branch of a tree in the forest and then quickly move back out to see the big picture again.
+
 Recommendation: Use Scrivener as the main organizing tool because it is great for composing technical specifications and technical roadmap.  Scrivener is also the best place to manage the complex backlog of tasks allowing grouping, nesting, filtering and more.  Periodically, export a complete version of the overall project backlog with all the details. 
+
 http://www.literatureandlatte.com/forum/viewtopic.php?t=50214
+
 As key tasks and immediate tasks emerge move them to Trello
 
 Trello
+
 Trello.com is good at capturing ideas but it doesn’t help to structure the big, medium and small picture. In Trello everything is the same: a card. It can be augmented with a colour or label and with several mouse clicks it is possible to filter, yet it doesn’t help to quickly organize a very large conceptual framework and move around to explore nuances and details while retaining the big picture.
+
 Recommendation: Use Trello as a team communication tool. 
+
 Put all main high level tasks in Trello as placeholders for future work. Keep these simple as they just illustrate the big picture. 
+
 Put all immediate tasks in Trello.  These are small achievable tasks that are planned for the next sprint or two or are actually in progress.  This keeps the Trello board focused on sharing with the team what are current activities and near term plans.
 
 ----
@@ -198,8 +213,11 @@ Put all immediate tasks in Trello.  These are small achievable tasks that are pl
 
 
 Requirements
+
 Defect tracking tool needs to allow the team to add, edit, comment, and resolve issues as the prototype evolves and for when it is in place.  The tool ought to be suitable for non-technical users to resolve issues.
+
 We can look into JIRA or to keep it simple let’s just use the issue tracking in github.
+
 Recommendation: Github
 
 ----
@@ -208,10 +226,13 @@ Recommendation: Github
 <a href="#toc">Top</a>
 
 Git Github
+
 EdEHR will use Git and Github because it is the industry standard and fits the project charter requirement to be open source.
+
 I have started a repro here: https://github.com/bryan-gilbert/proto-EdEHR
 
 Branching
+
 To begin all rough preliminary work will be submitted to the main branch.  Yet, once development is underway all submissions will be made to a development branch.  Testing and stylistic checks will be completed before promotion to the master branch.  Changes on the master branch will be monitored by an instance of Jenkins which will start a build process on a Test server.  The developer’s goal is to not break the build. 
 
 Question: Does BCcampus have a repro?
@@ -236,164 +257,182 @@ Client side coding language, for in the browser, is Javascript. There is no othe
 <a href="#toc">Top</a>
 
 Server side generation for client side
+
 This section pertains to the code written for the client side (the UI).  For example, if the pages are generated on the server (e.g. PhP) or transpiled into static web resources (React, Vue, etc). Simply put:  choose between server side generation or static resources with web services. 
 
 The current trend in the industry to away from server side generation.  It is still the dominate form of delivery because of the popularity and longevity of PhP yet new projects are opting to go the static resource direction.  One reason for this direction is it promotes a clear division between what is served to the UI and what services the server provides (which are being reduced to small, lean and efficient micro-services that are targeted to a single task such as fetching data or updating the database). Browsers are also more efficient at caching static resources and this makes the web applications more responsive. Another term for this approach is Single Page Applications (SPA).
+
 For these reasons and many more it is recommended that EdEHR uses static resources and web services.
+
 Recommendation: choose a framework such as React, Angular, Vue or … (all of which are open source) and skip PhP.
 
 EdEHR Requirements:
-Flexible and easy to adapt (to suit project timeline)
-Easy to learn (to suit project timeline and attract long term development)
-Documentation: clear, available, consistent
-Supports single page applications.
-Code Style:  How readable and intuitive is the code and conventions of the framework?
-Single File Components: How intuitive is maintaining a component in the framework?
-License: open
-Performance:  How performant are apps built with the framework?
-Tooling: What tools and stable plugins are available for the framework?
-Routing (click to next ‘page’ in app with back button history)
-State management (track what stage of a process the user is at)
-API calls to server
-Mobile:  Does it offer a way to build native mobile applications?
-Community: What is the size of the community and is it united or fragmented?
-Maturity: How mature is the framework? Is it production-tested?
-Support: How big is the team behind the framework?
-Hiring Talent: How easy would it be to hire developers with prior experience in the framework?
-Future: how are updates handled?
+*  Flexible and easy to adapt (to suit project timeline)
+*  Easy to learn (to suit project timeline and attract long term development)
+*  Documentation: clear, available, consistent
+*  Supports single page applications.
+*  Code Style:  How readable and intuitive is the code and conventions of the framework?
+*  Single File Components: How intuitive is maintaining a component in the framework?
+*  License: open
+*  Performance:  How performant are apps built with the framework?
+*  Tooling: What tools and stable plugins are available for the framework?
+*  Routing (click to next ‘page’ in app with back button history)
+*  State management (track what stage of a process the user is at)
+*  API calls to server
+*  Mobile:  Does it offer a way to build native mobile applications?
+*  Community: What is the size of the community and is it united or fragmented?
+*  Maturity: How mature is the framework? Is it production-tested?
+*  Support: How big is the team behind the framework?
+*  Hiring Talent: How easy would it be to hire developers with prior experience in the framework?
+*  Future: how are updates handled?
 
 Angular
+
 https://en.wikipedia.org/wiki/Angular_(application_platform)
+
 Angular is supported by Google and a large open source community. There are two main flavors: Angular and AngularJS.  The latter is the older version and is sometimes called Angular 1.x.  The former is the newer rewrite and for a time was called Angular 2.0.   There is no point considering AngularJS for a new project because Angular is far superior. That said, Angular is a framework suited to large projects with many team members because it provides a lot of features and supports the complexity in these types of projects.  
 
-Flexible: no
-Easy to learn: know to have a steep learning curve
-Documentation: yes
-Supports single page applications:  yes
-Code Style:  Complex
-Single File Components: no
-License: MIT
-Performance:  Reasonable
-Tooling:  Yes
-Routing (click to next ‘page’ in app with back button history): yes
-State management (track what stage of a process the user is at): yes
-Mobile:  Not sure.
-Community:  Large and well established
-Maturity:  Hard to say because Angular is such a radical change from AngularJS. No’ish
-Support:  Google
-Hiring Talent:  Yes
-Future:  not sure
+*  Flexible: no
+*  Easy to learn: know to have a steep learning curve
+*  Documentation: yes
+*  Supports single page applications:  yes
+*  Code Style:  Complex
+*  Single File Components: no
+*  License: MIT
+*  Performance:  Reasonable
+*  Tooling:  Yes
+*  Routing (click to next ‘page’ in app with back button history): yes
+*  State management (track what stage of a process the user is at): yes
+*  Mobile:  Not sure.
+*  Community:  Large and well established
+*  Maturity:  Hard to say because Angular is such a radical change from AngularJS. No’ish
+*  Support:  Google
+*  Hiring Talent:  Yes
+*  Future:  not sure
+
 https://medium.com/fundbox-engineering/react-vs-vue-vs-angular-163f1ae7be56
+
 Angular grew to become a big framework that can be helpful in building complex systems but is less useful for building startup fast-changing UIs. React and Vue are more light-weight, and components are meant to be small, autonomous, encapsulated, hence — easily reusable. If we were to develop a new infrastructure from scratch (and not needing to migrate from an existing one), we could have been considering Angular too. In our case, it didn’t fit.
 
 EdEHR recommendation: skip Angular
 
 React
+
 React is supported by Facebook and has a large open source community.  It is definitely the most popular framework.
+
 References: 
-https://en.wikipedia.org/wiki/React_(JavaScript_library)
-https://blog.techmagic.co/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018/
-https://medium.com/fundbox-engineering/react-vs-vue-vs-angular-163f1ae7be56
+*  https://en.wikipedia.org/wiki/React_(JavaScript_library)
+*  https://blog.techmagic.co/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018/
+*  https://medium.com/fundbox-engineering/react-vs-vue-vs-angular-163f1ae7be56
+
 Companies that use ReactJS: Facebook, Instagram, Netflix, New York Times, Yahoo, Khan Academy, Whatsapp, Codecademy, Dropbox, Airbnb, Asana, Atlassian, Intercom, Microsoft.
 
 EdEHR requirements:  (quotes from above sources in italics)
-Flexible: yes
-Easy to learn: easier than Angular yet takes a long time to master.  “React requires to (sic) learn a lot to become an expert. Would require much more time to train devs. Deliver slower (at least for the initial heavy lifting).”
-Documentation:  Lack of official documentation — super-fast development of ReactJS leaves no place for the proper documentation which is a bit chaotic now as many developers contribute it individually without any systematic approach;
-Supports single page applications: Yes
-Code Style:  Clean yet developers sometimes have too much choice; sometimes difficult to separate code between back end and front end
-Single File Components:  Yes, nicely
-License: MIT. (There is an interesting story to read about how Facebook released React with a series of different open source licenses that caused a lot of controversy. https://en.wikipedia.org/wiki/React_(JavaScript_library)#Licensing_controversy  Now, React is released under the very permissive MIT license.)
-Performance:  Yes
-Tooling:  Yes
-Routing: Needs plugin (which one to pick?)
-State management: not sure
-API: Yes
-Mobile:  Web and mobile apps can share some code.
-Community: Large yet fragmented
-Maturity:  Industry standard.
-Support: Yes
-Hiring Talent: Yes
-Future:  Facebook provides  “codemods” to automate much of the upgrade process. 
+*  Flexible: yes
+*  Easy to learn: easier than Angular yet takes a long time to master.  “React requires to (sic) learn a lot to become an expert. Would require much more time to train devs. Deliver slower (at least for the initial heavy lifting).”
+*  Documentation:  Lack of official documentation — super-fast development of ReactJS leaves no place for the proper documentation which is a bit chaotic now as many developers contribute it individually without any systematic approach;
+*  Supports single page applications: Yes
+*  Code Style:  Clean yet developers sometimes have too much choice; sometimes difficult to separate code between back end and front end
+*  Single File Components:  Yes, nicely
+*  License: MIT. (There is an interesting story to read about how Facebook released React with a series of different open source licenses that caused a lot of controversy. https://en.wikipedia.org/wiki/React_(JavaScript_library)#Licensing_controversy  Now, React is released under the very permissive MIT license.)
+*  Performance:  Yes
+*  Tooling:  Yes
+*  Routing: Needs plugin (which one to pick?)
+*  State management: not sure
+*  API: Yes
+*  Mobile:  Web and mobile apps can share some code.
+*  Community: Large yet fragmented
+*  Maturity:  Industry standard.
+*  Support: Yes
+*  Hiring Talent: Yes
+*  Future:  Facebook provides  “codemods” to automate much of the upgrade process. 
 
 Vue
+
 Vue.js is a JavaScript framework, launched in 2013, which perfectly fits for creating highly adaptable user interfaces and sophisticated Single-page applications.
+
 Resources
-https://medium.com/@TechMagic/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018-b91e028fa91d
-https://vuejs.org/v2/guide/comparison.html
-https://medium.com/fundbox-engineering/react-vs-vue-vs-angular-163f1ae7be56
+*  https://medium.com/@TechMagic/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018-b91e028fa91d
+*  https://vuejs.org/v2/guide/comparison.html
+*  https://medium.com/fundbox-engineering/react-vs-vue-vs-angular-163f1ae7be56
+
 Companies that use Vue.js: Xiaomi, Alibaba, WizzAir, EuroNews, Grammarly, Gitlab and Laracasts, Adobe, Behance, Codeship, Reuters.
 
 EdEHR requirements:  (quotes from above sources in italics)
-Flexible:  Yes
-Easy to learn: Yes fast ramp up
-Documentation:  Detailed documentation. Vue.js has very circumstantial documentation which can fasten learning curve for developers and save a lot of time to develop an app using only the basic knowledge of HTML and JavaScript.  Yet another source says:  Lack of full English documentation. This leads to a partial complexity on some stages of development, nevertheless, more and more materials are being translated into English.
-Supports single page applications.
-Code Style: 
-Single File Components:  Vue.js can be used for both building single-page applications and more difficult web interfaces of apps. The main thing is that smaller interactive parts can be easily integrated into the existing infrastructure with no negative effect on the entire system.
-License: open
-Performance:  Tiny size. Vue.js can weight around 20KB keeping its speed and flexibility that allows reaching much better performance in comparison to other frameworks.
-Tooling: Awesome integration.  Another source says:  Fewer plugins and tools available, smaller community.
-Routing: Vue’s core modules (Vuex, Router, etc.) are built-in and work fantastic.
-State management: yes
-API: yes
-Mobile:  Vue Native and Capacitor are solutions to produce mobile targeted apps
-Community:  Growing
-Maturity: Vue.js still has a pretty small market share in comparison with React or Angular, which means that knowledge sharing in this framework is still in the beginning phase.
-Support: Smaller 
-Hiring Talent:  growing but not easy at this time
-Future: how are updates handled?
+*  Flexible:  Yes
+*  Easy to learn: Yes fast ramp up
+*  Documentation:  Detailed documentation. Vue.js has very circumstantial documentation which can fasten learning curve for developers and save a lot of time to develop an app using only the basic knowledge of HTML and JavaScript.  Yet another source says:  Lack of full English documentation. This leads to a partial complexity on some stages of development, nevertheless, more and more materials are being translated into English.
+*  Supports single page applications.
+*  Code Style: 
+*  Single File Components:  Vue.js can be used for both building single-page applications and more difficult web interfaces of apps. The main thing is that smaller interactive parts can be easily integrated into the existing infrastructure with no negative effect on the entire system.
+*  License: open
+*  Performance:  Tiny size. Vue.js can weight around 20KB keeping its speed and flexibility that allows reaching much better performance in comparison to other frameworks.
+*  Tooling: Awesome integration.  Another source says:  Fewer plugins and tools available, smaller community.
+*  Routing: Vue’s core modules (Vuex, Router, etc.) are built-in and work fantastic.
+*  State management: yes
+*  API: yes
+*  Mobile:  Vue Native and Capacitor are solutions to produce mobile targeted apps
+*  Community:  Growing
+*  Maturity: Vue.js still has a pretty small market share in comparison with React or Angular, which means that knowledge sharing in this framework is still in the beginning phase.
+*  Support: Smaller 
+*  Hiring Talent:  growing but not easy at this time
+*  Future: how are updates handled?
 
-Large scaling. Vue.js can help to develop pretty large reusable templates that can be made with no extra time allocated for that according to its simple structure.
-Better promotes Full-Stack culture; allows cross-product development.
-Not being React, devs don’t gain experience with the most popular framework today.
+*  Large scaling. Vue.js can help to develop pretty large reusable templates that can be made with no extra time allocated for that according to its simple structure.
+*  Better promotes Full-Stack culture; allows cross-product development.
+*  Not being React, devs don’t gain experience with the most popular framework today.
 
 Recommendation
-First, here are some of the sources consulted.
-https://medium.com/@TechMagic/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018-b91e028fa91d
-https://expertise.jetruby.com/react-vs-vue-js-which-front-end-framework-to-choose-in-2018-2a62a1fe76f9
+
+Resources
+*  https://medium.com/@TechMagic/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018-b91e028fa91d
+*  https://expertise.jetruby.com/react-vs-vue-js-which-front-end-framework-to-choose-in-2018-2a62a1fe76f9
 
 Advantages of Vue.JS:
-Flexibility, Simplicity, Fast rendering and small size.
-Sout to nuts framework
-Easier to learn and get started
+*  Flexibility, Simplicity, Fast rendering and small size.
+*  Soup to nuts framework
+*  Easier to learn and get started
 
 Advantages of React:
-Perfectly fits scalable apps, easier to test and maintain;
-Can be used for native and web apps;
-Huge ecosystem;
-A big set of tools.
+*  Perfectly fits scalable apps, easier to test and maintain;
+*  Can be used for native and web apps;
+*  Huge ecosystem;
+*  A big set of tools.
 
 Common Advantages
-Fast rendering with Virtual DOM;
-Small size;
-Reactive components;
-The ability to easily integrate with routers, collectors, and state managers;
-A-class maintenance.
+*  Fast rendering with Virtual DOM;
+*  Small size;
+*  Reactive components;
+*  The ability to easily integrate with routers, collectors, and state managers;
+*  A-class maintenance.
 
 Quote: 
+
 From my perspective, there are two factors driving Vue’s growth.  First, lots of developers still want a “soup to nuts” framework, i.e. one that does everything from routing to templating to back-end data fetching. Vue does this, which tends to make it easier for a first-time developer to pick up since they just make one choice: use Vue, and all the other choices are made for them.
+
 React, on the other hand, requires making lots of additional choices about routing and data management libraries, which makes it more intimidating and slower to get started with. So Angular, Ember and Vue all have this “all-inclusive” advantage over React.
+
 Second, if you’ve decided you want an all-inclusive framework, Vue performs better in benchmarks and is relatively easier to learn. Although these things are subjective, devs often report that it feels “cleaner” or “simpler” than older frameworks like Angular and Ember.
+
 Laurie Voss, co-founder and COO of npm
 
 Summary for EdEHR
-Flexible: either
-Easy to learn: Vue over React
-Documentation: Vue
-Code Style:  Either
-Single File Components:  Slight edge to Vue
-License: Both are MIT
-Performance:  Either
-Tooling:  Edge to React yet Vue has essentials built in making it easier to get started
-Routing: built into Vue
-State management: built into Vue
-API: Either
-Mobile:  React
-Community:  React yet it is fragmented. Vue is smaller and more cohesive and therefore consitent (read less ambiguity about how to do something. Less time trying out varoius options and then deciding and then developing.)
-Maturity:  React has edge
-Support: React community is larger yet support for either is available
-Hiring Talent:  React has edge, for now.
+*  Flexible: either
+*  Easy to learn: Vue over React
+*  Documentation: Vue
+*  Code Style:  Either
+*  Single File Components:  Slight edge to Vue
+*  License: Both are MIT
+*  Performance:  Either
+*  Tooling:  Edge to React yet Vue has essentials built in making it easier to get started
+*  Routing: built into Vue
+*  State management: built into Vue
+*  API: Either
+*  Mobile:  React
+*  Community:  React yet it is fragmented. Vue is smaller and more cohesive and therefore consitent (read less ambiguity about how to do something. Less time trying out varoius options and then deciding and then developing.)
+*  Maturity:  React has edge
+*  Support: React community is larger yet support for either is available
+*  Hiring Talent:  React has edge, for now.
 
 For a new project with no legacy and a developer team that has equal experience with both frameworks (read experienced newbie) it’s a good time to be taking the new lean simple fast approach: vue.js.
 
@@ -405,16 +444,16 @@ For a new project with no legacy and a developer team that has equal experience 
 <a href="#toc">Top</a>
 
 Requirements
-Support for Single Page Applications, Mobile Computing and Browsers (DSL support)
-Industry standard. 
-Suitable for prototyping. This is a huge project with a very short timeline. 
-Dynamically typed with option to add datatypes when working with the database. 
-Not verbose.  Language should favour clean and easy to read coding
-Large community of developers to support this project in the future.
-Modular (Separation of Concern).  Isolation of functionality is essential for stability. Once a component/module is ready and tested it should not be necessary to touch it again to adjust some other feature.
-Testable.
-Ideally use the same language for web, server and in between.
-What is the developer best at? The team developer is most familiar with Javascript (Node JS) and is interested in working more with Python.
+*  Support for Single Page Applications, Mobile Computing and Browsers (DSL support)
+*  Industry standard. 
+*  Suitable for prototyping. This is a huge project with a very short timeline. 
+*  Dynamically typed with option to add datatypes when working with the database. 
+*  Not verbose.  Language should favour clean and easy to read coding
+*  Large community of developers to support this project in the future.
+*  Modular (Separation of Concern).  Isolation of functionality is essential for stability. Once a component/module is ready and tested it should not be necessary to touch it again to adjust some other feature.
+*  Testable.
+*  Ideally use the same language for web, server and in between.
+*  What is the developer best at? The team developer is most familiar with Javascript (Node JS) and is interested in working more with Python.
 
 The contenders are:  Python, Javascript (Node JS), PhP, Go, and Ruby.  This analysis will not look too deeply into Go or Ruby because the former is too new and Ruby’s popularity may be diminishing. https://getpocket.com/a/read/2153732617
 
@@ -422,29 +461,30 @@ PhP
 
 PhP is the industry standard having been around for over two decades. Yet it is known for its verbosity and difficulty to be modular.
 PhP Pros:
-Rich code base
-Portable
-Designed to generate web pages
+*  Rich code base
+*  Portable
+*  Designed to generate web pages
 PhP Cons:
-Inefficient separation of concerns (modularity)
-Outdated client server model (not SPA)
-Different language than used on the client side.
+*  Inefficient separation of concerns (modularity)
+*  Outdated client server model (not SPA)
+*  Different language than used on the client side.
 
 Not the best choice for EdEHR
 
 Python
+
 Python Pros:
-Readable and dynamically-typed language
-High functionality
-Rich native library support
-Shorter code compared to similar object-oriented languages
-Fast development due to concise and simple syntax
+*  Readable and dynamically-typed language
+*  High functionality
+*  Rich native library support
+*  Shorter code compared to similar object-oriented languages
+*  Fast development due to concise and simple syntax
 
 Python Cons:
-Absence from Mobile Computing and Browsers
-Lack of Support for DSLs (Domain-specific Languages)
-Steep learning curve
-Runtime speed slow
+*  Absence from Mobile Computing and Browsers
+*  Lack of Support for DSLs (Domain-specific Languages)
+*  Steep learning curve
+*  Runtime speed slow
 
 Could be a choice for EdEHR yet it would introduce risk as the developer is not expert in this language.
 
@@ -452,22 +492,22 @@ Javascript and Node.js
 “Unlike PHP, Node.js is not a language, but a runtime environment that uses JavaScript for the server-side application development. Launched in 2009, Node.js has demonstrated the power of JavaScript in building event-based, data-driven, I/O-heavy applications for the Web 2.0 era.” https://www.netguru.co/blog/nodejs-vs-php
 
 Javascript and Node.js Pros:
-Support for Single Page Applications, Mobile Computing and Browsers (DSL support)
-Industry standard. 
-Suitable for prototyping
-Dynamically typed with option to add datatypes when working with the database. 
-Medium verbosity.
-Large community of developers.
-Modular (Separation of Concern)
-Testable.
-One language across the full stack
-What is the developer best at?
-Fast server side
-Portable
+*  Support for Single Page Applications, Mobile Computing and Browsers (DSL support)
+*  Industry standard. 
+*  Suitable for prototyping
+*  Dynamically typed with option to add datatypes when working with the database. 
+*  Medium verbosity.
+*  Large community of developers.
+*  Modular (Separation of Concern)
+*  Testable.
+*  One language across the full stack
+*  What is the developer best at?
+*  Fast server side
+*  Portable
 
 Javascript and Node.js Cons:
-Less efficient at handling CPU intensive applications. (This is not a requrement for EdEHR)
-JavaScript and Node.js are not quite as extensible as Python.
+*  Less efficient at handling CPU intensive applications. (This is not a requrement for EdEHR)
+*  JavaScript and Node.js are not quite as extensible as Python.
 
 Use Javascript ECMA 2016 or better.
 
@@ -489,17 +529,18 @@ https://github.com/rwaldron/idiomatic.js
 A useful snippet to consider.
 Projects must include some form of unit, reference, implementation or functional testing. Use case demos DO NOT QUALIFY as "tests". The following is a list of test frameworks, none of which are endorsed more than the other.
 
-QUnit
-Jasmine
-Vows
-Mocha
-Hiro
-JsTestDriver
-Buster.js
-Sinon.js
-Tape
+*  QUnit
+*  Jasmine
+*  Vows
+*  Mocha
+*  Hiro
+*  JsTestDriver
+*  Buster.js
+*  Sinon.js
+*  Tape
 
 AirBnB Style Guide
+
 Perhaps the most popular style guide is https://github.com/airbnb/javascript
 
 A mostly reasonable approach to JavaScript
@@ -507,7 +548,9 @@ A mostly reasonable approach to JavaScript
 Note: this guide assumes you are using Babel, and requires that you use babel-preset-airbnb or the equivalent. It also assumes you are installing shims/polyfills in your app, with airbnb-browser-shims or the equivalent.
 
 JavaScript Standard Style Guide. https://github.com/standard/standard
+
 JavaScript style guide, with linter & automatic code fixer. No configuration. Automatically format code. Catch style issues & programmer errors early.
+
 This style guide is used by many tech companies including NPM, GitHub, mongoDB, and ZenDesk.
 
 To add a badge to the project readme include this markup
@@ -561,19 +604,22 @@ https://bulma.io/documentation/overview/
 
 Requirements for EdEHR databases
 WIP
-Flexible: because this is a rapid development prototype project it is essential that we can easily augment and change the schema without spending a lot of time on writing transformation scripts or working with transformation tooling. 
-Strongly typed and validation support to ensure the data in the database is valid.
-Rapidly convert data to and from code. (Transfer of data to and from the “objects” used in software.)
-Store data in easy for humans to understand format.
-Scalable
-Community Support
-Open Source
+*  Flexible: because this is a rapid development prototype project it is essential that we can easily augment and change the schema without spending a lot of time on writing transformation scripts or working with transformation tooling. 
+*  Strongly typed and validation support to ensure the data in the database is valid.
+*  Rapidly convert data to and from code. (Transfer of data to and from the “objects” used in software.)
+*  Store data in easy for humans to understand format.
+*  Scalable
+*  Community Support
+*  Open Source
 
 Relational vs non-relational databases (RDMS  vs NoSQL)
 WIP
 Before deciding on which database system to use (MySQL, MariaDB, PostgreSQL, MongoDB) we ought to select the type of database system to use.  As you will see, the clear answer for EdEHR is to select MongoDB with Mongoose.
+
 Relational SQL databases (RDMS) store data in tables (like a spreadsheet) and the relationships are made by storing a piece of data in one table to say ‘go look in row X of this other table’.  RDMS are the dominant database system, for sure.  They are the better option for applications that require multi-row transactions - such as an accounting system - or for legacy systems that were built for a relational structure. 
+
 Non-relational databases (NoSQL), like MongoDB, are better for prototyping and rapid development because they organize data into JSON documents. JSON is a format that is easy for humans to read and easy for machines to use.  JSON documents are flexible, unlike a RDMSwhere the table columns are fixed in size and type.  With MongoDB and JSON new fields can be added at any time so it can store unstructured data such as user logs, real-time analytics, content management systems, sessions, images, videos, chats and also data from IoT devices.
+
 It is possible to add structure (schema) to a MongoDB system by using a layer like Mongoose. Yet during early development it’s good to take advantage of the dynamic schema because it gives you flexibility to change your data schema without modifying any of your existing data.
 
 MongoDB License: GNU Affero General Public License, version 3.
@@ -585,10 +631,15 @@ Speed: It’s high-performing for simple queries.
 Scalability: It is difficult to increase the size of a RDMS because of the table structure. It’s just plain hard to split the table across many servers.  NoSQL databases are easily split so they are the preferred choice for large or every changing data sets.
 
 Flexibility- Firstly, the document structure is more in line with how developers code in their respective programming languages which is clear and structured in key-value pairs. This makes it easier to add and edit data/documents at any time. In a relational database, this would involve the database having to be restructured
+
 Supports a wide range of queries – fields, expressions, range queries, JavaScript functions and more
+
 Faster turnaround time-because related data which would be stored across several tables in a MySQL database are stored in the same document in a MongoDB
+
 No strict schemas followed-you are allowed to create a document first before defining the structure of the document, making it very helpful for businesses who in a start-up phase who are unsure of what their database structure should look like
+
 Like we mentioned, MongoDB’s features make it better suited to those who handle huge volumes of data
+
 Many today consider RDMS to be unable to meet the expectations from today’s data-intensive applications.  https://blog.resellerclub.com/mongodb-vs-mysql-comparison/
 
 
@@ -630,15 +681,18 @@ BURP suite security testing
 WIP
 
 Performance testing
+
 By the way, if you were hoping I could point you to a generic industry standard for good and bad performance, you’re out of luck because no such guide exists. There have been various informal attempts to define a standard, particularly for browser-based applications.
 https://sqa.stackexchange.com/questions/15296/performance-requirements-for-web-application
 
 Here are two sources of information to consider later.
 
 Open Source Load Testing Tools: Which One Should You Use?
+
 https://www.blazemeter.com/blog/open-source-load-testing-tools-which-one-should-you-use
 
 JMeter
+
 https://jmeter.apache.org/usermanual/get-started.html
 
 ----
@@ -649,6 +703,7 @@ https://jmeter.apache.org/usermanual/get-started.html
 
 WIP
 Must implement automated testing for server side and ideally client side code.  This is expensive to do but invaluable in later stages of development.  Acknowledge that 100% coverage is not possible so testing, inherently, has trade-offs.  Testing the core functionality along with all edge cases that surfaced as defects should be considered core.  This at least provides confidence if at some later stage we need to refactor or adjust code that is new the core functionality.  
+
 As defects arise try to first create a test script to replicate the defect.  TDD
 
 BDD Behavior Driven Development is appropriate for the core functionality because it is directly connected with actual user behaviors (e.g. use cases) and is more comprehensive than a series of units tests (Test Drive Development).
@@ -664,7 +719,9 @@ Testing is related to the topic of Automated Testing
 
 
 Look to work out the requirements of the CI CD system after some other questions that have project risk are answered.  In other words, let’s get some answers to those risky issues and then come back to stuff that is relatively straight forward, although important
+
 Continuous Integration: automated testing as part of the development lifecycle
+
 Continuous Delivery: incrementally add value on a continuous basis.
 
 ----
@@ -673,10 +730,13 @@ Continuous Delivery: incrementally add value on a continuous basis.
 <a href="#toc">Top</a>
 
 Linux based
+
 We will not be tied to any particular version of linux. Debian, Ubunto, etc are all fine.
 
 Digital Ocean for pre-dev
+
 I have an account and use Digital Ocean to spin up servers for my business.  I propose to use this service during early development to save time and energy worrying about how to get going.
+
 Later, it will be essential to transition to the hosting domain where the prottype will reside.
 
 Production Server
@@ -685,16 +745,16 @@ SFU will be hosting the prototype.  Later we can learn how they will allocating 
 
 
 Test environment
-2 - 4 GB RAM per core
-2 - 4 cores (to allow testing of application scaled to match production
-Standard hard drive, 10-20 GB free.
-Network connectivity.
+*  2 - 4 GB RAM per core
+*  2 - 4 cores (to allow testing of application scaled to match production
+*  Standard hard drive, 10-20 GB free.
+*  Network connectivity.
 
 Production
-4 Cores
-4 GB RAM per core.
-Standard hard drive, 50-100 GB free.
-Network connectivity.
+*  4 Cores
+*  4 GB RAM per core.
+*  Standard hard drive, 50-100 GB free.
+*  Network connectivity.
 
 
 
@@ -816,7 +876,7 @@ To create an assignment link in Canvas:
 Go to ComPAIR and edit the assignment you want to link to.
 Click the "Copy?" link at the top right of the edit assignment screen. This will copy the information you need to enter in Canvas.
 Now switch to Canvas and add an assignment, with a submission type of external tool and ComPAIR selected as the external tool.
-At the end of the "External Tool URL" field, type a question mark (?), then paste the value you copied from ComPAIR. This will mean the "External Tool URL" will ultimately something look like this: compair.elearning.ubc.ca/api/lti/auth?assignment=********
+At the end of the "External Tool URL" field, type a question mark (?), then paste the value you copied from ComPAIR. This will mean the "External Tool URL" will ultimately something look like this: compair.elearning.ubc.ca/api/lti/auth?assignment=* * * * * * * * 
 Select "Load This Tool In A New Tab".
 Save the assignment. When students click on the assignment in Canvas, it will take them directly to the assignment in ComPAIR.
 Note that to pass participation grades automatically from ComPAIR to Canvas for a given assignment, every student will need to click this Canvas link to the ComPAIR assignment once. Clicking the link opens up the Canvas-ComPAIR connection for that student's grade.
