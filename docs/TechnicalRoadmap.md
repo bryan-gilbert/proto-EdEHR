@@ -512,12 +512,10 @@ This style guide is used by many tech companies including NPM, GitHub, mongoDB, 
 
 To add a badge to the project readme include this markup
 ```
-
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
-
 ```
 
-![][PastedGraphic]
+[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
 EdEHR will use Javascript Standard because it’s simple, automatice and just works.  End of debate means we can get coding ;-)
 That said we may cherry pick guidelines from the other style guides as we go.    (http://jstherightway.org)
@@ -864,5 +862,3 @@ Do this after LMS and LTI because the LMS ought to provide analytics.
 
 Google Analytics
 Oh hold pending answers around privacy policies.
-
-[PastedGraphic]: PastedGraphic.tiff
