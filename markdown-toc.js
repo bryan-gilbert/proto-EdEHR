@@ -12,7 +12,6 @@ const scrivenerOutputDir = path.resolve(scrivenerDir, 'output');
 let globOptions = {
   cwd: scrivenerDir
 }
-console.log("Looking for Scrivener markdown output files in ", scrivenerDir)
 glob("**/*.md", globOptions, function (er, files) {
   console.log('found:', files);
   files.forEach(f => {
@@ -25,6 +24,7 @@ glob("**/*.md", globOptions, function (er, files) {
     }
   })
 })
+console.log("Looking for Scrivener markdown output files in ", scrivenerDir)
 
 function processMarkdownDir(dir) {
   /*
@@ -95,7 +95,6 @@ function processMarkdownFile(f) {
     let newContents = lines.join('\n')
     console.log("output in ", dst)
     fs.writeFileSync(dst, newContents)
-    process.exit();
   })
 
   //fs.copyFileSync(src,dst)

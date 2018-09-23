@@ -4,6 +4,7 @@ Author: Bryan Gilbert
 # Table of Contents  <a id="toc" class="anchor" aria-hidden="true" href="#toc">
 
 
+* [Introduction](#user-content-introduction)
 * [Technical Elements](#user-content-technical-elements)
   * [Application Requirements](#user-content-application-requirements)
   * [Planning & Management](#user-content-planning--management)
@@ -37,6 +38,20 @@ Author: Bryan Gilbert
     * [Email system](#user-content-email-system)
     * [Analytics](#user-content-analytics)
  
+# Introduction #
+<a href="#toc">Top</a>
+
+
+From a high level view the app has three layers: 
+
+1\. Learning Management System 
+
+2\. Assignment management system
+
+3\. Electronic Health Record system
+
+----
+
 # Technical Elements #
 <a href="#toc">Top</a>
 
@@ -50,7 +65,7 @@ Author: Bryan Gilbert
 The following contains assumptions that need to be verified by the team.  
 **Institutions**
 
-**TBD**
+Status: Pending information
 
 The MVP needs to support four institutions with a possibility of adding in two more.  
 
@@ -70,7 +85,7 @@ This simplifies issues around privacy and it simplifies the performance requirem
 
 **Courses**
 
-**TBD**
+Status: Pending information
 
 How many courses might this application be expected to support for the prototype stage?  For the long term?
 
@@ -88,7 +103,7 @@ Beyond that the application may be extended to support more than one field of st
 
 **Classes**
 
-**TBD**
+Status: Pending information
 
 Within a course how many classes might there be? 
 
@@ -100,7 +115,7 @@ Within a course how many classes might there be?
 
 **Students**
 
-**TBD**
+Status: Pending information
 
 How may students are typically in a class?
 
@@ -112,7 +127,7 @@ How may students are typically in a class?
 
 **Summary based on assumptions**
 
-**TBD**
+Status: Pending information
 
 Per instance 
 
@@ -124,7 +139,7 @@ Thus, for example, the prototype needs to support 30 concurrent student users an
 
 Old Browsers and project risk
 
-**TBD**
+Status: Pending information
 
 ***If support for non-modern browsers is required then this will introduce significant risks both in terms of the ability to test them and significant risk in development time.  Stakeholders need to know that a decisionm to support non-modern browsers means other features are at risk of not being “done”.  It is a strong recomendation to exclude non-modern browsers from the MVP.***
 
@@ -137,12 +152,10 @@ We might include a feature to warn users if they have an outdated browser.
 <https://www.npmjs.com/package/outdated-browser-rework>
 
 Here are the suggested default minimum versions as used by the above plugin. Note that IE is not included.
+* 'Chrome': 57, // Includes Chrome for mobile devices
+* 'Edge': 39,
 
-*  		'Chrome': 57, // Includes Chrome for mobile devices
-
-*  		'Edge': 39,
-
-*  		'Safari': 10,
+* 'Safari': 10,
 
 *  		'Mobile Safari': 10,
 
@@ -171,7 +184,7 @@ Here are the suggested default minimum versions as used by the above plugin. Not
 
 **Open Source Licensing**
 
-**TBD**
+Status: Pending information
 
 Open Source is a primary requirement for every aspect of this project
 
@@ -220,6 +233,22 @@ The GNU Affero seems to fit the intention of BCCampas’s mandate to provide ope
 *  <https://bccampus.ca/2013/04/02/walking-the-talk-open-resources-at-rru/>
 
 **Recommendation:** GNU Affero General Public License v3.0
+
+BC gov resource:
+
+Status: Do Later
+
+https://github.com/bcgov/BC-Policy-Framework-For-GitHub/tree/master/BC-Open-Source-Development-Employee-Guide
+
+and specifically (with a couple of useful decision trees): 
+
+https://github.com/bcgov/BC-Policy-Framework-For-GitHub/blob/master/BC-Open-Source-Development-Employee-Guide/Licenses.md 
+
+The implications of the licenses of the tools we use in the product must be respected/compatible when making decisions on how to license the EdEHR.  Here's an example from the open text book project.
+
+https://github.com/BCcampus/opentextbooks/blob/dev/README.md#copyright-and-license
+
+Dave is researching the license issue.
 
 ----
 
@@ -785,43 +814,35 @@ That said we may cherry pick guidelines from the other style guides as we go.   
 
 **Styleguide for CSS SASS**
 
-**TBD**
+**October**
+
+Decision and further research to be done with UX Designer in October
 
 AirBnB is a possible style guide for CSS and SASS <https://github.com/airbnb/css>
 
-Decision and further research to be done with UX Designer
-
 Requirements:
 
-Responsive
-
-Clean and simple. It’s easier to learn, develop and maintain.
-
-Good if CSS does not depend on Javascript (separation of concern)
+* Responsive
+* Clean and simple. It’s easier to learn, develop and maintain.
+* Good if CSS does not depend on Javascript (separation of concern)
 
 **Frameworks**
 
-**TBD**
+Dev and UX Designer agree to start using the Bulma CSS framework.  We chose Bulma for its simplicity hoping it supports rapid development.  
 
-Require input from UX Designer.   Two possible frameworks are Bootstrap and Bulma.  I favour Bulma for its simplicity hoping it supports rapid development.
+Resources
 
-<https://bulma.io/>
+* <https://bulma.io/>
+* <https://bulma.io/documentation/overview/>
 
-*Bulma is an open source CSS framework based on Flexbox and used by more than 100,000 developers.*
-
-It is responsive, modular, modern and free.
-
-*The simplist grid system*
-
-*A growing community*
-
-*So easy to learn*
-
-*So quick to customize*
-
-*Fullscreen vertical centering*
-
-<https://bulma.io/documentation/overview/>
+Advantages
+* *Bulma is an open source CSS framework based on Flexbox and used by more than 100,000 developers.*
+* It is responsive, modular, modern and free.
+* *The simplist grid system*
+* *A growing community*
+* *So easy to learn*
+* *So quick to customize*
+* *Fullscreen vertical centering*
 
 ----
 
@@ -913,7 +934,7 @@ Look to work out the requirements of the testing system after some other questio
 <a href="#toc">Top</a>
 
 
-**WIP**  
+Status: In Progress  
 BURP suite security testing
 
 ----
@@ -922,7 +943,7 @@ BURP suite security testing
 <a href="#toc">Top</a>
 
 
-**WIP**
+Status: In Progress
 
 Performance testing
 
@@ -946,7 +967,7 @@ Here are two sources of information to consider later.
 <a href="#toc">Top</a>
 
 
-**WIP**
+Status: In Progress
 
 Must implement automated testing for server side and ideally client side code.  This is expensive to do but invaluable in later stages of development.  Acknowledge that 100% coverage is not possible so testing, inherently, has trade-offs.  Testing the core functionality along with all edge cases that surfaced as defects should be considered core.  This at least provides confidence if at some later stage we need to refactor or adjust code that is new the core functionality.  
 
@@ -1016,7 +1037,14 @@ Production
 <a href="#toc">Top</a>
 
 
-**WIP**
+**WIP**  
+Docker containerization
+
+**October**
+
+ToDo: describe the benefits and reasons for considering Docker
+
+For the immediate term:  postpone further work on Docker because it can be considered later in the project timeline.  It’s main benefit is to allow for the application to be scalled up when needed.  As we are building a prototype it is not essential to be ready to scale.
 
 ----
 
@@ -1024,7 +1052,14 @@ Production
 <a href="#toc">Top</a>
 
 
-**WIP**
+**WIP**  
+Jenkins
+
+**October**
+
+Jenkins is a tool for automating a series of steps to take code from the development environment and place it into the production environment. Along the way Jenkins can run automated helper and validation tasks. For example, Jenkins can automatically run all tests and only promote the code to the production environment if the tests pass.
+
+We’ll delay further investigation into the needs around Jenkins until mid-October.
 
 ----
 
@@ -1062,6 +1097,8 @@ Webpack. <https://webpack.js.org/>
 <a href="#toc">Top</a>
 
 
+Status: In Progress
+
 I found a few resources to help get started with LTI:
 
 About
@@ -1086,7 +1123,7 @@ Examples:
 * Ruby LTI project: <https://github.com/instructure/ims-lti>  
 **Canvas**
 
-**WIP**
+**October**
 
 <https://bccampus.ca/2013/12/18/canvas-is-coming-to-an-sfu-campus-near-you/>
 
@@ -1108,6 +1145,8 @@ Examples:
 <a href="#toc">Top</a>
 
 
+Status: Do Later
+
 Multer to support multi-part document uploads
 
 Seperately mounted disk for storage outside of application code space
@@ -1117,6 +1156,10 @@ Seperately mounted disk for storage outside of application code space
 ### Authorization ###
 <a href="#toc">Top</a>
 
+
+Authorization
+
+Status: Do Later
 
 Depends on LMS and LTI research  
 Shibboleth
@@ -1179,6 +1222,10 @@ CAS, SAML, OAuth
 <a href="#toc">Top</a>
 
 
+Media Attachments
+
+Status: Do Later
+
 Depends on how much video is required and if this is required for MVP.  It will be relatively easy to provide links to video hosted on external sites. To serve video from inside EdEHR requires special consideration, research, tooling and servers that have both the space and capability. Probably would need to consider seperate servers to stream video to maintain performance in the main application.
 
 Kaltura for video content.  This is perhaps the tool used in ComPAIR. Not sure.
@@ -1195,6 +1242,10 @@ https://bccampus.ca/2013/05/23/wrangling-videos-in-one-location-just-got-a-lot-e
 <a href="#toc">Top</a>
 
 
+Email
+
+Status: Do Later
+
 To be considered after LTI and LMS research.  Perhaps the email function can be provided by the LMS
 
 Nodemail
@@ -1210,10 +1261,14 @@ Flask-Mailer (Python)
 
 Learning Analytics
 
+Status: Do Later
+
 Look at Experience API (xAPI) at <https://xapi.com>
 
 Do this after LMS and LTI because the LMS ought to provide analytics.
 
 Google Analytics
+
+Status: Pending information
 
 Oh hold pending answers around privacy policies.
