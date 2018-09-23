@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="4B726582-695A-43A5-8CAB-2C02ACFCCD48" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Pro" Author="Bryan Gilbert" Modified="2018-09-22 18:08:00 -0700" ModID="37571A57-DED2-474A-B34C-6F9F28912CF2">
+<ScrivenerProject Identifier="4B726582-695A-43A5-8CAB-2C02ACFCCD48" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Pro" Author="Bryan Gilbert" Modified="2018-09-22 18:18:41 -0700" ModID="99747B9F-370F-4989-98D3-EDE0CDFC19D3">
     <Binder>
         <BinderItem UUID="BBB5549C-F7B4-49AD-8097-42CDD9C90DE8" Type="DraftFolder" Created="2018-09-18 07:38:29 -0700" Modified="2018-09-18 07:38:29 -0700">
             <Title>Draft</Title>
@@ -50,7 +50,7 @@
                                         <TextSelection>310,0</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
-                                <BinderItem UUID="71839B83-8F41-4D71-9A27-2674AB2493B0" Type="Text" Created="2018-09-19 07:57:04 -0700" Modified="2018-09-22 17:50:43 -0700">
+                                <BinderItem UUID="71839B83-8F41-4D71-9A27-2674AB2493B0" Type="Text" Created="2018-09-19 07:57:04 -0700" Modified="2018-09-22 18:18:41 -0700">
                                     <MetaData>
                                         <LabelID>0</LabelID>
                                         <StatusID>2</StatusID>
@@ -1165,7 +1165,7 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2018-09-18 07:38:28 -0700" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Time" ResetTime="00:00" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="5676" Characters="38238" Date="2018-09-18 07:38:28 -0700"></PreviousSession>
+        <PreviousSession Words="0" Characters="0" Date="2018-09-22 18:17:43 -0700"></PreviousSession>
     </ProjectTargets>
     <RecentWritingHistory Date="2018-09-22 00:00:00 -0700">
         <DraftWordCount>30</DraftWordCount>
