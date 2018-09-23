@@ -67,6 +67,8 @@ The following contains assumptions that need to be verified by the team.
 
 Status: Pending information
 
+\<div style="text-align: right"\> Status: Pending information \</div\>
+
 The MVP needs to support four institutions with a possibility of adding in two more.  
 
 How many institutions in total will a single instance need to support?
@@ -79,9 +81,8 @@ This simplifies issues around privacy and it simplifies the performance requirem
 
 **Assumptions**
 
-*  Prototype: 1 institution per instance
-
-*  Long term:  ditto
+* Prototype: 1 institution per instance
+* Long term:  ditto
 
 **Courses**
 
@@ -97,9 +98,9 @@ Beyond that the application may be extended to support more than one field of st
 
 **Assumptions**
 
-*  Prototype:   1 course
+•	Prototype:   1 course
 
-*  Long term:  3 - 5 fields of study over 3 - 4 years ( 3 x 3 = 9, 5 x 4 = 20) up to 20 courses.
+•	Long term:  3 - 5 fields of study over 3 - 4 years ( 3 x 3 = 9, 5 x 4 = 20) up to 20 courses.
 
 **Classes**
 
@@ -109,9 +110,8 @@ Within a course how many classes might there be?
 
 **Assumptions** 
 
-*  Prototype:  1
-
-*  Long term:  5
+* Prototype:  1
+* Long term:  5
 
 **Students**
 
@@ -121,9 +121,8 @@ How may students are typically in a class?
 
 **Assumptions**
 
-*  Prototype: 20 - 30 students per class
-
-*  Long term: up to 50 students per class
+* Prototype: 20 - 30 students per class
+* Long term: up to 50 students per class
 
 **Summary based on assumptions**
 
@@ -131,9 +130,9 @@ Status: Pending information
 
 Per instance 
 
-*  Prototype: 1 institution per instance (perhaps 4-6), 1 course, 1 class, 2-30 students
+Prototype: 1 institution per instance (perhaps 4-6), 1 course, 1 class, 2-30 students
 
-*  Long term:  1 institution, 20 courses (over 4 years and 5 fields of study),  up to 5 classes each, up to 50 students in each class.   This does not mean there are 20 x 5 x 50 = 5,000 students in total because the total number of students will be much less.  It may be more like 1,000 students enrolled   across those 20 courses.  
+Long term:  1 institution, 20 courses (over 4 years and 5 fields of study),  up to 5 classes each, up to 50 students in each class.   This does not mean there are 20 x 5 x 50 = 5,000 students in total because the total number of students will be much less.  It may be more like 1,000 students enrolled   across those 20 courses.  
 
 Thus, for example, the prototype needs to support 30 concurrent student users and long term the application may have up to a 1,000 concurrent users.
 
@@ -152,24 +151,17 @@ We might include a feature to warn users if they have an outdated browser.
 <https://www.npmjs.com/package/outdated-browser-rework>
 
 Here are the suggested default minimum versions as used by the above plugin. Note that IE is not included.
-* 'Chrome': 57, // Includes Chrome for mobile devices
-* 'Edge': 39,
 
-* 'Safari': 10,
-
-*  		'Mobile Safari': 10,
-
-*  		'Firefox': 50,
-
-*  		'Opera': 50,
-
-*  		'Vivaldi': 1,
-
-*  		// You could specify a version here if you still support IE in 2017.
-
-*  		// You could also instead seriously consider what you're doing with your time and budget
-
-*  		'IE': false
+* Chrome: 57, // Includes Chrome for mobile devices
+* Edge: 39,
+* Safari: 10,
+* Mobile Safari: 10,
+* Firefox: 50,
+* Opera: 50,
+* Vivaldi: 1,
+* IE: false
+* // You could specify a version here if you still support IE in 2017.
+* // You could also instead seriously consider what youre doing with your time and budget
 
 ----
 
@@ -192,23 +184,15 @@ From <https://opensource.org/licenses>
 
 *The following OSI-approved licenses are popular, widely used, or have strong communities:*
 
-*  Apache License 2.0
-
-*  BSD 3-Clause "New" or "Revised" license
-
-*  BSD 2-Clause "Simplified" or "FreeBSD" license
-
-*  GNU General Public License (GPL)
-
-*  GNU Library or "Lesser" General Public License (LGPL)
-
-*  MIT license
-
-*  Mozilla Public License 2.0
-
-*  Common Development and Distribution License
-
-*  Eclipse Public License
+* Apache License 2.0
+* BSD 3-Clause "New" or "Revised" license
+* BSD 2-Clause "Simplified" or "FreeBSD" license
+* GNU General Public License (GPL)
+* GNU Library or "Lesser" General Public License (LGPL)
+* MIT license
+* Mozilla Public License 2.0
+* Common Development and Distribution License
+* Eclipse Public License
 
 <https://en.wikipedia.org/wiki/Comparison_of_free_and_open-source_software_licenses>
 
@@ -291,7 +275,7 @@ Put all immediate tasks in Trello.  These are small achievable tasks that are pl
 <a href="#toc">Top</a>
 
 
-**Requirements**
+**Defect Tracking Requirements**
 
 Defect tracking tool needs to allow the team to add, edit, comment, and resolve issues as the prototype evolves and for when it is in place.  The tool ought to be suitable for non-technical users to resolve issues.
 
@@ -346,41 +330,24 @@ For these reasons and many more it is recommended that EdEHR uses static resourc
 
 **EdEHR Requirements:**
 
-*  Flexible and easy to adapt (to suit project timeline)
-
-*  Easy to learn (to suit project timeline and attract long term development)
-
-*  Documentation: clear, available, consistent
-
-*  Supports single page applications.
-
-*  Code Style:  How readable and intuitive is the code and conventions of the framework?
-
-*  Single File Components: How intuitive is maintaining a component in the framework?
-
-*  License: open
-
-*  Performance:  How performant are apps built with the framework?
-
-*  Tooling: What tools and stable plugins are available for the framework?
-
-*  Routing (click to next ‘page’ in app with back button history)
-
-*  State management (track what stage of a process the user is at)
-
-*  API calls to server
-
-*  Mobile:  Does it offer a way to build native mobile applications?
-
-*  Community: What is the size of the community and is it united or fragmented?
-
-*  Maturity: How mature is the framework? Is it production-tested?
-
-*  Support: How big is the team behind the framework?
-
-*  Hiring Talent: How easy would it be to hire developers with prior experience in the framework?
-
-*  Future: how are updates handled?
+* Flexible and easy to adapt (to suit project timeline)
+* Easy to learn (to suit project timeline and attract long term development)
+* Documentation: clear, available, consistent
+* Supports single page applications.
+* Code Style:  How readable and intuitive is the code and conventions of the framework?
+* Single File Components: How intuitive is maintaining a component in the framework?
+* License: open
+* Performance:  How performant are apps built with the framework?
+* Tooling: What tools and stable plugins are available for the framework?
+* Routing (click to next ‘page’ in app with back button history)
+* State management (track what stage of a process the user is at)
+* API calls to server
+* Mobile:  Does it offer a way to build native mobile applications?
+* Community: What is the size of the community and is it united or fragmented?
+* Maturity: How mature is the framework? Is it production-tested?
+* Support: How big is the team behind the framework?
+* Hiring Talent: How easy would it be to hire developers with prior experience in the framework?
+* Future: how are updates handled?
 
 **Angular**
 
@@ -388,39 +355,23 @@ For these reasons and many more it is recommended that EdEHR uses static resourc
 
 Angular is supported by Google and a large open source community. There are two main flavors: Angular and AngularJS.  The latter is the older version and is sometimes called Angular 1.x.  The former is the newer rewrite and for a time was called Angular 2.0.   There is no point considering AngularJS for a new project because Angular is far superior. That said, Angular is a framework suited to large projects with many team members because it provides a lot of features and supports the complexity in these types of projects.  
 
-*  Flexible: no
-
-*  Easy to learn: know to have a steep learning curve
-
-*  Documentation: yes
-
-*  Supports single page applications:  yes
-
-*  Code Style:  Complex
-
-*  Single File Components: no
-
-*  License: MIT
-
-*  Performance:  Reasonable
-
-*  Tooling:  Yes
-
-*  Routing (click to next ‘page’ in app with back button history): yes
-
-*  State management (track what stage of a process the user is at): yes
-
-*  Mobile:  Not sure.
-
-*  Community:  Large and well established
-
-*  Maturity:  Hard to say because Angular is such a radical change from AngularJS. No’ish
-
-*  Support:  Google
-
-*  Hiring Talent:  Yes
-
-*  Future:  not sure
+* Flexible: no
+* Easy to learn: know to have a steep learning curve
+* Documentation: yes
+* Supports single page applications:  yes
+* Code Style:  Complex
+* Single File Components: no
+* License: MIT
+* Performance:  Reasonable
+* Tooling:  Yes
+* Routing (click to next ‘page’ in app with back button history): yes
+* State management (track what stage of a process the user is at): yes
+* Mobile:  Not sure.
+* Community:  Large and well established
+* Maturity:  Hard to say because Angular is such a radical change from AngularJS. No’ish
+* Support:  Google
+* Hiring Talent:  Yes
+* Future:  not sure
 
 <https://medium.com/fundbox-engineering/react-vs-vue-vs-angular-163f1ae7be56>
 
@@ -434,51 +385,34 @@ React is supported by Facebook and has a large open source community.  It is def
 
 References: 
 
-*  <https://en.wikipedia.org/wiki/React_(JavaScript_library)>
+<https://en.wikipedia.org/wiki/React_(JavaScript_library)>
 
-*  <https://blog.techmagic.co/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018/>
+<https://blog.techmagic.co/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018/>
 
-*  <https://medium.com/fundbox-engineering/react-vs-vue-vs-angular-163f1ae7be56>
+<https://medium.com/fundbox-engineering/react-vs-vue-vs-angular-163f1ae7be56>
 
 Companies that use ReactJS: Facebook, Instagram, Netflix, New York Times, Yahoo, Khan Academy, Whatsapp, Codecademy, Dropbox, Airbnb, Asana, Atlassian, Intercom, Microsoft.
 
 **EdEHR requirements**:  *(quotes from above sources in italics)*
 
-*  Flexible: yes
-
-*  Easy to learn: easier than Angular yet takes a long time to master.  “*React requires to (sic) learn a lot to become an expert. Would require much more time to train devs. Deliver slower (at least for the initial heavy lifting).”*
-
-*  Documentation:  *Lack of official documentation --- super-fast development of ReactJS leaves no place for the proper documentation which is a bit chaotic now as many developers contribute it individually without any systematic approach;*
-
-*  Supports single page applications: Yes
-
-*  Code Style:  Clean yet developers sometimes have too much choice; sometimes difficult to separate code between back end and front end
-
-*  Single File Components:  Yes, nicely
-
-*  License: MIT. (There is an interesting story to read about how Facebook released React with a series of different open source licenses that caused a lot of controversy. <https://en.wikipedia.org/wiki/React_(JavaScript_library)#Licensing_controversy>  Now, React is released under the very permissive MIT license.)
-
-*  Performance:  Yes
-
-*  Tooling:  Yes
-
-*  Routing: Needs plugin (which one to pick?)
-
-*  State management: not sure
-
-*  API: Yes
-
-*  Mobile:  Web and mobile apps can share some code.
-
-*  Community: Large yet fragmented
-
-*  Maturity:  Industry standard.
-
-*  Support: Yes
-
-*  Hiring Talent: Yes
-
-*  Future:  Facebook provides  “codemods” to automate much of the upgrade process.
+* Flexible: yes
+* Easy to learn: easier than Angular yet takes a long time to master.  “*React requires to (sic) learn a lot to become an expert. Would require much more time to train devs. Deliver slower (at least for the initial heavy lifting).”*
+* Documentation:  *Lack of official documentation --- super-fast development of ReactJS leaves no place for the proper documentation which is a bit chaotic now as many developers contribute it individually without any systematic approach;*
+* Supports single page applications: Yes
+* Code Style:  Clean yet developers sometimes have too much choice; sometimes difficult to separate code between back end and front end
+* Single File Components:  Yes, nicely
+* License: MIT. (There is an interesting story to read about how Facebook released React with a series of different open source licenses that caused a lot of controversy. <https://en.wikipedia.org/wiki/React_(JavaScript_library)#Licensing_controversy>  Now, React is released under the very permissive MIT license.)
+* Performance:  Yes
+* Tooling:  Yes
+* Routing: Needs plugin (which one to pick?)
+* State management: not sure
+* API: Yes
+* Mobile:  Web and mobile apps can share some code.
+* Community: Large yet fragmented
+* Maturity:  Industry standard.
+* Support: Yes
+* Hiring Talent: Yes
+* Future:  Facebook provides  “codemods” to automate much of the upgrade process.
 
 **Vue**
 
@@ -486,97 +420,69 @@ Vue.js is a JavaScript framework, launched in 2013, which perfectly fits for cre
 
 Resources
 
-*  <https://medium.com/@TechMagic/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018-b91e028fa91d>
+<https://medium.com/@TechMagic/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018-b91e028fa91d>
 
-*  <https://vuejs.org/v2/guide/comparison.html>
+<https://vuejs.org/v2/guide/comparison.html>
 
-*  <https://medium.com/fundbox-engineering/react-vs-vue-vs-angular-163f1ae7be56>
+<https://medium.com/fundbox-engineering/react-vs-vue-vs-angular-163f1ae7be56>
 
 Companies that use Vue.js: Xiaomi, Alibaba, WizzAir, EuroNews, Grammarly, Gitlab and Laracasts, Adobe, Behance, Codeship, Reuters.
 
 **EdEHR requirements**:  *(quotes from above sources in italics)*
 
-*  Flexible:  Yes
+* Flexible:  Yes
+* Easy to learn: Yes *fast ramp up*
+* Documentation:  *Detailed documentation. Vue.js has very circumstantial documentation which can fasten learning curve for developers and save a lot of time to develop an app using only the basic knowledge of HTML and JavaScript.*  Yet another source says:  *Lack of full English documentation. This leads to a partial complexity on some stages of development, nevertheless, more and more materials are being translated into English.*
+* Supports single page applications.
+* Code Style: 
+* Single File Components:  *Vue.js can be used for both building single-page applications and more difficult web interfaces of apps. The main thing is that smaller interactive parts can be easily integrated into the existing infrastructure with no negative effect on the entire system.*
+* License: open
+* Performance:  *Tiny size. Vue.js can weight around 20KB keeping its speed and flexibility that allows reaching much better performance in comparison to other frameworks.*
+* Tooling: *Awesome integration.*  Another source says:  *Fewer plugins and tools available, smaller community.*
+* Routing: *Vue’s core modules (Vuex, Router, etc.) are built-in and work fantastic.*
+* State management: yes
+* API: yes
+* Mobile:  Vue Native and Capacitor are solutions to produce mobile targeted apps
+* Community:  Growing
+* Maturity: *Vue.js still has a pretty small market share in comparison with React or Angular, which means that knowledge sharing in this framework is still in the beginning phase.*
+* Support: Smaller 
+* Hiring Talent:  growing but not easy at this time
+* Future: how are updates handled?
 
-*  Easy to learn: Yes *fast ramp up*
-
-*  Documentation:  *Detailed documentation. Vue.js has very circumstantial documentation which can fasten learning curve for developers and save a lot of time to develop an app using only the basic knowledge of HTML and JavaScript.*  Yet another source says:  *Lack of full English documentation. This leads to a partial complexity on some stages of development, nevertheless, more and more materials are being translated into English.*
-
-*  Supports single page applications.
-
-*  Code Style: 
-
-*  Single File Components:  *Vue.js can be used for both building single-page applications and more difficult web interfaces of apps. The main thing is that smaller interactive parts can be easily integrated into the existing infrastructure with no negative effect on the entire system.*
-
-*  License: open
-
-*  Performance:  *Tiny size. Vue.js can weight around 20KB keeping its speed and flexibility that allows reaching much better performance in comparison to other frameworks.*
-
-*  Tooling: *Awesome integration.*  Another source says:  *Fewer plugins and tools available, smaller community.*
-
-*  Routing: *Vue’s core modules (Vuex, Router, etc.) are built-in and work fantastic.*
-
-*  State management: yes
-
-*  API: yes
-
-*  Mobile:  Vue Native and Capacitor are solutions to produce mobile targeted apps
-
-*  Community:  Growing
-
-*  Maturity: *Vue.js still has a pretty small market share in comparison with React or Angular, which means that knowledge sharing in this framework is still in the beginning phase.*
-
-*  Support: Smaller 
-
-*  Hiring Talent:  growing but not easy at this time
-
-*  Future: how are updates handled?
-
-*  *Large scaling. Vue.js can help to develop pretty large reusable templates that can be made with no extra time allocated for that according to its simple structure.*
-
-*  *Better promotes Full-Stack culture; allows cross-product development.*
-
-*  *Not being React, devs don’t gain experience with the most popular framework today.*
+* *Large scaling. Vue.js can help to develop pretty large reusable templates that can be made with no extra time allocated for that according to its simple structure.*
+* *Better promotes Full-Stack culture; allows cross-product development.*
+* *Not being React, devs don’t gain experience with the most popular framework today.*
 
 **Recommendation**
 
 Resources
 
-*  <https://medium.com/@TechMagic/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018-b91e028fa91d>
+<https://medium.com/@TechMagic/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018-b91e028fa91d>
 
-*  <https://expertise.jetruby.com/react-vs-vue-js-which-front-end-framework-to-choose-in-2018-2a62a1fe76f9>
+<https://expertise.jetruby.com/react-vs-vue-js-which-front-end-framework-to-choose-in-2018-2a62a1fe76f9>
 
 **Advantages of Vue.JS:**
 
-*  Flexibility, Simplicity, Fast rendering and small size.
-
-*  Soup to nuts framework
-
-*  Easier to learn and get started
+* Flexibility, Simplicity, Fast rendering and small size.
+* Soup to nuts framework
+* Easier to learn and get started
 
 **Advantages of React:**
 
-*  Perfectly fits scalable apps, easier to test and maintain;
-
-*  Can be used for native and web apps;
-
-*  Huge ecosystem;
-
-*  A big set of tools.
+* Perfectly fits scalable apps, easier to test and maintain;
+* Can be used for native and web apps;
+* Huge ecosystem;
+* A big set of tools.
 
 **Common Advantages**
 
-*  Fast rendering with Virtual DOM;
+* Fast rendering with Virtual DOM;
+* Small size;
+* Reactive components;
+* The ability to easily integrate with routers, collectors, and state managers;
+* A-class maintenance.
 
-*  Small size;
-
-*  Reactive components;
-
-*  The ability to easily integrate with routers, collectors, and state managers;
-
-*  A-class maintenance.
-
-Quote: 
+Quote:  [Laurie Voss, co-founder and COO of npm](https://jaxenter.com/javascript-report-interview-voss-140202.html)
 
 *From my perspective, there are two factors driving Vue’s growth.*  
  *First, lots of developers still want a “soup to nuts” framework, i.e. one that does everything from routing to templating to back-end data fetching. Vue does this, which tends to make it easier for a first-time developer to pick up since they just make one choice: use Vue, and all the other choices are made for them.*
@@ -585,41 +491,24 @@ Quote:
 
 *Second, if you’ve decided you want an all-inclusive framework, Vue performs better in benchmarks and is relatively easier to learn. Although these things are subjective, devs often report that it feels “cleaner” or “simpler” than older frameworks like Angular and Ember.*
 
-[Laurie Voss, co-founder and COO of npm](https://jaxenter.com/javascript-report-interview-voss-140202.html)
-
 **Summary for EdEHR**
 
-*  Flexible: either
-
-*  Easy to learn: Vue over React
-
-*  Documentation: Vue
-
-*  Code Style:  Either
-
-*  Single File Components:  Slight edge to Vue
-
-*  License: Both are MIT
-
-*  Performance:  Either
-
-*  Tooling:  Edge to React yet Vue has essentials built in making it easier to get started
-
-*  Routing: built into Vue
-
-*  State management: built into Vue
-
-*  API: Either
-
-*  Mobile:  React
-
-*  Community:  React yet it is fragmented. Vue is smaller and more cohesive and therefore consitent (read less ambiguity about how to do something. Less time trying out varoius options and then deciding and then developing.)
-
-*  Maturity:  React has edge
-
-*  Support: React community is larger yet support for either is available
-
-*  Hiring Talent:  React has edge, for now.
+* Flexible: either
+* Easy to learn: Vue over React
+* Documentation: Vue
+* Code Style:  Either
+* Single File Components:  Slight edge to Vue
+* License: Both are MIT
+* Performance:  Either
+* Tooling:  Edge to React yet Vue has essentials built in making it easier to get started
+* Routing: built into Vue
+* State management: built into Vue
+* API: Either
+* Mobile:  React
+* Community:  React yet it is fragmented. Vue is smaller and more cohesive and therefore consitent (read less ambiguity about how to do something. Less time trying out varoius options and then deciding and then developing.)
+* Maturity:  React has edge
+* Support: React community is larger yet support for either is available
+* Hiring Talent:  React has edge, for now.
 
 For a new project with no legacy and a developer team that has equal experience with both frameworks (read experienced newbie) it’s a good time to be taking the new lean simple fast approach: vue.js.
 
@@ -630,25 +519,16 @@ For a new project with no legacy and a developer team that has equal experience 
 
 **Requirements**
 
-*  Support for Single Page Applications, Mobile Computing and Browsers (DSL support)
-
-*  Industry standard. 
-
-*  Suitable for prototyping. This is a huge project with a very short timeline. 
-
-*  Dynamically typed with option to add datatypes when working with the database. 
-
-*  Not verbose.  Language should favour clean and easy to read coding
-
-*  Large community of developers to support this project in the future.
-
-*  Modular (Separation of Concern).  Isolation of functionality is essential for stability. Once a component/module is ready and tested it should not be necessary to touch it again to adjust some other feature.
-
-*  Testable.
-
-*  Ideally use the same language for web, server and in between.
-
-*  What is the developer best at? The team developer is most familiar with Javascript (Node JS) and is interested in working more with Python.
+* Support for Single Page Applications, Mobile Computing and Browsers (DSL support)
+* Industry standard. 
+* Suitable for prototyping. This is a huge project with a very short timeline. 
+* Dynamically typed with option to add datatypes when working with the database. 
+* Not verbose.  Language should favour clean and easy to read coding
+* Large community of developers to support this project in the future.
+* Modular (Separation of Concern).  Isolation of functionality is essential for stability. Once a component/module is ready and tested it should not be necessary to touch it again to adjust some other feature.
+* Testable.
+* Ideally use the same language for web, server and in between.
+* What is the developer best at? The team developer is most familiar with Javascript (Node JS) and is interested in working more with Python.
 
 The contenders are:  Python, Javascript (Node JS), PhP, Go, and Ruby.  This analysis will not look too deeply into Go or Ruby because the former is too new and Ruby’s popularity *may* be diminishing. <https://getpocket.com/a/read/2153732617>
 
@@ -658,19 +538,14 @@ PhP is the industry standard having been around for over two decades. Yet it is 
 
 **PhP Pros:**
 
-*  Rich code base
-
-*  Portable
-
-*  Designed to generate web pages
+* Rich code base
+* Portable
+* Designed to generate web pages
 
 **PhP Cons:**
-
-*  Inefficient separation of concerns (modularity)
-
-*  Outdated client server model (not SPA)
-
-*  Different language than used on the client side.
+* Inefficient separation of concerns (modularity)
+* Outdated client server model (not SPA)
+* Different language than used on the client side.
 
 Not the best choice for EdEHR
 
@@ -678,25 +553,18 @@ Not the best choice for EdEHR
 
 **Python Pros:**
 
-*  Readable and dynamically-typed language
-
-*  High functionality
-
-*  Rich native library support
-
-*  Shorter code compared to similar object-oriented languages
-
-*  Fast development due to concise and simple syntax
+* Readable and dynamically-typed language
+* High functionality
+* Rich native library support
+* Shorter code compared to similar object-oriented languages
+* Fast development due to concise and simple syntax
 
 **Python Cons:**
 
-*  Absence from Mobile Computing and Browsers
-
-*  Lack of Support for DSLs (Domain-specific Languages)
-
-*  Steep learning curve
-
-*  Runtime speed slow
+* Absence from Mobile Computing and Browsers
+* Lack of Support for DSLs (Domain-specific Languages)
+* Steep learning curve
+* Runtime speed slow
 
 Could be a choice for EdEHR yet it would introduce risk as the developer is not expert in this language.
 
@@ -706,35 +574,24 @@ Could be a choice for EdEHR yet it would introduce risk as the developer is not 
 
 **Javascript and Node.js Pros:**
 
-*  Support for Single Page Applications, Mobile Computing and Browsers (DSL support)
-
-*  Industry standard. 
-
-*  Suitable for prototyping
-
-*  Dynamically typed with option to add datatypes when working with the database. 
-
-*  Medium verbosity.
-
-*  Large community of developers.
-
-*  Modular (Separation of Concern)
-
-*  Testable.
-
-*  One language across the full stack
-
-*  What is the developer best at?
-
-*  Fast server side
-
-*  Portable
+* Support for Single Page Applications, Mobile Computing and Browsers (DSL support)
+* Industry standard. 
+* Suitable for prototyping
+* Dynamically typed with option to add datatypes when working with the database. 
+* Medium verbosity.
+* Large community of developers.
+* Modular (Separation of Concern)
+* Testable.
+* One language across the full stack
+* What is the developer best at?
+* Fast server side
+* Portable
 
 **Javascript and Node.js Cons:**
 
-*  Less efficient at handling CPU intensive applications. (This is not a requrement for EdEHR)
+Less efficient at handling CPU intensive applications. (This is not a requrement for EdEHR)
 
-*  JavaScript and Node.js are not quite as extensible as Python.
+JavaScript and Node.js are not quite as extensible as Python.
 
 Use Javascript ECMA 2016 or better.
 
@@ -761,23 +618,15 @@ A useful snippet to consider.
 
 *Projects must include some form of unit, reference, implementation or functional testing. Use case demos DO NOT QUALIFY as "tests". The following is a list of test frameworks, none of which are endorsed more than the other.*
 
-*  QUnit
-
-*  Jasmine
-
-*  Vows
-
-*  Mocha
-
-*  Hiro
-
-*  JsTestDriver
-
-*  Buster.js
-
-*  Sinon.js
-
-*  Tape
+* QUnit
+* Jasmine
+* Vows
+* Mocha
+* Hiro
+* JsTestDriver
+* Buster.js
+* Sinon.js
+* Tape
 
 AirBnB Style Guide
 
@@ -836,13 +685,13 @@ Resources
 * <https://bulma.io/documentation/overview/>
 
 Advantages
-* *Bulma is an open source CSS framework based on Flexbox and used by more than 100,000 developers.*
+* Bulma is an open source CSS framework based on Flexbox and used by more than 100,000 developers.
 * It is responsive, modular, modern and free.
-* *The simplist grid system*
-* *A growing community*
-* *So easy to learn*
-* *So quick to customize*
-* *Fullscreen vertical centering*
+* The simplist grid system
+* A growing community
+* So easy to learn
+* So quick to customize
+* Fullscreen vertical centering
 
 ----
 
@@ -859,19 +708,13 @@ Advantages
 
 **WIP**
 
-*  Flexible: because this is a rapid development prototype project it is essential that we can easily augment and change the schema without spending a lot of time on writing transformation scripts or working with transformation tooling. 
-
-*  Strongly typed and validation support to ensure the data in the database is valid.
-
-*  Rapidly convert data to and from code. (Transfer of data to and from the “objects” used in software.)
-
-*  Store data in easy for humans to understand format.
-
-*  Scalable
-
-*  Community Support
-
-*  Open Source
+* Flexible: because this is a rapid development prototype project it is essential that we can easily augment and change the schema without spending a lot of time on writing transformation scripts or working with transformation tooling. 
+* Strongly typed and validation support to ensure the data in the database is valid.
+* Rapidly convert data to and from code. (Transfer of data to and from the “objects” used in software.)
+* Store data in easy for humans to understand format.
+* Scalable
+* Community Support
+* Open Source
 
 **Relational vs non-relational databases** (RDMS  vs NoSQL)
 
@@ -914,11 +757,15 @@ Npm install
 
 The system will be built to make installation as simple as:
 
-1\. Git clone
+\`\`\`
 
-2\. Npm install
+git clone
 
-3\. Npm start
+npm install
+
+npm start
+
+\`\`\`
 
 ----
 
@@ -946,6 +793,8 @@ BURP suite security testing
 Status: In Progress
 
 Performance testing
+
+Status: In Progress
 
 *By the way, if you were hoping I could point you to a generic industry standard for good and bad performance, you’re out of luck because no such guide exists. There have been various informal attempts to define a standard, particularly for browser-based applications.*
 
@@ -1010,26 +859,21 @@ Production Server
 
 SFU will be hosting the prototype.  Later we can learn how they will allocating the servers and what limitations they may impose.   At this time we lack a clear understanding of what performance and space requirements EdEHR has.
 
+These specs are open to discussion and further research
 
 Test environment
 
-*  2 - 4 GB RAM per core
-
-*  2 - 4 cores (to allow testing of application scaled to match production
-
-*  Standard hard drive, 10-20 GB free.
-
-*  Network connectivity.
+* 2 - 4 GB RAM per core
+* 2 - 4 cores (to allow testing of application scaled to match production
+* Standard hard drive, 10-20 GB free.
+* Network connectivity.
 
 Production
 
-*  4 Cores
-
-*  4 GB RAM per core.
-
-*  Standard hard drive, 50-100 GB free.
-
-*  Network connectivity.
+* 4 Cores
+* 4 GB RAM per core.
+* Standard hard drive, 50-100 GB free.
+* Network connectivity.
 
 ----
 
@@ -1067,17 +911,12 @@ We’ll delay further investigation into the needs around Jenkins until mid-Octo
 <a href="#toc">Top</a>
 
 
-During development it is optimal to automate serval tasks. Including:
-
-SASS to CSS
-
-CSS to minified CSS for optimal page loading and caching
-
-Javascript to minified JS for optimal page loading and caching
-
-Transpiling React or Vue into HTML, CSS, JS
-
-Etc
+* During development it is optimal to automate serval tasks. Including:
+* SASS to CSS
+* CSS to minified CSS for optimal page loading and caching
+* Javascript to minified JS for optimal page loading and caching
+* Transpiling React or Vue into HTML, CSS, JS
+* Etc
 
 There are three main contenders: Grunt, Gulp and WebPack.   EdEHR will use WebPack because it provides a superset of the features in Grunt and Gulp; it’s configuration is reasonable; it provides a “hot” deploy (meaning a change in code is immediately sent to the browser for viewing which speeds up development)
 
@@ -1104,14 +943,8 @@ I found a few resources to help get started with LTI:
 About
 
 * This thread is packed with some good questions, answers and the links to most of what I've listed below: <https://community.canvaslms.com/thread/13467-how-can-i-get-started-building-an-lti-external-application> 
-
-	
 * Another branch of that thread: <https://community.canvaslms.com/thread/13468-how-can-i-get-started-building-an-lti-external-application> 
-
-	
 * Course on building LTIs: <https://canvas.instructure.com/courses/785215/modules> 
-
-	
 * Three-part blog on building LTI (.NET): [https://community.canvaslms.com/groups/canvas-developers/blog/2016/09/13/net-lti-project-part-](https://community.canvaslms.com/groups/canvas-developers/blog/2016/09/13/net-lti-project-part-1)
 
 	
@@ -1248,11 +1081,9 @@ Status: Do Later
 
 To be considered after LTI and LMS research.  Perhaps the email function can be provided by the LMS
 
-Nodemail
-
-GoogleAPIs
-
-Flask-Mailer (Python)
+* Nodemail
+* GoogleAPIs
+* Flask-Mailer (Python)
 
 ----
 
