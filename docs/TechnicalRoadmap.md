@@ -44,11 +44,9 @@ Author: Bryan Gilbert
 
 From a high level view the app has three layers: 
 
-1\. Learning Management System 
-
-2\. Assignment management system
-
-3\. Electronic Health Record system
+1. Learning Management System 
+2. Assignment management system
+3. Electronic Health Record system
 
 ----
 
@@ -67,15 +65,13 @@ The following contains assumptions that need to be verified by the team.
 
 Status: Pending information
 
-\<div style="text-align: right"\> Status: Pending information \</div\>
-
 The MVP needs to support four institutions with a possibility of adding in two more.  
 
 How many institutions in total will a single instance need to support?
 
 What is the long term goals?  For example would each institution have run their own instance of the application.  Or is there to be one instance for the world.
 
-Recommendation:  The application should be simple enough to be hosted at each individual institution.
+**Recommendation:**  The application should be simple enough to be hosted at each individual institution.
 
 This simplifies issues around privacy and it simplifies the performance requirements and database schema and more.  Accepting this recommendation will remove some project risk. 
 
@@ -90,7 +86,7 @@ Status: Pending information
 
 How many courses might this application be expected to support for the prototype stage?  For the long term?
 
-Assumption: prototype stage has one course.
+**Assumption:** prototype stage has one course.
 
 Beyond that the application may be extended, if further case studies are developed, to extend to many courses in one field of study.
 
@@ -379,7 +375,7 @@ Angular is supported by Google and a large open source community. There are two 
 
 **EdEHR recommendation: skip Angular**
 
-React
+**React**
 
 React is supported by Facebook and has a large open source community.  It is definitely the most popular framework.
 
