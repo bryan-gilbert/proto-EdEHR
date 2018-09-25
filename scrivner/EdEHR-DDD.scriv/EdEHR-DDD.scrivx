@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScrivenerProject Identifier="2B625391-3A28-49D3-8C13-726F564C4B08" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Pro" Author="Bryan Gilbert" Modified="2018-09-25 08:20:19 -0700" ModID="4B4A774C-5F17-48D6-A5B4-CA676A171DE4">
+    <Binder>
+        <BinderItem UUID="6665240C-6AA1-4B07-9C46-2DB56859C8A7" Type="DraftFolder" Created="2018-09-22 19:07:47 -0700" Modified="2018-09-22 19:07:47 -0700">
+            <Title>Draft</Title>
+            <MetaData>
+                <IncludeInCompile>Yes</IncludeInCompile>
+            </MetaData>
+            <Children>
+                <BinderItem UUID="E3974CEC-EBBB-45E9-BD09-FD0453CE0876" Type="Folder" Created="2018-09-22 19:21:03 -0700" Modified="2018-09-22 19:21:11 -0700">
+                    <Title>Introduction</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                    <Children>
+                        <BinderItem UUID="8E0E1BA1-8BB3-4D00-8021-701913A0D0B8" Type="Text" Created="2018-09-22 19:07:47 -0700" Modified="2018-09-22 19:20:52 -0700">
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>1728,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                    </Children>
+                </BinderItem>
+                <BinderItem UUID="14CF31E3-FBAC-421D-8679-2EE4A650A4E8" Type="Folder" Created="2018-09-22 19:21:13 -0700" Modified="2018-09-22 19:21:24 -0700">
+                    <Title>Docmentation Driven Design</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                    <Children>
+                        <BinderItem UUID="C0A5E2E4-7874-4FF3-8344-A0ACCBCD7AE3" Type="Text" Created="2018-09-22 19:21:26 -0700" Modified="2018-09-22 19:33:44 -0700">
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>983,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                    </Children>
+                </BinderItem>
+                <BinderItem UUID="D15C547C-22FA-4CA2-A669-CB90B640DAD2" Type="Folder" Created="2018-09-22 19:34:06 -0700" Modified="2018-09-22 19:34:25 -0700">
+                    <Title>Required Outputs</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                    <Children>
+                        <BinderItem UUID="C1AD6598-9CB3-4345-8B41-C6E164C66A28" Type="Text" Created="2018-09-22 19:34:27 -0700" Modified="2018-09-22 19:36:50 -0700">
+                            <Title>Database Schema</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                    </Children>
+                </BinderItem>
+            </Children>
+        </BinderItem>
+        <BinderItem UUID="0B9E4C85-90AF-4431-9EC3-A7C692140BD3" Type="ResearchFolder" Created="2018-09-22 19:07:47 -0700" Modified="2018-09-22 19:07:47 -0700">
+            <Title>Research</Title>
+            <MetaData>
+                <IncludeInCompile>Yes</IncludeInCompile>
+            </MetaData>
+        </BinderItem>
+        <BinderItem UUID="A5EE9E5D-AF77-410C-A37F-0848020BC7A4" Type="TrashFolder" Created="2018-09-22 19:07:47 -0700" Modified="2018-09-22 19:07:47 -0700">
+            <Title>Trash</Title>
+            <MetaData>
+                <IncludeInCompile>Yes</IncludeInCompile>
+            </MetaData>
+        </BinderItem>
+    </Binder>
+    <Collections>
+        <Collection Type="Binder" ID="9D74C0D9-5C8E-4585-9270-D67A819957E6" Color="0.924849 0.924014 0.949681">
+            <Title>Binder</Title>
+        </Collection>
+        <Collection Type="RecentSearch" ID="D281631D-A6A0-484C-8AB4-72AD7E424024" Color="0.922176 0.818589 0.999618">
+            <Title>Search Results</Title>
+        </Collection>
+    </Collections>
+    <SectionTypes>
+        <TypeDefinitions>
+            <Type ID="7C1FBEAC-A8C3-4B87-81E7-8BA876B955FD">Heading</Type>
+            <Type ID="3D2944A2-0E4A-42C4-A011-807DEFC5D206">Sub-Heading</Type>
+            <Type ID="EE88BEC1-AF4D-4744-BA8D-EA7968958EBF">Section</Type>
+        </TypeDefinitions>
+        <LevelTypes>
+            <Folders>
+                <Type>7C1FBEAC-A8C3-4B87-81E7-8BA876B955FD</Type>
+            </Folders>
+            <Containers>
+                <Type>EE88BEC1-AF4D-4744-BA8D-EA7968958EBF</Type>
+            </Containers>
+            <Files>
+                <Type>EE88BEC1-AF4D-4744-BA8D-EA7968958EBF</Type>
+            </Files>
+        </LevelTypes>
+    </SectionTypes>
+    <LabelSettings>
+        <Title>Label</Title>
+        <DefaultLabelID>-1</DefaultLabelID>
+        <Labels>
+            <Label ID="-1">No Label</Label>
+            <Label ID="0" Color="0.993495 0.701207 0.732587">Red</Label>
+            <Label ID="1" Color="0.995418 0.790946 0.652385">Orange</Label>
+            <Label ID="2" Color="0.997722 0.89273 0.652569">Yellow</Label>
+            <Label ID="3" Color="0.715855 0.948712 0.697692">Green</Label>
+            <Label ID="4" Color="0.702319 0.888276 0.974252">Blue</Label>
+            <Label ID="5" Color="0.957566 0.766747 0.999616">Purple</Label>
+        </Labels>
+    </LabelSettings>
+    <StatusSettings>
+        <Title>Status</Title>
+        <DefaultStatusID>-1</DefaultStatusID>
+        <StatusItems>
+            <Status ID="-1">No Status</Status>
+            <Status ID="0">To Do</Status>
+            <Status ID="1">In Progress</Status>
+            <Status ID="2">First Draft</Status>
+            <Status ID="3">Revised Draft</Status>
+            <Status ID="4">Final Draft</Status>
+            <Status ID="5">Done</Status>
+        </StatusItems>
+    </StatusSettings>
+    <ProjectTargets Notify="No">
+        <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2018-09-22 19:07:45 -0700" IgnoreDeadline="Yes">0</DraftTarget>
+        <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Time" ResetTime="00:00" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
+        <PreviousSession Words="484" Characters="2897" Date="2018-09-22 19:07:45 -0700"></PreviousSession>
+    </ProjectTargets>
+    <RecentWritingHistory Date="2018-09-25 00:00:00 -0700">
+        <DraftWordCount>0</DraftWordCount>
+        <DraftCharCount>0</DraftCharCount>
+        <OtherWordCount>0</OtherWordCount>
+        <OtherCharCount>0</OtherCharCount>
+    </RecentWritingHistory>
+    <PrintSettings PaperSize="612.0,792.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="na-letter" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
+</ScrivenerProject>
