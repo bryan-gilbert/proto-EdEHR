@@ -1,0 +1,783 @@
+<html>
+
+<head>
+<title>TechnicalRoadmap</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<!-- NOTE: margin property = top-right-bottom-left -->
+<style type="text/css">
+
+	body {background-color: #e2e2e2}
+    
+    p.topLevelItemTitle {
+    	margin: 30px 0px 5px 0px;
+    	font-family: Times, Times New Roman, Palatino, Cochin, Serif;
+    	font-size: 30px;
+    	}
+    	
+    p.folderTitle {
+    	margin: 30px 0px 5px 0px;
+    	font-family: Times, Times New Roman, Palatino, Cochin, Serif;
+    	font-size: 18px;
+    	}
+    
+    p.itemTitle {
+    	margin: 30px 0px 5px 0px;
+    	font-family: Helvetica, Arial, Sans-Serif;
+    	font-size: 12px;
+    	font-weight: bold;
+    	}
+    	
+    p.itemText {
+    	margin: 0px 0px 10px 0px;
+    	font-family: Helvetica, Arial, Sans-Serif;
+    	font-size: 12px;
+    	}
+    	
+    p.itemTextStart {
+    	margin: 30px 0px 10px 0px;
+    	font-family: Helvetica, Arial, Sans-Serif;
+    	font-size: 12px;
+    	}
+    
+    .page {border: 1px solid #c0c0c0; background: #fff}
+    
+    hr {
+        border: none;
+        height: 1px;
+        color: #d4d4d4;
+        background-color: #d4d4d4;
+      	}
+      	
+    hr.afterTitle {
+    	margin-top: -3px;
+    }
+      	
+    hr.afterText {
+    	margin-top: 30px;
+    }
+      	
+    ul {
+      	list-style-type: none;
+      	padding-left: 30px;
+      	}
+      	
+</style>
+
+</head>
+
+<body>
+
+<table border="0" width="100%" cellspacing="3">
+<tr>
+<td>
+
+<table class="page" width="100%" cellspacing="10" cellpadding="2">
+
+<!-- Top margin -->
+<!-- Not needed, because of the padding above titles. -->
+<!--<tr><td height="15px"></td></tr>-->
+
+<tr>
+
+<!-- 42 + 30 of list indent = 72 - one inch. -->
+<!-- Actually that ends up too much, so we do 25 + 30 = 55px. -->
+<td width="25px">
+
+<td valign="top">
+
+<ul>
+<li>
+<p class="topLevelItemTitle">Introduction</p>
+<p class="itemText">From a high level view the app has three layers: </p>
+<p class="itemText"> 1. Learning Management System </p>
+<p class="itemText"> 2. Assignment management system</p>
+<p class="itemText"> 3. Electronic Health Record system</p>
+</li>
+<li>
+<p class="topLevelItemTitle">Technical Elements</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="folderTitle">Application Requirements</p>
+<p class="itemText">The following contains assumptions that need to be verified by the team.</p>
+</li>
+<hr class="afterText"/>
+<ul>
+<li>
+<p class="itemTextStart">Institutions</p>
+<p class="itemText">Status: <$label></p>
+<p class="itemText">The MVP needs to support four institutions with a possibility of adding in two more.  </p>
+<p class="itemText">How many institutions in total will a single instance need to support?</p>
+<p class="itemText">What is the long term goals?  For example would each institution have run their own instance of the application.  Or is there to be one instance for the world.</p>
+<p class="itemText">Recommendation:  The application should be simple enough to be hosted at each individual institution.</p>
+<p class="itemText">This simplifies issues around privacy and it simpl...</p>
+</li>
+<li>
+<p class="itemTextStart">Courses</p>
+<p class="itemText">Status: <$label></p>
+<p class="itemText">How many courses might this application be expected to support for the prototype stage?  For the long term?</p>
+<p class="itemText">Assumption: prototype stage has one course.</p>
+<p class="itemText">Beyond that the application may be extended, if further case studies are developed, to extend to many courses in one field of study.</p>
+<p class="itemText">Beyond that the application may be extended to support more than one field of study (e.g. doctor vs nurse vs specialist vs etc.)</p>
+<p class="itemText">Assumptions</p>
+<p class="itemText"> • Prototype:   1 course</p>
+<p class="itemText"> • Long term:  3 - 5 fie...</p>
+</li>
+<li>
+<p class="itemTextStart">Classes</p>
+<p class="itemText">Status: <$label></p>
+<p class="itemText">Within a course how many classes might there be? </p>
+<p class="itemText">Assumptions </p>
+<p class="itemText"> • Prototype:  1</p>
+<p class="itemText"> • Long term:  5</p>
+</li>
+<li>
+<p class="itemTextStart">Students</p>
+<p class="itemText">Status: <$label></p>
+<p class="itemText">How may students are typically in a class?</p>
+<p class="itemText">Assumptions</p>
+<p class="itemText"> • Prototype: 20 - 30 students per class</p>
+<p class="itemText"> • Long term: up to 50 students per class</p>
+</li>
+<li>
+<p class="itemTextStart">Summary based on assumptions</p>
+<p class="itemText">Status: <$label></p>
+<p class="itemText">Per instance </p>
+<p class="itemText">Prototype: 1 institution per instance (perhaps 4-6), 1 course, 1 class, 2-30 students</p>
+<p class="itemText">Long term:  1 institution, 20 courses (over 4 years and 5 fields of study),  up to 5 classes each, up to 50 students in each class.   This does not mean there are 20 x 5 x 50 = 5,000 students in total because the total number of students will be much less.  It may be more like 1,000 students enrolled   across those 20 courses.  </p>
+<p class="itemText"></p>
+<p class="itemText">Thus, for example, the...</p>
+</li>
+<li>
+<p class="itemTextStart">Old Browsers and project risk</p>
+<p class="itemText">Status: <$label></p>
+<p class="itemText">If support for non-modern browsers is required then this will introduce significant risks both in terms of the ability to test them and significant risk in development time.  Stakeholders need to know that a decisionm to support non-modern browsers means other features are at risk of not being “done”.  It is a strong recomendation to exclude non-modern browsers from the MVP.</p>
+<p class="itemText"></p>
+<p class="itemText">Here is a general description of what a modern browser:</p>
+<p class="itemText">https://stackoverf...</p>
+</li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="folderTitle">Planning & Management</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="folderTitle">Open Source</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTextStart">Open Source Licensing</p>
+<p class="itemText">Status: <$label></p>
+<p class="itemText">Open Source is a primary requirement for every aspect of this project</p>
+<p class="itemText">From https://opensource.org/licenses </p>
+<p class="itemText">The following OSI-approved licenses are popular, widely used, or have strong communities:</p>
+<p class="itemText"> • Apache License 2.0</p>
+<p class="itemText"> • BSD 3-Clause "New" or "Revised" license</p>
+<p class="itemText"> • BSD 2-Clause "Simplified" or "FreeBSD" license</p>
+<p class="itemText"> • GNU General Public License (GPL)</p>
+<p class="itemText"> • GNU Library or "Lesser" General Public License (LGPL)</p>
+<p class="itemText"> • MIT license</p>
+<p class="itemText"> • Mozilla Public License 2.0</p>
+<p class="itemText"> • Common ...</p>
+</li>
+<li>
+<p class="itemTextStart">BC gov resource:</p>
+<p class="itemText">Status: <$label></p>
+<p class="itemText"></p>
+<p class="itemText">https://github.com/bcgov/BC-Policy-Framework-For-GitHub/tree/master/BC-Open-Source-Development-Employee-Guide</p>
+<p class="itemText">and specifically (with a couple of useful decision trees): </p>
+<p class="itemText">https://github.com/bcgov/BC-Policy-Framework-For-GitHub/blob/master/BC-Open-Source-Development-Employee-Guide/Licenses.md </p>
+<p class="itemText"></p>
+<p class="itemText">The implications of the licenses of the tools we use in the product must be respected/compatible when making decisions on how to license the EdEHR.  Here's an example from...</p>
+</li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="folderTitle">Agile</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTextStart">Requirements</p>
+<p class="itemText">Agile planning needs to capture “stuff to do” in a place that can “backlog” or “park” the task until it is time to work on the task.  </p>
+<p class="itemText">Before a task can be started it must be the “right size”. Normally, this means it is a task that can be accomplished in a timeframe that is short enough that the doer doesn’t get distracted. I.e. a time period of a ‘day’ is big. Perhaps two or three days but not more. Ideally, it’s a task that can be DONE in a few hours.</p>
+<p class="itemText">The project contains many big...</p>
+</li>
+<li>
+<p class="itemTextStart">Scrivener</p>
+<p class="itemText">Scrivener is a tool that allows one to describe the forest and fly into the forest and visit a few trees and dive in further and visit a branch of a tree and go further and visit the bugs on the leaf of a branch of a tree in the forest and then quickly move back out to see the big picture again.</p>
+<p class="itemText">Recommendation: Use Scrivener as the main organizing tool because it is great for composing technical specifications and technical roadmap.  Scrivener is also the best place to manage the compl...</p>
+</li>
+<li>
+<p class="itemTextStart">Trello</p>
+<p class="itemText">Trello.com is good at capturing ideas but it doesn’t help to structure the big, medium and small picture. In Trello everything is the same: a card. It can be augmented with a colour or label and with several mouse clicks it is possible to filter, yet it doesn’t help to quickly organize a very large conceptual framework and move around to explore nuances and details while retaining the big picture.</p>
+<p class="itemText">Recommendation: Use Trello as a team communication tool. </p>
+<p class="itemText">Put all main high level tasks in T...</p>
+</li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="folderTitle">Defect tracking</p>
+<p class="itemText">Defect Tracking Requirements</p>
+<p class="itemText">Defect tracking tool needs to allow the team to add, edit, comment, and resolve issues as the prototype evolves and for when it is in place.  The tool ought to be suitable for non-technical users to resolve issues.</p>
+<p class="itemText">We can look into JIRA or to keep it simple let’s just use the issue tracking in github.</p>
+<p class="itemText">Recommendation: Github</p>
+</li>
+<li>
+<p class="folderTitle">Source Control</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTextStart">Git Github</p>
+<p class="itemText">EdEHR will use Git and Github because it is the industry standard and fits the project charter requirement to be open source.</p>
+<p class="itemText">I have started a repro here: https://github.com/bryan-gilbert/proto-EdEHR</p>
+<p class="itemText"></p>
+<p class="itemText">Branching</p>
+<p class="itemText">To begin all rough preliminary work will be submitted to the main branch.  Yet, once development is underway all submissions will be made to a development branch.  Testing and stylistic checks will be completed before promotion to the master branch.  Changes on the master branc...</p>
+</li>
+<li>
+<p class="itemTextStart">Question: Does BCcampus have a repro?</p>
+</li>
+</ul>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="folderTitle">Coding</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="folderTitle">Client side code</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTitle">Browser</p>
+<p class="itemText">Client side coding language, for in the browser, is Javascript. There is no other choice. </p>
+</li>
+<li>
+<p class="folderTitle">Generators</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTextStart">Server side generation for client side</p>
+<p class="itemText">This section pertains to the code written for the client side (the UI).  For example, if the pages are generated on the server (e.g. PhP) or transpiled into static web resources (React, Vue, etc). Simply put:  choose between server side generation or static resources with web services. </p>
+<p class="itemText">The current trend in the industry to away from server side generation.  It is still the dominate form of delivery because of the popularity and longevity of PhP yet new proj...</p>
+</li>
+<li>
+<p class="itemTextStart">Angular</p>
+<p class="itemText">https://en.wikipedia.org/wiki/Angular_(application_platform)</p>
+<p class="itemText">Angular is supported by Google and a large open source community. There are two main flavors: Angular and AngularJS.  The latter is the older version and is sometimes called Angular 1.x.  The former is the newer rewrite and for a time was called Angular 2.0.   There is no point considering AngularJS for a new project because Angular is far superior. That said, Angular is a framework suited to large projects with many team membe...</p>
+</li>
+<li>
+<p class="itemTextStart">React</p>
+<p class="itemText">React is supported by Facebook and has a large open source community.  It is definitely the most popular framework.</p>
+<p class="itemText">References: </p>
+<p class="itemText">https://en.wikipedia.org/wiki/React_(JavaScript_library)</p>
+<p class="itemText">https://blog.techmagic.co/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018/</p>
+<p class="itemText">https://medium.com/fundbox-engineering/react-vs-vue-vs-angular-163f1ae7be56</p>
+<p class="itemText"></p>
+<p class="itemText">Companies that use ReactJS: Facebook, Instagram, Netflix, New York Times, Yahoo, Khan Academy, Whatsapp, Codecademy, Dropbox, Airbnb, Asana, Atlassian,...</p>
+</li>
+<li>
+<p class="itemTextStart">Vue</p>
+<p class="itemText"></p>
+<p class="itemText">Vue.js is a JavaScript framework, launched in 2013, which perfectly fits for creating highly adaptable user interfaces and sophisticated Single-page applications.</p>
+<p class="itemText"></p>
+<p class="itemText">Resources</p>
+<p class="itemText">https://medium.com/@TechMagic/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018-b91e028fa91d</p>
+<p class="itemText">https://vuejs.org/v2/guide/comparison.html</p>
+<p class="itemText">https://medium.com/fundbox-engineering/react-vs-vue-vs-angular-163f1ae7be56</p>
+<p class="itemText"></p>
+<p class="itemText">Companies that use Vue.js: Xiaomi, Alibaba, WizzAir, EuroNews, Grammarly, Gitlab and Laracasts, Adobe, Be...</p>
+</li>
+<li>
+<p class="itemTextStart">Recommendation</p>
+<p class="itemText"></p>
+<p class="itemText">Resources</p>
+<p class="itemText">https://medium.com/@TechMagic/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018-b91e028fa91d</p>
+<p class="itemText">https://expertise.jetruby.com/react-vs-vue-js-which-front-end-framework-to-choose-in-2018-2a62a1fe76f9</p>
+<p class="itemText"></p>
+<p class="itemText">Advantages of Vue.JS:</p>
+<p class="itemText"> • Flexibility, Simplicity, Fast rendering and small size.</p>
+<p class="itemText"> • Soup to nuts framework</p>
+<p class="itemText"> • Easier to learn and get started</p>
+<p class="itemText"></p>
+<p class="itemText">Advantages of React:</p>
+<p class="itemText"> • Perfectly fits scalable apps, easier to test and maintain;</p>
+<p class="itemText"> • Can be used for native and web apps;</p>
+<p class="itemText"> • Huge ...</p>
+</li>
+</ul>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="folderTitle">Server side code</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTextStart">Requirements</p>
+<p class="itemText"> • Support for Single Page Applications, Mobile Computing and Browsers (DSL support)</p>
+<p class="itemText"> • Industry standard. </p>
+<p class="itemText"> • Suitable for prototyping. This is a huge project with a very short timeline. </p>
+<p class="itemText"> • Dynamically typed with option to add datatypes when working with the database. </p>
+<p class="itemText"> • Not verbose.  Language should favour clean and easy to read coding</p>
+<p class="itemText"> • Large community of developers to support this project in the future.</p>
+<p class="itemText"> • Modular (Separation of Concern).  Isolation of functionality is essent...</p>
+</li>
+<li>
+<p class="itemTextStart">PhP</p>
+<p class="itemText"></p>
+<p class="itemText">PhP is the industry standard having been around for over two decades. Yet it is known for its verbosity and difficulty to be modular.</p>
+<p class="itemText">PhP Pros:</p>
+<p class="itemText"> • Rich code base</p>
+<p class="itemText"> • Portable</p>
+<p class="itemText"> • Designed to generate web pages</p>
+<p class="itemText">PhP Cons:</p>
+<p class="itemText"> • Inefficient separation of concerns (modularity)</p>
+<p class="itemText"> • Outdated client server model (not SPA)</p>
+<p class="itemText"> • Different language than used on the client side.</p>
+<p class="itemText"></p>
+<p class="itemText">Not the best choice for EdEHR</p>
+</li>
+<li>
+<p class="itemTextStart">Python</p>
+<p class="itemText"></p>
+<p class="itemText">Python Pros:</p>
+<p class="itemText"> • Readable and dynamically-typed language</p>
+<p class="itemText"> • High functionality</p>
+<p class="itemText"> • Rich native library support</p>
+<p class="itemText"> • Shorter code compared to similar object-oriented languages</p>
+<p class="itemText"> • Fast development due to concise and simple syntax</p>
+<p class="itemText"></p>
+<p class="itemText">Python Cons:</p>
+<p class="itemText"> • Absence from Mobile Computing and Browsers</p>
+<p class="itemText"> • Lack of Support for DSLs (Domain-specific Languages)</p>
+<p class="itemText"> • Steep learning curve</p>
+<p class="itemText"> • Runtime speed slow</p>
+<p class="itemText"></p>
+<p class="itemText">Could be a choice for EdEHR yet it would introduce risk as the developer is not expert in this language.</p>
+</li>
+<li>
+<p class="itemTextStart">Javascript and Node.js</p>
+<p class="itemText">“Unlike PHP, Node.js is not a language, but a runtime environment that uses JavaScript for the server-side application development. Launched in 2009, Node.js has demonstrated the power of JavaScript in building event-based, data-driven, I/O-heavy applications for the Web 2.0 era.” https://www.netguru.co/blog/nodejs-vs-php</p>
+<p class="itemText"></p>
+<p class="itemText">Javascript and Node.js Pros:</p>
+<p class="itemText"> • Support for Single Page Applications, Mobile Computing and Browsers (DSL support)</p>
+<p class="itemText"> • Industry standard. </p>
+<p class="itemText"> • Suitable for...</p>
+</li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="folderTitle">Code Standards and Linting</p>
+<p class="itemText">As every language, JavaScript has many code style guides.  Consider the following.</p>
+</li>
+<hr class="afterText"/>
+<ul>
+<li>
+<p class="itemTextStart">Google Javascript Standard for ECMA 6th edition</p>
+<p class="itemText">https://google.github.io/styleguide/jsguide.html</p>
+<p class="itemText">“A JavaScript source file is described as being in Google Style if and only if it adheres to the rules herein”</p>
+</li>
+<li>
+<p class="itemTextStart">Idomatic.js</p>
+<p class="itemText">All code in any code-base should look like a single person typed it, no matter how many people contributed.</p>
+<p class="itemText">https://github.com/rwaldron/idiomatic.js</p>
+<p class="itemText"></p>
+<p class="itemText">A useful snippet to consider.</p>
+<p class="itemText">Projects must include some form of unit, reference, implementation or functional testing. Use case demos DO NOT QUALIFY as "tests". The following is a list of test frameworks, none of which are endorsed more than the other.</p>
+<p class="itemText"> • QUnit</p>
+<p class="itemText"> • Jasmine</p>
+<p class="itemText"> • Vows</p>
+<p class="itemText"> • Mocha</p>
+<p class="itemText"> • Hiro</p>
+<p class="itemText"> • JsTestDriver</p>
+<p class="itemText"> • Buster.js</p>
+<p class="itemText"> • Sinon.j...</p>
+</li>
+<li>
+<p class="itemTextStart">AirBnB Style Guide</p>
+<p class="itemText"></p>
+<p class="itemText">Perhaps the most popular style guide is https://github.com/airbnb/javascript</p>
+<p class="itemText">A mostly reasonable approach to JavaScript</p>
+<p class="itemText">Note: this guide assumes you are using Babel, and requires that you use babel-preset-airbnb or the equivalent. It also assumes you are installing shims/polyfills in your app, with airbnb-browser-shims or the equivalent.</p>
+</li>
+<li>
+<p class="itemTextStart">JavaScript Standard Style Guide. https://github.com/standard/standard</p>
+<p class="itemText">JavaScript style guide, with linter & automatic code fixer. No configuration. Automatically format code. Catch style issues & programmer errors early.</p>
+<p class="itemText">This style guide is used by many tech companies including NPM, GitHub, mongoDB, and ZenDesk.</p>
+<p class="itemText"></p>
+<p class="itemText">To add a badge to the project readme include this markup</p>
+<p class="itemText">```</p>
+<p class="itemText">[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)...</p>
+</li>
+<li>
+<p class="itemTitle">EdEHR</p>
+<p class="itemText">EdEHR will use Javascript Standard because it’s simple, automatice and just works.  End of debate means we can get coding ;-)</p>
+<p class="itemText">That said we may cherry pick guidelines from the other style guides as we go.    (http://jstherightway.org)</p>
+</li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="folderTitle">CSS</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTextStart">Styleguide for CSS SASS</p>
+<p class="itemText">October</p>
+<p class="itemText">Decision and further research to be done with UX Designer in October</p>
+<p class="itemText"></p>
+<p class="itemText">AirBnB is a possible style guide for CSS and SASS https://github.com/airbnb/css</p>
+<p class="itemText">Requirements:</p>
+<p class="itemText"> • Responsive</p>
+<p class="itemText"> • Clean and simple. It’s easier to learn, develop and maintain.</p>
+<p class="itemText"> • Good if CSS does not depend on Javascript (separation of concern)</p>
+</li>
+<li>
+<p class="itemTextStart">Frameworks</p>
+<p class="itemText">Dev and UX Designer agree to start using the Bulma CSS framework.  We chose Bulma for its simplicity hoping it supports rapid development.  </p>
+<p class="itemText">Resources</p>
+<p class="itemText"> • https://bulma.io/</p>
+<p class="itemText"> • https://bulma.io/documentation/overview/</p>
+<p class="itemText">Advantages</p>
+<p class="itemText"> • Bulma is an open source CSS framework based on Flexbox and used by more than 100,000 developers.</p>
+<p class="itemText"> • It is responsive, modular, modern and free.</p>
+<p class="itemText"> • The simplist grid system</p>
+<p class="itemText"> • A growing community</p>
+<p class="itemText"> • So easy to learn</p>
+<p class="itemText"> • So quick to customize</p>
+<p class="itemText"> • Fullscreen verti...</p>
+</li>
+</ul>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="folderTitle">Data storage</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="folderTitle">Database - Application</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTextStart">Requirements for EdEHR databases</p>
+<p class="itemText">WIP</p>
+<p class="itemText"> • Flexible: because this is a rapid development prototype project it is essential that we can easily augment and change the schema without spending a lot of time on writing transformation scripts or working with transformation tooling. </p>
+<p class="itemText"> • Strongly typed and validation support to ensure the data in the database is valid.</p>
+<p class="itemText"> • Rapidly convert data to and from code. (Transfer of data to and from the “objects” used in software.)</p>
+<p class="itemText"> • Store data in easy for humans t...</p>
+</li>
+<li>
+<p class="itemTextStart">Relational vs non-relational databases (RDMS  vs NoSQL)</p>
+<p class="itemText">WIP</p>
+<p class="itemText">Before deciding on which database system to use (MySQL, MariaDB, PostgreSQL, MongoDB) we ought to select the type of database system to use.  As you will see, the clear answer for EdEHR is to select MongoDB with Mongoose.</p>
+<p class="itemText"></p>
+<p class="itemText">Relational SQL databases (RDMS) store data in tables (like a spreadsheet) and the relationships are made by storing a piece of data in one table to say ‘go look in row X of this other table’.  RDMS are the dominant da...</p>
+</li>
+</ul>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="folderTitle">Installation</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTextStart">Npm install</p>
+<p class="itemText">The system will be built to make installation as simple as:</p>
+<p class="itemText">```</p>
+<p class="itemText">git clone</p>
+<p class="itemText">npm install</p>
+<p class="itemText">npm start</p>
+<p class="itemText">```</p>
+</li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="folderTitle">Testing</p>
+<p class="itemText">Look to work out the requirements of the testing system after some other questions that have project risk are answered.  In other words, let’s get some answers to those risky issues and then come back to stuff that is relatively straight forward, although important</p>
+</li>
+<hr class="afterText"/>
+<ul>
+<li>
+<p class="folderTitle">Testing Security</p>
+<p class="itemText">Status: <$label></p>
+</li>
+<hr class="afterText"/>
+<ul>
+<li>
+<p class="itemTextStart">BURP suite security testing</p>
+</li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="folderTitle">Testing UI</p>
+<p class="itemText">Status: <$label></p>
+</li>
+<hr class="afterText"/>
+<ul>
+<li>
+<p class="itemTitle">Selinium</p>
+</li>
+<li>
+<p class="itemTextStart">Performance testing</p>
+<p class="itemText">Status: <$label></p>
+<p class="itemText">By the way, if you were hoping I could point you to a generic industry standard for good and bad performance, you’re out of luck because no such guide exists. There have been various informal attempts to define a standard, particularly for browser-based applications.</p>
+<p class="itemText">https://sqa.stackexchange.com/questions/15296/performance-requirements-for-web-application</p>
+<p class="itemText"></p>
+<p class="itemText">Here are two sources of information to consider later.</p>
+<p class="itemText"></p>
+<p class="itemText">Open Source Load Testing Tools: Which One Shoul...</p>
+</li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="folderTitle">Testing Server Side</p>
+<p class="itemText">Status: <$label></p>
+<p class="itemText">Must implement automated testing for server side and ideally client side code.  This is expensive to do but invaluable in later stages of development.  Acknowledge that 100% coverage is not possible so testing, inherently, has trade-offs.  Testing the core functionality along with all edge cases that surfaced as defects should be considered core.  This at least provides confidence if at some later stage we need to refactor or adjust code that is new the core functionality.  </p>
+<p class="itemText"></p>
+<p class="itemText">As...</p>
+</li>
+<hr class="afterText"/>
+<ul>
+<li>
+<p class="itemTitle">Karma</p>
+</li>
+<li>
+<p class="itemTitle">Jasmine</p>
+</li>
+</ul>
+</ul>
+<hr class="afterTitle"/>
+
+<li>
+<p class="folderTitle">CI CD</p>
+<p class="itemText">Look to work out the requirements of the CI CD system after some other questions that have project risk are answered.  In other words, let’s get some answers to those risky issues and then come back to stuff that is relatively straight forward, although important</p>
+<p class="itemText"></p>
+<p class="itemText">Continuous Integration: automated testing as part of the development lifecycle</p>
+<p class="itemText"></p>
+<p class="itemText">Continuous Delivery: incrementally add value on a continuous basis.</p>
+</li>
+<hr class="afterText"/>
+<ul>
+<li>
+<p class="folderTitle">Deployment Environments</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTextStart">Linux based</p>
+<p class="itemText"></p>
+<p class="itemText">We will not be tied to any particular version of linux. Debian, Ubunto, etc are all fine.</p>
+</li>
+<li>
+<p class="itemTextStart">Digital Ocean for pre-dev</p>
+<p class="itemText"></p>
+<p class="itemText">I have an account and use Digital Ocean to spin up servers for my business.  I propose to use this service during early development to save time and energy worrying about how to get going.</p>
+<p class="itemText"></p>
+<p class="itemText">Later, it will be essential to transition to the hosting domain where the prottype will reside.</p>
+</li>
+<li>
+<p class="itemTextStart">Production Server</p>
+<p class="itemText"></p>
+<p class="itemText">SFU will be hosting the prototype.  Later we can learn how they will allocating the servers and what limitations they may impose.   At this time we lack a clear understanding of what performance and space requirements EdEHR has.</p>
+<p class="itemText"></p>
+<p class="itemText">These specs are open to discussion and further research</p>
+<p class="itemText">Test environment</p>
+<p class="itemText"> • 2 - 4 GB RAM per core</p>
+<p class="itemText"> • 2 - 4 cores (to allow testing of application scaled to match production</p>
+<p class="itemText"> • Standard hard drive, 10-20 GB free.</p>
+<p class="itemText"> • Network connectivity.</p>
+<p class="itemText"></p>
+<p class="itemText">Production</p>
+<p class="itemText"> •...</p>
+</li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="folderTitle">Docker</p>
+<p class="itemText">WIP</p>
+</li>
+<hr class="afterText"/>
+<ul>
+<li>
+<p class="itemTextStart">Docker containerization</p>
+<p class="itemText">October</p>
+<p class="itemText">ToDo: describe the benefits and reasons for considering Docker</p>
+<p class="itemText"></p>
+<p class="itemText">For the immediate term:  postpone further work on Docker because it can be considered later in the project timeline.  It’s main benefit is to allow for the application to be scalled up when needed.  As we are building a prototype it is not essential to be ready to scale. </p>
+</li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="folderTitle">Jenkins</p>
+<p class="itemText">WIP</p>
+</li>
+<li>
+<p class="itemTextStart">Jenkins</p>
+<p class="itemText">October</p>
+<p class="itemText">Jenkins is a tool for automating a series of steps to take code from the development environment and place it into the production environment. Along the way Jenkins can run automated helper and validation tasks. For example, Jenkins can automatically run all tests and only promote the code to the production environment if the tests pass.</p>
+<p class="itemText"></p>
+<p class="itemText">We’ll delay further investigation into the needs around Jenkins until mid-October.</p>
+</li>
+<li>
+<p class="folderTitle">Task runners</p>
+<p class="itemText"> • During development it is optimal to automate serval tasks. Including:</p>
+<p class="itemText"> • SASS to CSS</p>
+<p class="itemText"> • CSS to minified CSS for optimal page loading and caching</p>
+<p class="itemText"> • Javascript to minified JS for optimal page loading and caching</p>
+<p class="itemText"> • Transpiling React or Vue into HTML, CSS, JS</p>
+<p class="itemText"> • Etc</p>
+<p class="itemText"></p>
+<p class="itemText">There are three main contenders: Grunt, Gulp and WebPack.   EdEHR will use WebPack because it provides a superset of the features in Grunt and Gulp; it’s configuration is reasonable; it provides a “hot” deploy (meaning a change in ...</p>
+</li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="folderTitle">Product Systems</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="folderTitle">Interoperability</p>
+<p class="itemText">Status: <$label></p>
+<p class="itemText">I found a few resources to help get started with LTI:</p>
+<p class="itemText"></p>
+<p class="itemText">About</p>
+<p class="itemText"> • This thread is packed with some good questions, answers and the links to most of what I've listed below: https://community.canvaslms.com/thread/13467-how-can-i-get-started-building-an-lti-external-application </p>
+<p class="itemText"> • Another branch of that thread: https://community.canvaslms.com/thread/13468-how-can-i-get-started-building-an-lti-external-application </p>
+<p class="itemText"> • Course on building LTIs: https://canvas.instructure.com/courses/785...</p>
+</li>
+<li>
+<p class="itemTextStart">Canvas</p>
+<p class="itemText">October</p>
+<p class="itemText">https://bccampus.ca/2013/12/18/canvas-is-coming-to-an-sfu-campus-near-you/</p>
+<p class="itemText">December 18, 2013</p>
+<p class="itemText">Next month, Simon Fraser University will complete its switch to Canvas—a new learning management system (LMS) used as a stand-alone platform by only one other post-secondary institution in Canada.</p>
+<p class="itemText">…</p>
+<p class="itemText">While Canvas is an open source, easy-to-use, cloud-native LMS, the university will host Canvas locally; that is, on servers physically located at SFU.</p>
+<p class="itemText"></p>
+<p class="itemText">http://www.youtube.com/watch?v=m75VRa_1r2...</p>
+</li>
+<li>
+<p class="folderTitle">Document management, upload</p>
+<p class="itemText">Status: <$label></p>
+<p class="itemText">Multer to support multi-part document uploads</p>
+<p class="itemText">Seperately mounted disk for storage outside of application code space</p>
+
+</li>
+<li>
+<p class="folderTitle">Authorization</p>
+<p class="itemText">Authorization</p>
+<p class="itemText">Status: <$label></p>
+<p class="itemText">Depends on LMS and LTI research</p>
+</li>
+<hr class="afterText"/>
+<ul>
+<li>
+<p class="itemTextStart">Shibboleth</p>
+<p class="itemText">Shibboleth is an open-source project that provides Single Sign-On capabilities and allows sites to make informed authorization decisions for individual access of protected online resources in a privacy-preserving manner.</p>
+</li>
+<li>
+<p class="itemTextStart">LTI</p>
+<p class="itemText">ComPAIR</p>
+<p class="itemText">https://ctlt.ubc.ca/about/contact-us/teaching-learning-technologies/</p>
+<p class="itemText"></p>
+<p class="itemText">https://lthub.ubc.ca/guides/compair/</p>
+<p class="itemText">Exceprt:</p>
+<p class="itemText"></p>
+<p class="itemText">Faculty and staff at UBC can most easily get started with ComPAIR by using Canvas. Through Canvas, you can set up a course in ComPAIR that will automatically be populated with your class list. The setup process is guided and only takes a few minutes.</p>
+<p class="itemText"></p>
+<p class="itemText">Use ComPAIR in your Canvas course:</p>
+<p class="itemText"></p>
+<p class="itemText">Add a ComPAIR link to your Canvas course's sidebar OR in a specific course module. ...</p>
+</li>
+<li>
+<p class="itemTextStart">CAS, SAML, OAuth</p>
+</li>
+</ul>
+<hr class="afterText"/>
+
+<li>
+<p class="folderTitle">Media Attachments</p>
+<p class="itemText">Media Attachments</p>
+<p class="itemText">Status: <$label></p>
+<p class="itemText">Depends on how much video is required and if this is required for MVP.  It will be relatively easy to provide links to video hosted on external sites. To serve video from inside EdEHR requires special consideration, research, tooling and servers that have both the space and capability. Probably would need to consider seperate servers to stream video to maintain performance in the main application.</p>
+<p class="itemText"></p>
+<p class="itemText">Kaltura for video content.  This is perhaps the tool used in Co...</p>
+</li>
+<li>
+<p class="folderTitle">Email system</p>
+<p class="itemText">Email</p>
+<p class="itemText">Status: <$label></p>
+<p class="itemText">To be considered after LTI and LMS research.  Perhaps the email function can be provided by the LMS</p>
+<p class="itemText"> • Nodemail</p>
+<p class="itemText"> • GoogleAPIs</p>
+<p class="itemText"> • Flask-Mailer (Python)</p>
+</li>
+<li>
+<p class="folderTitle">Analytics</p>
+</li>
+<hr class="afterTitle"/>
+<ul>
+<li>
+<p class="itemTextStart">Learning Analytics</p>
+<p class="itemText">Status: <$label></p>
+<p class="itemText">Look at Experience API (xAPI) at https://xapi.com</p>
+<p class="itemText">Do this after LMS and LTI because the LMS ought to provide analytics.</p>
+<p class="itemText"></p>
+
+</li>
+<li>
+<p class="itemTextStart">Google Analytics</p>
+<p class="itemText">Status: <$label></p>
+<p class="itemText">Oh hold pending answers around privacy policies.</p>
+</li>
+</ul>
+</ul>
+</ul>
+</ul>
+
+</td>
+<td width="55px">
+</td>
+</tr>
+
+<!-- Bottom margin -->
+<tr><td height="15px"></td></tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>
