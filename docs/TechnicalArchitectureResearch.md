@@ -967,7 +967,7 @@ At this time it seems that LTI 2.0 is needed to support this.  Thus it seems imp
 
 **Availability of sample systems or plugins**
 
-To answer the question about LTI 1.3 its important to also look at the availablity of plug and play code.  One goal of using LTI to reach any LMS is to reduce development time for EdEHR. After all why wouldn’t we want to leverage the full power of a LMS. And not only that but be able to switch to any LMS that may suit the educational institution.   In the context of reducing development time we need to find “off the shelf” tools that can provide the LTI functionality.   It’s not difficult to find sample code for LTI 1.0.  The code for this spec is not that large which makes sense because it basically has one API end point.  
+To answer the question about LTI 1.3 its important to also look at the availability of plug and play code.  One goal of using LTI to reach any LMS is to reduce development time for EdEHR. After all why wouldn’t we want to leverage the full power of a LMS. And not only that but be able to switch to any LMS that may suit the educational institution.   In the context of reducing development time we need to find “off the shelf” tools that can provide the LTI functionality.   It’s not difficult to find sample code for LTI 1.0.  The code for this spec is not that large which makes sense because it basically has one API end point.  
 
 There is only one sample that supports LTI 2.0, 1.3, Advantage and it’s from Blackboard. 
 
@@ -975,7 +975,7 @@ There is only one sample that supports LTI 2.0, 1.3, Advantage and it’s from B
 
 See <https://devhub.io/repos/blackboard-BBDN-LTI-Tool-Provider-Node>
 
-This project is maintained, occaisionally, by two or three BB employees. Its goal is to be a demonstration of various IMS intitiatives including: Content Item Messaging,  LTI Advantage Messaging, Caliper, Deeplink, Names and Roles, LTI membership and more.  This is not a piece of code that can be assimilated into another project easily. It is not designed to be a plugin. There are two ways EdEHR can use this code. One, we could use the code as the base of our application. The second approach is to rework the code into a plugin and contribute this effort back to the open source community.
+This project is maintained, occasionally, by two or three BB employees. Its goal is to be a demonstration of various IMS initiatives including: Content Item Messaging,  LTI Advantage Messaging, Caliper, Deeplink, Names and Roles, LTI membership and more.  This is not a piece of code that can be assimilated into another project easily. It is not designed to be a plugin. There are two ways EdEHR can use this code. One, we could use the code as the base of our application. The second approach is to rework the code into a plugin and contribute this effort back to the open source community.
 
 Option two is not in scope for this project and is not any where close to one of the deliverables. 
 
@@ -994,7 +994,7 @@ Option one is has risks.
 
 LTI with LMS offers some real advantages.  
 
-LTI specification spagetti is confusing and we lack expertise to navigate the best approach as 2019 approaches.
+LTI specification spaghetti is confusing and we lack expertise to navigate the best approach as 2019 approaches.
 
 Going with just LTI 1.0 means the course instructors have a more difficult time setting up their assignments.
 
