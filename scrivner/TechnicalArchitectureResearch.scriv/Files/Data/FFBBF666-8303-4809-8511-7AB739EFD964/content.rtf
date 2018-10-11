@@ -1,0 +1,28 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\froman\fcharset0 Palatino-Roman;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx3600\tx4320\fi360\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0\fs26 \cf0 LTI V1.x implementation\
+\
+Consider using  {\field{\*\fldinst{HYPERLINK "https://www.npmjs.com/package/ims-lti"}}{\fldrslt https://www.npmjs.com/package/ims-lti}} (
+\i This is a nodejs library used to help create Tool Providers for the IMS LTI standard. Tool Consumer implmentation is left as an excersise to the reader :P)
+\i0 \
+831 weekly downloads\
+Last update to the code was Sep 5, 2016.  Two years ago.  Around Dec 2017 a developer offered to help maintain the library and they produced a sizeable pull request.  The repro owner has not commented on the update.  Is this a dead library?  These improvements can be found here and I\'92ve written the author in the hope they may have some advice.\
+{\field{\*\fldinst{HYPERLINK "https://github.com/ChristianMurphy/ims-lti/tree/refactor/decaffeinate-code"}}{\fldrslt https://github.com/ChristianMurphy/ims-lti/tree/refactor/decaffeinate-code}}\
+\
+Observation: There is long term risk to using a library that is not being maintained. It\'92s good to see there are a healthy number of weekly downloads.  A search for users of this library didn\'92t show up many hits. The best option was another project that wraps ims-lti into a utility for Node JS applications that use Express. (This fits our plans.)   Another project designed to help integration with Canvas no longer exists.   And there was another BlackBoard community user who provided a simple application for listening to LTI requests, based on the lms-lti project.\
+\pard\tx220\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx3600\tx4320\li720\fi-720\sl264\slmult1\pardirnatural\partightenfactor0
+\ls1\ilvl0\cf0 {\listtext	1.	}See {\field{\*\fldinst{HYPERLINK "https://community.blackboard.com/community/developers/blog/2018/01"}}{\fldrslt https://community.blackboard.com/community/developers/blog/2018/01}} for a very simple example that uses ims-lti library to recieve basic launch requests. This sample is missing the needed return to LMS.\
+{\listtext	2.	}Express middle ware to use ims-lti.  26 weekly downloads. https://www.npmjs.com/package/express-ims-lti\
+{\listtext	3.	}An all-purpose node module that handles the core functionality of a Canvas-integrated LTI app. 0 weekly downloads. Github \'97> 404 page.  {\field{\*\fldinst{HYPERLINK "https://www.npmjs.com/package/canvas-app-spine"}}{\fldrslt https://www.npmjs.com/package/canvas-app-spine}} \
+{\listtext	4.	}Some further notes can be found here {\field{\*\fldinst{HYPERLINK "https://stackoverflow.com/questions/27319576/lti-launch-authentication-with-node-js"}}{\fldrslt https://stackoverflow.com/questions/27319576/lti-launch-authentication-with-node-js}}\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx3600\tx4320\fi360\sl264\slmult1\pardirnatural\partightenfactor0
+\cf0 \
+\
+Full \
+The LTI V1.0 basic launch request contains}

@@ -822,7 +822,9 @@ BDD Behavior Driven Development is appropriate for the core functionality becaus
 
 BDD and TDD are the same, in that both require the developer to compose the test first. The test fails until the development is complete.
 
-Testing is related to the topic of Automated Testing
+Testing is related to the topic of Automated Testing 
+
+For http testing consider supertest <https://www.npmjs.com/package/supertest>
 
 ----
 
@@ -988,8 +990,6 @@ Option one is has risks.
 5. Who will monitory the original project’s code base to see if future development/bug fixes need to be brought back to the EdEHR project.
 6. How many of the IMS initiatives are desired? 
 
-
-
 **Assessment**
 
 LTI with LMS offers some real advantages.  
@@ -1002,7 +1002,33 @@ Going with LTI 2.0 fixes this but introduces security risks that we don’t unde
 
 **Recommendation**
 
-For EdEHR prototype go with LTI 1.0 only.  Yet, it’s important now to find a sample LTI 1.0 tool that can illustrate the full experience and not just launch.  I.e. Let’s see if the TP can return some indication the assignment is complete to the tool consumer.
+For EdEHR prototype go with LTI 1.0 only.
+
+LTI V1.x implementation
+
+Consider using  <https://www.npmjs.com/package/ims-lti> (*This is a nodejs library used to help create Tool Providers for the IMS LTI standard. Tool Consumer implmentation is left as an excersise to the reader :P)*
+
+831 weekly downloads
+
+Last update to the code was Sep 5, 2016.  Two years ago.  Around Dec 2017 a developer offered to help maintain the library and they produced a sizeable pull request.  The repro owner has not commented on the update.  Is this a dead library?  These improvements can be found here and I’ve written the author in the hope they may have some advice.
+
+<https://github.com/ChristianMurphy/ims-lti/tree/refactor/decaffeinate-code>
+
+Observation: There is long term risk to using a library that is not being maintained. It’s good to see there are a healthy number of weekly downloads.  A search for users of this library didn’t show up many hits. The best option was another project that wraps ims-lti into a utility for Node JS applications that use Express. (This fits our plans.)   Another project designed to help integration with Canvas no longer exists.   And there was another BlackBoard community user who provided a simple application for listening to LTI requests, based on the lms-lti project.
+
+1. See <https://community.blackboard.com/community/developers/blog/2018/01> for a very simple example that uses ims-lti library to recieve basic launch requests. This sample is missing the needed return to LMS.
+2. Express middle ware to use ims-lti.  26 weekly downloads. https://www.npmjs.com/package/express-ims-lti
+3. An all-purpose node module that handles the core functionality of a Canvas-integrated LTI app. 0 weekly downloads. Github ---\> 404 page.  <https://www.npmjs.com/package/canvas-app-spine> 
+4. Some further notes can be found here <https://stackoverflow.com/questions/27319576/lti-launch-authentication-with-node-js>
+
+
+Full 
+
+The LTI V1.0 basic launch request contains
+
+LTI V1.x full sequence
+
+So far, searches for a sample LTI 1.0 application that can be used by Moodle at the system level has not been found.   There are samples using V2.0.
 
 LTI resources
 
