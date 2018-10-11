@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="4B726582-695A-43A5-8CAB-2C02ACFCCD48" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Pro" Author="Bryan Gilbert" Modified="2018-10-11 12:50:02 -0700" ModID="ABAC10BA-9485-4718-9B6E-D4760615BC63">
+<ScrivenerProject Identifier="4B726582-695A-43A5-8CAB-2C02ACFCCD48" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Pro" Author="Bryan Gilbert" Modified="2018-10-11 13:11:39 -0700" ModID="0DA0BB89-BFE2-4C51-A9BC-55E1CCB77265">
     <Binder>
         <BinderItem UUID="BBB5549C-F7B4-49AD-8097-42CDD9C90DE8" Type="DraftFolder" Created="2018-09-18 07:38:29 -0700" Modified="2018-09-18 07:38:29 -0700">
             <Title>Draft</Title>
@@ -1221,7 +1221,7 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2018-09-18 07:38:28 -0700" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Time" ResetTime="00:00" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="2379" Characters="15122" Date="2018-10-05 13:52:48 -0700"></PreviousSession>
+        <PreviousSession Words="0" Characters="0" Date="2018-10-11 13:11:13 -0700"></PreviousSession>
     </ProjectTargets>
     <RecentWritingHistory Date="2018-10-11 00:00:00 -0700">
         <DraftWordCount>1389</DraftWordCount>

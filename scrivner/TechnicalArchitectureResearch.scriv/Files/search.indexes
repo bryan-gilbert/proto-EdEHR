@@ -1,23 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SearchIndexes Version="1.0">
     <Documents>
-        <Document ID="3042A47C-10BD-42DD-9806-60FED6E42BB4">
-            <Text>Question: Does BCcampus have a repro?</Text>
+        <Document ID="80D62A7D-E8B8-4206-B65F-ACA8E3BFE1D7">
+            <Text>Git Github
+EdEHR will use Git and Github because it is the industry standard and fits the project charter requirement to be open source.
+I have started a repro here: https://github.com/bryan-gilbert/proto-EdEHR
+
+Branching
+To begin all rough preliminary work will be submitted to the main branch.  Yet, once development is underway all submissions will be made to a development branch.  Testing and stylistic checks will be completed before promotion to the master branch.  Changes on the master branch will be monitored by an instance of Jenkins which will start a build process on a Test server.  The developer’s goal is to not break the build. </Text>
         </Document>
-        <Document ID="D5D2540C-82B2-467B-91AA-15346D922169">
-            <Text>PhP
+        <Document ID="A89FAE7A-3BB4-4BF4-9531-C708E2AC6FCF">
+            <Text>Python
 
-PhP is the industry standard having been around for over two decades. Yet it is known for its verbosity and difficulty to be modular.
-PhP Pros:
-	•	Rich code base
-	•	Portable
-	•	Designed to generate web pages
-PhP Cons:
-	•	Inefficient separation of concerns (modularity)
-	•	Outdated client server model (not SPA)
-	•	Different language than used on the client side.
+Python Pros:
+	•	Readable and dynamically-typed language
+	•	High functionality
+	•	Rich native library support
+	•	Shorter code compared to similar object-oriented languages
+	•	Fast development due to concise and simple syntax
 
-Not the best choice for EdEHR</Text>
+Python Cons:
+	•	Absence from Mobile Computing and Browsers
+	•	Lack of Support for DSLs (Domain-specific Languages)
+	•	Steep learning curve
+	•	Runtime speed slow
+
+Could be a choice for EdEHR yet it would introduce risk as the developer is not expert in this language.</Text>
+            <Notes>“Pros of Python
+1. Ease of Use
+Python has a concise and expressive syntax that helps think more clearly when writing programs and makes it easier for others to maintain and enhance your applications. Also, being dynamically typed and flexible, Python allows writing a code that is less verbose but more modular and extensible. Python’s readability facilitates the coordination of teams working on large projects and helps concentrate on completing real tasks rather than scaffolding and tweaking your code base. Python is also quite easy to learn, which allows experienced developers to quickly jump into your Python projects and bring their experience in other programming languages to the table.
+
+2. Fast Development
+Thanks to clean, concise and simple syntax, developing in Python is much faster than in Java or C. Although it’s always difficult to provide an accurate assessment of the development speed, most experts agree that developing a Python application is about 5 to 10 times faster than developing the same application in Java. The time savings are even greater if compared to C and C++. The speed advantages substantially outweigh performance downsides of Python that originate from its interpreted nature and dynamic typing. Due to the language’s extremely stable architecture, the availability of web development frameworks (e.g Django) and third-party modules, applications developed in Python are no less reliable than those written in any other framework.
+
+3. Rich Standard Library and Ecosystem
+The rich standard/native library for server-side development is one of the main strengths of Python in comparison to Node.js. If you look at the standard library that comes with Javascript, it’s relatively minimal. To include the advanced functionality for the management of file system or memory in Node.js, you need to use Node package manager (npm), which leads to the extra work of selecting and checking the installed modules and packages. In Python, however, many useful functions come natively. For example, Python supports deleting a directory, creating temp files, argument parsing, unit testing, logging, printf format strings and many more by default. If Python’s standard library lacks the functionality you need, similarly to Node.js, Python has a developed ecosystem of modules to choose from.
+
+Python Cons
+1. Absence from Mobile Computing and Browsers
+Python is supported on many server and desktop platforms but is not well-supported in mobile computing and browsers. This implies that developing a web application with Python will require at least two different languages in your stack. This can complicate interaction between the front-end and back-end teams and increase maintenance and debugging time and costs. Node.js, which uses Javascript for both front-end and back-end, is free from this limitation.
+
+2. Lack of Support for DSLs (Domain-specific Languages)
+Javascript allows developers to use transpiler tools like Babel and Domain-specific Languages (DSL) to experiment with and/or create a new syntax that optimises UI development and makes it faster. The Python community does not have an equivalent mechanism for experimenting with DSLs, which makes it more difficult to express UI code in Python compared to Javascript and Node.js.
+
+Use Cases
+Our brief overview demonstrates that neither Node nor Python is perfect. If so, how to make the right decision about which one to use? The answer is straightforward: both environments are good for different types of apps and tasks.
+
+The event-driven architecture of Node.js, which allows multiple server requests and concurrent operations, is very good for chats and collaborative apps for video conferencing, document editing or drawing, collectively known as Real-Time Applications (RTAs). Node’s power in handling heavy I/O operations and shuffling of data between the front end and the back end also makes it a great choice for Single Page Applications (SPAs), which involve heavy client-side processing and rendering. Similarly, whenever performance and scalability of web applications are of concern, the lightweight and fast Node.js outperforms Python.
+
+At the same time, you should opt for Python if you are building CPU-intensive applications. The thing is that Node’s single-threaded design is not suitable for CPU intensive operations with graphics and data. Making heavy computations in these types of tasks may simply block all incoming requests, leading to the slower performance of your web application.
+
+Also, you should definitely choose Python when the speed of development is critical. With its rich standard library and modules available out of the box, Python is very powerful in Rapid Application Development (RAD). With Python, you don’t need to search for many utility modules and packages for your application. Instead, you can immediately proceed with the design of a fully functional prototype, which could be supplemented with other features later. Python’s simple and concise syntax makes writing code very fast too.
+
+Finally, many experts cite Python’s expressiveness and ease of use, along with its vibrant community, as one of the main reasons to use the language in the Internet of Things projects. On top of that, Python is the language of choice for one of the most popular micro-controllers for IoT devices in the market, the Raspberry Pi. Since much of the training literature for IoT and Raspberry Pi is written in Python, it’s natural to use this language for IoT programming.
+
+Summary
+When choosing between Python and Node.js, you should definitely consider the speed of development, the need for scalability, and your application’s type. If your requirement is fast development of CPU-heavy applications or the development of IoT back-end, go for Python. Conversely, choose Node.js if you are thinking about RTAs, SPAs, and other I/O heavy solutions. Hopefully, this overview will help you make the right choice of your web development environment for the next project.”
+https://www.netguru.co/blog/node.js-vs-python-comparison-which-solution-to-choose-for-your-next-project</Notes>
         </Document>
         <Document ID="23D5FB00-42FC-463C-9F3F-221A463EEA55">
             <Title>Email system</Title>
@@ -147,12 +186,9 @@ Thus, for example, the prototype needs to support 30 concurrent student users an
             <Title>Code Standards and Linting</Title>
             <Text>As every language, JavaScript has many code style guides.  Consider the following.</Text>
         </Document>
-        <Document ID="967EC040-E259-4A73-BBA2-27A17FF72E9B">
-            <Title>Introduction</Title>
-            <Text>From a high level view the app has three layers: 
-	1.	Learning Management System 
-	2.	Assignment management system
-	3.	Electronic Health Record system</Text>
+        <Document ID="DF643E0B-3E63-458D-945D-C0CF3EC8B1F9">
+            <Title>Docker</Title>
+            <Text>WIP</Text>
         </Document>
         <Document ID="C42A7C98-5145-41AE-BAF6-8450B76FAAD5">
             <Text>Javascript and Node.js
@@ -182,34 +218,42 @@ Use Javascript ECMA 2016 or better.</Text>
         </Document>
         <Document ID="BBAFCE46-9D94-48E5-84D9-DE73A7775D43">
             <Title>Interoperability</Title>
-            <Text>
-</Text>
         </Document>
-        <Document ID="9AC35995-C32A-40D4-A026-A29445530793">
-            <Text>Angular
-https://en.wikipedia.org/wiki/Angular_(application_platform)
-Angular is supported by Google and a large open source community. There are two main flavors: Angular and AngularJS.  The latter is the older version and is sometimes called Angular 1.x.  The former is the newer rewrite and for a time was called Angular 2.0.   There is no point considering AngularJS for a new project because Angular is far superior. That said, Angular is a framework suited to large projects with many team members because it provides a lot of features and supports the complexity in these types of projects.  
-	•	Flexible: no
-	•	Easy to learn: know to have a steep learning curve
-	•	Documentation: yes
-	•	Supports single page applications:  yes
-	•	Code Style:  Complex
-	•	Single File Components: no
-	•	License: MIT
-	•	Performance:  Reasonable
-	•	Tooling:  Yes
-	•	Routing (click to next ‘page’ in app with back button history): yes
-	•	State management (track what stage of a process the user is at): yes
-	•	Mobile:  Not sure.
-	•	Community:  Large and well established
-	•	Maturity:  Hard to say because Angular is such a radical change from AngularJS. No’ish
-	•	Support:  Google
-	•	Hiring Talent:  Yes
-	•	Future:  not sure
+        <Document ID="AB26FC4D-0BDB-423D-9C46-ABA70E6FB9B8">
+            <Text>Requirements
+	•	Support for Single Page Applications, Mobile Computing and Browsers (DSL support)
+	•	Industry standard. 
+	•	Suitable for prototyping. This is a huge project with a very short timeline. 
+	•	Dynamically typed with option to add datatypes when working with the database. 
+	•	Not verbose.  Language should favour clean and easy to read coding
+	•	Large community of developers to support this project in the future.
+	•	Modular (Separation of Concern).  Isolation of functionality is essential for stability. Once a component/module is ready and tested it should not be necessary to touch it again to adjust some other feature.
+	•	Testable.
+	•	Ideally use the same language for web, server and in between.
+	•	What is the developer best at? The team developer is most familiar with Javascript (Node JS) and is interested in working more with Python.
 
-https://medium.com/fundbox-engineering/react-vs-vue-vs-angular-163f1ae7be56
-Angular grew to become a big framework that can be helpful in building complex systems but is less useful for building startup fast-changing UIs. React and Vue are more light-weight, and components are meant to be small, autonomous, encapsulated, hence — easily reusable. If we were to develop a new infrastructure from scratch (and not needing to migrate from an existing one), we could have been considering Angular too. In our case, it didn’t fit.
-EdEHR recommendation: skip Angular</Text>
+The contenders are:  Python, Javascript (Node JS), PhP, Go, and Ruby.  This analysis will not look too deeply into Go or Ruby because the former is too new and Ruby’s popularity may be diminishing. https://getpocket.com/a/read/2153732617</Text>
+            <Notes>Ruby on Rails provides an easy way to build server-side web applications.
+“There's a fair amount of debate swirling about whether Ruby and Ruby on Rails are dying. Advocates of the framework, though, will enthusiastically argue that this is still one of the best web programming languages to build apps quickly. Folks have been predicting Ruby's demise for several years now, and while Ruby is not as popular as it once was, it is unlikely to disappear.
+In fact, in March 2018, the Tiobe index, which tracks the popularity of programming languages, reported Ruby had returned to its top 10 list. If Ruby is back in vogue, Ruby on Rails skills are a valuable asset.” Source https://getpocket.com/a/read/2153732617</Notes>
+        </Document>
+        <Document ID="FFBBF666-8303-4809-8511-7AB739EFD964">
+            <Text>LTI V1.x implementation
+
+Consider using  https://www.npmjs.com/package/ims-lti (This is a nodejs library used to help create Tool Providers for the IMS LTI standard. Tool Consumer implmentation is left as an excersise to the reader :P)
+831 weekly downloads
+Last update to the code was Sep 5, 2016.  Two years ago.  Around Dec 2017 a developer offered to help maintain the library and they produced a sizeable pull request.  The repro owner has not commented on the update.  Is this a dead library?  These improvements can be found here and I’ve written the author in the hope they may have some advice.
+https://github.com/ChristianMurphy/ims-lti/tree/refactor/decaffeinate-code
+
+Observation: There is long term risk to using a library that is not being maintained. It’s good to see there are a healthy number of weekly downloads.  A search for users of this library didn’t show up many hits. The best option was another project that wraps ims-lti into a utility for Node JS applications that use Express. (This fits our plans.)   Another project designed to help integration with Canvas no longer exists.   And there was another BlackBoard community user who provided a simple application for listening to LTI requests, based on the lms-lti project.
+	1.	See https://community.blackboard.com/community/developers/blog/2018/01 for a very simple example that uses ims-lti library to recieve basic launch requests. This sample is missing the needed return to LMS.
+	2.	Express middle ware to use ims-lti.  26 weekly downloads. https://www.npmjs.com/package/express-ims-lti
+	3.	An all-purpose node module that handles the core functionality of a Canvas-integrated LTI app. 0 weekly downloads. Github —&gt; 404 page.  https://www.npmjs.com/package/canvas-app-spine 
+	4.	Some further notes can be found here https://stackoverflow.com/questions/27319576/lti-launch-authentication-with-node-js
+
+
+Full 
+The LTI V1.0 basic launch request contains</Text>
         </Document>
         <Document ID="375F2158-CE11-475F-9E04-31B1B57B1D4A">
             <Title>Media Attachments</Title>
@@ -222,13 +266,6 @@ https://corp.kaltura.com/
 Also see the BCCampus story about Kaltura
 https://bccampus.ca/2013/05/23/wrangling-videos-in-one-location-just-got-a-lot-easier-with-kaltura/</Text>
         </Document>
-        <Document ID="A0AF072F-6C59-4B7F-8D4F-34956D64B103">
-            <Title>Defect tracking</Title>
-            <Text>Defect Tracking Requirements
-Defect tracking tool needs to allow the team to add, edit, comment, and resolve issues as the prototype evolves and for when it is in place.  The tool ought to be suitable for non-technical users to resolve issues.
-We can look into JIRA or to keep it simple let’s just use the issue tracking in github.
-Recommendation: Github</Text>
-        </Document>
         <Document ID="9301E8B5-8823-46FB-8727-4C749483254B">
             <Text>Classes
 Status: &lt;$label&gt;
@@ -237,42 +274,27 @@ Assumptions
 	•	Prototype:  1
 	•	Long term:  5</Text>
         </Document>
-        <Document ID="DB22027D-9AFF-440C-89BC-EA13AD2664D1">
-            <Text>React
-React is supported by Facebook and has a large open source community.  It is definitely the most popular framework.
-References: 
-https://en.wikipedia.org/wiki/React_(JavaScript_library)
-https://blog.techmagic.co/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018/
-https://medium.com/fundbox-engineering/react-vs-vue-vs-angular-163f1ae7be56
-
-Companies that use ReactJS: Facebook, Instagram, Netflix, New York Times, Yahoo, Khan Academy, Whatsapp, Codecademy, Dropbox, Airbnb, Asana, Atlassian, Intercom, Microsoft.
-
-EdEHR requirements:  (quotes from above sources in italics)
-	•	Flexible: yes
-	•	Easy to learn: easier than Angular yet takes a long time to master.  “React requires to (sic) learn a lot to become an expert. Would require much more time to train devs. Deliver slower (at least for the initial heavy lifting).”
-	•	Documentation:  Lack of official documentation — super-fast development of ReactJS leaves no place for the proper documentation which is a bit chaotic now as many developers contribute it individually without any systematic approach;
-	•	Supports single page applications: Yes
-	•	Code Style:  Clean yet developers sometimes have too much choice; sometimes difficult to separate code between back end and front end
-	•	Single File Components:  Yes, nicely
-	•	License: MIT. (There is an interesting story to read about how Facebook released React with a series of different open source licenses that caused a lot of controversy. https://en.wikipedia.org/wiki/React_(JavaScript_library)#Licensing_controversy  Now, React is released under the very permissive MIT license.)
-	•	Performance:  Yes
-	•	Tooling:  Yes
-	•	Routing: Needs plugin (which one to pick?)
-	•	State management: not sure
-	•	API: Yes
-	•	Mobile:  Web and mobile apps can share some code.
-	•	Community: Large yet fragmented
-	•	Maturity:  Industry standard.
-	•	Support: Yes
-	•	Hiring Talent: Yes
-	•	Future:  Facebook provides  “codemods” to automate much of the upgrade process. </Text>
+        <Document ID="A0AF072F-6C59-4B7F-8D4F-34956D64B103">
+            <Title>Defect tracking</Title>
+            <Text>Defect Tracking Requirements
+Defect tracking tool needs to allow the team to add, edit, comment, and resolve issues as the prototype evolves and for when it is in place.  The tool ought to be suitable for non-technical users to resolve issues.
+We can look into JIRA or to keep it simple let’s just use the issue tracking in github.
+Recommendation: Github</Text>
         </Document>
         <Document ID="773BD659-E9C6-43EA-AD60-4D4E307AFC8F">
             <Title>Jenkins</Title>
             <Text>WIP</Text>
         </Document>
-        <Document ID="0F57AD73-AC73-4652-9162-5D091FAE1A34">
-            <Title>Server side code</Title>
+        <Document ID="F826F7CC-73B7-42B7-A974-AE10BEC65EFA">
+            <Text>LTI resources
+Other samples
+	•	https://github.com/instructure/ims-lti Ruby implementation of LTI 1.0 only
+	•	https://github.com/instructure/rollcall-attendance Rich example of a tool provider that supports instructors tracking student attendance. Its a Ruby application with close relation to the Canvas LMS.  There is no clear “LTI” section in the code so it’s not easy to see if this app is LTI 2.0 or 1.3.   (https://support.perceivant.com/hc/en-us/articles/115015942867-What-is-the-Roll-Call-Attendance-Tool-)
+Other links to explore
+	•	This thread is packed with some good questions, answers and the links to most of what I've listed below: https://community.canvaslms.com/thread/13467-how-can-i-get-started-building-an-lti-external-application 
+	•	Another branch of that thread: https://community.canvaslms.com/thread/13468-how-can-i-get-started-building-an-lti-external-application 
+	•	Course on building LTIs: https://canvas.instructure.com/courses/785215/modules 
+	•	Three-part blog on building LTI (.NET): https://community.canvaslms.com/groups/canvas-developers/blog/2016/09/13/net-lti-project-part- </Text>
         </Document>
         <Document ID="F2BFCFDD-4F2A-4213-8794-007A622186DD">
             <Text>Institutions
@@ -339,74 +361,51 @@ Requirements:
 	•	Clean and simple. It’s easier to learn, develop and maintain.
 	•	Good if CSS does not depend on Javascript (separation of concern)</Text>
         </Document>
-        <Document ID="228B0702-2654-4151-9B55-13F2C410F000">
-            <Title>Authorization</Title>
-            <Text>Authorization
-Status: &lt;$label&gt;
-Depends on LMS and LTI research</Text>
+        <Document ID="967EC040-E259-4A73-BBA2-27A17FF72E9B">
+            <Title>Introduction</Title>
+            <Text>From a high level view the app has three layers: 
+	1.	Learning Management System 
+	2.	Assignment management system
+	3.	Electronic Health Record system</Text>
         </Document>
-        <Document ID="19CC4AD1-7880-4909-847B-31F9B2FCAB36">
-            <Title>EdEHR</Title>
-            <Text>EdEHR will use Javascript Standard because it’s simple, automatice and just works.  End of debate means we can get coding ;-)
-That said we may cherry pick guidelines from the other style guides as we go.    (http://jstherightway.org)</Text>
+        <Document ID="DB22027D-9AFF-440C-89BC-EA13AD2664D1">
+            <Text>React
+React is supported by Facebook and has a large open source community.  It is definitely the most popular framework.
+References: 
+https://en.wikipedia.org/wiki/React_(JavaScript_library)
+https://blog.techmagic.co/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018/
+https://medium.com/fundbox-engineering/react-vs-vue-vs-angular-163f1ae7be56
+
+Companies that use ReactJS: Facebook, Instagram, Netflix, New York Times, Yahoo, Khan Academy, Whatsapp, Codecademy, Dropbox, Airbnb, Asana, Atlassian, Intercom, Microsoft.
+
+EdEHR requirements:  (quotes from above sources in italics)
+	•	Flexible: yes
+	•	Easy to learn: easier than Angular yet takes a long time to master.  “React requires to (sic) learn a lot to become an expert. Would require much more time to train devs. Deliver slower (at least for the initial heavy lifting).”
+	•	Documentation:  Lack of official documentation — super-fast development of ReactJS leaves no place for the proper documentation which is a bit chaotic now as many developers contribute it individually without any systematic approach;
+	•	Supports single page applications: Yes
+	•	Code Style:  Clean yet developers sometimes have too much choice; sometimes difficult to separate code between back end and front end
+	•	Single File Components:  Yes, nicely
+	•	License: MIT. (There is an interesting story to read about how Facebook released React with a series of different open source licenses that caused a lot of controversy. https://en.wikipedia.org/wiki/React_(JavaScript_library)#Licensing_controversy  Now, React is released under the very permissive MIT license.)
+	•	Performance:  Yes
+	•	Tooling:  Yes
+	•	Routing: Needs plugin (which one to pick?)
+	•	State management: not sure
+	•	API: Yes
+	•	Mobile:  Web and mobile apps can share some code.
+	•	Community: Large yet fragmented
+	•	Maturity:  Industry standard.
+	•	Support: Yes
+	•	Hiring Talent: Yes
+	•	Future:  Facebook provides  “codemods” to automate much of the upgrade process. </Text>
         </Document>
         <Document ID="5045E77E-6D90-4CBE-BDF2-D03E2B3F7309">
             <Title>Ruby</Title>
         </Document>
-        <Document ID="0686D02E-87CF-4DA8-B343-9CC0E3FFEF51">
-            <Text>Recommendation
-
-Resources
-https://medium.com/@TechMagic/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018-b91e028fa91d
-https://expertise.jetruby.com/react-vs-vue-js-which-front-end-framework-to-choose-in-2018-2a62a1fe76f9
-
-Advantages of Vue.JS:
-	•	Flexibility, Simplicity, Fast rendering and small size.
-	•	Soup to nuts framework
-	•	Easier to learn and get started
-
-Advantages of React:
-	•	Perfectly fits scalable apps, easier to test and maintain;
-	•	Can be used for native and web apps;
-	•	Huge ecosystem;
-	•	A big set of tools.
-
-Common Advantages
-	•	Fast rendering with Virtual DOM;
-	•	Small size;
-	•	Reactive components;
-	•	The ability to easily integrate with routers, collectors, and state managers;
-	•	A-class maintenance.
-
-Quote:  Laurie Voss, co-founder and COO of npm
-From my perspective, there are two factors driving Vue’s growth.  First, lots of developers still want a “soup to nuts” framework, i.e. one that does everything from routing to templating to back-end data fetching. Vue does this, which tends to make it easier for a first-time developer to pick up since they just make one choice: use Vue, and all the other choices are made for them.
-React, on the other hand, requires making lots of additional choices about routing and data management libraries, which makes it more intimidating and slower to get started with. So Angular, Ember and Vue all have this “all-inclusive” advantage over React.
-Second, if you’ve decided you want an all-inclusive framework, Vue performs better in benchmarks and is relatively easier to learn. Although these things are subjective, devs often report that it feels “cleaner” or “simpler” than older frameworks like Angular and Ember.
-
-Summary for EdEHR
-	•	Flexible: either
-	•	Easy to learn: Vue over React
-	•	Documentation: Vue
-	•	Code Style:  Either
-	•	Single File Components:  Slight edge to Vue
-	•	License: Both are MIT
-	•	Performance:  Either
-	•	Tooling:  Edge to React yet Vue has essentials built in making it easier to get started
-	•	Routing: built into Vue
-	•	State management: built into Vue
-	•	API: Either
-	•	Mobile:  React
-	•	Community:  React yet it is fragmented. Vue is smaller and more cohesive and therefore consitent (read less ambiguity about how to do something. Less time trying out varoius options and then deciding and then developing.)
-	•	Maturity:  React has edge
-	•	Support: React community is larger yet support for either is available
-	•	Hiring Talent:  React has edge, for now.
-
-For a new project with no legacy and a developer team that has equal experience with both frameworks (read experienced newbie) it’s a good time to be taking the new lean simple fast approach: vue.js.
-
-</Text>
-        </Document>
         <Document ID="A0989A04-3ABD-4A20-B9FB-A3C1ACC6EE15">
             <Title>Test Tools</Title>
+        </Document>
+        <Document ID="0F57AD73-AC73-4652-9162-5D091FAE1A34">
+            <Title>Server side code</Title>
         </Document>
         <Document ID="001EE362-534C-4121-997B-6646C3283490">
             <Text>Vue
@@ -464,6 +463,52 @@ http://www.literatureandlatte.com/forum/viewtopic.php?t=50214
 
 As key tasks and immediate tasks emerge move them to Trello</Text>
         </Document>
+        <Document ID="228B0702-2654-4151-9B55-13F2C410F000">
+            <Title>Authorization</Title>
+            <Text>Authorization
+Status: &lt;$label&gt;
+Depends on LMS and LTI research</Text>
+        </Document>
+        <Document ID="19CC4AD1-7880-4909-847B-31F9B2FCAB36">
+            <Title>EdEHR</Title>
+            <Text>EdEHR will use Javascript Standard because it’s simple, automatice and just works.  End of debate means we can get coding ;-)
+That said we may cherry pick guidelines from the other style guides as we go.    (http://jstherightway.org)</Text>
+        </Document>
+        <Document ID="9AC35995-C32A-40D4-A026-A29445530793">
+            <Text>Angular
+https://en.wikipedia.org/wiki/Angular_(application_platform)
+Angular is supported by Google and a large open source community. There are two main flavors: Angular and AngularJS.  The latter is the older version and is sometimes called Angular 1.x.  The former is the newer rewrite and for a time was called Angular 2.0.   There is no point considering AngularJS for a new project because Angular is far superior. That said, Angular is a framework suited to large projects with many team members because it provides a lot of features and supports the complexity in these types of projects.  
+	•	Flexible: no
+	•	Easy to learn: know to have a steep learning curve
+	•	Documentation: yes
+	•	Supports single page applications:  yes
+	•	Code Style:  Complex
+	•	Single File Components: no
+	•	License: MIT
+	•	Performance:  Reasonable
+	•	Tooling:  Yes
+	•	Routing (click to next ‘page’ in app with back button history): yes
+	•	State management (track what stage of a process the user is at): yes
+	•	Mobile:  Not sure.
+	•	Community:  Large and well established
+	•	Maturity:  Hard to say because Angular is such a radical change from AngularJS. No’ish
+	•	Support:  Google
+	•	Hiring Talent:  Yes
+	•	Future:  not sure
+
+https://medium.com/fundbox-engineering/react-vs-vue-vs-angular-163f1ae7be56
+Angular grew to become a big framework that can be helpful in building complex systems but is less useful for building startup fast-changing UIs. React and Vue are more light-weight, and components are meant to be small, autonomous, encapsulated, hence — easily reusable. If we were to develop a new infrastructure from scratch (and not needing to migrate from an existing one), we could have been considering Angular too. In our case, it didn’t fit.
+EdEHR recommendation: skip Angular</Text>
+        </Document>
+        <Document ID="8601F6DD-425B-4D78-82AE-2E8B338660A4">
+            <Title>Analytics</Title>
+        </Document>
+        <Document ID="8CD840C1-2F12-48F3-8C65-8B562B67093F">
+            <Text>LTI V1.x full sequence
+
+So far, searches for a sample LTI 1.0 application that can be used by Moodle at the system level has not been found.   There are samples using V2.0. 
+</Text>
+        </Document>
         <Document ID="9D7FCB4D-D87A-452D-86E4-424E3D94B45B">
             <Text>Performance testing
 Status: &lt;$label&gt;
@@ -481,64 +526,56 @@ https://jmeter.apache.org/usermanual/get-started.html</Text>
         <Document ID="AB6760D2-0EC8-412B-8B9F-0F20DF24F8ED">
             <Title>Server Tooling</Title>
         </Document>
-        <Document ID="DF643E0B-3E63-458D-945D-C0CF3EC8B1F9">
-            <Title>Docker</Title>
-            <Text>WIP</Text>
-        </Document>
-        <Document ID="8601F6DD-425B-4D78-82AE-2E8B338660A4">
-            <Title>Analytics</Title>
-        </Document>
-        <Document ID="AB26FC4D-0BDB-423D-9C46-ABA70E6FB9B8">
-            <Text>Requirements
-	•	Support for Single Page Applications, Mobile Computing and Browsers (DSL support)
-	•	Industry standard. 
-	•	Suitable for prototyping. This is a huge project with a very short timeline. 
-	•	Dynamically typed with option to add datatypes when working with the database. 
-	•	Not verbose.  Language should favour clean and easy to read coding
-	•	Large community of developers to support this project in the future.
-	•	Modular (Separation of Concern).  Isolation of functionality is essential for stability. Once a component/module is ready and tested it should not be necessary to touch it again to adjust some other feature.
-	•	Testable.
-	•	Ideally use the same language for web, server and in between.
-	•	What is the developer best at? The team developer is most familiar with Javascript (Node JS) and is interested in working more with Python.
+        <Document ID="0686D02E-87CF-4DA8-B343-9CC0E3FFEF51">
+            <Text>Recommendation
 
-The contenders are:  Python, Javascript (Node JS), PhP, Go, and Ruby.  This analysis will not look too deeply into Go or Ruby because the former is too new and Ruby’s popularity may be diminishing. https://getpocket.com/a/read/2153732617</Text>
-            <Notes>Ruby on Rails provides an easy way to build server-side web applications.
-“There's a fair amount of debate swirling about whether Ruby and Ruby on Rails are dying. Advocates of the framework, though, will enthusiastically argue that this is still one of the best web programming languages to build apps quickly. Folks have been predicting Ruby's demise for several years now, and while Ruby is not as popular as it once was, it is unlikely to disappear.
-In fact, in March 2018, the Tiobe index, which tracks the popularity of programming languages, reported Ruby had returned to its top 10 list. If Ruby is back in vogue, Ruby on Rails skills are a valuable asset.” Source https://getpocket.com/a/read/2153732617</Notes>
-        </Document>
-        <Document ID="F826F7CC-73B7-42B7-A974-AE10BEC65EFA">
-            <Text>LTI resources
-Other samples
-	•	https://github.com/instructure/ims-lti Ruby implementation of LTI 1.0 only
-	•	https://github.com/instructure/rollcall-attendance Rich example of a tool provider that supports instructors tracking student attendance. Its a Ruby application with close relation to the Canvas LMS.  There is no clear “LTI” section in the code so it’s not easy to see if this app is LTI 2.0 or 1.3.   (https://support.perceivant.com/hc/en-us/articles/115015942867-What-is-the-Roll-Call-Attendance-Tool-)
-Other links to explore
-	•	This thread is packed with some good questions, answers and the links to most of what I've listed below: https://community.canvaslms.com/thread/13467-how-can-i-get-started-building-an-lti-external-application 
-	•	Another branch of that thread: https://community.canvaslms.com/thread/13468-how-can-i-get-started-building-an-lti-external-application 
-	•	Course on building LTIs: https://canvas.instructure.com/courses/785215/modules 
-	•	Three-part blog on building LTI (.NET): https://community.canvaslms.com/groups/canvas-developers/blog/2016/09/13/net-lti-project-part- </Text>
-        </Document>
-        <Document ID="FFBBF666-8303-4809-8511-7AB739EFD964">
-            <Text>LTI V1.x implementation
+Resources
+https://medium.com/@TechMagic/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018-b91e028fa91d
+https://expertise.jetruby.com/react-vs-vue-js-which-front-end-framework-to-choose-in-2018-2a62a1fe76f9
 
-Consider using  https://www.npmjs.com/package/ims-lti (This is a nodejs library used to help create Tool Providers for the IMS LTI standard. Tool Consumer implmentation is left as an excersise to the reader :P)
-831 weekly downloads
-Last update to the code was Sep 5, 2016.  Two years ago.  Around Dec 2017 a developer offered to help maintain the library and they produced a sizeable pull request.  The repro owner has not commented on the update.  Is this a dead library?  These improvements can be found here and I’ve written the author in the hope they may have some advice.
-https://github.com/ChristianMurphy/ims-lti/tree/refactor/decaffeinate-code
+Advantages of Vue.JS:
+	•	Flexibility, Simplicity, Fast rendering and small size.
+	•	Soup to nuts framework
+	•	Easier to learn and get started
 
-Observation: There is long term risk to using a library that is not being maintained. It’s good to see there are a healthy number of weekly downloads.  A search for users of this library didn’t show up many hits. The best option was another project that wraps ims-lti into a utility for Node JS applications that use Express. (This fits our plans.)   Another project designed to help integration with Canvas no longer exists.   And there was another BlackBoard community user who provided a simple application for listening to LTI requests, based on the lms-lti project.
-	1.	See https://community.blackboard.com/community/developers/blog/2018/01 for a very simple example that uses ims-lti library to recieve basic launch requests. This sample is missing the needed return to LMS.
-	2.	Express middle ware to use ims-lti.  26 weekly downloads. https://www.npmjs.com/package/express-ims-lti
-	3.	An all-purpose node module that handles the core functionality of a Canvas-integrated LTI app. 0 weekly downloads. Github —&gt; 404 page.  https://www.npmjs.com/package/canvas-app-spine 
-	4.	Some further notes can be found here https://stackoverflow.com/questions/27319576/lti-launch-authentication-with-node-js
+Advantages of React:
+	•	Perfectly fits scalable apps, easier to test and maintain;
+	•	Can be used for native and web apps;
+	•	Huge ecosystem;
+	•	A big set of tools.
 
+Common Advantages
+	•	Fast rendering with Virtual DOM;
+	•	Small size;
+	•	Reactive components;
+	•	The ability to easily integrate with routers, collectors, and state managers;
+	•	A-class maintenance.
 
-Full 
-The LTI V1.0 basic launch request contains</Text>
-        </Document>
-        <Document ID="8CD840C1-2F12-48F3-8C65-8B562B67093F">
-            <Text>LTI V1.x full sequence
+Quote:  Laurie Voss, co-founder and COO of npm
+From my perspective, there are two factors driving Vue’s growth.  First, lots of developers still want a “soup to nuts” framework, i.e. one that does everything from routing to templating to back-end data fetching. Vue does this, which tends to make it easier for a first-time developer to pick up since they just make one choice: use Vue, and all the other choices are made for them.
+React, on the other hand, requires making lots of additional choices about routing and data management libraries, which makes it more intimidating and slower to get started with. So Angular, Ember and Vue all have this “all-inclusive” advantage over React.
+Second, if you’ve decided you want an all-inclusive framework, Vue performs better in benchmarks and is relatively easier to learn. Although these things are subjective, devs often report that it feels “cleaner” or “simpler” than older frameworks like Angular and Ember.
 
-So far, searches for a sample LTI 1.0 application that can be used by Moodle at the system level has not been found.   There are samples using V2.0. 
+Summary for EdEHR
+	•	Flexible: either
+	•	Easy to learn: Vue over React
+	•	Documentation: Vue
+	•	Code Style:  Either
+	•	Single File Components:  Slight edge to Vue
+	•	License: Both are MIT
+	•	Performance:  Either
+	•	Tooling:  Edge to React yet Vue has essentials built in making it easier to get started
+	•	Routing: built into Vue
+	•	State management: built into Vue
+	•	API: Either
+	•	Mobile:  React
+	•	Community:  React yet it is fragmented. Vue is smaller and more cohesive and therefore consitent (read less ambiguity about how to do something. Less time trying out varoius options and then deciding and then developing.)
+	•	Maturity:  React has edge
+	•	Support: React community is larger yet support for either is available
+	•	Hiring Talent:  React has edge, for now.
+
+For a new project with no legacy and a developer team that has equal experience with both frameworks (read experienced newbie) it’s a good time to be taking the new lean simple fast approach: vue.js.
+
 </Text>
         </Document>
         <Document ID="BDBE694C-16EA-426E-BBCC-1173D6790193">
@@ -899,65 +936,26 @@ Examples:
         <Document ID="78B37435-786C-4911-8D49-3D30111B0635">
             <Title>Continuous Integration and Deployment</Title>
         </Document>
+        <Document ID="D5D2540C-82B2-467B-91AA-15346D922169">
+            <Text>PhP
+
+PhP is the industry standard having been around for over two decades. Yet it is known for its verbosity and difficulty to be modular.
+PhP Pros:
+	•	Rich code base
+	•	Portable
+	•	Designed to generate web pages
+PhP Cons:
+	•	Inefficient separation of concerns (modularity)
+	•	Outdated client server model (not SPA)
+	•	Different language than used on the client side.
+
+Not the best choice for EdEHR</Text>
+        </Document>
+        <Document ID="3042A47C-10BD-42DD-9806-60FED6E42BB4">
+            <Text>Question: Does BCcampus have a repro?</Text>
+        </Document>
         <Document ID="DF0B2F1F-A33D-4FFC-93DA-4CDD081AACC9">
             <Title>Requirements Tooling</Title>
-        </Document>
-        <Document ID="80D62A7D-E8B8-4206-B65F-ACA8E3BFE1D7">
-            <Text>Git Github
-EdEHR will use Git and Github because it is the industry standard and fits the project charter requirement to be open source.
-I have started a repro here: https://github.com/bryan-gilbert/proto-EdEHR
-
-Branching
-To begin all rough preliminary work will be submitted to the main branch.  Yet, once development is underway all submissions will be made to a development branch.  Testing and stylistic checks will be completed before promotion to the master branch.  Changes on the master branch will be monitored by an instance of Jenkins which will start a build process on a Test server.  The developer’s goal is to not break the build. </Text>
-        </Document>
-        <Document ID="A89FAE7A-3BB4-4BF4-9531-C708E2AC6FCF">
-            <Text>Python
-
-Python Pros:
-	•	Readable and dynamically-typed language
-	•	High functionality
-	•	Rich native library support
-	•	Shorter code compared to similar object-oriented languages
-	•	Fast development due to concise and simple syntax
-
-Python Cons:
-	•	Absence from Mobile Computing and Browsers
-	•	Lack of Support for DSLs (Domain-specific Languages)
-	•	Steep learning curve
-	•	Runtime speed slow
-
-Could be a choice for EdEHR yet it would introduce risk as the developer is not expert in this language.</Text>
-            <Notes>“Pros of Python
-1. Ease of Use
-Python has a concise and expressive syntax that helps think more clearly when writing programs and makes it easier for others to maintain and enhance your applications. Also, being dynamically typed and flexible, Python allows writing a code that is less verbose but more modular and extensible. Python’s readability facilitates the coordination of teams working on large projects and helps concentrate on completing real tasks rather than scaffolding and tweaking your code base. Python is also quite easy to learn, which allows experienced developers to quickly jump into your Python projects and bring their experience in other programming languages to the table.
-
-2. Fast Development
-Thanks to clean, concise and simple syntax, developing in Python is much faster than in Java or C. Although it’s always difficult to provide an accurate assessment of the development speed, most experts agree that developing a Python application is about 5 to 10 times faster than developing the same application in Java. The time savings are even greater if compared to C and C++. The speed advantages substantially outweigh performance downsides of Python that originate from its interpreted nature and dynamic typing. Due to the language’s extremely stable architecture, the availability of web development frameworks (e.g Django) and third-party modules, applications developed in Python are no less reliable than those written in any other framework.
-
-3. Rich Standard Library and Ecosystem
-The rich standard/native library for server-side development is one of the main strengths of Python in comparison to Node.js. If you look at the standard library that comes with Javascript, it’s relatively minimal. To include the advanced functionality for the management of file system or memory in Node.js, you need to use Node package manager (npm), which leads to the extra work of selecting and checking the installed modules and packages. In Python, however, many useful functions come natively. For example, Python supports deleting a directory, creating temp files, argument parsing, unit testing, logging, printf format strings and many more by default. If Python’s standard library lacks the functionality you need, similarly to Node.js, Python has a developed ecosystem of modules to choose from.
-
-Python Cons
-1. Absence from Mobile Computing and Browsers
-Python is supported on many server and desktop platforms but is not well-supported in mobile computing and browsers. This implies that developing a web application with Python will require at least two different languages in your stack. This can complicate interaction between the front-end and back-end teams and increase maintenance and debugging time and costs. Node.js, which uses Javascript for both front-end and back-end, is free from this limitation.
-
-2. Lack of Support for DSLs (Domain-specific Languages)
-Javascript allows developers to use transpiler tools like Babel and Domain-specific Languages (DSL) to experiment with and/or create a new syntax that optimises UI development and makes it faster. The Python community does not have an equivalent mechanism for experimenting with DSLs, which makes it more difficult to express UI code in Python compared to Javascript and Node.js.
-
-Use Cases
-Our brief overview demonstrates that neither Node nor Python is perfect. If so, how to make the right decision about which one to use? The answer is straightforward: both environments are good for different types of apps and tasks.
-
-The event-driven architecture of Node.js, which allows multiple server requests and concurrent operations, is very good for chats and collaborative apps for video conferencing, document editing or drawing, collectively known as Real-Time Applications (RTAs). Node’s power in handling heavy I/O operations and shuffling of data between the front end and the back end also makes it a great choice for Single Page Applications (SPAs), which involve heavy client-side processing and rendering. Similarly, whenever performance and scalability of web applications are of concern, the lightweight and fast Node.js outperforms Python.
-
-At the same time, you should opt for Python if you are building CPU-intensive applications. The thing is that Node’s single-threaded design is not suitable for CPU intensive operations with graphics and data. Making heavy computations in these types of tasks may simply block all incoming requests, leading to the slower performance of your web application.
-
-Also, you should definitely choose Python when the speed of development is critical. With its rich standard library and modules available out of the box, Python is very powerful in Rapid Application Development (RAD). With Python, you don’t need to search for many utility modules and packages for your application. Instead, you can immediately proceed with the design of a fully functional prototype, which could be supplemented with other features later. Python’s simple and concise syntax makes writing code very fast too.
-
-Finally, many experts cite Python’s expressiveness and ease of use, along with its vibrant community, as one of the main reasons to use the language in the Internet of Things projects. On top of that, Python is the language of choice for one of the most popular micro-controllers for IoT devices in the market, the Raspberry Pi. Since much of the training literature for IoT and Raspberry Pi is written in Python, it’s natural to use this language for IoT programming.
-
-Summary
-When choosing between Python and Node.js, you should definitely consider the speed of development, the need for scalability, and your application’s type. If your requirement is fast development of CPU-heavy applications or the development of IoT back-end, go for Python. Conversely, choose Node.js if you are thinking about RTAs, SPAs, and other I/O heavy solutions. Hopefully, this overview will help you make the right choice of your web development environment for the next project.”
-https://www.netguru.co/blog/node.js-vs-python-comparison-which-solution-to-choose-for-your-next-project</Notes>
         </Document>
     </Documents>
 </SearchIndexes>
