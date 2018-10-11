@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Identifier="4B726582-695A-43A5-8CAB-2C02ACFCCD48" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Pro" Author="Bryan Gilbert" Modified="2018-09-22 18:48:57 -0700" ModID="30D136AA-B6C6-41A0-960B-D5755F3BA137">
+<ScrivenerProject Identifier="4B726582-695A-43A5-8CAB-2C02ACFCCD48" Version="2.0" Creator="SCRMAC-3.0.3-3032" Device="MacBook-Pro" Author="Bryan Gilbert" Modified="2018-10-11 06:12:57 -0700" ModID="4001D198-D506-49CE-8641-B193A6713C90">
     <Binder>
         <BinderItem UUID="BBB5549C-F7B4-49AD-8097-42CDD9C90DE8" Type="DraftFolder" Created="2018-09-18 07:38:29 -0700" Modified="2018-09-18 07:38:29 -0700">
             <Title>Draft</Title>
@@ -767,7 +767,7 @@
                                 <TextSelection>0,0</TextSelection>
                             </TextSettings>
                             <Children>
-                                <BinderItem UUID="BBAFCE46-9D94-48E5-84D9-DE73A7775D43" Type="Folder" Created="2018-09-18 07:42:55 -0700" Modified="2018-09-22 18:33:17 -0700">
+                                <BinderItem UUID="BBAFCE46-9D94-48E5-84D9-DE73A7775D43" Type="Folder" Created="2018-09-18 07:42:55 -0700" Modified="2018-10-11 05:41:59 -0700">
                                     <Title>Interoperability</Title>
                                     <MetaData>
                                         <LabelID>1</LabelID>
@@ -776,15 +776,37 @@
                                     <TextSettings>
                                         <TextSelection>0,903</TextSelection>
                                     </TextSettings>
+                                    <Children>
+                                        <BinderItem UUID="AC43BBD1-40A7-4761-87B0-19116F9548C3" Type="Text" Created="2018-10-11 04:44:40 -0700" Modified="2018-10-11 06:12:34 -0700">
+                                            <MetaData>
+                                                <LabelID>1</LabelID>
+                                                <StatusID>2</StatusID>
+                                                <IncludeInCompile>Yes</IncludeInCompile>
+                                            </MetaData>
+                                            <TextSettings>
+                                                <TextSelection>5206,0</TextSelection>
+                                            </TextSettings>
+                                        </BinderItem>
+                                        <BinderItem UUID="F826F7CC-73B7-42B7-A974-AE10BEC65EFA" Type="Text" Created="2018-10-11 05:42:47 -0700" Modified="2018-10-11 06:10:53 -0700">
+                                            <MetaData>
+                                                <LabelID>1</LabelID>
+                                                <StatusID>2</StatusID>
+                                                <IncludeInCompile>Yes</IncludeInCompile>
+                                            </MetaData>
+                                            <TextSettings>
+                                                <TextSelection>536,0</TextSelection>
+                                            </TextSettings>
+                                        </BinderItem>
+                                    </Children>
                                 </BinderItem>
-                                <BinderItem UUID="FE7FDABC-654C-4422-9421-22A2B8A55473" Type="Text" Created="2018-09-19 08:49:32 -0700" Modified="2018-09-22 17:52:56 -0700">
+                                <BinderItem UUID="F24079E0-787A-471B-BBAD-1512AAF2E7BE" Type="Text" Created="2018-10-05 15:41:17 -0700" Modified="2018-10-11 05:42:04 -0700">
                                     <MetaData>
                                         <LabelID>1</LabelID>
                                         <StatusID>2</StatusID>
                                         <IncludeInCompile>Yes</IncludeInCompile>
                                     </MetaData>
                                     <TextSettings>
-                                        <TextSelection>0,586</TextSelection>
+                                        <TextSelection>72,844</TextSelection>
                                     </TextSettings>
                                 </BinderItem>
                                 <BinderItem UUID="170208F4-27FD-4B24-8653-7C5C493B9EC2" Type="Folder" Created="2018-09-18 15:06:11 -0700" Modified="2018-09-22 17:52:19 -0700">
@@ -1102,6 +1124,19 @@
                         <TextSelection>0,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
+                <BinderItem UUID="FE7FDABC-654C-4422-9421-22A2B8A55473" Type="Text" Created="2018-09-19 08:49:32 -0700" Modified="2018-10-05 14:45:37 -0700">
+                    <MetaData>
+                        <LabelID>1</LabelID>
+                        <StatusID>2</StatusID>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>665,0</TextSelection>
+                    </TextSettings>
+                    <Bookmarks>
+                        <Bookmark BinderUUID="F24079E0-787A-471B-BBAD-1512AAF2E7BE"></Bookmark>
+                    </Bookmarks>
+                </BinderItem>
             </Children>
         </BinderItem>
     </Binder>
@@ -1111,6 +1146,7 @@
         </Collection>
         <Collection Type="RecentSearch" ID="CDAE97F7-10DC-4A4E-A255-724F10D06B5C" Color="0.922176 0.818589 0.999618">
             <Title>Search Results</Title>
+            <SearchSettings Operator="Any" Type="All" CaseSensitive="No" IgnoreDiacritics="No">LTI</SearchSettings>
         </Collection>
     </Collections>
     <SectionTypes>
@@ -1165,11 +1201,11 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2018-09-18 07:38:28 -0700" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Time" ResetTime="00:00" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="10" Characters="533" Date="2018-09-22 18:27:01 -0700"></PreviousSession>
+        <PreviousSession Words="2039" Characters="12940" Date="2018-10-05 13:52:48 -0700"></PreviousSession>
     </ProjectTargets>
-    <RecentWritingHistory Date="2018-09-24 00:00:00 -0700">
-        <DraftWordCount>0</DraftWordCount>
-        <DraftCharCount>0</DraftCharCount>
+    <RecentWritingHistory Date="2018-10-11 00:00:00 -0700">
+        <DraftWordCount>1049</DraftWordCount>
+        <DraftCharCount>6420</DraftCharCount>
         <OtherWordCount>0</OtherWordCount>
         <OtherCharCount>0</OtherCharCount>
     </RecentWritingHistory>
