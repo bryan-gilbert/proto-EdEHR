@@ -932,9 +932,94 @@ Webpack. <https://webpack.js.org/>
 <a href="#toc">Top</a>
 
 
-Learning Tools Interoperability (LTI) is a standard created by the IMS Global Learning Consortium that links content and resources to learning platforms.  Its primary purpose is to connect learning systems such as a learning management system (LMS) with external service tools in a standard way across learning systems. The standard describes the connecting system as an LTI Tool Consumer and the connected tool as an LTI Tool Provider.
+  
+**LTI Consumer and Provider**	
 
-With LTI we hope that our MVP prototype can use any LMS  (e.g. Canvas or Moodle) to provide the system for managing students, instructors, classes and etc.  The LMS will be configured to communicate with our EdEHR through LTI v1.2 protocol.  Essentially, this protocol provides a means for the LMS user to access special portions of the EdEHR.  For example, students can be presented with a set of links to assignments or instructors can have a set of links to courses.
+The EdEHR requirements include a large number of features that are common to learning management systems (LMS). Systems such as Moodle, Canvas, and Blackboard to mention just three of dozens. It makes sense for this project to consider using a LMS to provide the basic learning management functionality. For example, managing personal information about students and teachers; courses; class lists; grades; etc.
+
+The way to use an LMS as the “front end” is via Learning Tools Interoperability or LTI.  LTI is managed by IMS Global.  <https://www.imsglobal.org/activity/learning-tools-interoperability>
+
+**Terms**
+
+TP or Tool Provider is the courseware. If EdEHR adopts LTI then it will be a provider. 
+
+TC or Tool Consumer is the LMS
+
+Tool Proxy (will not use TP for this) is the link between a TC and TP. See LTI 2.0 below.
+
+**LTI versions**
+
+LTI 1.0 and 1.1 provide basic connection between the TC and TP
+
+LTI 2.0 allows a TC and TP to establish a trust relationship by sharing information with each other.  This TC/TP relationship is required for Moodle to create a system wide global link to a TP.  This is called a “External Tool” in Moodle.  It is called a Tool Proxy in LTI.   IMS says that LTI 2.0 is obsolete although it is supported by many LMS and is the method commonly used to establish this TC/TP Tool Proxy. 
+
+LTI 1.3 is the newest form of the spec and was created to deal with security issues that could not be implemented in LTI 2.0.
+
+LTI Advantage appears to be a layer on top of LTI 1.3 that provides links to other IMS/LTI specs such as Deep Linking, Names and Roles Provisioning, Assignment and Grades, etc.
+
+**System wide External Tool in Moodle**
+
+When a TP is configured in the site administration section it becomes available to anyone who manages courses or assignment creations.  An instructor can easily add a new activity to any course and select the preconfigured external tool.  The alternative, without the system wide configuration, requires the instructor to know the exact url to use to reach the correct content inside the tool provider. Plus, know the special key and secret password. Plus how to set up any special variables that may be needed by the tool provider.
+
+Essentially, it’s important to be able to support site wide external tools.  
+
+At this time it seems that LTI 2.0 is needed to support this.  Thus it seems important to implement LTI 2.0.  But,  IMS says LTI 2.0 is obsolete because of security concerns. Perhaps LTI 1.3 or LTI Advantage can replace this functionality?  
+
+**Availability of sample systems or plugins**
+
+To answer the question about LTI 1.3 its important to also look at the availablity of plug and play code.  One goal of using LTI to reach any LMS is to reduce development time for EdEHR. After all why wouldn’t we want to leverage the full power of a LMS. And not only that but be able to switch to any LMS that may suit the educational institution.   In the context of reducing development time we need to find “off the shelf” tools that can provide the LTI functionality.   It’s not difficult to find sample code for LTI 1.0.  The code for this spec is not that large which makes sense because it basically has one API end point.  
+
+There is only one sample that supports LTI 2.0, 1.3, Advantage and it’s from Blackboard. 
+
+**Blackboard BBDN-LTI-Tool-Provider-Node**
+
+See <https://devhub.io/repos/blackboard-BBDN-LTI-Tool-Provider-Node>
+
+This project is maintained, occaisionally, by two or three BB employees. Its goal is to be a demonstration of various IMS intitiatives including: Content Item Messaging,  LTI Advantage Messaging, Caliper, Deeplink, Names and Roles, LTI membership and more.  This is not a piece of code that can be assimilated into another project easily. It is not designed to be a plugin. There are two ways EdEHR can use this code. One, we could use the code as the base of our application. The second approach is to rework the code into a plugin and contribute this effort back to the open source community.
+
+Option two is not in scope for this project and is not any where close to one of the deliverables. 
+
+Option one is has risks. 
+
+1. What are the security risks of using LTI 2.0? (Tool Proxy)
+2. From the code it’s not clear that tool proxy can be provided by the LTI 1.3 code.
+3. Before extracting code from a large code base it’s important to know how that code base works. This is a risk of time taken to stand up a system with this code base and try it out.
+4. Extracting code from a large code base then introduces the risk of “did you bring over everything you need?” and “did you bring over stuff that you don’t need yet don’t understand”.  
+5. Who will monitory the original project’s code base to see if future development/bug fixes need to be brought back to the EdEHR project.
+6. How many of the IMS initiatives are desired? 
+
+
+
+**Assessment**
+
+LTI with LMS offers some real advantages.  
+
+LTI specification spagetti is confusing and we lack expertise to navigate the best approach as 2019 approaches.
+
+Going with just LTI 1.0 means the course instructors have a more difficult time setting up their assignments.
+
+Going with LTI 2.0 fixes this but introduces security risks that we don’t understand along with the development risks mentioned above.
+
+**Recommendation**
+
+For EdEHR prototype go with LTI 1.0 only.
+
+LTI resources
+
+Other samples
+
+* <https://github.com/instructure/ims-lti> Ruby implementation of LTI 1.0 only
+* <https://github.com/instructure/rollcall-attendance> Rich example of a tool provider that supports instructors tracking student attendance. Its a Ruby application with close relation to the Canvas LMS.  There is no clear “LTI” section in the code so it’s not easy to see if this app is LTI 2.0 or 1.3.   (<https://support.perceivant.com/hc/en-us/articles/115015942867-What-is-the-Roll-Call-Attendance-Tool->)
+
+Other links to explore
+* This thread is packed with some good questions, answers and the links to most of what I've listed below: <https://community.canvaslms.com/thread/13467-how-can-i-get-started-building-an-lti-external-application> 
+* Another branch of that thread: <https://community.canvaslms.com/thread/13468-how-can-i-get-started-building-an-lti-external-application> 
+* Course on building LTIs: <https://canvas.instructure.com/courses/785215/modules> 
+* Three-part blog on building LTI (.NET): [https://community.canvaslms.com/groups/canvas-developers/blog/2016/09/13/net-lti-project-part-](https://community.canvaslms.com/groups/canvas-developers/blog/2016/09/13/net-lti-project-part-1)
+
+Status: In Progress
+
+I found a few resources to help get started with LTI:
 
 About
 
@@ -949,105 +1034,7 @@ Examples:
 * Roll-call tool/assignment: <https://support.perceivant.com/hc/en-us/articles/115015942867-What-is-the-Roll-Call-Attendance-Tool-> (GitHub: <https://github.com/instructure/rollcall-attendance> )
 
 	
-* Ruby LTI project: <https://github.com/instructure/ims-lti> 
-* 
-* 
-* https://www.imsglobal.org/specs/ltiv1p2 
-* https://www.imsglobal.org/specs/ltiv1p2/implementation-guide 
-
-
-I found a few resources to help get started with LTI:
-
-About
-
-•	This thread is packed with some good questions, answers and the links to most of what I've listed below: https://community.canvaslms.com/thread/13467-how-can-i-get-started-building-an-lti-external-application 
-
-•	Another branch of that thread: https://community.canvaslms.com/thread/13468-how-can-i-get-started-building-an-lti-external-application 
-
-•	Course on building LTIs: https://canvas.instructure.com/courses/785215/modules 
-
-•	Three-part blog on building LTI (.NET): https://community.canvaslms.com/groups/canvas-developers/blog/2016/09/13/net-lti-project-part-  
-
-
-Examples:
-
-•	Roll-call tool/assignment: https://support.perceivant.com/hc/en-us/articles/115015942867-What-is-the-Roll-Call-Attendance-Tool- (GitHub: https://github.com/instructure/rollcall-attendance )  
-
-
-•	Ruby LTI project: https://github.com/instructure/ims-lti 
-
-1. Global site...
-2. Login to IMS Global site https://www.imsglobal.org/user/login?current=node/1 
-3. In the top, light grey menu, click "MyIMS"
-4. Click "Dashboard" tab
-5. Click "Customize Dashboard"
-6. Drag "LTI Technical Resources" chicklet down to the grid. You've now added links to the LTI resources.
-7. The interface is a little funny - select an item in the multi-select box, then click "Apply" to show the resources falling under the selected category  
-**LMS - Canvas**
-
-**October**
-
-<https://bccampus.ca/2013/12/18/canvas-is-coming-to-an-sfu-campus-near-you/>
-
-*December 18, 2013*
-
-*Next month, Simon Fraser University will complete its switch to Canvas---a new learning management system (LMS) used as a stand-alone platform by only one other post-secondary institution in Canada.*
-
-*...*
-
-*While Canvas is an open source, easy-to-use, cloud-native LMS, the university will host Canvas locally; that is, on servers physically located at SFU.*
-
-<http://www.youtube.com/watch?v=m75VRa_1r2Y>
-
-<http://www.proprofs.com/c/lms/exclusive-learning-management-system-best-practices/>
-
-LTI
-
-ComPAIR
-
-<https://ctlt.ubc.ca/about/contact-us/teaching-learning-technologies/>
-
-<https://lthub.ubc.ca/guides/compair/>
-
-Exceprt:
-
-Faculty and staff at UBC can most easily get started with ComPAIR by using Canvas. Through Canvas, you can set up a course in ComPAIR that will automatically be populated with your class list. The setup process is guided and only takes a few minutes.
-
-Use ComPAIR in your Canvas course:
-
-Add a ComPAIR link to your Canvas course's sidebar OR in a specific course module. You can follow the instructions below or contact the LT Hub for assistance with this step.
-
-To add a link in the course's sidebar: Go to Settings in your Canvas course. Select the Navigation tab. Scroll down until you find ComPAIR. Click the gear, and select Enable.
-
-To add a link in a course module: Go to Modules in your Canvas course. Press the "Add item" button on a specific module. Select External Tool from the drop-down menu. Select ComPAIR and then add the item.
-
-After the course link is set up in Canvas, click on the link to create your ComPAIR course. (This step is required to properly link your Canvas and ComPAIR courses together.) If you are a completely new user in ComPAIR, you will first be prompted to create an account and then a course.
-
-Note that because of how Canvas currently works, students also MUST follow the ComPAIR link from your Canvas course to initially register in your ComPAIR course. They cannot go to the ComPAIR website directly and try to log in there first; this will result in being denied access to ComPAIR and/or your ComPAIR course.
-
-If you do not want to use Canvas to set up ComPAIR, you are welcome to log in to the application directly at compair.elearning.ubc.ca. From there, you can add a course and populate it manually using the "Import Users" option found on the "Manage Users" screen inside the course. Note that importing users requires some knowledge of how to download and edit a CSV file of your course's students and means you will need to manage the class list manually (i.e., updating when students add or drop).
-
-Linking directly to a ComPAIR assignment via LTI
-
-Once you have set up a ComPAIR course and assignments, you can link directly to ComPAIR assignments from Canvas. This is useful if you want to send students to specific assignments from specific modules of your Canvas course and/or you want to enable automatic grade pass-back from ComPAIR assignments to Canvas.
-
-To create an assignment link in Canvas:
-
-Go to ComPAIR and edit the assignment you want to link to.
-
-Click the "Copy?" link at the top right of the edit assignment screen. This will copy the information you need to enter in Canvas.
-
-Now switch to Canvas and add an assignment, with a submission type of external tool and ComPAIR selected as the external tool.
-
-At the end of the "External Tool URL" field, type a question mark (?), then paste the value you copied from ComPAIR. This will mean the "External Tool URL" will ultimately something look like this: compair.elearning.ubc.ca/api/lti/auth?assignment=\* * * * * * * * 
-
-Select "Load This Tool In A New Tab".
-
-Save the assignment. When students click on the assignment in Canvas, it will take them directly to the assignment in ComPAIR.
-
-Note that to pass participation grades automatically from ComPAIR to Canvas for a given assignment, every student will need to click this Canvas link to the ComPAIR assignment once. Clicking the link opens up the Canvas-ComPAIR connection for that student's grade.
-
-\-=-=-=-= End Excerpt -=-=-=-=
+* Ruby LTI project: <https://github.com/instructure/ims-lti>
 
 ----
 
