@@ -1002,7 +1002,7 @@ Going with LTI 2.0 fixes this but introduces security risks that we don’t unde
 
 **Recommendation**
 
-For EdEHR prototype go with LTI 1.0 only.
+For EdEHR prototype go with LTI 1.0 only.  Yet, it’s important now to find a sample LTI 1.0 tool that can illustrate the full experience and not just launch.  I.e. Let’s see if the TP can return some indication the assignment is complete to the tool consumer.
 
 LTI resources
 
