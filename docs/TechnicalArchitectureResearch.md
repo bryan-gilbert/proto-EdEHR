@@ -1017,25 +1017,6 @@ Other links to explore
 * Course on building LTIs: <https://canvas.instructure.com/courses/785215/modules> 
 * Three-part blog on building LTI (.NET): [https://community.canvaslms.com/groups/canvas-developers/blog/2016/09/13/net-lti-project-part-](https://community.canvaslms.com/groups/canvas-developers/blog/2016/09/13/net-lti-project-part-1)
 
-Status: In Progress
-
-I found a few resources to help get started with LTI:
-
-About
-
-* This thread is packed with some good questions, answers and the links to most of what I've listed below: <https://community.canvaslms.com/thread/13467-how-can-i-get-started-building-an-lti-external-application> 
-* Another branch of that thread: <https://community.canvaslms.com/thread/13468-how-can-i-get-started-building-an-lti-external-application> 
-* Course on building LTIs: <https://canvas.instructure.com/courses/785215/modules> 
-* Three-part blog on building LTI (.NET): [https://community.canvaslms.com/groups/canvas-developers/blog/2016/09/13/net-lti-project-part-](https://community.canvaslms.com/groups/canvas-developers/blog/2016/09/13/net-lti-project-part-1)
-
-	
-
-Examples:
-* Roll-call tool/assignment: <https://support.perceivant.com/hc/en-us/articles/115015942867-What-is-the-Roll-Call-Attendance-Tool-> (GitHub: <https://github.com/instructure/rollcall-attendance> )
-
-	
-* Ruby LTI project: <https://github.com/instructure/ims-lti>
-
 ----
 
 ### Document management, upload ###
