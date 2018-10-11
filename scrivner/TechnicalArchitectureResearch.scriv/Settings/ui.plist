@@ -2,6 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CollectionSelections</key>
+	<dict>
+		<key>CDAE97F7-10DC-4A4E-A255-724F10D06B5C</key>
+		<array>
+			<string>A89FAE7A-3BB4-4BF4-9531-C708E2AC6FCF</string>
+		</array>
+	</dict>
 	<key>CompileFolder</key>
 	<string>/r/dev/bccampus/proto-EdEHR/scrivner/output</string>
 	<key>NotesScaleFactor</key>
@@ -61,6 +68,10 @@
 	</array>
 	<key>binderWidth</key>
 	<real>265</real>
+	<key>collectionSelectionAutosaveName</key>
+	<array>
+		<integer>0</integer>
+	</array>
 	<key>collectionsRepresentedBinderDocumentsInfo</key>
 	<dict>
 		<key>MainID</key>
@@ -86,7 +97,7 @@
 		<real>1</real>
 	</dict>
 	<key>mainDocumentEditor.scrollRect</key>
-	<string>{{0, 447.19999999999999}, {617.60000000000002, 586.39999999999986}}</string>
+	<string>{{0, 0}, {617.60000000000002, 586.39999999999998}}</string>
 	<key>mainDocumentEditor.textEditorState</key>
 	<dict>
 		<key>textScaleFactor</key>
@@ -94,6 +105,18 @@
 	</dict>
 	<key>mainWindowFrame</key>
 	<string>74 36 1284 841 0 0 1440 877 </string>
+	<key>searchResultsTable</key>
+	<dict>
+		<key>order</key>
+		<array>
+			<string>TITLE</string>
+		</array>
+		<key>widths</key>
+		<dict>
+			<key>TITLE</key>
+			<real>263</real>
+		</dict>
+	</dict>
 	<key>supportingDocumentEditor.dockedQRTextSettings</key>
 	<dict>
 		<key>textScaleFactor</key>
