@@ -822,7 +822,9 @@ BDD Behavior Driven Development is appropriate for the core functionality becaus
 
 BDD and TDD are the same, in that both require the developer to compose the test first. The test fails until the development is complete.
 
-Testing is related to the topic of Automated Testing
+Testing is related to the topic of Automated Testing 
+
+For http testing consider supertest <https://www.npmjs.com/package/supertest>
 
 ----
 
@@ -932,41 +934,114 @@ Webpack. <https://webpack.js.org/>
 <a href="#toc">Top</a>
 
 
-Status: In Progress
+  
+**LTI Consumer and Provider**	
 
-I found a few resources to help get started with LTI:
+The EdEHR requirements include a large number of features that are common to learning management systems (LMS). Systems such as Moodle, Canvas, and Blackboard to mention just three of dozens. It makes sense for this project to consider using a LMS to provide the basic learning management functionality. For example, managing personal information about students and teachers; courses; class lists; grades; etc.
 
-About
+The way to use an LMS as the “front end” is via Learning Tools Interoperability or LTI.  LTI is managed by IMS Global.  <https://www.imsglobal.org/activity/learning-tools-interoperability>
 
+**Terms**
+
+TP or Tool Provider is the courseware. If EdEHR adopts LTI then it will be a provider. 
+
+TC or Tool Consumer is the LMS
+
+Tool Proxy (will not use TP for this) is the link between a TC and TP. See LTI 2.0 below.
+
+**LTI versions**
+
+LTI 1.0 and 1.1 provide basic connection between the TC and TP
+
+LTI 2.0 allows a TC and TP to establish a trust relationship by sharing information with each other.  This TC/TP relationship is required for Moodle to create a system wide global link to a TP.  This is called a “External Tool” in Moodle.  It is called a Tool Proxy in LTI.   IMS says that LTI 2.0 is obsolete although it is supported by many LMS and is the method commonly used to establish this TC/TP Tool Proxy. 
+
+LTI 1.3 is the newest form of the spec and was created to deal with security issues that could not be implemented in LTI 2.0.
+
+LTI Advantage appears to be a layer on top of LTI 1.3 that provides links to other IMS/LTI specs such as Deep Linking, Names and Roles Provisioning, Assignment and Grades, etc.
+
+**System wide External Tool in Moodle**
+
+When a TP is configured in the site administration section it becomes available to anyone who manages courses or assignment creations.  An instructor can easily add a new activity to any course and select the preconfigured external tool.  The alternative, without the system wide configuration, requires the instructor to know the exact url to use to reach the correct content inside the tool provider. Plus, know the special key and secret password. Plus how to set up any special variables that may be needed by the tool provider.
+
+Essentially, it’s important to be able to support site wide external tools.  
+
+At this time it seems that LTI 2.0 is needed to support this.  Thus it seems important to implement LTI 2.0.  But,  IMS says LTI 2.0 is obsolete because of security concerns. Perhaps LTI 1.3 or LTI Advantage can replace this functionality?  
+
+**Availability of sample systems or plugins**
+
+To answer the question about LTI 1.3 its important to also look at the availability of plug and play code.  One goal of using LTI to reach any LMS is to reduce development time for EdEHR. After all why wouldn’t we want to leverage the full power of a LMS. And not only that but be able to switch to any LMS that may suit the educational institution.   In the context of reducing development time we need to find “off the shelf” tools that can provide the LTI functionality.   It’s not difficult to find sample code for LTI 1.0.  The code for this spec is not that large which makes sense because it basically has one API end point.  
+
+There is only one sample that supports LTI 2.0, 1.3, Advantage and it’s from Blackboard. 
+
+**Blackboard BBDN-LTI-Tool-Provider-Node**
+
+See <https://devhub.io/repos/blackboard-BBDN-LTI-Tool-Provider-Node>
+
+This project is maintained, occasionally, by two or three BB employees. Its goal is to be a demonstration of various IMS initiatives including: Content Item Messaging,  LTI Advantage Messaging, Caliper, Deeplink, Names and Roles, LTI membership and more.  This is not a piece of code that can be assimilated into another project easily. It is not designed to be a plugin. There are two ways EdEHR can use this code. One, we could use the code as the base of our application. The second approach is to rework the code into a plugin and contribute this effort back to the open source community.
+
+Option two is not in scope for this project and is not any where close to one of the deliverables. 
+
+Option one is has risks. 
+
+1. What are the security risks of using LTI 2.0? (Tool Proxy)
+2. From the code it’s not clear that tool proxy can be provided by the LTI 1.3 code.
+3. Before extracting code from a large code base it’s important to know how that code base works. This is a risk of time taken to stand up a system with this code base and try it out.
+4. Extracting code from a large code base then introduces the risk of “did you bring over everything you need?” and “did you bring over stuff that you don’t need yet don’t understand”.  
+5. Who will monitory the original project’s code base to see if future development/bug fixes need to be brought back to the EdEHR project.
+6. How many of the IMS initiatives are desired? 
+
+**Assessment**
+
+LTI with LMS offers some real advantages.  
+
+LTI specification spaghetti is confusing and we lack expertise to navigate the best approach as 2019 approaches.
+
+Going with just LTI 1.0 means the course instructors have a more difficult time setting up their assignments.
+
+Going with LTI 2.0 fixes this but introduces security risks that we don’t understand along with the development risks mentioned above.
+
+**Recommendation**
+
+For EdEHR prototype go with LTI 1.0 only.
+
+LTI V1.x implementation
+
+Consider using  <https://www.npmjs.com/package/ims-lti> (*This is a nodejs library used to help create Tool Providers for the IMS LTI standard. Tool Consumer implmentation is left as an excersise to the reader :P)*
+
+831 weekly downloads
+
+Last update to the code was Sep 5, 2016.  Two years ago.  Around Dec 2017 a developer offered to help maintain the library and they produced a sizeable pull request.  The repro owner has not commented on the update.  Is this a dead library?  These improvements can be found here and I’ve written the author in the hope they may have some advice.
+
+<https://github.com/ChristianMurphy/ims-lti/tree/refactor/decaffeinate-code>
+
+Observation: There is long term risk to using a library that is not being maintained. It’s good to see there are a healthy number of weekly downloads.  A search for users of this library didn’t show up many hits. The best option was another project that wraps ims-lti into a utility for Node JS applications that use Express. (This fits our plans.)   Another project designed to help integration with Canvas no longer exists.   And there was another BlackBoard community user who provided a simple application for listening to LTI requests, based on the lms-lti project.
+
+1. See <https://community.blackboard.com/community/developers/blog/2018/01> for a very simple example that uses ims-lti library to recieve basic launch requests. This sample is missing the needed return to LMS.
+2. Express middle ware to use ims-lti.  26 weekly downloads. https://www.npmjs.com/package/express-ims-lti
+3. An all-purpose node module that handles the core functionality of a Canvas-integrated LTI app. 0 weekly downloads. Github ---\> 404 page.  <https://www.npmjs.com/package/canvas-app-spine> 
+4. Some further notes can be found here <https://stackoverflow.com/questions/27319576/lti-launch-authentication-with-node-js>
+
+
+Full 
+
+The LTI V1.0 basic launch request contains
+
+LTI V1.x full sequence
+
+So far, searches for a sample LTI 1.0 application that can be used by Moodle at the system level has not been found.   There are samples using V2.0.
+
+LTI resources
+
+Other samples
+
+* <https://github.com/instructure/ims-lti> Ruby implementation of LTI 1.0 only
+* <https://github.com/instructure/rollcall-attendance> Rich example of a tool provider that supports instructors tracking student attendance. Its a Ruby application with close relation to the Canvas LMS.  There is no clear “LTI” section in the code so it’s not easy to see if this app is LTI 2.0 or 1.3.   (<https://support.perceivant.com/hc/en-us/articles/115015942867-What-is-the-Roll-Call-Attendance-Tool->)
+
+Other links to explore
 * This thread is packed with some good questions, answers and the links to most of what I've listed below: <https://community.canvaslms.com/thread/13467-how-can-i-get-started-building-an-lti-external-application> 
 * Another branch of that thread: <https://community.canvaslms.com/thread/13468-how-can-i-get-started-building-an-lti-external-application> 
 * Course on building LTIs: <https://canvas.instructure.com/courses/785215/modules> 
 * Three-part blog on building LTI (.NET): [https://community.canvaslms.com/groups/canvas-developers/blog/2016/09/13/net-lti-project-part-](https://community.canvaslms.com/groups/canvas-developers/blog/2016/09/13/net-lti-project-part-1)
-
-	
-
-Examples:
-* Roll-call tool/assignment: <https://support.perceivant.com/hc/en-us/articles/115015942867-What-is-the-Roll-Call-Attendance-Tool-> (GitHub: <https://github.com/instructure/rollcall-attendance> )
-
-	
-* Ruby LTI project: <https://github.com/instructure/ims-lti>  
-**Canvas**
-
-**October**
-
-<https://bccampus.ca/2013/12/18/canvas-is-coming-to-an-sfu-campus-near-you/>
-
-*December 18, 2013*
-
-*Next month, Simon Fraser University will complete its switch to Canvas---a new learning management system (LMS) used as a stand-alone platform by only one other post-secondary institution in Canada.*
-
-*...*
-
-*While Canvas is an open source, easy-to-use, cloud-native LMS, the university will host Canvas locally; that is, on servers physically located at SFU.*
-
-<http://www.youtube.com/watch?v=m75VRa_1r2Y>
-
-<http://www.proprofs.com/c/lms/exclusive-learning-management-system-best-practices/>
 
 ----
 
