@@ -5,22 +5,22 @@ const lti = require('ims-lti')
 
 /* global describe it  beforeEach afterEach */
 describe('Server ', function () {
+  var server
+  beforeEach(function () {
+    delete require.cache[require.resolve('./server')]
+    server = require('../server/server')
+    console.log('create server')
+  })
+  afterEach(function (done) {
+    if (server) {
+      console.log('close server')
+      server.close(() => {
+        server = undefined
+        done()
+      })
+    }
+  })
   describe('Server loading express', function () {
-    var server
-    beforeEach(function () {
-      delete require.cache[require.resolve('./server')]
-      server = require('../server/server')
-      console.log('create server')
-    })
-    afterEach(function (done) {
-      if (server) {
-        console.log('close server')
-        server.close(() => {
-          server = undefined
-          done()
-        })
-      }
-    })
     it('responds to /', function testSlash (done) {
       request(server)
       .get('/')

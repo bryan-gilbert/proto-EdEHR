@@ -82,7 +82,7 @@ class consumer {
       return false
     }
 
-    const correctVersion = lti.supported_versions.indexOf(params.lti_version) !== -1
+    const correctVersion = lti.Message.is_supported_version(params.lti_version)
     const hasResourceLinkId = params.resource_link_id != null
     const omitsContentItemParams =
       params.resource_link_id == null &&
