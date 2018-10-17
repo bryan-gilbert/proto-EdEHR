@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  p We have received your LTI Launch. You can view the request body below.
+  p What would you like to do now?
+  p
+    form(name="return", action=return_url, method="get")
+      input(type="button", onclick=return_onclick, value="Return to Learn")
+  p 
+  p Here's the request body!
+  p !{content}

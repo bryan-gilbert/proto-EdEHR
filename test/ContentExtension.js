@@ -1,6 +1,6 @@
 const url = require('url')
 const should = require('should')
-const lti = require('../')
+const lti = require('ims-lti')
 /* global describe it beforeEach */
 describe('LTI.Extensions.Content', function () {
   beforeEach(function () {
@@ -29,7 +29,7 @@ describe('LTI.Extensions.Content', function () {
 
   describe('constructor', function () {
     it('should initialize an object if ext_content_return_types is set', function () {
-      this.provider.ext_content.should.exist()
+      should.exist(this.provider.ext_content)
     })
 
     it('should be false if ext_content_return_types is missing', function () {

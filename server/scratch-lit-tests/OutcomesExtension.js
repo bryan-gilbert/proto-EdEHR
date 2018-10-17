@@ -1,7 +1,7 @@
 const should = require('should')
-
 const shared = require('./shared')
-const lti = require('../')
+const lti = require('ims-lti')
+
 /* global describe it before after */
 describe('LTI.Extensions.Outcomes', () => {
   before(() => {
