@@ -20,7 +20,7 @@ npm run build
 
 Outside of the project directory
 ```
-git clone https://github.com/sfu/ims-lti.git ims-lti-sfu
+git clone https://github.com/bryan-gilbert/ims-lti.git 
 npm install ../ims-lti --save
 ```
 
