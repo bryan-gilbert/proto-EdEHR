@@ -1,12 +1,13 @@
 $o-wrapper-sizes: (
-  wide:   82em,
-  narrow: 42em,
+  page:   1024px,
+  wide:   682px,
+  narrow: 342px,
 );
 
 @mixin wrapper($size: narrow) {
   margin-right: auto;
   margin-left: auto;
-  padding-right: 1em;
-  padding-left: 1em;
+  padding-right: 0;
+  padding-left: 0;
   max-width: map-get($o-wrapper-sizes, $size);
 }

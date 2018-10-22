@@ -49,25 +49,25 @@
   </div>
 </template>
 
+
 <script>
-import AppHero from '../app/AppHero.vue';
-import UiLink from '../ui/UiLink.vue';
-import AppTeaser from '../app/AppTeaser.vue';
-import AppTeaserList from '../app/AppTeaserList.vue';
-import AppTeaserListItem from '../app/AppTeaserListItem.vue';
+  import AppHero from '../app/AppHero.vue';
+  import UiLink from '../ui/UiLink.vue';
+  import AppTeaser from '../app/AppTeaser.vue';
+  import AppTeaserList from '../app/AppTeaserList.vue';
+  import AppTeaserListItem from '../app/AppTeaserListItem.vue';
 
-export default {
-  name: `PageHome`,
-  components: {
-    AppHero,
-    UiLink,
-    AppTeaser,
-    AppTeaserList,
-    AppTeaserListItem,
-  },
-};
+  export default {
+    name: `PageHome`,
+    components: {
+      AppHero,
+      UiLink,
+      AppTeaser,
+      AppTeaserList,
+      AppTeaserListItem,
+    },
+  };
 </script>
-
 <style lang="scss" scoped>
 .PageHome {
   $section-spacing: 3em;

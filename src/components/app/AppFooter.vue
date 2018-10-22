@@ -4,7 +4,7 @@
 
       <ui-link :to="{ name: `home` }">Home</ui-link>
       |
-      <ui-link :to="{ name: `article` }">Article</ui-link>
+      <ui-link :to="{ name: `article` }">Articled</ui-link>
       |
       <ui-link :to="{ name: `dev` }">Dev</ui-link>
       |

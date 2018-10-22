@@ -3,7 +3,8 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-const PageHome = () => import(/* webpack-chunk-name: "PageHome" */ `./components/page/PageHome.vue`);
+const PageHome   = () => import(/* webpack-chunk-name: "PageHome"   */ `./components/page/PageHome.vue`);
+const EhrPagePoc = () => import(/* webpack-chunk-name: "EhrPagePoc" */ `./components/page/EhrPagePoc.vue`);
 const PageArticle = () => import(/* webpack-chunk-name: "PageArticle" */ `./components/page/PageArticle.vue`);
 const PageList = () => import(/* webpack-chunk-name: "PageList" */ `./components/page/PageList.vue`);
 const PageBlog = () => import(/* webpack-chunk-name: "PageBlog" */ `./components/page/PageBlog.vue`);
@@ -14,7 +15,12 @@ export default new VueRouter({
     {
       name: `home`,
       path: `/`,
-      component: PageHome,
+      component: EhrPagePoc,
+    },
+    {
+      name: `dashboard`,
+      path: `/dashboard`,
+      component: PageDev,
     },
     {
       name: `article`,
@@ -22,13 +28,18 @@ export default new VueRouter({
       component: PageArticle,
     },
 		{
-			name: `dev`,
-			path: `/dev`,
+			name: `account`,
+			path: `/account`,
 			component: PageDev,
 		},
+    {
+      name: `dev`,
+      path: `/dev`,
+      component: PageDev,
+    },
 		{
-			name: `blog`,
-			path: `/blog`,
+			name: `help`,
+			path: `/help`,
 			component: PageBlog,
 		},
     {

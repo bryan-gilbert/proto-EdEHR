@@ -23,7 +23,7 @@ export default {
   font-weight: 500;
 
   &--1 {
-    font-size: 3.375em;
+    font-size: 2em;
   }
 
   &--2 {

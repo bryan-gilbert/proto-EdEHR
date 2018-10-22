@@ -6,8 +6,7 @@
       </template>
     </app-hero>
     <ui-button v-on:buttonClicked="appButtonClicked($event)">Click App Button</ui-button>
-    <money-converter>
-    </money-converter>
+    This is the Dev page
 
   </div>
 </template>

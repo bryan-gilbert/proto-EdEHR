@@ -31,8 +31,8 @@
 			}
 		},
 		methods: {
-			buttonClicked: function () {
-				this.$emit('buttonClicked');
+			buttonClicked: function (event) {
+				this.$emit('buttonClicked', event);
 			}
 		}
 	};
