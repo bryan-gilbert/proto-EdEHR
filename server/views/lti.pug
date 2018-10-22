@@ -3,10 +3,8 @@ extends layout
 block content
   h1 EdEHR Proof of Concept
   - var content = JSON.parse(lti_message)
-  - var page1_url = 'http://localhost:5000/'
-  - var page1_onclick = 'location.href=' + '\'' + page1_url + '\';'
   p.
-    Welcome !{content.lis_person_name_given} to the EdEHR proof of concept.
+    Welcome !{content.lis_person_name_given} (user id: !{content.user_id}) to the EdEHR proof of concept.
     You have enrolled in the following course
   ul
     li Title: !{content.context_title}
@@ -37,6 +35,12 @@ block content
   p
   p What would you like to do now?
   div.option
+    - var assignmentTitle = content.resource_link_title
+    -
+      var page1_url = 'http://localhost:5000?' + 'a=' + content.resource_link_id
+        + 'b=' + content.user_id
+        + 'name=' + content.lis_person_name_given
+    - var page1_onclick = 'location.href=' + '\'' + page1_url + '\';'
     form(name="page1", action=page1_url, method="get")
       input(type="button", onclick=page1_onclick, value="See the proof of concept page" class="button is-primary")
 
