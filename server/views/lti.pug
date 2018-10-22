@@ -37,9 +37,9 @@ block content
   div.option
     - var assignmentTitle = content.resource_link_title
     -
-      var page1_url = 'http://localhost:5000?' + 'a=' + content.resource_link_id
-        + 'b=' + content.user_id
-        + 'name=' + content.lis_person_name_given
+      var page1_url = 'http://localhost:5000?' + 'resourceLinkId=' + content.resource_link_id
+        + '&userId=' + content.user_id
+        + '&userName=' + content.lis_person_name_given
     - var page1_onclick = 'location.href=' + '\'' + page1_url + '\';'
     form(name="page1", action=page1_url, method="get")
       input(type="button", onclick=page1_onclick, value="See the proof of concept page" class="button is-primary")

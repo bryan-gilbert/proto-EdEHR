@@ -1,5 +1,6 @@
 <template>
   <div :class="$options.name">
+    <ui-button v-on:buttonClicked="returnToDashboard">Save</ui-button>
     <div :class="`${$options.name}__wrapper`">
       <ehr-nav-list :class="`${$options.name}__teaserList`">
         <ehr-nav-list-item>
@@ -40,15 +41,22 @@ import EhrNav from '../app/EhrNav';
 import EhrNavList from '../app/EhrNavList';
 import EhrNavListItem from '../app/EhrNavListItem';
 import UiLink from '../ui/UiLink.vue';
+import UiButton from '../ui/UiButton.vue';
 
 export default {
   name: `EhrNavPanel`,
   components: {
+    UiButton,
     UiLink,
     EhrNav,
     EhrNavList,
     EhrNavListItem
+  },
+  methods: {
+    returnToDashboard: function(event) {
+    }
   }
+
 };
 </script>
 
