@@ -1,0 +1,164 @@
+{Section: Demographics}	eCell	{FQN: Demographics}	{Label: Demographics}	{NavURL: ./patient/demographics}	{Input_type: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: Demographics}	{Element_Key: Given}	{FQN: Demographics.Given}	{Label: First name}	eCell	{Input_type: text field}	eCell	eCell	{Data_From: case}	eCell	{Data: Erin}	eCell	{Mandatory: yes}	eCell	{Case data: Erin}
+{Section: Demographics}	{Element_Key: Middle}	{FQN: Demographics.Middle}	{Label: Middle name(s)}	eCell	{Input_type: text field}	eCell	eCell	{Data_From: case}	eCell	eCell	eCell	{Mandatory: no}	eCell	eCell
+{Section: Demographics}	{Element_Key: Family}	{FQN: Demographics.Family}	{Label: Last name}	eCell	{Input_type: text field}	eCell	eCell	{Data_From: case}	eCell	{Data: Johns}	eCell	{Mandatory: yes}	eCell	{Case data: Johns}
+{Section: Demographics}	{Element_Key: Preferred Name}	{FQN: Demographics.Preferred_Name}	{Label: Preferred name}	eCell	{Input_type: text field}	eCell	eCell	{Data_From: case}	eCell	{Data: Erin}	eCell	{Mandatory: no}	eCell	eCell
+{Section: Demographics}	{Element_Key: DateOfBirth}	{FQN: Demographics.DateOfBirth}	{Label: Date of birth}	eCell	{Input_type: calculated text, no input needed}	eCell	eCell	{Data_From: manually entered}	eCell	{Data: 09-SEP-19##}	eCell	eCell	eCell	eCell
+{Section: Demographics}	{Element_Key: Age}	{FQN: Demographics.Age}	{Label: Age}	eCell	{Input_type: text field}	eCell	eCell	{Data_From: case}	eCell	{Data: 74}	eCell	{Mandatory: yes}	eCell	{Case data: 74}
+{Section: Demographics}	{Element_Key: Gender}	{FQN: Demographics.Gender}	{Label: Gender}	eCell	{Input_type: dropdown}	eCell	"{Options: female
+male
+transgender female
+transgender male
+unknown
+undifferentiated
+prefer not to say}"	{Data_From: case}	eCell	{Data: Female}	eCell	{Mandatory: yes}	eCell	{Case data: female}
+{Section: Demographics}	{Element_Key: Martial status}	{FQN: Demographics.Martial_status}	{Label: Martial status}	eCell	{Input_type: dropdown}	eCell	"{Options: married
+single
+life partner
+divorced
+separated
+widowed}"	{Data_From: case}	eCell	{Data: Widow}	eCell	{Mandatory: no}	eCell	eCell
+{Section: Demographics}	{Element_Key: Code status}	{FQN: Demographics.Code_status}	{Label: Code status}	eCell	{Input_type: dropdown}	eCell	"{Options: CPR
+DNR M1
+DNR M2
+DNR M3
+DNR C1
+DNR C2}"	{Data_From: ?}	eCell	eCell	"{Helper_Text: Do Not Attempt Cardiopulmonary Resuscitation (DNACPR: No chest compressions
+or other direct means of restarting the heart), and:
+Option 1 (M1)* No CPR. Supportive care, symptom management, and comfort
+measures. Allow natural death.
+Option 2 (M2) No CPR. Option 1 (M1) plus therapeutic measures and medications
+to manage acute conditions within the current setting. If in residential
+care or hospice, transfer to acute care will not occur except in special
+circumstances (eg fracture).
+Option 3 (M3) No CPR. Option 2 (M2) plus admission to an acute care hospital (if
+not already admitted) for medical/surgical treatment as indicated. No
+referral to Critical Care.
+Option 4 (C1) No CPR. Maximum therapeutic effort as in Option 3 (M3) including
+referral to Critical Care but not including intubation and ventilation.
+Option 5 (C2) No CPR. Maximum therapeutic effort as in Option 4 (C1) including
+referral to Critical Care and including intubation and ventilation}"	{Mandatory: no}	eCell	eCell
+{Section: Demographics}	{Element_Key: Primary language}	{FQN: Demographics.Primary_language}	{Label: Primary language}	eCell	{Input_type: text field}	eCell	eCell	{Data_From: case}	eCell	{Data: English}	eCell	{Mandatory: no}	eCell	eCell
+{Section: Demographics}	{Element_Key: Religion}	{FQN: Demographics.Religion}	{Label: Religion}	eCell	{Input_type: text field}	eCell	eCell	{Data_From: ?}	eCell	eCell	eCell	{Mandatory: no}	eCell	eCell
+{Section: Demographics}	{Element_Key: Identify As Indigenous}	{FQN: Demographics.Identify_As_Indigenous}	{Label: Do you identify as an indigenous person?}	eCell	{Input_type: checkbox}	eCell	eCell	{Data_From: case}	eCell	{Data: FALSE}	eCell	eCell	eCell	eCell
+{Section: Demographics}	{Element_Key: Street address}	{FQN: Demographics.Street_address}	{Label: Street address}	eCell	{Input_type: text field}	eCell	eCell	{Data_From: manually entered}	eCell	{Data: 402 Willow St.}	eCell	eCell	eCell	eCell
+{Section: Demographics}	{Element_Key: City}	{FQN: Demographics.City}	{Label: City}	eCell	{Input_type: text field}	eCell	eCell	{Data_From: manually entered}	eCell	{Data: Vancouver}	eCell	eCell	eCell	eCell
+{Section: Demographics}	{Element_Key: Country}	{FQN: Demographics.Country}	{Label: Country}	eCell	{Input_type: dropdown}	eCell	eCell	{Data_From: manually entered}	eCell	{Data: Canada}	eCell	eCell	eCell	eCell
+{Section: Demographics}	{Element_Key: Postal code}	{FQN: Demographics.Postal_code}	{Label: Postal code}	eCell	{Input_type: text field}	eCell	eCell	{Data_From: manually entered}	eCell	{Data: V3F 9R2}	eCell	eCell	eCell	eCell
+{Section: Demographics}	{Element_Key: No address}	{FQN: Demographics.No_address}	{Label: No address}	eCell	{Input_type: checkbox}	eCell	eCell	{Data_From: manually entered}	eCell	{Data: (Not ticked)}	eCell	eCell	eCell	eCell
+{Section: Demographics}	{Element_Key: Phone number}	{FQN: Demographics.Phone_number}	{Label: Phone number}	eCell	{Input_type: text field - phone}	eCell	eCell	{Data_From: manually entered}	eCell	{Data: (778) 555-2947}	eCell	eCell	eCell	eCell
+{Section: Demographics}	{Element_Key: Email address}	{FQN: Demographics.Email_address}	{Label: Email address}	eCell	{Input_type: text field - email}	eCell	eCell	{Data_From: manually entered}	eCell	{Data: (leave empty)}	eCell	eCell	eCell	eCell
+{Section: Demographics}	{Element_Key: Occupation student}	{FQN: Demographics.Occupation_student}	{Label: Occupation/student}	eCell	{Input_type: text field}	eCell	eCell	{Data_From: case}	eCell	{Data: Retired}	eCell	eCell	eCell	eCell
+{Section: Demographics}	{Element_Key: PHN}	{FQN: Demographics.PHN}	{Label: PHN}	eCell	{Input_type: text field}	eCell	eCell	{Data_From: manually entered}	eCell	{Data: 12345678}	eCell	eCell	eCell	eCell
+{Section: Demographics}	{Element_Key: MRN}	{FQN: Demographics.MRN}	{Label: MRN}	eCell	{Input_type: text field}	eCell	eCell	{Data_From: manually entered}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: Demographics}	{Element_Key: Patient service}	{FQN: Demographics.Patient_service}	{Label: Patient service}	eCell	{Input_type: text field}	eCell	eCell	{Data_From: ?}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: Demographics}	{Element_Key: Next of kin name}	{FQN: Demographics.Next_of_kin_name}	{Label: Next of kin name}	eCell	{Input_type: text field}	eCell	eCell	{Data_From: case}	eCell	{Data: Thomas Johns}	eCell	eCell	eCell	eCell
+{Section: Demographics}	{Element_Key: Next of kin relationship}	{FQN: Demographics.Next_of_kin_relationship}	{Label: Next of kin relationship}	eCell	{Input_type: dropdown}	eCell	"{Options: wife
+husband
+mother
+father
+guardian
+sister
+brother
+daughter
+son
+aunt
+uncle
+grandmother
+grandfather
+friend
+other}"	{Data_From: case}	eCell	{Data: Son}	eCell	eCell	eCell	eCell
+{Section: Demographics}	{Element_Key: Next of kin phone}	{FQN: Demographics.Next_of_kin_phone}	{Label: Next of kin phone}	eCell	{Input_type: text field - phone}	eCell	eCell	{Data_From: manually entered}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: Demographics}	{Element_Key: Decision maker name}	{FQN: Demographics.Decision_maker_name}	{Label: Decision maker name}	eCell	{Input_type: text field}	eCell	eCell	{Data_From: case}	eCell	{Data: Thomas Johns}	eCell	eCell	eCell	eCell
+{Section: Demographics}	{Element_Key: Decision maker relationship}	{FQN: Demographics.Decision_maker_relationship}	{Label: Decision maker relationship}	eCell	{Input_type: dropdown}	eCell	"{Options: spouse
+child
+parent
+sibling
+grandparent
+grandchild
+friend
+anyone else related by partnership
+Public Guardian and Trustee employee
+other}"	{Data_From: case}	eCell	{Data: Son}	eCell	eCell	eCell	eCell
+{Section: Demographics}	{Element_Key: Decision maker phone}	{FQN: Demographics.Decision_maker_phone}	{Label: Decision maker phone}	eCell	{Input_type: text field - phone}	eCell	eCell	{Data_From: manually entered}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: Allergies}	eCell	{FQN: Allergies}	{Label: Allergies}	{NavURL: ./patient/allergies}	{Input_type: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: Allergies}	{Element_Key: Allergies search}	{FQN: Allergies.Allergies_search}	{Label: Allergies search}	eCell	{Input_type: text field}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: one of these two need to be filled}	eCell	eCell
+{Section: Allergies}	{Element_Key: Has Allergies}	{FQN: Allergies.Has_Allergies}	{Label: Has allergies}	eCell	{Input_type: checkbox}	eCell	eCell	{Data_From: case}	eCell	{Data: FALSE}	eCell	{Mandatory: one of these two need to be filled}	eCell	eCell
+{Section: History}	eCell	{FQN: History}	{Label: History}	{NavURL: ./patient/history/medical}	{Input_type: nav group}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Medical}	eCell	{FQN: History.Medical}	{Label: Medical}	{NavURL: ./patient/history/medical}	{Input_type: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Medical}	{Element_Key: Past medical history}	{FQN: History.Medical.Past_medical_history}	{Label: Past medical history}	eCell	{Input_type: text box}	eCell	eCell	{Data_From: case}	eCell	"{Data: Erin Johns is 74 years old. She is widowed with four children, one of whom lives at home with her in their
+original family home in a small city in northern British Columbia. Two of Erin’s children live within a one-hour
+drive from her, and one lives a three-hour flight away. She also has 10 grandchildren and one great grandchild.
+Erin communicates with her grandchildren by telephone and Skype using her iPad. Erin describes herself as a
+non-smoker, but she smoked socially when she was in her early twenties for about five years. She is a retired
+hairdresser. Erin also has a small hairless Chihuahua named Trixie. Erin spends her time socializing at her local
+community centre with her friends, and she likes to play Bingo. At home, she enjoys watching Netflix and playing “Solitaire and Scrabble with friends” on her iPad. Erin tends to feel down when she thinks about her lower financial status and her advancing age, and how she is becoming more forgetful and less energetic. She often feels alone but is grateful to have the company of Trixie and the few friends she has left who are still alive. She worries about falling and not being able to alert anyone to come to her rescue. Driving is becoming hard for her, and she finds getting to the clinic and picking up her medications more and more challenging, especially now that she doesn’t have her own doctor anymore and she needs to go to the walk-in clinic.}"	eCell	eCell	eCell	{Case data: History of COPD, recent puffer change, otherwise healthy, non-smoker}
+{Section: History: Psychosocial}	{Element_Key: Psychosocial}	{FQN: History.Psychosocial.Psychosocial}	{Label: History: Psychosocial}	eCell	{Input_type: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Psychosocial}	eCell	{FQN: History.Psychosocial}	{Label: Psychosocial}	{NavURL: ./patient/history/psychocial}	{Input_type: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Psychosocial}	{Element_Key: Psychosocial history}	{FQN: History.Psychosocial.Psychosocial_history}	{Label: Psychosocial history}	eCell	{Input_type: text box}	eCell	eCell	{Data_From: case}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Psychosocial}	{Element_Key: Diet}	{FQN: History.Psychosocial.Diet}	{Label: Diet}	eCell	{Input_type: text box}	eCell	eCell	{Data_From: case}	eCell	{Data: Regular}	eCell	eCell	eCell	eCell
+{Section: History: Psychosocial}	{Element_Key: Living situation}	{FQN: History.Psychosocial.Living_situation}	{Label: Living situation}	eCell	{Input_type: text box}	eCell	eCell	{Data_From: case}	eCell	{Data: Lives alone}	eCell	eCell	eCell	eCell
+{Section: History: Psychosocial}	{Element_Key: Employment/school}	{FQN: History.Psychosocial.Employment/school}	{Label: Employment/school}	eCell	{Input_type: text box}	eCell	eCell	{Data_From: case}	eCell	{Data: Retired}	eCell	eCell	eCell	eCell
+{Section: History: Psychosocial}	{Element_Key: Hobbies}	{FQN: History.Psychosocial.Hobbies}	{Label: Hobbies}	eCell	{Input_type: text box}	eCell	eCell	{Data_From: case}	eCell	{Data: Bingo}	eCell	eCell	eCell	eCell
+{Section: History: Psychosocial: Behaviours}	eCell	{FQN: History.Psychosocial.Behaviours}	{Label: Behaviours, Frequency}	eCell	{Input_type: fieldset}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Psychosocial: Behaviours}	{Element_Key: Exercise}	{FQN: History.Psychosocial.Behaviours.Exercise}	{Label: Exercise}	eCell	{Input_type: checkbox}	eCell	eCell	{Data_From: case}	eCell	{Data: TRUE}	eCell	eCell	eCell	eCell
+{Section: History: Psychosocial: Behaviours}	{Element_Key: Exercise.Frequency}	{FQN: History.Psychosocial.Behaviours.Exercise.Frequency}	{Label: Frequency}	eCell	{Input_type: text field}	{Dependant_On_FQN: History.Psychosocial.Behaviours.Exercise}	eCell	{Data_From: case}	eCell	{Data: < 1 day/week}	eCell	eCell	eCell	eCell
+{Section: History: Psychosocial: Behaviours}	{Element_Key: Caffeine}	{FQN: History.Psychosocial.Behaviours.Caffeine}	{Label: Caffeine use}	eCell	{Input_type: checkbox}	eCell	eCell	{Data_From: case}	eCell	{Data: TRUE}	eCell	eCell	eCell	eCell
+{Section: History: Psychosocial: Behaviours}	{Element_Key: Caffeine.Frequency}	{FQN: History.Psychosocial.Behaviours.Caffeine.Frequency}	{Label: Frequency}	eCell	{Input_type: text field}	{Dependant_On_FQN: History.Psychosocial.Behaviours.Caffeine}	eCell	{Data_From: case}	eCell	{Data: 1-2 cups day}	eCell	eCell	eCell	eCell
+{Section: History: Psychosocial: Behaviours}	{Element_Key: Tobacco}	{FQN: History.Psychosocial.Behaviours.Tobacco}	{Label: Tobacco use}	eCell	{Input_type: checkbox}	eCell	eCell	{Data_From: case}	eCell	{Data: TRUE}	eCell	eCell	eCell	eCell
+{Section: History: Psychosocial: Behaviours}	{Element_Key: Tobacco.Frequency}	{FQN: History.Psychosocial.Behaviours.Tobacco.Frequency}	{Label: Frequency}	eCell	{Input_type: text field}	{Dependant_On_FQN: History.Psychosocial.Behaviours.Tobacco}	eCell	{Data_From: case}	eCell	{Data: History of smoking}	eCell	eCell	eCell	eCell
+{Section: History: Psychosocial: Behaviours}	{Element_Key: Cannabis}	{FQN: History.Psychosocial.Behaviours.Cannabis}	{Label: Cannabis use}	eCell	{Input_type: checkbox}	eCell	eCell	{Data_From: case}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Psychosocial: Behaviours}	{Element_Key: Cannabis.Frequency}	{FQN: History.Psychosocial.Behaviours.Cannabis.Frequency}	{Label: Frequency}	eCell	{Input_type: text field}	{Dependant_On_FQN: History.Psychosocial.Behaviours.Cannabis}	eCell	{Data_From: case}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Psychosocial: Behaviours}	{Element_Key: Alcohol}	{FQN: History.Psychosocial.Behaviours.Alcohol}	{Label: Alcohol use}	eCell	{Input_type: checkbox}	eCell	eCell	{Data_From: case}	eCell	{Data: TRUE}	eCell	eCell	eCell	eCell
+{Section: History: Psychosocial: Behaviours}	{Element_Key: Alcohol.Frequency}	{FQN: History.Psychosocial.Behaviours.Alcohol.Frequency}	{Label: Frequency}	eCell	{Input_type: text field}	{Dependant_On_FQN: History.Psychosocial.Behaviours.Alcohol}	eCell	{Data_From: case}	eCell	{Data: social}	eCell	eCell	eCell	eCell
+{Section: History: Psychosocial: Behaviours}	{Element_Key: Substance}	{FQN: History.Psychosocial.Behaviours.Substance}	{Label: Substance use}	eCell	{Input_type: checkbox}	eCell	eCell	{Data_From: case}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Psychosocial: Behaviours}	{Element_Key: Substance.Frequency}	{FQN: History.Psychosocial.Behaviours.Substance.Frequency}	{Label: Frequency}	eCell	{Input_type: text field}	{Dependant_On_FQN: History.Psychosocial.Behaviours.Substance}	eCell	{Data_From: case}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Psychosocial: Behaviours}	eCell	{FQN: History.Psychosocial.Behaviours}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Surgical}	eCell	{FQN: History.Surgical}	{Label: Surgical}	{NavURL: ./patient/history/surgical}	{Input_type: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Surgical}	{Element_Key: Past surgery}	{FQN: History.Surgical.Past_surgery}	{Label: Past surgery}	eCell	{Input_type: Text box}	eCell	eCell	{Data_From: case}	eCell	{Data: None}	eCell	eCell	eCell	eCell
+{Section: History: Surgical}	{Element_Key: Previous admissions}	{FQN: History.Surgical.Previous_admissions}	{Label: Previous admissions}	eCell	{Input_type: Text box}	eCell	eCell	{Data_From: case}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Immunization}	eCell	{FQN: History.Immunization}	{Label: Immunization}	{NavURL: ./patient/history/immunization}	{Input_type: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Immunization}	{Element_Key: UpToDate}	{FQN: History.Immunization.UpToDate}	{Label: Up To Date}	eCell	{Input_type: checkbox}	eCell	eCell	{Data_From: case}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Immunization: Type}	eCell	{FQN: History.Immunization.Type}	{Label: Behaviours}	eCell	{Input_type: fieldset}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Immunization: Type}	{Element_Key: Tetnus}	{FQN: History.Immunization.Type.Tetnus}	{Label: Tetnus}	eCell	{Input_type: checkbox}	eCell	eCell	{Data_From: case}	eCell	eCell	eCell	{Mandatory: If other is selected, this is mandatory}	eCell	eCell
+{Section: History: Immunization: Type}	{Element_Key: Tetnus.Date}	{FQN: History.Immunization.Type.Tetnus.Date}	{Label: Date}	eCell	{Input_type: text field - date}	{Dependant_On_FQN: History.Immunization.Type.Tetnus}	eCell	{Data_From: case}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Immunization: Type}	{Element_Key: Polio}	{FQN: History.Immunization.Type.Polio}	{Label: Polio, diptheria, pertussis}	eCell	{Input_type: checkbox}	eCell	eCell	{Data_From: case}	eCell	eCell	eCell	{Mandatory: If other is selected, this is mandatory}	eCell	eCell
+{Section: History: Immunization: Type}	{Element_Key: Polio.Date}	{FQN: History.Immunization.Type.Polio.Date}	{Label: Date}	eCell	{Input_type: text field - date}	{Dependant_On_FQN: History.Immunization.Type.Polio}	eCell	{Data_From: case}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Immunization: Type}	{Element_Key: MMR}	{FQN: History.Immunization.Type.MMR}	{Label: Tetnus}	eCell	{Input_type: checkbox}	eCell	eCell	{Data_From: case}	eCell	eCell	eCell	{Mandatory: If other is selected, this is mandatory}	eCell	eCell
+{Section: History: Immunization: Type}	{Element_Key: MMR.Date}	{FQN: History.Immunization.Type.MMR.Date}	{Label: Date}	eCell	{Input_type: text field - date}	{Dependant_On_FQN: History.Immunization.Type.MMR}	eCell	{Data_From: case}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Immunization: Type}	{Element_Key: Hep A}	{FQN: History.Immunization.Type.Hep_A}	{Label: Polio, diptheria, pertussis}	eCell	{Input_type: checkbox}	eCell	eCell	{Data_From: case}	eCell	eCell	eCell	{Mandatory: If other is selected, this is mandatory}	eCell	eCell
+{Section: History: Immunization: Type}	{Element_Key: Hep A.Date}	{FQN: History.Immunization.Type.Hep_A.Date}	{Label: Date}	eCell	{Input_type: text field - date}	{Dependant_On_FQN: History.Immunization.Type.Hep_A}	eCell	{Data_From: case}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Immunization: Type}	{Element_Key: Hep B}	{FQN: History.Immunization.Type.Hep_B}	{Label: Polio, diptheria, pertussis}	eCell	{Input_type: checkbox}	eCell	eCell	{Data_From: case}	eCell	eCell	eCell	{Mandatory: If other is selected, this is mandatory}	eCell	eCell
+{Section: History: Immunization: Type}	{Element_Key: Hep B.Date}	{FQN: History.Immunization.Type.Hep_B.Date}	{Label: Date}	eCell	{Input_type: text field - date}	{Dependant_On_FQN: History.Immunization.Type.Hep_B}	eCell	{Data_From: case}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Immunization: Type}	{Element_Key: Pneumococcal}	{FQN: History.Immunization.Type.Pneumococcal}	{Label: Polio, diptheria, pertussis}	eCell	{Input_type: checkbox}	eCell	eCell	{Data_From: case}	eCell	eCell	eCell	{Mandatory: If other is selected, this is mandatory}	eCell	eCell
+{Section: History: Immunization: Type}	{Element_Key: Pneumococcal.Date}	{FQN: History.Immunization.Type.Pneumococcal.Date}	{Label: Date}	eCell	{Input_type: text field - date}	{Dependant_On_FQN: History.Immunization.Type.Pneumococcal}	eCell	{Data_From: case}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Immunization: Type}	{Element_Key: Other}	{FQN: History.Immunization.Type.Other}	{Label: Other}	eCell	{Input_type: checkbox}	eCell	eCell	{Data_From: case}	eCell	eCell	eCell	{Mandatory: If other is selected, this is mandatory}	eCell	eCell
+{Section: History: Immunization: Type}	{Element_Key: Other.Date}	{FQN: History.Immunization.Type.Other.Date}	{Label: Date}	eCell	{Input_type: text field - date}	{Dependant_On_FQN: History.Immunization.Type.Other}	eCell	{Data_From: case}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Immunization: Type}	{Element_Key: Other.Description}	{FQN: History.Immunization.Type.Other.Description}	{Label: Other}	eCell	{Input_type: checkbox}	{Dependant_On_FQN: History.Immunization.Type.Other}	eCell	{Data_From: case}	eCell	eCell	eCell	{Mandatory: If other is selected, this is mandatory}	eCell	eCell
+{Section: History: Family history}	eCell	{FQN: History.Family_history}	{Label: Immunization}	{NavURL: ./patient/history/family}	{Input_type: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: History: Family history}	{Element_Key: Family medical history}	{FQN: History.Family_history.Family_medical_history}	{Label: Family medical history}	eCell	{Input_type: text box}	eCell	eCell	{Data_From: case}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: Care Team}	eCell	{FQN: Care_Team}	{Label: Immunization}	{NavURL: ./patient/care-team}	{Input_type: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: Care Team: Member}	eCell	{FQN: Care_Team.Member}	{Label: Encounters}	eCell	{Input_type: table row}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: Care Team: Member}	{Element_Key: Name}	{FQN: Care_Team.Member.Name}	{Label: Name}	eCell	{Input_type: text box}	eCell	eCell	{Data_From: case}	eCell	"{Data: Dr. Singh
+Dr. Notley
+Jason
+Jackie
+Gurpreet
+Alexa
+Matt}"	eCell	eCell	eCell	eCell
+{Section: Care team: Member}	{Element_Key: Profession}	{FQN: Care_Team.Member.Profession}	{Label: Profession}	eCell	{Input_type: text box}	eCell	eCell	{Data_From: case}	eCell	"{Data: Physician
+Physician
+Nurse
+Nurse
+Med rad
+Med lab}"	eCell	eCell	eCell	eCell
+{Section: Past appointments}	eCell	{FQN: Past_appointments}	{Label: Immunization}	{NavURL: ./patient/past-appointments}	{Input_type: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: Past appointments:Encounters}	eCell	{FQN: Past_appointments:Encounters}	{Label: Encounters}	eCell	{Input_type: table row}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: Past appointments:Encounters}	{Element_Key: Date}	{FQN: Past_appointments:Encounters.Date}	{Label: Date}	eCell	{Input_type: text field - date}	eCell	eCell	{Data_From: case}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: Past appointments:Encounters}	{Element_Key: Diagnosis}	{FQN: Past_appointments:Encounters.Diagnosis}	{Label: Diagnosis}	eCell	{Input_type: text field}	eCell	eCell	{Data_From: case}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: Past appointments:Encounters}	{Element_Key: MRP}	{FQN: Past_appointments:Encounters.MRP}	{Label: MRP}	eCell	{Input_type: text field}	eCell	eCell	{Data_From: case}	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: Past appointments:Outpatient}	eCell	{FQN: Past_appointments:Outpatient}	{Label: Encounters}	eCell	{Input_type: table row}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: Past appointments:Outpatient}	{Element_Key: Date}	{FQN: Past_appointments:Outpatient.Date}	{Label: Date}	eCell	{Input_type: text field - date}	eCell	eCell	{Data_From: case}	eCell	{Data: 1 week ago}	eCell	eCell	eCell	eCell
+{Section: Past appointments:Outpatient}	{Element_Key: Site}	{FQN: Past_appointments:Outpatient.Site}	{Label: Site}	eCell	{Input_type: text field}	eCell	eCell	{Data_From: case}	eCell	{Data: Clinic}	eCell	eCell	eCell	eCell
+{Section: Past appointments:Outpatient}	{Element_Key: Diagnosis}	{FQN: Past_appointments:Outpatient.Diagnosis}	{Label: Diagnosis}	eCell	{Input_type: text field}	eCell	eCell	{Data_From: case}	eCell	{Data: COPD}	eCell	eCell	eCell	eCell
+{Section: Past appointments:Outpatient}	{Element_Key: Reason for visit}	{FQN: Past_appointments:Outpatient.Reason_for_visit}	{Label: Reason for visit}	eCell	{Input_type: text field}	eCell	eCell	{Data_From: case}	eCell	{Data: Shortness of breath x 24 hrs}	eCell	eCell	eCell	eCell

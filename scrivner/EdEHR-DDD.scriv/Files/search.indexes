@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SearchIndexes Version="1.0">
-    <Documents></Documents>
+    <Documents>
+        <Document ID="C1AD6598-9CB3-4345-8B41-C6E164C66A28">
+            <Title>Database Schema</Title>
+            <Text>The documentation needs to generate the database schema.  Since EdEHR will use a NoSQL database system, the schema can be based on text that is structured and converted into JSON format.</Text>
+        </Document>
+        <Document ID="8E0E1BA1-8BB3-4D00-8021-701913A0D0B8">
+            <Text>The goal for EdEHR is to reproduce the experience of working with an electronic health record (EHR) system.  These have dozens of screens that are packed with dense forms and are used by medical professionals to record medical tests, patient information, medications, orders and more.  Traditionally, software would design a database table for each of the types of forms and code up the pages to suit.   Yet in this case we’re limited in time to produce a working prototype in under six months.
+This project has several extra requirements on top of those for an EHR.  The educational tool will be based on case studies.  These come with medical information that needs to appear in the app. Plus, there are stages where the medical student needs to enter in their data and observations. This will later be evaluated by the course instructors.   How can this project seed this case data in a manner that can be verified? Can the seeding be created by someone with medical teaching expertise? Once the seed data is inserted into the application how can we document what is inside the application?
+The EHR also has upwards of 40 distinct and complex pages.  The time to create, adjust and manage all these pages wil be substantial.  
+Furthermore, the seeding data and the informaiton the student enters needs to be timestamped based on an artificial clock.  In the case study the patient arrives at 7am on “day 1” and stays in the hospital for a some days.  Each interaction with the patient will need to have proper timestamps so that graphical representations will make sense.  
+
+This document will describe a potential approach that can solve all of the above and more.  One could call this approach “Documentation Driven Design”</Text>
+        </Document>
+        <Document ID="C0A5E2E4-7874-4FF3-8344-A0ACCBCD7AE3">
+            <Text>If a product needs documentation then it’s not done.  That is one possible concept of documentation and reflects a common reason why documentation exists: it documents the problems a user might have in doing something with an application.
+In the case of EdEHR there is a large amount of technical definition that needs to be correct. It may be possible to have the experts help in writing placing this technical information into a Scrivener file.  Scrivener lets the user work with large amounts of text, organize it, edit it.  Scrivener can then export the text as markdown which can be made visible for review on the project’s github repository.  Normally, at this point the development team would translate the information into code or put it into a database.   Well, it may be possible to create a program that will take the raw markdown documentation and create code for the application.  This would be documentation that becomes the product: documentation driven development.
+
+</Text>
+        </Document>
+    </Documents>
 </SearchIndexes>

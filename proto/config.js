@@ -73,7 +73,7 @@ var validateEnvironmentVariable = function () {
  * Initialize global domain data definitions
  */
 var initDataDefinitions = function () {
-  var dataDefs = require(path.join(process.cwd(), 'domain_definitions'));
+  var dataDefs = require(path.join(process.cwd(), 'config/schema', 'domain_definitions'));
   //console.log(JSON.stringify( dataDefs, null, 2))
   return dataDefs;
 }

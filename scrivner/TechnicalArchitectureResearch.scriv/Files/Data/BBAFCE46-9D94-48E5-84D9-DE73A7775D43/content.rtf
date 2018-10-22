@@ -1,36 +1,57 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
-{\fonttbl\f0\froman\fcharset0 Palatino-Roman;\f1\fswiss\fcharset0 ArialMT;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red16\green60\blue192;
-}
-{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;\cssrgb\c6667\c33333\c80000;
-}
+{\fonttbl\f0\froman\fcharset0 Palatino-Roman;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
 {\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
-{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
-{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
-\deftab720
-\pard\pardeftab720\qr\partightenfactor0
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}}
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx3600\tx4320\fi360\sl264\slmult1\pardirnatural\partightenfactor0
 
-\f0\fs26 \cf0 Status: <$label>
-\f1\fs26\fsmilli13333 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\f0\fs26 \cf0 Learning Tools Interoperability (LTI) is a standard created by the IMS Global Learning Consortium that links content and resources to learning platforms.  Its primary purpose is to connect learning systems such as a learning management system (LMS) with external service tools in a standard way across learning systems. The standard describes the connecting system as an LTI Tool Consumer and the connected tool as an LTI Tool Provider.\
+With LTI we hope that our MVP prototype can use any LMS  (e.g. Canvas or Moodle) to provide the system for managing students, instructors, classes and etc.  The LMS will be configured to communicate with our EdEHR through LTI v1.2 protocol.  Essentially, this protocol provides a means for the LMS user to access special portions of the EdEHR.  For example, students can be presented with a set of links to assignments or instructors can have a set of links to courses.\
 \
-\pard\pardeftab720\sl300\partightenfactor0
-\cf2 I found a few resources to help get started with LTI:\cf2 \cb1 \
+About\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl264\slmult1\pardirnatural\partightenfactor0
+\ls1\ilvl0\cf0 {\listtext	\uc0\u8226 	}This thread is packed with some good questions, answers and the links to most of what I've listed below:\'a0{\field{\*\fldinst{HYPERLINK "https://community.canvaslms.com/thread/13467-how-can-i-get-started-building-an-lti-external-application"}}{\fldrslt https://community.canvaslms.com/thread/13467-how-can-i-get-started-building-an-lti-external-application}}\'a0\
+{\listtext	\uc0\u8226 	}Another branch of that thread:\'a0{\field{\*\fldinst{HYPERLINK "https://community.canvaslms.com/thread/13468-how-can-i-get-started-building-an-lti-external-application"}}{\fldrslt https://community.canvaslms.com/thread/13468-how-can-i-get-started-building-an-lti-external-application}}\'a0\
+{\listtext	\uc0\u8226 	}Course on building LTIs:\'a0{\field{\*\fldinst{HYPERLINK "https://canvas.instructure.com/courses/785215/modules"}}{\fldrslt https://canvas.instructure.com/courses/785215/modules}}\'a0\
+{\listtext	\uc0\u8226 	}Three-part blog on building LTI (.NET):\'a0{\field{\*\fldinst{HYPERLINK "https://community.canvaslms.com/groups/canvas-developers/blog/2016/09/13/net-lti-project-part-1"}}{\fldrslt https://community.canvaslms.com/groups/canvas-developers/blog/2016/09/13/net-lti-project-part-}}\uc0\u8232 \
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx3600\tx4320\fi360\sl264\slmult1\pardirnatural\partightenfactor0
+\cf0 Examples:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl264\slmult1\pardirnatural\partightenfactor0
+\ls2\ilvl0\cf0 {\listtext	\uc0\u8226 	}Roll-call tool/assignment:\'a0{\field{\*\fldinst{HYPERLINK "https://support.perceivant.com/hc/en-us/articles/115015942867-What-is-the-Roll-Call-Attendance-Tool-"}}{\fldrslt https://support.perceivant.com/hc/en-us/articles/115015942867-What-is-the-Roll-Call-Attendance-Tool-}}\'a0(GitHub:\'a0{\field{\*\fldinst{HYPERLINK "https://github.com/instructure/rollcall-attendance"}}{\fldrslt https://github.com/instructure/rollcall-attendance}}\'a0)\uc0\u8232 \
+{\listtext	\uc0\u8226 	}Ruby LTI project:\'a0{\field{\*\fldinst{HYPERLINK "https://github.com/instructure/ims-lti"}}{\fldrslt https://github.com/instructure/ims-lti}}\'a0\
+{\listtext	\uc0\u8226 	}\
+{\listtext	\uc0\u8226 	}\
+    - https://www.imsglobal.org/specs/ltiv1p2 \
+    - https://www.imsglobal.org/specs/ltiv1p2/implementation-guide \
 \
-\cf2 \cb3 About\cf2 \cb1 \
-\pard\tx220\tx720\pardeftab720\li720\fi-720\sl300\partightenfactor0
-\ls1\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
-This thread is packed with some good questions, answers and the links to most of what I've listed below:\'a0{\field{\*\fldinst{HYPERLINK "https://community.canvaslms.com/thread/13467-how-can-i-get-started-building-an-lti-external-application"}}{\fldrslt \cf4 \ul \ulc4 https://community.canvaslms.com/thread/13467-how-can-i-get-started-building-an-lti-external-application}}\'a0\cb1 \
-\ls1\ilvl0\cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
-Another branch of that thread:\'a0{\field{\*\fldinst{HYPERLINK "https://community.canvaslms.com/thread/13468-how-can-i-get-started-building-an-lti-external-application"}}{\fldrslt \cf4 \ul \ulc4 https://community.canvaslms.com/thread/13468-how-can-i-get-started-building-an-lti-external-application}}\'a0\cb1 \
-\ls1\ilvl0\cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
-Course on building LTIs:\'a0{\field{\*\fldinst{HYPERLINK "https://canvas.instructure.com/courses/785215/modules"}}{\fldrslt \cf4 \ul \ulc4 https://canvas.instructure.com/courses/785215/modules}}\'a0\cb1 \
-\ls1\ilvl0\cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
-Three-part blog on building LTI (.NET):\'a0{\field{\*\fldinst{HYPERLINK "https://community.canvaslms.com/groups/canvas-developers/blog/2016/09/13/net-lti-project-part-1"}}{\fldrslt \cf4 \ul \ulc4 https://community.canvaslms.com/groups/canvas-developers/blog/2016/09/13/net-lti-project-part-}}\cb1 \uc0\u8232 \
-\pard\pardeftab720\sl300\partightenfactor0
-\cf2 \cb3 Examples:\cf2 \cb1 \
-\pard\tx220\tx720\pardeftab720\li720\fi-720\sl300\partightenfactor0
-\ls2\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
-Roll-call tool/assignment:\'a0{\field{\*\fldinst{HYPERLINK "https://support.perceivant.com/hc/en-us/articles/115015942867-What-is-the-Roll-Call-Attendance-Tool-"}}{\fldrslt \cf4 \ul \ulc4 https://support.perceivant.com/hc/en-us/articles/115015942867-What-is-the-Roll-Call-Attendance-Tool-}}\'a0(GitHub:\'a0{\field{\*\fldinst{HYPERLINK "https://github.com/instructure/rollcall-attendance"}}{\fldrslt \cf4 \ul \ulc4 https://github.com/instructure/rollcall-attendance}}\'a0)\cb1 \uc0\u8232 \
-\ls2\ilvl0\cb3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
-Ruby LTI project:\'a0{\field{\*\fldinst{HYPERLINK "https://github.com/instructure/ims-lti"}}{\fldrslt \cf4 \ul \ulc4 https://github.com/instructure/ims-lti}}\'a0\cb1 \
+\
+\pard\tx360\tx720\tx1080\tx1440\tx1800\tx2160\tx2880\tx3600\tx4320\fi360\sl264\slmult1\pardirnatural\partightenfactor0
+\cf0 \
+\
+I found a few resources to help get started with LTI:\
+\
+About\
+	\'95	This thread is packed with some good questions, answers and the links to most of what I've listed below:\'a0https://community.canvaslms.com/thread/13467-how-can-i-get-started-building-an-lti-external-application\'a0\
+	\'95	Another branch of that thread:\'a0https://community.canvaslms.com/thread/13468-how-can-i-get-started-building-an-lti-external-application\'a0\
+	\'95	Course on building LTIs:\'a0https://canvas.instructure.com/courses/785215/modules\'a0\
+	\'95	Three-part blog on building LTI (.NET):\'a0https://community.canvaslms.com/groups/canvas-developers/blog/2016/09/13/net-lti-project-part-\uc0\u8232 \
+Examples:\
+	\'95	Roll-call tool/assignment:\'a0https://support.perceivant.com/hc/en-us/articles/115015942867-What-is-the-Roll-Call-Attendance-Tool-\'a0(GitHub:\'a0https://github.com/instructure/rollcall-attendance\'a0)\uc0\u8232 \
+	\'95	Ruby LTI project:\'a0https://github.com/instructure/ims-lti\'a0\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl264\slmult1\pardirnatural\partightenfactor0
+\ls3\ilvl0\cf0 \
+\
+\
+\
+IMS Global site...\
+\
+1. Login to IMS Global site https://www.imsglobal.org/user/login?current=node/1 \
+2. In the top, light grey menu, click "MyIMS"\
+3. Click "Dashboard" tab\
+4. Click "Customize Dashboard"\
+5. Drag "LTI Technical Resources" chicklet down to the grid. You've now added links to the LTI resources.\
+6. The interface is a little funny - select an item in the multi-select box, then click "Apply" to show the resources falling under the selected category\
 }

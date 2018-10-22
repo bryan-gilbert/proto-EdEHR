@@ -2,9 +2,7 @@
 <SearchIndexes Version="1.0">
     <Documents>
         <Document ID="80D62A7D-E8B8-4206-B65F-ACA8E3BFE1D7">
-            <Text>Git Github
-EdEHR will use Git and Github because it is the industry standard and fits the project charter requirement to be open source.
-I have started a repro here: https://github.com/bryan-gilbert/proto-EdEHR
+            <Text>Repro here: https://github.com/bryan-gilbert/proto-EdEHR
 
 Branching
 To begin all rough preliminary work will be submitted to the main branch.  Yet, once development is underway all submissions will be made to a development branch.  Testing and stylistic checks will be completed before promotion to the master branch.  Changes on the master branch will be monitored by an instance of Jenkins which will start a build process on a Test server.  The developer’s goal is to not break the build. </Text>
@@ -103,35 +101,8 @@ ToDo: describe the benefits and reasons for considering Docker
 For the immediate term:  postpone further work on Docker because it can be considered later in the project timeline.  It’s main benefit is to allow for the application to be scalled up when needed.  As we are building a prototype it is not essential to be ready to scale. </Text>
         </Document>
         <Document ID="161D31D5-5E50-4FE9-A201-80633B568008">
-            <Text>Open Source Licensing
-Status: &lt;$label&gt;
-Open Source is a primary requirement for every aspect of this project
-From https://opensource.org/licenses 
-The following OSI-approved licenses are popular, widely used, or have strong communities:
-	•	Apache License 2.0
-	•	BSD 3-Clause "New" or "Revised" license
-	•	BSD 2-Clause "Simplified" or "FreeBSD" license
-	•	GNU General Public License (GPL)
-	•	GNU Library or "Lesser" General Public License (LGPL)
-	•	MIT license
-	•	Mozilla Public License 2.0
-	•	Common Development and Distribution License
-	•	Eclipse Public License
-
-https://en.wikipedia.org/wiki/Comparison_of_free_and_open-source_software_licenses
-GNU General Public License Version 3, 29 June 2007. (GNU GPLv3)
-https://choosealicense.com/licenses/gpl-3.0/
-GNU Affero General Public License v3.0
-https://choosealicense.com/licenses/agpl-3.0/
-The GNU Affero General Public License is a modified version of the ordinary GNU GPL version 3. It has one added requirement: if you run a modified program on a server and let other users communicate with it there, your server must also allow them to download the source code corresponding to the modified version running there.
-https://www.gnu.org/licenses/why-affero-gpl.html
-
-Recommendation
-The GNU Affero seems to fit the intention of BCCampas’s mandate to provide open source educational tools and promote the development of more open source tools.  
-*  https://bccampus.ca/2018/05/08/copyright-and-open-licences-an-excerpt-from-the-bccampus-open-education-self-publishing-guide/
-*  https://bccampus.ca/2013/04/02/walking-the-talk-open-resources-at-rru/
-
-Recommendation: GNU Affero General Public License v3.0</Text>
+            <Text>Open Source Licensing : GNU Affero General Public License v3.0
+</Text>
         </Document>
         <Document ID="9D7FCB4D-D87A-452D-86E4-424E3D94B45B">
             <Text>Performance testing
@@ -163,21 +134,11 @@ http://www.proprofs.com/c/lms/exclusive-learning-management-system-best-practice
         </Document>
         <Document ID="71839B83-8F41-4D71-9A27-2674AB2493B0">
             <Text>Courses
-Status: &lt;$label&gt;
-How many courses might this application be expected to support for the prototype stage?  For the long term?
-Assumption: prototype stage has one course.
-Beyond that the application may be extended, if further case studies are developed, to extend to many courses in one field of study.
-Beyond that the application may be extended to support more than one field of study (e.g. doctor vs nurse vs specialist vs etc.)
-Assumptions
 	•	Prototype:   1 course
 	•	Long term:  3 - 5 fields of study over 3 - 4 years ( 3 x 3 = 9, 5 x 4 = 20) up to 20 courses.</Text>
         </Document>
         <Document ID="2C86AB3F-DA5F-4F05-B7FA-C3F879B069AF">
-            <Text>Trello
-Trello.com is good at capturing ideas but it doesn’t help to structure the big, medium and small picture. In Trello everything is the same: a card. It can be augmented with a colour or label and with several mouse clicks it is possible to filter, yet it doesn’t help to quickly organize a very large conceptual framework and move around to explore nuances and details while retaining the big picture.
-Recommendation: Use Trello as a team communication tool. 
-Put all main high level tasks in Trello as placeholders for future work. Keep these simple as they just illustrate the big picture. 
-Put all immediate tasks in Trello.  These are small achievable tasks that are planned for the next sprint or two or are actually in progress.  This keeps the Trello board focused on sharing with the team what are current activities and near term plans.</Text>
+            <Text>Use Trello as agile team communication tool.  Put all main high level tasks in Trello as placeholders for future work. Keep these simple as they just illustrate the big picture.  Put all immediate tasks in Trello.  These are small achievable tasks that are planned for the next sprint or two or are actually in progress.  This keeps the Trello board focused on sharing with the team what are current activities and near term plans.</Text>
         </Document>
         <Document ID="86642B83-9EC9-4C3B-8B5A-025AEBE5A261">
             <Text>Summary based on assumptions
@@ -197,28 +158,7 @@ Thus, for example, the prototype needs to support 30 concurrent student users an
             <Text>WIP</Text>
         </Document>
         <Document ID="C42A7C98-5145-41AE-BAF6-8450B76FAAD5">
-            <Text>Javascript and Node.js
-“Unlike PHP, Node.js is not a language, but a runtime environment that uses JavaScript for the server-side application development. Launched in 2009, Node.js has demonstrated the power of JavaScript in building event-based, data-driven, I/O-heavy applications for the Web 2.0 era.” https://www.netguru.co/blog/nodejs-vs-php
-
-Javascript and Node.js Pros:
-	•	Support for Single Page Applications, Mobile Computing and Browsers (DSL support)
-	•	Industry standard. 
-	•	Suitable for prototyping
-	•	Dynamically typed with option to add datatypes when working with the database. 
-	•	Medium verbosity.
-	•	Large community of developers.
-	•	Modular (Separation of Concern)
-	•	Testable.
-	•	One language across the full stack
-	•	What is the developer best at?
-	•	Fast server side
-	•	Portable
-
-Javascript and Node.js Cons:
-Less efficient at handling CPU intensive applications. (This is not a requrement for EdEHR)
-JavaScript and Node.js are not quite as extensible as Python.
-
-Use Javascript ECMA 2016 or better.</Text>
+            <Text>Use Javascript ECMA 2016 or better with NodeJs</Text>
             <Notes>Javascript allows developers to use transpiler tools like Babel and Domain-specific Languages (DSL) to experiment with and/or create a new syntax that optimises UI development and makes it faster. The Python community does not have an equivalent mechanism for experimenting with DSLs, which makes it more difficult to express UI code in Python compared to Javascript and Node.js.
 </Notes>
         </Document>
@@ -250,10 +190,7 @@ https://bccampus.ca/2013/05/23/wrangling-videos-in-one-location-just-got-a-lot-e
         </Document>
         <Document ID="A0AF072F-6C59-4B7F-8D4F-34956D64B103">
             <Title>Defect tracking</Title>
-            <Text>Defect Tracking Requirements
-Defect tracking tool needs to allow the team to add, edit, comment, and resolve issues as the prototype evolves and for when it is in place.  The tool ought to be suitable for non-technical users to resolve issues.
-We can look into JIRA or to keep it simple let’s just use the issue tracking in github.
-Recommendation: Github</Text>
+            <Text>Track defects in Github</Text>
         </Document>
         <Document ID="967EC040-E259-4A73-BBA2-27A17FF72E9B">
             <Title>Introduction</Title>
@@ -264,9 +201,6 @@ Recommendation: Github</Text>
         </Document>
         <Document ID="9301E8B5-8823-46FB-8727-4C749483254B">
             <Text>Classes
-Status: &lt;$label&gt;
-Within a course how many classes might there be? 
-Assumptions 
 	•	Prototype:  1
 	•	Long term:  5</Text>
         </Document>
@@ -310,14 +244,6 @@ EdEHR requirements:  (quotes from above sources in italics)
         </Document>
         <Document ID="F2BFCFDD-4F2A-4213-8794-007A622186DD">
             <Text>Institutions
-Status: &lt;$label&gt;
-The MVP needs to support four institutions with a possibility of adding in two more.  
-How many institutions in total will a single instance need to support?
-What is the long term goals?  For example would each institution have run their own instance of the application.  Or is there to be one instance for the world.
-Recommendation:  The application should be simple enough to be hosted at each individual institution.
-This simplifies issues around privacy and it simplifies the performance requirements and database schema and more.  Accepting this recommendation will remove some project risk. 
-
-Assumptions
 	•	Prototype: 1 institution per instance
 	•	Long term:  ditto</Text>
         </Document>
@@ -389,7 +315,7 @@ Depends on LMS and LTI research</Text>
             <Title>Test Tools</Title>
         </Document>
         <Document ID="19CC4AD1-7880-4909-847B-31F9B2FCAB36">
-            <Title>EdEHR</Title>
+            <Title>Javascript standard</Title>
             <Text>EdEHR will use Javascript Standard because it’s simple, automatice and just works.  End of debate means we can get coding ;-)
 That said we may cherry pick guidelines from the other style guides as we go.    (http://jstherightway.org)</Text>
         </Document>
@@ -441,13 +367,7 @@ Continuous Delivery: incrementally add value on a continuous basis.</Text>
             <Title>Source Control</Title>
         </Document>
         <Document ID="5A300147-08A8-40DC-9910-2CDCDBC79B55">
-            <Text>Scrivener
-Scrivener is a tool that allows one to describe the forest and fly into the forest and visit a few trees and dive in further and visit a branch of a tree and go further and visit the bugs on the leaf of a branch of a tree in the forest and then quickly move back out to see the big picture again.
-Recommendation: Use Scrivener as the main organizing tool because it is great for composing technical specifications and technical roadmap.  Scrivener is also the best place to manage the complex backlog of tasks allowing grouping, nesting, filtering and more.  Periodically, export a complete version of the overall project backlog with all the details. 
-
-http://www.literatureandlatte.com/forum/viewtopic.php?t=50214
-
-As key tasks and immediate tasks emerge move them to Trello</Text>
+            <Text>Use Scrivener for technical documentation. Compile to markdown.  Automated script appends table of contents and places resulting files into the correct location.  E.g Readme.md is placed in the root project folder.  This Technical Architecture document is placed into the docs folder.</Text>
         </Document>
         <Document ID="AB6760D2-0EC8-412B-8B9F-0F20DF24F8ED">
             <Title>Server Tooling</Title>
@@ -500,54 +420,7 @@ EdEHR recommendation: skip Angular</Text>
             <Title>Analytics</Title>
         </Document>
         <Document ID="0686D02E-87CF-4DA8-B343-9CC0E3FFEF51">
-            <Text>Recommendation
-
-Resources
-https://medium.com/@TechMagic/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018-b91e028fa91d
-https://expertise.jetruby.com/react-vs-vue-js-which-front-end-framework-to-choose-in-2018-2a62a1fe76f9
-
-Advantages of Vue.JS:
-	•	Flexibility, Simplicity, Fast rendering and small size.
-	•	Soup to nuts framework
-	•	Easier to learn and get started
-
-Advantages of React:
-	•	Perfectly fits scalable apps, easier to test and maintain;
-	•	Can be used for native and web apps;
-	•	Huge ecosystem;
-	•	A big set of tools.
-
-Common Advantages
-	•	Fast rendering with Virtual DOM;
-	•	Small size;
-	•	Reactive components;
-	•	The ability to easily integrate with routers, collectors, and state managers;
-	•	A-class maintenance.
-
-Quote:  Laurie Voss, co-founder and COO of npm
-From my perspective, there are two factors driving Vue’s growth.  First, lots of developers still want a “soup to nuts” framework, i.e. one that does everything from routing to templating to back-end data fetching. Vue does this, which tends to make it easier for a first-time developer to pick up since they just make one choice: use Vue, and all the other choices are made for them.
-React, on the other hand, requires making lots of additional choices about routing and data management libraries, which makes it more intimidating and slower to get started with. So Angular, Ember and Vue all have this “all-inclusive” advantage over React.
-Second, if you’ve decided you want an all-inclusive framework, Vue performs better in benchmarks and is relatively easier to learn. Although these things are subjective, devs often report that it feels “cleaner” or “simpler” than older frameworks like Angular and Ember.
-
-Summary for EdEHR
-	•	Flexible: either
-	•	Easy to learn: Vue over React
-	•	Documentation: Vue
-	•	Code Style:  Either
-	•	Single File Components:  Slight edge to Vue
-	•	License: Both are MIT
-	•	Performance:  Either
-	•	Tooling:  Edge to React yet Vue has essentials built in making it easier to get started
-	•	Routing: built into Vue
-	•	State management: built into Vue
-	•	API: Either
-	•	Mobile:  React
-	•	Community:  React yet it is fragmented. Vue is smaller and more cohesive and therefore consitent (read less ambiguity about how to do something. Less time trying out varoius options and then deciding and then developing.)
-	•	Maturity:  React has edge
-	•	Support: React community is larger yet support for either is available
-	•	Hiring Talent:  React has edge, for now.
-
-For a new project with no legacy and a developer team that has equal experience with both frameworks (read experienced newbie) it’s a good time to be taking the new lean simple fast approach: vue.js.
+            <Text>UI framework: Vue.js
 
 </Text>
         </Document>
@@ -616,18 +489,8 @@ Note: this guide assumes you are using Babel, and requires that you use babel-pr
         </Document>
         <Document ID="CB6AAAC6-1EA3-4685-B118-998F28DFE7CF">
             <Text>Students
-Status: &lt;$label&gt;
-How may students are typically in a class?
-Assumptions
 	•	Prototype: 20 - 30 students per class
 	•	Long term: up to 50 students per class</Text>
-        </Document>
-        <Document ID="67B8D1A3-ED68-480D-8F64-21AE374E5EBB">
-            <Text>Requirements
-Agile planning needs to capture “stuff to do” in a place that can “backlog” or “park” the task until it is time to work on the task.  
-Before a task can be started it must be the “right size”. Normally, this means it is a task that can be accomplished in a timeframe that is short enough that the doer doesn’t get distracted. I.e. a time period of a ‘day’ is big. Perhaps two or three days but not more. Ideally, it’s a task that can be DONE in a few hours.
-The project contains many big tasks that need to be decomposed into smaller, achievable and understandable tasks.  This break down does happens just in time for the work to begin.
-The project planning tool needs to allow the composition and ordering of both “big items” and the smaller items; quickly and efficiently.  The tool needs to let the user get everything written down quickly so they can save the thought (park it or back log it) until the time is right to work.  And then get back to work.</Text>
         </Document>
         <Document ID="C355C73E-A065-476B-ADDB-31AA9A413BD5">
             <Text>CAS, SAML, OAuth</Text>
@@ -679,7 +542,6 @@ Do this after LMS and LTI because the LMS ought to provide analytics.
         </Document>
         <Document ID="28F07C1E-6BF0-4850-930D-CF863A137963">
             <Title>Browser</Title>
-            <Text>Client side coding language, for in the browser, is Javascript. There is no other choice. </Text>
         </Document>
         <Document ID="64C1FCE0-493E-4DCB-9A4B-2D05BEC5C1C0">
             <Text>Idomatic.js
@@ -697,32 +559,6 @@ Projects must include some form of unit, reference, implementation or functional
 	•	Buster.js
 	•	Sinon.js
 	•	Tape</Text>
-        </Document>
-        <Document ID="AC4534F9-F826-4438-9194-BFA5AEB10550">
-            <Text>Server side generation for client side
-This section pertains to the code written for the client side (the UI).  For example, if the pages are generated on the server (e.g. PhP) or transpiled into static web resources (React, Vue, etc). Simply put:  choose between server side generation or static resources with web services. 
-The current trend in the industry to away from server side generation.  It is still the dominate form of delivery because of the popularity and longevity of PhP yet new projects are opting to go the static resource direction.  One reason for this direction is it promotes a clear division between what is served to the UI and what services the server provides (which are being reduced to small, lean and efficient micro-services that are targeted to a single task such as fetching data or updating the database). Browsers are also more efficient at caching static resources and this makes the web applications more responsive. Another term for this approach is Single Page Applications (SPA).
-For these reasons and many more it is recommended that EdEHR uses static resources and web services.
-Recommendation: choose a framework such as React, Angular, Vue or … (all of which are open source) and skip PhP.
-EdEHR Requirements:
-	•	Flexible and easy to adapt (to suit project timeline)
-	•	Easy to learn (to suit project timeline and attract long term development)
-	•	Documentation: clear, available, consistent
-	•	Supports single page applications.
-	•	Code Style:  How readable and intuitive is the code and conventions of the framework?
-	•	Single File Components: How intuitive is maintaining a component in the framework?
-	•	License: open
-	•	Performance:  How performant are apps built with the framework?
-	•	Tooling: What tools and stable plugins are available for the framework?
-	•	Routing (click to next ‘page’ in app with back button history)
-	•	State management (track what stage of a process the user is at)
-	•	API calls to server
-	•	Mobile:  Does it offer a way to build native mobile applications?
-	•	Community: What is the size of the community and is it united or fragmented?
-	•	Maturity: How mature is the framework? Is it production-tested?
-	•	Support: How big is the team behind the framework?
-	•	Hiring Talent: How easy would it be to hire developers with prior experience in the framework?
-	•	Future: how are updates handled?</Text>
         </Document>
         <Document ID="3BF8F5FE-902D-4401-88A4-57132EF56B3C">
             <Title>Testing UI</Title>
@@ -766,16 +602,7 @@ Many today consider RDMS to be unable to meet the expectations from today’s da
 We will not be tied to any particular version of linux. Debian, Ubunto, etc are all fine.</Text>
         </Document>
         <Document ID="964C33D3-C32F-49C9-A275-38612CC4F8C2">
-            <Text>JavaScript Standard Style Guide. https://github.com/standard/standard
-JavaScript style guide, with linter &amp; automatic code fixer. No configuration. Automatically format code. Catch style issues &amp; programmer errors early.
-This style guide is used by many tech companies including NPM, GitHub, mongoDB, and ZenDesk.
-
-To add a badge to the project readme include this markup
-```
-[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
-```
-
-[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)</Text>
+            <Text>JavaScript Standard Style Guide. https://github.com/standard/standard</Text>
         </Document>
         <Document ID="E8B4CD32-A43B-40CE-B25C-83D84FE6C095">
             <Text>Frameworks
@@ -800,25 +627,7 @@ Seperately mounted disk for storage outside of application code space
 </Text>
         </Document>
         <Document ID="52004D3F-FA73-42E3-93BF-E9522DC312DC">
-            <Text>Old Browsers and project risk
-Status: &lt;$label&gt;
-If support for non-modern browsers is required then this will introduce significant risks both in terms of the ability to test them and significant risk in development time.  Stakeholders need to know that a decisionm to support non-modern browsers means other features are at risk of not being “done”.  It is a strong recomendation to exclude non-modern browsers from the MVP.
-
-Here is a general description of what a modern browser:
-https://stackoverflow.com/questions/50829693/what-is-a-modern-browser
-We might include a feature to warn users if they have an outdated browser.
-https://www.npmjs.com/package/outdated-browser-rework
-Here are the suggested default minimum versions as used by the above plugin. Note that IE is not included.
-	•	Chrome: 57, // Includes Chrome for mobile devices
-	•	Edge: 39,
-	•	Safari: 10,
-	•	Mobile Safari: 10,
-	•	Firefox: 50,
-	•	Opera: 50,
-	•	Vivaldi: 1,
-	•	IE: false
-	•	// You could specify a version here if you still support IE in 2017.
-	•	// You could also instead seriously consider what youre doing with your time and budget</Text>
+            <Text>Only support modern browsers</Text>
         </Document>
         <Document ID="12363E44-3C1A-4D1E-9902-EF3BDA7046AE">
             <Title>Requirements</Title>
@@ -849,9 +658,6 @@ Webpack is an open-source JavaScript module bundler. Its main purpose is to bund
         </Document>
         <Document ID="DF0B2F1F-A33D-4FFC-93DA-4CDD081AACC9">
             <Title>Requirements Tooling</Title>
-        </Document>
-        <Document ID="3042A47C-10BD-42DD-9806-60FED6E42BB4">
-            <Text>Question: Does BCcampus have a repro?</Text>
         </Document>
         <Document ID="D5D2540C-82B2-467B-91AA-15346D922169">
             <Text>PhP

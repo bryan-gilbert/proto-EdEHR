@@ -1,0 +1,421 @@
+{Section: Visit details}	eCell	{FQN: Visit_details}	{NavURL: ./current/details}	eCell	{Label: Visit Details}	{InputType: page}	eCell	eCell	eCell	eCell	eCell
+{Section: Visit details}	{Element_Key: Admission date}	{FQN: Visit_details.Admission_date}	eCell	eCell	{Label: Admission date}	{InputType: text field - date}	eCell	{DataFrom: case}	eCell	{Data: Day 0}	eCell
+{Section: Visit details}	{Element_Key: Admission time}	{FQN: Visit_details.Admission_time}	eCell	eCell	{Label: Admission time}	{InputType: text field - time}	eCell	{DataFrom: case}	eCell	{Data: 0.75}	eCell
+{Section: Visit details}	{Element_Key: Consent for treatment}	{FQN: Visit_details.Consent_for_treatment}	eCell	eCell	{Label: Consent for treatment}	{InputType: checkbox}	eCell	{DataFrom: case}	eCell	{Data: checked}	eCell
+{Section: Visit details}	{Element_Key: Admission status}	{FQN: Visit_details.Admission_status}	eCell	eCell	{Label: Admission status}	{InputType: dropdown}	"{Options: Admission in progress
+Admitted
+Inpatient
+Outpatient
+Surgical day care
+Discharge pending
+Discharged}"	{DataFrom: case}	eCell	{Data: Admitted}	eCell
+{Section: Visit details}	{Element_Key: Admitting diagnosis}	{FQN: Visit_details.Admitting_diagnosis}	eCell	eCell	{Label: Admitting diagnosis}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: COPD}	eCell
+{Section: Visit details}	{Element_Key: Patient location}	{FQN: Visit_details.Patient_location}	eCell	eCell	{Label: Patient location}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: Emergency room}	{HelperText: hospital, ward #, room #, home, out patient clinic}
+{Section: Vital signs}	eCell	{FQN: Vital_signs}	{NavURL: ./current/vital-signs}	eCell	{Label: Vital signs}	{InputType: page}	eCell	eCell	eCell	eCell	eCell
+{Section: Vital signs}	{Element_Key: Temperature}	{FQN: Vital_signs.Temperature}	eCell	eCell	{Label: Temperature}	{InputType: text box}	eCell	eCell	eCell	{Data: 36.5 C}	eCell
+{Section: Vital signs}	{Element_Key: Temperature source}	{FQN: Vital_signs.Temperature_source}	eCell	eCell	{Label: Temperature source}	{InputType: dropdown}	"{Options: oral
+axilla
+rectal
+tympanic}"	eCell	eCell	eCell	eCell
+{Section: Vital signs}	{Element_Key: Pulse rate}	{FQN: Vital_signs.Pulse_rate}	eCell	eCell	{Label: Pulse rate}	{InputType: text box}	eCell	eCell	eCell	{Data: 96}	eCell
+{Section: Vital signs}	{Element_Key: Pulse rhythm}	{FQN: Vital_signs.Pulse_rhythm}	eCell	eCell	{Label: Pulse rhythm}	{InputType: dropdown}	"{Options: regular
+irregular}"	eCell	eCell	eCell	eCell
+{Section: Vital signs}	{Element_Key: Pulse strength}	{FQN: Vital_signs.Pulse_strength}	eCell	eCell	{Label: Pulse strength}	{InputType: dropdown}	"{Options: strong
+medium
+weak}"	eCell	eCell	eCell	eCell
+{Section: Vital signs}	{Element_Key: Systolic blood pressure}	{FQN: Vital_signs.Systolic_blood_pressure}	eCell	eCell	{Label: Systolic blood pressure}	{InputType: text box}	eCell	eCell	eCell	{Data: 180}	eCell
+{Section: Vital signs}	{Element_Key: Diastolic blood pressure}	{FQN: Vital_signs.Diastolic_blood_pressure}	eCell	eCell	{Label: Diastolic blood pressure}	{InputType: text box}	eCell	eCell	eCell	{Data: 90}	eCell
+{Section: Vital signs}	{Element_Key: Patient position}	{FQN: Vital_signs.Patient_position}	eCell	eCell	{Label: Patient position}	{InputType: dropdown}	"{Options: lying
+sitting
+standing}"	eCell	eCell	eCell	eCell
+{Section: Vital signs}	{Element_Key: Respiration rate}	{FQN: Vital_signs.Respiration_rate}	eCell	eCell	{Label: Respiration rate}	{InputType: text box}	eCell	eCell	eCell	{Data: 28}	eCell
+{Section: Vital signs}	{Element_Key: Respiration effort}	{FQN: Vital_signs.Respiration_effort}	eCell	eCell	{Label: Respiration effort}	{InputType: dropdown}	"{Options: easy
+laboured}"	eCell	eCell	eCell	eCell
+{Section: Vital signs}	{Element_Key: Oxygen saturation}	{FQN: Vital_signs.Oxygen_saturation}	eCell	eCell	{Label: Oxygen saturation}	{InputType: text box}	eCell	eCell	eCell	{Data: 0.85}	eCell
+{Section: Vital signs}	{Element_Key: Oxygen mode}	{FQN: Vital_signs.Oxygen_mode}	eCell	eCell	{Label: Oxygen mode}	{InputType: dropdown}	"{Options: nasal prongs
+simple face mask
+rebreathing face mask}"	eCell	eCell	eCell	eCell
+{Section: Vital signs}	{Element_Key: Flow rate}	{FQN: Vital_signs.Flow_rate}	eCell	eCell	{Label: Flow rate}	{InputType: text box}	eCell	eCell	eCell	eCell	eCell
+{Section: Vital signs graph}	eCell	{FQN: Vital_signs_graph}	eCell	eCell	{Label: Vital signs graph}	{InputType: fieldset}	eCell	eCell	eCell	eCell	eCell
+{Section: Vital signs graph}	{Element_Key: Date}	{FQN: Vital_signs_graph.Date}	eCell	eCell	{Label: Date}	{InputType: text field - date}	eCell	eCell	eCell	eCell	eCell
+{Section: Vital signs graph}	{Element_Key: Time}	{FQN: Vital_signs_graph.Time}	eCell	eCell	{Label: Time}	{InputType: text field - time}	eCell	eCell	eCell	eCell	eCell
+{Section: Vital signs graph}	{Element_Key: Graph}	{FQN: Vital_signs_graph.Graph}	eCell	eCell	{Label: Graph}	{InputType: vital signs graph}	eCell	eCell	eCell	eCell	eCell
+eCell	eCell	{FQN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments}	eCell	{FQN: Assessments}	{NavURL: ./current/assessments/neurological}	eCell	{Label: Assessments}	{InputType: nav group}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Neurological}	eCell	{FQN: Assessments.Neurological}	{NavURL: ./current/assessments/neurological}	eCell	{Label: Neurological}	{InputType: page}	eCell	{DataFrom: case}	eCell	{Data: Jason}	eCell
+{Section: Assessments: Neurological}	{Element_Key: Name}	{FQN: Assessments.Neurological.Name}	eCell	eCell	{Label: Name}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: RN}	eCell
+{Section: Assessments: Neurological}	{Element_Key: Profession}	{FQN: Assessments.Neurological.Profession}	eCell	eCell	{Label: Profession}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: ER}	eCell
+{Section: Assessments: Neurological}	{Element_Key: Unit}	{FQN: Assessments.Neurological.Unit}	eCell	eCell	{Label: Unit}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: 0}	eCell
+{Section: Assessments: Neurological}	{Element_Key: Date}	{FQN: Assessments.Neurological.Date}	eCell	eCell	{Label: Date}	{InputType: text field - date}	eCell	{DataFrom: case}	eCell	{Data: 0.8125}	eCell
+{Section: Assessments: Neurological}	{Element_Key: Time}	{FQN: Assessments.Neurological.Time}	eCell	eCell	{Label: Time}	{InputType: text field - time}	"{Options: Alert
+Oriented
+Confused
+Drowsy
+Unresponsive
+Dizziness
+Blurred vision}"	{DataFrom: case}	eCell	{Data: (Alert and Oriented are ticked)}	eCell
+{Section: Assessments: Neurological}	{Element_Key: Status}	{FQN: Assessments.Neurological.Status}	eCell	eCell	{Label: Status}	{InputType: multi select dropdown}	"{Options: No
+Yes
+Unknown}"	{DataFrom: case}	eCell	{Data: No}	eCell
+{Section: Assessments: Neurological}	{Element_Key: Loss of conciousness}	{FQN: Assessments.Neurological.Loss_of_conciousness}	eCell	eCell	{Label: Loss of conciousness}	{InputType: dropdown}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Neurological: Glasgow Coma Scale}	eCell	{FQN: Assessments.Neurological.Glasgow_Coma_Scale}	eCell	eCell	{Label: Glasgow Coma Scale}	{InputType: fieldset}	"{Options: Spontaneous
+To sound
+To pressure
+None
+Non testable}"	{DataFrom: case}	eCell	{Data: Spontaneous}	eCell
+{Section: Assessments: Neurological: Glasgow Coma Scale}	{Element_Key: Eye opening}	{FQN: Assessments.Neurological.Glasgow_Coma_Scale.Eye_opening}	eCell	eCell	{Label: Eye opening}	{InputType: dropdown}	"{Options: Oriented
+Confused
+Words
+Sounds
+None
+Non testable}"	{DataFrom: case}	eCell	{Data: Oriented}	eCell
+{Section: Assessments: Neurological: Glasgow Coma Scale}	{Element_Key: Verbal response}	{FQN: Assessments.Neurological.Glasgow_Coma_Scale.Verbal_response}	eCell	eCell	{Label: Verbal response}	{InputType: dropdown}	"{Options: Obeys commands
+Localising
+Normal flexion
+Extension
+None
+Non testable}"	{DataFrom: case}	eCell	{Data: Obeys commands}	eCell
+{Section: Assessments: Neurological: Glasgow Coma Scale}	{Element_Key: Best motor response}	{FQN: Assessments.Neurological.Glasgow_Coma_Scale.Best_motor_response}	eCell	eCell	{Label: Best motor response}	{InputType: dropdown}	eCell	{DataFrom: case}	{InputFormat: ##/15}	{Data: (15 - calculated by system)}	eCell
+{Section: Assessments: Neurological: Glasgow Coma Scale}	{Element_Key: Total}	{FQN: Assessments.Neurological.Glasgow_Coma_Scale.Total}	eCell	eCell	{Label: Total}	{InputType: dynamic text}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Neurological: Left pupil}	eCell	{FQN: Assessments.Neurological.Left_pupil}	eCell	eCell	{Label: Left pupil}	{InputType: fieldset}	"{Options: 1
+2
+3
+4
+5
+6
+7
+8
+9}"	{DataFrom: case}	eCell	{Data: 2}	eCell
+{Section: Assessments: Neurological: Left pupil}	{Element_Key: Size}	{FQN: Assessments.Neurological.Left_pupil.Size}	eCell	eCell	{Label: Size}	{InputType: dropdown}	"{Options: Brisk
+Sluggish
+Fixed}"	{DataFrom: case}	eCell	{Data: Brisk}	eCell
+{Section: Assessments: Neurological: Left pupil}	{Element_Key: Response to light}	{FQN: Assessments.Neurological.Left_pupil.Response_to_light}	eCell	eCell	{Label: Response to light}	{InputType: dropdown}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Neurological: Right pupil}	eCell	{FQN: Assessments.Neurological.Right_pupil}	eCell	eCell	{Label: Right pupil}	{InputType: fieldset}	"{Options: 1
+2
+3
+4
+5
+6
+7
+8
+9}"	{DataFrom: case}	eCell	{Data: 2}	eCell
+{Section: Assessments: Neurological: Right pupil}	{Element_Key: Size}	{FQN: Assessments.Neurological.Right_pupil.Size}	eCell	eCell	{Label: Size}	{InputType: dropdown}	"{Options: Brisk
+Sluggish
+Fixed}"	{DataFrom: case}	eCell	{Data: Brisk}	eCell
+{Section: Assessments: Neurological: Right pupil}	{Element_Key: Response to light}	{FQN: Assessments.Neurological.Right_pupil.Response_to_light}	eCell	eCell	{Label: Response to light}	{InputType: dropdown}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Neurological; Both pupils}	eCell	{FQN: Assessments.Neurological;_Both_pupils}	eCell	eCell	{Label: Both pupils}	{InputType: fieldset}	"{Options: Equal
+Unequal}"	{DataFrom: case}	eCell	{Data: Equal}	eCell
+{Section: Assessments: Neurological; Both pupils}	{Element_Key: no label}	{FQN: Assessments.Neurological;_Both_pupils.no_label}	eCell	eCell	{Label: no label}	{InputType: dropdown}	"{Options: Yes
+No}"	{DataFrom: case}	eCell	{Data: Yes}	eCell
+{Section: Assessments: Neurological}	{Element_Key: Facial symmetry}	{FQN: Assessments.Neurological.Facial_symmetry}	eCell	eCell	{Label: Facial symmetry}	{InputType: dropdown}	"{Options: None
+Left side
+Right side
+Both sides}"	{DataFrom: case}	eCell	{Data: None}	eCell
+{Section: Assessments: Neurological}	{Element_Key: Facial weakness}	{FQN: Assessments.Neurological.Facial_weakness}	eCell	eCell	{Label: Facial weakness}	{InputType: dropdown}	"{Options: Yes
+No}"	{DataFrom: case}	eCell	{Data: None}	eCell
+{Section: Assessments: Neurological}	{Element_Key: Aspiration risk}	{FQN: Assessments.Neurological.Aspiration_risk}	eCell	eCell	{Label: Aspiration risk}	{InputType: dropdown}	"{Options: Yes
+No}"	{DataFrom: case}	eCell	{Data: Yes}	eCell
+{Section: Assessments: Neurological}	{Element_Key: Falls risk}	{FQN: Assessments.Neurological.Falls_risk}	eCell	eCell	{Label: Falls risk}	{InputType: dropdown}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Neurological}	{Element_Key: Stoke assessment}	{FQN: Assessments.Neurological.Stoke_assessment}	eCell	eCell	{Label: Stoke assessment}	eCell	eCell	{DataFrom: case}	eCell	{Data: (no comments)}	eCell
+{Section: Assessments: Neurological}	{Element_Key: Comments}	{FQN: Assessments.Neurological.Comments}	eCell	eCell	{Label: Comments}	{InputType: text box}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Respiratory}	eCell	{FQN: Assessments.Respiratory}	{NavURL: ./current/assessments/respiratory}	eCell	{Label: Respiratory}	{InputType: page}	eCell	{DataFrom: case}	eCell	{Data: Jason}	eCell
+{Section: Assessments: Respiratory}	{Element_Key: Name}	{FQN: Assessments.Respiratory.Name}	eCell	eCell	{Label: Name}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: RN}	eCell
+{Section: Assessments: Respiratory}	{Element_Key: Profession}	{FQN: Assessments.Respiratory.Profession}	eCell	eCell	{Label: Profession}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: ER}	eCell
+{Section: Assessments: Respiratory}	{Element_Key: Unit}	{FQN: Assessments.Respiratory.Unit}	eCell	eCell	{Label: Unit}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: 0}	eCell
+{Section: Assessments: Respiratory}	{Element_Key: Date}	{FQN: Assessments.Respiratory.Date}	eCell	eCell	{Label: Date}	{InputType: text field - date}	eCell	{DataFrom: case}	eCell	{Data: 0.8125}	eCell
+{Section: Assessments: Respiratory}	{Element_Key: Time}	{FQN: Assessments.Respiratory.Time}	eCell	eCell	{Label: Time}	{InputType: text field - time}	"{Options: Patent
+Obstructed
+OETT
+Other}"	{DataFrom: case}	eCell	{Data: Patent}	eCell
+{Section: Assessments: Respiratory}	{Element_Key: Airway}	{FQN: Assessments.Respiratory.Airway}	eCell	eCell	{Label: Airway}	{InputType: multi-select dropdown}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Respiratory: Breath sounds}	eCell	{FQN: Assessments.Respiratory.Breath_sounds}	eCell	eCell	{Label: Breath sounds}	{InputType: fieldset}	"{Options: Normal
+Wheeze
+Crackles
+Absent
+Deceased}"	{DataFrom: case}	eCell	{Data: Normal}	eCell
+{Section: Assessments: Respiratory: Breath sounds}	{Element_Key: LUL}	{FQN: Assessments.Respiratory.Breath_sounds.LUL}	eCell	eCell	{Label: LUL}	{InputType: dropdown}	"{Options: Normal
+Wheeze
+Crackles
+Absent
+Deceased}"	{DataFrom: case}	eCell	{Data: Normal}	eCell
+{Section: Assessments: Respiratory: Breath sounds}	{Element_Key: RUL}	{FQN: Assessments.Respiratory.Breath_sounds.RUL}	eCell	eCell	{Label: RUL}	{InputType: dropdown}	"{Options: Normal
+Wheeze
+Crackles
+Absent
+Deceased}"	{DataFrom: case}	eCell	{Data: Decreased}	eCell
+{Section: Assessments: Respiratory: Breath sounds}	{Element_Key: RML}	{FQN: Assessments.Respiratory.Breath_sounds.RML}	eCell	eCell	{Label: RML}	{InputType: dropdown}	"{Options: Normal
+Wheeze
+Crackles
+Absent
+Deceased}"	{DataFrom: case}	eCell	{Data: Decreased}	eCell
+{Section: Assessments: Respiratory: Breath sounds}	{Element_Key: LLL}	{FQN: Assessments.Respiratory.Breath_sounds.LLL}	eCell	eCell	{Label: LLL}	{InputType: dropdown}	"{Options: Normal
+Wheeze
+Crackles
+Absent
+Deceased}"	{DataFrom: case}	eCell	{Data: Decreased}	eCell
+{Section: Assessments: Respiratory: Breath sounds}	{Element_Key: RLL}	{FQN: Assessments.Respiratory.Breath_sounds.RLL}	eCell	eCell	{Label: RLL}	{InputType: dropdown}	eCell	{DataFrom: case}	eCell	{Data: None}	eCell
+{Section: Assessments: Respiratory}	{Element_Key: Oxygen therapy}	{FQN: Assessments.Respiratory.Oxygen_therapy}	eCell	eCell	{Label: Oxygen therapy}	{InputType: text field}	eCell	{DataFrom: ?}	{InputFormat: lpm (text that follows field)}	{Data: (}	eCell
+{Section: Assessments: Respiratory}	{Element_Key: Oxygen flow}	{FQN: Assessments.Respiratory.Oxygen_flow}	eCell	eCell	{Label: Oxygen flow}	{InputType: text field with text apended to end}	"{Options: Regular
+Irregular
+Paradoxical}"	{DataFrom: case}	eCell	{Data: Regular}	eCell
+{Section: Assessments: Respiratory}	{Element_Key: Respiratory rhythm}	{FQN: Assessments.Respiratory.Respiratory_rhythm}	eCell	eCell	{Label: Respiratory rhythm}	{InputType: multi-select dropdown}	"{Options: Normal
+Shallow
+Deep}"	{DataFrom: case}	eCell	{Data: Shallow}	eCell
+{Section: Assessments: Respiratory}	{Element_Key: Respiratory depth}	{FQN: Assessments.Respiratory.Respiratory_depth}	eCell	eCell	{Label: Respiratory depth}	{InputType: multi-select dropdown}	"{Options: No
+Nonreproductive
+Productive}"	{DataFrom: case}	eCell	{Data: No}	eCell
+{Section: Assessments: Respiratory}	{Element_Key: Cough}	{FQN: Assessments.Respiratory.Cough}	eCell	eCell	{Label: Cough}	{InputType: multi-select dropdown}	"{Options: Mucoid
+Purulent
+Yellow-green
+Rust-coloured
+Pink, blood tinged
+Pink, frothy
+Profuse, colourless
+Bloody}"	{DataFrom: case}	eCell	{Data: (nothing selected)}	eCell
+{Section: Assessments: Respiratory}	{Element_Key: Sputum colour}	{FQN: Assessments.Respiratory.Sputum_colour}	eCell	eCell	{Label: Sputum colour}	{InputType: dropdown}	eCell	{DataFrom: case}	eCell	{Data: (no notes)}	eCell
+{Section: Assessments: Respiratory}	{Element_Key: Sputum comments}	{FQN: Assessments.Respiratory.Sputum_comments}	eCell	eCell	{Label: Sputum comments}	{InputType: text field}	eCell	{DataFrom: case}	eCell	{Data: (no notes)}	eCell
+{Section: Assessments: Respiratory}	{Element_Key: General comments}	{FQN: Assessments.Respiratory.General_comments}	eCell	eCell	{Label: General comments}	{InputType: text box}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Cardiovascular}	eCell	{FQN: Assessments.Cardiovascular}	{NavURL: ./current/assessments/cardiovascular}	eCell	{Label: Cardiovascular}	{InputType: page}	eCell	{DataFrom: case}	eCell	{Data: Jason}	eCell
+{Section: Assessments: Cardiovascular}	{Element_Key: Name}	{FQN: Assessments.Cardiovascular.Name}	eCell	eCell	{Label: Name}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: RN}	eCell
+{Section: Assessments: Cardiovascular}	{Element_Key: Profession}	{FQN: Assessments.Cardiovascular.Profession}	eCell	eCell	{Label: Profession}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: ER}	eCell
+{Section: Assessments: Cardiovascular}	{Element_Key: Unit}	{FQN: Assessments.Cardiovascular.Unit}	eCell	eCell	{Label: Unit}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: 0}	eCell
+{Section: Assessments: Cardiovascular}	{Element_Key: Date}	{FQN: Assessments.Cardiovascular.Date}	eCell	eCell	{Label: Date}	{InputType: text field - date}	eCell	{DataFrom: case}	eCell	{Data: 0.8125}	eCell
+{Section: Assessments: Cardiovascular}	{Element_Key: Time}	{FQN: Assessments.Cardiovascular.Time}	eCell	eCell	{Label: Time}	{InputType: text field - time}	"{Options: Regular
+Irregular
+Normal
+Weak
+Bounding}"	{DataFrom: case}	eCell	{Data: Regular}	eCell
+{Section: Assessments: Cardiovascular}	{Element_Key: Pulse}	{FQN: Assessments.Cardiovascular.Pulse}	eCell	eCell	{Label: Pulse}	{InputType: dropdown}	"{Options: Normal
+Pale
+Mottled
+Cyanotic
+Flushed
+Jaundiced}"	{DataFrom: case}	eCell	{Data: Normal}	eCell
+{Section: Assessments: Cardiovascular}	{Element_Key: Skin appearance}	{FQN: Assessments.Cardiovascular.Skin_appearance}	eCell	eCell	{Label: Skin appearance}	{InputType: dropdown}	"{Options: Normal
+Delayed}"	{DataFrom: case}	eCell	{Data: Normal}	eCell
+{Section: Assessments: Cardiovascular}	{Element_Key: Cap refill}	{FQN: Assessments.Cardiovascular.Cap_refill}	eCell	eCell	{Label: Cap refill}	{InputType: dropdown }	"{Options: Warm
+Cool
+Hot}"	{DataFrom: case}	eCell	{Data: Warm}	eCell
+{Section: Assessments: Cardiovascular}	{Element_Key: Temperature}	{FQN: Assessments.Cardiovascular.Temperature}	eCell	eCell	{Label: Temperature}	{InputType: dropdown (4 fields in the table)}	"{Options: No
+Ankle
+Pedal
+Sacral
+Pitting}"	{DataFrom: case}	eCell	{Data: No}	eCell
+{Section: Assessments: Cardiovascular}	{Element_Key: Peripheral Edema}	{FQN: Assessments.Cardiovascular.Peripheral_Edema}	eCell	eCell	{Label: Peripheral Edema}	{InputType: dropdown (4 fields in the table)}	"{Options: Pink
+Cyanotic}"	{DataFrom: ?}	eCell	eCell	eCell
+{Section: Assessments: Cardiovascular}	{Element_Key: Nail bed colour}	{FQN: Assessments.Cardiovascular.Nail_bed_colour}	eCell	eCell	{Label: Nail bed colour}	{InputType: dropdown (4 fields in the table)}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Cardiovascular}	{Element_Key: Comments}	{FQN: Assessments.Cardiovascular.Comments}	eCell	eCell	{Label: Comments}	{InputType: text box}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Gastrointestinal}	eCell	{FQN: Assessments.Gastrointestinal}	{NavURL: ./current/assessments/gastrointestinal}	eCell	{Label: Gastrointestinal}	{InputType: page}	eCell	{DataFrom: case}	eCell	{Data: Jason}	eCell
+{Section: Assessments: Gastrointestinal}	{Element_Key: Name}	{FQN: Assessments.Gastrointestinal.Name}	eCell	eCell	{Label: Name}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: RN}	eCell
+{Section: Assessments: Gastrointestinal}	{Element_Key: Profession}	{FQN: Assessments.Gastrointestinal.Profession}	eCell	eCell	{Label: Profession}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: ER}	eCell
+{Section: Assessments: Gastrointestinal}	{Element_Key: Unit}	{FQN: Assessments.Gastrointestinal.Unit}	eCell	eCell	{Label: Unit}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: 0}	eCell
+{Section: Assessments: Gastrointestinal}	{Element_Key: Date}	{FQN: Assessments.Gastrointestinal.Date}	eCell	eCell	{Label: Date}	{InputType: text field - date}	eCell	{DataFrom: case}	eCell	{Data: 0.8125}	eCell
+{Section: Assessments: Gastrointestinal}	{Element_Key: Time}	{FQN: Assessments.Gastrointestinal.Time}	eCell	eCell	{Label: Time}	{InputType: text field - time}	"{Options: Soft
+Tender
+Rigid
+Guarding
+Distended
+Scars}"	{DataFrom: case}	eCell	{Data: Soft}	eCell
+{Section: Assessments: Gastrointestinal}	{Element_Key: Abdomen}	{FQN: Assessments.Gastrointestinal.Abdomen}	eCell	eCell	{Label: Abdomen}	{InputType: multi select dropdown}	"{Options: Yes
+No}"	{DataFrom: case}	eCell	{Data: No}	eCell
+{Section: Assessments: Gastrointestinal}	{Element_Key: Abdominal pain}	{FQN: Assessments.Gastrointestinal.Abdominal_pain}	eCell	eCell	{Label: Abdominal pain}	{InputType: dropdown}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Gastrointestinal: Emesis}	eCell	{FQN: Assessments.Gastrointestinal.Emesis}	eCell	eCell	{Label: Emesis}	{InputType: fieldset}	"{Options: None
+Nausea
+Vomiting}"	{DataFrom: case}	eCell	{Data: None}	eCell
+{Section: Assessments: Gastrointestinal: Emesis}	{Element_Key: unknown}	{FQN: Assessments.Gastrointestinal.Emesis.unknown}	eCell	eCell	{Label: (none)}	{InputType: multi select dropdown}	eCell	{DataFrom: case}	eCell	{Data: (nothing selected)}	eCell
+{Section: Assessments: Gastrointestinal: Emesis}	{Element_Key: Emesis colour}	{FQN: Assessments.Gastrointestinal.Emesis.Emesis_colour}	eCell	eCell	{Label: Emesis colour}	{InputType: Dropdown}	eCell	{DataFrom: case}	eCell	{Data: (nothing entered)}	eCell
+{Section: Assessments: Gastrointestinal: Emesis}	{Element_Key: Description}	{FQN: Assessments.Gastrointestinal.Emesis.Description}	eCell	eCell	{Label: Description}	{InputType: Text field}	"{Options: Small
+Moderate
+Large}"	{DataFrom: case}	eCell	{Data: (nothing selected)}	eCell
+{Section: Assessments: Gastrointestinal: Emesis}	{Element_Key: Amount}	{FQN: Assessments.Gastrointestinal.Emesis.Amount}	eCell	eCell	{Label: Amount}	{InputType: Dropdown}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Gastrointestinal: Eating}	eCell	{FQN: Assessments.Gastrointestinal.Eating}	eCell	eCell	{Label: Eating}	{InputType: fieldset}	"{Options: Regular
+Difficult}"	{DataFrom: case}	eCell	{Data: Regular}	eCell
+{Section: Assessments: Gastrointestinal: Eating}	{Element_Key: unknown}	{FQN: Assessments.Gastrointestinal.Eating.unknown}	eCell	eCell	{Label: (none)}	{InputType: dropdown}	eCell	{DataFrom: case}	eCell	{Data: (nothing entered)}	eCell
+{Section: Assessments: Gastrointestinal: Eating}	{Element_Key: Reason}	{FQN: Assessments.Gastrointestinal.Eating.Reason}	eCell	eCell	{Label: Reason}	{InputType: text field}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Gastrointestinal: NPO since}	eCell	{FQN: Assessments.Gastrointestinal.NPO_since}	eCell	eCell	{Label: HEADING - NPO since}	{InputType: fieldset}	eCell	{DataFrom: case}	eCell	{Data: (nothing entered)}	eCell
+{Section: Assessments: Gastrointestinal: NPO since}	{Element_Key: date}	{FQN: Assessments.Gastrointestinal.NPO_since.date}	eCell	eCell	{Label: (none)}	{InputType: text field - date picker}	eCell	{DataFrom: case}	eCell	{Data: (nothing entered)}	eCell
+{Section: Assessments: Gastrointestinal: NPO since}	{Element_Key: time}	{FQN: Assessments.Gastrointestinal.NPO_since.time}	eCell	eCell	{Label: (none)}	{InputType: text field - time picker}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Gastrointestinal: Bowel}	eCell	{FQN: Assessments.Gastrointestinal.Bowel}	eCell	eCell	{Label: Bowel}	{InputType: fieldset}	"{Options: Constipation
+Diarrhea
+Melena
+Incontinent}"	{DataFrom: case}	eCell	{Data: (nothing entered)}	eCell
+{Section: Assessments: Gastrointestinal: Bowel}	{Element_Key: unknown}	{FQN: Assessments.Gastrointestinal.Bowel.unknown}	eCell	eCell	{Label: (none)}	{InputType: Multi select dropdown}	eCell	{DataFrom: case}	eCell	{Data: Yesterday}	eCell
+{Section: Assessments: Gastrointestinal: Bowel}	{Element_Key: Last BM}	{FQN: Assessments.Gastrointestinal.Bowel.Last_BM}	eCell	eCell	{Label: Last BM}	{InputType: Text field}	"{Options: None
+LUQ
+RUQ
+LLQ
+RLQ}"	{DataFrom: case}	eCell	{Data: LUQ, RUQ, LLQ, RLQ}	eCell
+{Section: Assessments: Gastrointestinal: Bowel}	{Element_Key: Bowel sounds}	{FQN: Assessments.Gastrointestinal.Bowel.Bowel_sounds}	eCell	eCell	{Label: Bowel sounds}	{InputType: Multi select dropdown}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Gastrointestinal: Stool}	eCell	{FQN: Assessments.Gastrointestinal.Stool}	eCell	eCell	{Label: Stool}	{InputType: fieldset}	"{Options: Brown
+Green
+Clay coloured
+Yellow
+Black
+Bright red
+Dark red}"	{DataFrom: case}	eCell	{Data: Brown}	eCell
+{Section: Assessments: Gastrointestinal: Stool}	{Element_Key: Stool colour}	{FQN: Assessments.Gastrointestinal.Stool.Stool_colour}	eCell	eCell	{Label: Stool colour}	{InputType: Dropdown}	eCell	{DataFrom: case}	eCell	{Data: (nothing entered)}	eCell
+{Section: Assessments: Gastrointestinal: Stool}	{Element_Key: Description}	{FQN: Assessments.Gastrointestinal.Stool.Description}	eCell	eCell	{Label: Description}	{InputType: Text field}	eCell	{DataFrom: case}	eCell	{Data: (nothing entered)}	eCell
+{Section: Assessments: Gastrointestinal: Stool}	{Element_Key: Amount}	{FQN: Assessments.Gastrointestinal.Stool.Amount}	eCell	eCell	{Label: Amount}	{InputType: Text field}	"{Options: Observed
+As per patient observed
+Not observed}"	{DataFrom: case}	eCell	{Data: As per patient observed}	eCell
+{Section: Assessments: Gastrointestinal: Stool}	{Element_Key: Source}	{FQN: Assessments.Gastrointestinal.Stool.Source}	eCell	eCell	{Label: Source}	{InputType: Dropdown}	eCell	{DataFrom: case}	eCell	{Data: (nothing entered)}	eCell
+{Section: Assessments: Gastrointestinal: Stool}	{Element_Key: Comments}	{FQN: Assessments.Gastrointestinal.Stool.Comments}	eCell	eCell	{Label: Comments}	{InputType: Text box}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Genitourinary}	eCell	{FQN: Assessments.Genitourinary}	{NavURL: ./current/assessments/genitourinary}	eCell	{Label: Genitourinary}	{InputType: page}	eCell	{DataFrom: case}	eCell	{Data: Jason}	eCell
+{Section: Assessments: Genitourinary}	{Element_Key: Name}	{FQN: Assessments.Genitourinary.Name}	eCell	eCell	{Label: Name}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: RN}	eCell
+{Section: Assessments: Genitourinary}	{Element_Key: Profession}	{FQN: Assessments.Genitourinary.Profession}	eCell	eCell	{Label: Profession}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: ER}	eCell
+{Section: Assessments: Genitourinary}	{Element_Key: Unit}	{FQN: Assessments.Genitourinary.Unit}	eCell	eCell	{Label: Unit}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: 0}	eCell
+{Section: Assessments: Genitourinary}	{Element_Key: Date}	{FQN: Assessments.Genitourinary.Date}	eCell	eCell	{Label: Date}	{InputType: text field - date}	eCell	{DataFrom: case}	eCell	{Data: 0.8125}	eCell
+{Section: Assessments: Genitourinary}	{Element_Key: Time}	{FQN: Assessments.Genitourinary.Time}	eCell	eCell	{Label: Time}	{InputType: text field - time}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Genitourinary}	{Element_Key: HEADING - Urinary}	{FQN: Assessments.Genitourinary.HEADING_-_Urinary}	eCell	eCell	{Label: HEADING - Urinary}	eCell	"{Options: None
+Increased frequency
+Dysuria
+Hernaturia
+Oliguria
+Indwelling
+Incontinence
+Retention
+Distention}"	{DataFrom: case}	eCell	{Data: None}	eCell
+{Section: Assessments: Genitourinary}	{Element_Key: Symptoms}	{FQN: Assessments.Genitourinary.Symptoms}	eCell	eCell	{Label: Symptoms}	{InputType: Multi select dropdown}	eCell	{DataFrom: case}	eCell	{Data: 0}	eCell
+{Section: Assessments: Genitourinary}	{Element_Key: Last voided date}	{FQN: Assessments.Genitourinary.Last_voided_date}	eCell	eCell	{Label: Last voided date}	{InputType: text field - date}	eCell	{DataFrom: case}	eCell	{Data: 0.666666666666667}	eCell
+{Section: Assessments: Genitourinary}	{Element_Key: Last voided time}	{FQN: Assessments.Genitourinary.Last_voided_time}	eCell	eCell	{Label: Last voided time}	{InputType: text field - time}	"{Options: Pale yellow
+Dark yellow
+Amber
+Red/blood
+Other}"	{DataFrom: case}	eCell	{Data: Pale yellow}	eCell
+{Section: Assessments: Genitourinary}	{Element_Key: Urine colour}	{FQN: Assessments.Genitourinary.Urine_colour}	eCell	eCell	{Label: Urine colour}	{InputType: Dropdown}	"{Options: Clear
+Cloudy
+Foamy
+Other}"	{DataFrom: case}	eCell	{Data: Clear}	eCell
+{Section: Assessments: Genitourinary}	{Element_Key: Urine consistency}	{FQN: Assessments.Genitourinary.Urine_consistency}	eCell	eCell	{Label: Urine consistency}	{InputType: Dropdown}	"{Options: Yes
+No}"	{DataFrom: case}	eCell	{Data: No}	eCell
+{Section: Assessments: Genitourinary}	{Element_Key: Diaper/Brief}	{FQN: Assessments.Genitourinary.Diaper/Brief}	eCell	eCell	{Label: Diaper/Brief}	{InputType: Dropdown}	"{Options: Yes
+No}"	{DataFrom: case}	eCell	{Data: No}	eCell
+{Section: Assessments: Genitourinary}	{Element_Key: Foley}	{FQN: Assessments.Genitourinary.Foley}	eCell	eCell	{Label: Foley}	{InputType: Dropdown}	eCell	{DataFrom: case}	eCell	{Data: (not filled)}	eCell
+{Section: Assessments: Genitourinary}	{Element_Key: Type}	{FQN: Assessments.Genitourinary.Type}	eCell	eCell	{Label: Type}	{InputType: Text field}	eCell	{DataFrom: case}	eCell	{Data: (not filled)}	eCell
+{Section: Assessments: Genitourinary}	{Element_Key: Size}	{FQN: Assessments.Genitourinary.Size}	eCell	eCell	{Label: Size}	{InputType: Text field}	"{Options: Yes
+No}"	{DataFrom: case}	eCell	{Data: No}	eCell
+{Section: Assessments: Genitourinary}	{Element_Key: Pelvic pain}	{FQN: Assessments.Genitourinary.Pelvic_pain}	eCell	eCell	{Label: Pelvic pain}	{InputType: Dropdown}	eCell	{DataFrom: case}	eCell	{Data: (not filled)}	eCell
+{Section: Assessments: Genitourinary}	{Element_Key: Location}	{FQN: Assessments.Genitourinary.Location}	eCell	eCell	{Label: Location}	{InputType: Text field}	"{Options: Observed
+As per patient observed
+Not observed}"	{DataFrom: case}	eCell	{Data: (not filled)}	eCell
+{Section: Assessments: Genitourinary}	{Element_Key: Source}	{FQN: Assessments.Genitourinary.Source}	eCell	eCell	{Label: Source}	{InputType: Dropdown}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Genitourinary: Vaginal}	eCell	{FQN: Assessments.Genitourinary.Vaginal}	eCell	eCell	{Label: HEADING - VAGINAL}	{InputType: fieldset}	"{Options: Discharge
+Bleeding}"	{DataFrom: case}	eCell	{Data: (not filled)}	eCell
+{Section: Assessments: Genitourinary: Vaginal}	{Element_Key: unknown}	{FQN: Assessments.Genitourinary.Vaginal.unknown}	eCell	eCell	{Label: (none)}	{InputType: List of checkboxes}	eCell	{DataFrom: case}	eCell	{Data: (not filled)}	eCell
+{Section: Assessments: Genitourinary: Vaginal}	{Element_Key: Description}	{FQN: Assessments.Genitourinary.Vaginal.Description}	eCell	eCell	{Label: Description}	{InputType: Text field}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Genitourinary}	{Element_Key: Last menstrual period}	{FQN: Assessments.Genitourinary.Last_menstrual_period}	eCell	eCell	{Label: Last menstrual period}	{InputType: Dropdown}	eCell	{DataFrom: ?}	eCell	eCell	eCell
+{Section: Assessments: Genitourinary}	{Element_Key: LMP date}	{FQN: Assessments.Genitourinary.LMP_date}	eCell	eCell	{Label: LMP date}	{InputType: Text field}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Genitourinary: Pregnancy}	eCell	{FQN: Assessments.Genitourinary.Pregnancy}	eCell	eCell	{Label: HEADING - PREGNANCY}	{InputType: fieldset}	eCell	{DataFrom: case}	eCell	{Data: no}	eCell
+{Section: Assessments: Genitourinary: Pregnancy}	{Element_Key: Pregnant}	{FQN: Assessments.Genitourinary.Pregnancy.Pregnant}	eCell	eCell	{Label: Pregnant}	{InputType: Dropdown}	eCell	{DataFrom: case}	eCell	{Data: 5}	eCell
+{Section: Assessments: Genitourinary: Pregnancy}	{Element_Key: Gravida}	{FQN: Assessments.Genitourinary.Pregnancy.Gravida}	eCell	eCell	{Label: Gravida (number of pregnancies)}	{InputType: Text field}	eCell	{DataFrom: case}	eCell	{Data: 4}	eCell
+{Section: Assessments: Genitourinary: Pregnancy}	{Element_Key: Para}	{FQN: Assessments.Genitourinary.Pregnancy.Para}	eCell	eCell	{Label: Para (number of children)}	{InputType: Text field}	eCell	{DataFrom: case}	eCell	{Data: 4}	eCell
+{Section: Assessments: Genitourinary: Pregnancy}	{Element_Key: Living}	{FQN: Assessments.Genitourinary.Pregnancy.Living}	eCell	eCell	{Label: Living children}	{InputType: Text field}	eCell	{DataFrom: case}	eCell	{Data: (not filled)}	eCell
+{Section: Assessments: Genitourinary}	{Element_Key: Comments}	{FQN: Assessments.Genitourinary.Comments}	eCell	eCell	{Label: Comments}	{InputType: Text box}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Musculoskeletal}	eCell	{FQN: Assessments.Musculoskeletal}	{NavURL: ./current/assessments/musculoskeletal}	eCell	{Label: Musculoskeletal}	{InputType: page}	eCell	{DataFrom: case}	eCell	{Data: Jason}	eCell
+{Section: Assessments: Musculoskeletal}	{Element_Key: Name}	{FQN: Assessments.Musculoskeletal.Name}	eCell	eCell	{Label: Name}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: RN}	eCell
+{Section: Assessments: Musculoskeletal}	{Element_Key: Profession}	{FQN: Assessments.Musculoskeletal.Profession}	eCell	eCell	{Label: Profession}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: ER}	eCell
+{Section: Assessments: Musculoskeletal}	{Element_Key: Unit}	{FQN: Assessments.Musculoskeletal.Unit}	eCell	eCell	{Label: Unit}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: 0}	eCell
+{Section: Assessments: Musculoskeletal}	{Element_Key: Date}	{FQN: Assessments.Musculoskeletal.Date}	eCell	eCell	{Label: Date}	{InputType: text field - date}	eCell	{DataFrom: case}	eCell	{Data: 0.8125}	eCell
+{Section: Assessments: Musculoskeletal}	{Element_Key: Time}	{FQN: Assessments.Musculoskeletal.Time}	eCell	eCell	{Label: Time}	{InputType: text field - time}	"{Options: Present
+Absent}"	{DataFrom: case}	{InputFormat: 2 inputs, one in the RT row, one in the LT row}	{Data: Absent}	eCell
+{Section: Assessments: Musculoskeletal}	{Element_Key: Swelling}	{FQN: Assessments.Musculoskeletal.Swelling}	eCell	eCell	{Label: Swelling}	{InputType: Dropdown}	"{Options: Present
+Absent}"	{DataFrom: case}	{InputFormat: 2 inputs, one in the RT row, one in the LT row}	{Data: Absent}	eCell
+{Section: Assessments: Musculoskeletal}	{Element_Key: Pain}	{FQN: Assessments.Musculoskeletal.Pain}	eCell	eCell	{Label: Pain}	{InputType: Dropdown}	"{Options: Present
+Absent}"	{DataFrom: case}	{InputFormat: 2 inputs, one in the RT row, one in the LT row}	{Data: Absent}	eCell
+{Section: Assessments: Musculoskeletal}	{Element_Key: Deformity}	{FQN: Assessments.Musculoskeletal.Deformity}	eCell	eCell	{Label: Deformity}	{InputType: Dropdown}	"{Options: Normal
+Decreased
+Absent}"	{DataFrom: case}	{InputFormat: 2 inputs, one in the RT row, one in the LT row}	{Data: Normal}	eCell
+{Section: Assessments: Musculoskeletal}	{Element_Key: Movement}	{FQN: Assessments.Musculoskeletal.Movement}	eCell	eCell	{Label: Movement}	{InputType: Dropdown}	"{Options: Present
+Absent
+Numb}"	{DataFrom: case}	{InputFormat: 2 inputs, one in the RT row, one in the LT row}	{Data: Present}	eCell
+{Section: Assessments: Musculoskeletal}	{Element_Key: Sensation}	{FQN: Assessments.Musculoskeletal.Sensation}	eCell	eCell	{Label: Sensation}	{InputType: Dropdown}	"{Options: Absent
+Weak
+Moderate
+Strong
+Bounding}"	{DataFrom: case}	{InputFormat: 2 inputs, one in the RT row, one in the LT row}	{Data: Moderate}	eCell
+{Section: Assessments: Musculoskeletal}	{Element_Key: Pulse}	{FQN: Assessments.Musculoskeletal.Pulse}	eCell	eCell	{Label: Pulse}	{InputType: Dropdown}	"{Options: Flesh
+Pale
+Cynanotic}"	{DataFrom: case}	{InputFormat: 2 inputs, one in the RT row, one in the LT row}	{Data: Flesh}	eCell
+{Section: Assessments: Musculoskeletal}	{Element_Key: Colour}	{FQN: Assessments.Musculoskeletal.Colour}	eCell	eCell	{Label: Colour}	{InputType: Dropdown}	"{Options: Hot
+Warm
+Cold}"	{DataFrom: case}	{InputFormat: 2 inputs, one in the RT row, one in the LT row}	{Data: Warm}	eCell
+{Section: Assessments: Musculoskeletal}	{Element_Key: Temp}	{FQN: Assessments.Musculoskeletal.Temp}	eCell	eCell	{Label: Temp}	{InputType: Dropdown}	"{Options: Yes
+No}"	{DataFrom: case}	eCell	{Data: No}	eCell
+{Section: Assessments: Musculoskeletal}	{Element_Key: Use of ambulatory aid}	{FQN: Assessments.Musculoskeletal.Use_of_ambulatory_aid}	eCell	eCell	{Label: Use of ambulatory aid}	{InputType: Dropdown}	"{Options: Walker
+Cane
+One crutch
+Two crutches
+Wheelchair
+Other}"	{DataFrom: case}	eCell	{Data: (none selected)}	eCell
+{Section: Assessments: Musculoskeletal}	{Element_Key: Type}	{FQN: Assessments.Musculoskeletal.Type}	eCell	eCell	{Label: Type}	{InputType: Dropdown}	eCell	{DataFrom: case}	eCell	{Data: (not filled)}	eCell
+{Section: Assessments: Musculoskeletal}	{Element_Key: Comments}	{FQN: Assessments.Musculoskeletal.Comments}	eCell	eCell	{Label: Comments}	{InputType: Text box}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Pain}	eCell	{FQN: Assessments.Pain}	{NavURL: ./current/assessments/pain}	eCell	{Label: Pain}	{InputType: page}	eCell	{DataFrom: case}	eCell	{Data: Jason}	eCell
+{Section: Assessments: Pain: Assessment}	eCell	{FQN: Assessments.Pain.Assessment}	eCell	eCell	{Label: Pain}	{InputType: table row}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Pain: Assessment}	{Element_Key: Name}	{FQN: Assessments.Pain.Assessment.Name}	eCell	eCell	{Label: Name}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: RN}	eCell
+{Section: Assessments: Pain: Assessment}	{Element_Key: Profession}	{FQN: Assessments.Pain.Assessment.Profession}	eCell	eCell	{Label: Profession}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: ER}	eCell
+{Section: Assessments: Pain: Assessment}	{Element_Key: Unit}	{FQN: Assessments.Pain.Assessment.Unit}	eCell	eCell	{Label: Unit}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: 0}	eCell
+{Section: Assessments: Pain: Assessment}	{Element_Key: Date}	{FQN: Assessments.Pain.Assessment.Date}	eCell	eCell	{Label: Date}	{InputType: text field - date}	eCell	{DataFrom: case}	eCell	{Data: 0.8125}	eCell
+{Section: Assessments: Pain: Assessment}	{Element_Key: Time}	{FQN: Assessments.Pain.Assessment.Time}	eCell	eCell	{Label: Time}	{InputType: text field - time}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Pain: Assessment: Primary}	eCell	{FQN: Assessments.Pain.Assessment.Primary}	eCell	eCell	{Label: HEADING - Primary pain site}	{InputType: fieldset}	eCell	{DataFrom: case}	eCell	{Data: 0}	eCell
+{Section: Assessments: Pain: Assessment: Primary}	{Element_Key: Pain scale}	{FQN: Assessments.Pain.Assessment.Primary.Pain_scale}	eCell	eCell	{Label: Pain scale (0-10)}	{InputType: Text field}	eCell	{DataFrom: case}	eCell	{Data: 28}	eCell
+{Section: Assessments: Pain: Assessment: Primary}	{Element_Key: Respiratory rate}	{FQN: Assessments.Pain.Assessment.Primary.Respiratory_rate}	eCell	eCell	{Label: Respiratory rate (br/min)}	{InputType: Text field}	eCell	{DataFrom: ?}	eCell	eCell	eCell
+{Section: Assessments: Pain: Assessment: Primary}	{Element_Key: Location}	{FQN: Assessments.Pain.Assessment.Primary.Location}	eCell	eCell	{Label: Location}	{InputType: ?}	eCell	{DataFrom: ?}	eCell	eCell	eCell
+{Section: Assessments: Pain: Assessment: Primary}	{Element_Key: Onset}	{FQN: Assessments.Pain.Assessment.Primary.Onset}	eCell	eCell	{Label: Onset}	{InputType: ?}	eCell	{DataFrom: ?}	eCell	eCell	eCell
+{Section: Assessments: Pain: Assessment: Primary}	{Element_Key: Type}	{FQN: Assessments.Pain.Assessment.Primary.Type}	eCell	eCell	{Label: Type}	{InputType: ?}	eCell	{DataFrom: ?}	eCell	eCell	eCell
+{Section: Assessments: Pain: Assessment: Primary}	{Element_Key: Alleviation  associated symptoms}	{FQN: Assessments.Pain.Assessment.Primary.Alleviation__associated_symptoms}	eCell	eCell	{Label: Alleviation & associated symptoms}	{InputType: ?}	eCell	{DataFrom: ?}	eCell	eCell	eCell
+{Section: Assessments: Pain: Assessment: Primary}	{Element_Key: Radiation}	{FQN: Assessments.Pain.Assessment.Primary.Radiation}	eCell	eCell	{Label: Radiation}	{InputType: ?}	eCell	{DataFrom: ?}	eCell	eCell	eCell
+{Section: Assessments: Pain: Assessment: Primary}	{Element_Key: Precipitating events}	{FQN: Assessments.Pain.Assessment.Primary.Precipitating_events}	eCell	eCell	{Label: Precipitating events}	{InputType: ?}	eCell	{DataFrom: ?}	eCell	eCell	eCell
+{Section: Assessments: Pain: Assessment: Primary}	{Element_Key: Comments}	{FQN: Assessments.Pain.Assessment.Primary.Comments}	eCell	eCell	{Label: Comments}	{InputType: Text box}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Pain: Assessment: Secondary}	eCell	{FQN: Assessments.Pain.Assessment.Secondary}	eCell	eCell	{Label: HEADING - Secondary pain site}	{InputType: fieldset}	eCell	{DataFrom: ?}	eCell	eCell	eCell
+{Section: Assessments: Pain: Assessment: Secondary}	{Element_Key: Pain scale}	{FQN: Assessments.Pain.Assessment.Secondary.Pain_scale}	eCell	eCell	{Label: Pain scale (0-10)}	{InputType: Text field}	eCell	{DataFrom: ?}	eCell	eCell	eCell
+{Section: Assessments: Pain: Assessment: Secondary}	{Element_Key: Respiratory rate}	{FQN: Assessments.Pain.Assessment.Secondary.Respiratory_rate}	eCell	eCell	{Label: Respiratory rate (br/min)}	{InputType: Text field}	eCell	{DataFrom: ?}	eCell	eCell	eCell
+{Section: Assessments: Pain: Assessment: Secondary}	{Element_Key: Location}	{FQN: Assessments.Pain.Assessment.Secondary.Location}	eCell	eCell	{Label: Location}	{InputType: ?}	eCell	{DataFrom: ?}	eCell	eCell	eCell
+{Section: Assessments: Pain: Assessment: Secondary}	{Element_Key: Onset}	{FQN: Assessments.Pain.Assessment.Secondary.Onset}	eCell	eCell	{Label: Onset}	{InputType: ?}	eCell	{DataFrom: ?}	eCell	eCell	eCell
+{Section: Assessments: Pain: Assessment: Secondary}	{Element_Key: Type}	{FQN: Assessments.Pain.Assessment.Secondary.Type}	eCell	eCell	{Label: Type}	{InputType: ?}	eCell	{DataFrom: ?}	eCell	eCell	eCell
+{Section: Assessments: Pain: Assessment: Secondary}	{Element_Key: Alleviation  associated symptoms}	{FQN: Assessments.Pain.Assessment.Secondary.Alleviation__associated_symptoms}	eCell	eCell	{Label: Alleviation & associated symptoms}	{InputType: ?}	eCell	{DataFrom: ?}	eCell	eCell	eCell
+{Section: Assessments: Pain: Assessment: Secondary}	{Element_Key: Radiation}	{FQN: Assessments.Pain.Assessment.Secondary.Radiation}	eCell	eCell	{Label: Radiation}	{InputType: ?}	eCell	{DataFrom: ?}	eCell	eCell	eCell
+{Section: Assessments: Pain: Assessment: Secondary}	{Element_Key: Precipitating events}	{FQN: Assessments.Pain.Assessment.Secondary.Precipitating_events}	eCell	eCell	{Label: Precipitating events}	{InputType: ?}	eCell	{DataFrom: ?}	eCell	eCell	eCell
+{Section: Assessments: Pain: Assessment: Secondary}	{Element_Key: Comments}	{FQN: Assessments.Pain.Assessment.Secondary.Comments}	eCell	eCell	{Label: Comments}	{InputType: Text box}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Biopsychosocial}	eCell	{FQN: Assessments.Biopsychosocial}	{NavURL: ./current/assessments/biopsychosocial}	eCell	{Label: Biopsychosocial}	{InputType: page}	eCell	{DataFrom: case}	eCell	{Data: Jason}	eCell
+{Section: Assessments: Biopsychosocial}	{Element_Key: Name}	{FQN: Assessments.Biopsychosocial.Name}	eCell	eCell	{Label: Name}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: RN}	eCell
+{Section: Assessments: Biopsychosocial}	{Element_Key: Profession}	{FQN: Assessments.Biopsychosocial.Profession}	eCell	eCell	{Label: Profession}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: ER}	eCell
+{Section: Assessments: Biopsychosocial}	{Element_Key: Unit}	{FQN: Assessments.Biopsychosocial.Unit}	eCell	eCell	{Label: Unit}	{InputType: text box}	eCell	{DataFrom: case}	eCell	{Data: 0}	eCell
+{Section: Assessments: Biopsychosocial}	{Element_Key: Date}	{FQN: Assessments.Biopsychosocial.Date}	eCell	eCell	{Label: Date}	{InputType: text field - date}	eCell	{DataFrom: case}	eCell	{Data: 0.8125}	eCell
+{Section: Assessments: Biopsychosocial}	{Element_Key: Time}	{FQN: Assessments.Biopsychosocial.Time}	eCell	eCell	{Label: Time}	{InputType: text field - time}	"{Options: didn't ask
+yes
+no}"	{DataFrom: case}	eCell	{Data: no}	eCell
+{Section: Assessments: Biopsychosocial}	{Element_Key: domestic violence}	{FQN: Assessments.Biopsychosocial.domestic_violence}	eCell	eCell	{Label: From our experience in the hospital, we know that domestic violence can be a problem. Is this a factor in your life?}	{InputType: Dropdown}	"{Options: didn't ask
+yes
+no}"	{DataFrom: case}	eCell	{Data: no}	eCell
+{Section: Assessments: Biopsychosocial}	{Element_Key: seek social worker}	{FQN: Assessments.Biopsychosocial.seek_social_worker}	eCell	eCell	{Label: Would you like to speak to a social worker?}	{InputType: Dropdown}	"{Options: Calm
+Cooperative
+Agitated
+Flat affect
+Threatening
+Physically agressive
+Uncommunicative}"	{DataFrom: case}	eCell	"{Data: Calm
+Cooperative}"	eCell
+{Section: Assessments: Biopsychosocial}	{Element_Key: Behaviour effect}	{FQN: Assessments.Biopsychosocial.Behaviour_effect}	eCell	eCell	{Label: Behaviour effect}	{InputType: Multi-select dropdown}	"{Options: None
+Visual
+Auditory
+Olafactory}"	{DataFrom: case}	eCell	{Data: None}	eCell
+{Section: Assessments: Biopsychosocial}	{Element_Key: Hallucinations}	{FQN: Assessments.Biopsychosocial.Hallucinations}	eCell	eCell	{Label: Hallucinations}	{InputType: Multi-select dropdown}	"{Options: None
+Ideation
+Attempt}"	{DataFrom: case}	eCell	{Data: None}	eCell
+{Section: Assessments: Biopsychosocial}	{Element_Key: Suicidal}	{FQN: Assessments.Biopsychosocial.Suicidal}	eCell	eCell	{Label: Suicidal}	{InputType: Multi-select dropdown}	"{Options: None
+Ideation}"	{DataFrom: case}	eCell	{Data: None}	eCell
+{Section: Assessments: Biopsychosocial}	{Element_Key: Homicidal}	{FQN: Assessments.Biopsychosocial.Homicidal}	eCell	eCell	{Label: Homicidal}	{InputType: Multi-select dropdown}	"{Options: Clear and coherent
+Other}"	{DataFrom: case}	eCell	{Data: Clear and coherent}	eCell
+{Section: Assessments: Biopsychosocial}	{Element_Key: Speech}	{FQN: Assessments.Biopsychosocial.Speech}	eCell	eCell	{Label: Speech}	{InputType: Multi-select dropdown}	"{Options: Good
+Requires attention}"	{DataFrom: case}	eCell	{Data: Good}	eCell
+{Section: Assessments: Biopsychosocial}	{Element_Key: Hygiene and grooming}	{FQN: Assessments.Biopsychosocial.Hygiene_and_grooming}	eCell	eCell	{Label: Hygiene and grooming}	{InputType: Multi-select dropdown}	eCell	{DataFrom: case}	eCell	{Data: (not filled)}	eCell
+{Section: Assessments: Biopsychosocial}	{Element_Key: Comments}	{FQN: Assessments.Biopsychosocial.Comments}	eCell	eCell	{Label: Comments}	{InputType: Text field}	eCell	eCell	eCell	eCell	eCell
+{Section: Assessments: Biopsychosocial: Support}	eCell	{FQN: Assessments.Biopsychosocial.Support}	eCell	eCell	{Label: HEADING - Support}	{InputType: fieldset}	eCell	{DataFrom: case}	eCell	{Data: Thomas}	eCell
+{Section: Assessments: Biopsychosocial: Support}	{Element_Key: Support person}	{FQN: Assessments.Biopsychosocial.Support.Support_person}	eCell	eCell	{Label: Support person}	{InputType: Text field}	eCell	{DataFrom: case}	eCell	{Data: (not filled)}	eCell
+{Section: Assessments: Biopsychosocial: Support}	{Element_Key: Comments}	{FQN: Assessments.Biopsychosocial.Support.Comments}	eCell	eCell	{Label: Comments}	{InputType: Text box}	eCell	{DataFrom: case}	eCell	{Data: No}	eCell
+{Section: Assessments: Biopsychosocial: Support}	{Element_Key: Security/police present}	{FQN: Assessments.Biopsychosocial.Support.Security/police_present}	eCell	eCell	{Label: Security/police present}	{InputType: Text field}	eCell	{DataFrom: case}	eCell	{Data: (not filled)}	eCell
+{Section: Assessments: Biopsychosocial: Support}	{Element_Key: Comments}	{FQN: Assessments.Biopsychosocial.Support.Comments}	eCell	eCell	{Label: Comments}	{InputType: Text box}	"{Options: yes
+no}"	{DataFrom: case}	eCell	{Data: No}	eCell
+{Section: Assessments: Biopsychosocial: Support}	{Element_Key: Patient restrained}	{FQN: Assessments.Biopsychosocial.Support.Patient_restrained}	eCell	eCell	{Label: Patient restrained}	{InputType: Dropdown}	eCell	{DataFrom: case}	eCell	{Data: (not filled)}	eCell
+{Section: Assessments: Biopsychosocial: Support}	{Element_Key: Date}	{FQN: Assessments.Biopsychosocial.Support.Date}	eCell	eCell	{Label: Date}	{InputType: text field - date}	eCell	{DataFrom: case}	eCell	{Data: (not filled)}	eCell
+{Section: Assessments: Biopsychosocial: Support}	{Element_Key: Time}	{FQN: Assessments.Biopsychosocial.Support.Time}	eCell	eCell	{Label: Time}	{InputType: text field - time}	eCell	{DataFrom: case}	eCell	{Data: (not filled)}	eCell
