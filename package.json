@@ -30,6 +30,7 @@
     "express": "~4.16.0",
     "express-session": "^1.15.6",
     "http-errors": "^1.6.3",
+    "ims-lti": "file:../ims-lti",
     "morgan": "~1.9.0",
     "node-sass-middleware": "0.11.0",
     "passport": "^0.4.0",

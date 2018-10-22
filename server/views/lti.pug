@@ -1,12 +1,63 @@
 extends layout
 
 block content
-  h1= title
-  p We have received your LTI Launch. You can view the request body below.
-  p What would you like to do now?
+  h1 EdEHR Proof of Concept
+  - var content = JSON.parse(lti_message)
+  - var page1_url = 'http://localhost:5000/'
+  - var page1_onclick = 'location.href=' + '\'' + page1_url + '\';'
+  p.
+    Welcome !{content.lis_person_name_given} to the EdEHR proof of concept.
+    You have enrolled in the following course
+  ul
+    li Title: !{content.context_title}
+    li Id: !{content.context_id}
+    li Type: !{content.context_type}
+  p You are working on the following activity.
+    if content.custom_poc
+    | This is a PROOF of CONCEPT assignment
+  ul
+    li Title: !{content.resource_link_title }
+    li Id: !{content.resource_link_id}
+    li Description: !{content.resource_link_description}
+    if content.custom_assignment
+      li Assignment: !{content.custom_assignment}
   p
+  if content.custom_assignment
+    p.
+      The LTI external tool has been configured with a custom variables of 'assignment=X'. We can ask that LMS administrators
+      add any special custom values into the launch command.  In this case we show a simple approach to mapping
+      the 8 or more assignments to unique assignment links in the LMS.  Later versions of EdEHR may become more
+      sophisticated in the use of these custom values.
+
+  p.
+    At this time this proof of concept only shows a student experience.  It also only lets you mimic
+    the "go to assignment" action and see a sample page.
+
+  p Your institution's LMS is !{content.tool_consumer_instance_name }. You can view all the LTI message the details below.
+  p
+  p What would you like to do now?
+  div.option
+    form(name="page1", action=page1_url, method="get")
+      input(type="button", onclick=page1_onclick, value="See the proof of concept page" class="button is-primary")
+
+
+  div.option
     form(name="return", action=return_url, method="get")
-      input(type="button", onclick=return_onclick, value="Return to Learn")
-  p 
-  p Here's the request body!
-  p !{content}
+      input(type="button", onclick=return_onclick, value="Return to Learn" class="button is-primary")
+
+  div
+    p Here's the LTI message content!
+    - var keys = Object.keys(content).sort()
+    - for (var i = 0, length = keys.length; i < length; i++)
+      - var key = keys[i]
+      - var item = content[keys[i]]
+        p !{key} : !{item}
+
+block dynamic
+  script.
+    console.log("in script in lti template")
+    var data = !{JSON.stringify(lti_message).replace(/<\//g, '<\\/')}
+    //console.log('data: ', data)
+    //var config = {};
+    //config.lti_message = '!{lti_message}';
+    setConfig(data)

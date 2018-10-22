@@ -12,6 +12,13 @@ const options = {
     index: 'index.html'
   }
 }
+process.on('unhandledRejection', function (error, promise) {
+  console.error('UNHANDLED REJECTION', error.stack)
+})
+
+process.on('uncaughtException', function (error) {
+  console.error('UNCAUGHT EXCEPTION', error, error.stack)
+})
 
 WebpackDevServer.addDevServerEntrypoints(config, options)
 const compiler = webpack(config)
