@@ -1,6 +1,8 @@
 <template>
   <div :class="$options.name">
-    <ui-button v-on:buttonClicked="returnToDashboard">Save</ui-button>
+    <ui-button :class="`${$options.name}__saveButton`">
+      <a href="http://localhost:3000">Save</a>
+    </ui-button>
     <div :class="`${$options.name}__wrapper`">
       <ehr-nav-list :class="`${$options.name}__teaserList`">
         <ehr-nav-list-item>
@@ -51,12 +53,7 @@ export default {
     EhrNav,
     EhrNavList,
     EhrNavListItem
-  },
-  methods: {
-    returnToDashboard: function(event) {
-    }
   }
-
 };
 </script>
 
@@ -72,6 +69,9 @@ export default {
 
   &__link {
     color: white;
+  }
+  &__saveButton {
+    width: 100%
   }
 }
 </style>
