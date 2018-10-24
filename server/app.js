@@ -42,6 +42,20 @@ var ltiSecret = 'mysagain'
 debug(`app with lti key ${ltiKey} and ${ltiSecret}`)
 
 /*
+var sess = {
+  secret: process.env.COOKIE_SECRET,
+  resave: false,
+  saveUninitialized: false
+}
+
+if (app.get('env') === 'production') {
+  app.set('trust proxy', 1) // trust first proxy
+  sess.secure = true // serve secure cookies
+}
+
+app.use(session(sess))
+*/
+/*
 
 app.use(session({secret: process.env.COOKIE_SECRET,
   resave: false,

@@ -14,11 +14,10 @@
   "homepage": "https://github.com/bryan-gilbert/proto-EdEHR#readme",
   "scripts": {
     "start": "npm run serve:dev-wp",
-    "serve:dev-wp": "cross-env NODE_ENV=development node bin/dev-server-wp-dev.js",
-    "start-server-old": "node ./server/bin/www",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "serve:dev-wp": "NODE_ENV=development node bin/dev-server-wp-dev.js",
+    "dev": "NODE_ENV=development webpack-dev-server --open --hot",
     "start-0": "npm run start-server | npm run dev",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "build": "NODE_ENV=production webpack --progress --hide-modules",
     "test": "nyc mocha --exit"
   },
   "dependencies": {
@@ -54,7 +53,6 @@
     "camelcase": "^5.0.0",
     "chalk": "^2.4.1",
     "coveralls": "^3.0.2",
-    "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "file-loader": "^1.1.4",
     "html-webpack-plugin": "^3.2.0",

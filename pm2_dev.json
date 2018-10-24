@@ -1,0 +1,29 @@
+{
+    "apps": [
+        {
+            "name": "ehr-dev",
+            "script": "bin/dev-server-wp-dev.js",
+            "watch": "bin/dev-server-wp-dev.js",
+            "max_restarts": 3,
+            "log_date_format": "YYYY-MM-DD HH:mm Z",
+            "error_file": "logs/dev.ehr.error.log",
+            "out_file": "logs/dev.ehr.out.log",
+            "env": {
+                "NODE_ENV": "development"
+            }
+        },
+        {
+            "name": "lms-dev",
+            "script": "server/bin/www",
+            "max_restarts": 3,
+            "log_date_format": "YYYY-MM-DD HH:mm Z",
+            "error_file": "logs/dev.lms.error.log",
+            "out_file": "logs/dev.lms.out.log",
+            "watch": "server",
+            "env": {
+                "NODE_ENV": "development"
+            }
+        }
+    ]
+}
+

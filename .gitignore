@@ -3,3 +3,4 @@ scrivner/output
 scrivner/MarkdownSample.scriv
 node_modules/**
 package-lock.json
+logs/**
