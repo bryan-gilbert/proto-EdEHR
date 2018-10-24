@@ -42,6 +42,20 @@ var ltiSecret = 'mysagain'
 debug(`app with lti key ${ltiKey} and ${ltiSecret}`)
 
 /*
+var sess = {
+  secret: process.env.COOKIE_SECRET,
+  resave: false,
+  saveUninitialized: false
+}
+
+if (app.get('env') === 'production') {
+  app.set('trust proxy', 1) // trust first proxy
+  sess.secure = true // serve secure cookies
+}
+
+app.use(session(sess))
+*/
+/*
 
 app.use(session({secret: process.env.COOKIE_SECRET,
   resave: false,
@@ -100,7 +114,7 @@ app.get('/launch_lti', function (req, res, next) {
 
 app.post('/launch_lti', function (req, res, next) {
   let body = req.body
-  debug('in launch_lti ', body, ' Compare: ', body['oauth_consumer_key'], ' to ', process.env.LTI_KEY, process.env.LTI_SECRET)
+  debug('in launch_lti  Compare: ', body['oauth_consumer_key'], ' to ', process.env.LTI_KEY, process.env.LTI_SECRET)
   // req.body = req.body.body
   // req.body = _.omit(req.body, '__proto__')
   if (req.body['oauth_consumer_key'] === process.env.LTI_KEY) {
@@ -123,11 +137,11 @@ app.post('/launch_lti', function (req, res, next) {
           for (var i = 0, length = keys.length; i < length; i++) {
             content += keys[i] + ' = ' + req.body[keys[i]] + '<br />'
           }
+          content = JSON.stringify(req.body)
           var returnUrl = req.body.launch_presentation_return_url
 
           res.render('lti', {
-            title: 'LTI Launch Received!',
-            content: content,
+            lti_message: content,
             return_url: returnUrl,
             return_onclick: 'location.href=' + '\'' + returnUrl + '\';'
           })

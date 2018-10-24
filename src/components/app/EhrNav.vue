@@ -1,13 +1,12 @@
 <template>
   <div :class="$options.name">
+     <div>
       <slot name="link"/>
+     </div>
   </div>
 </template>
 
 <script>
-import UiButton from '../ui/UiButton.vue';
-import AppHeadline from './AppHeadline.vue';
-import UiText from '../ui/UiText.vue';
 
 export default {
   name: `EhrNav`,

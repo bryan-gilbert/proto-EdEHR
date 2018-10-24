@@ -1,5 +1,8 @@
 <template>
   <div :class="$options.name">
+    <ui-button :class="`${$options.name}__saveButton`">
+      <a href="http://localhost:3000">Save</a>
+    </ui-button>
     <div :class="`${$options.name}__wrapper`">
       <ehr-nav-list :class="`${$options.name}__teaserList`">
         <ehr-nav-list-item>
@@ -40,10 +43,12 @@ import EhrNav from '../app/EhrNav';
 import EhrNavList from '../app/EhrNavList';
 import EhrNavListItem from '../app/EhrNavListItem';
 import UiLink from '../ui/UiLink.vue';
+import UiButton from '../ui/UiButton.vue';
 
 export default {
   name: `EhrNavPanel`,
   components: {
+    UiButton,
     UiLink,
     EhrNav,
     EhrNavList,
@@ -64,6 +69,9 @@ export default {
 
   &__link {
     color: white;
+  }
+  &__saveButton {
+    width: 100%
   }
 }
 </style>

@@ -2,7 +2,10 @@
 const app = require('./app')
 var debug = require('debug')('server')
 
-const server = app.listen(3001, function () {
+// Todo remove this file use
+// node bin/www
+
+const server = app.listen(3000, function () {
   var port = server.address().port
   debug('server app listening at port %s', port)
 })
