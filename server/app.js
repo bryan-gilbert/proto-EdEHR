@@ -37,9 +37,7 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')))
 
 // Setup a POST endpoint to take anything going to /launch_lti
-var ltiKey = 'mykeyagain'
-var ltiSecret = 'mysagain'
-debug(`app with lti key ${ltiKey} and ${ltiSecret}`)
+debug(`app with lti key ${process.env.LTI_KEY} and ${process.env.LTI_SECRET}`)
 
 /*
 var sess = {
@@ -152,7 +150,7 @@ app.post('/launch_lti', function (req, res, next) {
     })
   } else {
     debug('LTI KEY NOT MATCHED:')
-    res.status(403).send({ error: 'LTI KEY NOT MATCHED ' + ltiKey + ' ' + req.body['oauth_consumer_key'] + ' ' + JSON.stringify(req.body) })
+    res.status(403).send({ error: 'LTI KEY NOT MATCHED ' + process.env.LTI_KEY + ' ' + req.body['oauth_consumer_key'] + ' ' + JSON.stringify(req.body) })
   }
 })
 
