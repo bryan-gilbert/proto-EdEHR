@@ -9,7 +9,8 @@
             "error_file": "logs/dev.ehr.error.log",
             "out_file": "logs/dev.ehr.out.log",
             "env": {
-                "NODE_ENV": "development"
+                "NODE_ENV": "development",
+                "DEBUG" : "server"
             }
         },
         {
@@ -21,7 +22,8 @@
             "out_file": "logs/dev.lms.out.log",
             "watch": "server",
             "env": {
-                "NODE_ENV": "development"
+                "NODE_ENV": "development",
+                "DEBUG" : "server"
             }
         }
     ]
