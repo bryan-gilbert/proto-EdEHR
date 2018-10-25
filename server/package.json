@@ -1,0 +1,31 @@
+{
+  "name": "ed-server",
+  "version": "1.0.0",
+  "description": "Prototype EdEHR Server",
+  "author": "Bryan Gilbert",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "DEBUG=server node server.js"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "bulma": "^0.7.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "express-session": "^1.15.6",
+    "http-errors": "^1.6.3",
+    "ims-lti": "file:../../ims-lti",
+    "morgan": "~1.9.0",
+    "node-sass-middleware": "0.11.0",
+    "passport": "^0.4.0",
+    "passport-custom": "^1.0.5",
+    "pug": "2.0.0-beta11",
+    "redis": "^2.8.0",
+    "session-file-store": "^1.2.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,49 @@
+{
+  "name": "ehr",
+  "version": "1.0.0",
+  "description": "The EHR of the EdEHR",
+  "author": "Bryan Gilbert",
+  "license": "MIT",
+  "scripts": {
+    "start": "npm run serve:dev-wp",
+    "serve:dev-wp": "NODE_ENV=development node dev-server-wp-dev.js",
+    "temp-dev": "NODE_ENV=development webpack-dev-server --open --hot",
+    "temp-start-0": "npm run start-server | npm run dev",
+    "temp-build": "NODE_ENV=production webpack --progress --hide-modules",
+    "temp-test": "nyc mocha --exit",
+    "install-all": "npm install"
+  },
+  "dependencies": {
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "bulma": "^0.7.1",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^1.0.0",
+    "file-loader": "^1.1.4",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.2",
+    "mocha": "^5.2.0",
+    "node-sass": "^4.5.3",
+    "node-sass-magic-importer": "^5.2.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "prettier": "^1.14.3",
+    "sass-loader": "^7.1.0",
+    "uglifyjs-webpack-plugin": "^1.3.0",
+    "vue-loader": "^15.4.2",
+    "vue-template-compiler": "^2.4.4",
+    "webpack": "^4.21.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9",
+    "webpack-serve": "^2.0.2"
+  }
+}

@@ -2,6 +2,7 @@
     "apps": [
         {
             "name": "ehr-dev",
+            "cwd": "server",
             "script": "bin/dev-server-wp-dev.js",
             "watch": "bin/dev-server-wp-dev.js",
             "max_restarts": 3,
@@ -12,6 +13,14 @@
                 "NODE_ENV": "development",
                 "DEBUG" : "server"
             }
+        },
+        {
+            "name": "ed-db",
+            "error_file": "logs/dev.db.error.log",
+            "out_file": "logs/dev.db.out.log",
+            "cwd": "dbjson",
+            "script": "npm",
+            "args" : "start"
         },
         {
             "name": "lms-dev",

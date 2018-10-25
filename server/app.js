@@ -18,6 +18,7 @@ var FileStore = require('session-file-store')(session)
 // var indexRouter = require('./routes/index')
 // var usersRouter = require('./routes/users')
 
+process.env.SESSION_DIR = (process.env.SESSION_DIR) ? process.env.SESSION_DIR : path.join(process.cwd(), '..', 'sessions')
 process.env.COOKIE_SECRET = (process.env.COOKIE_SECRET) ? process.env.COOKIE_SECRET : 'this is the secret for the session cookie'
 process.env.LTI_SECRET = (process.env.LTI_SECRET) ? process.env.LTI_SECRET : 'edehrsecret'
 process.env.LTI_KEY = (process.env.LTI_KEY) ? process.env.LTI_KEY : 'edehrkey'
@@ -77,7 +78,7 @@ function strategyVerify (req, callback) {
   console.log('strategyVerify ltiStrategy ')
   try {
     if (req.user) {
-      console.log('strategyVerify Have user ', req.user)
+      console.log('strategyVerify Have user ', req.user.id)
       callback(null, req.user)
     } else {
       console.log('strategyVerify validate request ')
@@ -111,7 +112,7 @@ function lookupUser (userId, done) {
   console.log(`Inside lookup user and searching for ${userId}`)
   axios.get(`http://localhost:5678/users/${userId}`)
   .then(res => {
-    console.log('lookup results ', res.data)
+    console.log('lookup results ', res.data.id)
     done(null, res.data)
   })
   .catch(error => {
@@ -129,7 +130,7 @@ function updateUser (user, done) {
   var url = `http://localhost:5678/users/${user.id}`
   axios.put(url, user)
   .then(res => {
-    console.log('put results ', res.data)
+    console.log('put results ', res.data.id)
     done(null, res.data)
   })
   .catch(error => {

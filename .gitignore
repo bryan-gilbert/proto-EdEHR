@@ -2,7 +2,10 @@
 scrivner/output
 scrivner/MarkdownSample.scriv
 **/node_modules/**
+**/logs/**
 package-lock.json
 logs/**
 server/bin/sessions/**
 dbjson/db\.json
+temp/**
+**/sessions/**
