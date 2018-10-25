@@ -1,20 +1,24 @@
 extends layout
 
 block content
-  h1 EdEHR Proof of Concept
+  h1.title EdEHR Proof of Concept BIN
   - var content = JSON.parse(lti_message)
+  if content.visits > 1
+    h2.subtitle Welcome back !{content.lis_person_name_given} for your visit # !{content.visits}
+  else
+    h2.subtitle Welcome !{content.lis_person_name_given}
   p.
-    Welcome !{content.lis_person_name_given} (user id: !{content.user_id}) to the EdEHR proof of concept.
+    This is the EdEHR proof of concept.
     You have enrolled in the following course
   ul
-    li Title: !{content.context_title}
+    li Course Title: !{content.context_title}
     li Id: !{content.context_id}
     li Type: !{content.context_type}
   p You are working on the following activity.
     if content.custom_poc
     | This is a PROOF of CONCEPT assignment
   ul
-    li Title: !{content.resource_link_title }
+    li Activity Title: !{content.resource_link_title }
     li Id: !{content.resource_link_id}
     li Description: !{content.resource_link_description}
     if content.custom_assignment
@@ -28,18 +32,33 @@ block content
       sophisticated in the use of these custom values.
 
   p.
+    We know this about you:
+  ul
+    li User Id: !{content.id}
+    li Given Name: !{content.lis_person_name_given}
+    li Family Name: !{content.lis_person_name_family}
+    li Full Name: !{content.lis_person_name_full}
+    li Email: !{content.lis_person_contact_email_primary}
+    li Source Id: !{content.lis_person_sourcedid}
+    li Roles: !{content.roles}
+    li User name in your LMS: !{content.ext_user_username}
+    li your LMS is
+      p !{content.tool_consumer_instance_name}
+      p !{content.tool_consumer_instance_description}
+
+  p.
     At this time this proof of concept only shows a student experience.  It also only lets you mimic
     the "go to assignment" action and see a sample page.
 
-  p Your institution's LMS is !{content.tool_consumer_instance_name }. You can view all the LTI message the details below.
+  p You can view all the LTI message the details below.
   p
   p What would you like to do now?
   div.option
     - var assignmentTitle = content.resource_link_title
     -
       var page1_url = 'http://localhost:5000?' + 'resourceLinkId=' + content.resource_link_id
-        + '&userId=' + content.user_id
-        + '&userName=' + content.lis_person_name_given
+      + '&userId=' + content.user_id
+      + '&userName=' + content.lis_person_name_given
     - var page1_onclick = 'location.href=' + '\'' + page1_url + '\';'
     form(name="page1", action=page1_url, method="get")
       input(type="button", onclick=page1_onclick, value="See the proof of concept page" class="button is-primary")
@@ -53,9 +72,9 @@ block content
     p Here's the LTI message content!
     - var keys = Object.keys(content).sort()
     - for (var i = 0, length = keys.length; i < length; i++)
-      - var key = keys[i]
-      - var item = content[keys[i]]
-        p !{key} : !{item}
+    - var key = keys[i]
+    - var item = content[keys[i]]
+    p !{key} : !{item}
 
 block dynamic
   script.

@@ -1,0 +1,13 @@
+{
+    "apps": [
+        {
+            "name": "ed-db",
+            "error_file": "logs/dev.db.error.log",
+            "out_file": "logs/dev.db.out.log",
+            "max_restarts": 3,
+            "script": "npm",
+            "args" : ["start"]
+        }
+    ]
+}
+

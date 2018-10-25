@@ -1,12 +1,13 @@
 {
-  "name": "proto-edehr-db",
+  "name": "ed-db",
   "version": "1.0.0",
   "description": "Prototype EdEHR DB",
   "author": "Bryan Gilbert",
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "json:server": "json-server --watch ./db.json --port 5678"
+    "install-all": "npm install",
+    "start": "json-server --watch ./db.json --port 5678"
   },
   "dependencies": {
     "json-server": "^0.14.0"
