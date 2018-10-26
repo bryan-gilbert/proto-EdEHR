@@ -2,9 +2,8 @@ const WebpackDevServer = require('webpack-dev-server')
 const webpack = require('webpack')
 const openBrowser = require(`./lib/open-browser`)
 
-const config = require('./webpack.config')
+const config = require('./webpack.dev')
 const options = {
-  contentBase: './dist',
   hot: true,
   host: 'localhost',
   port: 5000,

@@ -1,0 +1,17 @@
+{
+    "apps": [
+        {
+            "name": "ehr-prod",
+            "script": "npm",
+            "args": "run start-prod",
+            "max_restarts": 3,
+            "log_date_format": "YYYY-MM-DD HH:mm Z",
+            "error_file": "logs/prod.ehr.error.log",
+            "out_file": "logs/prod.ehr.out.log",
+            "env": {
+                "NODE_ENV": "production"
+            }
+        }
+    ]
+}
+

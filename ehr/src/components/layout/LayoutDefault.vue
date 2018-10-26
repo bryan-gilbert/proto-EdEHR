@@ -22,7 +22,7 @@
 <script>
 import AppHeader from '../app/AppHeader.vue';
 import AppFooter from '../app/AppFooter.vue';
-import EhrNavPanel from '../app/EhrNavPanel'
+import EhrNavPanel from '../app/EhrNavPanel.vue';
 
 export default {
   name: `LayoutDefault`,

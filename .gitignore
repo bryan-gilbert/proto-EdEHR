@@ -9,3 +9,4 @@ server/bin/sessions/**
 dbjson/db\.json
 temp/**
 **/sessions/**
+ehr/dist/**
