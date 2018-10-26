@@ -62,7 +62,7 @@
 </template>
 
 <script>
-  import UiIntro from '../ui/UiIntro';
+  import UiIntro from '../ui/UiIntro.vue'
 
 export default {
   name: `EhrBanner`,

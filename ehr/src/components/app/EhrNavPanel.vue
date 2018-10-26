@@ -39,9 +39,9 @@
 
 
 <script>
-import EhrNav from '../app/EhrNav';
-import EhrNavList from '../app/EhrNavList';
-import EhrNavListItem from '../app/EhrNavListItem';
+import EhrNav from '../app/EhrNav.vue';
+import EhrNavList from '../app/EhrNavList.vue';
+import EhrNavListItem from '../app/EhrNavListItem.vue';
 import UiLink from '../ui/UiLink.vue';
 import UiButton from '../ui/UiButton.vue';
 

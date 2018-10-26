@@ -1,13 +1,13 @@
 {
     "apps": [
         {
-            "name": "ehr",
-            "script": "dev-server-wp-dev.js",
-            "watch": "dev-server-wp-dev.js",
+            "name": "ehr-dev",
+            "script": "npm",
+            "args": "run start-dev",
             "max_restarts": 3,
             "log_date_format": "YYYY-MM-DD HH:mm Z",
-            "error_file": "../logs/dev.ehr.error.log",
-            "out_file": "../logs/dev.ehr.out.log",
+            "error_file": "logs/dev.ehr.error.log",
+            "out_file": "logs/dev.ehr.out.log",
             "env": {
                 "NODE_ENV": "development",
                 "DEBUG" : "server"
