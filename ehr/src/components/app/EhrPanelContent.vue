@@ -32,6 +32,7 @@
 
 <script>
   import UiButton from '../ui/UiButton.vue';
+  import bus from "../eventBus.js"
 
 export default {
   name: `EhrPanelContent`,

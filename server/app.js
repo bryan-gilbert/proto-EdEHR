@@ -2,7 +2,7 @@ const axios = require('axios')
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
 var cors = require('cors')
-var createError = require('http-errors')
+// var createError = require('http-errors')
 var CustomStrategy = require('passport-custom')
 var debug = require('debug')('server')
 var express = require('express')
@@ -38,7 +38,7 @@ function logSessesion (req, msg) {
   } else {
     session.visits = 1
   }
-  var ss = JSON.stringify(session)
+  // var ss = JSON.stringify(session)
   // var css = JSON.stringify(cookies)
   // ss += '  sid ' + sid + ' cookies: ' + css
   // debug('Req session ' + msg + ' : ' + ss)
@@ -64,10 +64,19 @@ function launchEndPoint (req, res, next) {
     }
     updatedUser.cookies = req.cookies
     var content = JSON.stringify(updatedUser, null, 2)
-    debug('Redirect to ehr ' + content)
-    // var returnUrl = updatedUser.launch_presentation_return_url
-    res.cookie('usr', content)
-    res.redirect('http://localhost:28000?user=' + req.user.id)
+    let userData = {
+      id: user.id,
+      data: {bar: 1234}
+    }
+    updateUserData(userData, function (err, updatedUser) {
+      if (err) {
+        return next(err)
+      }
+      debug('Redirect to ehr ' + content)
+      // var returnUrl = updatedUser.launch_presentation_return_url
+      res.cookie('usr', content)
+      res.redirect('http://localhost:28000?user=' + req.user.id)
+    })
   })
 }
 
@@ -89,15 +98,7 @@ function strategyVerify (req, callback) {
         console.log('strategyVerify request is valid ')
         var body = req.body
         var id = body.user_id
-        lookupUser(id, function (err, data) {
-          if (err) {
-            return callback(err, null)
-          }
-          if (!data) {
-            return storeUser(req.body, callback)
-          }
-          callback(null, data)
-        })
+        findCreate(id, body, callback)
       })
     }
   } catch (err) {
@@ -106,15 +107,15 @@ function strategyVerify (req, callback) {
   }
 }
 
-function lookupUser (userId, done) {
-  console.log(`Inside lookup user and searching for ${userId}`)
-  axios.get(`http://localhost:5678/users/${userId}`)
+function lookupUserData (userId, done) {
+  console.log(`Inside getUserData ${userId}`)
+  axios.get(`http://localhost:5678/userData/${userId}`)
   .then(res => {
-    console.log('lookup results ', res.data.id)
+    console.log('getUserData results ', res.data.id)
     done(null, res.data)
   })
   .catch(error => {
-    console.log('lookup error ', error)
+    console.log('getUserData error ', error)
     if (error && error.response.status === 404) {
       done(null, false)
     } else {
@@ -122,21 +123,73 @@ function lookupUser (userId, done) {
     }
   })
 }
+function storeUserData (userData, done) {
+  console.log('Inside storeUserData ', userData)
+  var url = `http://localhost:5678/userData`
+  axios.post(url, userData)
+  .then(res => {
+    console.log('post storeUserData ', res.data.id)
+    done(null, res.data)
+  })
+  .catch(error => {
+    console.log('post storeUserData Error ', error)
+    done(error, null)
+  })
+}
+function updateUserData (userData, done) {
+  console.log('Inside updateUserData ', userData)
+  var url = `http://localhost:5678/userData/${userData.id}`
+  axios.put(url, userData)
+  .then(res => {
+    console.log('put updateUserData ', res.data.id)
+    done(null, res.data)
+  })
+  .catch(error => {
+    console.log('put updateUserData Error ', error)
+    done(error, null)
+  })
+}
+function upsertUserData (id, userData, done) {
+  lookupUserData(id, function (err, data) {
+    if (err) {
+      return done(err, null)
+    }
+    if (!data) {
+      return storeUserData(userData, done)
+    }
+    return updateUserData(userData, done)
+  })
+}
 
+function lookupUser (userId, done) {
+  console.log(`Inside lookup user and searching for ${userId}`)
+  axios.get(`http://localhost:5678/users/${userId}`)
+  .then(res => {
+    console.log('lookupUser results ', res.data.id)
+    done(null, res.data)
+  })
+  .catch(error => {
+    console.log('lookupUser error ', error)
+    if (error && error.response.status === 404) {
+      done(null, false)
+    } else {
+      done(error, null)
+    }
+  })
+}
 function updateUser (user, done) {
   console.log(`Inside update user for ${user.id}`)
   var url = `http://localhost:5678/users/${user.id}`
   axios.put(url, user)
   .then(res => {
-    console.log('put results ', res.data.id)
+    console.log('updateUser results ', res.data.id)
     done(null, res.data)
   })
   .catch(error => {
-    console.log('put error ', error)
+    console.log('updateUser error ', error)
     done(error, null)
   })
 }
-
 function storeUser (user, done) {
   console.log(`Inside store user ${user}`)
   var url = `http://localhost:5678/users`
@@ -151,7 +204,17 @@ function storeUser (user, done) {
     done(error)
   })
 }
-
+function findCreate (id, userInfo, done) {
+  lookupUser(id, function (err, data) {
+    if (err) {
+      return done(err, null)
+    }
+    if (!data) {
+      return storeUser(userInfo, done)
+    }
+    done(null, data)
+  })
+}
 function extractUniqueUserId (user, done) {
   // what element of the user record do we want to store in the session?
   // e.g. req.session.passport.user = {id: '..'}
@@ -228,7 +291,7 @@ app.get('/api/isLoggedOn', function (req, res, next) {
   })
 })
 
-app.get('/api/getUser', function (req, res, next) {
+app.get('/api/getUserInfo', function (req, res, next) {
   var id = req.query.user
   lookupUser(id, (err, data) => {
     if (err) {
@@ -238,6 +301,31 @@ app.get('/api/getUser', function (req, res, next) {
   })
 })
 
+app.get('/api/getUserData', function (req, res, next) {
+  var id = req.query.user
+  lookupUserData(id, (err, data) => {
+    if (err) {
+      res.status(404).send(err)
+    }
+    res.status(200).send(data)
+  })
+})
+
+app.post('/api/userData', function (req, res, next) {
+  let body = req.body
+  if (body['user'] && body['data']) {
+    let data = {
+      id: body['user'],
+      data: body['data']
+    }
+    upsertUserData(data.id, data, (err, data) => {
+      if (err) {
+        res.status(404).send(err)
+      }
+      res.status(200).send(data)
+    })
+  }
+})
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   let { url } = req
@@ -246,72 +334,22 @@ app.use(function (req, res, next) {
     debug('Another request for the favicon')
     res.status(404).send('No favicon')
   } else {
-    var ce = createError(404, 'Could not find ' + url + '. Environment: ' + env)
-    console.log('not found error ', ce)
-    next(ce)
+    res.status(404).send('Could not find ' + url + '. Environment: ' + env)
+    // var ce = createError(404, 'Could not find ' + url + '. Environment: ' + env)
+    // console.log('not found error ', ce)
+    // next(ce)
   }
 })
 
 // error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
-  res.locals.message = err.message
-  res.locals.error = req.app.get('env') === 'development' ? err : {}
+  // res.locals.message = err.message
+  // res.locals.error = req.app.get('env') === 'development' ? err : {}
   console.error('error handler ', err)
   // render the error page
   res.status(err.status || 500)
-  res.render('error', err)
+  res.send(err.message)
 })
 
 module.exports = app
-
-// Scrap
-// app.use('/', indexRouter)
-// app.use('/users', usersRouter)
-// eslint-disable-next-line no-unused-vars
-function oldMiddle (req, res, next) {
-  logSessesion(req, 'post launch_lti')
-  let body = req.body
-  debug('in launch_lti  Compare: ', body['oauth_consumer_key'], ' to ', process.env.LTI_KEY, process.env.LTI_SECRET)
-  // req.body = req.body.body
-  // req.body = _.omit(req.body, '__proto__')
-  if (req.body['oauth_consumer_key'] === process.env.LTI_KEY) {
-    var provider = new lti.Provider(process.env.LTI_KEY, process.env.LTI_SECRET)
-    // Check is the Oauth  is valid using our LTI plugin
-    provider.valid_request(req, req.body, function (err, isValid) {
-      if (err) {
-        debug('Error in LTI Launch:' + err)
-        res.status(403).send(err)
-      } else {
-        if (!isValid) {
-          debug('\nError: Invalid LTI launch.')
-          res.status(500).send({ error: 'Invalid LTI launch' })
-        } else {
-          // User is Auth so pass back when ever we need. in this case we use pug to render the values to screen
-
-          var content = ''
-
-          var keys = Object.keys(req.body).sort()
-          for (var i = 0, length = keys.length; i < length; i++) {
-            content += keys[i] + ' = ' + req.body[keys[i]] + '<br />'
-          }
-          content.cookies = req.cookies
-          debug('before lit render with cookie ' + content.cookies)
-          content = JSON.stringify(req.body)
-          var returnUrl = req.body.launch_presentation_return_url
-
-          res.render('lti', {
-            lti_message: content,
-            return_url: returnUrl,
-            return_onclick: 'location.href=' + '\'' + returnUrl + '\';'
-          })
-
-          // res.render('start', { title: 'LTI SETTINGS', CourseID: 'CourseID: ' + req.body['context_id'], userID: 'UserID: ' + req.body['user_id'], UserRole: 'Course Role: ' + req.body['roles'], FulllogTitle: 'Full Log: ', Fulllog: bodyText })
-        }
-      }
-    })
-  } else {
-    debug('LTI KEY NOT MATCHED:')
-    res.status(403).send({ error: 'LTI KEY NOT MATCHED ' + process.env.LTI_KEY + ' ' + req.body['oauth_consumer_key'] + ' ' + JSON.stringify(req.body) })
-  }
-}

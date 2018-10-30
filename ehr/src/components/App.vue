@@ -28,7 +28,7 @@ export default {
   data () {
     return {
       isLoggedOn: false,
-      userData: {}
+      userInfo: {}
     }
   },
   methods: {
@@ -50,7 +50,48 @@ export default {
         this.isLoggedOn = false
       })
     },
+    getSomething: function (url, callback) {
+      axios.get(url)
+      .then( (response) => {
+        callback(null, response.data)
+      })
+      .catch((error) => {
+        console.log('error ', error.response)
+        callback(error.response.status)
+      })
+    },
+    getUserInfo: function () {
+      var url2 = new URL(window.location);
+      var params2 = new URLSearchParams(url2.search);
+      let url = this.apiUrl + 'getUserInfo?user=' + params2.get('user')
+      console.log("In getUserInfo ", url)
+      this.getSomething(url, (error, results) => {
+        if(error) {
+          this.userInfo = {}
+          bus.$emit("user-info", this.userInfo)
+        } else {
+          this.userInfo = results
+          bus.$emit("user-info", results)
+        }
+      })
+    },
     getUserData: function () {
+      var url2 = new URL(window.location);
+      var params2 = new URLSearchParams(url2.search);
+      let url = this.apiUrl + 'getUserData?user=' + params2.get('user')
+      console.log("In getUserData ", url)
+      this.getSomething(url, (error, results) => {
+        if(error) {
+          this.userData = {}
+          bus.$emit("user-data", this.userInfo)
+        } else {
+          this.userData = results
+          bus.$emit("user-data", results)
+        }
+      })
+
+    },
+    testUpdateData: function() {
       var url2 = new URL(window.location);
       var params2 = new URLSearchParams(url2.search);
       let url = this.apiUrl + 'getUser?user=' + params2.get('user')
@@ -66,7 +107,7 @@ export default {
         this.userData = {}
         bus.$emit("user-data", this.userData)
       })
-    }
+    },
   },
   computed: {
     thisPagePath : function() {
@@ -80,10 +121,14 @@ export default {
       var something = config.getApiUrl()
       console.log("Is logged on url ", something)
       return something
+    },
+    count () {
+      return this.$store.state.count
     }
   },
   mounted: function () {
     this.getLoggedOn()
+    this.getUserInfo()
     this.getUserData()
   }
 };
