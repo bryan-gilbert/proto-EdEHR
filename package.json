@@ -13,17 +13,22 @@
   },
   "homepage": "https://github.com/bryan-gilbert/proto-EdEHR#readme",
   "scripts": {
-    "start": "npm run serve:dev-wp",
-    "serve:dev-wp": "NODE_ENV=development node bin/dev-server-wp-dev.js",
-    "dev": "NODE_ENV=development webpack-dev-server --open --hot",
-    "start-0": "npm run start-server | npm run dev",
+    "start": "npm run start:dbjson | npm run start:server | npm run start:ehr",
+    "start:dbjson": "npm run --prefix dbjson start",
+    "start:server": "npm run --prefix server start",
+    "start:ehr": "npm run --prefix ehr start",
+    "pm2-prod": "npm run pm2-prod:dbjson | npm run pm2-prod:server | npm run pm2-prod:ehr",
+    "pm2-prod:dbjson": "npm run --prefix dbjson pm2-prod",
+    "pm2-prod:server": "npm run --prefix server pm2-prod",
+    "pm2-prod:ehr": "npm run --prefix ehr pm2-prod",
     "build": "NODE_ENV=production webpack --progress --hide-modules",
     "test": "nyc mocha --exit",
     "install-all": "npm install | npm run install-db",
     "install-db": "cd dbjson; npm run install-all"
   },
   "dependencies": {
-    "ajv": "^6.5.4"
+    "ajv": "^6.5.4",
+    "winston": "^3.1.0"
   },
   "browserslist": [
     "> 1%",
@@ -32,8 +37,10 @@
   ],
   "devDependencies": {
     "camelcase": "^5.0.0",
+    "chai": "^4.2.0",
     "chalk": "^2.4.1",
     "coveralls": "^3.0.2",
+    "mocha": "^5.2.0",
     "nyc": "^13.0.1",
     "should": "^13.2.3",
     "standard": "^10.0.0",

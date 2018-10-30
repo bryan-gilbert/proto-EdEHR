@@ -1,18 +1,21 @@
 {
   "name": "ed-server",
   "version": "1.0.0",
-  "description": "Prototype EdEHR Server",
+  "description": "The API of the proof of concept EdEHR",
   "author": "Bryan Gilbert",
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "DEBUG=server node server.js"
+    "pm2-prod": "NODE_ENV=production pm2 start pm2.json",
+    "start-prod": "NODE_ENV=production DEBUG=server PORT=27000 node bin/www",
+    "start": "NODE_ENV=development DEBUG=server PORT=27000 node bin/www"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "bulma": "^0.7.1",
     "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "express-session": "^1.15.6",

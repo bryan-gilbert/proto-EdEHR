@@ -10,6 +10,8 @@ block content
   p.
     This is the EdEHR proof of concept.
     You have enrolled in the following course
+  - var cc = JSON.stringify(content.cookies['connect.sid'])
+  p SID cookie: !{cc}
   ul
     li Course Title: !{content.context_title}
     li Id: !{content.context_id}
@@ -56,9 +58,10 @@ block content
   div.option
     - var assignmentTitle = content.resource_link_title
     -
-      var page1_url = 'http://localhost:5000?' + 'resourceLinkId=' + content.resource_link_id
-      + '&userId=' + content.user_id
-      + '&userName=' + content.lis_person_name_given
+      var page1_url = 'http://localhost:28000/'
+      // ?' + 'resourceLinkId=' + content.resource_link_id
+      // + '&userId=' + content.user_id
+      // + '&userName=' + content.lis_person_name_given
     - var page1_onclick = 'location.href=' + '\'' + page1_url + '\';'
     form(name="page1", action=page1_url, method="get")
       input(type="button", onclick=page1_onclick, value="See the proof of concept page" class="button is-primary")
@@ -70,11 +73,18 @@ block content
 
   div
     p Here's the LTI message content!
-    - var keys = Object.keys(content).sort()
-    - for (var i = 0, length = keys.length; i < length; i++)
-    - var key = keys[i]
-    - var item = content[keys[i]]
-    p !{key} : !{item}
+    - var txt = []
+    - setConfig(lti_message)
+    script.
+      var content = JSON.parse(lti_message)
+
+      var keys = Object.keys(content).sort()
+      for (var i = 0, length = keys.length; i < length; i++)
+        var key = keys[i]
+        var item = content[keys[i]]
+        txt.push(key + ': ' + item)
+    - var fullTxt = 'join' + txt.join('<br/>')
+    p 1. #{fullTxt}
 
 block dynamic
   script.
@@ -84,3 +94,4 @@ block dynamic
     //var config = {};
     //config.lti_message = '!{lti_message}';
     setConfig(data)
+  p !{data}

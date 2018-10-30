@@ -3,9 +3,11 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const nodeSassMagicImporter = require(`node-sass-magic-importer`)
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const MiniCssExtractPlugin = require(`mini-css-extract-plugin`)
 
 const env = process.env.NODE_ENV || 'development'
-const minify = env === `production`
+const destination = env === `production` ? 'dist' : 'dev'
+const hints = env === 'production' ? 'warning' : false
 
 module.exports = {
   entry: path.join(__dirname, `src`, `main.js`),
@@ -18,27 +20,19 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin([destination]),
     new HtmlWebpackPlugin({
-      title: 'What\'s your name bud',
-      filename: path.join(__dirname, `dist`, `index.html`),
-      template: path.join(__dirname, `static`, `index.html`),
-      inject: true,
-      minify: minify ? {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true
-        // More options:
-        // https://github.com/kangax/html-minifier#options-quick-reference
-      } : false
-    })
+      filename: path.join(__dirname, destination, `index.html`),
+      template: path.join(__dirname, `static`, `index.html`)
+    }),
+    new MiniCssExtractPlugin()
   ],
   performance: {
-    hints: process.env.NODE_ENV === 'production' ? 'warning' : false
+    hints: hints
   },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, destination)
   },
   module: {
     rules: [
@@ -54,7 +48,7 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          `vue-style-loader`,
+          MiniCssExtractPlugin.loader,
           {
             loader: `css-loader`,
             options: {

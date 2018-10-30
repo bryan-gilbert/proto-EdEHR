@@ -2,11 +2,15 @@ const WebpackDevServer = require('webpack-dev-server')
 const webpack = require('webpack')
 const openBrowser = require(`./lib/open-browser`)
 
+var port = process.env.PORT || '5000'
+var host = process.env.HOST || 'localhost'
+
 const config = require('./webpack.dev')
 const options = {
   hot: true,
-  host: 'localhost',
-  port: 5000,
+  host: host,
+  disableHostCheck: true,
+  port: port,
   historyApiFallback: {
     index: 'index.html'
   }
