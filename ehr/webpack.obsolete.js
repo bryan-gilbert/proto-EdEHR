@@ -57,19 +57,12 @@ const config = {
       }
     ]
   },
-  // TODO consider need for resolve later
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
-  // TODO delete following after confirming the dev server script takes care of these configuration settings
-  // devServer: {
-  //   historyApiFallback: true,
-  //   noInfo: true,
-  //   overlay: true
-  // },
   plugins: [
     new VueLoaderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -91,7 +84,6 @@ const config = {
   }
 }
 
-// TODO untested
 if (minify) {
   config.optimization.minimizer = [
     new OptimizeCSSAssetsPlugin(),
@@ -105,7 +97,6 @@ if (minify) {
 }
 
 if (process.env.NODE_ENV === 'production') {
-  // TODO untested
   module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([

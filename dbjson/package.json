@@ -1,12 +1,13 @@
 {
   "name": "ed-db",
   "version": "1.0.0",
-  "description": "Prototype EdEHR DB",
+  "description": "the db for the proof of concept EdEHR",
   "author": "Bryan Gilbert",
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "install-all": "npm install",
+    "pm2-prod": "NODE_ENV=production pm2 start pm2.json",
     "start": "json-server --watch ./db.json --port 5678"
   },
   "dependencies": {

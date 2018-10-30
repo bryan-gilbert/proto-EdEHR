@@ -3,7 +3,7 @@
         {
             "name": "ed-server",
             "script": "npm",
-            "args" : ["start"],
+            "args": "run start-prod",
             "max_restarts": 3,
             "log_date_format": "YYYY-MM-DD HH:mm Z",
             "error_file": "logs/dev.lms.error.log",

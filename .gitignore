@@ -10,3 +10,4 @@ dbjson/db\.json
 temp/**
 **/sessions/**
 ehr/dist/**
+ehr/dev/**

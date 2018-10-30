@@ -1,6 +1,6 @@
 // var path = require('path')
 var webpack = require('webpack')
-const MiniCssExtractPlugin = require(`mini-css-extract-plugin`)
+// const MiniCssExtractPlugin = require(`mini-css-extract-plugin`)
 
 process.env.NODE_ENV = 'development'
 
@@ -27,7 +27,7 @@ const config = merge(common, {
     contentBase: './dist'
   },
   plugins: [
-    new MiniCssExtractPlugin(),
+    // new MiniCssExtractPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ]
 })
@@ -35,6 +35,11 @@ const config = merge(common, {
 // const sassLoader = config.module.rules.find(({ test }) => test.test(`.scss`))
 // // Replace the `vue-style-loader` with
 // // the MiniCssExtractPlugin loader.
+// sassLoader.use[0] = MiniCssExtractPlugin.loader
+
+// const sassLoader = config.module.rules.find(({ test }) => test.test(`.scss`))
+// Replace the `vue-style-loader` with
+// the MiniCssExtractPlugin loader.
 // sassLoader.use[0] = MiniCssExtractPlugin.loader
 
 module.exports = config

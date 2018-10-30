@@ -1,6 +1,7 @@
 const axios = require('axios')
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
+var cors = require('cors')
 var createError = require('http-errors')
 var CustomStrategy = require('passport-custom')
 var debug = require('debug')('server')
@@ -8,7 +9,6 @@ var express = require('express')
 var logger = require('morgan')
 var path = require('path')
 var passport = require('passport')
-var sassMiddleware = require('node-sass-middleware')
 var session = require('express-session')
 var uuid = require('uuid/v4')
 var lti = require('ims-lti')
@@ -38,12 +38,11 @@ function logSessesion (req, msg) {
   } else {
     session.visits = 1
   }
-  // msg += session.isChanged ? ' is changed' : ' unchanged'
-  // msg += session.isPopulated ? ' is populated' : ' unpoped'
-  // msg += session.isNew ? ' is new' : ' old'
   var ss = JSON.stringify(session)
-  debug('Req session ' + msg + ' : ' + ss)
-  debug(sids)
+  // var css = JSON.stringify(cookies)
+  // ss += '  sid ' + sid + ' cookies: ' + css
+  // debug('Req session ' + msg + ' : ' + ss)
+  // debug(sids)
 }
 
 function launchEndPoint (req, res, next) {
@@ -63,13 +62,12 @@ function launchEndPoint (req, res, next) {
     if (err) {
       return next(err)
     }
-    var content = JSON.stringify(updatedUser)
-    var returnUrl = updatedUser.launch_presentation_return_url
-    res.render('lti', {
-      lti_message: content,
-      return_url: returnUrl,
-      return_onclick: 'location.href=' + '\'' + returnUrl + '\';'
-    })
+    updatedUser.cookies = req.cookies
+    var content = JSON.stringify(updatedUser, null, 2)
+    debug('Redirect to ehr ' + content)
+    // var returnUrl = updatedUser.launch_presentation_return_url
+    res.cookie('usr', content)
+    res.redirect('http://localhost:28000?user=' + req.user.id)
   })
 }
 
@@ -166,12 +164,13 @@ function extractUniqueUserId (user, done) {
   done(null, userId)
 }
 
-function ensureLoggedIn () {
-  return function (req, res, next) {
-    if (!req.isAuthenticated || !req.isAuthenticated()) {
-      res.status(403)
-      .send({error: 'Not authorized'})
-    }
+function ensureLoggedIn (req, res, next) {
+  console.log('ensureLoggedIn()')
+  if (!req.isAuthenticated || !req.isAuthenticated()) {
+    console.log('not authorized')
+    res.status(403).send({error: 'Not authorized'})
+  } else {
+    console.log('Yes is authorized')
     next()
   }
 }
@@ -181,9 +180,10 @@ passport.serializeUser(extractUniqueUserId)
 passport.deserializeUser(lookupUser)
 
 var app = express()
-// view engine setup
-app.set('visits', path.join(__dirname, 'visits'))
-app.set('view engine', 'pug')
+// set to trust the X-Forwarded-* header to hold the client's IP in the left most entry
+// app.set('trust proxy', true)
+// use cors before your routes are set up:
+app.use(cors())
 app.use(logger('dev'))
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -191,7 +191,7 @@ app.use(bodyParser.json())
 app.use(session({
   genid: (req) => {
     console.log('Inside the session middleware')
-    console.log(req.sessionID)
+    console.log('req.sessionID ', req.sessionID)
     return uuid()
   },
   cookie: { sameSite: 'lax' },
@@ -201,16 +201,12 @@ app.use(session({
   saveUninitialized: true
 }))
 
-app.use(sassMiddleware({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
-  indentedSyntax: false, // true = .sass and false = .scss
-  sourceMap: true
-}))
-app.use(express.static(path.join(__dirname, 'public')))
+app.set('view engine', 'pug')
+app.use(express.static(path.join(__dirname, 'views')))
+// app.use(express.static(path.join(__dirname, '../ehr/dev')))
 
 // unauthenticate get on our lti url return OK
-app.get('/launch_lti', function (req, res, next) {
+app.get('/api/launch_lti', function (req, res, next) {
   logSessesion(req, 'in get launch_lti')
   // Moodle has a bot that pings the launch url during external tool configuration.
   // To indicate we're here return OK.
@@ -222,18 +218,38 @@ app.use(passport.session())
 // app.use(passport.authenticate('ltiStrategy', {failureFlash: false}))
 
 // Setup a POST endpoint to take anything going to /launch_lti
-app.post('/launch_lti', passport.authenticate('ltiStrategy'), launchEndPoint)
+app.post('/api/launch_lti', passport.authenticate('ltiStrategy'), launchEndPoint)
+
+app.get('/api/isLoggedOn', function (req, res, next) {
+  logSessesion(req, 'in isLoggedOn')
+  ensureLoggedIn(req, res, () => {
+    console.log('returning true the user is logged on')
+    res.status(200).send('OK')
+  })
+})
+
+app.get('/api/getUser', function (req, res, next) {
+  var id = req.query.user
+  lookupUser(id, (err, data) => {
+    if (err) {
+      res.status(404).send(err)
+    }
+    res.status(200).send(data)
+  })
+})
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   let { url } = req
-  var ce = createError(404, 'Could not find ' + url)
+  var env = process.env.NODE_ENV
   if (url.includes('favicon')) {
     debug('Another request for the favicon')
+    res.status(404).send('No favicon')
   } else {
+    var ce = createError(404, 'Could not find ' + url + '. Environment: ' + env)
     console.log('not found error ', ce)
+    next(ce)
   }
-  next(ce)
 })
 
 // error handler
@@ -279,6 +295,8 @@ function oldMiddle (req, res, next) {
           for (var i = 0, length = keys.length; i < length; i++) {
             content += keys[i] + ' = ' + req.body[keys[i]] + '<br />'
           }
+          content.cookies = req.cookies
+          debug('before lit render with cookie ' + content.cookies)
           content = JSON.stringify(req.body)
           var returnUrl = req.body.launch_presentation_return_url
 

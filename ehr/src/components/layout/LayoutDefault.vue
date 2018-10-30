@@ -14,7 +14,7 @@
       </div>
     </main>
     <slot name="footer">
-      <app-footer/>
+      <ehr-special/>
     </slot>
   </div>
 </template>
@@ -23,13 +23,14 @@
 import AppHeader from '../app/AppHeader.vue';
 import AppFooter from '../app/AppFooter.vue';
 import EhrNavPanel from '../app/EhrNavPanel.vue';
+import EhrSpecial from '../app/EhrSpecial.vue';
 
 export default {
   name: `LayoutDefault`,
   components: {
     EhrNavPanel,
     AppHeader,
-    AppFooter,
+    EhrSpecial,
   },
 };
 </script>
