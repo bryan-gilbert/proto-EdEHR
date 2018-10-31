@@ -1,5 +1,5 @@
-var { UserData } = require('./app-user-data.js')
-var { UserInfo } = require('./app-user-info.js')
+var { UserData } = require('./src/user-data.js')
+var { UserInfo } = require('./src/user-info.js')
 
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
