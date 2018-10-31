@@ -64,9 +64,18 @@ function launchEndPoint (req, res, next) {
     }
     updatedUser.cookies = req.cookies
     var content = JSON.stringify(updatedUser, null, 2)
+    // TODO fix insert hack and make it work if this is first time
     let userData = {
       id: user.id,
-      data: {bar: 1234}
+      progressNotes: [
+        { name: 'Amanada Healey',
+          position: 'Nurse',
+          unit: 'ER',
+          day: '0',
+          time: '07:00',
+          notes: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor inviduntt.'
+        }
+      ]
     }
     updateUserData(userData, function (err, updatedUser) {
       if (err) {

@@ -15,7 +15,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr v-for="item in items">
+              <tr v-for="item in progressNotes">
                  <td>{{ item.name }}</td>
                  <td>{{ item.position }}</td>
                  <td>{{ item.unit }}</td>
@@ -41,8 +41,13 @@ export default {
   },
   data: function () {
     return {
-      items: [],
       count: 0
+    }
+  },
+  computed: {
+    progressNotes () {
+      console.log("this.$store.state.sUserData", this.$store.state.sUserData.progressNotes)
+      return this.$store.state.sUserData.progressNotes
     }
   },
   methods: {
@@ -56,7 +61,8 @@ export default {
         time: '07:00',
         notes:'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor inviduntt.'
       }
-      this.items.push(newRow);
+      this.$store.dispatch('addPNotes',{note: newRow})
+      // this.progressNotes.push(newRow);
     }
   }
 };

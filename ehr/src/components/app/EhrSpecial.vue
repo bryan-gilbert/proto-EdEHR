@@ -31,8 +31,7 @@ export default {
   },
   data () {
     return {
-      userInfo: {},
-      userData: {}
+
     }
   },
   created: function() {
@@ -41,17 +40,23 @@ export default {
   computed: {
     count () {
       return this.$store.state.count
+    },
+    userInfo () {
+      return this.$store.state.sUserInfo
+    },
+    userData () {
+      return this.$store.state.sUserData
     }
   },
   methods: {
     listenToEvents() {
       bus.$on('user-info', ($event) => {
         // another component is loading the user data. This listener let's us use the data here.
-        this.userInfo = $event
+        this.$store.commit('setUserInfo', $event)
       })
       bus.$on('user-data', ($event) => {
         // another component is loading the user data. This listener let's us use the data here.
-        this.userData = $event
+        this.$store.commit('setUserData', $event)
       })
     },
     increment () {
@@ -60,7 +65,6 @@ export default {
     decrement () {
       this.$store.commit('decrement')
     }
-
   }
 };
 </script>

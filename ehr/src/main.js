@@ -13,11 +13,24 @@ Vue.config.productionTip = false
 
 const store = new Vuex.Store({
   state: {
-    count: 0
+    count: 0,
+    sUserData: {},
+    sUserInfo: {}
   },
   mutations: {
     increment: state => state.count++,
-    decrement: state => state.count--
+    decrement: state => state.count--,
+    setUserInfo: (state, data) => { state.sUserInfo = data },
+    addProgressNotes: (state, payload) => {
+      let pn = state.sUserData.progressNotes || []
+      pn.push(payload.note)
+    },
+    setUserData: (state, data) => { state.sUserData = data }
+  },
+  actions: {
+    addPNotes (context, payload) {
+      context.commit('addProgressNotes', payload)
+    }
   }
 })
 
@@ -33,9 +46,6 @@ new Vue({
   methods: {
     increment () {
       store.commit('increment')
-    },
-    decrement () {
-      store.commit('decrement')
     }
   }
 }).$mount(`#app`)
