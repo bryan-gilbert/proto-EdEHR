@@ -6,6 +6,7 @@ import Vue from 'vue'
 import router from './router'
 import Vuex from 'vuex'
 import App from './components/App.vue'
+import createLogger from 'vuex/dist/logger'
 
 Vue.use(Vuex)
 
@@ -17,6 +18,7 @@ const store = new Vuex.Store({
     sUserData: {},
     sUserInfo: {}
   },
+  plugins: [createLogger()],
   mutations: {
     increment: state => state.count++,
     decrement: state => state.count--,

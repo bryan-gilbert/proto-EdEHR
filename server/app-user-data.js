@@ -1,0 +1,63 @@
+const axios = require('axios')
+const debug = require('debug')('server')
+
+const UserData = {}
+const URL = 'http://localhost:5678/userData'
+
+UserData.lookupUserData = function lookupUserData (userId, done) {
+  debug(`Inside getUserData ${userId}`)
+  axios.get(`${URL}/${userId}`)
+  .then(res => {
+    debug(`getUserData results ${res.data.id}`)
+    done(null, res.data)
+  })
+  .catch(error => {
+    debug(`getUserData error  ${error.message}`)
+    if (error && error.response.status === 404) {
+      done(null, false)
+    } else {
+      done(error, null)
+    }
+  })
+}
+UserData.storeUserData = function storeUserData (userData, done) {
+  debug(`Inside storeUserData  ${userData}`)
+  const url = `${URL}`
+  axios.post(url, userData)
+  .then(res => {
+    debug(`storeUserData  ${res.data.id}`)
+    done(null, res.data)
+  })
+  .catch(error => {
+    debug(`storeUserData error ${error.message}`)
+    done(error, null)
+  })
+}
+UserData.updateUserData = function updateUserData (userData, done) {
+  debug(`Inside updateUserData ${userData}`)
+  const url = `${URL}/${userData.id}`
+  axios.put(url, userData)
+  .then(res => {
+    debug(`put updateUserData results ${res.data.id}`)
+    done(null, res.data)
+  })
+  .catch(error => {
+    debug(`updateUserData error ${error.message}`)
+    done(error, null)
+  })
+}
+UserData.upsertUserData = function upsertUserData (userData, done) {
+  const _this = this
+  const id = userData.id
+  _this.lookupUserData(id, function (err, data) {
+    if (err) {
+      return done(err, null)
+    }
+    if (!data) {
+      return _this.storeUserData(userData, done)
+    }
+    return _this.updateUserData(userData, done)
+  })
+}
+
+module.exports = { UserData }
