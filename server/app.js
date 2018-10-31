@@ -68,7 +68,7 @@ function launchEndPoint (req, res, next) {
     let userData = {
       id: user.id,
       progressNotes: [
-        { name: 'Amanada Healey',
+        { name: 'Amanda Healey',
           position: 'Nurse',
           unit: 'ER',
           day: '0',

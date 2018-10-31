@@ -27,16 +27,10 @@ export default {
   },
   data () {
     return {
-      isLoggedOn: false,
-      userInfo: {}
+      isLoggedOn: false
     }
   },
   methods: {
-    getCookie: function (name) {  /// Retrieve cookie function
-      var match = document.cookie.match(new RegExp(name + '=([^;]+)'));
-      if (match) return match[1];
-      return
-    },
     getLoggedOn: function () {
       let url = this.apiUrl + 'isLoggedOn'
       console.log("In getLoggedOn ", url)
@@ -67,11 +61,9 @@ export default {
       console.log("In getUserInfo ", url)
       this.getSomething(url, (error, results) => {
         if(error) {
-          this.userInfo = {}
-          bus.$emit("user-info", this.userInfo)
+          this.$store.commit('setUserInfo', {})
         } else {
-          this.userInfo = results
-          bus.$emit("user-info", results)
+          this.$store.commit('setUserInfo', results)
         }
       })
     },
@@ -82,14 +74,11 @@ export default {
       console.log("In getUserData ", url)
       this.getSomething(url, (error, results) => {
         if(error) {
-          this.userData = {}
-          bus.$emit("user-data", this.userInfo)
+          this.$store.commit('setUserData', {})
         } else {
-          this.userData = results
-          bus.$emit("user-data", results)
+          this.$store.commit('setUserData', results)
         }
       })
-
     },
     testUpdateData: function() {
       var url2 = new URL(window.location);
@@ -98,32 +87,17 @@ export default {
       console.log("In getUsr ", url)
       axios.get(url)
       .then( (response) => {
-        console.log("user response ", response)
-        this.userData = response.data
-        bus.$emit("user-data", this.userData)
+        this.$store.commit('setUserData', response.data)
       })
       .catch((error) => {
         console.log('axios error ', error.response.status)
-        this.userData = {}
-        bus.$emit("user-data", this.userData)
+        this.$store.commit('setUserData', {})
       })
     },
   },
   computed: {
-    thisPagePath : function() {
-      var cs = this.getCookie('usr')
-      var something = JSON.stringify(cs)
-      console.log('computed : ' + something)
-        //this.$route.fullPath
-      return something
-    },
     apiUrl : function() {
-      var something = config.getApiUrl()
-      console.log("Is logged on url ", something)
-      return something
-    },
-    count () {
-      return this.$store.state.count
+      return config.getApiUrl()
     }
   },
   mounted: function () {

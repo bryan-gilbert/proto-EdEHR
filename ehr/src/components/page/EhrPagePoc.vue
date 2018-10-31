@@ -1,6 +1,5 @@
 <template>
   <div :class="$options.name">
-    parent prop: {{title}}
     <ehr-banner>
 
     </ehr-banner>
@@ -20,23 +19,6 @@ export default {
   components: {
     EhrBanner,
     EhrPanel
-  },
-  props: ['title'],
-  data () {
-    return {
-      userData: {}
-    }
-  },
-  created: function() {
-    this.listenToEvents();
-  },
-  methods: {
-    listenToEvents() {
-      bus.$on('user-data', ($event) => {
-        // another component is loading the user data. This listener let's us use the data here.
-        this.userData = $event
-      })
-    }
   }
 };
 </script>
@@ -44,6 +26,5 @@ export default {
 <style lang="scss" scoped>
 .EhrPagePoc {
   $section-spacing: 3em;
-
 }
 </style>
