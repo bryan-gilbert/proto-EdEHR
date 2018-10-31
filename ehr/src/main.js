@@ -41,13 +41,7 @@ new Vue({
   router,
   store,
   computed: {
-    count () {
-      return store.state.count
-    }
   },
   methods: {
-    increment () {
-      store.commit('increment')
-    }
   }
 }).$mount(`#app`)

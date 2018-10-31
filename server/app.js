@@ -103,7 +103,7 @@ function strategyVerify (req, callback) {
       var provider = new lti.Provider(req.body, process.env.LTI_SECRET)
       provider.valid_request(req, function (err, isValid) {
         if (err) {
-          debug('strategyVerify LTI Error '+ err.message)
+          debug('strategyVerify LTI Error ' + err.message)
           return callback(err, null)
         }
         debug('strategyVerify request is valid ')

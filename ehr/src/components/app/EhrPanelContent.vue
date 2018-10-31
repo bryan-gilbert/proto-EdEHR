@@ -46,8 +46,12 @@ export default {
   },
   computed: {
     progressNotes () {
-      console.log("this.$store.state.sUserData", this.$store.state.sUserData.progressNotes)
-      return this.$store.state.sUserData.progressNotes
+      let userData = this.$store.state.sUserData
+      if(userData) {
+        console.log("this.$store.state.sUserData", userData.progressNotes)
+        return userData.progressNotes
+      }
+      return {}
     }
   },
   methods: {

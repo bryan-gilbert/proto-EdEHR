@@ -5,14 +5,14 @@ const UserData = {}
 const URL = 'http://localhost:5678/userData'
 
 UserData.lookupUserData = function lookupUserData (userId, done) {
-  debug(`Inside getUserData ${userId}`)
+  debug(`Inside lookupUserData ${userId}`)
   axios.get(`${URL}/${userId}`)
   .then(res => {
-    debug(`getUserData results ${res.data.id}`)
+    debug(`lookupUserData results ${res.data.id}`)
     done(null, res.data)
   })
   .catch(error => {
-    debug(`getUserData error  ${error.message}`)
+    debug(`lookupUserData error  ${error.message}`)
     if (error && error.response.status === 404) {
       done(null, false)
     } else {
@@ -34,28 +34,32 @@ UserData.storeUserData = function storeUserData (userData, done) {
   })
 }
 UserData.updateUserData = function updateUserData (userData, done) {
-  debug(`Inside updateUserData ${userData}`)
+  debug(`Inside updateUserData ${JSON.stringify(userData)}`)
   const url = `${URL}/${userData.id}`
   axios.put(url, userData)
   .then(res => {
-    debug(`put updateUserData results ${res.data.id}`)
+    debug(`updateUserData results ${res.data.id}`)
     done(null, res.data)
   })
   .catch(error => {
-    debug(`updateUserData error ${error.message}`)
+    debug(`updateUserData url: ${url} error: ${error.message}`)
     done(error, null)
   })
 }
+
 UserData.upsertUserData = function upsertUserData (userData, done) {
   const _this = this
   const id = userData.id
+  debug(`upsertUserData id ${id}`)
   _this.lookupUserData(id, function (err, data) {
     if (err) {
       return done(err, null)
     }
     if (!data) {
+      debug(`upsertUserData not found so store data ${userData}`)
       return _this.storeUserData(userData, done)
     }
+    debug(`upsertUserData found data so update data ${userData}`)
     return _this.updateUserData(userData, done)
   })
 }

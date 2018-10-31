@@ -24,9 +24,6 @@ export default {
   data () {
     return {  }
   },
-  created: function() {
-    this.listenToEvents();
-  },
   computed: {
     userInfo () {
       return this.$store.state.sUserInfo

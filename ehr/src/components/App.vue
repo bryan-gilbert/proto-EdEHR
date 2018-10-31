@@ -33,14 +33,14 @@ export default {
   methods: {
     getLoggedOn: function () {
       let url = this.apiUrl + 'isLoggedOn'
-      console.log("In getLoggedOn ", url)
+      console.log("getLoggedOn ", url)
       axios.get(url)
       .then( (response) => {
-        console.log("got isLoggedOn response ", response)
+        console.log("getLoggedOn response ", response)
         this.isLoggedOn = response
       })
       .catch((error) => {
-        console.log('axios error ', error.response.status)
+        console.log('getLoggedOn error ', error.response.status)
         this.isLoggedOn = false
       })
     },
@@ -61,8 +61,10 @@ export default {
       console.log("In getUserInfo ", url)
       this.getSomething(url, (error, results) => {
         if(error) {
+          console.log("getUserInfo Error ", error.message())
           this.$store.commit('setUserInfo', {})
         } else {
+          console.log("getUserInfo results ", results)
           this.$store.commit('setUserInfo', results)
         }
       })
