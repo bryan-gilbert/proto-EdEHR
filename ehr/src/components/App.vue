@@ -82,6 +82,53 @@ export default {
         }
       })
     },
+    loadUserData: function () {
+      var url2 = new URL(window.location);
+      var params2 = new URLSearchParams(url2.search);
+      var userId = params2.get('user')
+      if(userId) {
+        this.$store.commit('userId', userId)
+        let url = this.apiUrl + 'getUserInfo?user=' + userId
+        console.log("In loadData getUserInfo ", url)
+        this.getSomething(url, (error, results) => {
+          if (error) {
+            console.log("User not found. This is an ERROR because the incoming request indicated a user should be registered")
+            this.$store.commit('setUserInfo', {})
+            this.$store.commit('setUserData', {})
+          } else {
+            console.log("Found user information ... store it and then load user data")
+            this.$store.commit('setUserInfo', results)
+          }
+        })
+      }
+    },
+    loadUserInfo: function () {
+      return new Promise( (resolve, reject) => {
+        var userId = this.$store.userId
+        let url = this.apiUrl + 'getUserInfo?user=' + userId
+        console.log("In loadUserInfo ", url)
+        this.getSomething(url, (error, results) => {
+          if (error) {
+            console.log("User not found. This is an ERROR because the incoming request indicated a user should be registered")
+            this.$store.commit('setUserInfo', {})
+            this.$store.commit('setUserData', {})
+          } else {
+            console.log("Found user information ... store it and then load user data")
+            this.$store.commit('setUserInfo', results)
+          }
+        })
+
+      })
+    },
+    loadData: function () {
+      var url2 = new URL(window.location);
+      var params2 = new URLSearchParams(url2.search);
+      var userId = params2.get('user')
+      if(userId) {
+        this.$store.commit('userId', userId)
+        this.loadUserInfo()
+      }
+    },
     testUpdateData: function() {
       var url2 = new URL(window.location);
       var params2 = new URLSearchParams(url2.search);
@@ -104,8 +151,7 @@ export default {
   },
   mounted: function () {
     this.getLoggedOn()
-    this.getUserInfo()
-    this.getUserData()
+    this.loadData()
   }
 };
 </script>

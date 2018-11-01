@@ -108,7 +108,7 @@ var defaultEnv = process.env.NODE_ENV || 'test';
     }
 
     _innerDef.getWebUrl = function () {
-      var isMac = this.getPlatform() == 'darwin'
+      var isMac = this.getPlatform() === 'darwin'
       var scheme = this.getOption(isMac ? 'webSchemeMac' : 'webScheme')
       var url = this.getOption(isMac ? 'webURLMac' : 'webURL')
       return scheme + '://' + url + '/'

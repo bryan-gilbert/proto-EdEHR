@@ -205,18 +205,24 @@ app.get('/api/getUserData', function (req, res, next) {
 
 app.post('/api/userData', function (req, res, next) {
   let body = req.body
-  if (body['user'] && body['data']) {
-    let data = {
-      id: body['user'],
-      data: body['data']
-    }
-    UserData.upsertUserData(data.id, data, (err, data) => {
+  // if (!body.data) {
+  //   debug(`Error post userData body does not have data  ${JSON.stringify(body)}`)
+  //   res.status(400).send('no data')
+  // } else {
+  let data = body
+  if (data['id']) {
+    debug(`post userData ${data.id}`)
+    UserData.upsertUserData(data, (err, data) => {
       if (err) {
         res.status(404).send(err)
+      } else {
+        res.status(200).send(data)
       }
-      res.status(200).send(data)
     })
+  } else {
+    debug(`Error post userData missing ID  ${JSON.stringify(data)}`)
   }
+  // }
 })
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

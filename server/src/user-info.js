@@ -61,10 +61,11 @@ UserInfo.findCreate = function findCreate (id, userInfo, done) {
   })
 }
 
+// TODO move this back into app and then put into a session management module
 UserInfo.extractUniqueUserId = function extractUniqueUserId (user, done) {
   // what element of the user record do we want to store in the session?
   // e.g. req.session.passport.user = {id: '..'}
-  debug('Inside serializeUser callback. User id is save to the session file store here')
+  debug(`extractUniqueUserId id: '${user.id}'`)
   const userId = user.id
   // A user ids is only unique to the tool consumer. So if we store just the user id we be
   // assuming there is only one tool consumer out in the wild.  We must prepend the key given to the
