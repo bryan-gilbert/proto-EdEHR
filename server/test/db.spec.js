@@ -3,6 +3,7 @@ var expect = require('chai').expect
 const should = require('should')
 var { DB } = require('../src/db.js')
 
+
 /* global describe it before */
 describe('Test DB', function () {
   let user = {}
