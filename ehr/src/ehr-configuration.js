@@ -4,7 +4,7 @@ function Configuration (env) {
   var defaultData = {
     apiHost: 'localhost',
     apiPort: 27000,
-    apiPath: 'api'
+    // apiPath: 'api'
   } // configData['default']
   this.globalOptions = Object.assign({}, defaultData)
 }
@@ -32,7 +32,8 @@ _innerDef.getApiPath = function () {
 
 _innerDef.getApiUrl = function () {
   var path = this.getApiPath()
-  return this.getBaseUrl() + path + '/'
+  var add = path ? path + '/' : ''
+  return this.getBaseUrl() + add
 }
 
 _innerDef.getBaseUrl = function () {

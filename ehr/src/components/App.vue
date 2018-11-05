@@ -57,7 +57,7 @@ export default {
     getUserInfo: function () {
       var url2 = new URL(window.location);
       var params2 = new URLSearchParams(url2.search);
-      let url = this.apiUrl + 'getUserInfo?user=' + params2.get('user')
+      let url = this.apiUrl + 'users/' + params2.get('user')
       console.log("In getUserInfo ", url)
       this.getSomething(url, (error, results) => {
         if(error) {
@@ -82,6 +82,7 @@ export default {
         }
       })
     },
+
     loadUserData: function () {
       var url2 = new URL(window.location);
       var params2 = new URLSearchParams(url2.search);
@@ -102,10 +103,11 @@ export default {
         })
       }
     },
-    loadUserInfo: function () {
+
+    loadUserInfo: function (userId) {
       return new Promise( (resolve, reject) => {
-        var userId = this.$store.userId
-        let url = this.apiUrl + 'getUserInfo?user=' + userId
+        //var userId = this.$store.userId
+        let url = this.apiUrl + 'users/' + userId
         console.log("In loadUserInfo ", url)
         this.getSomething(url, (error, results) => {
           if (error) {
@@ -120,13 +122,16 @@ export default {
 
       })
     },
+
     loadData: function () {
       var url2 = new URL(window.location);
       var params2 = new URLSearchParams(url2.search);
       var userId = params2.get('user')
+      console.log("Store user id from incoming url ", url2)
+
       if(userId) {
         this.$store.commit('userId', userId)
-        this.loadUserInfo()
+        this.loadUserInfo(userId)
       }
     },
     testUpdateData: function() {

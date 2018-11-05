@@ -1,14 +1,14 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+import mongoose from 'mongoose'
+// import uniqueValidator from 'mongoose-unique-validator'
 
-const UserSchema = new Schema({
-  userId: {
-    type: String,
-    required: true
-  },
+const UserSchema = new mongoose.Schema({
   givenName: { type: String },
   familyName: { type: String },
-  ltiData: [ String ],
+  emailPrimary: { type: String},
+  ltiUserId: {type: String},
+  ltiConsumerKey: {type: String},
+  ltiData: [ { type: String } ],
+  activites: [{type: mongoose.Schema.Types.ObjectId, ref: 'Activity'}],
   createDate: {
     type: Date,
     default: Date.now
@@ -18,5 +18,8 @@ const UserSchema = new Schema({
     default: Date.now
   }
 })
-const User = mongoose.model('user', UserSchema)
-module.exports = User
+// UserSchema.plugin(uniqueValidator)
+
+const User = mongoose.model('User', UserSchema)
+
+export default User
