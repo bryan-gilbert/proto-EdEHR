@@ -7,6 +7,26 @@ class ParameterError extends Error {
     this.message = message
   }
 }
+
+class ConfigurationChangeError extends Error {
+  constructor (message) {
+    super(...arguments)
+    this.name = 'ConfigurationChangeError'
+    this.status = 400
+    this.message = message
+  }
+}
+
+class SystemError extends Error {
+  constructor (message) {
+    super(...arguments)
+    this.name = 'SystemError'
+    this.status = 500
+    this.message = message
+  }
+}
+
+
 /*
 Possible other error classes. To use consider setting the name and/or status properties
 
@@ -55,5 +75,7 @@ module.exports = {
   // SignatureError,
   // NonceError,
   // OutcomeResponseError
+  SystemError,
+  ConfigurationChangeError,
   ParameterError
 }

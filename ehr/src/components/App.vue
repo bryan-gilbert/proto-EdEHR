@@ -115,8 +115,9 @@ export default {
             this.$store.commit('setUserInfo', {})
             this.$store.commit('setUserData', {})
           } else {
-            console.log("Found user information ... store it and then load user data")
-            this.$store.commit('setUserInfo', results)
+            console.log("Found user information ... store it and then load user data", results)
+            var data = Object.assign({},results.user)
+            this.$store.commit('setUserInfo', data)
           }
         })
 

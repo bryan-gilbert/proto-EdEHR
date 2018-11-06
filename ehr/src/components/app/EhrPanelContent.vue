@@ -26,6 +26,11 @@
               </tbody>
            </table>
         </div>
+        <div  :class="`${$options.name}__data`">
+           <li v-for="(value, propertyName) in userInformation">
+              {{ propertyName }} :  {{ value }}
+           </li>
+        </div>
      </div>
   </div>
 </template>
@@ -45,10 +50,18 @@ export default {
     }
   },
   computed: {
+    userInformation () {
+      let userInfo = this.$store.state.sUserInfo
+      if(userInfo) {
+        console.log("EhrPanelContent this.$store.state.sUserInfo ltiConsumerKey", userInfo.ltiConsumerKey)
+        return userInfo
+      }
+      return {}
+    },
     progressNotes () {
       let userData = this.$store.state.sUserData
       if(userData) {
-        console.log("this.$store.state.sUserData", userData.progressNotes)
+        console.log("EhrPanelContent this.$store.state.sUserData", userData.progressNotes)
         return userData.progressNotes
       }
       return {}
@@ -56,7 +69,7 @@ export default {
   },
   methods: {
     addNote: function(event) {
-      console.log("Add note clicked ", event.target.textContent)
+      console.log("EhrPanelContent Add note clicked ", event.target.textContent)
       var newRow = {
         name: getName(),
         position: 'Nurse',

@@ -35,6 +35,10 @@ export function fail (res) {
         code = 400
         message = error.name + ' ' + error.message
         break
+      case 'CastError' :
+        code = 500
+        message = error.name + ' ' + error.message
+        break
       default:
         console.log('Server TODO enhance error reporting for ', error.name)
     }

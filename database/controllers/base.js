@@ -20,6 +20,11 @@ export default class BaseController {
     this.key = key
     this.baseQ = {}
     this.populate = ''
+    this.fields = undefined
+  }
+
+  setFields (fieldList) {
+    this.fields = fieldList
   }
 
   create (data) {
@@ -61,10 +66,29 @@ export default class BaseController {
     filter[this.key] = id
 
     return this.model
-      .remove(filter)
+      .deleteMany(filter)
       .then(() => {
         return {}
       })
+  }
+
+  clearConsumer (toolConsumerId) {
+    const filter = {}
+    filter['toolConsumer'] = toolConsumerId
+    return this.model
+    .deleteMany(filter)
+    .then(() => {
+      return {}
+    })
+  }
+
+  clearAll () {
+    console.log('Warning removing all documents from collection ', this.model.modelName)
+    return this.model
+    .deleteMany({})
+    .then(() => {
+      return {}
+    })
   }
 
   /**
@@ -98,16 +122,18 @@ export default class BaseController {
     return new Promise(function (resolve, reject) {
       if (self.err) return reject(self.err)
       var q = Object.assign({}, self.baseQ, query)
-      console.log('q = ', q)
+      console.log('base.findOne q = ', q)
       self.model.findOne(q)
       .populate(self.populate)
       .select(fields)
       .exec()
       // .then(self.sanitizeData)
-      .then(resolve, self.complete(reject, 'findone'))
+      .then((results) => {
+        resolve(results)
+      })
+      .catch(() => self.complete(reject, 'findone'))
     })
   }
-
 
   complete (reject, funct) {
     return function (err) {
@@ -147,12 +173,28 @@ export default class BaseController {
         .then(null, fail(res))
     })
 
+    router.delete('/toolConsumer/:id', (req, res) => {
+      this
+      .clearConsumer(req.params.id)
+      .then(ok(res))
+      .then(null, fail(res))
+    })
+
+
+    router.delete('/all/', (req, res) => {
+      this
+      .clearAll()
+      .then(ok(res))
+      .then(null, fail(res))
+    })
+
     router.delete('/:key', (req, res) => {
       this
-        .delete(req.params.key)
-        .then(ok(res))
-        .then(null, fail(res))
+      .delete(req.params.key)
+      .then(ok(res))
+      .then(null, fail(res))
     })
+
 
     return router
   }

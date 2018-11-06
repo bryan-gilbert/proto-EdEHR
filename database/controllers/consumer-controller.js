@@ -10,7 +10,7 @@ export default class ConsumerController extends BaseController {
   }
 
   initializeApp (app) {
-    app.consumer = this
+    app.toolConsumer = this
     this.app = app
     return this.findOneConsumerByKey(KEY)
     .then((found) => {
