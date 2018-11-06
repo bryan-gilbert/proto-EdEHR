@@ -122,7 +122,7 @@ export default class BaseController {
     return new Promise(function (resolve, reject) {
       if (self.err) return reject(self.err)
       var q = Object.assign({}, self.baseQ, query)
-      console.log('base.findOne q = ', q)
+      // console.log('base.findOne q = ', q)
       self.model.findOne(q)
       .populate(self.populate)
       .select(fields)

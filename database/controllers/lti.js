@@ -1,10 +1,12 @@
+import mongoose from 'mongoose'
 import UserController from '../controllers/user-controller'
 import ConsumerController from '../controllers/consumer-controller'
 import ActivityController from '../controllers/activity-controller'
-import ActivitySessionController from './activity-session-controller'
+import VisitController from './visit-controller'
 
 import {ParameterError, ConfigurationChangeError, SystemError} from '../utils/errors'
 
+const ObjectId = mongoose.Schema.Types.ObjectId
 // destructure the Router from the express package
 const { Router } = require('express')
 
@@ -29,7 +31,7 @@ const {ok, fail, ltiVersions} = require('./utils')
 const UserModel = new UserController()
 const ConsumerModel = new ConsumerController()
 const ActivityModel = new ActivityController()
-const ActivitySession = new ActivitySessionController()
+const Visit = new VisitController()
 
 export class LTIController {
   initializeApp (app) {
@@ -66,7 +68,7 @@ export class LTIController {
         passport.serializeUser(function (user, done) {
           if (user && user._id) {
             let id = user._id.valueOf()
-            console.log('serializeUser id:', id)
+            debug('serializeUser id:' + id)
             done(null, id)
           } else {
             console.log('Can not serialize user', user)
@@ -79,7 +81,7 @@ export class LTIController {
           UserModel.read(id)
           .then((results) => {
             let user = results.user
-            console.log('LTI deserializeUser result', ( user ? user.user_id : 'none'))
+            debug('LTI deserializeUser result' + (user ? user.user_id : 'none'))
             done(null, user)
           })
         })
@@ -289,6 +291,7 @@ export class LTIController {
             resource_link_id: ltiData.resource_link_id,
             toolConsumer: toolConsumer._id,
             custom_assignment: ltiData.custom_assignment,
+            context_id: ltiData.context_id,
             context_label: ltiData.context_label,
             context_title: ltiData.context_title,
             context_type: ltiData.context_type,
@@ -307,39 +310,76 @@ export class LTIController {
     })
   }
 
-  updateUserActivity (req) {
-    debug('updateUserActivity')
+  updateVisit (req) {
+    debug('updateVisit')
     const ltiData = req.ltiData
-    const activity = req.activity
     const user = req.user
-    if (!activity) {
-      throw new SystemError('Missing activity while updating user activity record')
+    const activity = req.activity
+    const toolConsumer = req.toolConsumer
+    if (!user) {
+      throw new SystemError('Missing user while updating visit')
     }
-    debug('do we have activity? ' + activity._id)
+    if (!toolConsumer) {
+      throw new SystemError('Missing tool consumer while updating visit')
+    }
+    if (!activity) {
+      throw new SystemError('Missing activity while updating visit')
+    }
+    // note that the role field has been validated already
     let role = UserModel.getRoleFromLti(ltiData.roles)
     let isStudent = role === 'student'
     let isInstructor = role === 'instructor'
-
-    let data = {
-      user: user._id,
-      activity: activity._id,
-      isStudent: isStudent,
-      isInstructor: isInstructor,
-      launch_presentation_return_url: ltiData.launch_presentation_return_url
+    let tid = toolConsumer._id
+    let uid = user._id
+    let aid = activity._id
+    let filter = {
+      $and: [
+        {user: uid},
+        {activity: aid},
+        {toolConsumer: tid},
+        {isStudent: isStudent},
+        {isInstructor: isInstructor}
+      ]
     }
-
-    debug('Create a activity session based on ' + JSON.stringify(data))
-    return ActivitySession.create(data)
-    .then((current) => {
-      user.currentActivity = current._id
-      if (isInstructor) {
-        user.asInstructorActivities.push(activity)
+    return Visit.findOne(filter)
+    .then((visit) => {
+      if (visit) {
+        debug('updateVisit update previous visit')
+        visit.lastVisitDate = Date.now()
+        visit.save()
+        .then(() => {
+          // reuse a previous session for this activity
+          if (user.currentVisit !== visit._id) {
+            user.currentVisit = visit._id
+            debug('updateVisit user ' + user._id + ' visit is changing to ' + activity.resource_link_title)
+            return user.save()
+          }
+        })
+      } else {
+        // create a new activity session
+        let data = {
+          toolConsumer: tid,
+          user: uid,
+          activity: aid,
+          isStudent: isStudent,
+          isInstructor: isInstructor,
+          launch_presentation_return_url: ltiData.launch_presentation_return_url
+        }
+        debug('Create a visit record based on ' + JSON.stringify(data))
+        return Visit.create(data)
+        .then((current) => {
+          let visit = current.visit
+          user.currentVisit = visit._id
+          if (isInstructor) {
+            user.asInstructorVisits.push(activity)
+          }
+          if (isStudent) {
+            user.asStudentVisits.push(activity)
+          }
+          debug('Save visit into user record and overwrite any previous "current" visit')
+          return user.save()
+        })
       }
-      if (isStudent) {
-        user.asStudentActivities.push(activity)
-      }
-      debug('Save session into user record and overwrite any previous "current" session')
-      return user.save()
     })
   }
 
@@ -354,10 +394,10 @@ export class LTIController {
       const _this = this
       debug('have authenticated user. Now process the lti launch request')
       Promise.resolve()
-      .then(() => { _this.updateToolConsumer(req)})
-      .then(() => { return _this.updateOutcomeManagement(req)})
+      .then(() => { _this.updateToolConsumer(req) })
+      .then(() => { return _this.updateOutcomeManagement(req) })
       .then(() => { return _this.updateActivity(req) })
-      .then(() => { return _this.updateUserActivity(req) })
+      .then(() => { return _this.updateVisit(req) })
       .then(() => {
         debug('ready to redirect to the ehr')
         res.redirect('/launch_lti/userAuthenticated')

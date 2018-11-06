@@ -3,7 +3,7 @@ import cors from 'cors'
 import UserController from '../controllers/user-controller.js'
 import ActivityController from '../controllers/activity-controller'
 import ConsumerController from '../controllers/consumer-controller'
-import ActivitySessionController from '../controllers/activity-session-controller'
+import VisitController from '../controllers/visit-controller'
 import { LTIController } from '../controllers/lti'
 
 function setupCors () {
@@ -33,7 +33,7 @@ export default function (app) {
     api.use('/users', cors(corsOptions), new UserController().route())
     api.use('/activities', new ActivityController().route())
     // sessions are activity sessions
-    api.use('/sessions', new ActivitySessionController().route())
+    api.use('/sessions', new VisitController().route())
     return api
   })
 }
