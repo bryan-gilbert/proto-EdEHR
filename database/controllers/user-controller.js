@@ -6,24 +6,19 @@ const Visit = new VisitController()
 export default class UserController extends BaseController {
   constructor () {
     super(User, '_id')
-    this.populate = [
-      {path: 'currentVisit', populate: {path: 'activity'}},
-      {path: 'toolConsumer'}
-    ]
-    this.populate = [
-      {path: 'currentVisit'}
-    ]
+    // this.populate = [
+    //   {path: 'currentVisit', populate: {path: 'activity'}}
+    // ]
+    // this.populate = [
+    //   {path: 'currentVisit'}
+    // ]
       // 'currentVisit toolConsumer currentVisit/activity'
   }
 
   /**
    */
   updateSessionData (id, data) {
-    var filter = {}
-    filter[this.key] = id
-
-    return this.model
-    .findOne(filter)
+    return this.baseFindOneQuery(id)
     .then((modelInstance) => {
       if (modelInstance) {
         let visitId = modelInstance.currentVisit._id
@@ -33,6 +28,34 @@ export default class UserController extends BaseController {
     })
     .then(() => {
       return this.read(id)
+    })
+  }
+  listActivitiesAsStudent (id) {
+    return this.baseFindOneQuery(id)
+    .populate([
+      {path: 'asStudentVisits', model: 'Visit', populate: {path: 'activity', model: 'Activity'}}
+    ])
+    .select('_id asStudentVisits')
+    .then((modelInstance) => {
+      console.log(modelInstance)
+      var response = {}
+      response[this.modelName] = modelInstance
+      return response
+    })
+  }
+
+  listActivitiesAsInstructor (id) {
+    return this.baseFindOneQuery(id)
+    .populate([
+      {path: 'asInstructorVisits', model: 'Visit', populate: {path: 'activity', model: 'Activity'}}
+    ])
+    .select('_id asInstructorVisits')
+    .then((modelInstance) => {
+      // db.visits.find({activity: ObjectId("5be34dd9f0dc0e11d6120485")},{user:1})
+      console.log(modelInstance)
+      var response = {}
+      response[this.modelName] = modelInstance
+      return response
     })
   }
 
@@ -83,6 +106,20 @@ export default class UserController extends BaseController {
         console.log('extact session data from results', data)
         return data
       })
+      .then(ok(res))
+      .then(null, fail(res))
+    })
+
+    router.get('/:key/asInstructor', (req, res) => {
+      this
+      .listActivitiesAsInstructor(req.params.key)
+      .then(ok(res))
+      .then(null, fail(res))
+    })
+
+    router.get('/:key/asStudent', (req, res) => {
+      this
+      .listActivitiesAsStudent(req.params.key)
       .then(ok(res))
       .then(null, fail(res))
     })

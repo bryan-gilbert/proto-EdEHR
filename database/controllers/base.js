@@ -39,30 +39,29 @@ export default class BaseController {
       })
   }
 
-  read (id) {
+  baseFilter (id) {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       throw new ParameterError('Invalid id')
     }
-    var self = this
     var filter = {}
     filter[this.key] = id
+    return filter
+  }
 
-    return this.model
-    .findOne(filter)
+  baseFindOneQuery (id) {
+    var filter = this.baseFilter(id)
+    return this.model.findOne(filter)
+  }
+
+  read (id) {
+    let self = this
+    return this.baseFindOneQuery(id)
     .populate(self.populate)
     .then((modelInstance) => {
       var response = {}
       response[this.modelName] = modelInstance
       return response
     })
-    // .catch((err) => {
-    //   if (err.name === 'CastError') {
-    //     // then the id passed in was invalid. So .. return empty
-    //     return
-    //   }
-    //   console.log('read error ', err)
-    //   throw err
-    // })
   }
 
   list () {
@@ -77,9 +76,7 @@ export default class BaseController {
   }
 
   delete (id) {
-    const filter = {}
-    filter[this.key] = id
-
+    var filter = this.baseFilter(id)
     return this.model
       .deleteMany(filter)
       .then(() => {
@@ -109,11 +106,7 @@ export default class BaseController {
   /**
    */
   update (id, data) {
-    var filter = {}
-    filter[this.key] = id
-
-    return this.model
-      .findOne(filter)
+    return this.baseFindOneQuery(id)
       .then((modelInstance) => {
         // Note that data.hasOwnProperty(attribute) does not work in nodejs See https://github.com/hapijs/hapi/issues/3280
         for (var attribute in data) {

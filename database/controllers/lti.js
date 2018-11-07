@@ -189,8 +189,8 @@ export default class LTIController {
   updateToolConsumer (req) {
     const ltiData = req.ltiData
     const toolConsumer = req.toolConsumer
-    debug('updateToolConsumer starting with ' + toolConsumer)
     if (!toolConsumer.tool_consumer_instance_guid) {
+      debug('updateToolConsumer starting with ' + toolConsumer)
       toolConsumer.lti_version = ltiData.lti_version
       toolConsumer.tool_consumer_info_product_family_code = ltiData.tool_consumer_info_product_family_code
       toolConsumer.tool_consumer_info_version = ltiData.tool_consumer_info_version
@@ -317,6 +317,8 @@ export default class LTIController {
         debug('updateVisit update previous visit')
         visit.lastVisitDate = Date.now()
         visit.lti_roles = ltiData.roles
+        visit.launch_presentation_return_url = ltiData.launch_presentation_return_url
+
         visit.save()
         .then(() => {
           // reuse a previous session for this activity
@@ -332,6 +334,7 @@ export default class LTIController {
           toolConsumer: tid,
           user: uid,
           activity: aid,
+          sessionData: '{}',
           lti_roles: ltiData.roles,
           isStudent: isStudent,
           isInstructor: isInstructor,
@@ -343,10 +346,10 @@ export default class LTIController {
           let visit = current.visit
           user.currentVisit = visit._id
           if (isInstructor) {
-            user.asInstructorVisits.push(activity)
+            user.asInstructorVisits.push(visit)
           }
           if (isStudent) {
-            user.asStudentVisits.push(activity)
+            user.asStudentVisits.push(visit)
           }
           debug('Save visit into user record and overwrite any previous "current" visit')
           return user.save()

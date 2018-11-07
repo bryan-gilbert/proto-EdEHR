@@ -79,7 +79,7 @@ export default class AdminController {
         ActivityModel.clearConsumer(toolConsumer._id)
         UserModel.clearConsumer(toolConsumer._id)
 
-        _this.app.sessionStore.clear()
+        // _this.app.sessionStore.clear()
       })
       res.send('RESET')
     })

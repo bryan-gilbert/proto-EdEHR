@@ -8,7 +8,7 @@ const Schema = new mongoose.Schema({
   launch_presentation_return_url: {type: String},
   isStudent: {type: Boolean, default: false},
   isInstructor: {type: Boolean, default: false},
-  sessionData: {type: Object}, // JSON.stringify 'd  data
+  sessionData: {type: String},
   createDate: {
     type: Date,
     default: Date.now
