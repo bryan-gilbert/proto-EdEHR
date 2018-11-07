@@ -6,11 +6,17 @@ import apiMiddle from './middleware/api.js'
 const debug = require('debug')('server')
 
 const app = express()
+
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: false }))
 db(() => {
   apiMiddle(app).then((api) => {
     app.use('/', api)
+
+    // const sessionCounter = require('./middleware/session-counter')
+    // app.use(sessionCounter)
+
+
 
 // catch 404 and forward to error handler
     app.use(function (req, res, next) {
@@ -32,7 +38,7 @@ db(() => {
       // set locals, only providing error in development
       // res.locals.message = err.message
       // res.locals.error = req.app.get('env') === 'development' ? err : {}
-      console.error('error handler ', err.message)
+      debug('error handler ' + err.message)
       // render the error page
       res.status(err.status || 500)
       res.send(err.message)

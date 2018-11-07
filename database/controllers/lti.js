@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+
 import UserController from '../controllers/user-controller'
 import ConsumerController from '../controllers/consumer-controller'
 import ActivityController from '../controllers/activity-controller'
@@ -6,7 +6,6 @@ import VisitController from './visit-controller'
 
 import {ParameterError, ConfigurationChangeError, SystemError} from '../utils/errors'
 
-const ObjectId = mongoose.Schema.Types.ObjectId
 // destructure the Router from the express package
 const { Router } = require('express')
 
@@ -16,15 +15,6 @@ const debug = require('debug')('server')
 const CustomStrategy = require('passport-custom')
 const lti = require('ims-lti')
 const passport = require('passport')
-
-// Sessions and session cookies
-// express-session stores session data here on the server and only puts session id in the cookie
-const session = require('express-session')
-// store session in files for now. Later could scale and store in the database
-const FileStore = require('session-file-store')(session)
-const COOKIE_SECRET = (process.env.COOKIE_SECRET) ? process.env.COOKIE_SECRET : 'this is the secret for the session cookie'
-// session ids
-const uuid = require('uuid/v4')
 
 const {ok, fail, ltiVersions} = require('./utils')
 
@@ -40,25 +30,6 @@ export class LTIController {
     app.lti = this
     return Promise.resolve()
       .then(() => {
-        const fileStoreOptions = {}
-
-        if (process.env.SESSION_DIR) {
-          fileStoreOptions.path = process.env.SESSION_DIR
-        }
-        if (process.env.TIMETOLIVE) {
-          fileStoreOptions.ttl = process.env.TIMETOLIVE
-        }
-        app.use(session({
-          genid: (req) => {
-            debug('Inside the session middleware req.sessionID ' + req.sessionID)
-            return uuid()
-          },
-          cookie: { sameSite: 'lax' },
-          store: new FileStore(fileStoreOptions),
-          secret: COOKIE_SECRET,
-          resave: false,
-          saveUninitialized: true
-        }))
         let strategy = function (req, callback) {
           _this.strategyVerify(req, callback)
         }
@@ -126,7 +97,7 @@ export class LTIController {
         .then((toolConsumer) => {
           // Grave error to not have found a tool consumer
           if (!toolConsumer) {
-            let message = 'Unsupported consumer key'
+            let message = 'Unsupported consumer key ' + consumerKey
             debug('strategyVerify ' + message)
             return callback(new ParameterError(message))
           }
@@ -401,6 +372,10 @@ export class LTIController {
       .then(() => {
         debug('ready to redirect to the ehr')
         res.redirect('/launch_lti/userAuthenticated')
+      })
+      .catch((err) => {
+        // console.log('ERRRORRRR', err)
+        next(err)
       })
     })
 
