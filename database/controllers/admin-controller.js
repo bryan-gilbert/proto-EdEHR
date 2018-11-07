@@ -18,13 +18,13 @@ var uuid = require('uuid/v4')
 const adminToken = process.env.ADMIN_TOKEN || uuid()
 console.log('adminToken ', adminToken)
 
-export class AdminController {
+export default class AdminController {
   initializeApp (app) {
     this.app = app
     app.admin = this
     return Promise.resolve()
     .then(() => {
-      app.use(function (req, res, next) {
+      app.use('/admin', function (req, res, next) {
         console.log('headers ', req.headers['authorization'])
         if (!req.headers['authorization']) {
           console.log('No authorization in header')

@@ -1,6 +1,8 @@
+import mongoose from 'mongoose'
 import { Router } from 'express'
 import pluralize from 'pluralize'
 import {ok, fail} from './utils'
+import {ParameterError} from '../utils/errors'
 
 const MAX_RESULTS = 100
 // var emptyPromise = function (t) {return new Promise (function (r, e) { r (t); }); };
@@ -38,16 +40,29 @@ export default class BaseController {
   }
 
   read (id) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      throw new ParameterError('Invalid id')
+    }
+    var self = this
     var filter = {}
     filter[this.key] = id
 
     return this.model
     .findOne(filter)
+    .populate(self.populate)
     .then((modelInstance) => {
       var response = {}
       response[this.modelName] = modelInstance
       return response
     })
+    // .catch((err) => {
+    //   if (err.name === 'CastError') {
+    //     // then the id passed in was invalid. So .. return empty
+    //     return
+    //   }
+    //   console.log('read error ', err)
+    //   throw err
+    // })
   }
 
   list () {
@@ -100,12 +115,13 @@ export default class BaseController {
     return this.model
       .findOne(filter)
       .then((modelInstance) => {
+        // Note that data.hasOwnProperty(attribute) does not work in nodejs See https://github.com/hapijs/hapi/issues/3280
         for (var attribute in data) {
-          if (data.hasOwnProperty(attribute) && attribute !== this.key && attribute !== '_id') {
+          if (Object.prototype.hasOwnProperty.call(data, attribute) &&
+            attribute !== this.key && attribute !== '_id') {
             modelInstance[attribute] = data[attribute]
           }
         }
-
         return modelInstance.save()
       })
       .then((modelInstance) => {
@@ -173,13 +189,13 @@ export default class BaseController {
         .then(null, fail(res))
     })
 
+    // TODO remove this once the /admin route is all set up
     router.delete('/toolConsumer/:id', (req, res) => {
       this
       .clearConsumer(req.params.id)
       .then(ok(res))
       .then(null, fail(res))
     })
-
 
     router.delete('/all/', (req, res) => {
       this
@@ -194,7 +210,6 @@ export default class BaseController {
       .then(ok(res))
       .then(null, fail(res))
     })
-
 
     return router
   }

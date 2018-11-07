@@ -5,7 +5,7 @@ import ActivityController from '../controllers/activity-controller'
 import ConsumerController from '../controllers/consumer-controller'
 import VisitController from '../controllers/visit-controller'
 import AdminController from '../controllers/admin-controller'
-import { LTIController } from '../controllers/lti'
+import LTIController from '../controllers/lti'
 
 // Sessions and session cookies
 // express-session stores session data here on the server and only puts session id in the cookie

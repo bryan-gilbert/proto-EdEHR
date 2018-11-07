@@ -23,7 +23,7 @@ const ConsumerModel = new ConsumerController()
 const ActivityModel = new ActivityController()
 const Visit = new VisitController()
 
-export class LTIController {
+export default class LTIController {
   initializeApp (app) {
     const _this = this
     this.app = app
@@ -75,7 +75,6 @@ export class LTIController {
 
     try {
       if (req.user) {
-          // TODO is this correct id?
         debug('strategyVerify has the user.  TODO is this correct id? ' + req.user.id)
           // store the LTI data for further processing after setting up the user
         req.ltiData = req.body
@@ -317,6 +316,7 @@ export class LTIController {
       if (visit) {
         debug('updateVisit update previous visit')
         visit.lastVisitDate = Date.now()
+        visit.lti_roles = ltiData.roles
         visit.save()
         .then(() => {
           // reuse a previous session for this activity
@@ -332,6 +332,7 @@ export class LTIController {
           toolConsumer: tid,
           user: uid,
           activity: aid,
+          lti_roles: ltiData.roles,
           isStudent: isStudent,
           isInstructor: isInstructor,
           launch_presentation_return_url: ltiData.launch_presentation_return_url

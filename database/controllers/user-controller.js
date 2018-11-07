@@ -1,21 +1,48 @@
 import BaseController from './base'
 import User from '../models/user'
 import {ok, fail} from './utils'
-
+import VisitController from '../controllers/visit-controller'
+const Visit = new VisitController()
 export default class UserController extends BaseController {
   constructor () {
     super(User, '_id')
+    this.populate = [
+      {path: 'currentVisit', populate: {path: 'activity'}},
+      {path: 'toolConsumer'}
+    ]
+    this.populate = [
+      {path: 'currentVisit'}
+    ]
+      // 'currentVisit toolConsumer currentVisit/activity'
   }
 
-  controllerMethod () {
-    console.log('here in a controller defined method of the User model')
+  /**
+   */
+  updateSessionData (id, data) {
+    var filter = {}
+    filter[this.key] = id
+
+    return this.model
+    .findOne(filter)
+    .then((modelInstance) => {
+      if (modelInstance) {
+        let visitId = modelInstance.currentVisit._id
+        console.log('current visit')
+        return Visit.updateSessionData(visitId, data)
+      }
+    })
+    .then(() => {
+      return this.read(id)
+    })
   }
 
+  // TODO essentially this is a special case filter. Make a generic way to filter for any class
   list () {
-    let flds = 'user_id toolConsumer givenName familyName currentActivity asStudentActivities asInstructorActivities createDate lastVisitDate'
+    var self = this
     let xflds = '-ltiData'
     return this.model
     .find({})
+    .populate(self.populate)
     .select(xflds)
     .sort('toolConsumer user_id createdDate')
     .limit(10)
@@ -44,9 +71,28 @@ export default class UserController extends BaseController {
     return role
   }
 
-  // route () {
-  //   const router = super.route()
-  //
-  //   return router
-  // }
+  route () {
+    const router = super.route()
+    router.get('/:key/sessionData', (req, res) => {
+      this
+      .read(req.params.key)
+      .then((results) => {
+        var user = results.user
+        var visit = user.currentVisit || {sessionData: {}}
+        var data = visit.sessionData || {}
+        console.log('extact session data from results', data)
+        return data
+      })
+      .then(ok(res))
+      .then(null, fail(res))
+    })
+
+    router.put('/:key/sessionData', (req, res) => {
+      this
+      .updateSessionData(req.params.key, req.body)
+      .then(ok(res))
+      .then(null, fail(res))
+    })
+    return router
+  }
 }

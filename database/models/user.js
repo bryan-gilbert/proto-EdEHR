@@ -20,6 +20,7 @@ const Schema = new mongoose.Schema({
     default: Date.now
   }
 })
+
 // UserSchema.plugin(uniqueValidator)
 
 const User = mongoose.model('User', Schema)
