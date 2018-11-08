@@ -6,9 +6,9 @@ const Visit = new VisitController()
 export default class UserController extends BaseController {
   constructor () {
     super(User, '_id')
-    // this.populate = [
-    //   {path: 'currentVisit', populate: {path: 'activity'}}
-    // ]
+    this.populate = [
+      {path: 'currentVisit', populate: {path: 'activity'}}
+    ]
     // this.populate = [
     //   {path: 'currentVisit'}
     // ]
@@ -22,12 +22,13 @@ export default class UserController extends BaseController {
     .then((modelInstance) => {
       if (modelInstance) {
         let visitId = modelInstance.currentVisit._id
-        console.log('current visit')
+        console.log('invoke Visit.updateSessionData ', data)
         return Visit.updateSessionData(visitId, data)
       }
     })
-    .then(() => {
-      return this.read(id)
+    .then((visit) => {
+      console.log('updateSessionData return ...', visit.sessionData)
+      return visit.sessionData
     })
   }
   listActivitiesAsStudent (id) {
@@ -127,6 +128,11 @@ export default class UserController extends BaseController {
     router.put('/:key/sessionData', (req, res) => {
       this
       .updateSessionData(req.params.key, req.body)
+      .then((result) => {
+        let sd = result.sessionData
+        console.log('result.sessionData', sd)
+        return sd
+      })
       .then(ok(res))
       .then(null, fail(res))
     })

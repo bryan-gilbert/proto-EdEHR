@@ -19,15 +19,8 @@ const Schema = new mongoose.Schema({
   resource_link_title: {type: String}, // ltiData.resource_link_title,
   resource_link_description: {type: String}, // ltiData.resource_link_description,
   custom_assignment: {type: String}, // ltiData.custom_assignment,
-  createDate: {
-    type: Date,
-    default: Date.now
-  },
-  lastVisitDate: {
-    type: Date,
-    default: Date.now
-  }
-
+  createDate: {type: Date, default: Date.now},
+  lastVisitDate: {type: Date, default: Date.now}
 })
 
 const Activity = mongoose.model('Activity', Schema)

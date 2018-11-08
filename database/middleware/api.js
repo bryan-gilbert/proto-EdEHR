@@ -63,7 +63,7 @@ export default function (app) {
 }
 
 function setupCors () {
-  var whitelist = ['http://localhost:28000', 'http://example2.com']
+  var whitelist = ['http://localhost:28000', 'http://localhost:27000']
   var corsOptionsDelegate = function (req, callback) {
     var corsOptions
     if (whitelist.indexOf(req.header('Origin')) !== -1) {

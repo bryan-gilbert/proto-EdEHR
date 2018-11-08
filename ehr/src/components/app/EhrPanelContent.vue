@@ -26,11 +26,6 @@
               </tbody>
            </table>
         </div>
-        <div  :class="`${$options.name}__data`">
-           <li v-for="(value, propertyName) in userInformation">
-              {{ propertyName }} :  {{ value }}
-           </li>
-        </div>
      </div>
   </div>
 </template>
@@ -50,14 +45,6 @@ export default {
     }
   },
   computed: {
-    userInformation () {
-      let userInfo = this.$store.state.sUserInfo
-      if(userInfo) {
-        console.log("EhrPanelContent this.$store.state.sUserInfo ltiConsumerKey", userInfo.ltiConsumerKey)
-        return userInfo
-      }
-      return {}
-    },
     progressNotes () {
       let userData = this.$store.state.sUserData
       if(userData) {

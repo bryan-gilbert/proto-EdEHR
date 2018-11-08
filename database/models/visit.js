@@ -8,15 +8,9 @@ const Schema = new mongoose.Schema({
   launch_presentation_return_url: {type: String},
   isStudent: {type: Boolean, default: false},
   isInstructor: {type: Boolean, default: false},
-  sessionData: {type: String},
-  createDate: {
-    type: Date,
-    default: Date.now
-  },
-  lastVisitDate: {
-    type: Date,
-    default: Date.now
-  }
+  sessionData: {type: Object},
+  createDate: {type: Date, default: Date.now},
+  lastVisitDate: {type: Date, default: Date.now}
 })
 
 const Visit = mongoose.model('Visit', Schema)

@@ -160,7 +160,7 @@ export default class LTIController {
   }
 
   findCreateUser (userId, toolConsumerId, ltiData) {
-    return UserModel.findOne({$and: [{user_id: userId}, {ltiConsumerKey: toolConsumerId}]})
+    return UserModel.findOne({$and: [{user_id: userId}, {toolConsumer: toolConsumerId}]})
     .then((foundUser, r) => {
       if (foundUser) {
         debug('Found user ' + foundUser._id)
@@ -334,7 +334,7 @@ export default class LTIController {
           toolConsumer: tid,
           user: uid,
           activity: aid,
-          sessionData: '{}',
+          sessionData: {},
           lti_roles: ltiData.roles,
           isStudent: isStudent,
           isInstructor: isInstructor,
@@ -386,17 +386,16 @@ export default class LTIController {
     router.get('/userAuthenticated', (req, res) => {
       var session = req.session.passport
       // var cookies = req.cookies
-      // var user = req.user
-      // var url = 'http://localhost:28000?user=' + user._id
-      //
-      // console.log('authenticated user: ', user.user_id)
-      // console.log('authenticated session: ', session)
-      // console.log('authenticated url: ', url)
+      var user = req.user
+      var url = 'http://localhost:28000?user=' + user._id
+
+      console.log('authenticated user: ', user.user_id)
+      console.log('authenticated session: ', session)
+      console.log('authenticated url: ', url)
       // res.status = 302
       // res.setHeader('Location', url)
-      // res.end()
-      // res.redirect(url)
-      res.redirect('/users')
+      res.redirect(url)
+      // res.redirect('/users')
     })
     return router
   }
