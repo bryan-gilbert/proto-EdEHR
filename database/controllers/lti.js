@@ -145,7 +145,7 @@ export default class LTIController {
     }
     let role = UserModel.getRoleFromLti(ltiData.roles)
     if (!role) {
-      return invalid("EdEHR requires the LTI tool consumer to provide the user's roles. And these must be one of student, faculty, instructor or staff")
+      return invalid("EdEHR requires the LTI tool consumer to provide the user's roles. And these must be one of student, faculty, instructor or staff. " + ltiData.roles )
     }
     if (!ltiData['oauth_consumer_key']) {
       return invalid('Must provide consumer key')

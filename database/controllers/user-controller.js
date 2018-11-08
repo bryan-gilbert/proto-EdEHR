@@ -88,7 +88,7 @@ export default class UserController extends BaseController {
     var role
     if (roles) {
       let r = roles.toLowerCase()
-      let student = r.includes('student')
+      let student = r.includes('student') || r.includes('learner')
       let instructor = r.includes('instructor') || r.includes('staff') || r.includes('faculty')
       role = student ? 'student' : (instructor ? 'instructor' : null)
     }
@@ -103,7 +103,7 @@ export default class UserController extends BaseController {
       .then((results) => {
         var user = results.user
         var visit = user.currentVisit || {sessionData: {}}
-        var data = visit.sessionData || {}
+        var data = Object.assign({}, visit.sessionData)
         console.log('extact session data from results', data)
         return data
       })
