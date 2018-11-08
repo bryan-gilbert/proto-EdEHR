@@ -4,7 +4,7 @@ import Visit from '../models/visit'
 export default class VisitController extends BaseController {
   constructor () {
     super(Visit, '_id')
-    this.populate = 'activity'
+    // this.populate = 'activity'
   }
 
   /**

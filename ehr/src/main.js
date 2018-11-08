@@ -17,8 +17,10 @@ Vue.config.productionTip = false
 
 const store = new Vuex.Store({
   state: {
-    sUserData: {},
     sUserInfo: {},
+    sActivityInfo: {},
+    sVisitInfo: {},
+    sVisitDataInfo: {},
     userId: '',
     isLoggedOn: false
   },
@@ -31,43 +33,35 @@ const store = new Vuex.Store({
     setUserInfo: (state, userInfo) => {
       state.sUserInfo = userInfo
     },
-    setUserData: (state, data) => {
-      console.log(`set sUserData ${data}`)
-      if (!data) {
-        state.sUserData = undefined
-      } else {
-        state.sUserData = data
-      }
+    setActivityInfo: (state, info) => {
+      state.sActivityInfo = info
+    },
+    setVisitInfo: (state, info) => {
+      state.sVisitInfo = info
+    },
+    setVisitDataInfo: (state, info) => {
+      state.sVisitDataInfo = info
     }
   },
   actions: {
     addPNotes (context, payload) {
-      let userId = context.state.userId
-      let userData = context.state.sUserData
-      let sessionData = userData.sessionData || {}
+      let visitData = context.state.sVisitDataInfo
+      let vid = visitData._id
       let newNote = payload.note
-      let url = `${config.getApiUrl()}users/${userId}/sessionData`
+      let url = `${config.getApiUrl()}visitdata/${vid}`
       console.log('addPNotes payload', payload)
-      console.log('addPNote userId', userId)
+      console.log('addPNote visit data id', vid)
       console.log(`addPNotes put url`, url)
+      let vd = visitData.data
+      vd.progressNotes = vd.progressNotes || []
+      vd.progressNotes.push(newNote)
+      console.log('addPNote visitData', vd)
 
-      if (typeof sessionData === 'string') {
-        try {
-          sessionData = JSON.parse(sessionData)
-        } catch (error) {
-          console.log('Could not parse ', sessionData, 'Error: ', error)
-          sessionData = {}
-        }
-      }
-      userData.sessionData = sessionData
-      userData.sessionData.progressNotes = userData.sessionData.progressNotes || []
-      userData.sessionData.progressNotes.push(newNote)
-      console.log('addPNote userData', userData)
-
-      axios.put(url, userData)
+      axios.put(url, visitData)
       .then((results) => {
-        console.log(`addPNotes after post with ${results.data}`)
-        context.commit('setUserData', results.data)
+        let data = results.data.visitdata
+        console.log(`addPNotes after post with ${data}`)
+        context.commit('setVisitDataInfo', data)
       })
       .catch(error => {
         console.log(`Failed to update progress notes ${error.message}`)

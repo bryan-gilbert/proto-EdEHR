@@ -1,22 +1,17 @@
 import BaseController from './base'
 import User from '../models/user'
 import {ok, fail} from './utils'
-import VisitController from '../controllers/visit-controller'
-const Visit = new VisitController()
+
+// import VisitController from '../controllers/visit-controller'
+// const Visit = new VisitController()
+
 export default class UserController extends BaseController {
   constructor () {
     super(User, '_id')
-    this.populate = [
-      {path: 'currentVisit', populate: {path: 'activity'}}
-    ]
-    // this.populate = [
-    //   {path: 'currentVisit'}
-    // ]
-      // 'currentVisit toolConsumer currentVisit/activity'
+    // this.populate = [{path: 'currentVisit', populate: {path: 'activity'}}]
   }
 
-  /**
-   */
+  /*
   updateSessionData (id, data) {
     return this.baseFindOneQuery(id)
     .then((modelInstance) => {
@@ -31,6 +26,8 @@ export default class UserController extends BaseController {
       return visit.sessionData
     })
   }
+  */
+
   listActivitiesAsStudent (id) {
     return this.baseFindOneQuery(id)
     .populate([
@@ -97,19 +94,6 @@ export default class UserController extends BaseController {
 
   route () {
     const router = super.route()
-    router.get('/:key/sessionData', (req, res) => {
-      this
-      .read(req.params.key)
-      .then((results) => {
-        var user = results.user
-        var visit = user.currentVisit || {sessionData: {}}
-        var data = Object.assign({}, visit.sessionData)
-        console.log('extact session data from results', data)
-        return data
-      })
-      .then(ok(res))
-      .then(null, fail(res))
-    })
 
     router.get('/:key/asInstructor', (req, res) => {
       this
@@ -121,6 +105,20 @@ export default class UserController extends BaseController {
     router.get('/:key/asStudent', (req, res) => {
       this
       .listActivitiesAsStudent(req.params.key)
+      .then(ok(res))
+      .then(null, fail(res))
+    })
+/*
+    router.get('/:key/sessionData', (req, res) => {
+      this
+      .read(req.params.key)
+      .then((results) => {
+        var user = results.user
+        var visit = user.currentVisit || {sessionData: {}}
+        var data = Object.assign({}, visit.sessionData)
+        console.log('extact session data from results', data)
+        return data
+      })
       .then(ok(res))
       .then(null, fail(res))
     })
@@ -136,6 +134,7 @@ export default class UserController extends BaseController {
       .then(ok(res))
       .then(null, fail(res))
     })
+    */
     return router
   }
 }

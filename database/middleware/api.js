@@ -4,6 +4,7 @@ import UserController from '../controllers/user-controller.js'
 import ActivityController from '../controllers/activity-controller'
 import ConsumerController from '../controllers/consumer-controller'
 import VisitController from '../controllers/visit-controller'
+import VisitDataController from '../controllers/visit-data-controller'
 import AdminController from '../controllers/admin-controller'
 import LTIController from '../controllers/lti'
 
@@ -58,6 +59,7 @@ export default function (app) {
     api.use('/activities', cors(corsOptions), new ActivityController().route())
     // visits are activity sessions
     api.use('/visits', cors(corsOptions), new VisitController().route())
+    api.use('/visitdata', cors(corsOptions), new VisitDataController().route())
     return api
   })
 }

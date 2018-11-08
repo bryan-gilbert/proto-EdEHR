@@ -61,15 +61,64 @@ export default {
           if (error) {
             console.log("User not found. This is an ERROR because the incoming request indicated a user should be registered")
           } else {
-            console.log("Found user information ... store it and then load user data", data)
             data = Object.assign({}, results.user)
+            console.log("Found user information ... store it and then load user data", data)
           }
           this.$store.commit('setUserInfo', data)
-
-          let currentVisit = data.currentVisit || {}
-          let sessionData = currentVisit.sessionData || {}
-          console.log('data.userInfo.currentVisit.sessionData',sessionData)
-          this.$store.commit('setUserData', sessionData)
+          this.loadCurrentVisit(userId, data)
+        })
+      })
+    },
+    loadCurrentVisit: function (userId,userInfo) {
+      return new Promise((resolve, reject) => {
+        var visitId = userInfo.currentVisit
+        let url = this.apiUrl + 'visits/' + visitId
+        console.log("In loadCurrentVisit ", url)
+        this.getSomething(url, (error, results) => {
+          let data = {}
+          if (error) {
+            console.log("Current visit not found. This is an ERROR because the incoming request indicated a user should be registered")
+          } else {
+            data = Object.assign({}, results.visit)
+            console.log("Found visit information ... store it and then visit data", data)
+          }
+          this.$store.commit('setVisitInfo', data)
+          this.loadVisitData(userId, data)
+          this.loadActivityData(userId, data)
+        })
+      })
+    },
+    loadActivityData: function (userId, visitInfo) {
+      return new Promise((resolve, reject) => {
+        let aid = visitInfo.activity
+        let url = this.apiUrl + 'activities/' + aid
+        console.log("In activity data ", url)
+        this.getSomething(url, (error, results) => {
+          let data = {}
+          if (error) {
+            console.log("load activity data not found. This is an ERROR because the incoming request indicated a user should be registered")
+          } else {
+            data = Object.assign({}, results.activity)
+            console.log("Found activity data", data)
+          }
+          this.$store.commit('setActivityInfo', data)
+        })
+      })
+    },
+    loadVisitData: function (userId, visitInfo) {
+      return new Promise((resolve, reject) => {
+        let vdid = visitInfo.visitData
+        let url = this.apiUrl + 'visitdata/' + vdid
+        console.log("In visit data ", url)
+        this.getSomething(url, (error, results) => {
+          let data = {}
+          if (error) {
+            console.log("load visit data not found. This is an ERROR because the incoming request indicated a user should be registered")
+          } else {
+            data = Object.assign({}, results.visitdata)
+            console.log("Found visit data", data)
+          }
+          this.$store.commit('setVisitDataInfo', data)
         })
       })
     }

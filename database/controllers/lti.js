@@ -3,6 +3,7 @@ import UserController from '../controllers/user-controller'
 import ConsumerController from '../controllers/consumer-controller'
 import ActivityController from '../controllers/activity-controller'
 import VisitController from './visit-controller'
+import VisitDataController from './visit-data-controller'
 
 import {ParameterError, ConfigurationChangeError, SystemError} from '../utils/errors'
 
@@ -21,7 +22,8 @@ const {ok, fail, ltiVersions} = require('./utils')
 const UserModel = new UserController()
 const ConsumerModel = new ConsumerController()
 const ActivityModel = new ActivityController()
-const Visit = new VisitController()
+const VisitModel = new VisitController()
+const VisitDataModel = new VisitDataController()
 
 export default class LTIController {
   initializeApp (app) {
@@ -79,7 +81,7 @@ export default class LTIController {
           // store the LTI data for further processing after setting up the user
         req.ltiData = req.body
         ConsumerModel.read(req.user.toolConsumer).then((holder) => {
-          debug('strategyVerify. req has user and we just found the tool consumer too ' + holder.Consumer)
+          debug('strategyVerify. req has user and we just found the tool consumer too ' + holder.consumer)
           req.toolConsumer = holder.consumer
           callback(null, req.user)
         })
@@ -145,7 +147,7 @@ export default class LTIController {
     }
     let role = UserModel.getRoleFromLti(ltiData.roles)
     if (!role) {
-      return invalid("EdEHR requires the LTI tool consumer to provide the user's roles. And these must be one of student, faculty, instructor or staff. " + ltiData.roles )
+      return invalid("EdEHR requires the LTI tool consumer to provide the user's roles. And these must be one of student, faculty, instructor or staff. " + ltiData.roles)
     }
     if (!ltiData['oauth_consumer_key']) {
       return invalid('Must provide consumer key')
@@ -311,7 +313,7 @@ export default class LTIController {
         {isInstructor: isInstructor}
       ]
     }
-    return Visit.findOne(filter)
+    return VisitModel.findOne(filter)
     .then((visit) => {
       if (visit) {
         debug('updateVisit update previous visit')
@@ -330,20 +332,33 @@ export default class LTIController {
         })
       } else {
         // create a new activity session
-        let data = {
-          toolConsumer: tid,
-          user: uid,
-          activity: aid,
-          sessionData: {},
-          lti_roles: ltiData.roles,
-          isStudent: isStudent,
-          isInstructor: isInstructor,
-          launch_presentation_return_url: ltiData.launch_presentation_return_url
+        debug('Create an empty visitData record')
+        let vd = {
+          uid: uid.toString()
         }
-        debug('Create a visit record based on ' + JSON.stringify(data))
-        return Visit.create(data)
+        let visitdata = null
+        let visit = null
+        return VisitDataModel.create({user: uid, data: vd})
+        .then((record) => {
+          visitdata = record.visitdata
+          const vid = visitdata._id
+          debug('Now have a visitData  ' + vid)
+          let data = {
+            toolConsumer: tid,
+            user: uid,
+            activity: aid,
+            visitData: vid,
+            lti_roles: ltiData.roles,
+            isStudent: isStudent,
+            isInstructor: isInstructor,
+            launch_presentation_return_url: ltiData.launch_presentation_return_url
+          }
+          debug('Create a visit record')
+          return VisitModel.create(data)
+        })
         .then((current) => {
-          let visit = current.visit
+          debug('Now have a visit record  ' + current._id)
+          visit = current.visit
           user.currentVisit = visit._id
           if (isInstructor) {
             user.asInstructorVisits.push(visit)
@@ -353,6 +368,11 @@ export default class LTIController {
           }
           debug('Save visit into user record and overwrite any previous "current" visit')
           return user.save()
+        })
+        .then((current) => {
+          debug('link visit back into visit data')
+          visitdata.visit = visit._id
+          return visitdata.save()
         })
       }
     })

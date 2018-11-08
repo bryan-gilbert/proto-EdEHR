@@ -46,10 +46,10 @@ export default {
   },
   computed: {
     progressNotes () {
-      let userData = this.$store.state.sUserData
-      if(userData) {
-        console.log("EhrPanelContent this.$store.state.sUserData", userData.progressNotes)
-        return userData.progressNotes
+      let data = this.$store.state.sVisitDataInfo.data
+      if(data) {
+        console.log("EhrPanelContent data", data.progressNotes)
+        return data.progressNotes
       }
       return {}
     }
