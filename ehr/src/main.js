@@ -22,13 +22,26 @@ const store = new Vuex.Store({
     sVisitInfo: {},
     sVisitDataInfo: {},
     userId: '',
+    isValidUser: false,
     isLoggedOn: false
   },
   plugins: [createLogger()],
   mutations: {
+    resetInfo: (state) => {
+      let d = {}
+      state.sUserInfo = d
+      state.sActivityInfo = d
+      state.sVisitInfo = d
+      state.sVisitDataInfo = d
+      state.userId = ''
+      state.isValidUser = false
+    },
     setUserId: (state, id) => {
       console.log('store user id into global store', id)
       state.userId = id
+    },
+    setValidUser: (state, isValid) => {
+      state.isValidUser = isValid
     },
     setUserInfo: (state, userInfo) => {
       state.sUserInfo = userInfo
@@ -52,6 +65,7 @@ const store = new Vuex.Store({
       console.log('addPNotes payload', payload)
       console.log('addPNote visit data id', vid)
       console.log(`addPNotes put url`, url)
+      visitData.data = visitData.data || {}
       let vd = visitData.data
       vd.progressNotes = vd.progressNotes || []
       vd.progressNotes.push(newNote)

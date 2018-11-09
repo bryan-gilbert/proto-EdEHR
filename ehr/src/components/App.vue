@@ -46,6 +46,7 @@ export default {
       var params2 = new URLSearchParams(url2.search);
       var userId = params2.get('user')
       console.log("Store user id from incoming url ", url2)
+      this.$store.commit('resetInfo')
       if(userId) {
         this.$store.commit('setUserId', userId)
         this.loadUserInfo(userId)
@@ -58,12 +59,14 @@ export default {
         console.log("In loadUserInfo ", url)
         this.getSomething(url, (error, results) => {
           let data = {}
-          if (error) {
+          if (error || ! results.user) {
             console.log("User not found. This is an ERROR because the incoming request indicated a user should be registered")
-          } else {
-            data = Object.assign({}, results.user)
-            console.log("Found user information ... store it and then load user data", data)
+            this.$store.commit('setValidUser', false)
+            return
           }
+          data = Object.assign({}, results.user)
+          console.log("Found user information ... store it and then load user data", data)
+          this.$store.commit('setValidUser', true)
           this.$store.commit('setUserInfo', data)
           this.loadCurrentVisit(userId, data)
         })
