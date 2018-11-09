@@ -12,19 +12,19 @@
 <script>
 import EhrBanner from '../app/EhrBanner.vue';
 import EhrPanel from '../app/EhrPanel.vue';
+import bus from "../eventBus.js"
 
 export default {
   name: `EhrPagePoc`,
   components: {
     EhrBanner,
     EhrPanel
-  },
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .EhrPagePoc {
   $section-spacing: 3em;
-
 }
 </style>

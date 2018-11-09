@@ -3,10 +3,6 @@
     <layout-default>
       <router-view/>
     </layout-default>
-    <div :class="`${$options.name}__special`">
-      <div>From App component: Is user logged on? {{isLoggedOn}}</div>
-    </div>
-
   </div>
 </template>
 
@@ -25,66 +21,121 @@ export default {
     LayoutDefault,
     UiButton
   },
-  data () {
-    return {
-      isLoggedOn: false,
-      userData: {}
-    }
-  },
   methods: {
-    getCookie: function (name) {  /// Retrieve cookie function
-      var match = document.cookie.match(new RegExp(name + '=([^;]+)'));
-      if (match) return match[1];
-      return
-    },
     getLoggedOn: function () {
       let url = this.apiUrl + 'isLoggedOn'
-      console.log("In getLoggedOn ", url)
+      console.log("getLoggedOn ", url)
       axios.get(url)
       .then( (response) => {
-        console.log("got isLoggedOn response ", response)
-        this.isLoggedOn = response
+        console.log("getLoggedOn response ", response)
+        this.$store.commit('isLoggedOn', response)
       })
       .catch((error) => {
-        console.log('axios error ', error.response.status)
-        this.isLoggedOn = false
+        console.log('getLoggedOn error ', error.response.status)
+        this.$store.commit('isLoggedOn', false)
       })
     },
-    getUserData: function () {
+    getSomething: function (url, callback) {
+      axios.get(url)
+      .then( (response) => {callback(null, response.data)})
+      .catch((error) => {callback(error.response.status)})
+    },
+
+    loadData: function () {
       var url2 = new URL(window.location);
       var params2 = new URLSearchParams(url2.search);
-      let url = this.apiUrl + 'getUser?user=' + params2.get('user')
-      console.log("In getUsr ", url)
-      axios.get(url)
-      .then( (response) => {
-        console.log("user response ", response)
-        this.userData = response.data
-        bus.$emit("user-data", this.userData)
+      var userId = params2.get('user')
+      console.log("Store user id from incoming url ", url2)
+      this.$store.commit('resetInfo')
+      if(userId) {
+        this.$store.commit('setUserId', userId)
+        this.loadUserInfo(userId)
+      }
+    },
+    loadUserInfo: function (userId) {
+      return new Promise((resolve, reject) => {
+        //var userId = this.$store.userId
+        let url = this.apiUrl + 'users/' + userId
+        console.log("In loadUserInfo ", url)
+        this.getSomething(url, (error, results) => {
+          let data = {}
+          if (error || ! results.user) {
+            console.log("User not found. This is an ERROR because the incoming request indicated a user should be registered")
+            this.$store.commit('setValidUser', false)
+            return
+          }
+          data = Object.assign({}, results.user)
+          console.log("Found user information ... store it and then load user data", data)
+          this.$store.commit('setValidUser', true)
+          this.$store.commit('setUserInfo', data)
+          this.loadCurrentVisit(userId, data)
+        })
       })
-      .catch((error) => {
-        console.log('axios error ', error.response.status)
-        this.userData = {}
-        bus.$emit("user-data", this.userData)
+    },
+    loadCurrentVisit: function (userId,userInfo) {
+      return new Promise((resolve, reject) => {
+        var visitId = userInfo.currentVisit
+        let url = this.apiUrl + 'visits/' + visitId
+        console.log("In loadCurrentVisit ", url)
+        this.getSomething(url, (error, results) => {
+          let data = {}
+          if (error) {
+            console.log("Current visit not found. This is an ERROR because the incoming request indicated a user should be registered")
+          } else {
+            data = Object.assign({}, results.visit)
+            console.log("Found visit information ... store it and then visit data", data)
+          }
+          this.$store.commit('setVisitInfo', data)
+          this.loadVisitData(userId, data)
+          this.loadActivityData(userId, data)
+        })
+      })
+    },
+    loadActivityData: function (userId, visitInfo) {
+      return new Promise((resolve, reject) => {
+        let aid = visitInfo.activity
+        let url = this.apiUrl + 'activities/' + aid
+        console.log("In activity data ", url)
+        this.getSomething(url, (error, results) => {
+          let data = {}
+          if (error) {
+            console.log("load activity data not found. This is an ERROR because the incoming request indicated a user should be registered")
+          } else {
+            data = Object.assign({}, results.activity)
+            console.log("Found activity data", data)
+          }
+          this.$store.commit('setActivityInfo', data)
+        })
+      })
+    },
+    loadVisitData: function (userId, visitInfo) {
+      return new Promise((resolve, reject) => {
+        let vdid = visitInfo.visitData
+        let url = this.apiUrl + 'visitdata/' + vdid
+        console.log("In visit data ", url)
+        this.getSomething(url, (error, results) => {
+          let data = {}
+          if (error) {
+            console.log("load visit data not found. This is an ERROR because the incoming request indicated a user should be registered")
+          } else {
+            data = Object.assign({}, results.visitdata)
+            console.log("Found visit data", data)
+          }
+          this.$store.commit('setVisitDataInfo', data)
+        })
       })
     }
   },
   computed: {
-    thisPagePath : function() {
-      var cs = this.getCookie('usr')
-      var something = JSON.stringify(cs)
-      console.log('computed : ' + something)
-        //this.$route.fullPath
-      return something
-    },
     apiUrl : function() {
-      var something = config.getApiUrl()
-      console.log("Is logged on url ", something)
-      return something
+      var url = config.getApiUrl()
+      console.log('apiUrl = ',  url)
+      return url
     }
   },
   mounted: function () {
     this.getLoggedOn()
-    this.getUserData()
+    this.loadData()
   }
 };
 </script>

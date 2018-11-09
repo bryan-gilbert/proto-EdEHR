@@ -7,12 +7,11 @@
     </app-hero>
     <ui-button v-on:buttonClicked="appButtonClicked($event)">Click App Button</ui-button>
     This is the Dev page
-
+{{userInformation}}
   </div>
 </template>
 
 <script>
-import MoneyConverter from '../currencyConverter/MoneyConverter.vue';
 import UiButton from '../ui/UiButton.vue';
 import AppHero from '../app/AppHero.vue';
 
@@ -20,8 +19,17 @@ export default {
   name: `PageDev`,
   components: {
     AppHero,
-		MoneyConverter,
 		UiButton
+  },
+  computed: {
+    userInformation () {
+      let userInfo = this.$store.state.sUserInfo
+      if(userInfo) {
+        console.log("this.$store.state.sUserInfo", userInfo)
+        return userInfo
+      }
+      return {}
+    }
   },
 	methods: {
 		appButtonClicked: function (eventData) {

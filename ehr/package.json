@@ -22,7 +22,8 @@
     "axios": "^0.18.0",
     "http-server": "^0.11.1",
     "vue": "^2.5.17",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   },
   "browserslist": [
     "> 1%",
@@ -45,6 +46,8 @@
     "node-sass-magic-importer": "^5.2.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "prettier": "^1.14.3",
+    "pug": "^2.0.3",
+    "pug-plain-loader": "^1.0.0",
     "sass-loader": "^7.1.0",
     "start-server-webpack-plugin": "^2.2.5",
     "uglifyjs-webpack-plugin": "^1.3.0",
