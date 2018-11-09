@@ -1,78 +1,81 @@
-'use strict'
+'use strict';
 
 /**
  * Module dependencies.
  */
 var _ = require('lodash'),
-  chalk = require('chalk'),
-  glob = require('glob'),
-  fs = require('fs'),
-  path = require('path')
+    chalk = require('chalk'),
+    glob = require('glob'),
+    fs = require('fs'),
+    path = require('path');
+
 
 /**
  * Get files by glob patterns
  */
 var getGlobbedPaths = function (globPatterns, excludes) {
   // URL paths regex
-  var urlRegex = new RegExp('^(?:[a-z]+:)?\/\/', 'i')
+  var urlRegex = new RegExp('^(?:[a-z]+:)?\/\/', 'i');
 
   // The output array
-  var output = []
+  var output = [];
 
   // If glob pattern is array then we use each pattern in a recursive way, otherwise we use glob
   if (_.isArray(globPatterns)) {
     globPatterns.forEach(function (globPattern) {
-      output = _.union(output, getGlobbedPaths(globPattern, excludes))
-    })
+      output = _.union(output, getGlobbedPaths(globPattern, excludes));
+    });
   } else if (_.isString(globPatterns)) {
     if (urlRegex.test(globPatterns)) {
-      output.push(globPatterns)
+      output.push(globPatterns);
     } else {
-      var files = glob.sync(globPatterns)
+      var files = glob.sync(globPatterns);
       if (excludes) {
         files = files.map(function (file) {
           if (_.isArray(excludes)) {
             for (var i in excludes) {
-              file = file.replace(excludes[i], '')
+              file = file.replace(excludes[i], '');
             }
           } else {
-            file = file.replace(excludes, '')
+            file = file.replace(excludes, '');
           }
-          return file
-        })
+          return file;
+        });
       }
-      output = _.union(output, files)
+      output = _.union(output, files);
     }
   }
 
-  return output
-}
+  return output;
+};
 
 /**
  * Validate NODE_ENV existence
  */
 var validateEnvironmentVariable = function () {
-  var environmentFiles = glob.sync('./config/env/' + process.env.NODE_ENV + '.js')
-  console.log()
+  var environmentFiles = glob.sync('./config/env/' + process.env.NODE_ENV + '.js');
+  console.log();
   if (!environmentFiles.length) {
     if (process.env.NODE_ENV) {
-      console.error(chalk.red('+ Error: No configuration file found for "' + process.env.NODE_ENV + '" environment using development instead'))
+      console.error(chalk.red('+ Error: No configuration file found for "' + process.env.NODE_ENV + '" environment using development instead'));
     } else {
-      console.error(chalk.red('+ Error: NODE_ENV is not defined! Using default development environment'))
+      console.error(chalk.red('+ Error: NODE_ENV is not defined! Using default development environment'));
     }
-    process.env.NODE_ENV = 'development'
+    process.env.NODE_ENV = 'development';
   }
   // Reset console color
-  console.log(chalk.white(''))
-}
+  console.log(chalk.white(''));
+};
+
+
 
 /**
  * Initialize global domain data definitions
  */
 var initDataDefinitions = function () {
-  var dataDefs = require(path.join(process.cwd(), 'domain_definitions'))
-  // console.log(JSON.stringify( dataDefs, null, 2))
-  return dataDefs
+  var dataDefs = require(path.join(process.cwd(), 'config/schema', 'domain_definitions'));
+  //console.log(JSON.stringify( dataDefs, null, 2))
+  return dataDefs;
 }
 
 /**
@@ -80,31 +83,31 @@ var initDataDefinitions = function () {
  */
 var initGlobalConfig = function () {
   // Validate NODE_ENV existence
-  validateEnvironmentVariable()
+  validateEnvironmentVariable();
 
   // Get the default assets
-  var defaultAssets = require(path.join(process.cwd(), 'config/assets/default'))
+  var defaultAssets = require(path.join(process.cwd(), 'config/assets/default'));
 
   // Get the current assets
-  var environmentAssets = require(path.join(process.cwd(), 'config/assets/', process.env.NODE_ENV)) || {}
+  var environmentAssets = require(path.join(process.cwd(), 'config/assets/', process.env.NODE_ENV)) || {};
 
   // Merge assets
-  var assets = _.merge(defaultAssets, environmentAssets)
+  var assets = _.merge(defaultAssets, environmentAssets);
 
   // Get the default config
-  var defaultConfig = require(path.join(process.cwd(), 'config/env/default'))
+  var defaultConfig = require(path.join(process.cwd(), 'config/env/default'));
 
   // Get the current config
-  var environmentConfig = require(path.join(process.cwd(), 'config/env/', process.env.NODE_ENV)) || {}
+  var environmentConfig = require(path.join(process.cwd(), 'config/env/', process.env.NODE_ENV)) || {};
 
   // Merge config files
-  var config = _.merge(defaultConfig, environmentConfig)
+  var config = _.merge(defaultConfig, environmentConfig);
 
   // We only extend the config object with the local.js custom/local environment if we are on
   // production or development environment. If test environment is used we don't merge it with local.js
   // to avoid running test suites on a prod/dev environment (which delete records and make modifications)
   if (process.env.NODE_ENV !== 'test') {
-    config = _.merge(config, (fs.existsSync(path.join(process.cwd(), 'config/env/local.js')) && require(path.join(process.cwd(), 'config/env/local.js'))) || {})
+    config = _.merge(config, (fs.existsSync(path.join(process.cwd(), 'config/env/local.js')) && require(path.join(process.cwd(), 'config/env/local.js'))) || {});
   }
 
   /*
@@ -120,14 +123,14 @@ var initGlobalConfig = function () {
   // Expose configuration utilities
   config.utils = {
     getGlobbedPaths: getGlobbedPaths
-  }
+  };
 
-  config.dataDefs = initDataDefinitions()
+  config.dataDefs = initDataDefinitions();
 
-  return config
-}
+  return config;
+};
 
 /**
  * Set configuration object
  */
-module.exports = initGlobalConfig()
+module.exports = initGlobalConfig();
