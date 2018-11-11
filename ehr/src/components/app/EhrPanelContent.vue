@@ -39,6 +39,7 @@
     },
     computed: {
       disableActions () {
+        let st = this.$store.state
         let isInvalid = !this.$store.state.isValidUser
 		  console.log("USer is valid? ", isInvalid)
 		  return isInvalid

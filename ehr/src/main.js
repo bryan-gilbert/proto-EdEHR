@@ -9,13 +9,14 @@ import App from './components/App.vue'
 import createLogger from 'vuex/dist/logger'
 import axios from '../node_modules/axios/dist/axios.min'
 import Configuration from './ehr-configuration'
+import store from './store'
 var config = new Configuration()
 
 Vue.use(Vuex)
 
 Vue.config.productionTip = false
 
-const store = new Vuex.Store({
+const storeOld = new Vuex.Store({
   state: {
     sUserInfo: {},
     sActivityInfo: {},
