@@ -1,8 +1,8 @@
 <template>
   <div :class="$options.name">
-    <slot name="header" :class="`${$options.name}__header`">
+    <slot name="ehr-header" :class="`${$options.name}__header`">
       <!--<app-header/>-->
-      <p>Insert app header</p>
+      <p>Insert EHR header</p>
     </slot>
     <main :class="`${$options.name}__main`">
       <div name="mainContent" :class="`${$options.name}__main_content columns`">
@@ -15,7 +15,7 @@
         </div>
       </div>
     </main>
-    <slot name="footer">
+    <slot name="ehr-footer">
       <!--<ehr-special/>-->
       <p>insert ehr special</p>
     </slot>
@@ -24,10 +24,9 @@
 
 <script>
 export default {
-  name: 'LayoutDefault'
+  name: 'LayoutInside'
 }
 </script>
-
 
 <style lang="scss" scoped>
 @import '../scss/objects/wrapper.mixin';
@@ -35,7 +34,15 @@ $contentMinHeigth: 800px;
 $navWidth: 234px;
 $pageWidth: 1024px;
 
-.LayoutDefault {
+body{
+
+}
+
+.LayoutInside {
+  background-color: lightgray;
+  width: 1024px;
+  margin: 0 auto 0;
+  padding: 5px;
   &__main {
     color: #6a6c73;
     background-color: white;

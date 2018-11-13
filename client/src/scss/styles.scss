@@ -8,26 +8,20 @@ Bulma is released under the MIT license.
 @import '../../node_modules/bulma/sass/utilities/functions';
 */
 
-@import url("//fonts.googleapis.com/css?family=Open+Sans");
+//@import url("//fonts.googleapis.com/css?family=Open+Sans");
 
 $primary: #5097f7;
 @import '../../node_modules/bulma/sass/utilities/initial-variables';
 @charset "utf-8";
 @import '../../node_modules/bulma/bulma';
 
-//$primary: #ffb3b3; /* changes primary color to pink */
-//$link: green;
-
-@import '../../node_modules/bulma/bulma';
-
 body {
   //font-family: Open Sans;
   //font-size: 12px;
-  //background-color: #50545b;
 }
 
 #content .shared {
   width: 1024px;
-  margin: 50px auto 0
+  margin: 50px auto 0;
 }
 
