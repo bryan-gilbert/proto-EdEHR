@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return { msg: 'This is Bar!' }
   }
 }

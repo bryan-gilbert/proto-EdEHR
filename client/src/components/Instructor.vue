@@ -1,6 +1,6 @@
 <template>
   <div class="post">
-    <h2 class="hello">Dashboard {{id}} {{ $attrs }}</h2>
+    <h2 class="hello">Instructor {{id}} {{ $attrs }}</h2>
   </div>
 </template>
 
@@ -10,7 +10,7 @@ export default {
   props: {
     id: {
       type: String,
-      default: 'Vue!'
+      default: 'Teacher'
     }
   },
 }

@@ -29,17 +29,17 @@
 // import EhrSpecial from '../app/EhrSpecial.vue';
 
 export default {
-  name: `LayoutDefault`,
+  name: 'LayoutDefault',
   components: {
     // EhrNavPanel,
     // AppHeader,
     // EhrSpecial,
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/objects/wrapper.mixin";
+@import '../scss/objects/wrapper.mixin';
 $contentMinHeigth: 800px;
 $navWidth: 234px;
 $pageWidth: 1024px;
@@ -49,7 +49,7 @@ $pageWidth: 1024px;
     color: #6a6c73;
     background-color: white;
     /*padding-left: 0;*/
-    @include wrapper("page");
+    @include wrapper('page');
   }
   &__header {
     max-width: $pageWidth;
