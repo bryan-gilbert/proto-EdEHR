@@ -27,17 +27,22 @@ export default new Router({
           children: [
             {
               path: 'courses',
+              name: 'courses',
               component: () =>
                 import(/* webpackChunkName: "courses" */ './outside/components/Courses.vue')
             },
             {
               path: 'assignments',
+              name: 'assignments',  
               component: () =>
                 import(/* webpackChunkName: "assignments" */ './outside/components/Assignments.vue')
             }
           ]
         },
-        { path: 'instructor', component: Instructor }
+        {
+          path: 'instructor',
+          name: 'instructor',
+          component: Instructor }
       ]
     },
     {

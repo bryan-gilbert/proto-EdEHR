@@ -9,7 +9,7 @@
       |
       <ui-link :to="{ name: `student` }">Student</ui-link>
       |
-      <ui-link :to="{ name: `instructor` }">Instructor</ui-link>
+      <ui-link :to="{ name: 'instructor' }">Instructor</ui-link>
       |
       <ui-link :to="{ name: `help` }">Help</ui-link>
       |

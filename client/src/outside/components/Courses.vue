@@ -5,6 +5,12 @@
       <li>Course 1</li>
       <li>Course 2</li>
     </ul>
+    <div>
+      <li v-for="(value, propertyName) in activity" v-bind:key="propertyName">
+        <strong>{{ propertyName }}</strong> : {{ value }}
+      </li>
+    </div>
+
   </div>
 </template>
 
@@ -14,6 +20,11 @@ export default {
     id: {
       type: String,
       default: 'Newbie'
+    }
+  },
+  computed: {
+    activity() {
+      return this.$store.state.sActivityInfo
     }
   }
 }
