@@ -2,8 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import Outside from './layout/LayoutOutside.vue'
-import Inside from './layout/LayoutEhr.vue'
+import Outside from './outside/layout/LayoutOutside.vue'
+import Inside from './inside/layout/LayoutEhr.vue'
 
 import './scss/styles.scss'
 

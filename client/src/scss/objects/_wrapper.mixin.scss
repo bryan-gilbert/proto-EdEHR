@@ -4,7 +4,7 @@ $o-wrapper-sizes: (
   narrow: 342px,
 );
 
-@mixin wrapper($size: narrow) {
+@mixin wrapper($size: page) {
   margin-right: auto;
   margin-left: auto;
   padding-right: 0;

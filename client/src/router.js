@@ -3,16 +3,12 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const Home = () => import(/* webpackChunkName: "home" */'./views/Home.vue')
-const Student = () => import(/* webpackChunkName: "student" */'./components/Student.vue')
-const Instructor = () => import(/* webpackChunkName: "instructor" */'./components/Instructor.vue')
-
-const Courses = () => import(/* webpackChunkName: "courses" */'./components/Courses.vue')
-const Assignments = () => import(/* webpackChunkName: "assignments" */'./components/Assignments.vue')
-
-const About = () => import(/* webpackChunkName: "about" */'./views/About.vue')
-const Help = () => import(/* webpackChunkName: "help" */'./views/Help.vue')
-const Ehr = () => import(/* webpackChunkName: "help" */'./views/Erh.vue')
+const Home = () =>
+  import(/* webpackChunkName: "home" */ './outside/views/Home.vue')
+const Student = () =>
+  import(/* webpackChunkName: "student" */ './outside/components/Student.vue')
+const Instructor = () =>
+  import(/* webpackChunkName: "instructor" */ './outside/components/Instructor.vue')
 
 export default new Router({
   mode: 'history',
@@ -22,40 +18,67 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home,
-      meta: {layout : 'outside'},
+      meta: { layout: 'outside' },
       children: [
-        { path:'student', name:'stud', component: Student,
+        {
+          path: 'student',
+          name: 'student',
+          component: Student,
           children: [
-            { path: 'courses', component: Courses},
-            { path: 'assignments', component: Assignments},
+            {
+              path: 'courses',
+              component: () =>
+                import(/* webpackChunkName: "courses" */ './outside/components/Courses.vue')
+            },
+            {
+              path: 'assignments',
+              component: () =>
+                import(/* webpackChunkName: "assignments" */ './outside/components/Assignments.vue')
+            }
           ]
         },
-        { path:'instructor', component: Instructor}
+        { path: 'instructor', component: Instructor }
       ]
     },
     {
-      path: '/about',
-      name: 'about',
-      meta: {layout : 'outside'},
-      component: About
+      path: '/dashboard',
+      name: 'dashboard',
+      meta: { layout: 'outside' },
+      component: () =>
+        import(/* webpackChunkName: "dashboard" */ './outside/views/Dashboard.vue')
+    },
+    {
+      path: '/account',
+      name: 'account',
+      meta: { layout: 'outside' },
+      component: () =>
+        import(/* webpackChunkName: "account" */ './outside/views/Account.vue')
     },
     {
       path: '/help',
       name: 'help',
-      meta: {layout : 'outside'},
-      component: Help
+      meta: { layout: 'outside' },
+      component: () =>
+        import(/* webpackChunkName: "help" */ './outside/views/Help.vue')
     },
     {
       path: '/ehr',
       name: 'ehr',
-      meta: {layout : 'inside'},
-      component: Ehr
-    },
+      meta: { layout: 'inside' },
+      component: () =>
+        import(/* webpackChunkName: "help" */ './inside/views/Erh.vue')
+    }
+    // const Courses = () => import(/* webpackChunkName: "courses" */'./components/Courses.vue')
+    // const Assignments = () => import(/* webpackChunkName: "assignments" */'./components/Assignments.vue')
 
-  // const Hello = () => import(/* webpackChunkName: "hello" */'./components/Hello.vue')
-  // const Dashboard = () => import(/* webpackChunkName: "dash" */'./components/Dashboard.vue')
+    // const About = () => import(/* webpackChunkName: "about" */'./views/About.vue')
+    // const Help = () => import(/* webpackChunkName: "help" */'./views/Help.vue')
+    // const Ehr = () => import(/* webpackChunkName: "help" */'./views/Erh.vue')
 
-// { path: '/outside/:id', component: Dashboard, props: true }, // Pass route.params to props
+    // const Hello = () => import(/* webpackChunkName: "hello" */'./components/Hello.vue')
+    // const Dashboard = () => import(/* webpackChunkName: "dash" */'./components/Dashboard.vue')
+
+    // { path: '/outside/:id', component: Dashboard, props: true }, // Pass route.params to props
     // { path: '/hello', component: Hello }, // No props, no nothing
     // { path: '/hello/:name', component: Hello, props: true }, // Pass route.params to props
     // { path: '/static', component: Hello, props: { name: 'world' } }, // static values
@@ -66,7 +89,6 @@ export default new Router({
     //   path: '/bar',
     //   component: Bar,
     //   children: [{ path: 'baz', component: Baz }]
-    // },
-
+    // }
   ]
 })

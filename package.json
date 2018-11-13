@@ -42,6 +42,7 @@
     "coveralls": "^3.0.2",
     "mocha": "^5.2.0",
     "nyc": "^13.0.1",
+    "prettier": "^1.15.2",
     "should": "^13.2.3",
     "standard": "^10.0.0",
     "supertest": "^3.3.0"
