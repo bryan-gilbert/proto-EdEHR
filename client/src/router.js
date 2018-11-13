@@ -33,7 +33,7 @@ export default new Router({
             },
             {
               path: 'assignments',
-              name: 'assignments',  
+              name: 'assignments',
               component: () =>
                 import(/* webpackChunkName: "assignments" */ './outside/components/Assignments.vue')
             }

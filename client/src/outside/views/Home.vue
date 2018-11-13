@@ -17,7 +17,7 @@ export default {
     },
     fullName() {
       let info = this.$store.state.sUserInfo
-      let n = info.givenName
+      let n = info.givenName ? info.givenName : ''
       n +=
         info.familyName && info.familyName.trim().length > 0
           ? ' ' + info.familyName

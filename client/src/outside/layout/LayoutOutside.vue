@@ -5,11 +5,6 @@
     </slot>
     <main :class="`${$options.name}__main`">
       <div name="mainContent" :class="`${$options.name}__main_content columns`">
-        <div name="nav" :class="`${$options.name}__nav column`">
-          <!-- <ehr-nav-panel/> -->
-
-          <p>insert outside nav panel</p>
-        </div>
         <div name="content" :class="`${$options.name}__content column`">
           <slot />
         </div>
@@ -34,8 +29,9 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/objects/wrapper.mixin';
-$contentMinHeigth: 600px;
+$contentMinHeigth: 800px;
 $navWidth: 234px;
+$pageWidth: 1024px;
 body {
   background: #e9ebed;
 }
@@ -44,6 +40,7 @@ body {
   &__main {
     color: #6a6c73;
     background-color: white;
+    @include wrapper('page');
   }
   &__header {
   }
