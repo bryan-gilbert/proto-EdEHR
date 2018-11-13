@@ -4,6 +4,7 @@ import Home from "./views/Home.vue";
 
 Vue.use(Router);
 
+const Dashboard = () => import("./components/Dashboard.vue");
 const Hello = () => import("./components/Hello.vue");
 const Foo = () => import("./components/Foo.vue");
 const Bar = () => import(/* webpackChunkName: "bar" */ "./components/Bar.vue");
@@ -31,6 +32,7 @@ export default new Router({
       name: "about",
       component: About
     },
+    { path: "/outside/:id", component: Dashboard, props: true }, // Pass route.params to props
     { path: "/hello", component: Hello }, // No props, no nothing
     { path: "/hello/:name", component: Hello, props: true }, // Pass route.params to props
     { path: "/static", component: Hello, props: { name: "world" } }, // static values

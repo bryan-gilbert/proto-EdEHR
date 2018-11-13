@@ -47,7 +47,7 @@ db(() => {
     })
 
     const port = 27000
-    app.listen(port, () => console.log('Server running...'))
+    app.listen(port, () => console.log('Server running...', port))
   })
 })
 
