@@ -4,8 +4,11 @@ module.exports = {
     proxy: {
       '/api': {
         target: 'http://localhost:27000',
-        pathRewrite: { '^/api': '' }
+        pathRewrite: {'^/api': ''}
       }
     }
+  },
+  css: {
+    sourceMap: true
   }
 }

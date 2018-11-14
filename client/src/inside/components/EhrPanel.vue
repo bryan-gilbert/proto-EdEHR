@@ -1,7 +1,9 @@
 <template>
   <div :class="$options.name">
     <ehr-panel-header> </ehr-panel-header>
-    <ehr-panel-content> This is the EHR main content panel </ehr-panel-content>
+    <ehr-panel-content>
+      <slot/>
+    </ehr-panel-content>
   </div>
 </template>
 

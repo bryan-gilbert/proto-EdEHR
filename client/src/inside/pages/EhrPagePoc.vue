@@ -10,9 +10,8 @@
 </template>
 
 <script>
-import EhrBanner from '../app/EhrBanner.vue';
-import EhrPanel from '../app/EhrPanel.vue';
-import bus from "../eventBus.js"
+import EhrBanner from '../components/EhrBanner.vue';
+import EhrPanel from '../components/EhrPanel.vue';
 
 export default {
   name: `EhrPagePoc`,

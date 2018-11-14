@@ -1,5 +1,7 @@
 <template>
-  <div :class="$options.name"><h1>Progress notes</h1></div>
+  <div :class="$options.name">
+    <slot name="ehrPageTitle"></slot>
+  </div>
 </template>
 
 <script>

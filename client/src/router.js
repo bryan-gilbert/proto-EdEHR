@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import EhrRoutes from './inside/router'
+var ehrRoutes = new EhrRoutes()
 
 Vue.use(Router)
 
@@ -10,90 +12,100 @@ const Student = () =>
 const Instructor = () =>
   import(/* webpackChunkName: "instructor" */ './outside/components/Instructor.vue')
 
-export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [
+const PageNotFound = () =>
+  import(/* webpackChunkName: "notfound" */ './outside/components/PageNotFound.vue')
+let routes = []
+routes.push({
+  path: '/',
+  name: 'home',
+  component: Home,
+  meta: { layout: 'outside' },
+  children: [
     {
-      path: '/',
-      name: 'home',
-      component: Home,
-      meta: { layout: 'outside' },
+      path: 'student',
+      name: 'student',
+      component: Student,
       children: [
         {
-          path: 'student',
-          name: 'student',
-          component: Student,
-          children: [
-            {
-              path: 'courses',
-              name: 'courses',
-              component: () =>
-                import(/* webpackChunkName: "courses" */ './outside/components/Courses.vue')
-            },
-            {
-              path: 'assignments',
-              name: 'assignments',
-              component: () =>
-                import(/* webpackChunkName: "assignments" */ './outside/components/Assignments.vue')
-            }
-          ]
+          path: 'courses',
+          name: 'courses',
+          component: () =>
+            import(/* webpackChunkName: "courses" */ './outside/components/Courses.vue')
         },
         {
-          path: 'instructor',
-          name: 'instructor',
-          component: Instructor }
+          path: 'assignments',
+          name: 'assignments',
+          component: () =>
+            import(/* webpackChunkName: "assignments" */ './outside/components/Assignments.vue')
+        }
       ]
     },
     {
-      path: '/dashboard',
-      name: 'dashboard',
-      meta: { layout: 'outside' },
-      component: () =>
-        import(/* webpackChunkName: "dashboard" */ './outside/views/Dashboard.vue')
-    },
-    {
-      path: '/account',
-      name: 'account',
-      meta: { layout: 'outside' },
-      component: () =>
-        import(/* webpackChunkName: "account" */ './outside/views/Account.vue')
-    },
-    {
-      path: '/help',
-      name: 'help',
-      meta: { layout: 'outside' },
-      component: () =>
-        import(/* webpackChunkName: "help" */ './outside/views/Help.vue')
-    },
-    {
-      path: '/ehr',
-      name: 'ehr',
-      meta: { layout: 'inside' },
-      component: () =>
-        import(/* webpackChunkName: "help" */ './inside/views/Erh.vue')
+      path: 'instructor',
+      name: 'instructor',
+      component: Instructor
     }
-    // const Courses = () => import(/* webpackChunkName: "courses" */'./components/Courses.vue')
-    // const Assignments = () => import(/* webpackChunkName: "assignments" */'./components/Assignments.vue')
-
-    // const About = () => import(/* webpackChunkName: "about" */'./views/About.vue')
-    // const Help = () => import(/* webpackChunkName: "help" */'./views/Help.vue')
-    // const Ehr = () => import(/* webpackChunkName: "help" */'./views/Erh.vue')
-
-    // const Hello = () => import(/* webpackChunkName: "hello" */'./components/Hello.vue')
-    // const Dashboard = () => import(/* webpackChunkName: "dash" */'./components/Dashboard.vue')
-
-    // { path: '/outside/:id', component: Dashboard, props: true }, // Pass route.params to props
-    // { path: '/hello', component: Hello }, // No props, no nothing
-    // { path: '/hello/:name', component: Hello, props: true }, // Pass route.params to props
-    // { path: '/static', component: Hello, props: { name: 'world' } }, // static values
-    // // { path: '/dynamic/:years', component: Hello, props: dynamicPropsFn }, // custom logic for mapping between route and props
-    // { path: '/attrs', component: Hello, props: { name: 'another static' } }
-    // { path: '/foo', component: Foo },
-    // {
-    //   path: '/bar',
-    //   component: Bar,
-    //   children: [{ path: 'baz', component: Baz }]
-    // }
   ]
 })
+routes = routes.concat([
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    meta: { layout: 'outside' },
+    component: () =>
+      import(/* webpackChunkName: "dashboard" */ './outside/views/Dashboard.vue')
+  },
+  {
+    path: '/account',
+    name: 'account',
+    meta: { layout: 'outside' },
+    component: () =>
+      import(/* webpackChunkName: "account" */ './outside/views/Account.vue')
+  },
+  {
+    path: '/help',
+    name: 'help',
+    meta: { layout: 'outside' },
+    component: () =>
+      import(/* webpackChunkName: "help" */ './outside/views/Help.vue')
+  }
+])
+console.log('about to get e routes')
+var eRoutes = ehrRoutes.getRoutes()
+console.log('have eroutes ', eRoutes)
+routes = routes.concat(eRoutes)
+
+var ePaths = ehrRoutes.getPaths()
+console.log('have e routes paths', ePaths)
+
+routes.push({ path: '*', component: PageNotFound })
+console.log('Using these routes', routes)
+
+export default new Router({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes: routes
+})
+
+// const Courses = () => import(/* webpackChunkName: "courses" */'./components/Courses.vue')
+// const Assignments = () => import(/* webpackChunkName: "assignments" */'./components/Assignments.vue')
+
+// const About = () => import(/* webpackChunkName: "about" */'./views/About.vue')
+// const Help = () => import(/* webpackChunkName: "help" */'./views/Help.vue')
+// const Ehr = () => import(/* webpackChunkName: "help" */'./views/Erh.vue')
+
+// const Hello = () => import(/* webpackChunkName: "hello" */'./components/Hello.vue')
+// const Dashboard = () => import(/* webpackChunkName: "dash" */'./components/Dashboard.vue')
+
+// { path: '/outside/:id', component: Dashboard, props: true }, // Pass route.params to props
+// { path: '/hello', component: Hello }, // No props, no nothing
+// { path: '/hello/:name', component: Hello, props: true }, // Pass route.params to props
+// { path: '/static', component: Hello, props: { name: 'world' } }, // static values
+// // { path: '/dynamic/:years', component: Hello, props: dynamicPropsFn }, // custom logic for mapping between route and props
+// { path: '/attrs', component: Hello, props: { name: 'another static' } }
+// { path: '/foo', component: Foo },
+// {
+//   path: '/bar',
+//   component: Bar,
+//   children: [{ path: 'baz', component: Baz }]
+// }

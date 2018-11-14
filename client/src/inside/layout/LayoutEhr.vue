@@ -9,7 +9,10 @@
           <ehr-nav-panel />
         </div>
         <div name="content" :class="`${$options.name}__content column`">
-          <slot />
+          <ehr-banner> </ehr-banner>
+          <ehr-panel>
+            <slot>contents here?</slot>
+          </ehr-panel>
         </div>
       </div>
     </main>
@@ -25,12 +28,16 @@ import AppHeader from '../../app/components/AppHeader.vue'
 import AppFooter from '../../app/components/AppFooter.vue'
 import EhrNavPanel from '../components/EhrNavPanel.vue'
 import EhrSpecial from '../components/EhrSpecial.vue'
+import EhrBanner from '../components/EhrBanner.vue'
+import EhrPanel from '../components/EhrPanel.vue'
 
 export default {
   name: 'LayoutDefault',
   components: {
     AppHeader,
     AppFooter,
+    EhrBanner,
+    EhrPanel,
     EhrNavPanel,
     EhrSpecial
   }

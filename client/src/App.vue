@@ -131,8 +131,11 @@ export default {
   },
   computed: {
     layout() {
-      const l = (this.$route.meta.layout || DefaultLayout) + '-layout'
-      console.log('using layout ', l)
+      const matched = this.$route
+      console.log(matched)
+      const rl = this.$route.meta.layout
+      const l = (rl || DefaultLayout) + '-layout'
+      console.log('using layout ', rl, l)
       return l
     },
     apiUrl: function() {
