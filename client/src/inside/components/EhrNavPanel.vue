@@ -10,7 +10,10 @@
             <ehr-nav-list-item>
               <ehr-nav :action="{ to: { name: path.name }, label: path.label }">
                 <template slot="link">
-                  <ui-link :to="{ name: path.name }" :class="`${$options.name}__link`">
+                  <ui-link
+                    :to="{ name: path.name }"
+                    :class="`${$options.name}__link`"
+                  >
                     {{ path.label }}
                   </ui-link>
                 </template>
@@ -29,7 +32,7 @@ import EhrNavListItem from '../components/EhrNavListItem.vue'
 import UiLink from '../../app/ui/UiLink.vue'
 import UiButton from '../../app/ui/UiButton.vue'
 import EhrRoutes from '../ehrRoutes'
-var ehrRoutes = new EhrRoutes()
+// var ehrRoutes = new EhrRoutes()
 
 export default {
   name: 'EhrNavPanel',
@@ -42,9 +45,16 @@ export default {
   },
   computed: {
     paths() {
-      console.log('Go get paths')
-      const ePaths = ehrRoutes.getPaths()
-      return ePaths
+      // console.log('Go get paths')
+      // const ePaths = ehrRoutes.getPaths()
+      // return ePaths
+      return [
+        { name: 'mar', label: 'Mar' },
+        { name: 'billing', label: 'Billing' },
+        { name: 'details', label: 'Details' },
+        { name: 'biopsychosocial', label: 'Biopsychosocial' },
+        { name: 'progress-notes', label: 'Progress Notes' }
+      ]
     }
   }
 }

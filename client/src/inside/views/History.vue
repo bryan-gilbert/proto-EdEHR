@@ -1,17 +1,20 @@
 <template lang="pug">
 	div(:class="$options.name")
-		h1(slot="ehrPageTitle") {{$options.name}}
+		h1(slot="ehrPageTitle") {title}
+		p component name: History
+		p redirect: 
+		p path: base/patient/history
 </template>
 
 <script>
 export default {
-  name: 'MAR'
+  name: 'History',
 }
 </script>
 
 <style lang="scss" scoped>
-.MAR {
+.History {,
   &__main {
   }
 }
-</style>
+</style>'

@@ -1,17 +1,20 @@
 <template lang="pug">
 	div(:class="$options.name")
-		h1(slot="ehrPageTitle") {{$options.name}}
+		h1(slot="ehrPageTitle") {title}
+		p component name: Chart
+		p redirect: 
+		p path: base/chart
 </template>
 
 <script>
 export default {
-  name: 'Cardiovascular'
+  name: 'Chart',
 }
 </script>
 
 <style lang="scss" scoped>
-.Cardiovascular {
+.Chart {,
   &__main {
   }
 }
-</style>
+</style>'
