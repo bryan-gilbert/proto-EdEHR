@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import EhrRoutes from './inside/router'
-var ehrRoutes = new EhrRoutes()
+import EhrRoutes from './inside/ehrRoutes'
+const ehrRoutes = new EhrRoutes()
+const eRoutes = ehrRoutes.getRoutes()
 
 Vue.use(Router)
 
@@ -14,8 +15,7 @@ const Instructor = () =>
 
 const PageNotFound = () =>
   import(/* webpackChunkName: "notfound" */ './outside/components/PageNotFound.vue')
-let routes = []
-routes.push({
+let root = {
   path: '/',
   name: 'home',
   component: Home,
@@ -46,40 +46,36 @@ routes.push({
       component: Instructor
     }
   ]
-})
-routes = routes.concat([
+}
+root.children = root.children.concat([
   {
-    path: '/dashboard',
+    path: 'dashboard',
     name: 'dashboard',
     meta: { layout: 'outside' },
     component: () =>
       import(/* webpackChunkName: "dashboard" */ './outside/views/Dashboard.vue')
   },
   {
-    path: '/account',
+    path: 'account',
     name: 'account',
     meta: { layout: 'outside' },
     component: () =>
       import(/* webpackChunkName: "account" */ './outside/views/Account.vue')
   },
   {
-    path: '/help',
+    path: 'help',
     name: 'help',
     meta: { layout: 'outside' },
     component: () =>
       import(/* webpackChunkName: "help" */ './outside/views/Help.vue')
   }
 ])
-console.log('about to get e routes')
-var eRoutes = ehrRoutes.getRoutes()
-console.log('have eroutes ', eRoutes)
-routes = routes.concat(eRoutes)
 
-var ePaths = ehrRoutes.getPaths()
-console.log('have e routes paths', ePaths)
+// Add the EHR routes
+// Add all the EHR paths as children of the root
+root.children = root.children.concat(eRoutes)
 
-routes.push({ path: '*', component: PageNotFound })
-console.log('Using these routes', routes)
+let routes = [root, { path: '*', component: PageNotFound }]
 
 export default new Router({
   mode: 'history',

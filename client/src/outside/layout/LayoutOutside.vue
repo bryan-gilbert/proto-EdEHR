@@ -6,7 +6,7 @@
     <main :class="`${$options.name}__main`">
       <div name="mainContent" :class="`${$options.name}__main_content columns`">
         <div name="content" :class="`${$options.name}__content column`">
-          <slot />
+          {{ path }} <slot />
         </div>
       </div>
     </main>
@@ -23,6 +23,12 @@ export default {
   components: {
     AppFooter,
     AppHeader
+  },
+  computed: {
+    path() {
+      console.log('this.$route', this.$route)
+      return this.$route.path
+    }
   }
 }
 </script>

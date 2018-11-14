@@ -1,6 +1,6 @@
 <template>
   <div class="post">
-    <h2 class="hello">Dashboard {{ id }} {{ $attrs }}</h2>
+    <h2 class="hello">Dashboard</h2>
   </div>
 </template>
 

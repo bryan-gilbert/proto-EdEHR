@@ -1,6 +1,6 @@
 <template>
   <div class="outside-view home">
-    <h1>Welcome {{ fullName }} to the EdEHR Proof Of Concept</h1>
+    <h1>Welcome Home {{ fullName }} to the EdEHR Proof Of Concept</h1>
     User Id: {{ userInfo.user_id }} Email: {{ userInfo.emailPrimary }}
 
     <router-view></router-view>

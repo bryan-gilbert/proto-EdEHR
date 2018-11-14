@@ -1,35 +1,33 @@
 <template>
   <div :class="$options.name">
-    <slot name="header" :class="`${$options.name}__header`">
-      <app-header />
-    </slot>
+    <!-- <slot name="header" :class="`${$options.name}__header`"> -->
+    <app-header />
+    <!-- </slot> -->
     <main :class="`${$options.name}__main`">
       <div name="mainContent" :class="`${$options.name}__main_content columns`">
         <div name="nav" :class="`${$options.name}__nav column`">
           <ehr-nav-panel />
         </div>
         <div name="content" :class="`${$options.name}__content column`">
-          <ehr-banner> </ehr-banner>
-          <ehr-panel>
-            <slot>contents here?</slot>
-          </ehr-panel>
+          <ehr-banner></ehr-banner>
+          {{ path }} <slot>where is it?</slot>
         </div>
       </div>
     </main>
-    <slot name="footer">
-      <app-footer />
-      <ehr-special />
-    </slot>
+    <!-- <slot name="footer"> -->
+    <app-footer />
+    <ehr-special />
+    <!-- </slot> -->
   </div>
 </template>
 
 <script>
 import AppHeader from '../../app/components/AppHeader.vue'
 import AppFooter from '../../app/components/AppFooter.vue'
-import EhrNavPanel from '../components/EhrNavPanel.vue'
 import EhrSpecial from '../components/EhrSpecial.vue'
+import EhrNavPanel from '../components/EhrNavPanel.vue'
 import EhrBanner from '../components/EhrBanner.vue'
-import EhrPanel from '../components/EhrPanel.vue'
+// import EhrPanel from '../components/EhrPanel.vue'
 
 export default {
   name: 'LayoutDefault',
@@ -37,9 +35,15 @@ export default {
     AppHeader,
     AppFooter,
     EhrBanner,
-    EhrPanel,
+    // EhrPanel,
     EhrNavPanel,
     EhrSpecial
+  },
+  computed: {
+    path() {
+      console.log('this.$route', this.$route)
+      return this.$route.path
+    }
   }
 }
 </script>

@@ -5,46 +5,31 @@
     </ui-button>
     <div :class="`${$options.name}__wrapper`">
       <ehr-nav-list :class="`${$options.name}__teaserList`">
-        <ehr-nav-list-item>
-          <ehr-nav :action="{ to: { name: `home` }, label: `Home` }">
-            <template slot="link">
-              <ui-link :to="{ name: `home` }" :class="`${$options.name}__link`">
-                page 1</ui-link
-              >
-            </template>
-          </ehr-nav>
-        </ehr-nav-list-item>
-
-        <ehr-nav-list-item>
-          <ehr-nav :action="{ to: { name: `home` }, label: `Home` }">
-            <template slot="link">
-              <ui-link :to="{ name: `home` }" :class="`${$options.name}__link`">
-                page 2</ui-link
-              >
-            </template>
-          </ehr-nav>
-        </ehr-nav-list-item>
-
-        <ehr-nav-list-item>
-          <ehr-nav :action="{ to: { name: `home` }, label: `Home` }">
-            <template slot="link">
-              <ui-link :to="{ name: `home` }" :class="`${$options.name}__link`">
-                page 2</ui-link
-              >
-            </template>
-          </ehr-nav>
-        </ehr-nav-list-item>
+        <div :class="`${$options.name}__data`">
+          <li v-for="path in paths" v-bind:key="path.label">
+            <ehr-nav-list-item>
+              <ehr-nav :action="{ to: { name: path.name }, label: path.label }">
+                <template slot="link">
+                  <ui-link :to="{ name: path.name }" :class="`${$options.name}__link`">
+                    {{ path.label }}
+                  </ui-link>
+                </template>
+              </ehr-nav>
+            </ehr-nav-list-item>
+          </li>
+        </div>
       </ehr-nav-list>
     </div>
   </div>
 </template>
-
 <script>
 import EhrNav from '../components/EhrNav.vue'
 import EhrNavList from '../components/EhrNavList.vue'
 import EhrNavListItem from '../components/EhrNavListItem.vue'
 import UiLink from '../../app/ui/UiLink.vue'
 import UiButton from '../../app/ui/UiButton.vue'
+import EhrRoutes from '../ehrRoutes'
+var ehrRoutes = new EhrRoutes()
 
 export default {
   name: 'EhrNavPanel',
@@ -54,6 +39,13 @@ export default {
     EhrNav,
     EhrNavList,
     EhrNavListItem
+  },
+  computed: {
+    paths() {
+      console.log('Go get paths')
+      const ePaths = ehrRoutes.getPaths()
+      return ePaths
+    }
   }
 }
 </script>

@@ -1,10 +1,8 @@
-<template>
-  <div :class="$options.name">
-    <ehr-panel-header> </ehr-panel-header>
-    <ehr-panel-content>
-      <slot/>
-    </ehr-panel-content>
-  </div>
+<template lang="pug">
+	div(:class="$options.name")
+		div
+			slot(name="etitle") in p
+		slot Here
 </template>
 
 <script>

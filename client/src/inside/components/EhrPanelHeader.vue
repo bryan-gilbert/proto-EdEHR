@@ -1,6 +1,6 @@
 <template>
   <div :class="$options.name">
-    <slot name="ehrPageTitle"></slot>
+    <slot name="ehrtitle">Panel Title</slot>
   </div>
 </template>
 
