@@ -1,89 +1,26 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import EhrRoutes from './inside/ehrRoutes'
-// const ehrRoutes = new EhrRoutes()
-// const eRoutes = ehrRoutes.getRoutes()
 import camelCase from 'camelcase'
 
 Vue.use(Router)
 
-const Home = () =>
-  import(/* webpackChunkName: "home" */ './outside/views/Home.vue')
-const Student = () =>
-  import(/* webpackChunkName: "student" */ './outside/components/Student.vue')
-const Instructor = () =>
-  import(/* webpackChunkName: "instructor" */ './outside/components/Instructor.vue')
-
-const PageNotFound = () =>
-  import(/* webpackChunkName: "notfound" */ './outside/components/PageNotFound.vue')
-let root = {
-  path: '/',
-  name: 'home',
-  component: Home,
-  meta: { layout: 'outside' },
-  children: [
-    {
-      path: 'student',
-      name: 'student',
-      component: Student,
-      children: [
-        {
-          path: 'courses',
-          name: 'courses',
-          component: () =>
-            import(/* webpackChunkName: "courses" */ './outside/components/Courses.vue')
-        },
-        {
-          path: 'assignments',
-          name: 'assignments',
-          component: () =>
-            import(/* webpackChunkName: "assignments" */ './outside/components/Assignments.vue')
-        }
-      ]
-    },
-    {
-      path: 'instructor',
-      name: 'instructor',
-      component: Instructor
-    }
-  ]
-}
-root.children = root.children.concat([
-  {
-    path: 'dashboard',
-    name: 'dashboard',
-    meta: { layout: 'outside' },
-    component: () =>
-      import(/* webpackChunkName: "dashboard" */ './outside/views/Dashboard.vue')
-  },
-  {
-    path: 'account',
-    name: 'account',
-    meta: { layout: 'outside' },
-    component: () =>
-      import(/* webpackChunkName: "account" */ './outside/views/Account.vue')
-  },
-  {
-    path: 'help',
-    name: 'help',
-    meta: { layout: 'outside' },
-    component: () =>
-      import(/* webpackChunkName: "help" */ './outside/views/Help.vue')
-  }
-])
-
-// Add the EHR routes
-// Add all the EHR paths as children of the root
-// root.children = root.children.concat(eRoutes)
-
 let routes = [
-  root,
+  {
+    path: '/',
+    name: 'home',
+    component: () =>
+      import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Home.vue'),
+    meta: { layout: 'outside' }
+  },
   {
     path: '/ehr',
     name: 'ehr',
     meta: { layout: 'inside', label: 'EHR' }
   }
 ]
+
+import { outside } from './outsideRoutes'
+routes = routes.concat(outside())
 
 var pp
 pp = '/ehr/patient'
@@ -110,7 +47,11 @@ routes.push(_makeRouterPath2(pp, 'labreqs'))
 routes.push(_makeRouterPath2(pp, 'orders'))
 routes.push(_makeRouterPath2(pp, 'referrals'))
 
-routes.push({ path: '*', component: PageNotFound })
+routes.push({
+  path: '*',
+  component: () =>
+    import(/* webpackChunkName: "notfound" */ './outside/components/PageNotFound.vue')
+})
 
 export default new Router({
   mode: 'history',
@@ -146,7 +87,7 @@ function _makeRouterPath2(parentPath, name) {
    */
   var componentName = camelCase(name, { pascalCase: true })
   var label = splitCamelCase(componentName).join(' ')
-  console.log(name, fPath, componentName, label)
+  // console.log(name, fPath, componentName, label)
   // store the label in the meta data to keep it out of the way of the Vue Router.
   route.meta.label = label
   // import(/* webpackChunkName: "chunk-[request][index]" */ './inside/pages/Mar.vue')

@@ -22,15 +22,13 @@ export default {
     linkClass() {
       var lv = this.level || 1
       return 'EhrNavListItem__link' + lv
-    },
-    level() {
-      return this.path.level
-	 }
+    }
   },
   props: {
     path: {
       type: Object
-    }
+    },
+    level: { type: Number }
   }
 }
 // #E9EBED  #393c44

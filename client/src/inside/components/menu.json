@@ -1,0 +1,34 @@
+[
+  {
+    "name": "patient",
+    "label": "Patient",
+    "children": [
+      { "name": "mar", "label": "Mar" },
+      { "name": "billing", "label": "Billing" },
+      { "name": "details", "label": "Details" },
+      { "name": "biopsychosocial", "label": "Biopsychosocial" },
+      {
+        "name": "assessments",
+        "label": "Assessments",
+        "children": [
+          { "name": "neurological", "label": "Neurological" },
+          { "name": "billing", "label": "Respiratory" },
+          { "name": "biopsychosocial", "label": "Cardiovascular" },
+          { "name": "mar", "label": "Gastrointestinal" },
+          { "name": "progress-notes", "label": "Genitourinary" }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "current",
+    "label": "Current",
+    "children": [
+      { "name": "details", "label": "Details" },
+      { "name": "billing", "label": "A changed" },
+      { "name": "biopsychosocial", "label": "Biopsychosocial" },
+      { "name": "mar", "label": "Mar" },
+      { "name": "progress-notes", "label": "Progress Notes" }
+    ]
+  }
+]
