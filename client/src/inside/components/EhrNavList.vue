@@ -1,28 +1,24 @@
 <template lang="pug">
 	div(:class="`${$options.name}`")
-		p {{ name }}
 		div(:class="`${$options.name}__teaserList`")
-			e-n-list-item(v-for="path in children", v-bind:key="path.name" :path="path" :level="level")
+			ehr-nav-list-item(:path="path")
+			ehr-nav-list(v-for="child in path.children", v-bind:key="child.name" :path="child")
 </template>
 
 <script>
-// import ENList from '../components/EhrNavList'
-import ENListItem from './EhrNavListItem'
+import EhrNavList from './EhrNavList'
+import EhrNavListItem from './EhrNavListItem'
 // 				ui-link(:to="{ name: path.name }", :class="`${$options.name}__link`") - {{ path.label }}
 
 export default {
   name: 'EhrNavList',
   components: {
-    // ENList,
-    ENListItem
+    EhrNavList,
+    EhrNavListItem
   },
   props: {
-    level: { type: Number },
-    name: {
-      type: String
-    },
-    children: {
-      type: Array
+    path: {
+      type: Object
     }
   }
 }

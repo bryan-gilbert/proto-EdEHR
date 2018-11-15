@@ -22,15 +22,14 @@ export default {
     linkClass() {
       var lv = this.level || 1
       return 'EhrNavListItem__link' + lv
-    }
+    },
+    level() {
+      return this.path.level
+	 }
   },
   props: {
-    level: { type: Number },
     path: {
       type: Object
-    },
-    children: {
-      type: Array
     }
   }
 }
@@ -45,7 +44,7 @@ export default {
   &__level1,
   &__level2 {
     & a {
-      color: #CBCED1;
+      color: #cbced1;
     }
   }
   active {
@@ -53,21 +52,21 @@ export default {
   }
   &__level1 {
     background-color: #22262e;
-	  & a {
-		  color: #ffffff;
-	  }
+    & a {
+      color: #ffffff;
+    }
   }
   &__level2 {
     background-color: #383c45;
-	  & a {
-		  color: #CBCED1;
-	  }
+    & a {
+      color: #cbced1;
+    }
   }
   &__level3 {
     background-color: #4f545c;
-	  & a {
-		  color: #CBCED1;
-	  }
+    & a {
+      color: #cbced1;
+    }
   }
   &__link1 {
     margin-left: 15px;

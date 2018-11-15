@@ -2,43 +2,56 @@
   div(:class="$options.name")
     ui-button(:class="`${$options.name}__saveButton`")
       a(href="http://localhost:3000") Save
-    e-n-list(v-for="item in groups" :key="item.id" :name="item.name", :children="item.children" :level="item.id")
+    ehr-nav-list(v-for="path in groups" :key="path.name" :path="path")
 </template>
 <script>
 import UiLink from '../../app/ui/UiLink.vue'
 import UiButton from '../../app/ui/UiButton.vue'
-import ENList from './EhrNavList'
+import EhrNavList from './EhrNavList'
 
 export default {
   name: 'EhrNavPanel',
   components: {
     UiButton,
     UiLink,
-    ENList
+    EhrNavList
   },
   computed: {
     groups() {
       var groups = [
         {
-          id: 1,
+          level: 1,
           name: 'patient',
+          label: 'Patient',
           children: [
-            { name: 'mar', label: 'Mar' },
-            { name: 'billing', label: 'Billing' },
-            { name: 'details', label: 'Details' },
-            { name: 'biopsychosocial', label: 'Biopsychosocial' },
-            { name: 'progress-notes', label: 'Progress Notes' }
+            { level: 2, name: 'mar', label: 'Mar' },
+            { level: 2, name: 'billing', label: 'Billing' },
+            { level: 2, name: 'details', label: 'Details' },
+            { level: 2, name: 'biopsychosocial', label: 'Biopsychosocial' },
+            {
+              level: 2,
+              name: 'assessments',
+              label: 'Assessments',
+              children: [
+                { level: 3, name: 'neurological', label: 'Neurological' },
+                { level: 3, name: 'billing', label: 'Respiratory' },
+                { level: 3, name: 'biopsychosocial', label: 'Cardiovascular' },
+                { level: 3, name: 'mar', label: 'Gastrointestinal' },
+                { level: 3, name: 'progress-notes', label: 'Genitourinary' }
+              ]
+            }
           ]
         },
         {
-          id: 2,
+          level: 1,
           name: 'current',
+			 label: 'Current',
           children: [
-            { name: 'details', label: 'Details' },
-            { name: 'billing', label: 'Billing' },
-            { name: 'biopsychosocial', label: 'Biopsychosocial' },
-            { name: 'mar', label: 'Mar' },
-            { name: 'progress-notes', label: 'Progress Notes' }
+            { level: 2, name: 'details', label: 'Details' },
+            { level: 2, name: 'billing', label: 'Billing' },
+            { level: 2, name: 'biopsychosocial', label: 'Biopsychosocial' },
+            { level: 2, name: 'mar', label: 'Mar' },
+            { level: 2, name: 'progress-notes', label: 'Progress Notes' }
           ]
         }
       ]
