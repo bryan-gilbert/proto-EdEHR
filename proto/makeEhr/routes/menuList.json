@@ -1,127 +1,127 @@
 [
-  {
-    "name": "patient",
-    "label": "Patient profile",
-    "fPath": "/ehr/patient",
-    "def": {
-      "p": "base",
-      "n": "patient",
-      "l": "Patient profile"
+{
+  "name": "patient",
+  "label": "Patient profile",
+  "fPath": "/ehr/patient",
+  "def": {
+    "p": "base",
+    "n": "patient",
+    "l": "Patient profile"
+  },
+  "children": [
+    {
+      "name": "demographics",
+      "label": "Demographics",
+      "fPath": "/ehr/patient/demographics",
+      "def": {
+        "p": "base/patient",
+        "n": "demographics",
+        "l": "Demographics"
+      },
+      "children": []
     },
-    "children": [
-      {
-        "name": "demographics",
-        "label": "Demographics",
-        "fPath": "/ehr/patient/demographics",
-        "def": {
-          "p": "base/patient",
-          "n": "demographics",
-          "l": "Demographics"
-        },
-        "children": []
+    {
+      "name": "allergies",
+      "label": "Allergies",
+      "fPath": "/ehr/patient/allergies",
+      "def": {
+        "p": "base/patient",
+        "n": "allergies",
+        "l": "Allergies"
       },
-      {
-        "name": "allergies",
-        "label": "Allergies",
-        "fPath": "/ehr/patient/allergies",
-        "def": {
-          "p": "base/patient",
-          "n": "allergies",
-          "l": "Allergies"
-        },
-        "children": []
+      "children": []
+    },
+    {
+      "name": "history",
+      "label": "History",
+      "fPath": "/ehr/patient/history",
+      "def": {
+        "p": "base/patient",
+        "n": "history",
+        "l": "History"
       },
-      {
-        "name": "history",
-        "label": "History",
-        "fPath": "/ehr/patient/history",
-        "def": {
-          "p": "base/patient",
-          "n": "history",
-          "l": "History"
+      "children": [
+        {
+          "name": "medical",
+          "label": "Medical",
+          "fPath": "/ehr/patient/history/medical",
+          "def": {
+            "p": "base/patient/history",
+            "n": "medical",
+            "l": "Medical"
+          },
+          "children": []
         },
-        "children": [
-          {
-            "name": "medical",
-            "label": "Medical",
-            "fPath": "/ehr/patient/history/medical",
-            "def": {
-              "p": "base/patient/history",
-              "n": "medical",
-              "l": "Medical"
-            },
-            "children": []
+        {
+          "name": "psychosocial",
+          "label": "Psychosocial",
+          "fPath": "/ehr/patient/history/psychosocial",
+          "def": {
+            "p": "base/patient/history",
+            "n": "psychosocial",
+            "l": "Psychosocial"
           },
-          {
-            "name": "psychosocial",
-            "label": "Psychosocial",
-            "fPath": "/ehr/patient/history/psychosocial",
-            "def": {
-              "p": "base/patient/history",
-              "n": "psychosocial",
-              "l": "Psychosocial"
-            },
-            "children": []
+          "children": []
+        },
+        {
+          "name": "surgical",
+          "label": "Surgical",
+          "fPath": "/ehr/patient/history/surgical",
+          "def": {
+            "p": "base/patient/history",
+            "n": "surgical",
+            "l": "Surgical"
           },
-          {
-            "name": "surgical",
-            "label": "Surgical",
-            "fPath": "/ehr/patient/history/surgical",
-            "def": {
-              "p": "base/patient/history",
-              "n": "surgical",
-              "l": "Surgical"
-            },
-            "children": []
+          "children": []
+        },
+        {
+          "name": "immunization",
+          "label": "Immunization",
+          "fPath": "/ehr/patient/history/immunization",
+          "def": {
+            "p": "base/patient/history",
+            "n": "immunization",
+            "l": "Immunization"
           },
-          {
-            "name": "immunization",
-            "label": "Immunization",
-            "fPath": "/ehr/patient/history/immunization",
-            "def": {
-              "p": "base/patient/history",
-              "n": "immunization",
-              "l": "Immunization"
-            },
-            "children": []
+          "children": []
+        },
+        {
+          "name": "cn",
+          "label": "Patient",
+          "fPath": "/ehr/patient/history/cn",
+          "def": {
+            "p": "base/patient/history",
+            "n": "cn",
+            "l": "Patient"
           },
-          {
-            "name": "cn",
-            "label": "Patient",
-            "fPath": "/ehr/patient/history/cn",
-            "def": {
-              "p": "base/patient/history",
-              "n": "cn",
-              "l": "Patient"
-            },
-            "children": []
-          }
-        ]
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "care-team",
+      "label": "Care team",
+      "fPath": "/ehr/patient/care-team",
+      "def": {
+        "p": "base/patient",
+        "n": "care-team",
+        "l": "Care team"
       },
-      {
-        "name": "care-team",
-        "label": "Care team",
-        "fPath": "/ehr/patient/care-team",
-        "def": {
-          "p": "base/patient",
-          "n": "care-team",
-          "l": "Care team"
-        },
-        "children": []
+      "children": []
+    },
+    {
+      "name": "past-appt",
+      "label": "Past appointments",
+      "fPath": "/ehr/patient/past-appt",
+      "def": {
+        "p": "base/patient",
+        "n": "past-appt",
+        "l": "Past appointments"
       },
-      {
-        "name": "past-appt",
-        "label": "Past appointments",
-        "fPath": "/ehr/patient/past-appt",
-        "def": {
-          "p": "base/patient",
-          "n": "past-appt",
-          "l": "Past appointments"
-        },
-        "children": []
-      }
-    ]
-  },{
+      "children": []
+    }
+  ]
+},{
   "name": "current",
   "label": "Current visit",
   "fPath": "/ehr/current",

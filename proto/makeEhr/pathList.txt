@@ -1,211 +1,38 @@
-{
-  "base": [
-    {
-      "p": "base",
-      "n": "patient",
-      "l": "Patient profile"
-    },
-    {
-      "p": "base",
-      "n": "current",
-      "l": "Current visit"
-    },
-    {
-      "p": "base",
-      "n": "chart",
-      "l": "Patient chart"
-    }
-  ],
-  "patient": [
-    {
-      "p": "base/patient",
-      "n": "demographics",
-      "l": "Demographics"
-    },
-    {
-      "p": "base/patient",
-      "n": "allegies",
-      "l": "Allergies"
-    },
-    {
-      "p": "base/patient",
-      "n": "history",
-      "l": "History"
-    },
-    {
-      "p": "base/patient",
-      "n": "care-team",
-      "l": "Care team"
-    },
-    {
-      "p": "base/patient",
-      "n": "past-appt",
-      "l": "Past appointments"
-    }
-  ],
-  "history": [
-    {
-      "p": "base/patient/history",
-      "n": "medical",
-      "l": "Medical"
-    },
-    {
-      "p": "base/patient/history",
-      "n": "psychosocial",
-      "l": "Psychosocial"
-    },
-    {
-      "p": "base/patient/history",
-      "n": "surgical",
-      "l": "Surgical"
-    },
-    {
-      "p": "base/patient/history",
-      "n": "immunization",
-      "l": "Immunization"
-    },
-    {
-      "p": "base/patient/history",
-      "n": "cn",
-      "l": "Patient"
-    }
-  ],
-  "current": [
-    {
-      "p": "base/current",
-      "n": "visit-details",
-      "l": "Visit details"
-    },
-    {
-      "p": "base/current",
-      "n": "vital-signs",
-      "l": "Vital signs"
-    },
-    {
-      "p": "base/current",
-      "n": "assessments",
-      "redirect": "current/assessments/neurological"
-    },
-    {
-      "p": "base/current",
-      "n": "no-med",
-      "redirect": "current/no-med/no-med-orders"
-    },
-    {
-      "p": "base/current",
-      "n": "meds",
-      "l": "Medication orders",
-      "title": "Non-medication orders: Lab requisitions"
-    },
-    {
-      "p": "base/current",
-      "n": "mar",
-      "l": "MAR"
-    },
-    {
-      "p": "base/current",
-      "n": "discharge",
-      "l": "Discharge summary"
-    },
-    {
-      "p": "base/current",
-      "n": "billing",
-      "l": "Billing"
-    }
-  ],
-  "assessments": [
-    {
-      "p": "base/current/assessments",
-      "n": "neurological",
-      "l": "Neurological"
-    },
-    {
-      "p": "base/current/assessments",
-      "n": "respirator",
-      "l": "Respiratory"
-    },
-    {
-      "p": "base/current/assessments",
-      "n": "cardiovascular",
-      "l": "Cardiovascular"
-    },
-    {
-      "p": "base/current/assessments",
-      "n": "gastrointestinal",
-      "l": "Gastrointestinal"
-    },
-    {
-      "p": "base/current/assessments",
-      "n": "genitourinary",
-      "l": "Genitourinary"
-    },
-    {
-      "p": "base/current/assessments",
-      "n": "musculoskeletal",
-      "l": "Musculoskeletal"
-    },
-    {
-      "p": "base/current/assessments",
-      "n": "pain",
-      "l": "Pain"
-    },
-    {
-      "p": "base/current/assessments",
-      "n": "biopsychosocial",
-      "l": "Biopsychosocial"
-    }
-  ],
-  "no-med": [
-    {
-      "p": "base/current/no-med",
-      "n": "no-med-orders",
-      "l": "Orders",
-      "title": "Non-medication orders: Orders"
-    },
-    {
-      "p": "base/current/no-med",
-      "n": "referrals",
-      "l": "Referrals to other disciplines",
-      "c": "Referrals"
-    },
-    {
-      "p": "base/current/no-med",
-      "n": "lab-reqs",
-      "l": "Lab requisitions"
-    }
-  ],
-  "chart": [
-    {
-      "p": "base/chart",
-      "n": "care-plan",
-      "l": "Interprofessional plan of care",
-      "c": "CarePlan"
-    },
-    {
-      "p": "base/chart",
-      "n": "reports",
-      "l": "Reports and documents",
-      "redirect": "chart/reports/consults"
-    },
-    {
-      "p": "base/chart",
-      "n": "reports/consults",
-      "l": "Consults"
-    },
-    {
-      "p": "base/chart",
-      "n": "reports/lab-reports",
-      "l": "Lab Reports"
-    },
-    {
-      "p": "base/chart",
-      "n": "reports/diagnostic-reports",
-      "l": "Diagnostic reports"
-    },
-    {
-      "p": "base/chart",
-      "n": "reports/operative-anaesthesia",
-      "l": "Operative reports and anaesthesia reccord"
-    }
-  ]
-}
+patient
+demographics
+allegies
+history
+medical
+psychosocial
+surgical
+immunization
+cn
+care-team
+past-appt
+current
+visit-details
+vital-signs
+assessments
+neurological
+respirator
+cardiovascular
+gastrointestinal
+genitourinary
+musculoskeletal
+pain
+biopsychosocial
+no-med
+no-med-orders
+referrals
+lab-reqs
+meds
+mar
+discharge
+billing
+chart
+care-plan
+reports
+consults
+lab-reports
+diagnostic-reports
+operative-anaesthesia

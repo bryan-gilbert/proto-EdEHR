@@ -2,7 +2,7 @@
 [
   { "p": "base", "n": "patient", "l": "Patient profile" },
   { "p": "base/patient", "n": "demographics", "l": "Demographics" },
-  { "p": "base/patient", "n": "allegies", "l": "Allergies" },
+  { "p": "base/patient", "n": "allergies", "l": "Allergies" },
   { "p": "base/patient", "n": "history", "l": "History" },
   { "p": "base/patient/history", "n": "medical", "l": "Medical" },
   { "p": "base/patient/history", "n": "psychosocial", "l": "Psychosocial" },
@@ -37,5 +37,5 @@
   { "p": "base/chart/reports", "n": "consults", "l": "Consults" },
   { "p": "base/chart/reports", "n": "lab-reports", "l": "Lab Reports" },
   { "p": "base/chart/reports", "n": "diagnostic-reports", "l": "Diagnostic reports" },
-  { "p": "base/chart/reports", "n": "operative-anaesthesia", "l": "Operative reports and anaesthesia reccord" }
+  { "p": "base/chart/reports", "n": "operative-anaesthesia", "l": "Operative reports and anaesthesia record" }
 ]

@@ -1,0 +1,427 @@
+{
+  "base": {
+    "children": [
+      {
+        "name": "patient",
+        "label": "Patient profile",
+        "fPath": "base/patient",
+        "def": {
+          "p": "base",
+          "n": "patient",
+          "l": "Patient profile"
+        },
+        "children": []
+      },
+      {
+        "name": "demographics",
+        "label": "Demographics",
+        "fPath": "base/patient/demographics",
+        "def": {
+          "p": "base/patient",
+          "n": "demographics",
+          "l": "Demographics"
+        },
+        "children": []
+      },
+      {
+        "name": "allegies",
+        "label": "Allergies",
+        "fPath": "base/patient/allegies",
+        "def": {
+          "p": "base/patient",
+          "n": "allegies",
+          "l": "Allergies"
+        },
+        "children": []
+      },
+      {
+        "name": "history",
+        "label": "History",
+        "fPath": "base/patient/history",
+        "def": {
+          "p": "base/patient",
+          "n": "history",
+          "l": "History"
+        },
+        "children": []
+      },
+      {
+        "name": "medical",
+        "label": "Medical",
+        "fPath": "base/patient/history/medical",
+        "def": {
+          "p": "base/patient/history",
+          "n": "medical",
+          "l": "Medical"
+        },
+        "children": []
+      },
+      {
+        "name": "psychosocial",
+        "label": "Psychosocial",
+        "fPath": "base/patient/history/psychosocial",
+        "def": {
+          "p": "base/patient/history",
+          "n": "psychosocial",
+          "l": "Psychosocial"
+        },
+        "children": []
+      },
+      {
+        "name": "surgical",
+        "label": "Surgical",
+        "fPath": "base/patient/history/surgical",
+        "def": {
+          "p": "base/patient/history",
+          "n": "surgical",
+          "l": "Surgical"
+        },
+        "children": []
+      },
+      {
+        "name": "immunization",
+        "label": "Immunization",
+        "fPath": "base/patient/history/immunization",
+        "def": {
+          "p": "base/patient/history",
+          "n": "immunization",
+          "l": "Immunization"
+        },
+        "children": []
+      },
+      {
+        "name": "cn",
+        "label": "Patient",
+        "fPath": "base/patient/history/cn",
+        "def": {
+          "p": "base/patient/history",
+          "n": "cn",
+          "l": "Patient"
+        },
+        "children": []
+      },
+      {
+        "name": "care-team",
+        "label": "Care team",
+        "fPath": "base/patient/care-team",
+        "def": {
+          "p": "base/patient",
+          "n": "care-team",
+          "l": "Care team"
+        },
+        "children": []
+      },
+      {
+        "name": "past-appt",
+        "label": "Past appointments",
+        "fPath": "base/patient/past-appt",
+        "def": {
+          "p": "base/patient",
+          "n": "past-appt",
+          "l": "Past appointments"
+        },
+        "children": []
+      },
+      {
+        "name": "current",
+        "label": "Current visit",
+        "fPath": "base/current",
+        "def": {
+          "p": "base",
+          "n": "current",
+          "l": "Current visit"
+        },
+        "children": []
+      },
+      {
+        "name": "visit-details",
+        "label": "Visit details",
+        "fPath": "base/current/visit-details",
+        "def": {
+          "p": "base/current",
+          "n": "visit-details",
+          "l": "Visit details"
+        },
+        "children": []
+      },
+      {
+        "name": "vital-signs",
+        "label": "Vital signs",
+        "fPath": "base/current/vital-signs",
+        "def": {
+          "p": "base/current",
+          "n": "vital-signs",
+          "l": "Vital signs"
+        },
+        "children": []
+      },
+      {
+        "name": "assessments",
+        "fPath": "base/current/assessments",
+        "def": {
+          "p": "base/current",
+          "n": "assessments",
+          "redirect": "base/current/assessments/neurological"
+        },
+        "children": []
+      },
+      {
+        "name": "neurological",
+        "label": "Neurological",
+        "fPath": "base/current/assessments/neurological",
+        "def": {
+          "p": "base/current/assessments",
+          "n": "neurological",
+          "l": "Neurological"
+        },
+        "children": []
+      },
+      {
+        "name": "respirator",
+        "label": "Respiratory",
+        "fPath": "base/current/assessments/respirator",
+        "def": {
+          "p": "base/current/assessments",
+          "n": "respirator",
+          "l": "Respiratory"
+        },
+        "children": []
+      },
+      {
+        "name": "cardiovascular",
+        "label": "Cardiovascular",
+        "fPath": "base/current/assessments/cardiovascular",
+        "def": {
+          "p": "base/current/assessments",
+          "n": "cardiovascular",
+          "l": "Cardiovascular"
+        },
+        "children": []
+      },
+      {
+        "name": "gastrointestinal",
+        "label": "Gastrointestinal",
+        "fPath": "base/current/assessments/gastrointestinal",
+        "def": {
+          "p": "base/current/assessments",
+          "n": "gastrointestinal",
+          "l": "Gastrointestinal"
+        },
+        "children": []
+      },
+      {
+        "name": "genitourinary",
+        "label": "Genitourinary",
+        "fPath": "base/current/assessments/genitourinary",
+        "def": {
+          "p": "base/current/assessments",
+          "n": "genitourinary",
+          "l": "Genitourinary"
+        },
+        "children": []
+      },
+      {
+        "name": "musculoskeletal",
+        "label": "Musculoskeletal",
+        "fPath": "base/current/assessments/musculoskeletal",
+        "def": {
+          "p": "base/current/assessments",
+          "n": "musculoskeletal",
+          "l": "Musculoskeletal"
+        },
+        "children": []
+      },
+      {
+        "name": "pain",
+        "label": "Pain",
+        "fPath": "base/current/assessments/pain",
+        "def": {
+          "p": "base/current/assessments",
+          "n": "pain",
+          "l": "Pain"
+        },
+        "children": []
+      },
+      {
+        "name": "biopsychosocial",
+        "label": "Biopsychosocial",
+        "fPath": "base/current/assessments/biopsychosocial",
+        "def": {
+          "p": "base/current/assessments",
+          "n": "biopsychosocial",
+          "l": "Biopsychosocial"
+        },
+        "children": []
+      },
+      {
+        "name": "no-med",
+        "fPath": "base/current/no-med",
+        "def": {
+          "p": "base/current",
+          "n": "no-med",
+          "redirect": "base/current/no-med/no-med-orders"
+        },
+        "children": []
+      },
+      {
+        "name": "no-med-orders",
+        "label": "Orders",
+        "fPath": "base/current/no-med/no-med-orders",
+        "def": {
+          "p": "base/current/no-med",
+          "n": "no-med-orders",
+          "l": "Orders",
+          "title": "Non-medication orders: Orders"
+        },
+        "children": []
+      },
+      {
+        "name": "referrals",
+        "label": "Referrals to other disciplines",
+        "fPath": "base/current/no-med/referrals",
+        "def": {
+          "p": "base/current/no-med",
+          "n": "referrals",
+          "l": "Referrals to other disciplines",
+          "c": "Referrals"
+        },
+        "children": []
+      },
+      {
+        "name": "lab-reqs",
+        "label": "Lab requisitions",
+        "fPath": "base/current/no-med/lab-reqs",
+        "def": {
+          "p": "base/current/no-med",
+          "n": "lab-reqs",
+          "l": "Lab requisitions"
+        },
+        "children": []
+      },
+      {
+        "name": "meds",
+        "label": "Medication orders",
+        "fPath": "base/current/meds",
+        "def": {
+          "p": "base/current",
+          "n": "meds",
+          "l": "Medication orders",
+          "title": "Non-medication orders: Lab requisitions"
+        },
+        "children": []
+      },
+      {
+        "name": "mar",
+        "label": "MAR",
+        "fPath": "base/current/mar",
+        "def": {
+          "p": "base/current",
+          "n": "mar",
+          "l": "MAR"
+        },
+        "children": []
+      },
+      {
+        "name": "discharge",
+        "label": "Discharge summary",
+        "fPath": "base/current/discharge",
+        "def": {
+          "p": "base/current",
+          "n": "discharge",
+          "l": "Discharge summary"
+        },
+        "children": []
+      },
+      {
+        "name": "billing",
+        "label": "Billing",
+        "fPath": "base/current/billing",
+        "def": {
+          "p": "base/current",
+          "n": "billing",
+          "l": "Billing"
+        },
+        "children": []
+      },
+      {
+        "name": "chart",
+        "label": "Patient chart",
+        "fPath": "base/chart",
+        "def": {
+          "p": "base",
+          "n": "chart",
+          "l": "Patient chart"
+        },
+        "children": []
+      },
+      {
+        "name": "care-plan",
+        "label": "Interprofessional plan of care",
+        "fPath": "base/chart/care-plan",
+        "def": {
+          "p": "base/chart",
+          "n": "care-plan",
+          "l": "Interprofessional plan of care",
+          "c": "CarePlan"
+        },
+        "children": []
+      },
+      {
+        "name": "reports",
+        "label": "Reports and documents",
+        "fPath": "base/chart/reports",
+        "def": {
+          "p": "base/chart",
+          "n": "reports",
+          "l": "Reports and documents",
+          "redirect": "base/chart/reports/consults"
+        },
+        "children": []
+      },
+      {
+        "name": "consults",
+        "label": "Consults",
+        "fPath": "base/chart/reports/consults",
+        "def": {
+          "p": "base/chart/reports",
+          "n": "consults",
+          "l": "Consults"
+        },
+        "children": []
+      },
+      {
+        "name": "lab-reports",
+        "label": "Lab Reports",
+        "fPath": "base/chart/reports/lab-reports",
+        "def": {
+          "p": "base/chart/reports",
+          "n": "lab-reports",
+          "l": "Lab Reports"
+        },
+        "children": []
+      },
+      {
+        "name": "diagnostic-reports",
+        "label": "Diagnostic reports",
+        "fPath": "base/chart/reports/diagnostic-reports",
+        "def": {
+          "p": "base/chart/reports",
+          "n": "diagnostic-reports",
+          "l": "Diagnostic reports"
+        },
+        "children": []
+      },
+      {
+        "name": "operative-anaesthesia",
+        "label": "Operative reports and anaesthesia reccord",
+        "fPath": "base/chart/reports/operative-anaesthesia",
+        "def": {
+          "p": "base/chart/reports",
+          "n": "operative-anaesthesia",
+          "l": "Operative reports and anaesthesia reccord"
+        },
+        "children": []
+      }
+    ]
+  }
+}
