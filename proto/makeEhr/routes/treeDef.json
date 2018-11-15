@@ -158,10 +158,12 @@
           },
           {
             "name": "assessments",
+            "label": "Assessments",
             "fPath": "/ehr/current/assessments",
             "def": {
               "p": "base/current",
               "n": "assessments",
+              "l": "Assessments",
               "redirect": "base/current/assessments/neurological"
             },
             "children": [
@@ -257,10 +259,12 @@
           },
           {
             "name": "no-med",
+            "label": "Non-medication orders",
             "fPath": "/ehr/current/no-med",
             "def": {
               "p": "base/current",
               "n": "no-med",
+              "l": "Non-medication orders",
               "redirect": "base/current/no-med/no-med-orders"
             },
             "children": [

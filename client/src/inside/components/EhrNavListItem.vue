@@ -1,7 +1,7 @@
 <template lang="pug">
-	div(:class="`$options.name ${$options.name}__content`")
-		div(:class="outClass")
-			ui-link(:to="{ name: path.name }", :class="linkClass") {{ path.label }}
+  div(:class="`${$options.name}`")
+    div(:class="outClass")
+      ui-link(:to="{ name: path.name }", :class="linkClass") {{ path.label }}
 </template>
 
 <script>
@@ -38,7 +38,13 @@ export default {
 
 <style lang="scss" scoped>
 .EhrNavListItem {
-  margin-top: 2px;
+  margin-top: 1px;
+  &__level1,
+  &__level2,
+  &__level3 {
+    display: flex;
+    align-items: center;
+  }
   &__level1,
   &__level2 {
     & a {
@@ -50,18 +56,21 @@ export default {
   }
   &__level1 {
     background-color: #22262e;
+    height: 40px;
     & a {
       color: #ffffff;
     }
   }
   &__level2 {
     background-color: #383c45;
+    height: 30px;
     & a {
       color: #cbced1;
     }
   }
   &__level3 {
     background-color: #4f545c;
+    height: 30px;
     & a {
       color: #cbced1;
     }
