@@ -1,49 +1,49 @@
-<template>
-  <div :class="$options.name">
-    <ui-button :class="`${$options.name}__saveButton`">
-      <a href="http://localhost:3000">Save</a>
-    </ui-button>
-    <div :class="`${$options.name}__wrapper`">
-      <ehr-nav-list :class="`${$options.name}__teaserList`">
-        <div :class="`${$options.name}__data`">
-          <li v-for="path in paths" v-bind:key="path.label">
-            <ehr-nav-list-item>
-              <ehr-nav :action="{ to: { name: path.name }, label: path.label }">
-                <template slot="link">
-                  <ui-link
-                    :to="{ name: path.name }"
-                    :class="`${$options.name}__link`"
-                  >
-                    {{ path.label }}
-                  </ui-link>
-                </template>
-              </ehr-nav>
-            </ehr-nav-list-item>
-          </li>
-        </div>
-      </ehr-nav-list>
-    </div>
-  </div>
+<template lang="pug">
+  div(:class="$options.name")
+    ui-button(:class="`${$options.name}__saveButton`")
+      a(href="http://localhost:3000") Save
+    e-n-list(v-for="item in groups" :key="item.id" :name="item.name", :children="item.children" :level="item.id")
 </template>
 <script>
-import EhrNav from '../components/EhrNav.vue'
-import EhrNavList from '../components/EhrNavList.vue'
-import EhrNavListItem from '../components/EhrNavListItem.vue'
 import UiLink from '../../app/ui/UiLink.vue'
 import UiButton from '../../app/ui/UiButton.vue'
-import EhrRoutes from '../ehrRoutes'
-// var ehrRoutes = new EhrRoutes()
+import ENList from './EhrNavList'
 
 export default {
   name: 'EhrNavPanel',
   components: {
     UiButton,
     UiLink,
-    EhrNav,
-    EhrNavList,
-    EhrNavListItem
+    ENList
   },
   computed: {
+    groups() {
+      var groups = [
+        {
+          id: 1,
+          name: 'patient',
+          children: [
+            { name: 'mar', label: 'Mar' },
+            { name: 'billing', label: 'Billing' },
+            { name: 'details', label: 'Details' },
+            { name: 'biopsychosocial', label: 'Biopsychosocial' },
+            { name: 'progress-notes', label: 'Progress Notes' }
+          ]
+        },
+        {
+          id: 2,
+          name: 'current',
+          children: [
+            { name: 'details', label: 'Details' },
+            { name: 'billing', label: 'Billing' },
+            { name: 'biopsychosocial', label: 'Biopsychosocial' },
+            { name: 'mar', label: 'Mar' },
+            { name: 'progress-notes', label: 'Progress Notes' }
+          ]
+        }
+      ]
+      return groups
+    },
     paths() {
       // console.log('Go get paths')
       // const ePaths = ehrRoutes.getPaths()
@@ -68,7 +68,6 @@ export default {
   background-color: #23262d;
   height: 100%;
   color: #efefef;
-  padding: 1rem;
 
   &__link {
     color: white;
