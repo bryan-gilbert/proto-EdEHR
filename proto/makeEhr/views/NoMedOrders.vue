@@ -1,19 +1,19 @@
 <template lang="pug">
 	div(:class="$options.name")
 		h1(slot="ehrPageTitle") {title}
-		p component name: {componentName}
-		p redirect: {redirect}
-		p path: {path}
+		p component name: NoMedOrders
+		p redirect: 
+		p path: base/current/no-med/no-med-orders
 </template>
 
 <script>
 export default {
-  name: '{name}',
+  name: 'NoMedOrders'
 }
 </script>
 
 <style lang="scss" scoped>
-.{name} {,
+.NoMedOrders {
   &__main {
   }
 }
