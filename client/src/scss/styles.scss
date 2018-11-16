@@ -1,0 +1,27 @@
+/*
+	Base UI on Bulma CSS framework
+https://bulma.io/
+https://bulma.io/alternative-to-bootstrap/
+https://github.com/jgthms/bulma
+Bulma is released under the MIT license.
+@import '../../node_modules/bulma/sass/utilities/initial-variables';
+@import '../../node_modules/bulma/sass/utilities/functions';
+*/
+
+@import url("//fonts.googleapis.com/css?family=Open+Sans");
+
+$primary: #5097f7;
+@import '../../node_modules/bulma/sass/utilities/initial-variables';
+@charset "utf-8";
+@import '../../node_modules/bulma/bulma';
+
+body {
+  //font-family: Open Sans;
+  //font-size: 12px;
+}
+
+#content .shared {
+  width: 1024px;
+  margin: 50px auto 0;
+}
+

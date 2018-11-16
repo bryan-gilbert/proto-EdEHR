@@ -12,3 +12,7 @@ temp/**
 ehr/dist/**
 ehr/dev/**
 **/trash/**
+
+client/tests/e2e/reports/
+
+client/selenium-debug\.log

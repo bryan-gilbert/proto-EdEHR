@@ -50,7 +50,7 @@ var defaultEnv = process.env.NODE_ENV || 'test';
       return this.getOption('env')
     }
     _innerDef.isProduction = function () {
-      return Configuration.prodEnv == this.getOption('env')
+      return Configuration.prodEnv === this.getOption('env')
     }
 
     _innerDef.getPlatform = function () {
