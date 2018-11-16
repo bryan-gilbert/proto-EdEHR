@@ -4,12 +4,13 @@
     ehr-panel-header Allergies
     ehr-panel-content
       div(class="region")
-        p component name: Allergies
-        p title: Allergies
-        p redirect: 
-        p route name: allergies
-        p full path: /ehr/patient/allergies
-        p another line now using spaces
+        p Title: Allergies
+        p Label: Allergies
+        p Component name: Allergies
+        p Redirect: 
+        p Route name: allergies
+        p Full path: /ehr/patient/allergies
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

@@ -4,12 +4,13 @@
     ehr-panel-header Assessments
     ehr-panel-content
       div(class="region")
-        p component name: Assessments
-        p title: Assessments
-        p redirect: /ehr/current/assessments/neurological
-        p route name: assessments
-        p full path: /ehr/current/assessments
-        p another line now using spaces
+        p Title: Assessments
+        p Label: Assessments
+        p Component name: Assessments
+        p Redirect: /ehr/current/assessments/neurological
+        p Route name: assessments
+        p Full path: /ehr/current/assessments
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

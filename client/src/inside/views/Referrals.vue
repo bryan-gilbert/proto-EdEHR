@@ -4,12 +4,13 @@
     ehr-panel-header Referrals
     ehr-panel-content
       div(class="region")
-        p component name: Referrals
-        p title: Referrals
-        p redirect: 
-        p route name: referrals
-        p full path: /ehr/current/no-med/referrals
-        p another line now using spaces
+        p Title: Referrals
+        p Label: Referrals to other disciplines
+        p Component name: Referrals
+        p Redirect: 
+        p Route name: referrals
+        p Full path: /ehr/current/no-med/referrals
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

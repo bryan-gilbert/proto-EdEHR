@@ -4,12 +4,13 @@
     ehr-panel-header Demographics
     ehr-panel-content
       div(class="region")
-        p component name: Demographics
-        p title: Demographics
-        p redirect: 
-        p route name: demographics
-        p full path: /ehr/patient/demographics
-        p another line now using spaces
+        p Title: Demographics
+        p Label: Demographics
+        p Component name: Demographics
+        p Redirect: 
+        p Route name: demographics
+        p Full path: /ehr/patient/demographics
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

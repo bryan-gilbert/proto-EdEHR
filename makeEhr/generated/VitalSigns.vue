@@ -4,12 +4,13 @@
     ehr-panel-header Vital Signs
     ehr-panel-content
       div(class="region")
-        p component name: VitalSigns
-        p title: Vital Signs
-        p redirect: 
-        p route name: vital-signs
-        p full path: /ehr/current/vital-signs
-        p another line now using spaces
+        p Title: Vital Signs
+        p Label: Vital signs
+        p Component name: VitalSigns
+        p Redirect: 
+        p Route name: vital-signs
+        p Full path: /ehr/current/vital-signs
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

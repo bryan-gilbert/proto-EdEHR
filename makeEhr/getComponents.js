@@ -121,6 +121,7 @@ function splitCamelCase (string) {
 function makeVueFile (def, componentTemplate) {
   var content = componentTemplate
     .replace(/{title}/g, def.title)
+    .replace(/{label}/g, def.label)
     .replace(/{componentName}/g, def.componentName)
     .replace(/{redirect}/g, def.redirect)
     .replace(/{rName}/g, def.routeName)

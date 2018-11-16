@@ -4,12 +4,13 @@
     ehr-panel-header Care Plan
     ehr-panel-content
       div(class="region")
-        p component name: CarePlan
-        p title: Care Plan
-        p redirect: 
-        p route name: care-plan
-        p full path: /ehr/chart/care-plan
-        p another line now using spaces
+        p Title: Care Plan
+        p Label: Interprofessional plan of care
+        p Component name: CarePlan
+        p Redirect: 
+        p Route name: care-plan
+        p Full path: /ehr/chart/care-plan
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

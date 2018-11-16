@@ -4,12 +4,13 @@
     ehr-panel-header Cardiovascular
     ehr-panel-content
       div(class="region")
-        p component name: Cardiovascular
-        p title: Cardiovascular
-        p redirect: 
-        p route name: cardiovascular
-        p full path: /ehr/current/assessments/cardiovascular
-        p another line now using spaces
+        p Title: Cardiovascular
+        p Label: Cardiovascular
+        p Component name: Cardiovascular
+        p Redirect: 
+        p Route name: cardiovascular
+        p Full path: /ehr/current/assessments/cardiovascular
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

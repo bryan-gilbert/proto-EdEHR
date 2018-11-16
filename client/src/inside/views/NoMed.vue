@@ -4,12 +4,13 @@
     ehr-panel-header No Med
     ehr-panel-content
       div(class="region")
-        p component name: NoMed
-        p title: No Med
-        p redirect: /ehr/current/no-med/no-med-orders
-        p route name: no-med
-        p full path: /ehr/current/no-med
-        p another line now using spaces
+        p Title: No Med
+        p Label: Non-medication orders
+        p Component name: NoMed
+        p Redirect: /ehr/current/no-med/no-med-orders
+        p Route name: no-med
+        p Full path: /ehr/current/no-med
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

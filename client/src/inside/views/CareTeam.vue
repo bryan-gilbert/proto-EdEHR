@@ -4,12 +4,13 @@
     ehr-panel-header Care Team
     ehr-panel-content
       div(class="region")
-        p component name: CareTeam
-        p title: Care Team
-        p redirect: 
-        p route name: care-team
-        p full path: /ehr/patient/care-team
-        p another line now using spaces
+        p Title: Care Team
+        p Label: Care team
+        p Component name: CareTeam
+        p Redirect: 
+        p Route name: care-team
+        p Full path: /ehr/patient/care-team
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

@@ -4,12 +4,13 @@
     ehr-panel-header Mar
     ehr-panel-content
       div(class="region")
-        p component name: Mar
-        p title: Mar
-        p redirect: 
-        p route name: mar
-        p full path: /ehr/current/mar
-        p another line now using spaces
+        p Title: Mar
+        p Label: MAR
+        p Component name: Mar
+        p Redirect: 
+        p Route name: mar
+        p Full path: /ehr/current/mar
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

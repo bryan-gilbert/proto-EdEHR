@@ -4,12 +4,13 @@
     ehr-panel-header Current
     ehr-panel-content
       div(class="region")
-        p component name: Current
-        p title: Current
-        p redirect: 
-        p route name: current
-        p full path: /ehr/current
-        p another line now using spaces
+        p Title: Current
+        p Label: Current visit
+        p Component name: Current
+        p Redirect: 
+        p Route name: current
+        p Full path: /ehr/current
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

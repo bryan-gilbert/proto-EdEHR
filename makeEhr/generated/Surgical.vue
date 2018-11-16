@@ -4,12 +4,13 @@
     ehr-panel-header Surgical
     ehr-panel-content
       div(class="region")
-        p component name: Surgical
-        p title: Surgical
-        p redirect: 
-        p route name: surgical
-        p full path: /ehr/patient/history/surgical
-        p another line now using spaces
+        p Title: Surgical
+        p Label: Surgical
+        p Component name: Surgical
+        p Redirect: 
+        p Route name: surgical
+        p Full path: /ehr/patient/history/surgical
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

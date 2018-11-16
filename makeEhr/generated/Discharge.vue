@@ -4,12 +4,13 @@
     ehr-panel-header Discharge
     ehr-panel-content
       div(class="region")
-        p component name: Discharge
-        p title: Discharge
-        p redirect: 
-        p route name: discharge
-        p full path: /ehr/current/discharge
-        p another line now using spaces
+        p Title: Discharge
+        p Label: Discharge summary
+        p Component name: Discharge
+        p Redirect: 
+        p Route name: discharge
+        p Full path: /ehr/current/discharge
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

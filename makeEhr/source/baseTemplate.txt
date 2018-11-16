@@ -3,12 +3,13 @@
     ehr-panel-header {title}
     ehr-panel-content
       div(class="region")
-        p component name: {componentName}
-        p title: {title}
-        p redirect: {redirect}
-        p route name: {rName}
-        p full path: {path}
-        p another line now using spaces
+        p Title: {title}
+        p Label: {label}
+        p Component name: {componentName}
+        p Redirect: {redirect}
+        p Route name: {rName}
+        p Full path: {path}
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

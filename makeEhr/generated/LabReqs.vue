@@ -4,12 +4,13 @@
     ehr-panel-header Lab Reqs
     ehr-panel-content
       div(class="region")
-        p component name: LabReqs
-        p title: Lab Reqs
-        p redirect: 
-        p route name: lab-reqs
-        p full path: /ehr/current/no-med/lab-reqs
-        p another line now using spaces
+        p Title: Lab Reqs
+        p Label: Lab requisitions
+        p Component name: LabReqs
+        p Redirect: 
+        p Route name: lab-reqs
+        p Full path: /ehr/current/no-med/lab-reqs
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

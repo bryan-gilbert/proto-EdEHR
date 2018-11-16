@@ -4,12 +4,13 @@
     ehr-panel-header Immunization
     ehr-panel-content
       div(class="region")
-        p component name: Immunization
-        p title: Immunization
-        p redirect: 
-        p route name: immunization
-        p full path: /ehr/patient/history/immunization
-        p another line now using spaces
+        p Title: Immunization
+        p Label: Immunization
+        p Component name: Immunization
+        p Redirect: 
+        p Route name: immunization
+        p Full path: /ehr/patient/history/immunization
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

@@ -4,12 +4,13 @@
     ehr-panel-header Psychosocial
     ehr-panel-content
       div(class="region")
-        p component name: Psychosocial
-        p title: Psychosocial
-        p redirect: 
-        p route name: psychosocial
-        p full path: /ehr/patient/history/psychosocial
-        p another line now using spaces
+        p Title: Psychosocial
+        p Label: Psychosocial
+        p Component name: Psychosocial
+        p Redirect: 
+        p Route name: psychosocial
+        p Full path: /ehr/patient/history/psychosocial
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

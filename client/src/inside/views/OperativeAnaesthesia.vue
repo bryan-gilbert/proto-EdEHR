@@ -4,12 +4,13 @@
     ehr-panel-header Operative Anaesthesia
     ehr-panel-content
       div(class="region")
-        p component name: OperativeAnaesthesia
-        p title: Operative Anaesthesia
-        p redirect: 
-        p route name: operative-anaesthesia
-        p full path: /ehr/chart/reports/operative-anaesthesia
-        p another line now using spaces
+        p Title: Operative Anaesthesia
+        p Label: Operative reports and anaesthesia record
+        p Component name: OperativeAnaesthesia
+        p Redirect: 
+        p Route name: operative-anaesthesia
+        p Full path: /ehr/chart/reports/operative-anaesthesia
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

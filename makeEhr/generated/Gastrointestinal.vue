@@ -4,12 +4,13 @@
     ehr-panel-header Gastrointestinal
     ehr-panel-content
       div(class="region")
-        p component name: Gastrointestinal
-        p title: Gastrointestinal
-        p redirect: 
-        p route name: gastrointestinal
-        p full path: /ehr/current/assessments/gastrointestinal
-        p another line now using spaces
+        p Title: Gastrointestinal
+        p Label: Gastrointestinal
+        p Component name: Gastrointestinal
+        p Redirect: 
+        p Route name: gastrointestinal
+        p Full path: /ehr/current/assessments/gastrointestinal
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

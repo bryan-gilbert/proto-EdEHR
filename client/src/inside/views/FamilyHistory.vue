@@ -4,12 +4,13 @@
     ehr-panel-header Family History
     ehr-panel-content
       div(class="region")
-        p component name: FamilyHistory
-        p title: Family History
-        p redirect: 
-        p route name: family-history
-        p full path: /ehr/patient/history/family-history
-        p another line now using spaces
+        p Title: Family History
+        p Label: Family History
+        p Component name: FamilyHistory
+        p Redirect: 
+        p Route name: family-history
+        p Full path: /ehr/patient/history/family-history
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

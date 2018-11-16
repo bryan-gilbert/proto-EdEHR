@@ -4,12 +4,13 @@
     ehr-panel-header Past Appt
     ehr-panel-content
       div(class="region")
-        p component name: PastAppt
-        p title: Past Appt
-        p redirect: 
-        p route name: past-appt
-        p full path: /ehr/patient/past-appt
-        p another line now using spaces
+        p Title: Past Appt
+        p Label: Past appointments
+        p Component name: PastAppt
+        p Redirect: 
+        p Route name: past-appt
+        p Full path: /ehr/patient/past-appt
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

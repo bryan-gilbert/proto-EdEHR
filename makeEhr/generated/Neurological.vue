@@ -4,12 +4,13 @@
     ehr-panel-header Neurological
     ehr-panel-content
       div(class="region")
-        p component name: Neurological
-        p title: Neurological
-        p redirect: 
-        p route name: neurological
-        p full path: /ehr/current/assessments/neurological
-        p another line now using spaces
+        p Title: Neurological
+        p Label: Neurological
+        p Component name: Neurological
+        p Redirect: 
+        p Route name: neurological
+        p Full path: /ehr/current/assessments/neurological
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

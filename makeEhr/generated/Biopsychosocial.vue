@@ -4,12 +4,13 @@
     ehr-panel-header Biopsychosocial
     ehr-panel-content
       div(class="region")
-        p component name: Biopsychosocial
-        p title: Biopsychosocial
-        p redirect: 
-        p route name: biopsychosocial
-        p full path: /ehr/current/assessments/biopsychosocial
-        p another line now using spaces
+        p Title: Biopsychosocial
+        p Label: Biopsychosocial
+        p Component name: Biopsychosocial
+        p Redirect: 
+        p Route name: biopsychosocial
+        p Full path: /ehr/current/assessments/biopsychosocial
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

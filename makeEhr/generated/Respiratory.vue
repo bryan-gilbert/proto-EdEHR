@@ -4,12 +4,13 @@
     ehr-panel-header Respiratory
     ehr-panel-content
       div(class="region")
-        p component name: Respiratory
-        p title: Respiratory
-        p redirect: 
-        p route name: respiratory
-        p full path: /ehr/current/assessments/respiratory
-        p another line now using spaces
+        p Title: Respiratory
+        p Label: Respiratory
+        p Component name: Respiratory
+        p Redirect: 
+        p Route name: respiratory
+        p Full path: /ehr/current/assessments/respiratory
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

@@ -4,12 +4,13 @@
     ehr-panel-header History
     ehr-panel-content
       div(class="region")
-        p component name: History
-        p title: History
-        p redirect: 
-        p route name: history
-        p full path: /ehr/patient/history
-        p another line now using spaces
+        p Title: History
+        p Label: History
+        p Component name: History
+        p Redirect: 
+        p Route name: history
+        p Full path: /ehr/patient/history
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

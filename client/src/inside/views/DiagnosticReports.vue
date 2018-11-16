@@ -4,12 +4,13 @@
     ehr-panel-header Diagnostic Reports
     ehr-panel-content
       div(class="region")
-        p component name: DiagnosticReports
-        p title: Diagnostic Reports
-        p redirect: 
-        p route name: diagnostic-reports
-        p full path: /ehr/chart/reports/diagnostic-reports
-        p another line now using spaces
+        p Title: Diagnostic Reports
+        p Label: Diagnostic reports
+        p Component name: DiagnosticReports
+        p Redirect: 
+        p Route name: diagnostic-reports
+        p Full path: /ehr/chart/reports/diagnostic-reports
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

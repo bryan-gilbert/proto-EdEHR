@@ -4,12 +4,13 @@
     ehr-panel-header Billing
     ehr-panel-content
       div(class="region")
-        p component name: Billing
-        p title: Billing
-        p redirect: 
-        p route name: billing
-        p full path: /ehr/current/billing
-        p another line now using spaces
+        p Title: Billing
+        p Label: Billing
+        p Component name: Billing
+        p Redirect: 
+        p Route name: billing
+        p Full path: /ehr/current/billing
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

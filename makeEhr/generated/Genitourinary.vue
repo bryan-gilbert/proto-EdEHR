@@ -4,12 +4,13 @@
     ehr-panel-header Genitourinary
     ehr-panel-content
       div(class="region")
-        p component name: Genitourinary
-        p title: Genitourinary
-        p redirect: 
-        p route name: genitourinary
-        p full path: /ehr/current/assessments/genitourinary
-        p another line now using spaces
+        p Title: Genitourinary
+        p Label: Genitourinary
+        p Component name: Genitourinary
+        p Redirect: 
+        p Route name: genitourinary
+        p Full path: /ehr/current/assessments/genitourinary
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

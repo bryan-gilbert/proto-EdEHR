@@ -4,12 +4,13 @@
     ehr-panel-header Chart
     ehr-panel-content
       div(class="region")
-        p component name: Chart
-        p title: Chart
-        p redirect: 
-        p route name: chart
-        p full path: /ehr/chart
-        p another line now using spaces
+        p Title: Chart
+        p Label: Patient chart
+        p Component name: Chart
+        p Redirect: 
+        p Route name: chart
+        p Full path: /ehr/chart
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

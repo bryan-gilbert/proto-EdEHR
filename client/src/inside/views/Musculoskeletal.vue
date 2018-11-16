@@ -4,12 +4,13 @@
     ehr-panel-header Musculoskeletal
     ehr-panel-content
       div(class="region")
-        p component name: Musculoskeletal
-        p title: Musculoskeletal
-        p redirect: 
-        p route name: musculoskeletal
-        p full path: /ehr/current/assessments/musculoskeletal
-        p another line now using spaces
+        p Title: Musculoskeletal
+        p Label: Musculoskeletal
+        p Component name: Musculoskeletal
+        p Redirect: 
+        p Route name: musculoskeletal
+        p Full path: /ehr/current/assessments/musculoskeletal
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

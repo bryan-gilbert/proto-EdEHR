@@ -4,12 +4,13 @@
     ehr-panel-header Patient
     ehr-panel-content
       div(class="region")
-        p component name: Patient
-        p title: Patient
-        p redirect: 
-        p route name: patient
-        p full path: /ehr/patient
-        p another line now using spaces
+        p Title: Patient
+        p Label: Patient profile
+        p Component name: Patient
+        p Redirect: 
+        p Route name: patient
+        p Full path: /ehr/patient
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

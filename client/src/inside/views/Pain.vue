@@ -4,12 +4,13 @@
     ehr-panel-header Pain
     ehr-panel-content
       div(class="region")
-        p component name: Pain
-        p title: Pain
-        p redirect: 
-        p route name: pain
-        p full path: /ehr/current/assessments/pain
-        p another line now using spaces
+        p Title: Pain
+        p Label: Pain
+        p Component name: Pain
+        p Redirect: 
+        p Route name: pain
+        p Full path: /ehr/current/assessments/pain
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")

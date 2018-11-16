@@ -4,12 +4,13 @@
     ehr-panel-header Visit Details
     ehr-panel-content
       div(class="region")
-        p component name: VisitDetails
-        p title: Visit Details
-        p redirect: 
-        p route name: visit-details
-        p full path: /ehr/current/visit-details
-        p another line now using spaces
+        p Title: Visit Details
+        p Label: Visit details
+        p Component name: VisitDetails
+        p Redirect: 
+        p Route name: visit-details
+        p Full path: /ehr/current/visit-details
+        hr
       div(class="region")
         div(class="columns")
           div(class="column is-one-third")
