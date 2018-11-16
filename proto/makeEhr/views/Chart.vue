@@ -3,9 +3,10 @@
     h1(slot="ehrPageTitle") Chart
     div(class="region")
       p component name: Chart
-      p redirect: none
+      p title: Chart
+      p redirect: 
       p route name: chart
-      p full path: base/chart
+      p full path: /ehr/chart
       p another line now using spaces
     div(class="region")
       div(class="columns")

@@ -3,9 +3,10 @@
     h1(slot="ehrPageTitle") Billing
     div(class="region")
       p component name: Billing
-      p redirect: none
+      p title: Billing
+      p redirect: 
       p route name: billing
-      p full path: base/current/billing
+      p full path: /ehr/current/billing
       p another line now using spaces
     div(class="region")
       div(class="columns")

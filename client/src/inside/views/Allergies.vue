@@ -1,12 +1,12 @@
 <template lang="pug">
   div(:class="$options.name")
-    h1(slot="ehrPageTitle") Assessments
+    h1(slot="ehrPageTitle") Allergies
     div(class="region")
-      p component name: Assessments
-      p title: Assessments
-      p redirect: /ehr/current/assessments/neurological
-      p route name: assessments
-      p full path: /ehr/current/assessments
+      p component name: Allergies
+      p title: Allergies
+      p redirect: 
+      p route name: allergies
+      p full path: /ehr/patient/allergies
       p another line now using spaces
     div(class="region")
       div(class="columns")
@@ -37,7 +37,7 @@
 
 <script>
 export default {
-  name: 'Assessments'
+  name: 'Allergies'
 }
 </script>
 
@@ -51,7 +51,7 @@ select {
 .region {
   /* border: 1px dashed black; */
 }
-.Assessments {
+.Allergies {
   padding: 1rem;
 
   &__main {

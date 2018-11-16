@@ -3,9 +3,10 @@
     h1(slot="ehrPageTitle") Surgical
     div(class="region")
       p component name: Surgical
-      p redirect: none
+      p title: Surgical
+      p redirect: 
       p route name: surgical
-      p full path: base/patient/history/surgical
+      p full path: /ehr/patient/history/surgical
       p another line now using spaces
     div(class="region")
       div(class="columns")

@@ -1,11 +1,12 @@
 <template lang="pug">
   div(:class="$options.name")
-    h1(slot="ehrPageTitle") No,Med
+    h1(slot="ehrPageTitle") No Med
     div(class="region")
       p component name: NoMed
-      p redirect: base/current/no-med/no-med-orders
+      p title: No Med
+      p redirect: /ehr/current/no-med/no-med-orders
       p route name: no-med
-      p full path: base/current/no-med
+      p full path: /ehr/current/no-med
       p another line now using spaces
     div(class="region")
       div(class="columns")

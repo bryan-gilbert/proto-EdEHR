@@ -3,9 +3,10 @@
     h1(slot="ehrPageTitle") Discharge
     div(class="region")
       p component name: Discharge
-      p redirect: none
+      p title: Discharge
+      p redirect: 
       p route name: discharge
-      p full path: base/current/discharge
+      p full path: /ehr/current/discharge
       p another line now using spaces
     div(class="region")
       div(class="columns")
