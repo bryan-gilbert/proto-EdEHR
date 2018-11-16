@@ -57,11 +57,11 @@ export function inside() {
       meta: { layout: 'inside', label: 'Immunization' }
     },
     {
-      path: '/ehr/patient/history/cn',
-      name: 'cn',
+      path: '/ehr/patient/history/family-history',
+      name: 'family-history',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Cn.vue'),
-      meta: { layout: 'inside', label: 'Patient' }
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/FamilyHistory.vue'),
+      meta: { layout: 'inside', label: 'Family History' }
     },
     {
       path: '/ehr/patient/care-team',
@@ -113,10 +113,10 @@ export function inside() {
       meta: { layout: 'inside', label: 'Neurological' }
     },
     {
-      path: '/ehr/current/assessments/respirator',
-      name: 'respirator',
+      path: '/ehr/current/assessments/respiratory',
+      name: 'respiratory',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Respirator.vue'),
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Respiratory.vue'),
       meta: { layout: 'inside', label: 'Respiratory' }
     },
     {
@@ -223,6 +223,13 @@ export function inside() {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Chart.vue'),
       meta: { layout: 'inside', label: 'Patient chart' }
+    },
+    {
+      path: '/ehr/chart/progress-notes',
+      name: 'progress-notes',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/ProgressNotes.vue'),
+      meta: { layout: 'inside', label: 'Progress notes' }
     },
     {
       path: '/ehr/chart/care-plan',

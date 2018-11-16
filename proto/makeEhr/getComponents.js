@@ -6,7 +6,7 @@ const defs = require('./defs')
 // TODO add this on back into defs
 //   { "p": "ehr/chart", "n": "progress-notes", "l": "Progress notes"},
 
-const destVueFiles = './views'
+const destVueFiles = './generated'
 const destRouteFiles = './routes'
 const source = 'source'
 
@@ -108,7 +108,9 @@ function makeVueFiles () {
   const templateFileName = pathUtil.join(__dirname, source, 'baseTemplate.txt')
   const componentTemplate = fs.readFileSync(templateFileName, 'utf8')
   defs.forEach(def => {
-    makeVueFile(def, componentTemplate)
+    if (!def.novue) {
+      makeVueFile(def, componentTemplate)
+    }
   })
 }
 
@@ -123,6 +125,7 @@ function makeVueFile (def, componentTemplate) {
     .replace(/{redirect}/g, def.redirect)
     .replace(/{rName}/g, def.routeName)
     .replace(/{path}/g, def.fullPath)
+  content = '// Generated VUE file. Before modifying see docs about Vue file generation \n' + content
   var outfilename = pathUtil.join(destVueFiles, def.componentName + '.vue')
   fs.writeFileSync(outfilename, content, 'utf8')
 }

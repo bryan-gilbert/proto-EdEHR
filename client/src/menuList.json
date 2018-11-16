@@ -126,17 +126,17 @@
           "children": []
         },
         {
-          "name": "cn",
-          "label": "Patient",
-          "fPath": "/ehr/patient/history/cn",
+          "name": "family-history",
+          "label": "Family History",
+          "fPath": "/ehr/patient/history/family-history",
           "def": {
             "path": "/ehr/patient/history",
-            "rn": "cn",
-            "label": "Patient",
-            "componentName": "Cn",
-            "routeName": "cn",
-            "fullPath": "/ehr/patient/history/cn",
-            "title": "Cn",
+            "rn": "family-history",
+            "label": "Family History",
+            "componentName": "FamilyHistory",
+            "routeName": "family-history",
+            "fullPath": "/ehr/patient/history/family-history",
+            "title": "Family History",
             "redirect": ""
           },
           "children": []
@@ -255,17 +255,17 @@
           "children": []
         },
         {
-          "name": "respirator",
+          "name": "respiratory",
           "label": "Respiratory",
-          "fPath": "/ehr/current/assessments/respirator",
+          "fPath": "/ehr/current/assessments/respiratory",
           "def": {
             "path": "/ehr/current/assessments",
-            "rn": "respirator",
+            "rn": "respiratory",
             "label": "Respiratory",
-            "componentName": "Respirator",
-            "routeName": "respirator",
-            "fullPath": "/ehr/current/assessments/respirator",
-            "title": "Respirator",
+            "componentName": "Respiratory",
+            "routeName": "respiratory",
+            "fullPath": "/ehr/current/assessments/respiratory",
+            "title": "Respiratory",
             "redirect": ""
           },
           "children": []
@@ -514,6 +514,23 @@
     "redirect": ""
   },
   "children": [
+    {
+      "name": "progress-notes",
+      "label": "Progress notes",
+      "fPath": "/ehr/chart/progress-notes",
+      "def": {
+        "novue": "true",
+        "path": "/ehr/chart",
+        "rn": "progress-notes",
+        "label": "Progress notes",
+        "componentName": "ProgressNotes",
+        "routeName": "progress-notes",
+        "fullPath": "/ehr/chart/progress-notes",
+        "title": "Progress Notes",
+        "redirect": ""
+      },
+      "children": []
+    },
     {
       "name": "care-plan",
       "label": "Interprofessional plan of care",

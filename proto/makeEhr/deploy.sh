@@ -1,7 +1,8 @@
 #!/bin/bash
 ## chmod u+x deploy.sh
+rm generated/*.vue
 node getComponents
-cp views/*.vue ../../client/src/inside/views/
+cp generated/*.vue ../../client/src/inside/views/
 cp routes/menuList.json ../../client/src/
 
 ## The vue cli run prettier. This next call runs prettier on our generated file so we can checkin a file

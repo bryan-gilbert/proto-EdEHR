@@ -1,11 +1,13 @@
+// Generated VUE file. Before modifying see docs about Vue file generation 
 <template lang="pug">
   div(:class="$options.name")
-    h1(slot="ehrPageTitle") Allegies
+    h1(slot="ehrPageTitle") Respiratory
     div(class="region")
-      p component name: Allegies
-      p redirect: none
-      p route name: allegies
-      p full path: base/patient/allegies
+      p component name: Respiratory
+      p title: Respiratory
+      p redirect: 
+      p route name: respiratory
+      p full path: /ehr/current/assessments/respiratory
       p another line now using spaces
     div(class="region")
       div(class="columns")
@@ -36,7 +38,7 @@
 
 <script>
 export default {
-  name: 'Allegies'
+  name: 'Respiratory'
 }
 </script>
 
@@ -50,7 +52,7 @@ select {
 .region {
   /* border: 1px dashed black; */
 }
-.Allegies {
+.Respiratory {
   padding: 1rem;
 
   &__main {
