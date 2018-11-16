@@ -18,7 +18,8 @@ export default {
   },
   computed: {
     menuList() {
-      var menu = require('./menu.json')
+      // read the menu definition stored in the project root src (client/src)
+      var menu = require('../../menuList.json')
       return menu
     }
   }

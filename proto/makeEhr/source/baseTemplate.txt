@@ -3,6 +3,7 @@
     h1(slot="ehrPageTitle") {title}
     div(class="region")
       p component name: {componentName}
+      p title: {title}
       p redirect: {redirect}
       p route name: {rName}
       p full path: {path}
@@ -36,7 +37,7 @@
 
 <script>
 export default {
-  name: '{name}'
+  name: '{componentName}'
 }
 </script>
 
@@ -50,7 +51,7 @@ select {
 .region {
   /* border: 1px dashed black; */
 }
-.{name} {
+.{componentName} {
   padding: 1rem;
 
   &__main {

@@ -4,7 +4,7 @@ const camelcase = require('camelcase')
 
 const defs = require('./defs')
 // TODO add this on back into defs
-//   { "p": "base/chart", "n": "progress-notes", "l": "Progress notes"},
+//   { "p": "ehr/chart", "n": "progress-notes", "l": "Progress notes"},
 
 const destVueFiles = './views'
 const destRouteFiles = './routes'
@@ -12,16 +12,53 @@ const source = 'source'
 
 main()
 function main () {
-  // makeVueFiles()
+  flushDefs()
   var tree = makeTree()
+  makeVueFiles()
   makeMenu(tree)
+  makeRoutes()
 }
 
+function flushDefs () {
+  defs.forEach(def => {
+    def.componentName = camelcase(def.rn, { pascalCase: true })
+    def.routeName = def.rn
+    def.fullPath = def.path + '/' + def.rn
+    def.title = def.title || splitCamelCase(def.componentName)
+    def.label = def.label || def.title
+    def.redirect = def.redirect ? def.redirect : ''
+  })
+}
+
+function makeRoutes () {
+  var routes = []
+  var s1 = '    '
+  var s2 = '      '
+  var s3 = '        '
+  routes.push('export function inside() {\n' + '  return [')
+  var parts = []
+  defs.forEach(def => {
+    var rt = ''
+    rt += `${s1}{\n`
+    rt += `${s2}path: '${def.fullPath}',\n`
+    rt += `${s2}name: '${def.routeName}',\n`
+    rt += `${s2}component: () =>\n`
+    rt += `${s3}import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/${def.componentName}.vue'),\n`
+    rt += `${s2}meta: { layout: 'inside', label: '${def.label}' }\n`
+    rt += `${s1}}`
+    parts.push(rt)
+  })
+  routes.push(parts.join(',\n'))
+  routes.push('  ]\n' + '}\n')
+  var pathOutput = routes.join('\n')
+  var outfilename = pathUtil.join(destRouteFiles, 'insideRoutes.js')
+  fs.writeFileSync(outfilename, pathOutput, 'utf8')
+}
 function findTreeItem (def, tree) {
-  var paths = def.p.split('/')
+  var paths = def.path.split('/')
   paths.shift()
-  // console.log('Look for ', def.p, paths)
-  var item = tree['base']
+  // console.log('Look for ', def.path, paths)
+  var item = tree['root']
   paths.forEach((p) => {
     // console.log('item children', item.children)
     item.children.forEach((child) => {
@@ -34,10 +71,9 @@ function findTreeItem (def, tree) {
 }
 function makeTreeItem (def, tree) {
   var item = {}
-  item.name = def.n
-  item.label = def.l
-  item.fPath = def.p + '/' + def.n
-  item.fPath = item.fPath.replace(/base/, '/ehr')
+  item.name = def.rn
+  item.label = def.label
+  item.fPath = def.path + '/' + def.rn
   item.def = def
   item.children = []
   var parent = findTreeItem(def, tree)
@@ -46,7 +82,7 @@ function makeTreeItem (def, tree) {
 
 function makeTree () {
   var tree = {}
-  tree.base = { children: [] }
+  tree.root = { children: [] }
   defs.forEach(def => {
     makeTreeItem(def, tree)
   })
@@ -60,7 +96,7 @@ function makeMenu (tree) {
   var content = []
   content.push('[')
   var elements = []
-  tree.base.children.forEach((c) => elements.push(JSON.stringify(c, null, 2)))
+  tree.root.children.forEach((c) => elements.push(JSON.stringify(c, null, 2)))
   content.push(elements.join(','))
   content.push(']')
   var txtContent = content.join('\n')
@@ -69,61 +105,24 @@ function makeMenu (tree) {
 }
 
 function makeVueFiles () {
-  const pathOutputFileName = pathUtil.join(__dirname, 'pathList.txt')
   const templateFileName = pathUtil.join(__dirname, source, 'baseTemplate.txt')
   const componentTemplate = fs.readFileSync(templateFileName, 'utf8')
-  var ehrPaths = []
   defs.forEach(def => {
-    makefile(def, ehrPaths, componentTemplate)
+    makeVueFile(def, componentTemplate)
   })
-  var pathOutput = ehrPaths.join('\n')
-  fs.writeFileSync(pathOutputFileName, pathOutput, 'utf8')
 }
 
 function splitCamelCase (string) {
-  return string.split(/(?=[A-Z])/g)
+  return string.split(/(?=[A-Z])/g).join(' ')
 }
 
-// var dest = '../../client/src/inside/views'
-
-// defs.forEach(def => {
-//   // makefile(p))
-//   var pp = def.p.split('/')
-//   var container
-//   var container = pathTree.base
-//   for (var i = 0; i < pp.length; i++) {
-//     var part = pp[i]
-//     for (var k = 0; k < container.length; k++) {
-//       var elem = container[k]
-//       if (elem.n === part) {
-//       }
-//     }
-//   }
-//   pp.forEach(part => {
-//     container = pathTree[part] = pathTree[part] || []
-//   })
-//   // container is the last in the path
-//   container.push(def)
-// })
-// var pathOutput = JSON.stringify(pathTree, null, 2)
-// fs.writeFileSync(pathOutputFileName, pathOutput, 'utf8')
-
-function makefile (def, ehrPaths, componentTemplate) {
-  var p = def.n
-  var route = def.p + '/' + def.n
-  ehrPaths.push(p)
-  var parts = p.split('/')
-  var name = camelcase(parts[parts.length - 1])
-  var proper = name.charAt(0).toUpperCase() + name.slice(1)
-  var title = p.title || splitCamelCase(proper)
-  var redirect = def.redirect ? def.redirect : 'none'
+function makeVueFile (def, componentTemplate) {
   var content = componentTemplate
-    .replace(/{title}/g, title)
-    .replace(/{name}/g, proper)
-    .replace(/{componentName}/g, proper)
-    .replace(/{redirect}/g, redirect)
-    .replace(/{rName}/g, def.n)
-    .replace(/{path}/g, route)
-  var outfilename = pathUtil.join(destVueFiles, proper + '.vue')
+    .replace(/{title}/g, def.title)
+    .replace(/{componentName}/g, def.componentName)
+    .replace(/{redirect}/g, def.redirect)
+    .replace(/{rName}/g, def.routeName)
+    .replace(/{path}/g, def.fullPath)
+  var outfilename = pathUtil.join(destVueFiles, def.componentName + '.vue')
   fs.writeFileSync(outfilename, content, 'utf8')
 }
