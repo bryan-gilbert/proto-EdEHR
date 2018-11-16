@@ -1,8 +1,9 @@
 <template lang="pug">
-	div(:class="`${$options.name}`")
-		div(:class="`${$options.name}__teaserList`")
-			ehr-nav-list-item(:path="path", :level="level")
-			ehr-nav-list(v-for="child in path.children", v-bind:key="child.name" :path="child" :level="level + 1")
+  div(:class="`${$options.name}`")
+    div(:class="`${$options.name}__teaserList`", @click="toggle")
+      ehr-nav-list-item(:path="path", :level="level")
+      div(v-show="open")
+        ehr-nav-list(v-for="child in path.children", v-bind:key="child.name" :path="child" :level="level + 1")
 </template>
 
 <script>
@@ -16,11 +17,24 @@ export default {
     EhrNavList,
     EhrNavListItem
   },
+  data: function () {
+    return {
+      open: true
+    }
+  },
   props: {
     path: {
       type: Object
     },
     level: { type: Number }
+  },
+  methods: {
+    toggle: function(event) {
+      if (this.level === 1) {
+        this.open = !this.open
+      }
+      event.stopPropagation()
+    }
   }
 }
 </script>
