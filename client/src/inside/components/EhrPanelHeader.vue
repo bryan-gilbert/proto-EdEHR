@@ -1,6 +1,8 @@
 <template>
   <div :class="$options.name">
-    <slot name="ehrtitle">Panel Title</slot>
+    <h1>
+    <slot>Panel Title</slot>
+    </h1>
   </div>
 </template>
 
@@ -13,14 +15,15 @@ export default {
 
 <style lang="scss" scoped>
 .EhrPanelHeader {
-  padding: 0.4rem 1rem;
+  padding: 0.4rem 1.5rem;
   background-color: #f7f9fa;
   color: #50545b;
+  height: 60px;
 
   h1 {
-    font-size: 1.8rem;
+    font-size: 30px;
     font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
+    font-weight: 600;
   }
 }
 </style>

@@ -52,7 +52,7 @@ export default {
 
 <style lang="scss" scoped>
 .EhrPanelContent {
-  padding: 1rem;
+  padding: 20px 1.5rem;
 
   &__main {
     font-size: 0.8rem;

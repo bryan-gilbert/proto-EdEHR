@@ -17,7 +17,7 @@ export default {
     EhrNavList,
     EhrNavListItem
   },
-  data: function () {
+  data: function() {
     return {
       open: true
     }

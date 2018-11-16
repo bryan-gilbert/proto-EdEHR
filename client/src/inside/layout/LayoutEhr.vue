@@ -10,7 +10,10 @@
         </div>
         <div name="content" :class="`${$options.name}__content column`">
           <ehr-banner></ehr-banner>
-          {{ path }} <slot>where is it?</slot>
+          <slot>
+            Main EHR content for a component will appear here.
+            The component is selected by the router
+          </slot>
         </div>
       </div>
     </main>
@@ -55,6 +58,9 @@ $navWidth: 234px;
 $pageWidth: 1024px;
 
 .LayoutDefault {
+  h1 {
+    font-size: 3rem;
+  }
   &__main {
     color: #6a6c73;
     background-color: white;

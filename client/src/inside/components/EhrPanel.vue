@@ -1,7 +1,7 @@
 <template lang="pug">
 	div(:class="$options.name")
 		div
-			slot(name="etitle") in p
+			slot(name="ehrPageTitle") in ehrPageTitle
 		slot Here
 </template>
 
@@ -20,5 +20,6 @@ export default {
 
 <style lang="scss" scoped>
 .EhrPanel {
+  padding-left:1.5rem;
 }
 </style>
