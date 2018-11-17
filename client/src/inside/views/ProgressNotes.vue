@@ -1,35 +1,39 @@
 <template lang="pug">
-	div(:class="$options.name")
-		h1(slot="ehrPageTitle") Patient Notes
-		div#progressNote
-			ui-button(v-on:buttonClicked="addNote" v-bind:disabled="disableActions") Add a new progress note
-			div(:class="`${$options.name}__main`")
-				table.table
-					thead
-						tr
-							th.name(title="Name") Name
-							th.position(title="Position") Position
-							th.unit(title="Unit") Unit
-							th.day(title="Day") Day
-							th.time(title="Time") Time
-							th.notes(title="Progress Notes") Progress Notes
-					tbody
-						tr(v-for="item in progressNotes")
-							td.name {{ item.name }}
-							td.position {{ item.position}}
-							td.unit {{ item.unit }}
-							td.day {{ item.day }}
-							td.time {{ item.time }}
-							td.notes {{ item.notes }}
+  div(:class="$options.name")
+    ehr-panel-header Patient Notes
+    ehr-panel-content
+      ui-button(v-on:buttonClicked="addNote" v-bind:disabled="disableActions") Add a new progress note
+      div(:class="`${$options.name}__main`")
+        table.table
+          thead
+            tr
+              th.name(title="Name") Name
+              th.position(title="Position") Position
+              th.unit(title="Unit") Unit
+              th.day(title="Day") Day
+              th.time(title="Time") Time
+              th.notes(title="Progress Notes") Progress Notes
+          tbody
+            tr(v-for="item in progressNotes")
+              td.name {{ item.name }}
+              td.position {{ item.position}}
+              td.unit {{ item.unit }}
+              td.day {{ item.day }}
+              td.time {{ item.time }}
+              td.notes {{ item.notes }}
 </template>
 
 <script>
 import UiButton from '../../app/ui/UiButton.vue'
 import { getPhrase, getName } from '../poc-utils'
+import EhrPanelHeader from '../components/EhrPanelHeader.vue'
+import EhrPanelContent from '../components/EhrPanelContent.vue'
 
 export default {
-  name: 'EhrPanelContent',
+  name: 'ProgressNotes',
   components: {
+    EhrPanelHeader,
+    EhrPanelContent,
     UiButton
   },
   data: function() {
@@ -71,7 +75,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.EhrPanelContent {
+.ProgressNotes {
   padding: 1rem;
 
   &__main {

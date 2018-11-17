@@ -13,6 +13,19 @@ Vue.use(Vuex)
 //   actions: {}
 // });
 
+/* global localStorage */
+function resetState (state) {
+  let d = {}
+  state.sUserInfo = d
+  state.sActivityInfo = d
+  state.sVisitInfo = d
+  state.sVisitDataInfo = d
+  state.userId = ''
+  state.isValidUser = false
+  localStorage.removeItem('token')
+  state.isLoggedIn = false
+}
+
 const store = new Vuex.Store({
   state: {
     sUserInfo: {},
@@ -21,21 +34,26 @@ const store = new Vuex.Store({
     sVisitDataInfo: {},
     userId: '',
     isValidUser: false,
-    isLoggedOn: false
+    isLoggedIn: !!localStorage.getItem('token')
   },
   plugins: [createLogger()],
   mutations: {
+    logout: state => {
+      console.log('mutation logout')
+      resetState(state)
+    },
+    routeEnter: state => {
+      var token = localStorage.getItem('token')
+      console.log('mutation route enter found token ', token)
+      state.token = token
+      state.isLoggedIn = !!token
+    },
     resetInfo: state => {
-      let d = {}
-      state.sUserInfo = d
-      state.sActivityInfo = d
-      state.sVisitInfo = d
-      state.sVisitDataInfo = d
-      state.userId = ''
-      state.isValidUser = false
+      resetState(state)
     },
     setUserId: (state, id) => {
       console.log('store user id into global store', id)
+      localStorage.setItem('token', id)
       state.userId = id
     },
     setValidUser: (state, isValid) => {
@@ -55,7 +73,14 @@ const store = new Vuex.Store({
     }
   },
   actions: {
-    addPNotes(context, payload) {
+    routeEnter ({ commit }) {
+      console.log('action routeEnter')
+      commit('routeEnter')
+    },
+    logout ({ commit }) {
+      commit('logout')
+    },
+    addPNotes (context, payload) {
       let visitData = context.state.sVisitDataInfo
       let vid = visitData._id
       let newNote = payload.note

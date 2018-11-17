@@ -26,7 +26,6 @@ export default {
   },
   computed: {
     path() {
-      console.log('this.$route', this.$route)
       return this.$route.path
     }
   }
@@ -56,12 +55,12 @@ body {
   &__nav {
     // @include wrapper('narrow');
     max-width: $navWidth;
-    height: $contentMinHeigth;
+    min-height: $contentMinHeigth;
     padding: 0;
     margin: 0;
   }
   &__content {
-    height: $contentMinHeigth;
+    min-height: $contentMinHeigth;
     padding: 0;
     margin: 0;
   }

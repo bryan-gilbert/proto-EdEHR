@@ -19,7 +19,7 @@
           </li>
           <li :class="`${$options.name}__navItem`">
             <router-link
-              :to="{ name: `ehr` }"
+              :to="{ name: `progress-notes` }"
               :class="`${$options.name}__navLink`"
               >EHR</router-link
             >
@@ -28,7 +28,7 @@
             <router-link
               :to="{ name: `account` }"
               :class="`${$options.name}__navLink`"
-              >Account</router-link
+              >Account - {{ username }}</router-link
             >
           </li>
           <li :class="`${$options.name}__navItem`">
@@ -46,7 +46,13 @@
 
 <script>
 export default {
-  name: 'AppHeader'
+  name: 'AppHeader',
+  computed: {
+    username() {
+      let info = this.$store.state.sUserInfo
+      return info.givenName
+    }
+  }
 }
 </script>
 

@@ -3,7 +3,7 @@
     <component :is="layout"> <router-view /> </component>
     <div>
       <li v-for="(value, propertyName) in userInfo" v-bind:key="propertyName">
-         <strong>{{ propertyName }}</strong> : {{ value }}
+        <strong>{{ propertyName }}</strong> : {{ value }}
       </li>
     </div>
   </div>
@@ -34,12 +34,18 @@ export default {
       var url2 = new URL(window.location)
       var params2 = new URLSearchParams(url2.search)
       var userId = params2.get('user')
-      console.log('Store user id from incoming url ', url2)
-      this.$store.commit('resetInfo')
-      if (userId) {
-        this.$store.commit('setUserId', userId)
-        this.loadUserInfo(userId)
+      if (!userId) {
+        console.log('No user id so return but what is in storage?')
+        console.log('userId:', this.$store.state.userId)
+        return
       }
+      var currentId = this.$store.userId
+      if (userId !== currentId) {
+        console.log('Store user id from incoming url ', url2)
+        this.$store.commit('resetInfo')
+        this.$store.commit('setUserId', userId)
+      }
+      this.loadUserInfo(userId)
     },
     loadUserInfo: function(userId) {
       return new Promise(() => {
@@ -75,7 +81,8 @@ export default {
           let data = {}
           if (error) {
             console.log(
-              'Current visit not found. This is an ERROR because the incoming request indicated a user should be registered'
+              'Current visit not found.\n' +
+                ' This is an ERROR because the incoming request indicated a user should be registered'
             )
           } else {
             data = Object.assign({}, results.visit)
@@ -99,7 +106,8 @@ export default {
           let data = {}
           if (error) {
             console.log(
-              'load activity data not found. This is an ERROR because the incoming request indicated a user should be registered'
+              'load activity data not found.\n' +
+                'This is an ERROR because the incoming request indicated a user should be registered'
             )
           } else {
             data = Object.assign({}, results.activity)
@@ -113,7 +121,7 @@ export default {
       return new Promise(() => {
         let vdid = visitInfo.visitData
         let url = this.apiUrl + 'visitdata/' + vdid
-        console.log('In visit data ', url)
+        console.log('Load visit data ', url)
         this.getSomething(url, (error, results) => {
           let data = {}
           if (error) {
@@ -134,7 +142,7 @@ export default {
       // const matched = this.$route
       const rl = this.$route.meta.layout
       const l = (rl || DefaultLayout) + '-layout'
-      console.log('using layout ', rl, l)
+      // console.log('using layout ', rl, l)
       return l
     },
     apiUrl: function() {
