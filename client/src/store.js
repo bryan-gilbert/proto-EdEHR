@@ -17,11 +17,11 @@ Vue.use(Vuex)
 function resetState (state) {
   let d = {}
   state.sUserInfo = d
+  state.fullName = ''
   state.sActivityInfo = d
   state.sVisitInfo = d
   state.sVisitDataInfo = d
   state.userId = ''
-  state.isValidUser = false
   localStorage.removeItem('token')
   state.isLoggedIn = false
 }
@@ -29,11 +29,11 @@ function resetState (state) {
 const store = new Vuex.Store({
   state: {
     sUserInfo: {},
+    fullName: '',
     sActivityInfo: {},
     sVisitInfo: {},
     sVisitDataInfo: {},
     userId: '',
-    isValidUser: false,
     isLoggedIn: !!localStorage.getItem('token')
   },
   plugins: [createLogger()],
@@ -53,14 +53,13 @@ const store = new Vuex.Store({
     },
     setUserId: (state, id) => {
       console.log('store user id into global store', id)
+      resetState(state)
       localStorage.setItem('token', id)
       state.userId = id
     },
-    setValidUser: (state, isValid) => {
-      state.isValidUser = isValid
-    },
     setUserInfo: (state, userInfo) => {
       state.sUserInfo = userInfo
+      state.fullName = makeFullName(userInfo)
     },
     setActivityInfo: (state, info) => {
       state.sActivityInfo = info
@@ -109,3 +108,12 @@ const store = new Vuex.Store({
 })
 
 export default store
+
+function makeFullName (userInfo) {
+  let n = userInfo.givenName ? userInfo.givenName : ''
+  n +=
+    userInfo.familyName && userInfo.familyName.trim().length > 0
+      ? ' ' + userInfo.familyName
+      : ''
+  return n
+}

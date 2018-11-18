@@ -44,6 +44,12 @@ export function outside() {
       name: 'instructor',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/components/Instructor.vue')
+    },
+    {
+      path: '/dbtables',
+      name: 'dbtables',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/DbTables.vue')
     }
   ]
 }
