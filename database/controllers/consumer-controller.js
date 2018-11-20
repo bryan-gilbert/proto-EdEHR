@@ -19,20 +19,6 @@ export default class ConsumerController extends BaseController {
         console.log('found default consumer', found.tool_consumer_instance_name)
       } else {
         console.log('No default found so create one')
-        const def = {
-          oauth_consumer_key: KEY,
-          oauth_consumer_secret: SECRET,
-          lti_version: ltiVersions()[0],
-          tool_consumer_info_product_family_code: 'EdEHR',
-          tool_consumer_info_version: 'prototype',
-          tool_consumer_instance_description: 'Use for prototyping',
-          tool_consumer_instance_guid: 'EdEHRPrototype',
-          tool_consumer_instance_name: 'EdEHRPrototype'
-        }
-        Consumer.create(def)
-        .then((response, reject) => {
-          console.log('save results', response, reject)
-        })
       }
     })
   }

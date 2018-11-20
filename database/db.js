@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 
+// TODO pass in and use config
 export default function (callback) {
   const dbName = 'scratch'
   const dbServer = 'localhost:27018'
@@ -8,9 +9,9 @@ export default function (callback) {
   console.log('DB URN', urn)
   mongoose
   .connect(urn, { useNewUrlParser: true })
-  .then(() => {
+  .then((conn) => {
     console.log('MongoDB Connected to ' + db)
-    callback()
+    callback(conn)
   })
   .catch(err => console.log(err))
 }

@@ -321,7 +321,7 @@ export default class LTIController {
         visit.lti_roles = ltiData.roles
         visit.launch_presentation_return_url = ltiData.launch_presentation_return_url
 
-        visit.save()
+        return visit.save()
         .then(() => {
           // reuse a previous session for this activity
           if (user.currentVisit !== visit._id) {

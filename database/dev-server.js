@@ -3,6 +3,8 @@ import bodyParser from 'body-parser'
 import db from './db'
 import apiMiddle from './middleware/api.js'
 
+const config = require('./config/config')
+
 const debug = require('debug')('server')
 
 const app = express()
@@ -11,14 +13,14 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-db(() => {
-  apiMiddle(app).then((api) => {
+db((conn) => {
+  app.connection = conn
+
+  apiMiddle(app, config).then((api) => {
     app.use('/', api)
 
     // const sessionCounter = require('./middleware/session-counter')
     // app.use(sessionCounter)
-
-
 
 // catch 404 and forward to error handler
     app.use(function (req, res, next) {
@@ -46,7 +48,7 @@ db(() => {
       res.send(err.message)
     })
 
-    const port = 27000
+    const port = config.port
     app.listen(port, () => console.log('Server running...', port))
   })
 })
