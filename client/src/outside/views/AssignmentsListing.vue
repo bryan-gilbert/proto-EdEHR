@@ -1,8 +1,15 @@
 <template lang="pug">
   div
     h1 Ed EHR Assignments
-    p Below is a listing of assignments supported by this Ed EHR
-    p Your LMS is asking for "{{ activity.custom_assignment }}" which must exist in the listing below
+    div(v-if="error")
+      p Error: {{ error }}
+      p Your LMS is asking for "{{ activity.custom_assignment }}" which must exist in the listing below
+    div
+      ul
+        li(v-for="(value, propertyName) in visitData" v-bind:key="propertyName")
+          span {{ propertyName }} : {{ value }}
+    div
+      p Below is a listing of assignments supported by this Ed EHR
     table.table
       thead
         tr
@@ -64,6 +71,16 @@ export default {
     assignmentsListing() {
       return this.$store.state.sAssignments
     }
+  },
+  data: function() {
+    return {
+      error: null
+    }
+  },
+  mounted: function() {
+    var url2 = new URL(window.location)
+    var params2 = new URLSearchParams(url2.search)
+    this.error = params2.get('error')
   }
 }
 </script>
