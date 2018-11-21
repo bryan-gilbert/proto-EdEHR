@@ -2,10 +2,11 @@
 import UserController from '../controllers/user-controller'
 import ConsumerController from '../controllers/consumer-controller'
 import ActivityController from '../controllers/activity-controller'
+import AssignmentController from '../controllers/assignment-controller'
 import VisitController from './visit-controller'
 import VisitDataController from './visit-data-controller'
 
-import {ParameterError, ConfigurationChangeError, SystemError} from '../utils/errors'
+import {AssignmentMismatchError, ParameterError, SystemError} from '../utils/errors'
 
 // destructure the Router from the express package
 const { Router } = require('express')
@@ -22,6 +23,7 @@ const {ok, fail, ltiVersions} = require('./utils')
 const UserModel = new UserController()
 const ConsumerModel = new ConsumerController()
 const ActivityModel = new ActivityController()
+const AssignmentModel = new AssignmentController()
 const VisitModel = new VisitController()
 const VisitDataModel = new VisitDataController()
 
@@ -81,7 +83,8 @@ export default class LTIController {
           // store the LTI data for further processing after setting up the user
         req.ltiData = req.body
         ConsumerModel.read(req.user.toolConsumer).then((holder) => {
-          debug('strategyVerify. req has user and we just found the tool consumer too ' + holder.consumer)
+          var tcid = holder.consumer ? holder.consumer._id : null
+          debug(`strategyVerify. just searched for the tool consumer id: ${tcid}`)
           req.toolConsumer = holder.consumer
           callback(null, req.user)
         })
@@ -212,73 +215,33 @@ export default class LTIController {
     // see models/outcomes.js
   }
 
+  locateAssignment (req) {
+    return new Promise((resolve, reject) => {
+      var externalId = req.ltiData.custom_assignment
+      //     externalId = 'assignment1'
+      AssignmentModel.locateAssignmentByExternalId(externalId)
+      .then((assignment) => {
+        console.log('assignment ', assignment)
+        if (!assignment) {
+          var msg = 'Could not locate assignment for ' + externalId
+          reject(new AssignmentMismatchError(msg))
+        }
+        resolve(assignment)
+      })
+    })
+  }
   updateActivity (req) {
     debug('updateActivity')
-    var data
-    const ltiData = req.ltiData
-    const toolConsumer = req.toolConsumer
-    if (!toolConsumer) {
+    if (!req.toolConsumer) {
       throw new SystemError('Missing tool consumer while updating activity records')
     }
-    debug('updateActivity search for existing activity ' + ltiData.resource_link_id)
-    return new Promise(function (resolve, reject) {
-      ActivityModel.findOne({$and: [{resource_link_id: ltiData.resource_link_id}, {toolConsumer: toolConsumer._id}]})
-      .then((activity) => {
-        if (activity) {
-          debug('updateActivity found activity ' + activity._id)
-          // save record into request for next stage of launch
-          req.activity = activity
-
-          // Validate the data
-          if (activity.context_id !== ltiData.context_id) {
-            let msg = 'Unexpected change in activity context id.  Was: ' + activity.context_id + ' now ' + ltiData.context_id
-            debug('updateActivity ' + msg)
-            reject(new ConfigurationChangeError(msg))
-          }
-          if (activity.custom_assignment !== ltiData.custom_assignment) {
-            let msg = 'Unexpected change in activity custom assignment id.  Was: ' + activity.custom_assignment + ' now ' + ltiData.custom_assignment
-            debug('updateActivity ' + msg)
-            reject(new ConfigurationChangeError(msg))
-          }
-
-          let current = JSON.stringify(activity)
-          activity.context_label = ltiData.context_label
-          activity.context_title = ltiData.context_title
-          activity.context_type = ltiData.context_type
-          activity.resource_link_title = ltiData.resource_link_title
-          activity.resource_link_description = ltiData.resource_link_description
-          let updated = JSON.stringify(activity)
-
-          // If anything has changed then update the database
-          if (current !== updated) {
-            debug('updateActivity there is something different in the activity. Saving new activity data ' + updated)
-            activity.save().then(resolve)
-          }
-          // else return a promise
-          debug('updateActivity resolve ' + activity._id)
-          resolve(activity)
-        } else {
-          // create a new activity record
-          data = {
-            resource_link_id: ltiData.resource_link_id,
-            toolConsumer: toolConsumer._id,
-            custom_assignment: ltiData.custom_assignment,
-            context_id: ltiData.context_id,
-            context_label: ltiData.context_label,
-            context_title: ltiData.context_title,
-            context_type: ltiData.context_type,
-            resource_link_title: ltiData.resource_link_title,
-            resource_link_description: ltiData.resource_link_description
-          }
-          debug('updateActivity create new activity record ' + JSON.stringify((data)))
-          ActivityModel.create(data)
-          .then((newActivity) => {
-            debug('updateActivity new activity ' + newActivity._id)
-            req.activity = newActivity.activity
-            resolve(newActivity)
-          })
-        }
-      })
+    if (!req.ltiData) {
+      throw new SystemError('Missing LTI data while updating activity records')
+    }
+    return ActivityModel.updateCreateActivity(req.ltiData, req.toolConsumer._id)
+    .then((activity) => {
+      console.log('store the activity in the req')
+      req.activity = activity
     })
   }
 
@@ -391,6 +354,7 @@ export default class LTIController {
       Promise.resolve()
       .then(() => { _this.updateToolConsumer(req) })
       .then(() => { return _this.updateOutcomeManagement(req) })
+      .then(() => { return _this.locateAssignment(req) })
       .then(() => { return _this.updateActivity(req) })
       .then(() => { return _this.updateVisit(req) })
       .then(() => {

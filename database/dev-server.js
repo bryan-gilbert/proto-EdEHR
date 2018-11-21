@@ -1,7 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import db from './db'
-import apiMiddle from './middleware/api.js'
+import { apiMiddle, apiError } from './middleware/api.js'
 
 const config = require('./config/config')
 
@@ -22,7 +22,7 @@ db((conn) => {
     // const sessionCounter = require('./middleware/session-counter')
     // app.use(sessionCounter)
 
-// catch 404 and forward to error handler
+    // catch 404 and forward to error handler
     app.use(function (req, res, next) {
       let { url } = req
       var env = process.env.NODE_ENV
@@ -31,22 +31,10 @@ db((conn) => {
         res.status(404).send('No favicon')
       } else {
         res.status(404).send('Could not find ' + url + '. Environment: ' + env)
-        // var ce = createError(404, 'Could not find ' + url + '. Environment: ' + env)
-        // debug('not found error ', ce)
-        // next(ce)
       }
     })
 
-// error handler
-    app.use(function (err, req, res, next) {
-      // set locals, only providing error in development
-      // res.locals.message = err.message
-      // res.locals.error = req.app.get('env') === 'development' ? err : {}
-      debug('error handler ' + err.message)
-      // render the error page
-      res.status(err.status || 500)
-      res.send(err.message)
-    })
+    apiError(app, config)
 
     const port = config.port
     app.listen(port, () => console.log('Server running...', port))

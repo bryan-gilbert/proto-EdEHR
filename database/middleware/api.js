@@ -9,6 +9,7 @@ import VisitDataController from '../controllers/visit-data-controller'
 import AdminController from '../controllers/admin-controller'
 import LTIController from '../controllers/lti'
 import seed from '../config/lib/seed'
+import {AssignmentMismatchError, ParameterError, SystemError} from '../utils/errors'
 
 // Sessions and session cookies
 // express-session stores session data here on the server and only puts session id in the cookie
@@ -22,7 +23,7 @@ const COOKIE_SECRET = process.env.COOKIE_SECRET
 const uuid = require('uuid/v4')
 const debug = require('debug')('server')
 
-export default function (app, config) {
+export function apiMiddle (app, config) {
   // SeedDB
   if (config.seedDB) {
     console.log('seeding')
@@ -81,6 +82,32 @@ export default function (app, config) {
       api.use('/visitdata', cors(corsOptions), vdc.route())
       return api
     })
+}
+
+export function apiError (app, config) {
+  // error handlers
+  app.use(logErrors)
+  app.use(clientErrorHandler)
+  app.use(errorHandler)
+}
+
+function logErrors (err, req, res, next) {
+  console.error(`Error name: ${err.name} message: ${err.message}`)
+  next(err)
+}
+
+function clientErrorHandler (err, req, res, next) {
+  // import {AssignmentMismatchError, ParameterError, SystemError} from '../utils/errors'
+  if (err.name === AssignmentMismatchError.NAME()) {
+    res.redirect('/assignments')
+  } else {
+    next(err)
+  }
+}
+
+function errorHandler (err, req, res, next) {
+  res.status(err.status || 500)
+  res.send(err.message)
 }
 
 function setupCors () {
