@@ -1,0 +1,10 @@
+[
+  { "path": "", "rn": "account"},
+  { "path": "", "rn": "dashboard"},
+  { "path": "", "rn": "help"},
+  { "path": "", "rn": "student"},
+  { "path": "", "rn": "courses"},
+  { "path": "", "rn": "assignments"},
+  { "path": "", "rn": "instructor"},
+  { "path": "", "rn": "db-tables"}
+]

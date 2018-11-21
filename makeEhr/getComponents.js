@@ -2,7 +2,6 @@ const fs = require('fs')
 const pathUtil = require('path')
 const camelcase = require('camelcase')
 
-const defs = require('./defs')
 // TODO add this on back into defs
 //   { "p": "ehr/chart", "n": "progress-notes", "l": "Progress notes"},
 
@@ -11,15 +10,34 @@ const destRouteFiles = './routes'
 const source = 'source'
 
 main()
+
 function main () {
-  flushDefs()
-  var tree = makeTree()
-  makeVueFiles()
-  makeMenu(tree)
-  makeRoutes()
+  outside()
+  inside()
 }
 
-function flushDefs () {
+function outside () {
+  const outsideDefs = require('./outsideDefs')
+  flushDefs(outsideDefs)
+  var outfilename = pathUtil.join(destRouteFiles, 'outsideRoutes.js')
+  makeRoutes(outsideDefs, 'outside', './outside/views',  outfilename)
+}
+
+function inside () {
+  const insideDefs = require('./defs')
+  flushDefs(insideDefs)
+  var outfilename = pathUtil.join(destRouteFiles, 'treeDef.json')
+
+  var tree = makeTree(insideDefs, outfilename)
+  makeVueFiles(insideDefs)
+  outfilename = pathUtil.join(destRouteFiles, 'menuList.json')
+
+  makeMenu(tree, outfilename)
+  outfilename = pathUtil.join(destRouteFiles, 'insideRoutes.js')
+  makeRoutes(insideDefs, 'inside', './inside/views', outfilename)
+}
+
+function flushDefs (defs) {
   defs.forEach(def => {
     def.componentName = camelcase(def.rn, { pascalCase: true })
     def.routeName = def.rn
@@ -30,12 +48,13 @@ function flushDefs () {
   })
 }
 
-function makeRoutes () {
+function makeRoutes (defs, layout, cPath, outfilename) {
   var routes = []
   var s1 = '    '
   var s2 = '      '
   var s3 = '        '
-  routes.push('export function inside() {\n' + '  return [')
+  routes.push(`export function ${layout}() {\n`)
+  routes.push('  return [')
   var parts = []
   defs.forEach(def => {
     var rt = ''
@@ -43,15 +62,15 @@ function makeRoutes () {
     rt += `${s2}path: '${def.fullPath}',\n`
     rt += `${s2}name: '${def.routeName}',\n`
     rt += `${s2}component: () =>\n`
-    rt += `${s3}import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/${def.componentName}.vue'),\n`
-    rt += `${s2}meta: { layout: 'inside', label: '${def.label}' }\n`
+    rt += `${s3}import(/* webpackChunkName: "chunk-[request][index]" */`
+    rt += ` '${cPath}/${def.componentName}.vue'),\n`
+    rt += `${s2}meta: { layout: '${layout}', label: '${def.label}' }\n`
     rt += `${s1}}`
     parts.push(rt)
   })
   routes.push(parts.join(',\n'))
   routes.push('  ]\n' + '}\n')
   var pathOutput = routes.join('\n')
-  var outfilename = pathUtil.join(destRouteFiles, 'insideRoutes.js')
   fs.writeFileSync(outfilename, pathOutput, 'utf8')
 }
 function findTreeItem (def, tree) {
@@ -80,19 +99,18 @@ function makeTreeItem (def, tree) {
   parent.children.push(item)
 }
 
-function makeTree () {
+function makeTree (defs, outfilename) {
   var tree = {}
   tree.root = { children: [] }
   defs.forEach(def => {
     makeTreeItem(def, tree)
   })
   var txtContent = JSON.stringify(tree, null, 2)
-  var outfilename = pathUtil.join(destRouteFiles, 'treeDef.json')
   fs.writeFileSync(outfilename, txtContent, 'utf8')
   return tree
 }
 
-function makeMenu (tree) {
+function makeMenu (tree, outfilename) {
   var content = []
   content.push('[')
   var elements = []
@@ -100,11 +118,10 @@ function makeMenu (tree) {
   content.push(elements.join(','))
   content.push(']')
   var txtContent = content.join('\n')
-  var outfilename = pathUtil.join(destRouteFiles, 'menuList.json')
   fs.writeFileSync(outfilename, txtContent, 'utf8')
 }
 
-function makeVueFiles () {
+function makeVueFiles (defs) {
   const templateFileName = pathUtil.join(__dirname, source, 'baseTemplate.txt')
   const componentTemplate = fs.readFileSync(templateFileName, 'utf8')
   defs.forEach(def => {

@@ -42,10 +42,12 @@ export default {
         userId = localStorage.getItem('token')
       }
       if (!userId) {
-        console.log('No user id on query or local storage so what to do with un authenticated user?')
+        console.log(
+          'No user id on query or local storage so what to do with un authenticated user?'
+        )
         return
       }
-      console.log("What is already in memory? this.$store.userId: " + this.$store.userId)
+      console.log('What is already in memory? this.$store.userId: ' + this.$store.userId)
       var currentId = this.$store.userId
       if (!currentId) {
         console.log('Reload needed')
@@ -70,7 +72,7 @@ export default {
             return
           }
           userInfo = Object.assign({}, results.user)
-          console.log('Found user information ... store it and then load user data', userInfo )
+          console.log('Found user information ... store it and then load user data', userInfo)
           this.$store.commit('setUserInfo', userInfo)
           this.loadCurrentVisit(userId, userInfo)
         })
@@ -166,4 +168,5 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+</style>
