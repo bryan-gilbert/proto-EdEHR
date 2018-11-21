@@ -36,6 +36,13 @@ export function outside() {
       meta: { layout: 'outside', label: 'Courses' }
     },
     {
+      path: '/assignments-listing',
+      name: 'assignments-listing',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/AssignmentsListing.vue'),
+      meta: { layout: 'outside', label: 'Assignments Listing' }
+    },
+    {
       path: '/assignments',
       name: 'assignments',
       component: () =>

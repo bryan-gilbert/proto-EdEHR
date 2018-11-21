@@ -4,6 +4,7 @@
   { "path": "", "rn": "help"},
   { "path": "", "rn": "student"},
   { "path": "", "rn": "courses"},
+  { "path": "", "rn": "assignments-listing"},
   { "path": "", "rn": "assignments"},
   { "path": "", "rn": "instructor"},
   { "path": "", "rn": "db-tables"}

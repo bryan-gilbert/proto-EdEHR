@@ -99,7 +99,8 @@ function logErrors (err, req, res, next) {
 function clientErrorHandler (err, req, res, next) {
   // import {AssignmentMismatchError, ParameterError, SystemError} from '../utils/errors'
   if (err.name === AssignmentMismatchError.NAME()) {
-    res.redirect('/assignments')
+    var url = 'http://localhost:28000/assignments-listing'
+    res.redirect(url)
   } else {
     next(err)
   }
