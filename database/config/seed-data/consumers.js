@@ -16,10 +16,10 @@ module.exports = function () {
         oauth_consumer_secret: SECRET,
         lti_version: ltiVersions()[0],
         tool_consumer_info_product_family_code: 'EdEHR',
-        tool_consumer_info_version: 'prototype',
-        tool_consumer_instance_description: 'Use for prototyping - seeded',
-        tool_consumer_instance_guid: 'EdEHRPrototype',
-        tool_consumer_instance_name: 'EdEHRPrototype'
+        tool_consumer_info_version: 'moodle',
+        tool_consumer_instance_description: 'Test instance of Moodle for prototyping - seeded',
+        tool_consumer_instance_guid: 'Moodle-Local-EdEHRPrototype',
+        tool_consumer_instance_name: 'Moodle Local EdEHRPrototype'
       }
       Consumer.create(def)
       .then((response, reject) => {

@@ -58,6 +58,7 @@ export default {
       }
       console.log('reload/load data from db')
       this.loadUserInfo(userId)
+      this.loadAssignmentListing()
     },
     // ... first in chain load User information
     loadUserInfo: function(userId) {
@@ -111,7 +112,7 @@ export default {
             this.$store.commit('resetInfo')
             return
           }
-          activityInfo = Object.assign({}, results.visit)
+          activityInfo = Object.assign({}, results.activity)
           console.log('Found activity information ... store it and then visit data', activityInfo)
           this.$store.commit('setActivityInfo', activityInfo)
         })
@@ -132,6 +133,23 @@ export default {
           visitData = Object.assign({}, results.visitdata)
           console.log('Found visit data', visitData)
           this.$store.commit('setVisitDataInfo', visitData)
+        })
+      })
+    },
+    loadAssignmentListing: function() {
+      return new Promise(() => {
+        let url = this.apiUrl + 'assignments/'
+        console.log('In load assignments ', url)
+        this.getSomething(url, (error, results) => {
+          let assignments = []
+          if (error || !results.assignments) {
+            console.error('ERROR because a user should be registered')
+            this.$store.commit('resetInfo')
+            return
+          }
+          assignments = results.assignments
+          console.log('Found assignments ... ', assignments)
+          this.$store.commit('setAssignments', assignments)
         })
       })
     }

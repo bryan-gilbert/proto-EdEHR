@@ -105,6 +105,7 @@ export default class LTIController {
             debug('strategyVerify ' + message)
             return callback(new ParameterError(message))
           }
+          // TODO update tool consumer record from LTI data
           req.toolConsumer = toolConsumer
           var provider = new lti.Provider(ltiData, toolConsumer.oauth_consumer_secret)
           debug('strategyVerify found tool consumer now validate msg with provider')
@@ -354,9 +355,9 @@ export default class LTIController {
       Promise.resolve()
       .then(() => { _this.updateToolConsumer(req) })
       .then(() => { return _this.updateOutcomeManagement(req) })
-      .then(() => { return _this.locateAssignment(req) })
       .then(() => { return _this.updateActivity(req) })
       .then(() => { return _this.updateVisit(req) })
+      .then(() => { return _this.locateAssignment(req) })
       .then(() => {
         debug('ready to redirect to the ehr')
         res.redirect('/launch_lti/userAuthenticated')
@@ -367,20 +368,6 @@ export default class LTIController {
       })
     })
 
-    router.get('/userAuthenticated', (req, res) => {
-      var session = req.session.passport
-      // var cookies = req.cookies
-      var user = req.user
-      var url = 'http://localhost:28000?user=' + user._id
-
-      console.log('authenticated user: ', user.user_id)
-      console.log('authenticated session: ', session)
-      console.log('authenticated url: ', url)
-      // res.status = 302
-      // res.setHeader('Location', url)
-      res.redirect(url)
-      // res.redirect('/users')
-    })
     return router
   }
 }

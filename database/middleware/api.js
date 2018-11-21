@@ -60,7 +60,7 @@ export function apiMiddle (app, config) {
   const lti = new LTIController()
   const cc = new ConsumerController()
   const as = new AssignmentController()
-  const uc = new UserController()
+  const uc = new UserController(config)
   const act = new ActivityController()
   const vc = new VisitController()
   const vdc = new VisitDataController()
@@ -89,28 +89,28 @@ export function apiError (app, config) {
   app.use(logErrors)
   app.use(clientErrorHandler)
   app.use(errorHandler)
-}
 
-function logErrors (err, req, res, next) {
-  console.error(`Error name: ${err.name} message: ${err.message}`)
-  next(err)
-}
-
-function clientErrorHandler (err, req, res, next) {
-  // import {AssignmentMismatchError, ParameterError, SystemError} from '../utils/errors'
-  if (err.name === AssignmentMismatchError.NAME()) {
-    var url = 'http://localhost:28000/assignments-listing'
-    res.redirect(url)
-  } else {
+  function logErrors (err, req, res, next) {
+    console.error(`Error name: ${err.name} message: ${err.message}`)
     next(err)
   }
-}
 
-function errorHandler (err, req, res, next) {
-  res.status(err.status || 500)
-  res.send(err.message)
-}
+  function clientErrorHandler (err, req, res, next) {
+    // import {AssignmentMismatchError, ParameterError, SystemError} from '../utils/errors'
+    if (err.name === AssignmentMismatchError.NAME()) {
+      var url = config.clientUrl + '/assignments-listing?user=' + req.user._id
+      url += '&error=' + err.message
+      res.redirect(url)
+    } else {
+      next(err)
+    }
+  }
 
+  function errorHandler (err, req, res, next) {
+    res.status(err.status || 500)
+    res.send(err.message)
+  }
+}
 function setupCors () {
   var whitelist = ['http://localhost:28000', 'http://localhost:27000']
   var corsOptionsDelegate = function (req, callback) {

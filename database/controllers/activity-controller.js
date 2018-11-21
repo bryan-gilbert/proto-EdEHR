@@ -46,7 +46,7 @@ export default class ActivityController extends BaseController {
           }
         } else {
           // create a new activity record
-          return this.createActivityRecord(ltiData, toolConsumerId)
+          return _this.createActivityRecord(ltiData, toolConsumerId)
         }
       })
       .then((activity) => {

@@ -14,7 +14,7 @@ Vue.use(Vuex)
 // });
 
 /* global localStorage */
-function resetState (state) {
+function resetState(state) {
   let d = {}
   state.sUserInfo = d
   state.fullName = ''
@@ -24,6 +24,7 @@ function resetState (state) {
   state.userId = ''
   localStorage.removeItem('token')
   state.isLoggedIn = false
+  state.assignments = []
 }
 
 const store = new Vuex.Store({
@@ -33,6 +34,7 @@ const store = new Vuex.Store({
     sActivityInfo: {},
     sVisitInfo: {},
     sVisitDataInfo: {},
+    sAssignments: [],
     userId: '',
     isLoggedIn: !!localStorage.getItem('token')
   },
@@ -69,17 +71,20 @@ const store = new Vuex.Store({
     },
     setVisitDataInfo: (state, info) => {
       state.sVisitDataInfo = info
+    },
+    setAssignments: (state, list) => {
+      state.sAssignments = list
     }
   },
   actions: {
-    routeEnter ({ commit }) {
+    routeEnter({ commit }) {
       console.log('action routeEnter')
       commit('routeEnter')
     },
-    logout ({ commit }) {
+    logout({ commit }) {
       commit('logout')
     },
-    addPNotes (context, payload) {
+    addPNotes(context, payload) {
       let visitData = context.state.sVisitDataInfo
       let vid = visitData._id
       let newNote = payload.note
@@ -109,11 +114,8 @@ const store = new Vuex.Store({
 
 export default store
 
-function makeFullName (userInfo) {
+function makeFullName(userInfo) {
   let n = userInfo.givenName ? userInfo.givenName : ''
-  n +=
-    userInfo.familyName && userInfo.familyName.trim().length > 0
-      ? ' ' + userInfo.familyName
-      : ''
+  n += userInfo.familyName && userInfo.familyName.trim().length > 0 ? ' ' + userInfo.familyName : ''
   return n
 }

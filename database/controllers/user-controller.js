@@ -6,8 +6,10 @@ import {ok, fail} from './utils'
 // const Visit = new VisitController()
 
 export default class UserController extends BaseController {
-  constructor () {
+  constructor (config) {
     super(User, '_id')
+    this.config = config
+    // this.populate = 'toolConsumer'
     // this.populate = [{path: 'currentVisit', populate: {path: 'activity'}}]
   }
 
@@ -107,6 +109,21 @@ export default class UserController extends BaseController {
       .listActivitiesAsStudent(req.params.key)
       .then(ok(res))
       .then(null, fail(res))
+    })
+
+    router.get('/userAuthenticated', (req, res) => {
+      var session = req.session.passport
+      // var cookies = req.cookies
+      var user = req.user
+      var url = 'http://localhost:28000?user=' + user._id
+
+      console.log('authenticated user: ', user.user_id)
+      console.log('authenticated session: ', session)
+      console.log('authenticated url: ', url)
+      // res.status = 302
+      // res.setHeader('Location', url)
+      res.redirect(url)
+      // res.redirect('/users')
     })
 /*
     router.get('/:key/sessionData', (req, res) => {

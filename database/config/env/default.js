@@ -2,14 +2,13 @@
 
 module.exports = {
   app: {
-    title: 'EAO Project Information and Collaboration (EPIC)',
-    description: 'Government of British Columbia Environmental Assessment Office Project System',
-    keywords: 'environmental assessment office bc government',
-    googleAnalyticsTrackingID: process.env.GOOGLE_ANALYTICS_TRACKING_ID || 'GOOGLE_ANALYTICS_TRACKING_ID'
+    title: 'TODO add and use title',
+    description: 'TODO add and use description',
+    keywords: 'TODO add and use keywords'
   },
   port: process.env.PORT || 27000,
-  templateEngine: 'swig',
-    // Session Cookie settings
+  clientUrl: 'http://localhost:28000',
+    // TODO use ... Session Cookie settings
   sessionCookie: {
       // session expiration is set by default to 24 hours
     maxAge: 24 * (60 * 60 * 1000),
@@ -22,12 +21,12 @@ module.exports = {
     secure: false
   },
     // sessionSecret should be changed for security measures and concerns
-  sessionSecret: 'MEAN',
+  // sessionSecret: 'MEAN',
     // sessionKey is set to the generic sessionId key used by PHP applications
     // for obsecurity reasons
-  sessionKey: 'sessionId',
-  sessionCollection: 'sessions',
-  logo: 'modules/core/client/img/brand/eao-banner-img-lg.png',
-  favicon: 'modules/core/client/img/brand/favicon.ico'
+  // sessionKey: 'sessionId',
+  // sessionCollection: 'sessions',
+  // logo: 'logo.png',
+  favicon: 'favicon.ico'
 }
 
