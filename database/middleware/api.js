@@ -57,7 +57,7 @@ export function apiMiddle (app, config) {
 
   const corsOptions = setupCors()
   const admin = new AdminController()
-  const lti = new LTIController()
+  const lti = new LTIController(config)
   const cc = new ConsumerController()
   const as = new AssignmentController()
   const uc = new UserController(config)

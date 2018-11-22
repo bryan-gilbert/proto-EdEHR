@@ -60,8 +60,7 @@ function doIntegrations () {
     }
   })
 
-  var forceAssignments = true
-  checkIntegration('assignments1', forceAssignments).then((go) => {
+  checkIntegration('assignments1').then((go) => {
     if (go) {
       require('../seed-data/assignments')(true)
     }

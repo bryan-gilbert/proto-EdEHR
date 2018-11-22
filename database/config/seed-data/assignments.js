@@ -7,8 +7,16 @@ var Assignment = mongoose.model('Assignment')
 module.exports = function () {
   return new Promise(function (resolve, reject) {
     console.log('Running application consumer seeding')
-    Assignment.deleteMany()
-    .then(() => {
+
+    function addOne (def) {
+      Assignment.create(def)
+      .then((response, reject) => {
+        console.log('save results', response, reject)
+        resolve()
+      })
+    }
+
+    function makeDef (id, name) {
       var newRow = {
         name: getName(),
         position: 'Nurse',
@@ -18,16 +26,21 @@ module.exports = function () {
         notes: getPhrase(15)
       }
       const def = {
-        external_id: 'assignment1',
-        name: 'Progress Notes',
-        ehrRoute: 'progress-notes',
+        externalId: id,
+        name: name,
+        ehrRoute: '/ehr/chart/progress-notes',
         seedData: {progressNotes: [newRow]}
       }
-      Assignment.create(def)
-      .then((response, reject) => {
-        console.log('save results', response, reject)
-        resolve()
-      })
+      return def
+    }
+
+    Assignment.deleteMany()
+    .then(() => {
+      var def
+      def = makeDef('assignment1', 'Dummy assignment 1')
+      addOne(def)
+      def = makeDef('assignment2', 'Dummy assignment 2')
+      addOne(def)
     })
   })
 }

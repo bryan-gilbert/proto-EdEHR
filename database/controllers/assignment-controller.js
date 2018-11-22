@@ -1,5 +1,6 @@
 import BaseController from './base'
 import Assignment from '../models/assignment'
+const debug = require('debug')('server')
 
 export default class AssignmentController extends BaseController {
   constructor () {
@@ -7,8 +8,8 @@ export default class AssignmentController extends BaseController {
   }
 
   locateAssignmentByExternalId (externalId) {
-    var query = { external_id: externalId }
-    console.log('Assignment search for ' + externalId)
+    var query = { externalId: externalId }
+    debug('Assignment search for ' + externalId)
     return this.findOne(query)
   }
 }

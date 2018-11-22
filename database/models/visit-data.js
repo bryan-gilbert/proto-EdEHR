@@ -3,7 +3,8 @@ import mongoose from 'mongoose'
 const Schema = new mongoose.Schema({
   user: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
   visit: {type: mongoose.Schema.Types.ObjectId, ref: 'Visit'},
-  data: {type: Object},
+  assignmentSeed: {type: Object},
+  assignmentData: {type: Object},
   createDate: {type: Date, default: Date.now},
   lastVisitDate: {type: Date, default: Date.now}
 })
