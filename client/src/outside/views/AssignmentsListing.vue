@@ -5,10 +5,6 @@
       p Error: {{ error }}
       p Your LMS is asking for "{{ activity.custom_assignment }}" which must exist in the listing below
     div
-      ul
-        li(v-for="(value, propertyName) in visitData" v-bind:key="propertyName")
-          span {{ propertyName }} : {{ value }}
-    div
       p Below is a listing of assignments supported by this Ed EHR
     table.table
       thead
@@ -19,8 +15,9 @@
       tbody
         tr(v-for="item in assignmentsListing")
           td.name {{ item.name }}
-          td.external {{ item.external_id}}
+          td.external {{ item.externalId}}
           td.ehrRoute {{ item.ehrRoute}}
+          td.seedData {{ item.seedData}}
     table.table
       thead
         tr
@@ -49,38 +46,53 @@
 </template>
 
 <script>
+  import Configuration from '../../configuration'
+  import axios from '../../../node_modules/axios/dist/axios.min'
+  var config = new Configuration()
+
 export default {
   name: 'AssignmentsListing',
   components: {},
   computed: {
-    isLoggedOn() {
-      return this.$store.state.isLoggedOn
-    },
-    userInfo() {
-      return this.$store.state.sUserInfo
-    },
     currentVisit() {
       return this.$store.state.sVisitInfo
     },
     activity() {
-      return this.$store.state.sActivityInfo
-    },
-    visitData() {
-      return this.$store.state.sVisitDataInfo
-    },
-    assignmentsListing() {
-      return this.$store.state.sAssignments
+      var vi = this.$store.state.sVisitInfo
+      var act = vi.activity ? vi.activity : {}
+      return act
     }
   },
   data: function() {
     return {
-      error: null
+      error: null,
+      activity: {},
+      assignmentsListing: []
+    }
+  },
+  methods: {
+    loadAssignments: function() {
+      var apiUrl = config.getApiUrl()
+      return new Promise((resolve, reject) => {
+        let url = apiUrl + '/assignments/'
+        axios.get(url)
+        .then((response) => {
+          console.log('what is the get assignments response? ', response.data.assignments)
+          let list = response.data.assignments
+          if (!list) {
+            console.error('ERROR the system should have assignments')
+            reject(new Error('No assignments'))
+          }
+          this.assignmentsListing = list
+        })
+      })
     }
   },
   mounted: function() {
     var url2 = new URL(window.location)
     var params2 = new URLSearchParams(url2.search)
     this.error = params2.get('error')
+    this.loadAssignments()
   }
 }
 </script>

@@ -12,10 +12,11 @@ const VisitSchema = new mongoose.Schema({
   user: {type: ObjectId, ref: 'User', required: true},
   activity: {type: ObjectId, ref: 'Activity', required: true},
   assignment: {type: ObjectId, ref: 'Assignment', required: true},
+  assignmentId: {type: String},
   isStudent: {type: Boolean, default: false},
   isInstructor: {type: Boolean, default: false},
   returnUrl: {type: String},
-  // assignmentSeed: {type: Object},
+  currentData: {type: Object},
   assignmentData: {type: Object},
   createDate: {type: Date, default: Date.now},
   lastVisitDate: {type: Date, default: Date.now}

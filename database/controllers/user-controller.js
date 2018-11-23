@@ -78,35 +78,35 @@ export default class UserController extends BaseController {
   route () {
     const router = super.route()
 
-    router.get('/:key/userAuthenticated', (req, res) => {
-      var session = req.session.passport
-      // var cookies = req.cookies
-      // var user = req.user
-      var userId = req.params.key
-      var url = 'http://localhost:28000?user=' + userId
+    // router.get('/:key/userAuthenticated', (req, res) => {
+    //   var session = req.session.passport
+    //   // var cookies = req.cookies
+    //   // var user = req.user
+    //   var userId = req.params.key
+    //   var url = 'http://localhost:28000?user=' + userId
+    //
+    //   console.log('authenticated user: ', userId)
+    //   console.log('authenticated session: ', session)
+    //   console.log('authenticated url: ', url)
+    //   // res.status = 302
+    //   // res.setHeader('Location', url)
+    //   res.redirect(url)
+    //   // res.redirect('/users')
+    // })
 
-      console.log('authenticated user: ', userId)
-      console.log('authenticated session: ', session)
-      console.log('authenticated url: ', url)
-      // res.status = 302
-      // res.setHeader('Location', url)
-      res.redirect(url)
-      // res.redirect('/users')
-    })
+    // router.get('/:key/asInstructor', (req, res) => {
+    //   this
+    //   .listActivitiesAsInstructor(req.params.key)
+    //   .then(ok(res))
+    //   .then(null, fail(res))
+    // })
 
-    router.get('/:key/asInstructor', (req, res) => {
-      this
-      .listActivitiesAsInstructor(req.params.key)
-      .then(ok(res))
-      .then(null, fail(res))
-    })
-
-    router.get('/:key/asStudent', (req, res) => {
-      this
-      .listActivitiesAsStudent(req.params.key)
-      .then(ok(res))
-      .then(null, fail(res))
-    })
+    // router.get('/:key/asStudent', (req, res) => {
+    //   this
+    //   .listActivitiesAsStudent(req.params.key)
+    //   .then(ok(res))
+    //   .then(null, fail(res))
+    // })
 
 /*
     router.get('/:key/sessionData', (req, res) => {

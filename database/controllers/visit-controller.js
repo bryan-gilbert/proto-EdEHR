@@ -3,6 +3,8 @@ import {ok, fail} from './utils'
 import BaseController from './base'
 import Visit from '../models/visit'
 import Role from './roles'
+import merge from 'deepmerge'
+
 const debug = require('debug')('server')
 
 export default class VisitController extends BaseController {
@@ -16,19 +18,48 @@ export default class VisitController extends BaseController {
     .populate('assignment')
     .populate('user')
     .populate('toolConsumer')
+    .then((visit) => {
+      var aData = visit.assignmentData || {}
+      var sData = visit.assignment.seedData || {}
+      visit.currentData = merge(sData, aData)
+      return visit
+    })
   }
 
   route () {
-    const router = new Router()
+    const router = super.route()
     router.get('/flushed/:key', (req, res) => {
       this
       .findVisit(req.params.key)
       .then(ok(res))
       .then(null, fail(res))
     })
+
+    router.put('/data/:key', (req, res) => {
+      var id = req.params.key
+      var data = req.body
+      this
+      .updateAssignmentData(id, data)
+      .then(() => {
+        return this.findVisit(id)
+      })
+      .then(ok(res))
+      .then(null, fail(res))
+    })
+
     return router
   }
 
+  updateAssignmentData (id, data) {
+    return this.baseFindOneQuery(id)
+    .then((visit) => {
+      if (visit) {
+        // console.log('Update visit data from ', visit.assignmentData, 'to', data, '\n\n\n\n')
+        visit.assignmentData = data
+        return visit.save()
+      }
+    })
+  }
   updateCreateVisit (user, toolConsumer, activity, assignment, ltiData) {
     debug('updateVisit')
     var role = new Role(ltiData.roles)

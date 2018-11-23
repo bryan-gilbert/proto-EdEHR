@@ -40,8 +40,8 @@ var checkIntegration = function (name, override) {
         return resolve(override)
       }
       IntegrationModel.create({ module: name })
-        .then((results) => {
-          var i = results.integration
+        .then((integration) => {
+          var i = integration
           console.log('seeding ' + name)
           i.save()
           resolve(true)

@@ -43,15 +43,16 @@ export default {
   },
   computed: {
     disableActions() {
-      let isInvalid = !this.$store.state.isValidUser
-      console.log('USer is valid? ', isInvalid)
-      return isInvalid
+      let isValid = !!this.$store.state.sVisitInfo
+      console.log('User is valid? ', isValid)
+      return !isValid
     },
     progressNotes() {
-      let data = this.$store.state.sVisitDataInfo.data
+      let data = this.$store.state.sVisitInfo
+      console.log('assignment data ', data)
       if (data) {
-        console.log('EhrPanelContent data', data.progressNotes)
-        return data.progressNotes
+        console.log('EhrPanelContent data.currentData', data.currentData)
+        return data.currentData.progressNotes
       }
       return {}
     }
@@ -59,12 +60,13 @@ export default {
   methods: {
     addNote: function(event) {
       console.log('EhrPanelContent Add note clicked ', event.target.textContent)
+      var time = Math.floor((Math.random()*9))
       var newRow = {
         name: getName(),
         position: 'Nurse',
         unit: 'ER',
         day: '0',
-        time: '07:00',
+        time: `0${time}:00`,
         notes: getPhrase(15)
       }
       this.$store.dispatch('addPNotes', { note: newRow })
@@ -75,11 +77,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$contentMinHeigth: 500px;
 .ProgressNotes {
   padding: 1rem;
-
   &__main {
     font-size: 0.8rem;
+    max-height: $contentMinHeigth;
+    overflow-y: auto;
 
     .table th {
       border-bottom: 2px solid #979797;

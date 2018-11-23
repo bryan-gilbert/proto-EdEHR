@@ -2,48 +2,13 @@
   <div :class="$options.name">
     <p>This is the EHR special content panel</p>
     <div :class="`${$options.name}__special`">
-      <hr />
-      <h2>User</h2>
-      <div>LMS id: {{ userInfo.user_id }}</div>
-      <div>Full Name: {{ userInfo.givenName }} {{ userInfo.familyName }}</div>
-      <div>EdEHR id: {{ userInfo._id }}</div>
-      <hr />
-      <h2>Visit Data</h2>
-      <div>data: {{ visitData.data }}</div>
-      <div>EdEHR id: {{ visitData._id }}</div>
-      <hr />
-      <h2>Current Visit</h2>
-      <div>isInstructor: {{ currentVisit.isInstructor }}</div>
-      <div>isStudent: {{ currentVisit.isStudent }}</div>
-      <div>lti_roles: {{ currentVisit.lti_roles }}</div>
-      <div>rtnUrl: {{ currentVisit.launch_presentation_return_url }}</div>
-      <div>lastVisitDate: {{ currentVisit.lastVisitDate }}</div>
-      <div>EdEHR id: {{ currentVisit._id }}</div>
-      <hr />
-      <h2>Activity</h2>
-      <div>context_id: {{ activity.context_id }}</div>
-      <div>context_label: {{ activity.context_label }}</div>
-      <div>context_title: {{ activity.context_title }}</div>
-      <div>context_type: {{ activity.context_type }}</div>
-      <div>resource_link_id: {{ activity.resource_link_id }}</div>
-      <div>resource_link_title: {{ activity.resource_link_title }}</div>
-      <div>
-        resource_link_description: {{ activity.resource_link_description }}
-      </div>
-      <div>custom_assignment: {{ activity.custom_assignment }}</div>
-      <div>EdEHR id: {{ activity._id }}</div>
-    </div>
-    <hr />
-    <div :class="`${$options.name}__special`">
-      <div>Is user logged on? {{ isLoggedOn }}</div>
-    </div>
-
     <hr />
     <div :class="`${$options.name}__data`">
-      <li v-for="(value, propertyName) in userInfo" v-bind:key="propertyName">
-        {{ propertyName }} : {{ value }}
+      <li v-for="(value, propertyName) in visitInfo" v-bind:key="propertyName">
+        <strong>{{ propertyName }}</strong> : {{ value }}
       </li>
     </div>
+  </div>
   </div>
 </template>
 
@@ -54,20 +19,28 @@ export default {
     return {}
   },
   computed: {
-    isLoggedOn() {
-      return this.$store.state.isLoggedOn
-    },
     userInfo() {
-      return this.$store.state.sUserInfo
+      var vi = this.$store.state.sVisitInfo
+      var uInfo = vi.user ? vi.user : {}
+      return uInfo
     },
-    currentVisit() {
+    visitInfo() {
       return this.$store.state.sVisitInfo
     },
-    activity() {
-      return this.$store.state.sActivityInfo
+    data() {
+      var vi = this.$store.state.sVisitInfo
+      var act = vi.assignmentData ? vi.assignmentData : {}
+      return act
     },
-    visitData() {
-      return this.$store.state.sVisitDataInfo
+    assignment() {
+      var vi = this.$store.state.sVisitInfo
+      var act = vi.assignment ? vi.assignment : {}
+      return act
+    },
+    activity() {
+      var vi = this.$store.state.sVisitInfo
+      var act = vi.activity ? vi.activity : {}
+      return act
     }
   },
   methods: {}
@@ -75,6 +48,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.EhrSpecial {
+  @import '../../scss/objects/wrapper.mixin';
+
+  .EhrSpecial {
+    @include wrapper('page');
+
+  &__data {
+  }
 }
 </style>

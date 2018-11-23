@@ -2,5 +2,5 @@
   "semi": false,
   "singleQuote": true,
   "printWidth": 100,
-  "space-before-function-paren": ["error", "always"]
+  "space-before-function-paren": ["warn", "always"]
 }

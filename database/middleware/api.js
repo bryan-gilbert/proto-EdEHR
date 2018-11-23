@@ -5,11 +5,11 @@ import ActivityController from '../controllers/activity-controller'
 import AssignmentController from '../controllers/assignment-controller'
 import ConsumerController from '../controllers/consumer-controller'
 import VisitController from '../controllers/visit-controller'
-import VisitDataController from '../controllers/visit-data-controller'
 import AdminController from '../controllers/admin-controller'
+import IntegrationController from '../controllers/integration-controller'
 import LTIController from '../controllers/lti'
 import seed from '../config/lib/seed'
-import {AssignmentMismatchError, ParameterError, SystemError} from '../utils/errors'
+import {AssignmentMismatchError} from '../utils/errors'
 
 // Sessions and session cookies
 // express-session stores session data here on the server and only puts session id in the cookie
@@ -63,7 +63,7 @@ export function apiMiddle (app, config) {
   const uc = new UserController(config)
   const act = new ActivityController()
   const vc = new VisitController()
-  const vdc = new VisitDataController()
+  const ic = new IntegrationController()
 
   return Promise.resolve()
     .then(admin.initializeApp(app))
@@ -77,9 +77,8 @@ export function apiMiddle (app, config) {
       api.use('/consumers', cors(corsOptions), cc.route())
       api.use('/users', cors(corsOptions), uc.route())
       api.use('/activities', cors(corsOptions), act.route())
-      // visits are activity sessions
       api.use('/visits', cors(corsOptions), vc.route())
-      api.use('/visitdata', cors(corsOptions), vdc.route())
+      api.use('/integrations', cors(corsOptions), ic.route())
       return api
     })
 }

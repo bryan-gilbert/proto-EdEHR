@@ -1,6 +1,6 @@
 <template lang="pug">
-  div class="post")
-    h2(class="hello") Student {{id}}
+  div(class="post")
+    h2(class="hello") Student: {{userInfo.givenName}}
     div(id="nav")
       ul
         li
@@ -28,20 +28,16 @@ export default {
     }
   },
   computed: {
-    isLoggedOn() {
-      return this.$store.state.isLoggedOn
-    },
     userInfo() {
-      return this.$store.state.sUserInfo
-    },
-    currentVisit() {
-      return this.$store.state.sVisitInfo
+      var vi = this.$store.state.sVisitInfo
+      var uInfo = vi.user ? vi.user : {}
+      return uInfo
     },
     activity() {
       return this.$store.state.sActivityInfo
     },
-    visitData() {
-      return this.$store.state.sVisitDataInfo
+    visitInfo() {
+      return this.$store.state.sVisitInfo
     }
   }
 }

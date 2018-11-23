@@ -202,7 +202,7 @@ export default class LTIController {
       toolConsumer.tool_consumer_instance_guid = ltiData.tool_consumer_instance_guid
       toolConsumer.tool_consumer_instance_name = ltiData.tool_consumer_instance_name
       toolConsumer.tool_consumer_instance_description = ltiData.tool_consumer_instance_description
-      debug('updateToolConsumer update tool consumer record ' + JSON.stringify(toolConsumer))
+      debug('updateToolConsumer update tool consumer record ')// + JSON.stringify(toolConsumer))
       return toolConsumer.save()
     } else {
       debug('tool consumer is up to date ')
@@ -216,27 +216,24 @@ export default class LTIController {
   }
 
   locateAssignment (req) {
-    return new Promise((resolve, reject) => {
-      var externalId = req.ltiData.custom_assignment
-      AssignmentModel.locateAssignmentByExternalId(externalId)
+    var externalId = req.ltiData.custom_assignment
+    req.externalId = externalId
+    return AssignmentModel.locateAssignmentByExternalId(externalId)
       .then((assignment) => {
-        if (!assignment) {
+        if (!assignment || assignment.externalId !== externalId) {
           var msg = 'Could not locate assignment for ' + externalId
           debug('locateAssignment ' + msg)
-          reject(new AssignmentMismatchError(msg))
+          req.errors = req.errors || []
+          req.errors.push(msg)
+        } else {
+          debug('locateAssignment found assignment for ' + externalId)
         }
-        debug('locateAssignment found assignment for ' + externalId)
         req.assignment = assignment
-        resolve(assignment)
       })
-    })
   }
 
-  updateActivity (req) {
+  updateActivity (req, results) {
     debug('updateActivity')
-    if (!req.assignment) {
-      throw new SystemError('Missing assignment while updating activity records')
-    }
     return ActivityModel.updateCreateActivity(req.ltiData, req.toolConsumer._id, req.assignment)
     .then((activity) => {
       debug('store the activity in the req')
@@ -246,9 +243,6 @@ export default class LTIController {
 
   updateVisit (req) {
     debug('updateVisit')
-    if (!req.activity) {
-      throw new SystemError('Missing activity while updating visit')
-    }
     return VisitModel.updateCreateVisit(req.user, req.toolConsumer, req.activity, req.assignment, req.ltiData)
     .then((visit) => {
       req.visit = visit
@@ -262,6 +256,7 @@ export default class LTIController {
     })
     router.post('/', passport.authenticate('ltiStrategy'), (req, res, next) => {
       const _this = this
+      req.errors = []
       debug('have authenticated user. Now process the lti launch request')
       Promise.resolve()
       .then(() => { return _this.updateToolConsumer(req) })
@@ -276,6 +271,10 @@ export default class LTIController {
         var visit = req.visit
         var route = req.assignment.ehrRoute
         var url = this.config.clientUrl + route + '?visit=' + visit._id
+        if (req.errors.length > 0) {
+          var errs = req.errors.join('-')
+          url += '&error=' + errs
+        }
         debug(`ready to redirect to the ehr ${url}`)
         res.redirect(url)
       })

@@ -37,6 +37,14 @@ module.exports = function () {
     Assignment.deleteMany()
     .then(() => {
       var def
+      def = {
+        externalId: 'defaultNonAssignment',
+        name: 'Default Non Assignment',
+        ehrRoute: '/assignments-listing',
+        seedData: {}
+      }
+      addOne(def)
+
       def = makeDef('assignment1', 'Dummy assignment 1')
       addOne(def)
       def = makeDef('assignment2', 'Dummy assignment 2')
