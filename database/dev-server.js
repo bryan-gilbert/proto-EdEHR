@@ -13,7 +13,7 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-db((conn) => {
+db(config, (conn) => {
   app.connection = conn
 
   apiMiddle(app, config).then((api) => {

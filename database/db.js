@@ -1,8 +1,8 @@
 import mongoose from 'mongoose'
 
 // TODO pass in and use config
-export default function (callback) {
-  const dbName = 'scratch'
+export default function (config, callback) {
+  const dbName = config.databaseName
   const dbServer = 'localhost:27018'
   const db = dbServer + '/' + dbName
   const urn = 'mongodb://' + db

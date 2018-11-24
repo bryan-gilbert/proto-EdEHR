@@ -6,8 +6,6 @@ module.exports = {
     description: 'TODO add and use description',
     keywords: 'TODO add and use keywords'
   },
-  port: process.env.PORT || 27000,
-  clientUrl: 'http://localhost:28000',
     // TODO use ... Session Cookie settings
   sessionCookie: {
       // session expiration is set by default to 24 hours

@@ -55,7 +55,7 @@ export function apiMiddle (app, config) {
     })
   )
 
-  const corsOptions = setupCors()
+  const corsOptions = setupCors(config)
   const admin = new AdminController()
   const lti = new LTIController(config)
   const cc = new ConsumerController()
@@ -73,12 +73,18 @@ export function apiMiddle (app, config) {
       const api = Router()
       api.use('/admin', admin.route())
       api.use('/launch_lti', lti.route())
+      api.use('/activities', cors(corsOptions), act.route())
       api.use('/assignments', cors(corsOptions), as.route())
       api.use('/consumers', cors(corsOptions), cc.route())
       api.use('/users', cors(corsOptions), uc.route())
-      api.use('/activities', cors(corsOptions), act.route())
       api.use('/visits', cors(corsOptions), vc.route())
       api.use('/integrations', cors(corsOptions), ic.route())
+      api.use('/api/activities', cors(corsOptions), act.route())
+      api.use('/api/assignments', cors(corsOptions), as.route())
+      api.use('/api/consumers', cors(corsOptions), cc.route())
+      api.use('/users', cors(corsOptions), uc.route())
+      api.use('/api/launch_lti', lti.route())
+      api.use('/api/visits', cors(corsOptions), vc.route())
       return api
     })
 }
@@ -110,8 +116,10 @@ export function apiError (app, config) {
     res.send(err.message)
   }
 }
-function setupCors () {
-  var whitelist = ['http://localhost:28000', 'http://localhost:27000']
+function setupCors (config) {
+  var whitelist = [] // 'http://localhost:28000', 'http://localhost:27000']
+  whitelist.push(config.clientUrl)
+  whitelist.push(config.apiUrl)
   var corsOptionsDelegate = function (req, callback) {
     var corsOptions
     if (whitelist.indexOf(req.header('Origin')) !== -1) {

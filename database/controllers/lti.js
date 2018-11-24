@@ -51,7 +51,7 @@ export default class LTIController {
           UserModel.read(id)
           .then((results) => {
             let user = results.user
-            debug('LTI deserializeUser result' + (user ? user.user_id : 'none'))
+            debug('LTI deserializeUser result ' + (user ? user.user_id : 'none'))
             done(null, user)
           })
         })
@@ -107,6 +107,7 @@ export default class LTIController {
           debug('strategyVerify found tool consumer now validate msg with provider')
           provider.valid_request(req, function (err, isValid) {
             if (err) {
+              debug('stratefyVerify lti provider verify send error: ' + err.message)
               return callback(new ParameterError(err.message), null)
             }
 

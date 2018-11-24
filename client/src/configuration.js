@@ -3,8 +3,9 @@
 export default class Configuration {
   constructor (env) {
     var defaultData = {
-      apiHost: 'localhost',
-      apiPort: env === 'development' ? 27000 : 27000
+      apiHost: env === 'development' ? 'localhost' : 'edehr.mac',
+      apiPort: env === 'development' ? 27000 : null,
+      apiPath: env === 'development' ? null : '/api'
       // apiPath: 'api'
     } // configData['default']
     this.globalOptions = Object.assign({}, defaultData)
