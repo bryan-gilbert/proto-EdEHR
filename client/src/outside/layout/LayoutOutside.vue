@@ -4,9 +4,12 @@
       <app-header />
     </slot>
     <main :class="`${$options.name}__main`">
-      <div name="mainContent" :class="`${$options.name}__main_content columns`">
-        <div name="content" :class="`${$options.name}__content column`">
-          {{ path }} <slot />
+      <div name="mainContent" :class="`${$options.name}__main_content`">
+        <div name="nav" :class="`${$options.name}__nav`">
+          <out-panel-nav />
+        </div>
+        <div name="content" :class="`${$options.name}__content`">
+          <slot />
         </div>
       </div>
     </main>
@@ -17,16 +20,17 @@
 <script>
 import AppHeader from '../../app/components/AppHeader.vue'
 import AppFooter from '../../app/components/AppFooter.vue'
+import OutPanelNav from '../components/OutPanelNav.vue'
 
 export default {
   name: 'LayoutOutside',
   components: {
+    OutPanelNav,
     AppFooter,
     AppHeader
   },
   computed: {
     path() {
-      console.log('this.$route', this.$route)
       return this.$route.path
     }
   }
@@ -55,13 +59,11 @@ body {
   }
   &__nav {
     // @include wrapper('narrow');
-    max-width: $navWidth;
-    height: $contentMinHeigth;
     padding: 0;
     margin: 0;
   }
   &__content {
-    height: $contentMinHeigth;
+    min-height: $contentMinHeigth;
     padding: 0;
     margin: 0;
   }

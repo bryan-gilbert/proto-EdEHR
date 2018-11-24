@@ -1,31 +1,28 @@
-
+import { Router } from 'express'
 import UserController from '../controllers/user-controller'
 import ConsumerController from '../controllers/consumer-controller'
 import ActivityController from '../controllers/activity-controller'
+import AssignmentController from '../controllers/assignment-controller'
 import VisitController from './visit-controller'
-import VisitDataController from './visit-data-controller'
-
-import {ParameterError, ConfigurationChangeError, SystemError} from '../utils/errors'
-
-// destructure the Router from the express package
-const { Router } = require('express')
+import Role from './roles'
+import {AssignmentMismatchError, ParameterError, SystemError} from '../utils/errors'
 
 const debug = require('debug')('server')
-
-// LTI authentication
 const CustomStrategy = require('passport-custom')
 const lti = require('ims-lti')
 const passport = require('passport')
-
-const {ok, fail, ltiVersions} = require('./utils')
-
+const {ltiVersions} = require('./utils')
 const UserModel = new UserController()
 const ConsumerModel = new ConsumerController()
 const ActivityModel = new ActivityController()
+const AssignmentModel = new AssignmentController()
 const VisitModel = new VisitController()
-const VisitDataModel = new VisitDataController()
 
 export default class LTIController {
+  constructor (config) {
+    this.config = config
+  }
+
   initializeApp (app) {
     const _this = this
     this.app = app
@@ -54,7 +51,7 @@ export default class LTIController {
           UserModel.read(id)
           .then((results) => {
             let user = results.user
-            debug('LTI deserializeUser result' + (user ? user.user_id : 'none'))
+            debug('LTI deserializeUser result ' + (user ? user.user_id : 'none'))
             done(null, user)
           })
         })
@@ -81,7 +78,9 @@ export default class LTIController {
           // store the LTI data for further processing after setting up the user
         req.ltiData = req.body
         ConsumerModel.read(req.user.toolConsumer).then((holder) => {
-          debug('strategyVerify. req has user and we just found the tool consumer too ' + holder.consumer)
+          var tcid = holder.consumer ? holder.consumer._id : null
+          debug(`strategyVerify. just searched for the tool consumer id: ${tcid}`)
+          // TODO update tool consumer record from LTI data
           req.toolConsumer = holder.consumer
           callback(null, req.user)
         })
@@ -102,11 +101,13 @@ export default class LTIController {
             debug('strategyVerify ' + message)
             return callback(new ParameterError(message))
           }
+          // TODO update tool consumer record from LTI data
           req.toolConsumer = toolConsumer
           var provider = new lti.Provider(ltiData, toolConsumer.oauth_consumer_secret)
           debug('strategyVerify found tool consumer now validate msg with provider')
           provider.valid_request(req, function (err, isValid) {
             if (err) {
+              debug('stratefyVerify lti provider verify send error: ' + err.message)
               return callback(new ParameterError(err.message), null)
             }
 
@@ -145,8 +146,8 @@ export default class LTIController {
     if (ltiData.lti_message_type !== 'basic-lti-launch-request') {
       return invalid('EdEHR requires the LTI tool consumer to send a basic lti launch request. lti_message_type = basic-lti-launch-request')
     }
-    let role = UserModel.getRoleFromLti(ltiData.roles)
-    if (!role) {
+    let role = new Role(ltiData.roles)
+    if (!role.isValid) {
       return invalid("EdEHR requires the LTI tool consumer to provide the user's roles. And these must be one of student, faculty, instructor or staff. " + ltiData.roles)
     }
     if (!ltiData['oauth_consumer_key']) {
@@ -181,9 +182,8 @@ export default class LTIController {
       return UserModel.create(user)
       .then((newUser, r) => {
         // create returns a structure with the new user inside
-        let object = newUser.user
-        debug('created new user ' + object._id)
-        return object
+        debug('created new user ' + newUser._id)
+        return newUser
       })
     })
   }
@@ -191,7 +191,11 @@ export default class LTIController {
   updateToolConsumer (req) {
     const ltiData = req.ltiData
     const toolConsumer = req.toolConsumer
-    if (!toolConsumer.tool_consumer_instance_guid) {
+    if (toolConsumer.tool_consumer_instance_guid !== ltiData.tool_consumer_instance_guid ||
+      toolConsumer.tool_consumer_instance_name !== ltiData.tool_consumer_instance_name ||
+      toolConsumer.tool_consumer_info_product_family_code !== ltiData.tool_consumer_info_product_family_code ||
+      toolConsumer.tool_consumer_instance_description !== ltiData.tool_consumer_instance_description
+    ) {
       debug('updateToolConsumer starting with ' + toolConsumer)
       toolConsumer.lti_version = ltiData.lti_version
       toolConsumer.tool_consumer_info_product_family_code = ltiData.tool_consumer_info_product_family_code
@@ -199,7 +203,7 @@ export default class LTIController {
       toolConsumer.tool_consumer_instance_guid = ltiData.tool_consumer_instance_guid
       toolConsumer.tool_consumer_instance_name = ltiData.tool_consumer_instance_name
       toolConsumer.tool_consumer_instance_description = ltiData.tool_consumer_instance_description
-      debug('updateToolConsumer update tool consumer record ' + JSON.stringify(toolConsumer))
+      debug('updateToolConsumer update tool consumer record ')// + JSON.stringify(toolConsumer))
       return toolConsumer.save()
     } else {
       debug('tool consumer is up to date ')
@@ -212,210 +216,73 @@ export default class LTIController {
     // see models/outcomes.js
   }
 
-  updateActivity (req) {
-    debug('updateActivity')
-    var data
-    const ltiData = req.ltiData
-    const toolConsumer = req.toolConsumer
-    if (!toolConsumer) {
-      throw new SystemError('Missing tool consumer while updating activity records')
-    }
-    debug('updateActivity search for existing activity ' + ltiData.resource_link_id)
-    return new Promise(function (resolve, reject) {
-      ActivityModel.findOne({$and: [{resource_link_id: ltiData.resource_link_id}, {toolConsumer: toolConsumer._id}]})
-      .then((activity) => {
-        if (activity) {
-          debug('updateActivity found activity ' + activity._id)
-          // save record into request for next stage of launch
-          req.activity = activity
-
-          // Validate the data
-          if (activity.context_id !== ltiData.context_id) {
-            let msg = 'Unexpected change in activity context id.  Was: ' + activity.context_id + ' now ' + ltiData.context_id
-            debug('updateActivity ' + msg)
-            reject(new ConfigurationChangeError(msg))
-          }
-          if (activity.custom_assignment !== ltiData.custom_assignment) {
-            let msg = 'Unexpected change in activity custom assignment id.  Was: ' + activity.custom_assignment + ' now ' + ltiData.custom_assignment
-            debug('updateActivity ' + msg)
-            reject(new ConfigurationChangeError(msg))
-          }
-
-          let current = JSON.stringify(activity)
-          activity.context_label = ltiData.context_label
-          activity.context_title = ltiData.context_title
-          activity.context_type = ltiData.context_type
-          activity.resource_link_title = ltiData.resource_link_title
-          activity.resource_link_description = ltiData.resource_link_description
-          let updated = JSON.stringify(activity)
-
-          // If anything has changed then update the database
-          if (current !== updated) {
-            debug('updateActivity there is something different in the activity. Saving new activity data ' + updated)
-            activity.save().then(resolve)
-          }
-          // else return a promise
-          debug('updateActivity resolve ' + activity._id)
-          resolve(activity)
+  locateAssignment (req) {
+    var externalId = req.ltiData.custom_assignment
+    req.externalId = externalId
+    return AssignmentModel.locateAssignmentByExternalId(externalId)
+      .then((assignment) => {
+        if (!assignment || assignment.externalId !== externalId) {
+          var msg = 'Could not locate assignment for ' + externalId
+          debug('locateAssignment ' + msg)
+          req.errors = req.errors || []
+          req.errors.push(msg)
         } else {
-          // create a new activity record
-          data = {
-            resource_link_id: ltiData.resource_link_id,
-            toolConsumer: toolConsumer._id,
-            custom_assignment: ltiData.custom_assignment,
-            context_id: ltiData.context_id,
-            context_label: ltiData.context_label,
-            context_title: ltiData.context_title,
-            context_type: ltiData.context_type,
-            resource_link_title: ltiData.resource_link_title,
-            resource_link_description: ltiData.resource_link_description
-          }
-          debug('updateActivity create new activity record ' + JSON.stringify((data)))
-          ActivityModel.create(data)
-          .then((newActivity) => {
-            debug('updateActivity new activity ' + newActivity._id)
-            req.activity = newActivity.activity
-            resolve(newActivity)
-          })
+          debug('locateAssignment found assignment for ' + externalId)
         }
+        req.assignment = assignment
       })
+  }
+
+  updateActivity (req, results) {
+    debug('updateActivity')
+    return ActivityModel.updateCreateActivity(req.ltiData, req.toolConsumer._id, req.assignment)
+    .then((activity) => {
+      debug('store the activity in the req')
+      req.activity = activity
     })
   }
 
   updateVisit (req) {
     debug('updateVisit')
-    const ltiData = req.ltiData
-    const user = req.user
-    const activity = req.activity
-    const toolConsumer = req.toolConsumer
-    if (!user) {
-      throw new SystemError('Missing user while updating visit')
-    }
-    if (!toolConsumer) {
-      throw new SystemError('Missing tool consumer while updating visit')
-    }
-    if (!activity) {
-      throw new SystemError('Missing activity while updating visit')
-    }
-    // note that the role field has been validated already
-    let role = UserModel.getRoleFromLti(ltiData.roles)
-    let isStudent = role === 'student'
-    let isInstructor = role === 'instructor'
-    let tid = toolConsumer._id
-    let uid = user._id
-    let aid = activity._id
-    let filter = {
-      $and: [
-        {user: uid},
-        {activity: aid},
-        {toolConsumer: tid},
-        {isStudent: isStudent},
-        {isInstructor: isInstructor}
-      ]
-    }
-    return VisitModel.findOne(filter)
+    return VisitModel.updateCreateVisit(req.user, req.toolConsumer, req.activity, req.assignment, req.ltiData)
     .then((visit) => {
-      if (visit) {
-        debug('updateVisit update previous visit')
-        visit.lastVisitDate = Date.now()
-        visit.lti_roles = ltiData.roles
-        visit.launch_presentation_return_url = ltiData.launch_presentation_return_url
-
-        visit.save()
-        .then(() => {
-          // reuse a previous session for this activity
-          if (user.currentVisit !== visit._id) {
-            user.currentVisit = visit._id
-            debug('updateVisit user ' + user._id + ' visit is changing to ' + activity.resource_link_title)
-            return user.save()
-          }
-        })
-      } else {
-        // create a new activity session
-        debug('Create an empty visitData record')
-        let vd = {
-          uid: uid.toString()
-        }
-        let visitdata = null
-        let visit = null
-        return VisitDataModel.create({user: uid, data: vd})
-        .then((record) => {
-          visitdata = record.visitdata
-          const vid = visitdata._id
-          debug('Now have a visitData  ' + vid)
-          let data = {
-            toolConsumer: tid,
-            user: uid,
-            activity: aid,
-            visitData: vid,
-            lti_roles: ltiData.roles,
-            isStudent: isStudent,
-            isInstructor: isInstructor,
-            launch_presentation_return_url: ltiData.launch_presentation_return_url
-          }
-          debug('Create a visit record')
-          return VisitModel.create(data)
-        })
-        .then((current) => {
-          debug('Now have a visit record  ' + current._id)
-          visit = current.visit
-          user.currentVisit = visit._id
-          if (isInstructor) {
-            user.asInstructorVisits.push(visit)
-          }
-          if (isStudent) {
-            user.asStudentVisits.push(visit)
-          }
-          debug('Save visit into user record and overwrite any previous "current" visit')
-          return user.save()
-        })
-        .then((current) => {
-          debug('link visit back into visit data')
-          visitdata.visit = visit._id
-          return visitdata.save()
-        })
-      }
+      req.visit = visit
     })
   }
 
   route () {
     const router = new Router()
-
     router.get('/', (req, res) => {
       res.status(200).send('OK')
     })
-
     router.post('/', passport.authenticate('ltiStrategy'), (req, res, next) => {
       const _this = this
+      req.errors = []
       debug('have authenticated user. Now process the lti launch request')
       Promise.resolve()
-      .then(() => { _this.updateToolConsumer(req) })
+      .then(() => { return _this.updateToolConsumer(req) })
       .then(() => { return _this.updateOutcomeManagement(req) })
+      .then(() => { return _this.locateAssignment(req) })
       .then(() => { return _this.updateActivity(req) })
       .then(() => { return _this.updateVisit(req) })
       .then(() => {
-        debug('ready to redirect to the ehr')
-        res.redirect('/launch_lti/userAuthenticated')
+        if (!req.visit) {
+          throw new SystemError('Missing visit while preparing to redirect')
+        }
+        var visit = req.visit
+        var route = req.assignment.ehrRoute
+        var url = this.config.clientUrl + route + '?visit=' + visit._id
+        if (req.errors.length > 0) {
+          var errs = req.errors.join('-')
+          url += '&error=' + errs
+        }
+        debug(`ready to redirect to the ehr ${url}`)
+        res.redirect(url)
       })
       .catch((err) => {
         // console.log('ERRRORRRR', err)
         next(err)
       })
-    })
-
-    router.get('/userAuthenticated', (req, res) => {
-      var session = req.session.passport
-      // var cookies = req.cookies
-      var user = req.user
-      var url = 'http://localhost:28000?user=' + user._id
-
-      console.log('authenticated user: ', user.user_id)
-      console.log('authenticated session: ', session)
-      console.log('authenticated url: ', url)
-      // res.status = 302
-      // res.setHeader('Location', url)
-      res.redirect(url)
-      // res.redirect('/users')
     })
     return router
   }

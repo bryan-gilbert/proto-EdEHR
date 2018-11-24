@@ -1,8 +1,72 @@
 import BaseController from './base'
 import Activity from '../models/activity'
+import {AssignmentMismatchError} from '../utils/errors'
+const debug = require('debug')('server')
 
 export default class ActivityController extends BaseController {
   constructor () {
     super(Activity, '_id')
+  }
+
+  updateCreateActivity (ltiData, toolConsumerId, assignment) {
+    const _this = this
+    debug('updateCreateActivity search for existing activity ' + ltiData.resource_link_id)
+    return new Promise(function (resolve, reject) {
+      var data = _this._extractLtiData(ltiData)
+      _this.findOne({$and: [{resource_link_id: ltiData.resource_link_id}, {toolConsumer: toolConsumerId}]})
+      .then((activity) => {
+        if (activity) {
+          if (!activity.assignment.equals(assignment._id)) {
+            var msg = 'Can not change assignment for an activity. Changing to: ' + assignment.externalId
+            debug('updateCreateActivity ' + msg)
+            return reject(new AssignmentMismatchError(msg))
+          }
+          debug('updateCreateActivity update activity ' + activity._id)
+          return _this._updateHelper(activity, data)
+        } else {
+          data.toolConsumer = toolConsumerId
+          data.assignment = assignment._id
+          debug('updateCreateActivity create activity')
+          return _this._createHelper(activity, data)
+        }
+      })
+      .then((activity) => {
+        resolve(activity)
+      })
+    })
+  }
+
+  _createHelper (activity, data) {
+    debug('updateCreateActivity create new activity record ' + JSON.stringify((data)))
+    return this.create(data)
+    .then((newActivity) => {
+      debug('updateCreateActivity new activity ' + newActivity._id)
+      return newActivity
+    })
+  }
+  _updateHelper (activity, data) {
+    let current = JSON.stringify(activity)
+    Object.assign(activity, data)
+    let updated = JSON.stringify(activity)
+    if (current !== updated) {
+      debug('updateCreateActivity there is something different in the activity. Saving new activity data ' + updated)
+      return activity.save()
+    } else {
+      debug('updateCreateActivity  no change in activity')
+      return activity
+    }
+  }
+
+  _extractLtiData (ltiData, toolConsumerId) {
+    var data = {
+      context_id: ltiData.context_id,
+      context_label: ltiData.context_label,
+      context_title: ltiData.context_title,
+      context_type: ltiData.context_type,
+      resource_link_id: ltiData.resource_link_id,
+      resource_link_title: ltiData.resource_link_title,
+      resource_link_description: ltiData.resource_link_description
+    }
+    return data
   }
 }

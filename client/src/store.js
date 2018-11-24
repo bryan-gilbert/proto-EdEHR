@@ -7,74 +7,78 @@ var config = new Configuration()
 
 Vue.use(Vuex)
 
-// export default new Vuex.Store({
-//   state: {},
-//   mutations: {},
-//   actions: {}
-// });
+/* global localStorage */
+function resetState (state) {
+  let d = {}
+  state.sUserInfo = d
+  state.fullName = ''
+  state.sVisitInfo = d
+  state.userId = ''
+  state.visitId = ''
+  localStorage.removeItem('token')
+  state.isLoggedIn = false
+  state.assignments = []
+}
 
 const store = new Vuex.Store({
   state: {
     sUserInfo: {},
-    sActivityInfo: {},
-    sVisitInfo: {},
-    sVisitDataInfo: {},
     userId: '',
-    isValidUser: false,
-    isLoggedOn: false
+    visitId: '',
+    fullName: '',
+    sVisitInfo: {},
+    isLoggedIn: !!localStorage.getItem('token'),
+    assignments: []
   },
   plugins: [createLogger()],
   mutations: {
+    logout: state => {
+      console.log('mutation logout')
+      resetState(state)
+    },
+    routeEnter: state => {
+      var token = localStorage.getItem('token')
+      console.log('mutation route enter found token ', token)
+      state.token = token
+      state.isLoggedIn = !!token
+    },
     resetInfo: state => {
-      let d = {}
-      state.sUserInfo = d
-      state.sActivityInfo = d
-      state.sVisitInfo = d
-      state.sVisitDataInfo = d
-      state.userId = ''
-      state.isValidUser = false
-    },
-    setUserId: (state, id) => {
-      console.log('store user id into global store', id)
-      state.userId = id
-    },
-    setValidUser: (state, isValid) => {
-      state.isValidUser = isValid
-    },
-    setUserInfo: (state, userInfo) => {
-      state.sUserInfo = userInfo
-    },
-    setActivityInfo: (state, info) => {
-      state.sActivityInfo = info
+      resetState(state)
     },
     setVisitInfo: (state, info) => {
       state.sVisitInfo = info
     },
-    setVisitDataInfo: (state, info) => {
-      state.sVisitDataInfo = info
+    setAssignments: (state, list) => {
+      state.sAssignments = list
     }
   },
   actions: {
-    addPNotes(context, payload) {
-      let visitData = context.state.sVisitDataInfo
+    routeEnter ({ commit }) {
+      console.log('action routeEnter')
+      commit('routeEnter')
+    },
+    logout ({ commit }) {
+      commit('logout')
+    },
+    addPNotes (context, payload) {
+      let visitData = context.state.sVisitInfo
       let vid = visitData._id
       let newNote = payload.note
-      let url = `${config.getApiUrl()}visitdata/${vid}`
+      let url = `${config.getApiUrl()}/visits/data/${vid}`
       console.log('addPNotes payload', payload)
       console.log('addPNote visit data id', vid)
       console.log('addPNotes put url', url)
-      visitData.data = visitData.data || {}
-      let vd = visitData.data
+      visitData.assignmentData = visitData.assignmentData || {}
+      let vd = visitData.assignmentData
       vd.progressNotes = vd.progressNotes || []
       vd.progressNotes.push(newNote)
       console.log('addPNote visitData', vd)
-
       axios
-        .put(url, visitData)
+        .put(url, vd)
         .then(results => {
-          let data = results.data.visitdata
-          console.log(`addPNotes after post with ${data}`)
-          context.commit('setVisitDataInfo', data)
+          let visitdata = results.data
+          console.log(`addPNotes after post with ${visitdata}`)
+          context.commit('setVisitInfo', visitdata)
         })
         .catch(error => {
           console.log(`Failed to update progress notes ${error.message}`)
@@ -84,3 +88,9 @@ const store = new Vuex.Store({
 })
 
 export default store
+
+function makeFullName (userInfo) {
+  let n = userInfo.givenName ? userInfo.givenName : ''
+  n += userInfo.familyName && userInfo.familyName.trim().length > 0 ? ' ' + userInfo.familyName : ''
+  return n
+}

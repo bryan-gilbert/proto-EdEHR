@@ -8,6 +8,16 @@ class ParameterError extends Error {
   }
 }
 
+class AssignmentMismatchError extends Error {
+  constructor (message) {
+    super(...arguments)
+    this.name = AssignmentMismatchError.NAME()
+    this.status = 400
+    this.message = message
+  }
+  static NAME () { return 'AssignmentMismatchError' }
+}
+
 class ConfigurationChangeError extends Error {
   constructor (message) {
     super(...arguments)
@@ -75,6 +85,7 @@ module.exports = {
   // SignatureError,
   // NonceError,
   // OutcomeResponseError
+  AssignmentMismatchError,
   SystemError,
   ConfigurationChangeError,
   ParameterError

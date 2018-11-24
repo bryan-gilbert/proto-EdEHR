@@ -14,5 +14,6 @@ ehr/dev/**
 **/trash/**
 
 client/tests/e2e/reports/
+client/dist/**
 
 client/selenium-debug\.log

@@ -33,9 +33,9 @@ export default class BaseController {
     return this.model
       .create(data)
       .then((modelInstance) => {
-        var response = {}
-        response[this.modelName] = modelInstance
-        return response
+        // var response = {}
+        // response[this.modelName] = modelInstance
+        return modelInstance
       })
   }
 
@@ -168,7 +168,7 @@ export default class BaseController {
         .then(null, fail(res))
     })
 
-    router.get('/:key', (req, res) => {
+    router.get('/get/:key', (req, res) => {
       this
         .read(req.params.key)
         .then(ok(res))

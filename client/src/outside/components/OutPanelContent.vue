@@ -5,13 +5,13 @@
 
 <script>
 export default {
-  name: 'EhrPanelContent',
+  name: 'OutPanelContent',
   components: {}
 }
 </script>
 
 <style lang="scss" scoped>
-.EhrPanelContent {
+.OutPanelContent {
   padding: 20px 1.5rem;
 
   &__main {

@@ -44,7 +44,7 @@ export default {
   },
   computed: {
     path() {
-      console.log('this.$route', this.$route)
+      // console.log('this.$route', this.$route)
       return this.$route.path
     }
   }

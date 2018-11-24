@@ -6,8 +6,10 @@ import {ok, fail} from './utils'
 // const Visit = new VisitController()
 
 export default class UserController extends BaseController {
-  constructor () {
+  constructor (config) {
     super(User, '_id')
+    this.config = config
+    // this.populate = 'toolConsumer'
     // this.populate = [{path: 'currentVisit', populate: {path: 'activity'}}]
   }
 
@@ -73,41 +75,39 @@ export default class UserController extends BaseController {
       return response
     })
   }
-
-  /**
-   * Convert the LTI role value into our course roles. Only support student and instructor which is mapped to
-   * instructor, staff and faculty from the LTI consumer side.
-   *
-   * @param roles
-   * @return {*}
-   */
-  getRoleFromLti (roles) {
-    var role
-    if (roles) {
-      let r = roles.toLowerCase()
-      let student = r.includes('student') || r.includes('learner')
-      let instructor = r.includes('instructor') || r.includes('staff') || r.includes('faculty')
-      role = student ? 'student' : (instructor ? 'instructor' : null)
-    }
-    return role
-  }
-
   route () {
     const router = super.route()
 
-    router.get('/:key/asInstructor', (req, res) => {
-      this
-      .listActivitiesAsInstructor(req.params.key)
-      .then(ok(res))
-      .then(null, fail(res))
-    })
+    // router.get('/:key/userAuthenticated', (req, res) => {
+    //   var session = req.session.passport
+    //   // var cookies = req.cookies
+    //   // var user = req.user
+    //   var userId = req.params.key
+    //   var url = 'http://localhost:28000?user=' + userId
+    //
+    //   console.log('authenticated user: ', userId)
+    //   console.log('authenticated session: ', session)
+    //   console.log('authenticated url: ', url)
+    //   // res.status = 302
+    //   // res.setHeader('Location', url)
+    //   res.redirect(url)
+    //   // res.redirect('/users')
+    // })
 
-    router.get('/:key/asStudent', (req, res) => {
-      this
-      .listActivitiesAsStudent(req.params.key)
-      .then(ok(res))
-      .then(null, fail(res))
-    })
+    // router.get('/:key/asInstructor', (req, res) => {
+    //   this
+    //   .listActivitiesAsInstructor(req.params.key)
+    //   .then(ok(res))
+    //   .then(null, fail(res))
+    // })
+
+    // router.get('/:key/asStudent', (req, res) => {
+    //   this
+    //   .listActivitiesAsStudent(req.params.key)
+    //   .then(ok(res))
+    //   .then(null, fail(res))
+    // })
+
 /*
     router.get('/:key/sessionData', (req, res) => {
       this

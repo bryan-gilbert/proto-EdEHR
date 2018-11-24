@@ -1,10 +1,11 @@
 'use strict'
 
 export default class Configuration {
-  constructor(env) {
+  constructor (env) {
     var defaultData = {
-      apiHost: 'localhost',
-      apiPort: env === 'development' ? 27000 : 27000
+      apiHost: env === 'development' ? 'localhost' : 'edehr.mac',
+      apiPort: env === 'development' ? 27000 : null,
+      apiPath: env === 'development' ? null : '/api'
       // apiPath: 'api'
     } // configData['default']
     this.globalOptions = Object.assign({}, defaultData)
@@ -13,49 +14,45 @@ export default class Configuration {
   /*
    Get http or https as defined by Configuration. Defaults to http.
    */
-  getApiScheme() {
+  getApiScheme () {
     var scheme = this.getOption('apiScheme') || 'http'
     return scheme
   }
 
-  getApiHost() {
+  getApiHost () {
     return this.getOption('apiHost')
   }
 
-  getApiPort() {
+  getApiPort () {
     var port = this.getOption('apiPort')
     return port
   }
 
-  getApiPath() {
+  getApiPath () {
     var path = this.getOption('apiPath')
     return path
   }
 
-  getApiUrl() {
+  getApiUrl () {
     var path = this.getApiPath()
-    var add = path ? path + '/' : ''
+    var add = path || ''
     return this.getBaseUrl() + add
   }
 
-  getBaseUrl() {
+  getBaseUrl () {
     var scheme = this.getApiScheme()
     var port = this.getApiPort()
     port = port ? ':' + port : ''
     var ipAddress = this.getApiHost()
-    return scheme + '://' + ipAddress + port + '/'
+    return scheme + '://' + ipAddress + port
   }
 
-  getApiLoggedOnUrl() {
-    return this.getApiUrl() + 'isLoggedOn'
-  }
-
-  setOption(key, value) {
+  setOption (key, value) {
     this.globalOptions[key] = value
     return this // return this to allow chaining
   }
 
-  getOption(key) {
+  getOption (key) {
     return this.globalOptions[key]
   }
 }
