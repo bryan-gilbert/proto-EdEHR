@@ -82,7 +82,7 @@ export function apiMiddle (app, config) {
       api.use('/api/activities', cors(corsOptions), act.route())
       api.use('/api/assignments', cors(corsOptions), as.route())
       api.use('/api/consumers', cors(corsOptions), cc.route())
-      api.use('/users', cors(corsOptions), uc.route())
+      api.use('/api/users', cors(corsOptions), uc.route())
       api.use('/api/launch_lti', lti.route())
       api.use('/api/visits', cors(corsOptions), vc.route())
       return api

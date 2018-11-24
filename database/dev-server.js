@@ -30,7 +30,9 @@ db(config, (conn) => {
         debug('Another request for the favicon')
         res.status(404).send('No favicon')
       } else {
-        res.status(404).send('Could not find ' + url + '. Environment: ' + env)
+        var msg
+        debug('Could not find ' + url + '. Environment: ' + env)
+        res.status(404).send(msg)
       }
     })
 
