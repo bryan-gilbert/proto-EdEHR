@@ -8,23 +8,32 @@
               h3
                 slot(name="header") default header
             div(class="modal-header-menu  column is-1")
-              button(class="modal-close-button", @click="$emit('close')") X
+              button(class="modal-close-button", @click="$emit('cancel')") X
           div(class="modal-body")
             slot(name="body") default body
-          div(class="modal-footer columns")
-            div(class="modal-footer-content column")
-            button(class="modal-default-button column", @click="$emit('close')")
-              slot(name="button1") default close button
+          div(class="modal-footer")
+            div(class="modal-footer-errors", v-if="errors.length")
+              p Please correct the following
+              ul
+                li(v-for="error in errors") {{error}}
+            div(class="modal-footer-bar columns")
+              div(class="modal-footer-content column")
+              button(class="modal-default-button column", @click="$emit('save')")
+                slot(name="button1") default close button
 </template>
 
 <script>
-// import UiLink from '../ui/UiLink.vue'
-
 export default {
   name: 'Modal',
-  components: {
-    // UiLink
-  }
+  props: {
+    errors: Array
+  },
+  computed: {
+    saveEnabled() {
+      return false
+    }
+  },
+  components: {}
 }
 </script>
 
@@ -58,13 +67,12 @@ export default {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-
 .modal-header h3 {
   margin-top: 0;
   font-size: 24px;
   font-weight: 600;
   line-height: 28px;
-  color: #383C45;
+  color: #383c45;
 }
 
 .modal-body {
@@ -75,16 +83,21 @@ export default {
 .modal-footer {
   align-items: flex-end;
   padding: 0 25px;
+
+  .modal-footer-content {
+    flex-grow: 1;
+  }
+
+  .modal-footer-errors li {
+    margin-left: 5px;
+  }
 }
 
-.modal-footer-content {
-  flex-grow: 1;
-}
 .modal-default-button {
-  background-color: #3396FF;
+  background-color: #3396ff;
   border-radius: 4px;
   border: none;
-  box-shadow: inset 0 2px 0 0 #ffffff, 0 1px 2px 0 rgba(21,26,36,0.2);
+  box-shadow: inset 0 2px 0 0 #ffffff, 0 1px 2px 0 rgba(21, 26, 36, 0.2);
   color: #ffffff;
   text-align: center;
   text-shadow: 0 1px 0 0 #ffffff;
@@ -100,20 +113,24 @@ export default {
   color: #000000;
 }
 
+/* **********
+  *
+  * Styling generic input elements that appear in EdEHR dialogs
+  *
+  */
 .input-fieldrow {
-  /*width: 100%;*/
   display: flex;
-  /*justify-content: space-between;*/
 }
 
 .input-element {
-  /*flex: 1 1 0;*/
-  label, input {
+  label,
+  input {
     display: block;
   }
-  input, textarea {
+  input,
+  textarea {
     height: 2rem;
-    border: 1px solid #CBCED1;
+    border: 1px solid #cbced1;
     border-radius: 3px;
     box-shadow: inset 0 1px 0 0 rgba(21, 26, 36, 0.5);
   }
@@ -132,19 +149,25 @@ export default {
 
 .input-element-small {
   flex: 1 0 auto;
+  input {
+    width: 5rem;
+  }
 }
 .input-element-medium {
   flex: 2 0 auto;
+  input {
+    width: 15rem;
+  }
 }
 
-  /*
-     * The following styles are auto-applied to elements with
-     * transition="modal" when their visibility is toggled
-     * by Vue.js.
-     *
-     * You can easily play with the modal transition by editing
-     * these styles.
-     */
+/* *******
+  * The following styles are auto-applied to elements with
+  * transition="modal" when their visibility is toggled
+  * by Vue.js.
+  *
+  * You can easily play with the modal transition by editing
+  * these styles.
+  */
 
 .modal-enter {
   opacity: 0;
