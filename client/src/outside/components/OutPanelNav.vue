@@ -1,13 +1,17 @@
 <template lang="pug">
   div(:class="$options.name")
-    ui-link(:to="{ name: 'student' }") Student
-    span |
-    ui-link(:to="{ name: 'instructor' }") Instructor
-    span |
-    ui-link(:to="{ name: 'courses' }") Courses
-    span |
-    ui-link(:to="{ name: 'dbtables' }") Db Tables
-
+    ul
+      li(:class="`${$options.name}__nav`")
+        a(v-bind:href="returnUrl") Return to {{ lmsName }}
+        span |
+      li(:class="`${$options.name}__nav`")
+        ui-link(:to="{ name: 'student' }") Student
+        span |
+      li(:class="`${$options.name}__nav`")
+        ui-link(:to="{ name: 'instructor' }") Instructor
+        span |
+      li(:class="`${$options.name}__nav`")
+        ui-link(:to="{ name: 'courses' }") Courses
 </template>
 
 <script>
@@ -16,7 +20,15 @@ export default {
   name: 'OutPanelNav',
   components: {
     UiLink
-  }
+  },
+  computed: {
+    returnUrl() {
+      return this.$store.state.sVisitInfo.returnUrl
+    },
+    lmsName() {
+      return this.$store.state.sVisitInfo.toolConsumer.tool_consumer_instance_name
+    }
+  },
 }
 </script>
 
@@ -29,6 +41,15 @@ export default {
 
     .table th {
       border-bottom: 2px solid #979797;
+    }
+  }
+  &__nav {
+    display: inline;
+    margin-right:1rem;
+
+    span {
+      display: inline;
+      margin-left: 1rem;
     }
   }
 }

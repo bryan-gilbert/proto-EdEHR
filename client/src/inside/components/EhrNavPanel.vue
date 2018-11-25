@@ -1,7 +1,7 @@
 <template lang="pug">
   div(:class="$options.name")
-    ui-button(:class="`${$options.name}__saveButton`")
-      a(href="http://localhost:3000") Save
+    ui-button(v-on:buttonClicked="returnToLms", :class="`${$options.name}__saveButton`")
+      a(v-bind:href="returnUrl") Return to {{ lmsName }}
     ehr-nav-list(v-for="path in menuList" :key="path.name" :path="path" :level="1")
 </template>
 <script>
@@ -17,10 +17,21 @@ export default {
     EhrNavList
   },
   computed: {
+    returnUrl() {
+      return this.$store.state.sVisitInfo.returnUrl
+    },
+    lmsName() {
+      return this.$store.state.sVisitInfo.toolConsumer.tool_consumer_instance_name
+    },
     menuList() {
       // read the menu definition stored in the project root src (client/src)
       var menu = require('../../menuList.json')
       return menu
+    }
+  },
+  methods: {
+    returnToLms() {
+      window.location = this.returnUrl
     }
   }
 }
@@ -35,7 +46,7 @@ export default {
   height: 100%;
   color: #efefef;
 
-  &__link {
+  a {
     color: white;
   }
   &__saveButton {

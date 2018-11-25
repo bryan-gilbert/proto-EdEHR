@@ -52,6 +52,9 @@ export default {
 
   .EhrSpecial {
     @include wrapper('page');
+    background-color: lavender;
+    padding: 5rem 2rem  ;
+    z-index: 10;
 
   &__data {
   }
