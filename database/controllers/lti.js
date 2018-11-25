@@ -271,7 +271,7 @@ export default class LTIController {
         }
         var visit = req.visit
         var port = req.get('port') ? ':' + req.get('port') : ''
-        var apiUrl = encodeURIComponent(req.protocol + '://' + req.get('host') + port)
+        var apiUrl = encodeURIComponent(req.protocol + '://' + req.get('host') + port + '/api')
         var route = req.assignment.ehrRoute
         var url = this.config.clientUrl + route + '?visit=' + visit._id + '&apiUrl=' + apiUrl
         if (req.errors.length > 0) {

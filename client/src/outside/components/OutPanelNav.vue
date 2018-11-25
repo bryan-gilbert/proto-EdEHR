@@ -26,7 +26,9 @@ export default {
       return this.$store.state.sVisitInfo.returnUrl
     },
     lmsName() {
-      return this.$store.state.sVisitInfo.toolConsumer.tool_consumer_instance_name
+      if (this.$store.state.sVisitInfo && this.$store.state.sVisitInfo.toolConsumer)
+        return this.$store.state.sVisitInfo.toolConsumer.tool_consumer_instance_name
+      return ''
     }
   },
 }

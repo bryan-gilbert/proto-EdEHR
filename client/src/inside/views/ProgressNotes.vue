@@ -90,7 +90,7 @@ export default {
       console.log('assignment data ', data)
       if (data) {
         console.log('EhrPanelContent data.currentData', data.currentData)
-        return data.currentData.progressNotes
+        return data.currentData ? data.currentData.progressNotes : []
       }
       return {}
     }

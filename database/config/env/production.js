@@ -6,7 +6,7 @@ module.exports = {
   },
   port: process.env.PORT || 27004,
   apiUrl: 'http://edehr.mac/api',
-  clientUrl: 'http://edehr.mac',
+  clientUrl: 'http://142.93.148.22',
   databaseName: 'ed-prod',
   db: {
     uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.MONGODB_SERVICE_HOST || process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/' + (process.env.MONGODB_DATABASE || 'esm'),

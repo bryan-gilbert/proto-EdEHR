@@ -78,7 +78,7 @@ export default {
       return this.$store.state.sVisitInfo
     }
   },
-  mounted: function() {
+  created: function() {
     this.loadData()
   }
 }
