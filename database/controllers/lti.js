@@ -270,8 +270,10 @@ export default class LTIController {
           throw new SystemError('Missing visit while preparing to redirect')
         }
         var visit = req.visit
+        var port = req.get('port') ? ':' + req.get('port') : ''
+        var apiUrl = encodeURIComponent(req.protocol + '://' + req.get('host') + port)
         var route = req.assignment.ehrRoute
-        var url = this.config.clientUrl + route + '?visit=' + visit._id
+        var url = this.config.clientUrl + route + '?visit=' + visit._id + '&apiUrl=' + apiUrl
         if (req.errors.length > 0) {
           var errs = req.errors.join('-')
           url += '&error=' + errs
