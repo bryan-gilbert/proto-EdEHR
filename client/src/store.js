@@ -18,6 +18,7 @@ function resetState (state) {
   localStorage.removeItem('token')
   state.isLoggedIn = false
   state.assignments = []
+  state.apiUrl = ''
 }
 
 const store = new Vuex.Store({
@@ -28,7 +29,8 @@ const store = new Vuex.Store({
     fullName: '',
     sVisitInfo: {},
     isLoggedIn: !!localStorage.getItem('token'),
-    assignments: []
+    assignments: [],
+    apiUrl: ''
   },
   plugins: [createLogger()],
   mutations: {
@@ -50,6 +52,9 @@ const store = new Vuex.Store({
     },
     setAssignments: (state, list) => {
       state.sAssignments = list
+    },
+    apiUrl: (state, url) => {
+      state.apiUrl = url
     }
   },
   actions: {
@@ -64,7 +69,7 @@ const store = new Vuex.Store({
       let visitData = context.state.sVisitInfo
       let vid = visitData._id
       let newNote = payload.note
-      let url = `${config.getApiUrl()}/visits/data/${vid}`
+      let url = `${context.state.apiUrl}/visits/data/${vid}`
       console.log('addPNotes payload', payload)
       console.log('addPNote visit data id', vid)
       console.log('addPNotes put url', url)
@@ -89,8 +94,3 @@ const store = new Vuex.Store({
 
 export default store
 
-function makeFullName (userInfo) {
-  let n = userInfo.givenName ? userInfo.givenName : ''
-  n += userInfo.familyName && userInfo.familyName.trim().length > 0 ? ' ' + userInfo.familyName : ''
-  return n
-}

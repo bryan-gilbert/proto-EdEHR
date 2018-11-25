@@ -21,8 +21,19 @@ export default {
     loadData: function() {
       var url2 = new URL(window.location)
       var params2 = new URLSearchParams(url2.search)
-      var visitId = params2.get('visit') || localStorage.getItem('token')
-      var apiUrl = config.getApiUrl()
+
+      // API return url
+      var apiUrl = params2.get('apiUrl')
+      if (apiUrl) {
+        console.log('API url provided in query: ', apiUrl)
+      } else {
+        apiUrl =  config.getApiUrl()
+        console.log('No API url provided in query so defaulting to configuration: ', apiUrl)
+      }
+      this.$store.commit('apiUrl', apiUrl)
+
+      // Visit Id
+      var visitId = params2.get('visit')
       if (!visitId) {
         console.log('No visit id on query so check local storage storage?')
         visitId = localStorage.getItem('token')
@@ -32,6 +43,8 @@ export default {
         return
       }
       localStorage.setItem('token', visitId)
+
+      // Load information from server
       return new Promise((resolve, reject) => {
         let url = apiUrl + '/visits/flushed/' + visitId
         console.log('In load page ', url)
@@ -57,11 +70,6 @@ export default {
       const l = (rl || DefaultLayout) + '-layout'
       // console.log('using layout ', rl, l)
       return l
-    },
-    apiUrl: function() {
-      var url = config.getApiUrl()
-      console.log('apiUrl = ', url)
-      return url
     },
     userInfo() {
       return this.$store.state.sUserInfo
