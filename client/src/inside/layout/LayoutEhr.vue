@@ -58,6 +58,7 @@ $navWidth: 234px;
 $pageWidth: 1024px;
 
 .LayoutDefault {
+  background-color: #4f545c;
   h1 {
     font-size: 3rem;
   }
