@@ -2,6 +2,7 @@
   div(:class="$options.name")
     ehr-panel-header Patient Notes
     ehr-panel-content
+      ui-button(v-on:buttonClicked="showDialog") Dialog
       ui-button(v-on:buttonClicked="addNote" v-bind:disabled="disableActions") Add a new progress note
       div(:class="`${$options.name}__main`")
         table.table
@@ -21,6 +22,33 @@
               td.day {{ item.day }}
               td.time {{ item.time }}
               td.notes {{ item.notes }}
+    modal( v-if="showModal" @close="showModal = false")
+      h3(slot="header") Create a new progress note
+      div(slot="body")
+        div
+          div(class="input-fieldrow")
+            div(class="input-element input-element-medium input-name")
+              label Name
+              input(type="text", style="width: 15rem;")
+            div(class="input-element input-element-medium")
+              label Profession
+              input(type="text", style="width: 15rem;")
+            div(class="input-element input-element-small")
+              label Unit
+              input(type="text", style="width: 5rem;")
+            div(class="input-element input-element-small")
+              label Day
+              input(type="text", style="width: 5rem;")
+            div(class="input-element input-element-small")
+              label Time
+              input(type="text", style="width: 5rem;")
+        hr
+        div
+          div(class="input-fieldrow")
+            div(class="input-element input-element-full")
+              label Progress notes
+              textarea
+      span(slot="button1") Create and close
 </template>
 
 <script>
@@ -28,17 +56,19 @@ import UiButton from '../../app/ui/UiButton.vue'
 import { getPhrase, getName } from '../poc-utils'
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
+import Modal from '../../app/components/Modal'
 
 export default {
   name: 'ProgressNotes',
   components: {
     EhrPanelHeader,
     EhrPanelContent,
+    Modal,
     UiButton
   },
   data: function() {
     return {
-      count: 0
+      showModal: true
     }
   },
   computed: {
@@ -58,9 +88,12 @@ export default {
     }
   },
   methods: {
+    showDialog: function() {
+      this.showModal = !this.showModal
+    },
     addNote: function(event) {
       console.log('EhrPanelContent Add note clicked ', event.target.textContent)
-      var time = Math.floor((Math.random()*9))
+      var time = Math.floor(Math.random() * 9)
       var newRow = {
         name: getName(),
         position: 'Nurse',
@@ -90,4 +123,5 @@ $contentMinHeigth: 500px;
     }
   }
 }
+
 </style>
