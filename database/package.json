@@ -5,7 +5,7 @@
   "main": "dev-server.js.js",
   "scripts": {
     "start": "node index.js",
-    "start-dev": "DEBUG=server node index.js"
+    "start-dev": "NODE_ENV=development DEBUG=server node index.js"
   },
   "author": "Bryan Gilbert",
   "license": "MIT",
