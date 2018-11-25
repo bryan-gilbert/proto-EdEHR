@@ -5,9 +5,9 @@ module.exports = {
   },
   extends: ['plugin:vue/essential', '@vue/prettier'],
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-console': [ process.env.NODE_ENV === 'production' ? 'warn' : 'off', { allow: ["warn", "error"] }],
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    quotes: ['warn', 'single']
+    quotes: ['warn', 'single'],
   },
   parserOptions: {
     parser: 'babel-eslint'
