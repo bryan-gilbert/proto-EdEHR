@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from './store'
 
 Vue.use(Router)
 
@@ -29,8 +30,19 @@ routes.push({
     import(/* webpackChunkName: "notfound" */ './outside/components/PageNotFound.vue')
 })
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: routes
 })
+
+router.beforeEach((to, from, next) => {
+  var topLevel = to && to.meta ? to.meta.topLevel : null
+  if (topLevel ) {
+    console.log('In router beforeEach route change set top level to ', topLevel)
+    store.commit('topLevelMenu', topLevel)
+  }
+  next()
+})
+
+export default router

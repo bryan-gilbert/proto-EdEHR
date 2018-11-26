@@ -17,9 +17,20 @@ export default {
     EhrNavList,
     EhrNavListItem
   },
-  data: function() {
-    return {
-      open: true
+  computed: {
+    open() {
+      if (this.level > 1) {
+        return true
+      }
+      // console.log(this.$store.state.topLevelMenu, this.path.name)
+      return this.$store.state.topLevelMenu === this.path.name
+    }
+  },
+  watch: {
+    $route: function(to,from) {
+      if (to.name === this.path.name ) {
+        this.$store.commit('topLevelMenu', this.path.topLevel)
+      }
     }
   },
   props: {
@@ -31,7 +42,7 @@ export default {
   methods: {
     toggle: function(event) {
       if (this.level === 1) {
-        this.open = !this.open
+        //this.open = !this.open
       }
       event.stopPropagation()
     }

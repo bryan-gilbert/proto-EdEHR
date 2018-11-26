@@ -28,7 +28,8 @@ const store = new Vuex.Store({
     sVisitInfo: {},
     isLoggedIn: !!localStorage.getItem('token'),
     assignments: [],
-    apiUrl: ''
+    apiUrl: '',
+    topLevelMenu: ''
   },
   plugins: [createLogger()],
   mutations: {
@@ -53,6 +54,9 @@ const store = new Vuex.Store({
     },
     apiUrl: (state, url) => {
       state.apiUrl = url
+    },
+    topLevelMenu: (state, top) => {
+      state.topLevelMenu = top
     }
   },
   actions: {

@@ -45,6 +45,9 @@ function flushDefs (defs) {
     def.title = def.title || splitCamelCase(def.componentName)
     def.label = def.label || def.title
     def.redirect = def.redirect ? def.redirect : ''
+    // the first part past '/ehr/' is the top level menu item name ...
+    def.topLevel = def.fullPath.split('/')[2]
+
   })
 }
 
@@ -64,7 +67,7 @@ function makeRoutes (defs, layout, cPath, outfilename) {
     rt += `${s2}component: () =>\n`
     rt += `${s3}import(/* webpackChunkName: "chunk-[request][index]" */`
     rt += ` '${cPath}/${def.componentName}.vue'),\n`
-    rt += `${s2}meta: { layout: '${layout}', label: '${def.label}' }\n`
+    rt += `${s2}meta: { layout: '${layout}', label: '${def.label}', topLevel: '${def.topLevel}' }\n`
     rt += `${s1}}`
     parts.push(rt)
   })
@@ -93,6 +96,8 @@ function makeTreeItem (def, tree) {
   item.name = def.rn
   item.label = def.label
   item.fPath = def.path + '/' + def.rn
+  // the first part past '/ehr/' is the top level menu item name ...
+  item.topLevel = item.fPath.split('/')[2]
   item.def = def
   item.children = []
   var parent = findTreeItem(def, tree)

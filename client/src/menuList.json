@@ -3,6 +3,7 @@
   "name": "patient",
   "label": "Patient profile",
   "fPath": "/ehr/patient",
+  "topLevel": "patient",
   "def": {
     "path": "/ehr",
     "rn": "patient",
@@ -11,13 +12,15 @@
     "routeName": "patient",
     "fullPath": "/ehr/patient",
     "title": "Patient",
-    "redirect": ""
+    "redirect": "",
+    "topLevel": "patient"
   },
   "children": [
     {
       "name": "demographics",
       "label": "Demographics",
       "fPath": "/ehr/patient/demographics",
+      "topLevel": "patient",
       "def": {
         "path": "/ehr/patient",
         "rn": "demographics",
@@ -26,7 +29,8 @@
         "routeName": "demographics",
         "fullPath": "/ehr/patient/demographics",
         "title": "Demographics",
-        "redirect": ""
+        "redirect": "",
+        "topLevel": "patient"
       },
       "children": []
     },
@@ -34,6 +38,7 @@
       "name": "allergies",
       "label": "Allergies",
       "fPath": "/ehr/patient/allergies",
+      "topLevel": "patient",
       "def": {
         "path": "/ehr/patient",
         "rn": "allergies",
@@ -42,7 +47,8 @@
         "routeName": "allergies",
         "fullPath": "/ehr/patient/allergies",
         "title": "Allergies",
-        "redirect": ""
+        "redirect": "",
+        "topLevel": "patient"
       },
       "children": []
     },
@@ -50,6 +56,7 @@
       "name": "history",
       "label": "History",
       "fPath": "/ehr/patient/history",
+      "topLevel": "patient",
       "def": {
         "path": "/ehr/patient",
         "rn": "history",
@@ -58,13 +65,15 @@
         "routeName": "history",
         "fullPath": "/ehr/patient/history",
         "title": "History",
-        "redirect": ""
+        "redirect": "",
+        "topLevel": "patient"
       },
       "children": [
         {
           "name": "medical",
           "label": "Medical",
           "fPath": "/ehr/patient/history/medical",
+          "topLevel": "patient",
           "def": {
             "path": "/ehr/patient/history",
             "rn": "medical",
@@ -73,7 +82,8 @@
             "routeName": "medical",
             "fullPath": "/ehr/patient/history/medical",
             "title": "Medical",
-            "redirect": ""
+            "redirect": "",
+            "topLevel": "patient"
           },
           "children": []
         },
@@ -81,6 +91,7 @@
           "name": "psychosocial",
           "label": "Psychosocial",
           "fPath": "/ehr/patient/history/psychosocial",
+          "topLevel": "patient",
           "def": {
             "path": "/ehr/patient/history",
             "rn": "psychosocial",
@@ -89,7 +100,8 @@
             "routeName": "psychosocial",
             "fullPath": "/ehr/patient/history/psychosocial",
             "title": "Psychosocial",
-            "redirect": ""
+            "redirect": "",
+            "topLevel": "patient"
           },
           "children": []
         },
@@ -97,6 +109,7 @@
           "name": "surgical",
           "label": "Surgical",
           "fPath": "/ehr/patient/history/surgical",
+          "topLevel": "patient",
           "def": {
             "path": "/ehr/patient/history",
             "rn": "surgical",
@@ -105,7 +118,8 @@
             "routeName": "surgical",
             "fullPath": "/ehr/patient/history/surgical",
             "title": "Surgical",
-            "redirect": ""
+            "redirect": "",
+            "topLevel": "patient"
           },
           "children": []
         },
@@ -113,6 +127,7 @@
           "name": "immunization",
           "label": "Immunization",
           "fPath": "/ehr/patient/history/immunization",
+          "topLevel": "patient",
           "def": {
             "path": "/ehr/patient/history",
             "rn": "immunization",
@@ -121,7 +136,8 @@
             "routeName": "immunization",
             "fullPath": "/ehr/patient/history/immunization",
             "title": "Immunization",
-            "redirect": ""
+            "redirect": "",
+            "topLevel": "patient"
           },
           "children": []
         },
@@ -129,6 +145,7 @@
           "name": "family-history",
           "label": "Family History",
           "fPath": "/ehr/patient/history/family-history",
+          "topLevel": "patient",
           "def": {
             "path": "/ehr/patient/history",
             "rn": "family-history",
@@ -137,7 +154,8 @@
             "routeName": "family-history",
             "fullPath": "/ehr/patient/history/family-history",
             "title": "Family History",
-            "redirect": ""
+            "redirect": "",
+            "topLevel": "patient"
           },
           "children": []
         }
@@ -147,6 +165,7 @@
       "name": "care-team",
       "label": "Care team",
       "fPath": "/ehr/patient/care-team",
+      "topLevel": "patient",
       "def": {
         "path": "/ehr/patient",
         "rn": "care-team",
@@ -155,7 +174,8 @@
         "routeName": "care-team",
         "fullPath": "/ehr/patient/care-team",
         "title": "Care Team",
-        "redirect": ""
+        "redirect": "",
+        "topLevel": "patient"
       },
       "children": []
     },
@@ -163,6 +183,7 @@
       "name": "past-appt",
       "label": "Past appointments",
       "fPath": "/ehr/patient/past-appt",
+      "topLevel": "patient",
       "def": {
         "path": "/ehr/patient",
         "rn": "past-appt",
@@ -171,7 +192,8 @@
         "routeName": "past-appt",
         "fullPath": "/ehr/patient/past-appt",
         "title": "Past Appt",
-        "redirect": ""
+        "redirect": "",
+        "topLevel": "patient"
       },
       "children": []
     }
@@ -180,6 +202,7 @@
   "name": "current",
   "label": "Current visit",
   "fPath": "/ehr/current",
+  "topLevel": "current",
   "def": {
     "path": "/ehr",
     "rn": "current",
@@ -188,13 +211,15 @@
     "routeName": "current",
     "fullPath": "/ehr/current",
     "title": "Current",
-    "redirect": ""
+    "redirect": "",
+    "topLevel": "current"
   },
   "children": [
     {
       "name": "visit-details",
       "label": "Visit details",
       "fPath": "/ehr/current/visit-details",
+      "topLevel": "current",
       "def": {
         "path": "/ehr/current",
         "rn": "visit-details",
@@ -203,7 +228,8 @@
         "routeName": "visit-details",
         "fullPath": "/ehr/current/visit-details",
         "title": "Visit Details",
-        "redirect": ""
+        "redirect": "",
+        "topLevel": "current"
       },
       "children": []
     },
@@ -211,6 +237,7 @@
       "name": "vital-signs",
       "label": "Vital signs",
       "fPath": "/ehr/current/vital-signs",
+      "topLevel": "current",
       "def": {
         "path": "/ehr/current",
         "rn": "vital-signs",
@@ -219,7 +246,8 @@
         "routeName": "vital-signs",
         "fullPath": "/ehr/current/vital-signs",
         "title": "Vital Signs",
-        "redirect": ""
+        "redirect": "",
+        "topLevel": "current"
       },
       "children": []
     },
@@ -227,6 +255,7 @@
       "name": "assessments",
       "label": "Assessments",
       "fPath": "/ehr/current/assessments",
+      "topLevel": "current",
       "def": {
         "path": "/ehr/current",
         "rn": "assessments",
@@ -235,13 +264,15 @@
         "componentName": "Assessments",
         "routeName": "assessments",
         "fullPath": "/ehr/current/assessments",
-        "title": "Assessments"
+        "title": "Assessments",
+        "topLevel": "current"
       },
       "children": [
         {
           "name": "neurological",
           "label": "Neurological",
           "fPath": "/ehr/current/assessments/neurological",
+          "topLevel": "current",
           "def": {
             "path": "/ehr/current/assessments",
             "rn": "neurological",
@@ -250,7 +281,8 @@
             "routeName": "neurological",
             "fullPath": "/ehr/current/assessments/neurological",
             "title": "Neurological",
-            "redirect": ""
+            "redirect": "",
+            "topLevel": "current"
           },
           "children": []
         },
@@ -258,6 +290,7 @@
           "name": "respiratory",
           "label": "Respiratory",
           "fPath": "/ehr/current/assessments/respiratory",
+          "topLevel": "current",
           "def": {
             "path": "/ehr/current/assessments",
             "rn": "respiratory",
@@ -266,7 +299,8 @@
             "routeName": "respiratory",
             "fullPath": "/ehr/current/assessments/respiratory",
             "title": "Respiratory",
-            "redirect": ""
+            "redirect": "",
+            "topLevel": "current"
           },
           "children": []
         },
@@ -274,6 +308,7 @@
           "name": "cardiovascular",
           "label": "Cardiovascular",
           "fPath": "/ehr/current/assessments/cardiovascular",
+          "topLevel": "current",
           "def": {
             "path": "/ehr/current/assessments",
             "rn": "cardiovascular",
@@ -282,7 +317,8 @@
             "routeName": "cardiovascular",
             "fullPath": "/ehr/current/assessments/cardiovascular",
             "title": "Cardiovascular",
-            "redirect": ""
+            "redirect": "",
+            "topLevel": "current"
           },
           "children": []
         },
@@ -290,6 +326,7 @@
           "name": "gastrointestinal",
           "label": "Gastrointestinal",
           "fPath": "/ehr/current/assessments/gastrointestinal",
+          "topLevel": "current",
           "def": {
             "path": "/ehr/current/assessments",
             "rn": "gastrointestinal",
@@ -298,7 +335,8 @@
             "routeName": "gastrointestinal",
             "fullPath": "/ehr/current/assessments/gastrointestinal",
             "title": "Gastrointestinal",
-            "redirect": ""
+            "redirect": "",
+            "topLevel": "current"
           },
           "children": []
         },
@@ -306,6 +344,7 @@
           "name": "genitourinary",
           "label": "Genitourinary",
           "fPath": "/ehr/current/assessments/genitourinary",
+          "topLevel": "current",
           "def": {
             "path": "/ehr/current/assessments",
             "rn": "genitourinary",
@@ -314,7 +353,8 @@
             "routeName": "genitourinary",
             "fullPath": "/ehr/current/assessments/genitourinary",
             "title": "Genitourinary",
-            "redirect": ""
+            "redirect": "",
+            "topLevel": "current"
           },
           "children": []
         },
@@ -322,6 +362,7 @@
           "name": "musculoskeletal",
           "label": "Musculoskeletal",
           "fPath": "/ehr/current/assessments/musculoskeletal",
+          "topLevel": "current",
           "def": {
             "path": "/ehr/current/assessments",
             "rn": "musculoskeletal",
@@ -330,7 +371,8 @@
             "routeName": "musculoskeletal",
             "fullPath": "/ehr/current/assessments/musculoskeletal",
             "title": "Musculoskeletal",
-            "redirect": ""
+            "redirect": "",
+            "topLevel": "current"
           },
           "children": []
         },
@@ -338,6 +380,7 @@
           "name": "pain",
           "label": "Pain",
           "fPath": "/ehr/current/assessments/pain",
+          "topLevel": "current",
           "def": {
             "path": "/ehr/current/assessments",
             "rn": "pain",
@@ -346,7 +389,8 @@
             "routeName": "pain",
             "fullPath": "/ehr/current/assessments/pain",
             "title": "Pain",
-            "redirect": ""
+            "redirect": "",
+            "topLevel": "current"
           },
           "children": []
         },
@@ -354,6 +398,7 @@
           "name": "biopsychosocial",
           "label": "Biopsychosocial",
           "fPath": "/ehr/current/assessments/biopsychosocial",
+          "topLevel": "current",
           "def": {
             "path": "/ehr/current/assessments",
             "rn": "biopsychosocial",
@@ -362,7 +407,8 @@
             "routeName": "biopsychosocial",
             "fullPath": "/ehr/current/assessments/biopsychosocial",
             "title": "Biopsychosocial",
-            "redirect": ""
+            "redirect": "",
+            "topLevel": "current"
           },
           "children": []
         }
@@ -372,6 +418,7 @@
       "name": "no-med",
       "label": "Non-medication orders",
       "fPath": "/ehr/current/no-med",
+      "topLevel": "current",
       "def": {
         "path": "/ehr/current",
         "rn": "no-med",
@@ -380,13 +427,15 @@
         "componentName": "NoMed",
         "routeName": "no-med",
         "fullPath": "/ehr/current/no-med",
-        "title": "No Med"
+        "title": "No Med",
+        "topLevel": "current"
       },
       "children": [
         {
           "name": "no-med-orders",
           "label": "Orders",
           "fPath": "/ehr/current/no-med/no-med-orders",
+          "topLevel": "current",
           "def": {
             "path": "/ehr/current/no-med",
             "rn": "no-med-orders",
@@ -395,7 +444,8 @@
             "componentName": "NoMedOrders",
             "routeName": "no-med-orders",
             "fullPath": "/ehr/current/no-med/no-med-orders",
-            "redirect": ""
+            "redirect": "",
+            "topLevel": "current"
           },
           "children": []
         },
@@ -403,6 +453,7 @@
           "name": "referrals",
           "label": "Referrals to other disciplines",
           "fPath": "/ehr/current/no-med/referrals",
+          "topLevel": "current",
           "def": {
             "path": "/ehr/current/no-med",
             "rn": "referrals",
@@ -412,7 +463,8 @@
             "routeName": "referrals",
             "fullPath": "/ehr/current/no-med/referrals",
             "title": "Referrals",
-            "redirect": ""
+            "redirect": "",
+            "topLevel": "current"
           },
           "children": []
         },
@@ -420,6 +472,7 @@
           "name": "lab-reqs",
           "label": "Lab requisitions",
           "fPath": "/ehr/current/no-med/lab-reqs",
+          "topLevel": "current",
           "def": {
             "path": "/ehr/current/no-med",
             "rn": "lab-reqs",
@@ -428,7 +481,8 @@
             "routeName": "lab-reqs",
             "fullPath": "/ehr/current/no-med/lab-reqs",
             "title": "Lab Reqs",
-            "redirect": ""
+            "redirect": "",
+            "topLevel": "current"
           },
           "children": []
         }
@@ -438,6 +492,7 @@
       "name": "meds",
       "label": "Medication orders",
       "fPath": "/ehr/current/meds",
+      "topLevel": "current",
       "def": {
         "path": "/ehr/current",
         "rn": "meds",
@@ -446,7 +501,8 @@
         "componentName": "Meds",
         "routeName": "meds",
         "fullPath": "/ehr/current/meds",
-        "redirect": ""
+        "redirect": "",
+        "topLevel": "current"
       },
       "children": []
     },
@@ -454,6 +510,7 @@
       "name": "mar",
       "label": "MAR",
       "fPath": "/ehr/current/mar",
+      "topLevel": "current",
       "def": {
         "path": "/ehr/current",
         "rn": "mar",
@@ -462,7 +519,8 @@
         "routeName": "mar",
         "fullPath": "/ehr/current/mar",
         "title": "Mar",
-        "redirect": ""
+        "redirect": "",
+        "topLevel": "current"
       },
       "children": []
     },
@@ -470,6 +528,7 @@
       "name": "discharge",
       "label": "Discharge summary",
       "fPath": "/ehr/current/discharge",
+      "topLevel": "current",
       "def": {
         "path": "/ehr/current",
         "rn": "discharge",
@@ -478,7 +537,8 @@
         "routeName": "discharge",
         "fullPath": "/ehr/current/discharge",
         "title": "Discharge",
-        "redirect": ""
+        "redirect": "",
+        "topLevel": "current"
       },
       "children": []
     },
@@ -486,6 +546,7 @@
       "name": "billing",
       "label": "Billing",
       "fPath": "/ehr/current/billing",
+      "topLevel": "current",
       "def": {
         "path": "/ehr/current",
         "rn": "billing",
@@ -494,7 +555,8 @@
         "routeName": "billing",
         "fullPath": "/ehr/current/billing",
         "title": "Billing",
-        "redirect": ""
+        "redirect": "",
+        "topLevel": "current"
       },
       "children": []
     }
@@ -503,6 +565,7 @@
   "name": "chart",
   "label": "Patient chart",
   "fPath": "/ehr/chart",
+  "topLevel": "chart",
   "def": {
     "path": "/ehr",
     "rn": "chart",
@@ -511,13 +574,15 @@
     "routeName": "chart",
     "fullPath": "/ehr/chart",
     "title": "Chart",
-    "redirect": ""
+    "redirect": "",
+    "topLevel": "chart"
   },
   "children": [
     {
       "name": "progress-notes",
       "label": "Progress notes",
       "fPath": "/ehr/chart/progress-notes",
+      "topLevel": "chart",
       "def": {
         "novue": "true",
         "path": "/ehr/chart",
@@ -527,7 +592,8 @@
         "routeName": "progress-notes",
         "fullPath": "/ehr/chart/progress-notes",
         "title": "Progress Notes",
-        "redirect": ""
+        "redirect": "",
+        "topLevel": "chart"
       },
       "children": []
     },
@@ -535,6 +601,7 @@
       "name": "care-plan",
       "label": "Interprofessional plan of care",
       "fPath": "/ehr/chart/care-plan",
+      "topLevel": "chart",
       "def": {
         "path": "/ehr/chart",
         "rn": "care-plan",
@@ -544,7 +611,8 @@
         "routeName": "care-plan",
         "fullPath": "/ehr/chart/care-plan",
         "title": "Care Plan",
-        "redirect": ""
+        "redirect": "",
+        "topLevel": "chart"
       },
       "children": []
     },
@@ -552,6 +620,7 @@
       "name": "reports",
       "label": "Reports and documents",
       "fPath": "/ehr/chart/reports",
+      "topLevel": "chart",
       "def": {
         "path": "/ehr/chart",
         "rn": "reports",
@@ -560,13 +629,15 @@
         "componentName": "Reports",
         "routeName": "reports",
         "fullPath": "/ehr/chart/reports",
-        "title": "Reports"
+        "title": "Reports",
+        "topLevel": "chart"
       },
       "children": [
         {
           "name": "consults",
           "label": "Consults",
           "fPath": "/ehr/chart/reports/consults",
+          "topLevel": "chart",
           "def": {
             "path": "/ehr/chart/reports",
             "rn": "consults",
@@ -575,7 +646,8 @@
             "routeName": "consults",
             "fullPath": "/ehr/chart/reports/consults",
             "title": "Consults",
-            "redirect": ""
+            "redirect": "",
+            "topLevel": "chart"
           },
           "children": []
         },
@@ -583,6 +655,7 @@
           "name": "lab-reports",
           "label": "Lab Reports",
           "fPath": "/ehr/chart/reports/lab-reports",
+          "topLevel": "chart",
           "def": {
             "path": "/ehr/chart/reports",
             "rn": "lab-reports",
@@ -591,7 +664,8 @@
             "routeName": "lab-reports",
             "fullPath": "/ehr/chart/reports/lab-reports",
             "title": "Lab Reports",
-            "redirect": ""
+            "redirect": "",
+            "topLevel": "chart"
           },
           "children": []
         },
@@ -599,6 +673,7 @@
           "name": "diagnostic-reports",
           "label": "Diagnostic reports",
           "fPath": "/ehr/chart/reports/diagnostic-reports",
+          "topLevel": "chart",
           "def": {
             "path": "/ehr/chart/reports",
             "rn": "diagnostic-reports",
@@ -607,7 +682,8 @@
             "routeName": "diagnostic-reports",
             "fullPath": "/ehr/chart/reports/diagnostic-reports",
             "title": "Diagnostic Reports",
-            "redirect": ""
+            "redirect": "",
+            "topLevel": "chart"
           },
           "children": []
         },
@@ -615,6 +691,7 @@
           "name": "operative-anaesthesia",
           "label": "Operative reports and anaesthesia record",
           "fPath": "/ehr/chart/reports/operative-anaesthesia",
+          "topLevel": "chart",
           "def": {
             "path": "/ehr/chart/reports",
             "rn": "operative-anaesthesia",
@@ -623,7 +700,8 @@
             "routeName": "operative-anaesthesia",
             "fullPath": "/ehr/chart/reports/operative-anaesthesia",
             "title": "Operative Anaesthesia",
-            "redirect": ""
+            "redirect": "",
+            "topLevel": "chart"
           },
           "children": []
         }
