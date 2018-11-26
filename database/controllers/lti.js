@@ -5,7 +5,7 @@ import ActivityController from '../controllers/activity-controller'
 import AssignmentController from '../controllers/assignment-controller'
 import VisitController from './visit-controller'
 import Role from './roles'
-import {AssignmentMismatchError, ParameterError, SystemError} from '../utils/errors'
+import {ParameterError, SystemError} from '../utils/errors'
 
 const debug = require('debug')('server')
 const CustomStrategy = require('passport-custom')
@@ -36,6 +36,7 @@ export default class LTIController {
         // serialize the user object into the session. Provide a function that
         // receives a user object and a done(err,id) callback
         passport.serializeUser(function (user, done) {
+          // console.log('SERIALIZE user', user.user_id)
           if (user && user._id) {
             let id = user._id.valueOf()
             debug('serializeUser id:' + id)
@@ -48,6 +49,7 @@ export default class LTIController {
         // deserializeUser is to take the user id stored in the session and
         // go find the user object
         passport.deserializeUser(function (id, done) {
+          // console.log('DESERIALIZE id', id)
           UserModel.read(id)
           .then((results) => {
             let user = results.user
@@ -61,67 +63,48 @@ export default class LTIController {
   }
 
   /**
-   * If user is already in the request because it was retrieved via session then just return user.
-   * Otherwise perform validation and LTI authentication and then setup user.
-   * In both cases place the tool consumer and LTI data into req for further processing
+   * Perform validation and LTI authentication and then setup user.
+   * Place the user, tool consumer and LTI data into req for further processing
    * @param req
    * @param callback
    */
   strategyVerify (req, callback) {
     const _this = this
-    // Do custom user finding logic here. If found valid user then send it back in the callbacl
-    debug('strategyVerify ltiStrategy ')
-
+    if (!_this.validateLti(req.body, callback)) {
+      return
+    }
+    // store the LTI data for further processing after setting up the user
+    var ltiData = req.ltiData = req.body
     try {
-      if (req.user) {
-        debug('strategyVerify has the user.  TODO is this correct id? ' + req.user.id)
-          // store the LTI data for further processing after setting up the user
-        req.ltiData = req.body
-        ConsumerModel.read(req.user.toolConsumer).then((holder) => {
-          var tcid = holder.consumer ? holder.consumer._id : null
-          debug(`strategyVerify. just searched for the tool consumer id: ${tcid}`)
-          // TODO update tool consumer record from LTI data
-          req.toolConsumer = holder.consumer
-          callback(null, req.user)
-        })
-      } else {
-        // process the launch request
-        var ltiData = req.body
-        if (!_this.validateLti(ltiData, callback)) {
-          return
+      var consumerKey = ltiData['oauth_consumer_key']
+      debug('strategyVerify find consumer by key ' + consumerKey)
+      ConsumerModel.findOneConsumerByKey(consumerKey)
+      .then((toolConsumer) => {
+        // Grave error to not have found a tool consumer
+        if (!toolConsumer) {
+          let message = 'Unsupported consumer key ' + consumerKey
+          debug('strategyVerify ' + message)
+          return callback(new ParameterError(message))
         }
-
-        var consumerKey = ltiData['oauth_consumer_key']
-        debug('strategyVerify find consumer by key ' + consumerKey)
-        ConsumerModel.findOneConsumerByKey(consumerKey)
-        .then((toolConsumer) => {
-          // Grave error to not have found a tool consumer
-          if (!toolConsumer) {
-            let message = 'Unsupported consumer key ' + consumerKey
-            debug('strategyVerify ' + message)
-            return callback(new ParameterError(message))
+        req.toolConsumer = toolConsumer
+        return toolConsumer
+      })
+      .then(() => {
+        var provider = new lti.Provider(ltiData, req.toolConsumer.oauth_consumer_secret)
+        debug('strategyVerify validate msg with provider')
+        provider.valid_request(req, function (err, isValid) {
+          if (err) {
+            debug('stratefyVerify lti provider verify send error: ' + err.message)
+            return callback(new ParameterError(err.message), null)
           }
-          // TODO update tool consumer record from LTI data
-          req.toolConsumer = toolConsumer
-          var provider = new lti.Provider(ltiData, toolConsumer.oauth_consumer_secret)
-          debug('strategyVerify found tool consumer now validate msg with provider')
-          provider.valid_request(req, function (err, isValid) {
-            if (err) {
-              debug('stratefyVerify lti provider verify send error: ' + err.message)
-              return callback(new ParameterError(err.message), null)
-            }
-
-            // store the LTI data for further processing after setting up the user
-            req.ltiData = ltiData
-            let userId = ltiData['user_id']
-            debug('strategyVerify find userId: ' + userId + ' consumer: ' + consumerKey)
-            _this.findCreateUser(userId, toolConsumer._id, ltiData)
+          let userId = ltiData['user_id']
+          debug('strategyVerify find userId: ' + userId + ' consumer: ' + consumerKey)
+          _this.findCreateUser(userId, req.toolConsumer._id, ltiData)
             .then((user) => {
               callback(null, user)
             })
-          })
         })
-      }
+      })
     } catch (err) {
       debug('strategyVerify authentication error: ' + err.message)
       callback(new SystemError(err.message), null)
