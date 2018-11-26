@@ -7,10 +7,7 @@
 <script>
 import Configuration from './configuration'
 import axios from '../node_modules/axios/dist/axios.min'
-
 var config = new Configuration(process.env.NODE_ENV)
-
-console.log('Start up using this api url: ' + config.getBaseUrl())
 
 const DefaultLayout = 'outside'
 

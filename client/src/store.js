@@ -11,7 +11,6 @@ function resetState(state) {
   state.sUserInfo = d
   state.fullName = ''
   state.sVisitInfo = d
-  state.userId = ''
   state.visitId = ''
   localStorage.removeItem('token')
   state.isLoggedIn = false
@@ -22,7 +21,6 @@ function resetState(state) {
 const store = new Vuex.Store({
   state: {
     sUserInfo: {},
-    userId: '',
     visitId: '',
     fullName: '',
     sVisitInfo: {},
@@ -32,6 +30,11 @@ const store = new Vuex.Store({
     topLevelMenu: ''
   },
   plugins: [createLogger()],
+  getters: {
+    sActivityInfo: state => {
+      return state.sVisitInfo && state.sVisitInfo.activity ? state.sVisitInfo.activity : {}
+    }
+  },
   mutations: {
     logout: state => {
       // console.log('mutation logout')
