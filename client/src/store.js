@@ -48,6 +48,8 @@ const store = new Vuex.Store({
     },
     setVisitInfo: (state, info) => {
       state.sVisitInfo = info
+      var userInfo = info.user ? info.user : {}
+      state.sUserInfo = userInfo
     },
     setAssignments: (state, list) => {
       state.sAssignments = list

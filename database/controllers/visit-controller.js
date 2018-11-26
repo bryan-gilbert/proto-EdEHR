@@ -29,7 +29,6 @@ export default class VisitController extends BaseController {
   route () {
     const router = super.route()
     router.get('/flushed/:key', (req, res) => {
-console.log('Visit controller request for full info'+req.params.key) 
       this
       .findVisit(req.params.key)
       .then(ok(res))

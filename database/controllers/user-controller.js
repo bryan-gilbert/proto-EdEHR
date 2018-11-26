@@ -1,7 +1,7 @@
 import BaseController from './base'
 import User from '../models/user'
 import {ok, fail} from './utils'
-
+const debug = require('debug')('server')
 // import VisitController from '../controllers/visit-controller'
 // const Visit = new VisitController()
 
@@ -31,31 +31,28 @@ export default class UserController extends BaseController {
   */
 
   listActivitiesAsStudent (id) {
+    debug('listActivitiesAsStudent for ' + id)
     return this.baseFindOneQuery(id)
-    .populate([
-      {path: 'asStudentVisits', model: 'Visit', populate: {path: 'activity', model: 'Activity'}}
-    ])
-    .select('_id asStudentVisits')
+    .populate([{path: 'asStudentVisits', model: 'Visit', populate: {path: 'activity', model: 'Activity'}}])
+    .populate([{path: 'asStudentVisits', model: 'Visit', populate: {path: 'assignment', model: 'Assignment'}}])
+    .select('asStudentVisits')
     .then((modelInstance) => {
-      console.log(modelInstance)
-      var response = {}
-      response[this.modelName] = modelInstance
-      return response
+      var cnt = modelInstance && modelInstance.asStudentVisits ? modelInstance.asStudentVisits.length : 0
+      debug('listActivitiesAsStudent found: ' + cnt)
+      return modelInstance
     })
   }
 
   listActivitiesAsInstructor (id) {
+    debug('listActivitiesAsInstructor for ' + id)
     return this.baseFindOneQuery(id)
-    .populate([
-      {path: 'asInstructorVisits', model: 'Visit', populate: {path: 'activity', model: 'Activity'}}
-    ])
-    .select('_id asInstructorVisits')
+    .populate([{path: 'asInstructorVisits', model: 'Visit', populate: {path: 'activity', model: 'Activity'}}])
+    .populate([{path: 'asInstructorVisits', model: 'Visit', populate: {path: 'assignment', model: 'Assignment'}}])
+    .select('asInstructorVisits')
     .then((modelInstance) => {
-      // db.visits.find({activity: ObjectId("5be34dd9f0dc0e11d6120485")},{user:1})
-      console.log(modelInstance)
-      var response = {}
-      response[this.modelName] = modelInstance
-      return response
+      var cnt = modelInstance && modelInstance.asInstructorVisits ? modelInstance.asInstructorVisits.length : 0
+      debug('listActivitiesAsInstructor found: ' + cnt)
+      return modelInstance
     })
   }
 
@@ -94,19 +91,19 @@ export default class UserController extends BaseController {
     //   // res.redirect('/users')
     // })
 
-    // router.get('/:key/asInstructor', (req, res) => {
-    //   this
-    //   .listActivitiesAsInstructor(req.params.key)
-    //   .then(ok(res))
-    //   .then(null, fail(res))
-    // })
+    router.get('/asInstructor/:key', (req, res) => {
+      this
+      .listActivitiesAsInstructor(req.params.key)
+      .then(ok(res))
+      .then(null, fail(res))
+    })
 
-    // router.get('/:key/asStudent', (req, res) => {
-    //   this
-    //   .listActivitiesAsStudent(req.params.key)
-    //   .then(ok(res))
-    //   .then(null, fail(res))
-    // })
+    router.get('/asStudent/:key', (req, res) => {
+      this
+      .listActivitiesAsStudent(req.params.key)
+      .then(ok(res))
+      .then(null, fail(res))
+    })
 
 /*
     router.get('/:key/sessionData', (req, res) => {

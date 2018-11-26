@@ -1,15 +1,37 @@
-<template>
-  <div :class="$options.name">
-    <p>This is the EHR special content panel</p>
-    <div :class="`${$options.name}__special`">
-    <hr />
-    <div :class="`${$options.name}__data`">
-      <li v-for="(value, propertyName) in visitInfo" v-bind:key="propertyName">
-        <strong>{{ propertyName }}</strong> : {{ value }}
-      </li>
-    </div>
-  </div>
-  </div>
+<template lang="pug">
+  div(:class="$options.name")
+    p This is the EHR special content panel
+    div(:class="`${$options.name}__special`")
+    hr
+    h3 Visit
+    div(:class="`${$options.name}__data`")
+      li(v-for="(value, propertyName) in visitInfo", v-bind:key="propertyName", v-if="skipVisitProp(propertyName)")
+        strong {{ propertyName }}
+        span : {{ value }}
+    hr
+    h3 User
+    div(:class="`${$options.name}__data`")
+      li(v-for="(value, propertyName) in userInfo", v-bind:key="propertyName", v-if="propertyName !== 'ltiData'")
+        strong {{ propertyName }}
+        span : {{ value }}
+    hr
+    h3 LMS Consumer
+    div(:class="`${$options.name}__data`")
+      li(v-for="(value, propertyName) in visitInfo.toolConsumer", v-bind:key="propertyName")
+        strong {{ propertyName }}
+        span : {{ value }}
+    hr
+    h3 Activity
+    div(:class="`${$options.name}__data`")
+      li(v-for="(value, propertyName) in visitInfo.activity", v-bind:key="propertyName")
+        strong {{ propertyName }}
+        span : {{ value }}
+    hr
+    h3 Assignment
+    div(:class="`${$options.name}__data`")
+      li(v-for="(value, propertyName) in visitInfo.assignment", v-bind:key="propertyName")
+        strong {{ propertyName }}
+        span : {{ value }}
 </template>
 
 <script>
@@ -20,9 +42,10 @@ export default {
   },
   computed: {
     userInfo() {
-      var vi = this.$store.state.sVisitInfo
-      var uInfo = vi.user ? vi.user : {}
-      return uInfo
+      // var vi = this.$store.state.sVisitInfo
+      // var uInfo = vi.user ? vi.user : {}
+      // return uInfo
+      return this.$store.state.sUserInfo
     },
     visitInfo() {
       return this.$store.state.sVisitInfo
@@ -43,7 +66,11 @@ export default {
       return act
     }
   },
-  methods: {}
+  methods: {
+    skipVisitProp(prop) {
+      return ! (prop === 'user' || prop === 'toolConsumer' || prop === 'activity' || prop === 'assignment')
+    }
+  }
 }
 </script>
 
@@ -56,6 +83,9 @@ export default {
     padding: 5rem 2rem  ;
     z-index: 10;
 
+    h3 {
+      font-size: 1.5rem;
+    }
   &__data {
   }
 }
