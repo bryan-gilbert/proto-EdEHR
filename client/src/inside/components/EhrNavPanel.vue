@@ -1,7 +1,8 @@
 <template lang="pug">
   div(:class="$options.name")
-    ui-button(v-on:buttonClicked="returnToLms", :class="`${$options.name}__saveButton`")
-      a(v-bind:href="returnUrl") Return to {{ lmsName }}
+    div(:class="`${$options.name}__top`")
+      ui-button(v-on:buttonClicked="returnToLms", :class="`${$options.name}__saveButton`")
+        a(v-bind:href="returnUrl") Return to {{ lmsName }}
     ehr-nav-list(v-for="path in menuList" :key="path.name" :path="path" :level="1")
 </template>
 <script>
@@ -44,10 +45,13 @@ export default {
 @import '../../scss/objects/wrapper.mixin';
 
 .EhrNavPanel {
-  background-color: #23262d;
+  background-color: #151A24;
   height: 100%;
   color: #efefef;
 
+  &__top {
+    padding: 15px;
+  }
   a {
     color: white;
   }
