@@ -1,25 +1,17 @@
 <template lang="pug">
   div(class="post")
     h2(class="hello") Student: {{userInfo.givenName}}
-    div(id="nav")
-      ul
-        li
-          ui-link(:to="{ name: 'courses' }") Courses
-        li
-          ui-link(:to="{ name: 'assignments' }") Assignments
-    div
-    router-view
-    div(:class="`${$options.name}__data`")
-      li(v-for="(value, propertyName) in userInfo", v-bind:key="propertyName") {{ propertyName }} : {{ value }}
+    as-visitor(visitor-type="Student")
 </template>
 
 <script>
 import UiLink from '../../app/ui/UiLink'
-import EhrSpecial from '../../inside/components/EhrSpecial'
+import AsVisitor from '../components/AsVisitor'
 export default {
+  name: 'Student',
   components: {
     UiLink,
-    EhrSpecial
+    AsVisitor
   },
   props: {
     id: {
