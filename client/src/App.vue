@@ -27,7 +27,7 @@ export default {
       if (apiUrl) {
         console.log('API url provided in query: ', apiUrl)
       } else {
-        apiUrl =  config.getApiUrl()
+        apiUrl = config.getApiUrl()
         console.log('No API url provided in query so defaulting to configuration: ', apiUrl)
       }
       this.$store.commit('apiUrl', apiUrl)
@@ -48,8 +48,7 @@ export default {
       return new Promise((resolve, reject) => {
         let url = apiUrl + '/visits/flushed/' + visitId
         console.log('In load page ', url)
-        axios.get(url)
-        .then((response) => {
+        axios.get(url).then(response => {
           // console.log('what is the response? ', response.data)
           let visitInfo = response.data
           if (!visitInfo) {
@@ -84,5 +83,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

@@ -82,14 +82,13 @@ export default {
     },
     disableActions() {
       let isValid = !!this.$store.state.sVisitInfo
-      console.log('User is valid? ', isValid)
+      // console.log('User is valid? ', isValid)
       return !isValid
     },
     progressNotes() {
       let data = this.$store.state.sVisitInfo
-      console.log('assignment data ', data)
       if (data) {
-        console.log('EhrPanelContent data.currentData', data.currentData)
+        // console.log('EhrPanelContent data.currentData', data.currentData)
         return data.currentData ? data.currentData.progressNotes : []
       }
       return {}
@@ -109,7 +108,7 @@ export default {
     },
     validateInputs: function() {
       var inputs = this.inputs
-      console.log('validate the inputs', inputs.name, this.inputs.name)
+      // console.log('validate the inputs', inputs.name, this.inputs.name)
       inputs.name = inputs.name.trim()
       inputs.notes = inputs.notes.trim()
       inputs.unit = inputs.unit.trim()
@@ -131,7 +130,7 @@ export default {
       return this.errorList.length === 0
     },
     showDialog: function() {
-      console.log('show dialog')
+      // console.log('show dialog')
       this.clearInputs()
       if (this.populate) {
         var inputs = this.inputs
@@ -141,7 +140,7 @@ export default {
         inputs.unit= 'ER'
         inputs.day = '0'
         inputs.time = '07:00'
-        console.log("Prepop with ", this.inputs.notes)
+        // console.log("Prepop with ", this.inputs.notes)
       }
       // this.validateInputs()
       this.showModal = true
@@ -153,7 +152,7 @@ export default {
     saveDialog: function() {
       if (this.validateInputs()) {
         this.showModal = false
-        console.log('Saving ', this.inputs)
+        // console.log('Saving ', this.inputs)
         this.$store.dispatch('addPNotes', { note: this.inputs })
       }
     },
