@@ -51,7 +51,7 @@ export function apiMiddle (app, config) {
       store: app.sessionStore,
       secret: COOKIE_SECRET,
       resave: false,
-      saveUninitialized: true
+      saveUninitialized: false
     })
   )
 
