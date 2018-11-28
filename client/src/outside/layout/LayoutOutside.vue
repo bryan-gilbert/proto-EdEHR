@@ -1,16 +1,10 @@
 <template>
   <div :class="$options.name">
-    <slot name="outside-header" :class="`${$options.name}__header`">
-      <app-header />
-    </slot>
+    <slot name="outside-header" :class="`${$options.name}__header`"> <app-header /> </slot>
     <main :class="`${$options.name}__main`">
       <div name="mainContent" :class="`${$options.name}__main_content`">
-        <div name="nav" :class="`${$options.name}__nav`">
-          <out-panel-nav />
-        </div>
-        <div name="content" :class="`${$options.name}__content`">
-          <slot />
-        </div>
+        <div name="nav" :class="`${$options.name}__nav`"><out-panel-nav /></div>
+        <div name="content" :class="`${$options.name}__content`"><slot /></div>
       </div>
     </main>
     <slot name="outside-footer"> <app-footer></app-footer> </slot>
@@ -23,7 +17,6 @@ import AppHeader from '../../app/components/AppHeader.vue'
 import AppFooter from '../../app/components/AppFooter.vue'
 import OutPanelNav from '../components/OutPanelNav.vue'
 import EhrSpecial from '../../inside/components/EhrSpecial.vue'
-
 
 export default {
   name: 'LayoutOutside',

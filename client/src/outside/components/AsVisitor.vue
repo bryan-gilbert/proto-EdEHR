@@ -24,9 +24,7 @@
 </template>
 
 <script>
-import Configuration from '../../configuration'
 import axios from '../../../node_modules/axios/dist/axios.min'
-var config = new Configuration(process.env.NODE_ENV)
 
 export default {
   name: 'AsVisitor',
@@ -52,7 +50,7 @@ export default {
       var asType = 'as' + this.visitorType
       var asVisitsType = asType + 'Visits'
       console.log('asVisitsType', asVisitsType)
-      return new Promise((resolve, reject) => {
+      return new Promise(() => {
         let url = `${apiUrl}/users/${asType}/${userId}`
         console.log('In load asVisitor data ', url)
         axios.get(url).then(response => {
@@ -69,9 +67,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .AsVisitor {
-    &__main {
-      background-color: #f6fbfe;
-    }
+.AsVisitor {
+  &__main {
+    background-color: #f6fbfe;
   }
+}
 </style>

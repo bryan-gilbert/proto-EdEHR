@@ -6,7 +6,7 @@ import axios from '../node_modules/axios/dist/axios.min'
 Vue.use(Vuex)
 
 /* global localStorage */
-function resetState(state) {
+function resetState (state) {
   let d = {}
   state.sUserInfo = d
   state.fullName = ''
@@ -35,6 +35,12 @@ const store = new Vuex.Store({
   getters: {
     sActivityInfo: state => {
       return state.sVisitInfo && state.sVisitInfo.activity ? state.sVisitInfo.activity : {}
+    },
+    lmsName: state => {
+      if (state.sVisitInfo && state.sVisitInfo.toolConsumer) {
+        return state.sVisitInfo.toolConsumer.tool_consumer_instance_name
+      }
+      return ''
     }
   },
   mutations: {
@@ -60,7 +66,7 @@ const store = new Vuex.Store({
       state.sAssignments = list
     },
     setCourses: (state, list) => {
-      console.log('set courses', list)
+      // console.log('set courses', list)
       state.sCourses = list
     },
     apiUrl: (state, url) => {
@@ -71,14 +77,14 @@ const store = new Vuex.Store({
     }
   },
   actions: {
-    routeEnter({ commit }) {
+    routeEnter ({ commit }) {
       // console.log('action routeEnter')
       commit('routeEnter')
     },
-    logout({ commit }) {
+    logout ({ commit }) {
       commit('logout')
     },
-    addPNotes(context, payload) {
+    addPNotes (context, payload) {
       let visitData = context.state.sVisitInfo
       let vid = visitData._id
       let newNote = payload.note

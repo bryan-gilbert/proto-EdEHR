@@ -4,7 +4,7 @@
 </template>
 
 <script>
-  import AsInstructor from '../components/AsInstructor'
+import AsInstructor from '../components/AsInstructor'
 
 export default {
   name: 'Instructor',
@@ -20,9 +20,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .Instructor {
-    &__main {
-      background-color: #f6fbfe;
-    }
+.Instructor {
+  &__main {
+    background-color: #f6fbfe;
   }
+}
 </style>

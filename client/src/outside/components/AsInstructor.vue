@@ -26,10 +26,8 @@
 </template>
 
 <script>
-import Configuration from '../../configuration'
 import axios from '../../../node_modules/axios/dist/axios.min'
 import StudentAssignmentInfo from './StudentAssignmentInfo'
-var config = new Configuration(process.env.NODE_ENV)
 
 export default {
   name: 'AsInstructor',
@@ -41,11 +39,11 @@ export default {
   },
   computed: {
     courses() {
-      console.log('seek sCourses', this.$store.state.sCourses)
+      // console.log('seek sCourses', this.$store.state.sCourses)
       return this.$store.state.sCourses
     },
     activities() {
-      console.log('seek activities', this.$store.state.sActivities)
+      // console.log('seek activities', this.$store.state.sActivities)
       return this.$store.state.sActivities
     }
   },
@@ -55,7 +53,7 @@ export default {
     },
     assignmentData: function(student) {
       var d = JSON.stringify(student.assignmentData, null, 2)
-      console.log('student a data', d)
+      // console.log('student a data', d)
       return d
     },
     workData: function(assignmentData) {
@@ -67,12 +65,12 @@ export default {
       // Load information from server
       var asType = 'as' + this.visitorType
       var asVisitsType = asType + 'Visits'
-      console.log('asVisitsType', asVisitsType)
-      return new Promise((resolve, reject) => {
+      // console.log('asVisitsType', asVisitsType)
+      return new Promise(() => {
         let url = `${apiUrl}/users/${asType}/${userId}`
-        console.log('In load asVisitor data ', url)
+        // console.log('In load asVisitor data ', url)
         axios.get(url).then(response => {
-          console.log(response.data)
+          // console.log(response.data)
           var courses = response.data['courses']
           this.$store.commit('setCourses', courses)
         })
@@ -86,32 +84,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .AsInstructor {
-    .courses{
-      margin-left: 0rem;
-    }
-    .aName {
-      display: inline-block;
-      width: 10rem;
-      font-weight: 600;
-    }
-    .aValue {
-      display: inline;
-    }
-    .activities {
-      margin-bottom: 2rem;
-      margin-left: 1.5rem;
-      background-color: #F8F9FA;
-      border: 1px solid #444;
-      .activities-inner {
-        margin-left: 15px;
-      }
-    }
-    .students {
-      border-bottom: 1px solid #888;
-    }
-    &__main {
-      background-color: #f6fbfe;
+.AsInstructor {
+  margin-left: 1.5rem;
+  .courses {
+    margin-left: 0rem;
+  }
+  .aName {
+    display: inline-block;
+    width: 10rem;
+    font-weight: 600;
+  }
+  .aValue {
+    display: inline;
+  }
+  .activities {
+    margin-bottom: 2rem;
+    background-color: #f8f9fa;
+    border: 1px solid #444;
+    .activities-inner {
+      margin-left: 15px;
     }
   }
+  .students {
+    border-bottom: 1px solid #888;
+  }
+  &__main {
+    background-color: #f6fbfe;
+  }
+}
 </style>

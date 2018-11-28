@@ -37,7 +37,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .accordion {
-  background-color: #E8EBED;
+  background-color: #e8ebed;
   .header {
     height: 40px;
     line-height: 40px;

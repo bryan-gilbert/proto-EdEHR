@@ -9,9 +9,6 @@
         span |
       li(:class="`${$options.name}__nav`")
         ui-link(:to="{ name: 'instructor' }") Instructor
-        span |
-      li(:class="`${$options.name}__nav`")
-        ui-link(:to="{ name: 'courses' }") Courses
 </template>
 
 <script>
@@ -26,9 +23,7 @@ export default {
       return this.$store.state.sVisitInfo.returnUrl
     },
     lmsName() {
-      if (this.$store.state.sVisitInfo && this.$store.state.sVisitInfo.toolConsumer)
-        return this.$store.state.sVisitInfo.toolConsumer.tool_consumer_instance_name
-      return ''
+      return this.$store.getters.lmsName
     }
   },
 }
