@@ -14,6 +14,7 @@
       </div>
     </main>
     <slot name="outside-footer"> <app-footer></app-footer> </slot>
+    <ehr-special />
   </div>
 </template>
 
@@ -21,13 +22,16 @@
 import AppHeader from '../../app/components/AppHeader.vue'
 import AppFooter from '../../app/components/AppFooter.vue'
 import OutPanelNav from '../components/OutPanelNav.vue'
+import EhrSpecial from '../../inside/components/EhrSpecial.vue'
+
 
 export default {
   name: 'LayoutOutside',
   components: {
     OutPanelNav,
     AppFooter,
-    AppHeader
+    AppHeader,
+    EhrSpecial
   },
   computed: {
     path() {

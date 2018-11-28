@@ -1,21 +1,19 @@
 <template lang="pug">
   div(:class="$options.name")
-    h2(class="hello") Instructor {{activityInfo.context_title}}
-    h2(class="hello") Course {{activityInfo.context_title}}
-    as-visitor(:visitorType="Instructor")
+    as-instructor(visitorType="Instructor")
 </template>
 
 <script>
-  import AsVisitor from '../components/AsVisitor'
+  import AsInstructor from '../components/AsInstructor'
 
 export default {
   name: 'Instructor',
   components: {
-    AsVisitor
+    AsInstructor
   },
   computed: {
-    activityInfo() {
-      return this.$store.getters.sActivityInfo
+    userInfo() {
+      return this.$store.state.sUserInfo
     }
   }
 }

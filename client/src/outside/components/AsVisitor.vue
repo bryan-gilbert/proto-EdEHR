@@ -16,7 +16,7 @@
           td {{ activity.context_title }}
           td {{ activity.context_id }}
           td {{ activity.resource_link_title }}
-          td {{ activity.resource_link_id }}
+          td {{ activity.resource_link_id }} ({{ activity._id }})
           td {{ assignment.externalId }}
           td {{ assignment.name }}
           td(v-bind:title="seedData(assignment)") seed

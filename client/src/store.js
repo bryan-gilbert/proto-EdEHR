@@ -15,6 +15,7 @@ function resetState(state) {
   localStorage.removeItem('token')
   state.isLoggedIn = false
   state.assignments = []
+  state.sCourses = []
   state.apiUrl = ''
 }
 
@@ -26,6 +27,7 @@ const store = new Vuex.Store({
     sVisitInfo: {},
     isLoggedIn: !!localStorage.getItem('token'),
     assignments: [],
+    sCourses: [],
     apiUrl: '',
     topLevelMenu: ''
   },
@@ -56,6 +58,10 @@ const store = new Vuex.Store({
     },
     setAssignments: (state, list) => {
       state.sAssignments = list
+    },
+    setCourses: (state, list) => {
+      console.log('set courses', list)
+      state.sCourses = list
     },
     apiUrl: (state, url) => {
       state.apiUrl = url

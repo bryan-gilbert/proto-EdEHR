@@ -1,34 +1,16 @@
+import mongoose from 'mongoose'
 import BaseController from './base'
 import User from '../models/user'
+import Activity from '../models/activity'
+import Visit from '../models/visit'
 import {ok, fail} from './utils'
 const debug = require('debug')('server')
-// import VisitController from '../controllers/visit-controller'
-// const Visit = new VisitController()
 
 export default class UserController extends BaseController {
   constructor (config) {
     super(User, '_id')
     this.config = config
-    // this.populate = 'toolConsumer'
-    // this.populate = [{path: 'currentVisit', populate: {path: 'activity'}}]
   }
-
-  /*
-  updateSessionData (id, data) {
-    return this.baseFindOneQuery(id)
-    .then((modelInstance) => {
-      if (modelInstance) {
-        let visitId = modelInstance.currentVisit._id
-        console.log('invoke Visit.updateSessionData ', data)
-        return Visit.updateSessionData(visitId, data)
-      }
-    })
-    .then((visit) => {
-      console.log('updateSessionData return ...', visit.sessionData)
-      return visit.sessionData
-    })
-  }
-  */
 
   listActivitiesAsStudent (id) {
     debug('listActivitiesAsStudent for ' + id)
@@ -45,18 +27,96 @@ export default class UserController extends BaseController {
 
   listActivitiesAsInstructor (id) {
     debug('listActivitiesAsInstructor for ' + id)
+    var results = {user: id}
     return this.baseFindOneQuery(id)
     .populate([{path: 'asInstructorVisits', model: 'Visit', populate: {path: 'activity', model: 'Activity'}}])
     .populate([{path: 'asInstructorVisits', model: 'Visit', populate: {path: 'assignment', model: 'Assignment'}}])
     .select('asInstructorVisits')
     .then((modelInstance) => {
-      var cnt = modelInstance && modelInstance.asInstructorVisits ? modelInstance.asInstructorVisits.length : 0
+      results.asInstructorVisits = modelInstance.asInstructorVisits
+      var list = modelInstance.asInstructorVisits
+      var aids = list.map((visit) => {
+        return visit.activity._id
+      })
+      var cnt = aids.length
       debug('listActivitiesAsInstructor found: ' + cnt)
-      return modelInstance
+      results.aids = aids
+      return Visit.find({ $and: [
+        {'isStudent': true},
+        {'activity': {$in: aids}}
+      ]})
+      .populate('user')
+    })
+    .then((visits) => {
+      results.visits = visits
+      return Activity.find({'_id': {$in: results.aids}})
+      .populate('assignment')
+    })
+    .then((activities) => {
+      var courses = this.composeCourses(activities, results.visits)
+      var finalResults = {
+        courses: courses,
+        asInstructorVisits: results.asInstructorVisits
+      }
+      return finalResults
     })
   }
 
-  // TODO essentially this is a special case filter. Make a generic way to filter for any class
+  composeCourses (activities, visits) {
+    var courses = []
+    activities.forEach((activity) => {
+      console.log('activity', activity._id)
+      var cId = activity.context_id
+      var course = courses.find((c) => {
+        return c.id === cId
+      })
+      if (!course) {
+        course = {
+          id: cId,
+          name: activity.context_title,
+          label: activity.context_label,
+          activities: []
+        }
+        courses.push(course)
+      }
+      var ract = {
+        id: activity.resource_link_id,
+        _id: activity._id,
+        name: activity.resource_link_title,
+        label: activity.resource_link_description,
+        assignment: activity.assignment.name,
+        seed: activity.assignment.seedData,
+        route: activity.assignment.ehrRoute,
+        externalId: activity.assignment.externalId,
+        students: []
+      }
+      var aVisits = []
+      visits.forEach((visit) => {
+        if (visit.activity.equals(activity._id)) {
+          console.log('   v', visit._id, visit.activity)
+          aVisits.push(visit)
+        }
+      })
+      aVisits.forEach((visit) => {
+        var user = visit.user
+        var student = {
+          familyName: user.familyName,
+          givenName: user.givenName,
+          email: user.emailPrimary,
+          id: user.user_id,
+          _id: user._id,
+          assignmentData: visit.assignmentData
+        }
+        // console.log('push student', student)
+        ract.students.push(student)
+      })
+      // console.log('push ract', ract)
+      course.activities.push(ract)
+    })
+    return courses
+  }
+
+// TODO essentially this is a special case filter. Make a generic way to filter for any class
   list () {
     var self = this
     let xflds = '-ltiData'
@@ -75,22 +135,6 @@ export default class UserController extends BaseController {
   route () {
     const router = super.route()
 
-    // router.get('/:key/userAuthenticated', (req, res) => {
-    //   var session = req.session.passport
-    //   // var cookies = req.cookies
-    //   // var user = req.user
-    //   var userId = req.params.key
-    //   var url = 'http://localhost:28000?user=' + userId
-    //
-    //   console.log('authenticated user: ', userId)
-    //   console.log('authenticated session: ', session)
-    //   console.log('authenticated url: ', url)
-    //   // res.status = 302
-    //   // res.setHeader('Location', url)
-    //   res.redirect(url)
-    //   // res.redirect('/users')
-    // })
-
     router.get('/asInstructor/:key', (req, res) => {
       this
       .listActivitiesAsInstructor(req.params.key)
@@ -104,34 +148,6 @@ export default class UserController extends BaseController {
       .then(ok(res))
       .then(null, fail(res))
     })
-
-/*
-    router.get('/:key/sessionData', (req, res) => {
-      this
-      .read(req.params.key)
-      .then((results) => {
-        var user = results.user
-        var visit = user.currentVisit || {sessionData: {}}
-        var data = Object.assign({}, visit.sessionData)
-        console.log('extact session data from results', data)
-        return data
-      })
-      .then(ok(res))
-      .then(null, fail(res))
-    })
-
-    router.put('/:key/sessionData', (req, res) => {
-      this
-      .updateSessionData(req.params.key, req.body)
-      .then((result) => {
-        let sd = result.sessionData
-        console.log('result.sessionData', sd)
-        return sd
-      })
-      .then(ok(res))
-      .then(null, fail(res))
-    })
-    */
     return router
   }
 }
