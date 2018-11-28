@@ -41,7 +41,7 @@ export function fail (res) {
         console.log('utils/fail CastError return 500.')
         break
       default:
-        console.log('Server TODO enhance error reporting for ', error.name)
+        console.log('Server TODO enhance error reporting for ', error)
     }
     // ...
     console.log(code, message)
