@@ -22,7 +22,7 @@ export default class VisitController extends BaseController {
     return this.baseFindOneQuery(id)
     .then((activityData) => {
       if (activityData) {
-        activityData.evaluationData = data
+        activityData.evaluationData = data.evaluationData
         return activityData.save()
       }
     })

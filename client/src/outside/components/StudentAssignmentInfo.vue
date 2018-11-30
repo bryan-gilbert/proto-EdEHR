@@ -12,41 +12,39 @@
           div(class="aValue") {{ studentInfo.emailPrimary }}
         div
           div(class="aName") Last visit:
-          div(class="aValue") {{ student.lastVisitDate }}
+          div(class="aValue") {{ studentVisit.lastVisitDate }}
       div
-        pre {{ assignmentData(student)}}
+        pre {{ assignmentData(studentVisit)}}
       div(class="evaluation")
-        div(class="evaluation-label")
-          label Evaluation notes
-          div(class="evaluation-controls")
-            button(v-on:click="cancelEval") cancel
-            button(v-on:click="saveEvaluationNotes")  save
-        textarea(class="evaluation-input", v-model="evalNotes")
+        evaluation-note(:studentVisitId="studentVisit._id")
 </template>
 <script>
 import accordion from '../../app/components/accordion'
+import EvaluationNote from './EvaluationNote'
 // (v-model="inputs.notes")
 export default {
   name: 'StudentAssignmentInfo',
   components: {
-    accordion
+    accordion,
+    EvaluationNote
   },
   props: {
-    student: { type: Object }
+    studentVisit: { type: Object } // a visit record
   },
   computed: {
     theme() {
       return 'blueTheme'
     },
     studentInfo() {
-      return this.student.user || []
+      return this.studentVisit.user || []
     },
     studentName() {
-      var user = this.student.user || {}
+      var user = this.studentVisit.user || {}
       return user.givenName + ' ' + user.familyName
     },
-    userInfo() {
-      return this.$store.state.sUserInfo
+    activityData() {
+      var activityData = this.studentVisit.activityData || {}
+      return activityData
     }
   },
   data: function() {
@@ -55,29 +53,12 @@ export default {
     }
   },
   methods: {
-    assignmentData: function(student) {
-      var activityData = student.activityData || {}
+    assignmentData: function(studentVisit) {
+      var activityData = studentVisit.activityData || {}
       var assignmentData = activityData.assignmentData
       var d = JSON.stringify(assignmentData, null, 2)
       return d
-    },
-    evaluationNotes: function() {
-      var ed = this.student.evaluationData
-      var initialNotes = ed ? ed.pocNotes : ''
-      this.evalNotes = initialNotes
-    },
-    cancelEval: function() {
-      this.evaluationNotes()
-    },
-    saveEvaluationNotes: function() {
-      this.$store.dispatch('addEvalutationNotes', {
-        note: this.evalNotes,
-        studentVisitId: this.student.studentVisitId
-      })
     }
-  },
-  mounted: function() {
-    this.evaluationNotes()
   }
 }
 </script>

@@ -2,8 +2,8 @@
   div(:class="$options.name")
     activity-header(:activity="activity")
     div(v-if="visitInfo.isInstructor")
-      div(class="classList", v-for="student in classList")
-        student-assignment-info(v-bind:student="student")
+      div(class="classList", v-for="studentVisit in classList")
+        student-assignment-info(v-bind:studentVisit="studentVisit")
         hr
 </template>
 

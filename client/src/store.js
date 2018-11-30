@@ -94,18 +94,19 @@ const store = new Vuex.Store({
       commit('logout')
     },
     saveEvaluationNotes (context, payload) {
-      let visitData = context.state.sVisitInfo
-      let vid = visitData._id
-      let newNote = payload.note
-      let url = `${context.state.apiUrl}/visits/evaluationData/${vid}`
-      visitData.evaluationData = visitData.evaluationData || {}
-      let vd = visitData.evaluationData = newNote
+      let vid = payload.activityDataId
+      let body = {
+        evaluationData: payload.evalNotes
+      }
+      let url = `${context.state.apiUrl}/activity-data/evaluation-data/${vid}`
+      console.log('store save eval notes ', url, body)
       let helper = new StoreHelper()
-      helper.putRequest(url, vd, function (results) {
-        let evaluationData = results.data
-        // TODO finish ...
-        console.log(`TODO save evaluation after post with ${evaluationData}`)
-        // context.commit('setVisitInfo', visitdata)
+      return new Promise((resolve) => {
+        helper.putRequest(url, body)
+        .then((results) => {
+          let evaluationData = results.data
+          resolve(evaluationData)
+        })
       })
     },
     addPNotes (context, payload) {
@@ -118,24 +119,30 @@ const store = new Vuex.Store({
       vd.progressNotes = vd.progressNotes || []
       vd.progressNotes.push(newNote)
       let helper = new StoreHelper()
-      helper.putRequest(url, vd, function (results) {
-        let activityData = results.data
-        console.log(`addPNotes after post with ${activityData}`)
-        context.commit('setActivityData', activityData)
-      })
+      return helper.putRequest(url, vd)
+        .then((results) => {
+          let activityData = results.data
+          console.log(`addPNotes after post with ${activityData}`)
+          context.commit('setActivityData', activityData)
+          return activityData
+        })
     }
   }
 })
 
 class StoreHelper {
-  putRequest (url, bodyData, callback) {
-    axios
-    .put(url, bodyData)
-    .then(results => {
-      callback(results)
-    })
-    .catch(error => {
-      console.error(`Failed put to ${url} with error: ${error.message}`)
+  putRequest (url, bodyData) {
+    return new Promise((resolve, reject) => {
+      axios
+      .put(url, bodyData)
+      .then(results => {
+        resolve(results)
+      })
+      .catch(error => {
+        var msg = `Failed put to ${url} with error: ${error.message}`
+        console.error(msg)
+        reject(msg)
+      })
     })
   }
 }
