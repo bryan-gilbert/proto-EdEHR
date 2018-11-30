@@ -10,8 +10,8 @@
 <script>
 import axios from '../../../node_modules/axios/dist/axios.min'
 
-  import StudentAssignmentInfo from '../components/StudentAssignmentInfo'
-  import ActivityHeader from '../components/ActivityHeader'
+import StudentAssignmentInfo from '../components/StudentAssignmentInfo'
+import ActivityHeader from '../components/ActivityHeader'
 
 export default {
   name: 'ClassList',
@@ -21,7 +21,7 @@ export default {
   },
   data: function() {
     return {
-      activity: {assignment:{}}
+      activity: { assignment: {} }
     }
   },
   computed: {
@@ -48,7 +48,7 @@ export default {
       return new Promise(() => {
         let url = `${apiUrl}/activities/flushed/${activityId}`
         axios.get(url).then(response => {
-          console.log('Got activity information ', response.data)
+          // console.log('Got activity information ', response.data)
           this.activity = response.data
         })
       })
@@ -58,9 +58,9 @@ export default {
       let activityId = this.$route.params.activityId
       return new Promise(() => {
         let url = `${apiUrl}/activities/class/${activityId}`
-        console.log('In load instructor activities data ', url)
+        // console.log('In load instructor activities data ', url)
         axios.get(url).then(response => {
-          console.log('load activities', response.data)
+          // console.log('load activities', response.data)
           var classList = response.data['classList']
           this.$store.commit('setClassList', classList)
         })

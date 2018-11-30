@@ -72,8 +72,8 @@ export default {
     return {
       showModal: false,
       populate: true,
-      inputs: { },
-      errorList: [ ]
+      inputs: {},
+      errorList: []
     }
   },
   computed: {
@@ -96,12 +96,12 @@ export default {
   methods: {
     clearInputs: function() {
       this.inputs = {
-        name:'',
-        profession:'',
-        unit:'',
+        name: '',
+        profession: '',
+        unit: '',
         day: '0',
-        time:'',
-        notes:''
+        time: '',
+        notes: ''
       }
       this.errorList = []
     },
@@ -111,12 +111,12 @@ export default {
       inputs.name = inputs.name.trim()
       inputs.notes = inputs.notes.trim()
       inputs.unit = inputs.unit.trim()
-      inputs.profession= inputs.profession.trim()
+      inputs.profession = inputs.profession.trim()
       inputs.day = inputs.day.trim()
       inputs.time = inputs.time.trim()
       var vm = this
       function check(prop, msg) {
-        if(prop.length==0) {
+        if (prop.length == 0) {
           vm.errorList.push(msg)
         }
       }
@@ -135,8 +135,8 @@ export default {
         var inputs = this.inputs
         inputs.name = getName()
         inputs.notes = getPhrase(14)
-        inputs.profession='Nurse'
-        inputs.unit= 'ER'
+        inputs.profession = 'Nurse'
+        inputs.unit = 'ER'
         inputs.day = '0'
         inputs.time = '07:00'
         // console.log("Prepop with ", this.inputs.notes)
@@ -151,10 +151,10 @@ export default {
     saveDialog: function() {
       if (this.validateInputs()) {
         this.showModal = false
-        console.log('Saving Progress Notes', this.inputs)
+        // console.log('Saving Progress Notes', this.inputs)
         this.$store.dispatch('addPNotes', { note: this.inputs })
       }
-    },
+    }
   }
 }
 </script>
@@ -173,5 +173,4 @@ $contentMinHeigth: 500px;
     }
   }
 }
-
 </style>

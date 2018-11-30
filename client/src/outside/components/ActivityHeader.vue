@@ -16,12 +16,11 @@
 </template>
 
 <script>
-
 export default {
   name: 'ActivityHeader',
   props: {
     activity: { type: Object }
-  },
+  }
 }
 </script>
 

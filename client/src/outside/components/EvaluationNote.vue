@@ -10,15 +10,14 @@
 <script>
 export default {
   name: 'EvaluationNote',
-  components: {
-  },
+  components: {},
   props: {
     studentVisitId: { type: String }
   },
   computed: {
     activityData() {
       var classList = this.$store.state.sClassList
-      var currentStudentVisit = classList.find( (sv) => {
+      var currentStudentVisit = classList.find(sv => {
         return sv._id === this.studentVisitId
       })
       return currentStudentVisit.activityData
@@ -34,15 +33,16 @@ export default {
       this.initializeEvaluationNotes()
     },
     saveEvaluationNotes: function() {
-      this.$store.dispatch('saveEvaluationNotes', {
-        evalNotes: this.evalNotes,
-        activityDataId: this.activityData._id
-      })
-      .then ((results)=>{
-        var ad = results || {}
-        var ed = ad.evaluationData || ''
-        this.evalNotes = ed
-      })
+      this.$store
+        .dispatch('saveEvaluationNotes', {
+          evalNotes: this.evalNotes,
+          activityDataId: this.activityData._id
+        })
+        .then(results => {
+          var ad = results || {}
+          var ed = ad.evaluationData || ''
+          this.evalNotes = ed
+        })
     },
     initializeEvaluationNotes: function() {
       var ad = this.activityData
@@ -52,7 +52,7 @@ export default {
       return initialNotes
     }
   },
-  created: function(){
+  created: function() {
     this.initializeEvaluationNotes()
   }
 }

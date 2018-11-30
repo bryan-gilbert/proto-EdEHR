@@ -17,7 +17,7 @@ export default {
     }
   },
   props: {
-    theme: {type: String, default: 'defaultTheme'}
+    theme: { type: String, default: 'defaultTheme' }
   },
   methods: {
     toggle: function() {
@@ -75,5 +75,4 @@ export default {
 .blueTheme {
   background-color: skyblue;
 }
-
 </style>
