@@ -5,72 +5,37 @@
       div Description: {{ course.label }}
       div(class="activities", v-for="activity in course.activities")
         div(class="activities-inner")
-          div(class="activities-header")
-            div(class="aName") Activity:
-            div(class="aValue") {{ activity.name }} ( id: {{ activity.id }} )
-          div(class="activities-info")
-            div
-              div(class="aName") Description:
-              div(class="aValue") {{ activity.label }}
-            div
-              div(class="aName") EHR Assignment:
-              div(class="aValue") {{ activity.assignment }}  ( id: {{ activity.externalId }} )
-            div
-              div(class="aName") Internals
-              div(class="aValue") route: {{ activity.route }}
-            div
-              div(class="aName") Seed
-              div(class="aValue", :title="seedData(activity)") hover mouse here to see seed
-        div(class="students", v-for="student in activity.students")
-          student-assignment-info(:student="student")
+          activity-header(:activity="activity")
+          div
+            router-link(v-bind:to="`/activity-list/${activity._id}`") class list
+    router-view
 </template>
 
 <script>
 import axios from '../../../node_modules/axios/dist/axios.min'
-import StudentAssignmentInfo from './StudentAssignmentInfo'
-
+import ActivityHeader from './ActivityHeader'
 export default {
   name: 'AsInstructor',
   components: {
-    StudentAssignmentInfo
-  },
-  props: {
-    visitorType: { type: String, default: 'Instructor' }
+    ActivityHeader
   },
   computed: {
     courses() {
-      // console.log('seek sCourses', this.$store.state.sCourses)
       return this.$store.state.sCourses
-    },
-    activities() {
-      // console.log('seek activities', this.$store.state.sActivities)
-      return this.$store.state.sActivities
     }
   },
   methods: {
-    seedData: function(activity) {
-      return JSON.stringify(activity.seed)
-    },
-    assignmentData: function(student) {
-      var d = JSON.stringify(student.assignmentData, null, 2)
-      // console.log('student a data', d)
-      return d
-    },
-    workData: function(assignmentData) {
-      return JSON.stringify(assignmentData)
+    asString: function(obj) {
+      return JSON.stringify(obj)
     },
     loadData: function() {
       var apiUrl = this.$store.state.apiUrl
       let userId = this.$store.state.sUserInfo._id
-      // Load information from server
-      var asType = 'as' + this.visitorType
-      var asVisitsType = asType + 'Visits'
-      // console.log('asVisitsType', asVisitsType)
       return new Promise(() => {
-        let url = `${apiUrl}/users/${asType}/${userId}`
-        // console.log('In load asVisitor data ', url)
+        let url = `${apiUrl}/users/instructor/courses/${userId}`
+        // console.log('In load instructor courses data ', url)
         axios.get(url).then(response => {
-          // console.log(response.data)
+          // console.log('load courses', response.data)
           var courses = response.data['courses']
           this.$store.commit('setCourses', courses)
         })

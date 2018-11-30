@@ -86,10 +86,9 @@ export default {
       return !isValid
     },
     progressNotes() {
-      let data = this.$store.state.sVisitInfo
-      if (data) {
-        // console.log('EhrPanelContent data.currentData', data.currentData)
-        return data.currentData ? data.currentData.progressNotes : []
+      let activityData = this.$store.state.sActivityData
+      if (activityData) {
+        return activityData.currentData.progressNotes
       }
       return {}
     }
@@ -152,7 +151,7 @@ export default {
     saveDialog: function() {
       if (this.validateInputs()) {
         this.showModal = false
-        // console.log('Saving ', this.inputs)
+        console.log('Saving Progress Notes', this.inputs)
         this.$store.dispatch('addPNotes', { note: this.inputs })
       }
     },

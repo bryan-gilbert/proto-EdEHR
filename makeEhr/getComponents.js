@@ -25,7 +25,7 @@ function outside () {
 
 function inside () {
   const insideDefs = require('./defs')
-  flushDefs(insideDefs)
+  flushDefs(insideDefs, true)
   var outfilename = pathUtil.join(destRouteFiles, 'treeDef.json')
 
   var tree = makeTree(insideDefs, outfilename)
@@ -37,17 +37,18 @@ function inside () {
   makeRoutes(insideDefs, 'inside', './inside/views', outfilename)
 }
 
-function flushDefs (defs) {
+function flushDefs (defs, forInside) {
   defs.forEach(def => {
-    def.componentName = camelcase(def.rn, { pascalCase: true })
+    def.componentName = def.componentName ? def.componentName : camelcase(def.rn, { pascalCase: true })
     def.routeName = def.rn
     def.fullPath = def.path + '/' + def.rn
     def.title = def.title || splitCamelCase(def.componentName)
     def.label = def.label || def.title
     def.redirect = def.redirect ? def.redirect : ''
     // the first part past '/ehr/' is the top level menu item name ...
-    def.topLevel = def.fullPath.split('/')[2]
-
+    if (forInside) {
+      def.topLevel = def.fullPath.split('/')[2]
+    }
   })
 }
 

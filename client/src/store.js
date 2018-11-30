@@ -25,17 +25,16 @@ const store = new Vuex.Store({
     visitId: '',
     fullName: '',
     sVisitInfo: {},
+    sActivityData: {},
     isLoggedIn: !!localStorage.getItem('token'),
     assignments: [],
+    sClassList: [],
     sCourses: [],
     apiUrl: '',
     topLevelMenu: ''
   },
   plugins: [createLogger()],
   getters: {
-    sActivityInfo: state => {
-      return state.sVisitInfo && state.sVisitInfo.activity ? state.sVisitInfo.activity : {}
-    },
     lmsName: state => {
       if (state.sVisitInfo && state.sVisitInfo.toolConsumer) {
         return state.sVisitInfo.toolConsumer.tool_consumer_instance_name
@@ -59,8 +58,18 @@ const store = new Vuex.Store({
     },
     setVisitInfo: (state, info) => {
       state.sVisitInfo = info
-      var userInfo = info.user ? info.user : {}
-      state.sUserInfo = userInfo
+      if (info.user) {
+        state.sUserInfo = info.user
+      }
+      if (info.activityData) {
+        state.sActivityData = info.activityData
+      }
+    },
+    setActivityData: (state, data) => {
+      state.sActivityData = data
+    },
+    setClassList: (state, list) => {
+      state.sClassList = list
     },
     setAssignments: (state, list) => {
       state.sAssignments = list
@@ -84,31 +93,50 @@ const store = new Vuex.Store({
     logout ({ commit }) {
       commit('logout')
     },
-    addPNotes (context, payload) {
+    saveEvaluationNotes (context, payload) {
       let visitData = context.state.sVisitInfo
       let vid = visitData._id
       let newNote = payload.note
-      let url = `${context.state.apiUrl}/visits/data/${vid}`
-      // console.log('addPNotes payload', payload)
-      // console.log('addPNote visit data id', vid)
-      // console.log('addPNotes put url', url)
-      visitData.assignmentData = visitData.assignmentData || {}
-      let vd = visitData.assignmentData
+      let url = `${context.state.apiUrl}/visits/evaluationData/${vid}`
+      visitData.evaluationData = visitData.evaluationData || {}
+      let vd = visitData.evaluationData = newNote
+      let helper = new StoreHelper()
+      helper.putRequest(url, vd, function (results) {
+        let evaluationData = results.data
+        // TODO finish ...
+        console.log(`TODO save evaluation after post with ${evaluationData}`)
+        // context.commit('setVisitInfo', visitdata)
+      })
+    },
+    addPNotes (context, payload) {
+      console.log('addPNotes')
+      let activityData = context.state.sActivityData
+      let newNote = payload.note
+      let url = `${context.state.apiUrl}/activity-data/assignment-data/${activityData._id}`
+      console.log(`Send addPNotes ${url}`)
+      let vd = activityData.assignmentData || {}
       vd.progressNotes = vd.progressNotes || []
       vd.progressNotes.push(newNote)
-      // console.log('addPNote visitData', vd)
-      axios
-        .put(url, vd)
-        .then(results => {
-          let visitdata = results.data
-          // console.log(`addPNotes after post with ${visitdata}`)
-          context.commit('setVisitInfo', visitdata)
-        })
-        .catch(error => {
-          console.error(`Failed to update progress notes ${error.message}`)
-        })
+      let helper = new StoreHelper()
+      helper.putRequest(url, vd, function (results) {
+        let activityData = results.data
+        console.log(`addPNotes after post with ${activityData}`)
+        context.commit('setActivityData', activityData)
+      })
     }
   }
 })
 
+class StoreHelper {
+  putRequest (url, bodyData, callback) {
+    axios
+    .put(url, bodyData)
+    .then(results => {
+      callback(results)
+    })
+    .catch(error => {
+      console.error(`Failed put to ${url} with error: ${error.message}`)
+    })
+  }
+}
 export default store
