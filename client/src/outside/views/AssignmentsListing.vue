@@ -46,9 +46,9 @@
 </template>
 
 <script>
-  import Configuration from '../../configuration'
-  import axios from '../../../node_modules/axios/dist/axios.min'
-  var config = new Configuration()
+import Configuration from '../../configuration'
+import axios from '../../../node_modules/axios/dist/axios.min'
+var config = new Configuration()
 
 export default {
   name: 'AssignmentsListing',
@@ -66,7 +66,6 @@ export default {
   data: function() {
     return {
       error: null,
-      activity: {},
       assignmentsListing: []
     }
   },
@@ -75,8 +74,7 @@ export default {
       var apiUrl = this.$store.state.apiUrl
       return new Promise((resolve, reject) => {
         let url = apiUrl + '/assignments/'
-        axios.get(url)
-        .then((response) => {
+        axios.get(url).then(response => {
           console.log('what is the get assignments response? ', response.data.assignments)
           let list = response.data.assignments
           if (!list) {

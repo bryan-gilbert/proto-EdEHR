@@ -27,8 +27,8 @@ export default {
     }
   },
   watch: {
-    $route: function(to,from) {
-      if (to.name === this.path.name ) {
+    $route: function(to, from) {
+      if (to.name === this.path.name) {
         this.$store.commit('topLevelMenu', this.path.topLevel)
       }
     }

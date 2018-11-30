@@ -68,24 +68,29 @@ export default {
   },
   methods: {
     skipVisitProp(prop) {
-      return ! (prop === 'user' || prop === 'toolConsumer' || prop === 'activity' || prop === 'assignment')
+      return !(
+        prop === 'user' ||
+        prop === 'toolConsumer' ||
+        prop === 'activity' ||
+        prop === 'assignment'
+      )
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  @import '../../scss/objects/wrapper.mixin';
+@import '../../scss/objects/wrapper.mixin';
 
-  .EhrSpecial {
-    @include wrapper('page');
-    background-color: lavender;
-    padding: 5rem 2rem  ;
-    z-index: 10;
+.EhrSpecial {
+  @include wrapper('page');
+  background-color: lavender;
+  padding: 5rem 2rem;
+  z-index: 10;
 
-    h3 {
-      font-size: 1.5rem;
-    }
+  h3 {
+    font-size: 1.5rem;
+  }
   &__data {
   }
 }

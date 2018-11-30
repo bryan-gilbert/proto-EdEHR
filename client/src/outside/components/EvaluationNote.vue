@@ -47,7 +47,7 @@ export default {
     initializeEvaluationNotes: function() {
       var ad = this.activityData
       var ed = ad.evaluationData
-      var initialNotes = ed ? ed : 'empty notes'
+      var initialNotes = ed ? ed : ''
       this.evalNotes = initialNotes
       return initialNotes
     }
@@ -85,6 +85,10 @@ export default {
     box-shadow: inset 0 1px 0 0 rgba(21, 26, 36, 0.5);
     height: 6rem;
     width: 80%;
+    padding: 5px;
+  }
+  .evaluation-controls button {
+    margin: 10px;
   }
 }
 </style>

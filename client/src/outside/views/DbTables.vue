@@ -15,35 +15,35 @@
 </template>
 
 <script>
-  import OutPanelHeader from '../components/OutPanelHeader.vue'
-  import OutPanelContent from '../components/OutPanelContent.vue'
+import OutPanelHeader from '../components/OutPanelHeader.vue'
+import OutPanelContent from '../components/OutPanelContent.vue'
 
-  export default {
-    name: 'Allergies',
-    components: {
-      OutPanelHeader,
-      OutPanelContent
-    },
-    data: function() {
-      return {
-        selectedTable : ''
-      }
+export default {
+  name: 'Allergies',
+  components: {
+    OutPanelHeader,
+    OutPanelContent
+  },
+  data: function() {
+    return {
+      selectedTable: ''
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
-  .select {
-    display: block;
+.select {
+  display: block;
+}
+select {
+  width: 100%;
+}
+.region {
+  /* border: 1px dashed black; */
+}
+.Allergies {
+  &__main {
   }
-  select {
-    width: 100%;
-  }
-  .region {
-    /* border: 1px dashed black; */
-  }
-  .Allergies {
-    &__main {
-    }
-  }
+}
 </style>

@@ -45,7 +45,7 @@ export default {
 @import '../../scss/objects/wrapper.mixin';
 
 .EhrNavPanel {
-  background-color: #151A24;
+  background-color: #151a24;
   height: 100%;
   color: #efefef;
 
