@@ -6,6 +6,7 @@ const Schema = new mongoose.Schema({
   user_id: {type: String, require: true},
   givenName: { type: String },
   familyName: { type: String },
+  fullName: { type: String },
   emailPrimary: {type: String},
   ltiData: [ { type: String } ],
   currentVisit: {type: mongoose.Schema.Types.ObjectId, ref: 'Visit'},

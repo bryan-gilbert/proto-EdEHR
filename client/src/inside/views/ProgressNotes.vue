@@ -55,7 +55,7 @@
 
 <script>
 import UiButton from '../../app/ui/UiButton.vue'
-import { getPhrase, getName } from '../poc-utils'
+import { getPhrase } from '../poc-utils'
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
 import Modal from '../../app/components/Modal'
@@ -79,6 +79,10 @@ export default {
   computed: {
     populateMsg() {
       return 'Add with sample data ' + (this.populate ? 'enabled' : 'disabled')
+    },
+    username() {
+      let info = this.$store.state.sUserInfo
+      return info.fullName
     },
     disableActions() {
       let isValid = !!this.$store.state.sVisitInfo
@@ -133,7 +137,7 @@ export default {
       this.clearInputs()
       if (this.populate) {
         var inputs = this.inputs
-        inputs.name = getName()
+        inputs.name = this.username
         inputs.notes = getPhrase(14)
         inputs.profession = 'Nurse'
         inputs.unit = 'ER'

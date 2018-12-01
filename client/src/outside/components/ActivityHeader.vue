@@ -1,17 +1,14 @@
 <template lang="pug">
   div(:class="$options.name")
     div(class="activities-header")
-      div(class="aName") Activity:
+      div(class="aName") LMS Activity:
       div(class="aValue", :title="activity._id") {{ activity.resource_link_title }}
     div
-      div(class="aName") Description:
+      div(class="aName") LMS Description:
       div(class="aValue") {{ activity.resource_link_description }}
     div
       div(class="aName") EHR Assignment:
       div(class="aValue") {{ activity.assignment.name }}  ( Id for LMS: {{ activity.assignment.externalId }} )
-    div
-      div(class="aName") Internals
-      div(class="aValue") route: {{ activity.assignment.ehrRoute }}
     router-view
 </template>
 

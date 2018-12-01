@@ -24,28 +24,26 @@ export default class UserController extends BaseController {
     })
   }
 
+  /*
+  listAsInstructorCourses will collect all visits the current user has made with the role of instructor.
+  For each visit get the activity and associated assignment information. Collect all into a course collection.
+  */
   listAsInstructorCourses (id) {
     debug('listAsInstructorCourses for ' + id)
-    var results = {user: id}
     return this.baseFindOneQuery(id)
     .populate([{path: 'asInstructorVisits', model: 'Visit', populate: {path: 'activity', model: 'Activity'}}])
     .select('asInstructorVisits')
     .then((modelInstance) => {
-      results.asInstructorVisits = modelInstance.asInstructorVisits
       var list = modelInstance.asInstructorVisits
       var asInstructorActivityIdList = list.map((visit) => {
-        return visit.activity // this is the _id of the activity
+        return visit.activity._id
       })
-      var cnt = asInstructorActivityIdList.length
-      debug('listActivitiesAsInstructor found: ' + cnt)
-      results.asInstructorActivityIdList = asInstructorActivityIdList
       return Activity.find({'_id': {$in: asInstructorActivityIdList}})
       .populate('assignment')
     })
     .then((activities) => {
       var courses = []
       activities.forEach((activity) => {
-        console.log('activity', activity._id)
         var cId = activity.context_id
         var course = courses.find((c) => {
           return c.id === cId
