@@ -41,7 +41,10 @@ export default {
         .then(results => {
           var ad = results || {}
           var ed = ad.evaluationData || ''
+          // update this components local copy
           this.evalNotes = ed
+          // update the global storage ... just the new data
+          this.activityData.evaluationData = ed
         })
     },
     initializeEvaluationNotes: function() {

@@ -6,10 +6,10 @@ import axios from '../node_modules/axios/dist/axios.min'
 Vue.use(Vuex)
 
 /* global localStorage */
-function resetState(state) {
+function resetState (state) {
   let d = {}
   state.sUserInfo = d
-  state.fullName = ''
+  // state.fullName = ''
   state.sVisitInfo = d
   state.visitId = ''
   localStorage.removeItem('token')
@@ -23,15 +23,17 @@ const store = new Vuex.Store({
   state: {
     sUserInfo: {},
     visitId: '',
-    fullName: '',
+    // fullName: '',
     sVisitInfo: {},
     sActivityData: {},
+    sCurrentData: {},
     isLoggedIn: !!localStorage.getItem('token'),
-    assignments: [],
+    // assignments: [],
     sClassList: [],
     sCourses: [],
     apiUrl: '',
-    topLevelMenu: ''
+    topLevelMenu: '',
+    sInstructorReturnUrl: 'assignments-listing'
   },
   plugins: [createLogger()],
   getters: {
@@ -63,10 +65,19 @@ const store = new Vuex.Store({
       }
       if (info.activityData) {
         state.sActivityData = info.activityData
+        state.sCurrentData = info.activityData.currentData
       }
+    },
+    setInstructorReturnUrl: (state, rUrl) => {
+      console.log('save instructor return url' + rUrl)
+      state.sInstructorReturnUrl = rUrl
     },
     setActivityData: (state, data) => {
       state.sActivityData = data
+      state.sCurrentData = state.sActivityData.currentData
+    },
+    setCurrentData: (state, data) => {
+      state.sCurrentData = data
     },
     setClassList: (state, list) => {
       state.sClassList = list
@@ -86,14 +97,14 @@ const store = new Vuex.Store({
     }
   },
   actions: {
-    routeEnter({ commit }) {
+    routeEnter ({ commit }) {
       // console.log('action routeEnter')
       commit('routeEnter')
     },
-    logout({ commit }) {
+    logout ({ commit }) {
       commit('logout')
     },
-    saveEvaluationNotes(context, payload) {
+    saveEvaluationNotes (context, payload) {
       let vid = payload.activityDataId
       let body = {
         evaluationData: payload.evalNotes
@@ -108,7 +119,7 @@ const store = new Vuex.Store({
         })
       })
     },
-    addPNotes(context, payload) {
+    addPNotes (context, payload) {
       // console.log('addPNotes')
       let activityData = context.state.sActivityData
       let newNote = payload.note
@@ -120,7 +131,7 @@ const store = new Vuex.Store({
       let helper = new StoreHelper()
       return helper.putRequest(url, vd).then(results => {
         let activityData = results.data
-        // console.log(`addPNotes after post with ${activityData}`)
+        console.log(`addPNotes after post with ${activityData}`)
         context.commit('setActivityData', activityData)
         return activityData
       })
@@ -129,7 +140,7 @@ const store = new Vuex.Store({
 })
 
 class StoreHelper {
-  putRequest(url, bodyData) {
+  putRequest (url, bodyData) {
     return new Promise((resolve, reject) => {
       axios
         .put(url, bodyData)

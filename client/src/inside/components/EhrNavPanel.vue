@@ -1,8 +1,7 @@
 <template lang="pug">
   div(:class="$options.name")
     div(:class="`${$options.name}__top`")
-      ui-button(v-on:buttonClicked="returnToLms", :class="`${$options.name}__saveButton`")
-        a(v-bind:href="returnUrl") Return to {{ lmsName }}
+      ui-button(v-on:buttonClicked="returnToClicked", :class="`${$options.name}__returnButton`") {{ returnButtonLabel }}
     ehr-nav-list(v-for="path in menuList" :key="path.name" :path="path" :level="1")
 </template>
 <script>
@@ -19,7 +18,18 @@ export default {
   },
   computed: {
     returnUrl() {
-      return this.$store.state.sVisitInfo.returnUrl
+      if (this.$store.state.sVisitInfo.isStudent) {
+        return this.$store.state.sVisitInfo.returnUrl
+      } else {
+        return 'Return to class list'
+      }
+    },
+    returnButtonLabel() {
+      if (this.$store.state.sVisitInfo.isStudent) {
+        return 'Return to ' + this.lmsName()
+      } else {
+        return 'Return to class list'
+      }
     },
     lmsName() {
       if (this.$store.state.sVisitInfo && this.$store.state.sVisitInfo.toolConsumer)
@@ -33,8 +43,13 @@ export default {
     }
   },
   methods: {
-    returnToLms() {
-      window.location = this.returnUrl
+    returnToClicked() {
+      if (this.$store.state.sVisitInfo.isStudent) {
+        window.location = this.$store.state.sVisitInfo.returnUrl
+      } else {
+        var rUrl = this.$store.state.sInstructorReturnUrl
+        window.location = rUrl
+      }
     }
   }
 }
@@ -55,7 +70,7 @@ export default {
   a {
     color: white;
   }
-  &__saveButton {
+  &__returnButton {
     width: 100%;
   }
 }

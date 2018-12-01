@@ -41,6 +41,7 @@ export default class ActivityController extends BaseController {
   listClassList (id) {
     return Visit.find({activity: id})
     .populate('activityData')
+    .populate('assignment')
     .populate('user')
     .then((visits) => {
       return {classList: visits}

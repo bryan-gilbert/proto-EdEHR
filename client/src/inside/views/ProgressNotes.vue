@@ -90,11 +90,7 @@ export default {
       return !isValid
     },
     progressNotes() {
-      let activityData = this.$store.state.sActivityData
-      if (activityData) {
-        return activityData.currentData.progressNotes
-      }
-      return {}
+      return this.$store.state.sCurrentData.progressNotes
     }
   },
   methods: {
