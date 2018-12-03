@@ -83,7 +83,8 @@ export default {
       return JSON.stringify(obj, null, 2)
     },
     goToEhr() {
-      this.$store.commit('setInstructorReturnUrl',window.location.href)
+      console.log('Store the pathname for the instructor to return here ', window.location.pathname)
+      this.$store.commit('setInstructorReturnUrl', window.location.pathname)
       var name = this.studentVisit.assignment.ehrRoute
       this.$router.push(name)
     }

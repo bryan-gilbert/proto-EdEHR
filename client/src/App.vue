@@ -16,6 +16,7 @@ export default {
   components: {},
   methods: {
     loadData: function() {
+      console.log('window.location', window.location)
       var url2 = new URL(window.location)
       var params2 = new URLSearchParams(url2.search)
 
@@ -24,8 +25,14 @@ export default {
       if (apiUrl) {
         console.log('API url provided in query: ', apiUrl)
       } else {
-        apiUrl = config.getApiUrl()
-        console.log('No API url provided in query so defaulting to configuration: ', apiUrl)
+        console.log('No API url in query')
+        if (this.$store.state.apiUrl) {
+          apiUrl = this.$store.state.apiUrl
+          console.log('Use API URL from $store', apiUrl)
+        } else {
+          apiUrl = config.getApiUrl()
+          console.log('Use API URL from configuration: ', apiUrl)
+        }
       }
       this.$store.commit('apiUrl', apiUrl)
 
