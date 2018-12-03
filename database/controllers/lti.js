@@ -153,7 +153,7 @@ export default class LTIController {
         // will update the user record later
         return foundUser
       }
-      debug('Create user ', userId)
+      debug('Create user ' + userId + JSON.stringify(ltiData, null, 2))
       let user = {
         user_id: ltiData.user_id,
         givenName: ltiData.lis_person_name_given,
