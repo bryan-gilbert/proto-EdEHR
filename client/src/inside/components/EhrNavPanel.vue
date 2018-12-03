@@ -26,7 +26,7 @@ export default {
     },
     returnButtonLabel() {
       if (this.$store.state.sVisitInfo.isStudent) {
-        return 'Return to ' + this.lmsName()
+        return 'Return to ' + this.lmsName
       } else {
         return 'Return to class list'
       }
