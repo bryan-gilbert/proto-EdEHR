@@ -41,7 +41,7 @@ export default class BaseController {
 
   baseFilter (id) {
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      throw new ParameterError('Invalid id')
+      throw new ParameterError('Invalid id: ' + id)
     }
     var filter = {}
     filter[this.key] = id

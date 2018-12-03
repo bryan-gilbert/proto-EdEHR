@@ -31,6 +31,7 @@ export default {
     loadData: function() {
       var apiUrl = this.$store.state.apiUrl
       let userId = this.$store.state.sUserInfo._id
+      // console.log('In load instructor courses data url/id: ' + apiUrl + ' / ' + userId)
       return new Promise(() => {
         let url = `${apiUrl}/users/instructor/courses/${userId}`
         // console.log('In load instructor courses data ', url)
@@ -42,8 +43,12 @@ export default {
       })
     }
   },
-  created: function() {
-    this.loadData()
+  mounted: function() {
+    var vm = this
+    this.$nextTick(function () {
+      // give the main component time to load the user and visit information
+      vm.loadData()
+    })
   }
 }
 </script>

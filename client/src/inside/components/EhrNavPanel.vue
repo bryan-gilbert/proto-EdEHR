@@ -26,7 +26,7 @@ export default {
     },
     returnButtonLabel() {
       if (this.$store.state.sVisitInfo.isStudent) {
-        return 'Return to ' + this.lmsName()
+        return 'Return to ' + this.lmsName
       } else {
         return 'Return to class list'
       }
@@ -45,10 +45,13 @@ export default {
   methods: {
     returnToClicked() {
       if (this.$store.state.sVisitInfo.isStudent) {
+        // hard return to the calling LMS
         window.location = this.$store.state.sVisitInfo.returnUrl
       } else {
-        var rUrl = this.$store.state.sInstructorReturnUrl
-        window.location = rUrl
+        // stay within application and use router push
+        var pathname = this.$store.state.sInstructorReturnUrl
+        console.log('As instructor return via router push to retain veux state information', pathname)
+        this.$router.push({path: pathname})
       }
     }
   }
