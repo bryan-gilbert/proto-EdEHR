@@ -31,7 +31,7 @@ export default {
     loadData: function() {
       var apiUrl = this.$store.state.apiUrl
       let userId = this.$store.state.sUserInfo._id
-      console.log('In load instructor courses data url/id: ' + apiUrl + ' / ' + userId)
+      // console.log('In load instructor courses data url/id: ' + apiUrl + ' / ' + userId)
       return new Promise(() => {
         let url = `${apiUrl}/users/instructor/courses/${userId}`
         // console.log('In load instructor courses data ', url)

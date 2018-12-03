@@ -258,7 +258,7 @@ export default class LTIController {
         var apiUrl = encodeURIComponent(req.protocol + '://' + req.get('host') + port + '/api')
         var route = req.assignment.ehrRoute
         if (visit.isInstructor) {
-          debug('Route to instructor page')
+          debug('Route to instructor page ' + JSON.stringify(req.ltiData, null, 2))
           route = '/instructor'
         }
         var url = this.config.clientUrl + route + '?visit=' + visit._id + '&apiUrl=' + apiUrl

@@ -39,7 +39,7 @@ export default class ActivityController extends BaseController {
   }
 
   listClassList (id) {
-    return Visit.find({activity: id})
+    return Visit.find({ $and: [ {isStudent: true }, {activity: id} ] })
     .populate('activityData')
     .populate('assignment')
     .populate('user')
