@@ -43,8 +43,12 @@ export default {
       })
     }
   },
-  created: function() {
-    this.loadData()
+  mounted: function() {
+    var vm = this
+    this.$nextTick(function () {
+      // give the main component time to load the user and visit information
+      vm.loadData()
+    })
   }
 }
 </script>
