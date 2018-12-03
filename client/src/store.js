@@ -9,7 +9,7 @@ Vue.use(Vuex)
 function resetState (state) {
   let d = {}
   state.sUserInfo = d
-  state.fullName = ''
+  // state.fullName = ''
   state.sVisitInfo = d
   state.visitId = ''
   localStorage.removeItem('token')
@@ -23,19 +23,20 @@ const store = new Vuex.Store({
   state: {
     sUserInfo: {},
     visitId: '',
-    fullName: '',
+    // fullName: '',
     sVisitInfo: {},
+    sActivityData: {},
+    sCurrentData: {},
     isLoggedIn: !!localStorage.getItem('token'),
-    assignments: [],
+    // assignments: [],
+    sClassList: [],
     sCourses: [],
     apiUrl: '',
-    topLevelMenu: ''
+    topLevelMenu: '',
+    sInstructorReturnUrl: 'assignments-listing'
   },
   plugins: [createLogger()],
   getters: {
-    sActivityInfo: state => {
-      return state.sVisitInfo && state.sVisitInfo.activity ? state.sVisitInfo.activity : {}
-    },
     lmsName: state => {
       if (state.sVisitInfo && state.sVisitInfo.toolConsumer) {
         return state.sVisitInfo.toolConsumer.tool_consumer_instance_name
@@ -59,8 +60,27 @@ const store = new Vuex.Store({
     },
     setVisitInfo: (state, info) => {
       state.sVisitInfo = info
-      var userInfo = info.user ? info.user : {}
-      state.sUserInfo = userInfo
+      if (info.user) {
+        state.sUserInfo = info.user
+      }
+      if (info.activityData) {
+        state.sActivityData = info.activityData
+        state.sCurrentData = info.activityData.currentData
+      }
+    },
+    setInstructorReturnUrl: (state, rUrl) => {
+      console.log('save instructor return url' + rUrl)
+      state.sInstructorReturnUrl = rUrl
+    },
+    setActivityData: (state, data) => {
+      state.sActivityData = data
+      state.sCurrentData = state.sActivityData.currentData
+    },
+    setCurrentData: (state, data) => {
+      state.sCurrentData = data
+    },
+    setClassList: (state, list) => {
+      state.sClassList = list
     },
     setAssignments: (state, list) => {
       state.sAssignments = list
@@ -84,31 +104,55 @@ const store = new Vuex.Store({
     logout ({ commit }) {
       commit('logout')
     },
+    saveEvaluationNotes (context, payload) {
+      let vid = payload.activityDataId
+      let body = {
+        evaluationData: payload.evalNotes
+      }
+      let url = `${context.state.apiUrl}/activity-data/evaluation-data/${vid}`
+      // console.log('store save eval notes ', url, body)
+      let helper = new StoreHelper()
+      return new Promise(resolve => {
+        helper.putRequest(url, body).then(results => {
+          let evaluationData = results.data
+          resolve(evaluationData)
+        })
+      })
+    },
     addPNotes (context, payload) {
-      let visitData = context.state.sVisitInfo
-      let vid = visitData._id
+      // console.log('addPNotes')
+      let activityData = context.state.sActivityData
       let newNote = payload.note
-      let url = `${context.state.apiUrl}/visits/data/${vid}`
-      // console.log('addPNotes payload', payload)
-      // console.log('addPNote visit data id', vid)
-      // console.log('addPNotes put url', url)
-      visitData.assignmentData = visitData.assignmentData || {}
-      let vd = visitData.assignmentData
+      let url = `${context.state.apiUrl}/activity-data/assignment-data/${activityData._id}`
+      // console.log(`Send addPNotes ${url}`)
+      let vd = activityData.assignmentData || {}
       vd.progressNotes = vd.progressNotes || []
       vd.progressNotes.push(newNote)
-      // console.log('addPNote visitData', vd)
-      axios
-        .put(url, vd)
-        .then(results => {
-          let visitdata = results.data
-          // console.log(`addPNotes after post with ${visitdata}`)
-          context.commit('setVisitInfo', visitdata)
-        })
-        .catch(error => {
-          console.error(`Failed to update progress notes ${error.message}`)
-        })
+      let helper = new StoreHelper()
+      return helper.putRequest(url, vd).then(results => {
+        let activityData = results.data
+        console.log(`addPNotes after post with ${activityData}`)
+        context.commit('setActivityData', activityData)
+        return activityData
+      })
     }
   }
 })
 
+class StoreHelper {
+  putRequest (url, bodyData) {
+    return new Promise((resolve, reject) => {
+      axios
+        .put(url, bodyData)
+        .then(results => {
+          resolve(results)
+        })
+        .catch(error => {
+          var msg = `Failed put to ${url} with error: ${error.message}`
+          console.error(msg)
+          reject(msg)
+        })
+    })
+  }
+}
 export default store

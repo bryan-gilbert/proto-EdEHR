@@ -1,15 +1,16 @@
 import { Router } from 'express'
 import cors from 'cors'
-import UserController from '../controllers/user-controller.js'
-import ActivityController from '../controllers/activity-controller'
-import AssignmentController from '../controllers/assignment-controller'
-import ConsumerController from '../controllers/consumer-controller'
-import VisitController from '../controllers/visit-controller'
-import AdminController from '../controllers/admin-controller'
-import IntegrationController from '../controllers/integration-controller'
-import LTIController from '../controllers/lti'
 import seed from '../config/lib/seed'
 import {AssignmentMismatchError} from '../utils/errors'
+import ActivityController from '../controllers/activity-controller'
+import ActivityDataController from '../controllers/activity-data-controller'
+import AdminController from '../controllers/admin-controller'
+import AssignmentController from '../controllers/assignment-controller'
+import ConsumerController from '../controllers/consumer-controller'
+import IntegrationController from '../controllers/integration-controller'
+import LTIController from '../controllers/lti'
+import UserController from '../controllers/user-controller.js'
+import VisitController from '../controllers/visit-controller'
 
 // Sessions and session cookies
 // express-session stores session data here on the server and only puts session id in the cookie
@@ -24,10 +25,8 @@ const uuid = require('uuid/v4')
 const debug = require('debug')('server')
 
 export function apiMiddle (app, config) {
-  // SeedDB
   if (config.seedDB) {
     console.log('seeding')
-    // const seed = require('../config/lib/seed')
     seed()
   }
 
@@ -57,13 +56,14 @@ export function apiMiddle (app, config) {
 
   const corsOptions = setupCors(config)
   const admin = new AdminController()
-  const lti = new LTIController(config)
-  const cc = new ConsumerController()
-  const as = new AssignmentController()
-  const uc = new UserController(config)
   const act = new ActivityController()
-  const vc = new VisitController()
+  const acc = new ActivityDataController()
+  const as = new AssignmentController()
+  const cc = new ConsumerController()
+  const lti = new LTIController(config)
   const ic = new IntegrationController()
+  const uc = new UserController(config)
+  const vc = new VisitController()
 
   return Promise.resolve()
     .then(admin.initializeApp(app))
@@ -71,19 +71,25 @@ export function apiMiddle (app, config) {
     .then(cc.initializeApp(app))
     .then(() => {
       const api = Router()
+      // for local and dev only
       api.use('/admin', admin.route())
+      api.use('/integrations', cors(corsOptions), ic.route())
+      // External API
       api.use('/launch_lti', lti.route())
+      api.use('/api/launch_lti', lti.route())
+      // Inside API
       api.use('/activities', cors(corsOptions), act.route())
+      api.use('/activity-data', cors(corsOptions), acc.route())
       api.use('/assignments', cors(corsOptions), as.route())
       api.use('/consumers', cors(corsOptions), cc.route())
       api.use('/users', cors(corsOptions), uc.route())
       api.use('/visits', cors(corsOptions), vc.route())
-      api.use('/integrations', cors(corsOptions), ic.route())
+      // for use behind a proxy:
       api.use('/api/activities', cors(corsOptions), act.route())
+      api.use('/api/activity-data', cors(corsOptions), acc.route())
       api.use('/api/assignments', cors(corsOptions), as.route())
       api.use('/api/consumers', cors(corsOptions), cc.route())
       api.use('/api/users', cors(corsOptions), uc.route())
-      api.use('/api/launch_lti', lti.route())
       api.use('/api/visits', cors(corsOptions), vc.route())
       return api
     })

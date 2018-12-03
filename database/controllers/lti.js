@@ -158,6 +158,7 @@ export default class LTIController {
         user_id: ltiData.user_id,
         givenName: ltiData.lis_person_name_given,
         familyName: ltiData.lis_person_name_family,
+        fullName: ltiData.lis_person_name_full,
         emailPrimary: ltiData.lis_person_contact_email_primary,
         ltiData: [JSON.stringify(ltiData)],
         toolConsumer: toolConsumerId

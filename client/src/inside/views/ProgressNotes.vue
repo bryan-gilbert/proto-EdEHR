@@ -55,7 +55,7 @@
 
 <script>
 import UiButton from '../../app/ui/UiButton.vue'
-import { getPhrase, getName } from '../poc-utils'
+import { getPhrase } from '../poc-utils'
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
 import Modal from '../../app/components/Modal'
@@ -72,13 +72,17 @@ export default {
     return {
       showModal: false,
       populate: true,
-      inputs: { },
-      errorList: [ ]
+      inputs: {},
+      errorList: []
     }
   },
   computed: {
     populateMsg() {
       return 'Add with sample data ' + (this.populate ? 'enabled' : 'disabled')
+    },
+    username() {
+      let info = this.$store.state.sUserInfo
+      return info.fullName
     },
     disableActions() {
       let isValid = !!this.$store.state.sVisitInfo
@@ -86,23 +90,18 @@ export default {
       return !isValid
     },
     progressNotes() {
-      let data = this.$store.state.sVisitInfo
-      if (data) {
-        // console.log('EhrPanelContent data.currentData', data.currentData)
-        return data.currentData ? data.currentData.progressNotes : []
-      }
-      return {}
+      return this.$store.state.sCurrentData.progressNotes
     }
   },
   methods: {
     clearInputs: function() {
       this.inputs = {
-        name:'',
-        profession:'',
-        unit:'',
+        name: '',
+        profession: '',
+        unit: '',
         day: '0',
-        time:'',
-        notes:''
+        time: '',
+        notes: ''
       }
       this.errorList = []
     },
@@ -112,12 +111,12 @@ export default {
       inputs.name = inputs.name.trim()
       inputs.notes = inputs.notes.trim()
       inputs.unit = inputs.unit.trim()
-      inputs.profession= inputs.profession.trim()
+      inputs.profession = inputs.profession.trim()
       inputs.day = inputs.day.trim()
       inputs.time = inputs.time.trim()
       var vm = this
       function check(prop, msg) {
-        if(prop.length==0) {
+        if (prop.length == 0) {
           vm.errorList.push(msg)
         }
       }
@@ -134,10 +133,10 @@ export default {
       this.clearInputs()
       if (this.populate) {
         var inputs = this.inputs
-        inputs.name = getName()
+        inputs.name = this.username
         inputs.notes = getPhrase(14)
-        inputs.profession='Nurse'
-        inputs.unit= 'ER'
+        inputs.profession = 'Nurse'
+        inputs.unit = 'ER'
         inputs.day = '0'
         inputs.time = '07:00'
         // console.log("Prepop with ", this.inputs.notes)
@@ -152,10 +151,10 @@ export default {
     saveDialog: function() {
       if (this.validateInputs()) {
         this.showModal = false
-        // console.log('Saving ', this.inputs)
+        // console.log('Saving Progress Notes', this.inputs)
         this.$store.dispatch('addPNotes', { note: this.inputs })
       }
-    },
+    }
   }
 }
 </script>
@@ -174,5 +173,4 @@ $contentMinHeigth: 500px;
     }
   }
 }
-
 </style>

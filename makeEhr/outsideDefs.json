@@ -5,6 +5,7 @@
   { "path": "", "rn": "student"},
   { "path": "", "rn": "courses"},
   { "path": "", "rn": "assignments-listing"},
+  { "path": "", "rn": "activity-list/:activityId", "componentName": "ActivityList"},
   { "path": "", "rn": "assignments"},
   { "path": "", "rn": "instructor"},
   { "path": "", "rn": "db-tables"}

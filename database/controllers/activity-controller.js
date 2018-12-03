@@ -1,6 +1,8 @@
 import BaseController from './base'
 import Activity from '../models/activity'
+import Visit from '../models/visit'
 import {AssignmentMismatchError} from '../utils/errors'
+import {ok, fail} from './utils'
 const debug = require('debug')('server')
 
 export default class ActivityController extends BaseController {
@@ -36,6 +38,21 @@ export default class ActivityController extends BaseController {
     })
   }
 
+  listClassList (id) {
+    return Visit.find({activity: id})
+    .populate('activityData')
+    .populate('assignment')
+    .populate('user')
+    .then((visits) => {
+      return {classList: visits}
+    })
+  }
+
+  findActivity (id) {
+    return Activity.findOne({_id: id})
+    .populate('assignment')
+  }
+
   _createHelper (activity, data) {
     debug('updateCreateActivity create new activity record ' + JSON.stringify((data)))
     return this.create(data)
@@ -68,5 +85,23 @@ export default class ActivityController extends BaseController {
       resource_link_description: ltiData.resource_link_description
     }
     return data
+  }
+
+  route () {
+    const router = super.route()
+
+    router.get('/class/:key', (req, res) => {
+      this
+      .listClassList(req.params.key)
+      .then(ok(res))
+      .then(null, fail(res))
+    })
+    router.get('/flushed/:key', (req, res) => {
+      this
+      .findActivity(req.params.key)
+      .then(ok(res))
+      .then(null, fail(res))
+    })
+    return router
   }
 }

@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="accordion")
+  div(class="accordion" :class="theme")
     div(class="header", v-on:click="toggle")
       slot(name="header")
       span(class="header-icon", v-bind:class="{ rotate: show }") V
@@ -15,6 +15,9 @@ export default {
     return {
       show: false
     }
+  },
+  props: {
+    theme: { type: String, default: 'defaultTheme' }
   },
   methods: {
     toggle: function() {
@@ -65,5 +68,11 @@ export default {
     transform: rotate(180deg);
     transition-duration: 0.3s;
   }
+}
+.defaultTheme {
+  background-color: palegoldenrod;
+}
+.blueTheme {
+  background-color: skyblue;
 }
 </style>

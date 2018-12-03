@@ -12,20 +12,19 @@
 </template>
 
 <script>
-  import UiLink from '../../app/ui/UiLink.vue'
-
-  export default {
-    name: 'home',
-    components: {
-      UiLink
+import UiLink from '../../app/ui/UiLink.vue'
+export default {
+  name: 'home',
+  components: {
+    UiLink
+  },
+  computed: {
+    userInfo() {
+      return this.$store.state.sUserInfo
     },
-    computed: {
-      userInfo () {
-        return this.$store.state.sUserInfo
-      },
-      fullName () {
-        return this.$store.state.fullName
-      }
+    fullName() {
+      return this.$store.state.fullName
     }
   }
+}
 </script>

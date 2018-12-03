@@ -1,21 +1,21 @@
-
-export function getPhrase (cnt) {
+export function getPhrase(cnt) {
   let p = []
   for (var i = 0; i < cnt; i++) {
     p.push(getWord())
   }
   return p.join(' ')
 }
-export function getWord () {
+export function getWord() {
   var r = Math.floor(Math.random() * wordList.length)
   return wordList[r]
 }
-export function getName () {
+export function getName() {
   var r = Math.floor(Math.random() * nameList.length)
   return nameList[r]
 }
 
-const wordList = ['abhorrent',
+const wordList = [
+  'abhorrent',
   'acceptable',
   'acid',
   'acoustics',

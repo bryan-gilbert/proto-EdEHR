@@ -1,11 +1,13 @@
-import { Router } from 'express'
 import {ok, fail} from './utils'
 import BaseController from './base'
 import Visit from '../models/visit'
+import ActivityData from '../models/activity-data'
 import Role from './roles'
-import merge from 'deepmerge'
 
 const debug = require('debug')('server')
+function debugvc (msg) {
+  debug('VisitController: ' + msg)
+}
 
 export default class VisitController extends BaseController {
   constructor () {
@@ -15,53 +17,14 @@ export default class VisitController extends BaseController {
   findVisit (id) {
     return this.baseFindOneQuery(id)
     .populate('activity')
+    .populate('activityData')
     .populate('assignment')
-    .populate('user')
     .populate('toolConsumer')
-    .then((visit) => {
-      var aData = visit.assignmentData || {}
-      var sData = visit.assignment.seedData || {}
-      visit.currentData = merge(sData, aData)
-      return visit
-    })
+    .populate('user')
   }
 
-  route () {
-    const router = super.route()
-    router.get('/flushed/:key', (req, res) => {
-      this
-      .findVisit(req.params.key)
-      .then(ok(res))
-      .then(null, fail(res))
-    })
-
-    router.put('/data/:key', (req, res) => {
-      var id = req.params.key
-      var data = req.body
-      this
-      .updateAssignmentData(id, data)
-      .then(() => {
-        return this.findVisit(id)
-      })
-      .then(ok(res))
-      .then(null, fail(res))
-    })
-
-    return router
-  }
-
-  updateAssignmentData (id, data) {
-    return this.baseFindOneQuery(id)
-    .then((visit) => {
-      if (visit) {
-        // console.log('Update visit data from ', visit.assignmentData, 'to', data, '\n\n\n\n')
-        visit.assignmentData = data
-        return visit.save()
-      }
-    })
-  }
   updateCreateVisit (user, toolConsumer, activity, assignment, ltiData) {
-    debug('updateVisit')
+    debugvc('Update Create Visit')
     var role = new Role(ltiData.roles)
     let filter = {
       $and: [
@@ -77,7 +40,7 @@ export default class VisitController extends BaseController {
     .then((visit) => {
       if (visit) {
         theVisit = visit
-        debug('updateVisit update previous visit')
+        debugvc('Update previous visit')
         visit.lastVisitDate = Date.now()
         // update the return URL for this visit in case it has changed
         visit.returnUrl = ltiData.launch_presentation_return_url
@@ -85,12 +48,12 @@ export default class VisitController extends BaseController {
         .then(() => {
           if (user.currentVisit !== visit._id) {
             user.currentVisit = visit._id
-            debug('updateVisit user ' + user._id + ' visit is changing to ' + activity.resource_link_title)
+            debugvc('updateVisit user ' + user._id + ' visit is changing to ' + activity.resource_link_title)
             return user.save()
           }
         })
       } else {
-        debug('Create a new visit record')
+        debugvc('Create a new visit record')
         let data = {
           toolConsumer: toolConsumer._id,
           user: user._id,
@@ -102,13 +65,31 @@ export default class VisitController extends BaseController {
         }
         return Visit.create(data)
         .then((visit) => {
+          // save the reference to the return value
+          debugvc('New visit record  ' + visit._id)
           theVisit = visit
-          debug('Now have a visit record  ' + visit._id + ' Push new visit into user record')
+          // create and add the activity data to the visit
+          debugvc('Create activity data for the visit')
+          return ActivityData.create({
+            toolConsumer: toolConsumer._id,
+            visit: visit._id,
+            seedData: assignment.seedData
+          })
+        })
+        .then((activityData) => {
+          theVisit.activityData = activityData
+          return theVisit.save()
+        })
+        .then((visit) => {
+          // return the updated visit
+          theVisit = visit
           user.currentVisit = visit._id
           if (role.isInstructor) {
+            debugvc('Push visit record into user as instructor visit')
             user.asInstructorVisits.push(visit)
           }
           if (role.isStudent) {
+            debugvc('Push visit record into user as student visit')
             user.asStudentVisits.push(visit)
           }
           return user.save()
@@ -116,8 +97,20 @@ export default class VisitController extends BaseController {
       }
     })
     .then(() => {
+      debugvc('UpdateCreateVisit returns the visit record')
       return theVisit
-      // return this.findVisit(theVisit._id)
     })
+  }
+
+  route () {
+    const router = super.route()
+    router.get('/flushed/:key', (req, res) => {
+      this
+      .findVisit(req.params.key)
+      .then(ok(res))
+      .then(null, fail(res))
+    })
+
+    return router
   }
 }

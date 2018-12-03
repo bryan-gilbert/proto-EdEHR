@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import UiLink from '../../app/ui/UiLink'
+import UiLink from '../../app/ui/UiLink'
 export default {
   name: 'OutPanelNav',
   components: {
@@ -25,7 +25,7 @@ export default {
     lmsName() {
       return this.$store.getters.lmsName
     }
-  },
+  }
 }
 </script>
 
@@ -42,7 +42,7 @@ export default {
   }
   &__nav {
     display: inline;
-    margin-right:1rem;
+    margin-right: 1rem;
 
     span {
       display: inline;

@@ -25,14 +25,14 @@ db(config, (conn) => {
     // catch 404 and forward to error handler
     app.use(function (req, res, next) {
       let { url } = req
-    var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
+      var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
       var env = process.env.NODE_ENV
       if (url.includes('favicon')) {
         debug('Another request for the favicon')
         res.status(404).send('No favicon')
       } else {
-	      var msg = 'Could not find "' + fullUrl + '". Environment: ' + env
-	      debug(msg)
+        var msg = 'Could not find "' + fullUrl + '". Environment: ' + env
+        debug(msg)
         res.status(404).send(msg)
       }
     })
