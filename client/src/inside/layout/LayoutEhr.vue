@@ -3,6 +3,7 @@
     <!-- <slot name="header" :class="`${$options.name}__header`"> -->
     <app-header />
     <app-dialog />
+    <!--modal( v-if="showModal", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")    -->
     <!-- </slot> -->
     <main :class="`${$options.name}__main`">
       <div name="mainContent" :class="`${$options.name}__main_content columns`">
