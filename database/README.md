@@ -1,8 +1,17 @@
-# Docker MongoDB Database
+# EdEHR API Server
+
+> This sub-project provides access to the database and the application API.
+
+## Project setup
+Assumes your system has node, npm, and docker installed.
+```
+npm install
+```
+Once the install is done set up the database which is easily done via a docker container.
+
+## Docker MongoDB Database
 
 > Run Mongodb in a Docker container
-
-## Quick Start
 
 ```bash
 # Run in Docker
@@ -17,13 +26,19 @@ volumes: ['./:/usr/src/app']
 
 # To re-build
 docker-compose build
-
 ```
 
-## Dev Server
-Use the Node Express dev server to develop the model and API. 
-Develop middle ware that can be placed in the main POC app
+Add the volumes when deployed on a production server.  It does not work nor is it necessary on Macs.
 
+## Run Server - Dev
+```
+npm run start-dev
+```
+
+## Run Server - Prod
+```
+npm run start
+```
 
 ## LTI 
 The following happens when a user clicks on an assignment in a LMS system that is linked to the EdEHR.
@@ -38,6 +53,8 @@ Instructors:
    - Same as for students regarding the User account.
    - Except for instructors the link to the activity does not take the user into the assignment but to a screen that lists all the users (students) who have worked on the assignment.
    
+### Visits
+Each time a user visits the EdEHR from an LMS the system records the access in a Visit record. See the Visit model in the ```models``` and explore the models this one uses.
    
 DB Queries
 

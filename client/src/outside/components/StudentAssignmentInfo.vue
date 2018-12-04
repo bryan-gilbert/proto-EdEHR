@@ -93,7 +93,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .header-content {
   display: flex;
   flex-direction: row;
@@ -131,7 +130,6 @@ $indicatorColor: #006400;
 .has-evaluation-notes {
   background: $indicatorColor;
 }
-
 
 .aName {
   display: inline-block;

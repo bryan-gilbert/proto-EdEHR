@@ -19,7 +19,7 @@ module.exports = function () {
     function makeDef (id, name) {
       var newRow = {
         name: getName(),
-        position: 'Nurse',
+        profession: 'Nurse',
         unit: 'ER',
         day: '0',
         time: '07:00',

@@ -19,7 +19,7 @@
           tbody
             tr(v-for="item in progressNotes")
               td.name {{ item.name }}
-              td.position {{ item.position}}
+              td.position {{ item.profession}}
               td.unit {{ item.unit }}
               td.day {{ item.day }}
               td.time {{ item.time }}
@@ -162,15 +162,7 @@ export default {
 <style lang="scss" scoped>
 $contentMinHeigth: 500px;
 .ProgressNotes {
-  padding: 1rem;
   &__main {
-    font-size: 0.8rem;
-    max-height: $contentMinHeigth;
-    overflow-y: auto;
-
-    .table th {
-      border-bottom: 2px solid #979797;
-    }
   }
 }
 </style>

@@ -4,7 +4,7 @@
 
 > A BCcampus project
 
-
+> The following may need some edits ....
 
 ## Installation
 ```
@@ -32,7 +32,7 @@ cd makeEhr
 ```
 
 ## Run ...
-Work in progress
+Obsolete. Note that all of the commands in the root package.json file are obsolete.
 ``` bash
 # install dependencies
 npm install
