@@ -4,7 +4,7 @@
 // const POINTER_END_EVENTS = ['mouseup', 'touchend']
 // var draggedElem
 
-var u = {
+var medUtil = {
   addEventListeners (el, events, handler) {
     for (var i = 0, len = events.length; i < len; i++) {
       el.addEventListener(events[i], handler)
@@ -15,6 +15,18 @@ var u = {
     for (var i = 0, len = events.length; i < len; i++) {
       el.removeEventListener(events[i], handler)
     }
+  },
+  debugLevelsAll: ['fine', 'listeners', 'finest'],
+  debugLevelsMajor: ['fine'],
+  debugLevelsNone: [],
+  debug (level, msg) {
+    var levels
+    // levels = this.debugLevelsNone
+    levels = this.debugLevelsMajor
+    // levels = this.debugLevelsAll
+    if (levels.includes(level)) {
+      console.log(msg)
+    }
   }
 }
 
@@ -23,43 +35,41 @@ const POINTER_MOVE_EVENTS = ['mousemove', 'touchmove']
 const POINTER_END_EVENTS = ['mouseup', 'touchend']
 
 const MOUSE_ENTER = ['mouseenter']
-const MOUSE_OVER = ['mouseover']
+// const MOUSE_OVER = ['mouseover']
 const MOUSE_LEAVE = ['mouseleave']
 
 export default {
-  inserted (el, binding, vnode) {
+  inserted (container, binding, vnode) {
     var mousedElem
-    var container
     var delta // the thickness of the hovered border area
     var resizeDirection = null
     var overContainer = false
-    var mouseDownMove = false
     var resizingNow = false
     if (!document) {
       console.log('no root document for directive so return and do nothing')
       return
     }
-    delta = window.getComputedStyle(el)['border-right-width'].slice(0, -2) || 10
-    u.addEventListeners(el, MOUSE_ENTER, mouseEnterBorder)
+    delta = window.getComputedStyle(container)['border-right-width'].slice(0, -2) || 10
+    medUtil.addEventListeners(container, MOUSE_ENTER, mouseEnterBorder)
 
     function mouseEnterBorder (evt) {
       evt.preventDefault()
       if (evt.target === evt.currentTarget) {
-        mousedElem = el
-        container = mousedElem
+        mousedElem = container
         resizeDirection = null
         overContainer = false
-        console.log('ENTER BORDER')
-        addOverListener(mousedElem)
+        medUtil.debug('fine', 'ENTER BORDER')
+        // let the listeners handle the over border state...
+        addOverBorderListener(mousedElem)
       }
     }
 
     function mouseLeaveBorder (evt) {
       evt.preventDefault()
-      console.log('LEAVE BORDER')
+      medUtil.debug('fine', 'LEAVE BORDER')
       overContainer = false
       resizeDirection = null
-      removeOverListener(mousedElem)
+      removeOverBorderListener(mousedElem)
       removeMouseDownListeners()
       cleanUp()
     }
@@ -67,53 +77,54 @@ export default {
     function mouseMoveOnBorder (evt) {
       var currentDirection = overBorderCalc(evt)
       if (currentDirection) {
-        // on top of the border
+        // the mouse is on top of the border
         if (!resizeDirection) {
+          // the mouse has just moved on top of the border ...
           if (overContainer) {
-            console.log('REENTER BORDER ', currentDirection)
-            addOverListener(mousedElem)
+            // ... from inside the container
+            medUtil.debug('fine', 'REENTER BORDER ' + currentDirection)
+            addOverBorderListener(mousedElem)
           } else {
-            console.log('ENTER BORDER ', currentDirection)
+            // ... else from outside the container
+            medUtil.debug('fine', 'ENTER DIRECTION ' + currentDirection)
           }
+          // the mouse just moved ontop of the border:
           resizeDirection = currentDirection
           setContainerCursor(container, currentDirection)
           addMouseDownListeners()
         } else if (!resizingNow && resizeDirection !== currentDirection) {
-          console.log('CHANGE direction', currentDirection)
-          setContainerCursor(container, currentDirection)
+          // over the border yet mouse moved from one edge to a corner or another edge
+          medUtil.debug('fine', 'CHANGE DIRECTION ' + currentDirection)
           resizeDirection = currentDirection
+          setContainerCursor(container, currentDirection)
         }
       } else {
         // else not on top of the border
         if (resizeDirection) {
-          console.log('CENTER BORDER ')
+          // the mouse is now over the inside of the container
+          medUtil.debug('fine', 'CENTER LEAVE BORDER ')
           resizeDirection = null
           overContainer = true
           setContainerCursor(container, null)
-          removeOverListener(mousedElem)
+          removeOverBorderListener(mousedElem)
           removeMouseDownListeners()
-          // if (resizingNow) {
-          //   console.log('LEAVE WHILE RESIZEING.  what to do here')
-          // } else {
-          // removeMouseDownListeners()
-          // }
         }
       }
     }
 
     function mouseDownOnBorder (evt) {
       evt.preventDefault()
-      console.log('MOUSE DOWN')
+      medUtil.debug('fine', 'MOUSE DOWN')
       resizingNow = true
       addTrackingListeners()
       removeMouseDownListeners()
-      removeOverListener(mousedElem)
-      el.lastCoords = el.firstCoords = {
+      removeOverBorderListener(mousedElem)
+      container.lastCoords = container.firstCoords = {
         x: evt.clientX,
         y: evt.clientY
       }
       binding.value({
-        el,
+        container,
         first: true,
         resizeDirection: resizeDirection
       })
@@ -121,15 +132,15 @@ export default {
 
     function mouseMove (evt) {
       evt.preventDefault()
-      // console.log('mouse move while down')
-      var deltaX = evt.clientX - el.lastCoords.x
-      var deltaY = evt.clientY - el.lastCoords.y
+      medUtil.debug('fine', 'mouse move while down')
+      var deltaX = evt.clientX - container.lastCoords.x
+      var deltaY = evt.clientY - container.lastCoords.y
       binding.value({
-        el,
+        container,
         deltaX,
         deltaY
       })
-      el.lastCoords = {
+      container.lastCoords = {
         x: evt.clientX,
         y: evt.clientY
       }
@@ -137,19 +148,19 @@ export default {
 
     function mouseUp (evt) {
       evt.preventDefault()
-      console.log('MOUSE UP')
+      medUtil.debug('fine', 'MOUSE UP')
       resizingNow = false
       removeTrackingListeners()
-      el.lastCoords = null
+      container.lastCoords = null
       binding.value({
-        el,
+        container,
         last: true
       })
     }
 
     function overBorderCalc (evt) {
       var rect = container.getBoundingClientRect()
-      // console.log('delta', delta)
+      // medUtil.debug('fine','delta', delta)
       var x = evt.clientX - rect.left // the relative mouse postion to the element
       var y = evt.clientY - rect.top // ...
       var w = rect.right - rect.left // width of the element
@@ -159,7 +170,7 @@ export default {
       else if (y > h - delta) directionStr += 's' // south
       if (x < delta) directionStr += 'w' // west
       else if (x > w - delta) directionStr += 'e' // east
-      // console.log('over border calculation: ' + direction)
+      medUtil.debug('finest', 'over border calculation: ' + directionStr)
       var enableResize = directionStr.length > 0
       return enableResize ? directionStr : null
     }
@@ -192,8 +203,7 @@ export default {
     }
 
     function cleanUp () {
-      console.log('clean up all listeners')
-      mouseDownMove = false
+      medUtil.debug('fine', 'clean up all listeners')
       if (container) {
         container.style.cursor = null
       }
@@ -207,47 +217,47 @@ export default {
     var addRemoveCnt = 0
     function addTrackingListeners () {
       addRemoveCnt++
-      console.log('add pointer', addRemoveCnt)
-      u.addEventListeners(document.documentElement, POINTER_MOVE_EVENTS, mouseMove)
-      u.addEventListeners(document.documentElement, POINTER_END_EVENTS, mouseUp)
+      medUtil.debug('listeners', 'add pointer' + addRemoveCnt)
+      medUtil.addEventListeners(document.documentElement, POINTER_MOVE_EVENTS, mouseMove)
+      medUtil.addEventListeners(document.documentElement, POINTER_END_EVENTS, mouseUp)
     }
 
     function removeTrackingListeners () {
       addRemoveCnt--
-      console.log('remove pointer', addRemoveCnt)
-      u.removeEventListeners(document.documentElement, POINTER_MOVE_EVENTS, mouseMove)
-      u.removeEventListeners(document.documentElement, POINTER_END_EVENTS, mouseUp)
+      medUtil.debug('listeners', 'remove pointer' + addRemoveCnt)
+      medUtil.removeEventListeners(document.documentElement, POINTER_MOVE_EVENTS, mouseMove)
+      medUtil.removeEventListeners(document.documentElement, POINTER_END_EVENTS, mouseUp)
     }
 
     var cntDownListener = 0
     function addMouseDownListeners () {
       cntDownListener++
-      console.log('add down ', cntDownListener)
-      u.addEventListeners(document.documentElement, POINTER_START_EVENTS, mouseDownOnBorder)
+      medUtil.debug('listeners', 'add down ' + cntDownListener)
+      medUtil.addEventListeners(document.documentElement, POINTER_START_EVENTS, mouseDownOnBorder)
     }
 
     function removeMouseDownListeners () {
       cntDownListener--
-      console.log('rem down ', cntDownListener)
-      u.removeEventListeners(document.documentElement, POINTER_START_EVENTS)
+      medUtil.debug('listeners', 'rem down ' + cntDownListener)
+      medUtil.removeEventListeners(document.documentElement, POINTER_START_EVENTS)
     }
 
     var cntOverListener = 0
-    function addOverListener (elem) {
+    function addOverBorderListener (elem) {
       cntOverListener++
-      console.log('add over ', cntOverListener)
-      u.addEventListeners(elem, POINTER_MOVE_EVENTS, mouseMoveOnBorder)
-      u.addEventListeners(elem, MOUSE_LEAVE, mouseLeaveBorder)
+      medUtil.debug('listeners', 'add over ' + cntOverListener)
+      medUtil.addEventListeners(elem, POINTER_MOVE_EVENTS, mouseMoveOnBorder)
+      medUtil.addEventListeners(elem, MOUSE_LEAVE, mouseLeaveBorder)
     }
 
-    function removeOverListener (elem) {
+    function removeOverBorderListener (elem) {
       cntOverListener--
-      console.log('rem over ', cntOverListener)
-      u.removeEventListeners(elem, POINTER_MOVE_EVENTS)
-      u.removeEventListeners(elem, MOUSE_LEAVE)
+      medUtil.debug('listeners', 'rem over ' + cntOverListener)
+      medUtil.removeEventListeners(elem, POINTER_MOVE_EVENTS)
+      medUtil.removeEventListeners(elem, MOUSE_LEAVE)
     }
   },
-  unbind (el) {
-    u.removeEventListeners(el, MOUSE_ENTER)
+  unbind (container) {
+    medUtil.removeEventListeners(container, MOUSE_ENTER)
   }
 }
