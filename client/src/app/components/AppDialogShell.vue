@@ -50,14 +50,22 @@ export default {
       left: 10,
       width: 400,
       height: 0,
+      resizeDirection: '',
       // deltaX: 0,
       // deltaY: 0,
       dragged: false
     }
   },
   methods: {
-    onMoused({ el, type, hover, cursor, down, up}) {
-      // console.log('moused ', type, 'hove', hover, cursor, 'down', down, 'up', up)
+    onMoused({ el, deltaX, deltaY, first, last, resizeDirection}) {
+      if(first) {
+        console.log('moused start', resizeDirection)
+        this.resizeDirection = resizeDirection
+      } else if(last) {
+        console.log('moused end')
+      } else {
+        // console.log('moused move', deltaX, deltaY, this.resizeDirection)
+      }
     },
     onDragged({ el, deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last }) {
       if (first || last) {
@@ -109,7 +117,7 @@ export default {
   z-index: 9;
   background-color: #fff;
   box-sizing: border-box;
-  border: solid #5B6DCD 10px;
+  border: solid  10px;
   border-radius: 4px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }

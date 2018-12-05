@@ -32,7 +32,7 @@ export default {
     var container
     var delta // the thickness of the hovered border area
     var resizeDirection = null
-    var overContainer = false;
+    var overContainer = false
     var mouseDownMove = false
     var resizingNow = false
     if (!document) {
@@ -60,6 +60,7 @@ export default {
       overContainer = false
       resizeDirection = null
       removeOverListener(mousedElem)
+      removeMouseDownListeners()
       cleanUp()
     }
 
@@ -76,8 +77,8 @@ export default {
           }
           resizeDirection = currentDirection
           setContainerCursor(container, currentDirection)
-          // addMouseDownListeners()
-        } else if (resizeDirection !== currentDirection) {
+          addMouseDownListeners()
+        } else if (!resizingNow && resizeDirection !== currentDirection) {
           console.log('CHANGE direction', currentDirection)
           setContainerCursor(container, currentDirection)
           resizeDirection = currentDirection
@@ -90,6 +91,7 @@ export default {
           overContainer = true
           setContainerCursor(container, null)
           removeOverListener(mousedElem)
+          removeMouseDownListeners()
           // if (resizingNow) {
           //   console.log('LEAVE WHILE RESIZEING.  what to do here')
           // } else {
@@ -104,12 +106,33 @@ export default {
       console.log('MOUSE DOWN')
       resizingNow = true
       addTrackingListeners()
+      removeMouseDownListeners()
       removeOverListener(mousedElem)
+      el.lastCoords = el.firstCoords = {
+        x: evt.clientX,
+        y: evt.clientY
+      }
+      binding.value({
+        el,
+        first: true,
+        resizeDirection: resizeDirection
+      })
     }
 
     function mouseMove (evt) {
       evt.preventDefault()
-      console.log('mouse move while down')
+      // console.log('mouse move while down')
+      var deltaX = evt.clientX - el.lastCoords.x
+      var deltaY = evt.clientY - el.lastCoords.y
+      binding.value({
+        el,
+        deltaX,
+        deltaY
+      })
+      el.lastCoords = {
+        x: evt.clientX,
+        y: evt.clientY
+      }
     }
 
     function mouseUp (evt) {
@@ -117,6 +140,11 @@ export default {
       console.log('MOUSE UP')
       resizingNow = false
       removeTrackingListeners()
+      el.lastCoords = null
+      binding.value({
+        el,
+        last: true
+      })
     }
 
     function overBorderCalc (evt) {
@@ -137,8 +165,30 @@ export default {
     }
 
     function setContainerCursor (container, directionStr) {
-      var cursor = directionStr ? directionStr + '-resize' : null
-      container.style.cursor = cursor
+      if (directionStr) {
+        var cursor
+        switch (directionStr) {
+          case 'n':
+          case 's':
+            cursor = 'ns'
+            break
+          case 'e':
+          case 'w':
+            cursor = 'ew'
+            break
+          case 'nw':
+          case 'se':
+            cursor = 'nwse'
+            break
+          case 'ne':
+          case 'sw':
+            cursor = 'nesw'
+            break
+        }
+        container.style.cursor = cursor + '-resize'
+      } else {
+        container.style.cursor = null
+      }
     }
 
     function cleanUp () {
@@ -165,8 +215,8 @@ export default {
     function removeTrackingListeners () {
       addRemoveCnt--
       console.log('remove pointer', addRemoveCnt)
-      u.removeEventListeners(document.documentElement, POINTER_MOVE_EVENTS)
-      u.removeEventListeners(document.documentElement, POINTER_END_EVENTS)
+      u.removeEventListeners(document.documentElement, POINTER_MOVE_EVENTS, mouseMove)
+      u.removeEventListeners(document.documentElement, POINTER_END_EVENTS, mouseUp)
     }
 
     var cntDownListener = 0
