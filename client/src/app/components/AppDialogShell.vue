@@ -1,30 +1,29 @@
 <template lang="pug">
   transition(name="dialog")
-    div(:class="['dialog-wrapper', { dragged: dragged }]", v-bind:style="{ top: top + 'px', left: left + 'px'}")
-      div(class="dialog-border")
-        div(class="dialog-banner", v-dragged="onDragged")
-        div(class="dialog-container")
-          div(class="dialog-header columns")
-            div(class="dialog-header-content column is-11")
-              h3
-                slot(name="header") default header
-            div(class="dialog-header-menu  column is-1")
-              button(class="dialog-close-button", @click="$emit('cancel')") X
-          div(class="dialog-body")
-            div top: {{ top }}
-            div left: {{ left }}
-            div width: {{ width }}
-            div height: {{ height }}
-            slot(name="body") default body
-          div(class="dialog-footer")
-            div(class="dialog-footer-errors", v-if="errors.length")
-              p Please correct the following
-              ul
-                li(v-for="error in errors") {{error}}
-            div(class="dialog-footer-bar columns")
-              div(class="dialog-footer-content column")
-              button(class="dialog-default-button column", @click="$emit('save')")
-                slot(name="button1") default close button
+    div(:class="['dialog-wrapper', { dragged: dragged }]", , v-moused="onMoused", v-bind:style="{ top: top + 'px', left: left + 'px'}")
+      div(class="dialog-banner", v-dragged="onDragged")
+      div(class="dialog-container")
+        div(class="dialog-header columns")
+          div(class="dialog-header-content column is-11")
+            h3
+              slot(name="header") default header
+          div(class="dialog-header-menu  column is-1")
+            button(class="dialog-close-button", @click="$emit('cancel')") X
+        div(class="dialog-body")
+          div top: {{ top }}
+          div left: {{ left }}
+          div width: {{ width }}
+          div height: {{ height }}
+          slot(name="body") default body
+        div(class="dialog-footer")
+          div(class="dialog-footer-errors", v-if="errors.length")
+            p Please correct the following
+            ul
+              li(v-for="error in errors") {{error}}
+          div(class="dialog-footer-bar columns")
+            div(class="dialog-footer-content column")
+            button(class="dialog-default-button column", @click="$emit('save')")
+              slot(name="button1") default close button
 
 </template>
 
@@ -57,6 +56,9 @@ export default {
     }
   },
   methods: {
+    onMoused({ el, type, hover, cursor, down, up}) {
+      // console.log('moused ', type, 'hove', hover, cursor, 'down', down, 'up', up)
+    },
     onDragged({ el, deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last }) {
       if (first || last) {
         this.dragged = first
@@ -64,36 +66,38 @@ export default {
       }
       this.left += deltaX
       this.top += deltaY
-    // },
-    // onmousemove(e) {
+      // },
+      // onmousemove(e) {
       parent = el.parentElement
       // console.log("el parent", window.getComputedStyle(parent)['left'], window.getComputedStyle(parent)['top'])
       // var l = +window.getComputedStyle(parent)['left'].slice(0, -2) || 0
       // var t = +window.getComputedStyle(parent)['top'].slice(0, -2) || 0
 
-      var delta = 10 // the thickness of the hovered border area
-      var rect = parent.getBoundingClientRect()
-      console.log("el parent", rect)
-      var x = clientX - rect.left, // the relative mouse postion to the element
-        y = clientY - rect.top, // ...
-        w = rect.right - rect.left, // width of the element
-        h = rect.bottom - rect.top // height of the element
-
-      var c = '' // which cursor to use
-      if (y < delta) c += 'n'
-      // north
-      else if (y > h - delta) c += 's' // south
-      if (x < delta) c += 'w'
-      // west
-      else if (x > w - delta) c += 'e' // east
-      console.log("result", c)
-
-      if (c)
-        // if we are hovering at the border area (c is not empty)
-        parent.style.cursor = c + '-resize'
-      // set the according cursor
-      // otherwise
-      else parent.style.cursor = 'pointer' // set to pointer
+      // var delta = 10 // the thickness of the hovered border area
+      // var rect = parent.getBoundingClientRect()
+      // console.log('el parent', rect)
+      // var x = clientX - rect.left, // the relative mouse postion to the element
+      //   y = clientY - rect.top, // ...
+      //   w = rect.right - rect.left, // width of the element
+      //   h = rect.bottom - rect.top // height of the element
+      //
+      // var c = '' // which cursor to use
+      // if (y < delta) c += 'n'
+      // // north
+      // else if (y > h - delta) c += 's' // south
+      // if (x < delta) c += 'w'
+      // // west
+      // else if (x > w - delta) c += 'e' // east
+      // console.log('result', c)
+      //
+      // if (c) {
+      //   parent.style.cursor = c + '-resize'
+      //   // set the according cursor
+      //   // otherwise
+      // }
+      // else {
+      //   parent.style.cursor = 'pointer' // set to pointer
+      // }
     }
   }
 }
@@ -104,6 +108,8 @@ export default {
   position: absolute;
   z-index: 9;
   background-color: #fff;
+  box-sizing: border-box;
+  border: solid #5B6DCD 10px;
   border-radius: 4px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
@@ -138,7 +144,7 @@ export default {
 }
 
 .dialog-border {
-  border: 2px solid blue;
+  border: 12px solid blue;
   cursor: pointer;
 }
 .dialog-footer {
