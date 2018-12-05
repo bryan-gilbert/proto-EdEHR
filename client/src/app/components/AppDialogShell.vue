@@ -1,6 +1,6 @@
 <template lang="pug">
   transition(name="dialog")
-    div(:class="['dialog-wrapper', { dragged: dragged }]", , v-moused="onMoused", v-bind:style="{ top: top + 'px', left: left + 'px'}")
+    div(:class="['dialog-wrapper', { dragged: dragged }]", , v-moused="onMoused", v-bind:style="{ top: top + 'px', left: left + 'px', width: width + 'px', height: height + 'px' }")
       div(class="dialog-banner", v-dragged="onDragged")
       div(class="dialog-container")
         div(class="dialog-header columns")
@@ -47,24 +47,83 @@ export default {
   data() {
     return {
       top: 350,
-      left: 10,
-      width: 400,
-      height: 0,
+      left: 200,
+      width: 700,
+      height: 300,
       resizeDirection: '',
       // deltaX: 0,
       // deltaY: 0,
+      resizing: false,
       dragged: false
     }
   },
   methods: {
-    onMoused({ el, deltaX, deltaY, first, last, resizeDirection}) {
-      if(first) {
-        console.log('moused start', resizeDirection)
+    onMoused({ el, deltaX, deltaY, start, end, resizeDirection }) {
+      if (start || end) {
+        this.resizing = true
         this.resizeDirection = resizeDirection
-      } else if(last) {
-        console.log('moused end')
-      } else {
-        // console.log('moused move', deltaX, deltaY, this.resizeDirection)
+        return
+      }
+      if (end) {
+        this.resizing = false
+        this.resizeDirection = ''
+        return
+      }
+      console.log('resizeDirection', this.resizeDirection)
+      const MIN_WIDTH = 200
+      const MIN_HEIGHT = 300
+      const vm = this
+      function north() {
+        vm.height -= deltaY
+        vm.height = Math.max(MIN_HEIGHT, vm.height)
+        if(vm.height > MIN_HEIGHT) {
+          vm.top += deltaY
+        }
+      }
+      function south() {
+        vm.height += deltaY
+        vm.height = Math.max(MIN_HEIGHT, vm.height)
+      }
+      function east() {
+        vm.width += deltaX
+        vm.width = Math.max(MIN_WIDTH,vm.width)
+      }
+      function west() {
+        vm.width -= deltaX
+        vm.width = Math.max(MIN_WIDTH,vm.width)
+        if (vm.width > MIN_WIDTH) {
+          vm.left += deltaX
+        }
+      }
+      switch (this.resizeDirection) {
+        case 'n':
+          north()
+          break
+        case 's':
+          south()
+          break
+        case 'e':
+          east()
+          break
+        case 'w':
+          west()
+          break
+        case 'nw':
+          north()
+          west()
+          break
+        case 'se':
+          south()
+          east()
+          break
+        case 'ne':
+          north()
+          east()
+          break
+        case 'sw':
+          south()
+          west()
+          break
       }
     },
     onDragged({ el, deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last }) {
@@ -74,38 +133,7 @@ export default {
       }
       this.left += deltaX
       this.top += deltaY
-      // },
-      // onmousemove(e) {
-      parent = el.parentElement
-      // console.log("el parent", window.getComputedStyle(parent)['left'], window.getComputedStyle(parent)['top'])
-      // var l = +window.getComputedStyle(parent)['left'].slice(0, -2) || 0
-      // var t = +window.getComputedStyle(parent)['top'].slice(0, -2) || 0
-
-      // var delta = 10 // the thickness of the hovered border area
-      // var rect = parent.getBoundingClientRect()
-      // console.log('el parent', rect)
-      // var x = clientX - rect.left, // the relative mouse postion to the element
-      //   y = clientY - rect.top, // ...
-      //   w = rect.right - rect.left, // width of the element
-      //   h = rect.bottom - rect.top // height of the element
-      //
-      // var c = '' // which cursor to use
-      // if (y < delta) c += 'n'
-      // // north
-      // else if (y > h - delta) c += 's' // south
-      // if (x < delta) c += 'w'
-      // // west
-      // else if (x > w - delta) c += 'e' // east
-      // console.log('result', c)
-      //
-      // if (c) {
-      //   parent.style.cursor = c + '-resize'
-      //   // set the according cursor
-      //   // otherwise
-      // }
-      // else {
-      //   parent.style.cursor = 'pointer' // set to pointer
-      // }
+      // parent = el.parentElement
     }
   }
 }
@@ -114,10 +142,11 @@ export default {
 <style lang="scss">
 .dialog-wrapper {
   position: absolute;
+  overflow: auto;
   z-index: 9;
   background-color: #fff;
   box-sizing: border-box;
-  border: solid  10px;
+  border: solid 10px;
   border-radius: 4px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
@@ -132,7 +161,7 @@ export default {
   background-color: palegoldenrod;
 }
 .dialog-container {
-  width: 900px;
+  /*width: 900px;*/
   margin: 0px auto;
   padding: 20px 30px;
   overflow: hidden;
