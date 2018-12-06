@@ -26,8 +26,8 @@ var medUtil = {
   debugLevelsNone: [],
   debug (level, msg) {
     var levels
-    // levels = this.debugLevelsNone
-    levels = this.debugLevelsMajor
+    levels = this.debugLevelsNone
+    // levels = this.debugLevelsMajor
     // levels = this.debugLevelsAll
     if (levels.includes(level)) {
       console.log(msg)

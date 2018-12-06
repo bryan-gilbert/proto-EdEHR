@@ -2,7 +2,6 @@
   <div :class="$options.name">
     <!-- <slot name="header" :class="`${$options.name}__header`"> -->
     <app-header />
-    <app-dialog />
     <!--modal( v-if="showModal", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")    -->
     <!-- </slot> -->
     <main :class="`${$options.name}__main`">
@@ -26,19 +25,16 @@
 
 <script>
 import AppHeader from '../../app/components/AppHeader.vue'
-import AppDialog from '../../app/components/AppDialogShell'
 import AppFooter from '../../app/components/AppFooter.vue'
 import EhrSpecial from '../components/EhrSpecial.vue'
 import EhrNavPanel from '../components/EhrNavPanel.vue'
 import EhrBanner from '../components/EhrBanner.vue'
-// import EhrPanel from '../components/EhrPanel.vue'
 
 export default {
   name: 'LayoutDefault',
   components: {
     AppHeader,
     AppFooter,
-    AppDialog,
     EhrBanner,
     // EhrPanel,
     EhrNavPanel,
