@@ -84,6 +84,7 @@ $pageWidth: 1024px;
     height: $contentMinHeigth;
     padding: 0;
     margin: 0;
+    overflow-y: auto;
   }
 }
 </style>
