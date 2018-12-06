@@ -80,6 +80,11 @@ const store = new Vuex.Store({
       state.sCurrentData = data
     },
     setClassList: (state, list) => {
+      /*
+      list of Visit records (student only) for a particular LMS activity.
+      Each record contains a populated ActivityData (student's work)
+      (EdEHR) Assignment and User
+       */
       state.sClassList = list
     },
     setAssignments: (state, list) => {

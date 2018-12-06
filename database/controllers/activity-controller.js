@@ -39,6 +39,7 @@ export default class ActivityController extends BaseController {
   }
 
   listClassList (id) {
+    // TODO elide the student's scratch pad
     return Visit.find({ $and: [ {isStudent: true }, {activity: id} ] })
     .populate('activityData')
     .populate('assignment')
