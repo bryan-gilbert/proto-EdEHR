@@ -2,17 +2,16 @@
   <div :class="$options.name">
     <!-- <slot name="header" :class="`${$options.name}__header`"> -->
     <app-header />
+    <!--modal( v-if="showModal", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")    -->
     <!-- </slot> -->
     <main :class="`${$options.name}__main`">
       <div name="mainContent" :class="`${$options.name}__main_content columns`">
-        <div name="nav" :class="`${$options.name}__nav column`">
-          <ehr-nav-panel />
-        </div>
+        <div name="nav" :class="`${$options.name}__nav column`"><ehr-nav-panel /></div>
         <div name="content" :class="`${$options.name}__content column`">
           <ehr-banner></ehr-banner>
           <slot>
-            Main EHR content for a component will appear here.
-            The component is selected by the router
+            Main EHR content for a component will appear here. The component is selected by the
+            router
           </slot>
         </div>
       </div>
@@ -30,7 +29,6 @@ import AppFooter from '../../app/components/AppFooter.vue'
 import EhrSpecial from '../components/EhrSpecial.vue'
 import EhrNavPanel from '../components/EhrNavPanel.vue'
 import EhrBanner from '../components/EhrBanner.vue'
-// import EhrPanel from '../components/EhrPanel.vue'
 
 export default {
   name: 'LayoutDefault',
@@ -53,7 +51,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/objects/wrapper.mixin';
-$contentMinHeigth: 800px;
+$contentMinHeigth: 700px;
 $navWidth: 234px;
 $pageWidth: 1024px;
 
@@ -67,6 +65,7 @@ $pageWidth: 1024px;
     background-color: white;
     /*padding-left: 0;*/
     @include wrapper('page');
+    overflow: hidden;
   }
   &__header {
     max-width: $pageWidth;
@@ -85,6 +84,7 @@ $pageWidth: 1024px;
     height: $contentMinHeigth;
     padding: 0;
     margin: 0;
+    overflow-y: auto;
   }
 }
 </style>

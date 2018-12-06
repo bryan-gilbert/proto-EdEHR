@@ -13,6 +13,12 @@ Once the install is done set up the database which is easily done via a docker c
 
 > Run Mongodb in a Docker container
 
+Download for Mac
+https://store.docker.com/editions/community/docker-ce-desktop-mac
+
+You will need to create an account with Docker
+
+
 ```bash
 # Run in Docker
 docker-compose up

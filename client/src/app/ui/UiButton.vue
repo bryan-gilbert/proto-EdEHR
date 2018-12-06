@@ -1,18 +1,5 @@
 <template>
-  <!--
-    clicking <router-link :to="..."> is the equivalent of calling router.push(...).
-  -->
-  <!--
-    the :is attribute can change what the button will be. If the 'to' property is set then
-    make the button into a Vue router-link component https://router.vuejs.org/api/
-    otherwise leave the button as a button.  The :to attribute is used by the router-link, if it's there.
-  -->
-  <button
-    :is="to ? `router-link` : `button`"
-    :to="to"
-    v-on:click="buttonClicked"
-    v-bind:class="classObject"
-  >
+  <button v-on:click="buttonClicked" v-bind:class="classObject">
     <slot />
   </button>
 </template>
@@ -21,17 +8,21 @@
 export default {
   name: 'UiButton',
   props: {
-    to: {
-      type: Object
+    secondary: {
+      type: Boolean
     }
   },
   computed: {
     classObject: function() {
-      return {
-        'is-link': this.to !== undefined,
-        'is-primary': this.to === undefined,
+      var def = {
         button: true
       }
+      if (this.secondary) {
+        def['is-light'] = true
+      } else {
+        def['is-primary'] = true
+      }
+      return def
     }
   },
   methods: {
@@ -43,8 +34,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/settings/color';
-
-.UiButton {
-}
 </style>

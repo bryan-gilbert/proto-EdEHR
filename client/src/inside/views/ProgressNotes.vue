@@ -24,7 +24,7 @@
               td.day {{ item.day }}
               td.time {{ item.time }}
               td.notes {{ item.notes }}
-    modal( v-if="showModal", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
+    app-dialog( v-if="showModal", :isModal="true", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
       h3(slot="header") Create a new progress note
       div(slot="body")
         div
@@ -50,7 +50,7 @@
             div(class="input-element input-element-full")
               label Progress notes
               textarea(v-model="inputs.notes")
-      span(slot="button1") Create and close
+      span(slot="save-button") Create and close
 </template>
 
 <script>
@@ -58,14 +58,14 @@ import UiButton from '../../app/ui/UiButton.vue'
 import { getPhrase } from '../poc-utils'
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
-import Modal from '../../app/components/Modal'
+import AppDialog from '../../app/components/AppDialogShell'
 
 export default {
   name: 'ProgressNotes',
   components: {
     EhrPanelHeader,
     EhrPanelContent,
-    Modal,
+    AppDialog,
     UiButton
   },
   data: function() {
@@ -160,7 +160,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$contentMinHeigth: 500px;
+@import '../../scss/settings/forms';
 .ProgressNotes {
   &__main {
   }
