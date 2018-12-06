@@ -1,20 +1,23 @@
 <template lang="pug">
   div(:class="$options.name")
     div(:class="`${$options.name}__top`")
-      ui-button(v-on:buttonClicked="returnToClicked", :class="`${$options.name}__returnButton`") {{ returnButtonLabel }}
+      ui-button(v-on:buttonClicked="returnToClicked", :class="`${$options.name}__button`") {{ returnButtonLabel }}
     ehr-nav-list(v-for="path in menuList" :key="path.name" :path="path" :level="1")
+    ehr-scratch-pad
 </template>
 <script>
 import UiLink from '../../app/ui/UiLink.vue'
 import UiButton from '../../app/ui/UiButton.vue'
 import EhrNavList from './EhrNavList'
+import EhrScratchPad from '../components/EhrScratchPad'
 
 export default {
   name: 'EhrNavPanel',
   components: {
     UiButton,
     UiLink,
-    EhrNavList
+    EhrNavList,
+    EhrScratchPad
   },
   computed: {
     returnUrl() {
@@ -63,17 +66,22 @@ export default {
 @import '../../scss/objects/wrapper.mixin';
 
 .EhrNavPanel {
-  background-color: #151a24;
+  background-color: $nav-background-medium;
   height: 100%;
-  color: #efefef;
+  display: flex;
+  flex-direction: column;
+  /*color: #efefef;*/
 
   &__top {
+    padding: 15px;
+  }
+  &__bottom {
     padding: 15px;
   }
   a {
     color: white;
   }
-  &__returnButton {
+  &__button {
     width: 100%;
   }
 }

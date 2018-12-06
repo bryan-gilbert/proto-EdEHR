@@ -50,7 +50,7 @@
             div(class="input-element input-element-full")
               label Progress notes
               textarea(v-model="inputs.notes")
-      span(slot="button1") Create and close
+      span(slot="save-button") Create and close
 </template>
 
 <script>
@@ -160,17 +160,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$contentMinHeigth: 500px;
+@import '../../scss/settings/forms';
 .ProgressNotes {
-  padding: 1rem;
   &__main {
-    font-size: 0.8rem;
-    max-height: $contentMinHeigth;
-    overflow-y: auto;
-
-    .table th {
-      border-bottom: 2px solid #979797;
-    }
   }
 }
 </style>

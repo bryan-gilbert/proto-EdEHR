@@ -12,13 +12,13 @@
         div(class="dialog-container")
           div(class="dialog-body")
             slot(name="body") default body
-          div(class="dialog-footer columns")
-            div(class="dialog-footer-errors column is-two-thirds")
-              div(v-if="errors.length")
+          div(class="dialog-footer")
+            div(class="dialog-footer-errors")
+              div(v-show="errors.length")
                 p {{ errorDirections }} eer
                 ul
                   li(v-for="error in errors") {{ error }}
-            div(class="dialog-footer-content column")
+            div(class="dialog-footer-content is-pulled-right")
               ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
                 slot(name="cancel-button") {{ cancelButtonLabel }}
               div(class="dialog-footer-button-space")
@@ -52,7 +52,7 @@ export default {
     errors: {
       type: Array,
       default: function() {
-        return ['d']
+        return []
       }
     }
   },
@@ -159,56 +159,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-
-  /* **********
-    *
-    * Styling generic input elements that appear in EdEHR dialogs
-    *
-    */
-  .input-fieldrow {
-    display: flex;
-  }
-
-  .input-element {
-    label,
-    input {
-      display: block;
-    }
-    input,
-    textarea {
-      height: 2rem;
-      border: 1px solid #cbced1;
-      border-radius: 3px;
-      box-shadow: inset 0 1px 0 0 rgba(21, 26, 36, 0.5);
-    }
-    input {
-      height: 2rem;
-    }
-    textarea {
-      height: 6rem;
-      width: 100%;
-    }
-  }
-
-  .input-element-full {
-    width: 100%;
-  }
-
-  .input-element-small {
-    flex: 1 0 auto;
-    input {
-      width: 5rem;
-    }
-  }
-  .input-element-medium {
-    flex: 2 0 auto;
-    input {
-      width: 15rem;
-    }
-  }
-</style>
 <style lang="scss" scoped>
+  @import '../../scss/settings/color';
 .modal-mask {
   position: fixed;
   z-index: 990;
@@ -223,7 +175,7 @@ export default {
 
 .dialog-wrapper {
   position: absolute;
-  overflow: hidden;
+  overflow: auto;
   z-index: 999;
   background-color: #fff;
   border: solid 10px;
@@ -237,12 +189,11 @@ export default {
 }
 .dialog-container {
   padding: 20px 30px;
-  overflow: auto;
 }
 
 .dialog-header {
   cursor: pointer;
-  background-color: palegoldenrod;
+  background-color: $dialog-header-background;
 
   .dialog-header-content {
     margin-top: 15px;
@@ -250,7 +201,7 @@ export default {
     font-size: 24px;
     font-weight: 600;
     line-height: 28px;
-    color: #383c45;
+    color: $dialog-header-content-color;
   }
   .dialog-header-menu {
     margin-top: 15px;
@@ -273,7 +224,7 @@ export default {
   }
   .dialog-footer-button-space {
     display: inline-block;
-    width: 2rem;
+    width: 10px;
   }
 }
 

@@ -51,7 +51,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/objects/wrapper.mixin';
-$contentMinHeigth: 800px;
+$contentMinHeigth: 700px;
 $navWidth: 234px;
 $pageWidth: 1024px;
 
@@ -65,6 +65,7 @@ $pageWidth: 1024px;
     background-color: white;
     /*padding-left: 0;*/
     @include wrapper('page');
+    overflow: hidden;
   }
   &__header {
     max-width: $pageWidth;
@@ -83,30 +84,6 @@ $pageWidth: 1024px;
     height: $contentMinHeigth;
     padding: 0;
     margin: 0;
-  }
-
-  .box {
-    z-index: 9;
-    left: 20px;
-    top: 250px;
-    width: 400px;
-    box-sizing: border-box;
-    padding: 15px;
-    background: white;
-    display: inline-block;
-    position: absolute;
-    user-select: none;
-    text-align: left;
-    cursor: pointer;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    transition: box-shadow 0.3s cubic-bezier(.25, .8, .25, 1);
-    line-height: 1.8;
-    color: #272727;
-    border-radius: 4px;
-  }
-
-  .box.dragged {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
 }
 </style>

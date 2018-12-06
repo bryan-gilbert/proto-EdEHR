@@ -31,13 +31,12 @@ export default {
     level: { type: Number }
   }
 }
-// #E9EBED  #393c44
-// #393C44  #50545B;
-// #222733
 </script>
 
 <style lang="scss" scoped>
-.EhrNavListItem {
+@import '../../scss/settings/color';
+
+  .EhrNavListItem {
   margin-top: 1px;
   &__level1,
   &__level2,
@@ -52,27 +51,27 @@ export default {
     }
   }
   active {
-    background-color: #051f54;
+    background-color: $nav-active;
   }
   &__level1 {
-    background-color: #22262e;
+    background-color: $nav-level1;
     height: 40px;
     & a {
-      color: #ffffff;
+      color: $nav-color-level1;
     }
   }
   &__level2 {
-    background-color: #383c45;
+    background-color: $nav-level2;
     height: 30px;
     & a {
-      color: #cbced1;
+      color: $nav-color-level2;
     }
   }
   &__level3 {
-    background-color: #4f545c;
+    background-color: $nav-level3;
     height: 30px;
     & a {
-      color: #cbced1;
+      color: $nav-color-level3;
     }
   }
   &__link1 {

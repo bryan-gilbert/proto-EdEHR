@@ -4,6 +4,12 @@
 
 ## Quick Start
 
+Download for Mac
+https://store.docker.com/editions/community/docker-ce-desktop-mac
+
+You will need to create an account with Docker
+
+
 ```bash
 # Run in Docker
 docker-compose up
