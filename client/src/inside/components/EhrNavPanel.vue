@@ -3,13 +3,15 @@
     div(:class="`${$options.name}__top`")
       ui-button(v-on:buttonClicked="returnToClicked", :class="`${$options.name}__button`") {{ returnButtonLabel }}
     ehr-nav-list(v-for="path in menuList" :key="path.name" :path="path" :level="1")
-    ehr-scratch-pad
+    ehr-scratch-pad(v-show="isStudent")
+    ehr-evaluation-pad(v-show="isInstructor")
 </template>
 <script>
 import UiLink from '../../app/ui/UiLink.vue'
 import UiButton from '../../app/ui/UiButton.vue'
 import EhrNavList from './EhrNavList'
 import EhrScratchPad from '../components/EhrScratchPad'
+import EhrEvaluationPad from '../components/EhrEvaluationPad'
 
 export default {
   name: 'EhrNavPanel',
@@ -17,7 +19,8 @@ export default {
     UiButton,
     UiLink,
     EhrNavList,
-    EhrScratchPad
+    EhrScratchPad,
+    EhrEvaluationPad
   },
   computed: {
     returnUrl() {
@@ -43,6 +46,12 @@ export default {
       // read the menu definition stored in the project root src (client/src)
       var menu = require('../../menuList.json')
       return menu
+    },
+    isStudent() {
+      return this.$store.state.sVisitInfo.isStudent
+    },
+    isInstructor() {
+      return this.$store.state.sVisitInfo.isInstructor
     }
   },
   methods: {
