@@ -1,6 +1,6 @@
 <template>
   <footer :class="$options.name">
-    <div :class="`${$options.name}__wrapper`">
+    <div :class="`${$options.name}__wrapper`" v-if="showNav">
       <ui-link :to="{ name: `home` }">Home</ui-link>
       |
       <ui-link :to="{ name: `dashboard` }">Dashboard</ui-link>
@@ -25,7 +25,13 @@ export default {
   name: 'AppFooter',
   components: {
     UiLink
+  },
+  data: function() {
+    return {
+      showNav: false
+    }
   }
+
 }
 </script>
 

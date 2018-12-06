@@ -2,10 +2,11 @@
   div(:class="$options.name")
     ehr-panel-header Patient Notes
     ehr-panel-content
-      ui-button(v-on:buttonClicked="showDialog") Add a new progress notes
-      div(style="display: inline-block; margin-left: 1rem;")
-        input(type="checkbox", id="populate", v-model="populate")
-        label(style="margin-left: 3px;", for="populate") {{ populateMsg }}
+      div(v-show="isStudent")
+        ui-button(v-on:buttonClicked="showDialog") Add a new progress notes
+        div(style="display: inline-block; margin-left: 1rem;")
+          input(type="checkbox", id="populate", v-model="populate")
+          label(style="margin-left: 3px;", for="populate") {{ populateMsg }}
       div(:class="`${$options.name}__main`")
         table.table
           thead
@@ -91,6 +92,9 @@ export default {
     },
     progressNotes() {
       return this.$store.state.sCurrentData.progressNotes
+    },
+    isStudent() {
+      return this.$store.state.sVisitInfo.isStudent
     }
   },
   methods: {
