@@ -28,7 +28,8 @@ module.exports = function () {
       const def = {
         externalId: id,
         name: name,
-        ehrRoute: '/ehr/chart/progress-notes',
+        ehrRoutePath: '/ehr/chart/progress-notes',
+        ehrRouteName: 'progress-notes',
         seedData: {progressNotes: [newRow]}
       }
       return def
@@ -40,7 +41,8 @@ module.exports = function () {
       def = {
         externalId: 'defaultNonAssignment',
         name: 'Default Non Assignment',
-        ehrRoute: '/assignments-listing',
+        ehrRoutePath: '/assignments-listing',
+        ehrRouteName: 'assignments-listing',
         seedData: {}
       }
       addOne(def)

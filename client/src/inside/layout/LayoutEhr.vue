@@ -1,25 +1,20 @@
 <template>
   <div :class="$options.name">
-    <!-- <slot name="header" :class="`${$options.name}__header`"> -->
     <app-header />
-    <!--modal( v-if="showModal", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")    -->
-    <!-- </slot> -->
+    <ehr-context-banner />
     <main :class="`${$options.name}__main`">
       <div name="mainContent" :class="`${$options.name}__main_content columns`">
         <div name="nav" :class="`${$options.name}__nav column`"><ehr-nav-panel /></div>
         <div name="content" :class="`${$options.name}__content column`">
           <ehr-banner></ehr-banner>
           <slot>
-            Main EHR content for a component will appear here. The component is selected by the
-            router
+            Main EHR content for a component will appear here. The component is selected by the router
           </slot>
         </div>
       </div>
     </main>
-    <!-- <slot name="footer"> -->
     <app-footer />
     <ehr-special />
-    <!-- </slot> -->
   </div>
 </template>
 
@@ -29,6 +24,7 @@ import AppFooter from '../../app/components/AppFooter.vue'
 import EhrSpecial from '../components/EhrSpecial.vue'
 import EhrNavPanel from '../components/EhrNavPanel.vue'
 import EhrBanner from '../components/EhrBanner.vue'
+import EhrContextBanner from '../components/EhrContextBanner'
 
 export default {
   name: 'LayoutDefault',
@@ -38,6 +34,7 @@ export default {
     EhrBanner,
     // EhrPanel,
     EhrNavPanel,
+    EhrContextBanner,
     EhrSpecial
   },
   computed: {

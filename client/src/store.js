@@ -33,7 +33,8 @@ const store = new Vuex.Store({
     sCourses: [],
     apiUrl: '',
     topLevelMenu: '',
-    sInstructorReturnUrl: 'assignments-listing'
+    sInstructorReturnUrl: '/instructor',
+    sCurrentEvaluationStudentId: ''
   },
   plugins: [createLogger()],
   getters: {
@@ -42,6 +43,16 @@ const store = new Vuex.Store({
         return state.sVisitInfo.toolConsumer.tool_consumer_instance_name
       }
       return ''
+    },
+    currentEvaluationStudent: state => {
+      var currentId = state.sCurrentEvaluationStudentId
+      var classList = state.sClassList
+      if (currentId && classList) {
+        return classList.find((elem) => {
+          return elem._id === currentId
+        })
+      }
+      return null
     }
   },
   mutations: {
@@ -71,6 +82,9 @@ const store = new Vuex.Store({
     setInstructorReturnUrl: (state, rUrl) => {
       console.log('save instructor return url' + rUrl)
       state.sInstructorReturnUrl = rUrl
+    },
+    setCurrentEvaluationStudentId: (state, id) => {
+      state.sCurrentEvaluationStudentId = id
     },
     setActivityData: (state, data) => {
       state.sActivityData = data

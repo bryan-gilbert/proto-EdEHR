@@ -16,7 +16,7 @@
         tr(v-for="item in assignmentsListing")
           td.name {{ item.name }}
           td.external {{ item.externalId}}
-          td.ehrRoute {{ item.ehrRoute}}
+          td.ehrRoute {{ item.ehrRouteName}}
           td.seedData {{ item.seedData}}
     table.table
       thead

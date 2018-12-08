@@ -26,9 +26,15 @@
           div(class="aValue") {{ studentVisit.lastVisitDate }}
         div
           div(class="aName") route:
-          div(class="aValue") {{ studentVisit.assignment.ehrRoute }}
+          div(class="aValue") {{ studentVisit.assignment.ehrRouteName }}
       div(class="evaluation")
         evaluation-note(:studentVisitId="studentVisit._id")
+    h3 studentVisit
+    div(:class="`${$options.name}__data`")
+      li(v-for="(value, propertyName) in studentVisit", v-bind:key="propertyName")
+        strong {{ propertyName }}
+        span : {{ value }}
+
 </template>
 <script>
 import accordion from '../../app/components/accordion'
@@ -85,7 +91,11 @@ export default {
     goToEhr() {
       console.log('Store the pathname for the instructor to return here ', window.location.pathname)
       this.$store.commit('setInstructorReturnUrl', window.location.pathname)
-      var name = this.studentVisit.assignment.ehrRoute
+      var studentId = this.studentVisit._id
+      var name = this.studentVisit.assignment.ehrRoutePath
+      console.log('Store the current student id that is being evaluated ', studentId)
+      this.$store.commit('setCurrentEvaluationStudentId', studentId)
+      console.log("go to ehr with ", name)
       this.$router.push(name)
     }
   }

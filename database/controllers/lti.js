@@ -256,7 +256,7 @@ export default class LTIController {
         var visit = req.visit
         var port = req.get('port') ? ':' + req.get('port') : ''
         var apiUrl = encodeURIComponent(req.protocol + '://' + req.get('host') + port + '/api')
-        var route = req.assignment.ehrRoute
+        var route = req.assignment.ehrRoutePath
         if (visit.isInstructor) {
           debug('Route to instructor page ' + JSON.stringify(req.ltiData, null, 2))
           route = '/instructor'

@@ -3,6 +3,18 @@
     p This is the EHR special content panel
     div(:class="`${$options.name}__special`")
     hr
+    div(v-show="isInstructor")
+      h3 Instructor Data
+      p  Current Student Visit _id: {{ currentEvaluationStudentId }}
+      div(:class="`${$options.name}__data`")
+        li(class="classList", v-for="studentVisit in classList")
+          p Visit._id: {{ studentVisit._id }}
+          p Student: {{ studentVisit.user.fullName }}
+          p _id: {{ studentVisit.user._id }}
+          p Course: {{ studentVisit.activity.context_title}}
+          p Activity: {{ studentVisit.activity.resource_link_title}}
+          p Activity Description: {{ studentVisit.activity.resource_link_description}}
+      hr
     h3 Visit
     div(:class="`${$options.name}__data`")
       li(v-for="(value, propertyName) in visitInfo", v-bind:key="propertyName", v-if="skipVisitProp(propertyName)")
@@ -64,6 +76,15 @@ export default {
       var vi = this.$store.state.sVisitInfo
       var act = vi.activity ? vi.activity : {}
       return act
+    },
+    currentEvaluationStudentId() {
+      return this.$store.state.sCurrentEvaluationStudentId
+    },
+    classList() {
+      return this.$store.state.sClassList || []
+    },
+    isInstructor() {
+      return this.$store.state.sVisitInfo.isInstructor
     }
   },
   methods: {
