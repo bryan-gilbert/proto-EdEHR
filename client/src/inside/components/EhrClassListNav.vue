@@ -8,12 +8,12 @@
         ui-button(v-on:buttonClicked="previousStudent", :class="`${$options.name}__navItem`") Previous
         ui-button(v-on:buttonClicked="nextStudent", :class="`${$options.name}__navItem`") Next
         ui-button(v-on:buttonClicked="showEvaluationNotes", :class="`${$options.name}__navItem`") Eval Notes
-        ehr-evaluation-dialog(v-show="showEvaluationDialog", @canceled="cancelEval", @saved="savedEval")
+        ehr-evaluation-dialog(v-show="showEvaluationDialog", @canceled="canceled", @saved="saved")
 </template>
 
 <script>
-  import UiButton from '../../app/ui/UiButton'
-  import EhrEvaluationDialog from './EhrEvaluationDialog'
+import UiButton from '../../app/ui/UiButton'
+import EhrEvaluationDialog from './EhrEvaluationDialog'
 export default {
   name: 'EhrClassListNav',
   components: { UiButton, EhrEvaluationDialog },
@@ -31,24 +31,18 @@ export default {
       return this.$store.state.sClassList || []
     },
     isInstructor() {
-      return this.$store.state.sVisitInfo.isInstructor
-    },
-    currentEvaluationStudentId() {
-      return this.$store.state.sCurrentEvaluationStudentId
+      return this.$store.getters.isInstructor
     },
     currentEvaluationStudent() {
       return this.$store.getters.currentEvaluationStudent
-    },
-    classList() {
-      return this.$store.state.sClassList || []
     }
   },
   methods: {
     canceled() {
-      this.showEvaluationNotes = false
+      this.showEvaluationDialog = false
     },
     saved() {
-      this.showEvaluationNotes = false
+      this.showEvaluationDialog = false
     },
     previousStudent() {
       console.log('previous pressed')
@@ -57,7 +51,7 @@ export default {
       console.log('next pressed')
     },
     showEvaluationNotes() {
-      this.showEvaluationDialog = true;
+      this.showEvaluationDialog = true
     }
   }
 }
@@ -72,7 +66,7 @@ export default {
     display: flex;
     flex-direction: row;
     div {
-      flex: 1 0 auto
+      flex: 1 0 auto;
     }
   }
   &__navItem {

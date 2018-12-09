@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import axios from '../../../node_modules/axios/dist/axios.min'
 import ActivityHeader from './ActivityHeader'
 export default {
   name: 'AsInstructor',
@@ -29,18 +28,18 @@ export default {
       return JSON.stringify(obj)
     },
     loadData: function() {
-      var apiUrl = this.$store.state.apiUrl
-      let userId = this.$store.state.sUserInfo._id
-      // console.log('In load instructor courses data url/id: ' + apiUrl + ' / ' + userId)
-      return new Promise(() => {
-        let url = `${apiUrl}/users/instructor/courses/${userId}`
-        // console.log('In load instructor courses data ', url)
-        axios.get(url).then(response => {
-          // console.log('load courses', response.data)
-          var courses = response.data['courses']
-          this.$store.commit('setCourses', courses)
-        })
-      })
+      // var apiUrl = this.$store.state.apiUrl
+      // let userId = this.$store.state.sUserInfo._id
+      // // console.log('In load instructor courses data url/id: ' + apiUrl + ' / ' + userId)
+      // return new Promise(() => {
+      //   let url = `${apiUrl}/users/instructor/courses/${userId}`
+      //   // console.log('In load instructor courses data ', url)
+      //   axios.get(url).then(response => {
+      //     // console.log('load courses', response.data)
+      //     var courses = response.data['courses']
+      //     this.$store.commit('setCourses', courses)
+      //   })
+      // })
     }
   },
   mounted: function() {

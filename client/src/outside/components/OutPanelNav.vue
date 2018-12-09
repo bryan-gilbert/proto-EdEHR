@@ -20,7 +20,8 @@ export default {
   },
   computed: {
     returnUrl() {
-      return this.$store.state.sVisitInfo.returnUrl
+      var visit = this.$store.state.sVisitInfo
+      return visit ? visit.returnUrl : ''
     },
     lmsName() {
       return this.$store.getters.lmsName

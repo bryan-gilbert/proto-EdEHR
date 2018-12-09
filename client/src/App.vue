@@ -48,22 +48,50 @@ export default {
       }
       localStorage.setItem('token', visitId)
 
+      this.$store.dispatch('loadVisitInfo', visitId)
       // Load information from server
-      return new Promise((resolve, reject) => {
-        let url = apiUrl + '/visits/flushed/' + visitId
-        console.log('In load page ', url)
+      // return new Promise((resolve, reject) => {
+      //   let url = apiUrl + '/visits/flushed/' + visitId
+      //   console.log('In load page ', url)
+      //   axios.get(url).then(response => {
+      //     // console.log('what is the response? ', response.data)
+      //     let visitInfo = response.data
+      //     if (!visitInfo) {
+      //       console.error('ERROR because a visit should be registered')
+      //       this.$store.commit('resetInfo')
+      //       reject(new Error('No visit'))
+      //     }
+      //     // console.log('Found information', visitInfo)
+      //     this.$store.commit('setVisitInfo', visitInfo)
+      //     if(visitInfo.isInstructor) {
+      //       this.loadInstructor()
+      //     }
+      //   })
+      // })
+    },
+    loadInstructorCourses: function() {
+      var apiUrl = this.$store.state.apiUrl
+      let userId = this.$store.state.sUserInfo._id
+      // console.log('In load instructor courses data url/id: ' + apiUrl + ' / ' + userId)
+      return new Promise(() => {
+        let url = `${apiUrl}/users/instructor/courses/${userId}`
+        // console.log('In load instructor courses data ', url)
         axios.get(url).then(response => {
-          // console.log('what is the response? ', response.data)
-          let visitInfo = response.data
-          if (!visitInfo) {
-            console.error('ERROR because a visit should be registered')
-            this.$store.commit('resetInfo')
-            reject(new Error('No visit'))
-          }
-          // console.log('Found information', visitInfo)
-          this.$store.commit('setVisitInfo', visitInfo)
+          // console.log('load courses', response.data)
+          var courses = response.data['courses']
+          this.$store.commit('setCourses', courses)
         })
       })
+    },
+
+    loadInstructor: function() {
+      console.log('Load instructor. This handles page refreshes')
+      /*
+      The first visit of an instructor they can select any of the courses they have access
+      to. Then they can select an activity (class assignment). Then from the resulting class list
+      they can select a student to evaluate. At each stage the choice needs to be recorded
+      in local storage so that on a page refresh we can restore the state.
+       */
     }
   },
   computed: {

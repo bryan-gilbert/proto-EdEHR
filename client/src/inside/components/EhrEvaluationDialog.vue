@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(:class="$options.name",  v-if="showEvalNotes")
+  div(:class="$options.name")
     app-dialog(:isModal="false", @cancel="cancelDialog", @save="saveDialog")
       h3(slot="header") Evaluation [ ToDo  put student's name here ]
       div(slot="body")

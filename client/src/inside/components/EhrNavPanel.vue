@@ -25,22 +25,20 @@ export default {
   computed: {
     returnUrl() {
       if (this.$store.state.sVisitInfo.isStudent) {
-        return this.$store.state.sVisitInfo.returnUrl
+        return this.$store.getters.returnUrl
       } else {
         return 'Return to class list'
       }
     },
     returnButtonLabel() {
-      if (this.$store.state.sVisitInfo.isStudent) {
-        return 'Return to ' + this.lmsName
+      if (this.$store.getters.isStudent) {
+        return 'Return to ' + this.$store.getters.lmsName
       } else {
         return 'Return to class list'
       }
     },
     lmsName() {
-      if (this.$store.state.sVisitInfo && this.$store.state.sVisitInfo.toolConsumer)
-        return this.$store.state.sVisitInfo.toolConsumer.tool_consumer_instance_name
-      return ''
+      return this.$store.getters.lmsName
     },
     menuList() {
       // read the menu definition stored in the project root src (client/src)
@@ -48,22 +46,25 @@ export default {
       return menu
     },
     isStudent() {
-      return this.$store.state.sVisitInfo.isStudent
+      return this.$store.getters.isStudent
     },
     isInstructor() {
-      return this.$store.state.sVisitInfo.isInstructor
+      return this.$store.getters.isInstructor
     }
   },
   methods: {
     returnToClicked() {
-      if (this.$store.state.sVisitInfo.isStudent) {
+      if (this.isStudent) {
         // hard return to the calling LMS
-        window.location = this.$store.state.sVisitInfo.returnUrl
+        window.location = this.returnUrl
       } else {
         // stay within application and use router push
         var pathname = this.$store.state.sInstructorReturnUrl
-        console.log('As instructor return via router push to retain veux state information', pathname)
-        this.$router.push({path: pathname})
+        console.log(
+          'As instructor return via router push to retain veux state information',
+          pathname
+        )
+        this.$router.push({ path: pathname })
       }
     }
   }

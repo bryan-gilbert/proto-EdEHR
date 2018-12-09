@@ -83,18 +83,17 @@ export default {
     },
     username() {
       let info = this.$store.state.sUserInfo
-      return info.fullName
+      return info ? info.fullName : ''
     },
     disableActions() {
-      let isValid = !!this.$store.state.sVisitInfo
-      // console.log('User is valid? ', isValid)
-      return !isValid
+      let enableEhrControls = this.$store.getters.enableEhrControls
+      return !enableEhrControls
     },
     progressNotes() {
-      return this.$store.state.sCurrentData.progressNotes
+      return this.$store.getters['ehrData/progressNotes']
     },
     isStudent() {
-      return this.$store.state.sVisitInfo.isStudent
+      return this.$store.getters.isStudent
     }
   },
   methods: {

@@ -57,24 +57,23 @@ export default {
       // var vi = this.$store.state.sVisitInfo
       // var uInfo = vi.user ? vi.user : {}
       // return uInfo
-      return this.$store.state.sUserInfo
+      return this.$store.state.sUserInfo || {}
     },
     visitInfo() {
-      return this.$store.state.sVisitInfo
+      return this.$store.state.sVisitInfo || {}
     },
     data() {
       var vi = this.$store.state.sVisitInfo
-      var act = vi.assignmentData ? vi.assignmentData : {}
+      var act = vi && vi.assignmentData ? vi.assignmentData : {}
       return act
     },
     assignment() {
       var vi = this.$store.state.sVisitInfo
-      var act = vi.assignment ? vi.assignment : {}
+      var act = vi && vi.assignment ? vi.assignment : {}
       return act
     },
     activity() {
-      var vi = this.$store.state.sVisitInfo
-      var act = vi.activity ? vi.activity : {}
+      var act = this.$store.state.sCurrentActivity
       return act
     },
     currentEvaluationStudentId() {
@@ -84,7 +83,8 @@ export default {
       return this.$store.state.sClassList || []
     },
     isInstructor() {
-      return this.$store.state.sVisitInfo.isInstructor
+      var vi = this.$store.state.sVisitInfo
+      return vi ? vi.isInstructor : false
     }
   },
   methods: {

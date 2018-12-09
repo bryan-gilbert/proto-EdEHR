@@ -50,7 +50,7 @@ export default {
   computed: {
     username() {
       let info = this.$store.state.sUserInfo
-      return info.givenName
+      return info ? info.givenName : ''
     }
   }
 }

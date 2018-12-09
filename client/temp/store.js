@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import StoreHelper from './storeHelper'
 import createLogger from 'vuex/dist/logger'
-import axios from '../node_modules/axios/dist/axios.min'
+
+var helper
 
 Vue.use(Vuex)
 
@@ -25,6 +27,7 @@ const store = new Vuex.Store({
     visitId: '',
     // fullName: '',
     sVisitInfo: {},
+    sCurrentActivity: {},
     sActivityData: {},
     sCurrentData: {},
     isLoggedIn: !!localStorage.getItem('token'),
@@ -78,6 +81,9 @@ const store = new Vuex.Store({
         state.sActivityData = info.activityData
         state.sCurrentData = info.activityData.currentData
       }
+      if (info.activity) {
+        state.sCurrentActivity = info.activity
+      }
     },
     setInstructorReturnUrl: (state, rUrl) => {
       console.log('save instructor return url' + rUrl)
@@ -130,7 +136,6 @@ const store = new Vuex.Store({
       }
       let url = `${context.state.apiUrl}/activity-data/evaluation-data/${vid}`
       // console.log('store save eval notes ', url, body)
-      let helper = new StoreHelper()
       return new Promise(resolve => {
         helper.putRequest(url, body).then(results => {
           let evaluationData = results.data
@@ -147,7 +152,6 @@ const store = new Vuex.Store({
       let vd = activityData.assignmentData || {}
       vd.progressNotes = vd.progressNotes || []
       vd.progressNotes.push(newNote)
-      let helper = new StoreHelper()
       return helper.putRequest(url, vd).then(results => {
         let activityData = results.data
         console.log(`addPNotes after post with ${activityData}`)
@@ -158,20 +162,6 @@ const store = new Vuex.Store({
   }
 })
 
-class StoreHelper {
-  putRequest (url, bodyData) {
-    return new Promise((resolve, reject) => {
-      axios
-        .put(url, bodyData)
-        .then(results => {
-          resolve(results)
-        })
-        .catch(error => {
-          var msg = `Failed put to ${url} with error: ${error.message}`
-          console.error(msg)
-          reject(msg)
-        })
-    })
-  }
-}
+helper = new StoreHelper(store)
+
 export default store

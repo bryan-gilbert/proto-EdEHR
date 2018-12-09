@@ -34,14 +34,8 @@ export default {
     currentEvaluationStudentId() {
       return this.$store.state.sCurrentEvaluationStudentId
     },
-    classList() {
-      return this.$store.state.sClassList || []
-    },
     isInstructor() {
-      return this.$store.state.sVisitInfo.isInstructor
-    },
-    currentEvaluationStudentId() {
-      return this.$store.state.sCurrentEvaluationStudentId
+      return this.$store.getters.isInstructor
     },
     currentEvaluationStudent() {
       return this.$store.getters.currentEvaluationStudent
