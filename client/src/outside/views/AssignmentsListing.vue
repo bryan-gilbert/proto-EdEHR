@@ -71,7 +71,7 @@ export default {
   },
   methods: {
     loadAssignments: function() {
-      var apiUrl = this.$store.state.apiUrl
+      var apiUrl = this.$store.state.visit.apiUrl
       return new Promise((resolve, reject) => {
         let url = apiUrl + '/assignments/'
         axios.get(url).then(response => {

@@ -60,6 +60,7 @@ import { getPhrase } from '../poc-utils'
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
 import AppDialog from '../../app/components/AppDialogShell'
+import moment from 'moment'
 
 export default {
   name: 'ProgressNotes',
@@ -133,14 +134,17 @@ export default {
     },
     showDialog: function() {
       this.clearInputs()
+      var today = moment().format('DD MMM');
+      var time = moment().format('HH:mm');
+      console.log('date is ', today, time)
       if (this.populate) {
         var inputs = this.inputs
         inputs.name = this.username
         inputs.notes = getPhrase(14)
         inputs.profession = 'Nurse'
         inputs.unit = 'ER'
-        inputs.day = '0'
-        inputs.time = '07:00'
+        inputs.day = today
+        inputs.time = time
       }
       this.showModal = true
     },

@@ -41,10 +41,9 @@ export default {
   name: 'AppHeader',
   computed: {
     username() {
-      let info = this.$store.state.visit.sUserInfo
-      let name = info ? info.givenName : ''
-      console.log('AppHeader do we have a user? ', name)
-      return name
+      let n = this.$store.state.visit.sUserInfo.fullName
+      console.log('AppHeader GET NAME visit store getter for username "' + n + '"')
+      return n
     }
   }
 }

@@ -28,7 +28,7 @@ export default {
       return JSON.stringify(obj)
     },
     loadData: function() {
-      // var apiUrl = this.$store.state.apiUrl
+      // var apiUrl = this.$store.state.visit.apiUrl
       // let userId = this.$store.state.sUserInfo._id
       // // console.log('In load instructor courses data url/id: ' + apiUrl + ' / ' + userId)
       // return new Promise(() => {

@@ -24,15 +24,15 @@ export default {
   },
   computed: {
     returnUrl() {
-      if (this.$store.state.visit.sVisitInfo.isStudent) {
-        return this.$store.getters.returnUrl
+      if (this.isStudent) {
+        return this.$store.getters['visit/returnUrl']
       } else {
         return 'Return to class list'
       }
     },
     returnButtonLabel() {
-      if (this.$store.getters.isStudent) {
-        return 'Return to ' + this.$store.getters.lmsName
+      if (this.isStudent) {
+        return 'Return to ' + this.$store.getters['visit/lmsName']
       } else {
         return 'Return to class list'
       }
@@ -46,7 +46,7 @@ export default {
       return menu
     },
     isStudent() {
-      return this.$store.getters.isStudent
+      return this.$store.getters['visit/isStudent']
     },
     isInstructor() {
       return this.$store.getters.isInstructor

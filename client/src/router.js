@@ -40,7 +40,7 @@ router.beforeEach((to, from, next) => {
   var topLevel = to && to.meta ? to.meta.topLevel : null
   if (topLevel) {
     // console.log('In router beforeEach route change set top level to ', topLevel)
-    store.commit('topLevelMenu', topLevel)
+    store.commit('visit/topLevelMenu', topLevel)
   }
   next()
 })

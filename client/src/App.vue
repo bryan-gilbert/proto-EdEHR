@@ -16,37 +16,60 @@ export default {
   components: {},
   methods: {
     loadData: function() {
-      console.log('window.location', window.location)
+      // console.log('window.location', window.location)
       var url2 = new URL(window.location)
       var params2 = new URLSearchParams(url2.search)
-
       // API return url
-      var apiUrl = params2.get('apiUrl')
-      if (apiUrl) {
-        console.log('API url provided in query: ', apiUrl)
-      } else {
-        console.log('No API url in query')
-        if (this.$store.state.apiUrl) {
-          apiUrl = this.$store.state.apiUrl
-          console.log('Use API URL from $store', apiUrl)
-        } else {
-          apiUrl = config.getApiUrl()
-          console.log('Use API URL from configuration: ', apiUrl)
-        }
+      function loadApiUrl() {
+        return Promise.resolve().then(() => {
+          var apiUrl = params2.get('apiUrl')
+          if (apiUrl) {
+            console.log('API url provided in query: ', apiUrl)
+          } else {
+            console.log('No API url in query')
+            if (this.$store.state.visit.apiUrl) {
+              apiUrl = this.$store.state.visit.apiUrl
+              console.log('Use API URL from $store', apiUrl)
+            } else {
+              apiUrl = config.getApiUrl()
+              console.log('Use API URL from configuration: ', apiUrl)
+            }
+          }
+          this.$store.commit('visit/apiUrl', apiUrl)
+        })
       }
-      this.$store.commit('apiUrl', apiUrl)
       // Visit Id
-      var visitId = params2.get('visit')
-      if (!visitId) {
-        console.log('No visit id on query so check local storage storage?')
-        visitId = localStorage.getItem('token')
+      function loadVisitId() {
+        return new Promise((resolve, reject) => {
+          var visitId = params2.get('visit')
+          if (!visitId) {
+            console.log('No visit id on query so check local storage storage?')
+            visitId = localStorage.getItem('token')
+          }
+          if (!visitId) {
+            let msg = 'No visit id on query or local storage'
+            reject(msg)
+          }
+          localStorage.setItem('token', visitId)
+          resolve(visitId)
+        })
       }
-      if (!visitId) {
-        console.log('No visit id on query or local storage')
-        return
-      }
-      localStorage.setItem('token', visitId)
-      this.$store.dispatch('loadVisitInfo', visitId)
+      const _this = this
+      loadApiUrl
+        .call(this)
+        .then(() => {
+          return loadVisitId()
+        })
+        .then(visitId => {
+          return this.$store.dispatch('visit/loadVisitInfo', visitId)
+        })
+        .then(() => {
+          console.log('here we should have user info', _this.$store.state.visit.sUserInfo.fullName)
+          if (_this.$store.state.visit.isInstructor) {
+            console.log("Load Instructor ...")
+            return _this.loadInstructor()
+          }
+        })
     },
     loadInstructorCourses: function() {
       var apiUrl = this.$store.state.visit.apiUrl
@@ -94,5 +117,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

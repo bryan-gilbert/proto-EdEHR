@@ -12,15 +12,15 @@ const state = {
 }
 
 const getters = {
-  isInstructor(state) {
+  isInstructor: state => {
     var vi = state.sVisitInfo
     return vi ? vi.isInstructor : false
   },
-  isStudent(state) {
+  isStudent: state => {
     var vi = state.sVisitInfo
     return vi ? vi.isStudent : false
   },
-  enableEhrControls(state, getters) {
+  enableEhrControls: (state, getters) => {
     return getters.isStudent
   },
   lmsName: state => {
@@ -29,9 +29,16 @@ const getters = {
     }
     return ''
   },
-  returnUrl(state) {
+  returnUrl: state => {
     var vi = state.sVisitInfo
     return vi ? vi.returnUrl : ''
+  },
+  username: (state, getters, rootState) => {
+    console.log('GET NAME visit store getter for username')
+    let info = rootState.sUserInfo
+    console.log('GET NAME visit store getter for username ', info)
+    let name = info ? info.givenName : ''
+    return name
   }
 }
 
@@ -66,7 +73,8 @@ const actions = {
           context.commit('setVisitInfo', visitInfo)
           context.commit('setUserInfo', visitInfo.user)
           context.commit('setActivityInfo', visitInfo.activity)
-          context.commit('ehrData/setActivityData', visitInfo.activityData)
+          context.commit('ehrData/setActivityData', visitInfo.activityData, { root: true })
+          resolve()
           // context.commit('ehrData/setCurrentData', visitInfo.activityData.currentData)
         })
         .catch(error => {
@@ -80,24 +88,24 @@ const actions = {
   },
   routeEnter ({ commit }) {
     commit('routeEnter')
-  },
+  }
 }
 
 const mutations = {
   apiUrl: (state, url) => {
-    console.log('visit store set api url ' + url)
+    // console.log('visit store set api url ' + url)
     state.apiUrl = url
   },
   setActivityInfo: (state, info) => {
-    console.log('visit store set activity info ' + info._id)
+    // console.log('visit store set activity info ' + info._id)
     state.sCurrentActivity = info
   },
   setVisitInfo: (state, info) => {
-    console.log('visit store set visit info ' + info._id)
+    // console.log('visit store set visit info ' + info._id)
     state.sVisitInfo = info
   },
   setUserInfo: (state, info) => {
-    console.log('visit store set user info ' + info._id)
+    // console.log('visit store set user info ' + info._id)
     state.sUserInfo = info
   },
   routeEnter: state => {
@@ -106,13 +114,13 @@ const mutations = {
     state.isLoggedIn = !!token
   },
   topLevelMenu: (state, top) => {
-    console.log('visit store top level menu ' + top)
+    // console.log('visit store top level menu ' + (top ? top : 'empty'))
     state.topLevelMenu = top
   }
 }
 
 export default {
-  namespaced: false,
+  namespaced: true,
   state,
   getters,
   actions,
