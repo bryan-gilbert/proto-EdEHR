@@ -57,18 +57,18 @@ export default {
       // var vi = this.$store.state.sVisitInfo
       // var uInfo = vi.user ? vi.user : {}
       // return uInfo
-      return this.$store.state.sUserInfo || {}
+      return this.$store.state.visit.sUserInfo || {}
     },
     visitInfo() {
-      return this.$store.state.sVisitInfo || {}
+      return this.$store.state.visit.sVisitInfo || {}
     },
     data() {
-      var vi = this.$store.state.sVisitInfo
+      var vi = this.visitInfo
       var act = vi && vi.assignmentData ? vi.assignmentData : {}
       return act
     },
     assignment() {
-      var vi = this.$store.state.sVisitInfo
+      var vi = this.visitInfo
       var act = vi && vi.assignment ? vi.assignment : {}
       return act
     },
@@ -83,7 +83,7 @@ export default {
       return this.$store.state.sClassList || []
     },
     isInstructor() {
-      var vi = this.$store.state.sVisitInfo
+      var vi = this.visitInfo
       return vi ? vi.isInstructor : false
     }
   },

@@ -24,7 +24,7 @@ export default {
   },
   computed: {
     returnUrl() {
-      if (this.$store.state.sVisitInfo.isStudent) {
+      if (this.$store.state.visit.sVisitInfo.isStudent) {
         return this.$store.getters.returnUrl
       } else {
         return 'Return to class list'

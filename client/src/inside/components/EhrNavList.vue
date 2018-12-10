@@ -23,11 +23,11 @@ export default {
         return true
       }
       // console.log(this.$store.state.topLevelMenu, this.path.name)
-      return this.$store.state.topLevelMenu === this.path.name
+      return this.$store.state.visit.topLevelMenu === this.path.name
     }
   },
   watch: {
-    $route: function(to, from) {
+    $route: function(to) {
       if (to.name === this.path.name) {
         this.$store.commit('topLevelMenu', this.path.topLevel)
       }

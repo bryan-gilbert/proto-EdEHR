@@ -21,17 +21,14 @@ export default {
   },
   computed: {
     userInfo() {
-      var vi = this.$store.state.sVisitInfo
-      var uInfo = vi.user ? vi.user : {}
+      var vi = this.$store.state.visit.sVisitInfo
+      var uInfo = vi ? vi.user : {}
       return uInfo
     },
     activity() {
       // return this.$store.state.sActivityInfo
       // console.log('TO DO ... get activity data here')
       return {}
-    },
-    visitInfo() {
-      return this.$store.state.sVisitInfo
     }
   }
 }

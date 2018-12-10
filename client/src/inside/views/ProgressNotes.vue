@@ -82,7 +82,7 @@ export default {
       return 'Add with sample data ' + (this.populate ? 'enabled' : 'disabled')
     },
     username() {
-      let info = this.$store.state.sUserInfo
+      let info = this.$store.state.visit.sUserInfo
       return info ? info.fullName : ''
     },
     disableActions() {
@@ -132,7 +132,6 @@ export default {
       return this.errorList.length === 0
     },
     showDialog: function() {
-      // console.log('show dialog')
       this.clearInputs()
       if (this.populate) {
         var inputs = this.inputs
@@ -142,9 +141,7 @@ export default {
         inputs.unit = 'ER'
         inputs.day = '0'
         inputs.time = '07:00'
-        // console.log("Prepop with ", this.inputs.notes)
       }
-      // this.validateInputs()
       this.showModal = true
     },
     cancelDialog: function() {
@@ -155,7 +152,18 @@ export default {
       if (this.validateInputs()) {
         this.showModal = false
         // console.log('Saving Progress Notes', this.inputs)
-        this.$store.dispatch('addPNotes', { note: this.inputs })
+        // We wish to send a modified object to the API server and not directly update our client side copy.
+        // Because the data is stored in our Vuex store we need to make a deep clone to prevent this error:
+        // "Do not mutate vuex store state outside mutation handlers."
+        var modifiedValue = this.progressNotes
+        modifiedValue = modifiedValue ? JSON.parse(JSON.stringify(modifiedValue)) : []
+        modifiedValue.push(this.inputs)
+        // Prepare a payload to tell the API which property inside the assignment data to change
+        let payload = {
+          property: 'progressNotes',
+          value: modifiedValue
+        }
+        this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload)
       }
     }
   }

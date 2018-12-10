@@ -11,30 +11,22 @@
       <nav :class="`${$options.name}__nav column`">
         <ul :class="`${$options.name}__navList is-pulled-right`">
           <li :class="`${$options.name}__navItem`">
-            <router-link
-              :to="{ name: `dashboard` }"
-              :class="`${$options.name}__navLink`"
+            <router-link :to="{ name: `dashboard` }" :class="`${$options.name}__navLink`"
               >Dashboard</router-link
             >
           </li>
           <li :class="`${$options.name}__navItem`">
-            <router-link
-              :to="{ name: `progress-notes` }"
-              :class="`${$options.name}__navLink`"
+            <router-link :to="{ name: `progress-notes` }" :class="`${$options.name}__navLink`"
               >EHR</router-link
             >
           </li>
           <li :class="`${$options.name}__navItem`">
-            <router-link
-              :to="{ name: `account` }"
-              :class="`${$options.name}__navLink`"
+            <router-link :to="{ name: `account` }" :class="`${$options.name}__navLink`"
               >Account - {{ username }}</router-link
             >
           </li>
           <li :class="`${$options.name}__navItem`">
-            <router-link
-              :to="{ name: `help` }"
-              :class="`${$options.name}__navLink`"
+            <router-link :to="{ name: `help` }" :class="`${$options.name}__navLink`"
               >Help</router-link
             >
           </li>
@@ -49,8 +41,10 @@ export default {
   name: 'AppHeader',
   computed: {
     username() {
-      let info = this.$store.state.sUserInfo
-      return info ? info.givenName : ''
+      let info = this.$store.state.visit.sUserInfo
+      let name = info ? info.givenName : ''
+      console.log('AppHeader do we have a user? ', name)
+      return name
     }
   }
 }
