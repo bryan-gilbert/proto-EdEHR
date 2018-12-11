@@ -20,9 +20,6 @@ const getters = {
     var vi = state.sVisitInfo
     return vi ? vi.isStudent : false
   },
-  enableEhrControls: (state, getters) => {
-    return getters.isStudent
-  },
   lmsName: state => {
     if (state.sVisitInfo && state.sVisitInfo.toolConsumer) {
       return state.sVisitInfo.toolConsumer.tool_consumer_instance_name

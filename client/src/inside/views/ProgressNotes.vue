@@ -86,10 +86,6 @@ export default {
       let info = this.$store.state.visit.sUserInfo
       return info ? info.fullName : ''
     },
-    disableActions() {
-      let enableEhrControls = this.$store.getters.enableEhrControls
-      return !enableEhrControls
-    },
     progressNotes() {
       let data = this.$store.getters['ehrData/mergedData'] || {}
       let pn = data.progressNotes || []
