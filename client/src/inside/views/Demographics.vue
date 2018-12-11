@@ -38,7 +38,7 @@
           div(class="column is-one-third")
             label(for="codeStatus") Code status
             div(class="select")
-              select(name="codeStatus",v-model="input.codeStatus")
+              select(class="select-background", name="codeStatus",v-model="input.codeStatus")
                 option(v-for="option in codeStatuses", v-bind:value="option.value") {{ option.text}}
         div(class="columns")
           div(class="column is-one-third")
@@ -195,6 +195,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../scss/settings/forms';
 .select {
   display: block;
 }
