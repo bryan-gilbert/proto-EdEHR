@@ -1,7 +1,15 @@
 // Generated VUE file. Before modifying see docs about Vue file generation
 <template lang="pug">
   div(:class="$options.name")
-    ehr-panel-header Demographics
+    ehr-panel-header
+      div(slot="pageTitle") Demographics 2
+      div(slot="controls")
+        button
+          fas-icon(icon="edit")
+        button
+          fas-icon(icon="check-circle")
+        button
+          fas-icon(icon="times-circle")
     ehr-panel-content
       div(class="region")
         div(class="columns")
@@ -175,79 +183,18 @@ export default {
     }
   },
   methods: {
-    // clearInputs: function() {
-    //   this.inputs = {
-    //     name: '',
-    //     profession: '',
-    //     unit: '',
-    //     day: '0',
-    //     time: '',
-    //     notes: ''
-    //   }
-    //   this.errorList = []
-    // },
-    // validateInputs: function() {
-    //   var inputs = this.inputs
-    //   // console.log('validate the inputs', inputs.name, this.inputs.name)
-    //   inputs.name = inputs.name.trim()
-    //   inputs.notes = inputs.notes.trim()
-    //   inputs.unit = inputs.unit.trim()
-    //   inputs.profession = inputs.profession.trim()
-    //   inputs.day = inputs.day.trim()
-    //   inputs.time = inputs.time.trim()
-    //   var vm = this
-    //   function check(prop, msg) {
-    //     if (prop.length == 0) {
-    //       vm.errorList.push(msg)
-    //     }
-    //   }
-    //   check(this.inputs.name, 'Name is required')
-    //   check(this.inputs.profession, 'Profession is required')
-    //   check(this.inputs.unit, 'Unit is required')
-    //   check(this.inputs.day, 'Day is required')
-    //   check(this.inputs.time, 'Time is required')
-    //   check(this.inputs.notes, 'Notes are required')
-    //   return this.errorList.length === 0
-    // },
-    // showDialog: function() {
-    //   this.clearInputs()
-    //   var today = moment().format('DD MMM')
-    //   var time = moment().format('HH:mm')
-    //   console.log('date is ', today, time)
-    //   if (this.populate) {
-    //     var inputs = this.inputs
-    //     inputs.name = this.username
-    //     inputs.notes = getPhrase(14)
-    //     inputs.profession = 'Nurse'
-    //     inputs.unit = 'ER'
-    //     inputs.day = today
-    //     inputs.time = time
-    //   }
-    //   this.showModal = true
-    // },
-    // cancelDialog: function() {
-    //   this.clearInputs()
-    //   this.showModal = false
-    // },
-    // saveDialog: function() {
-    //   if (this.validateInputs()) {
-    //     this.showModal = false
-    //     // console.log('Saving Progress Notes', this.inputs)
-    //     // We wish to send a modified object to the API server and not directly update our client side copy.
-    //     // Because the data is stored in our Vuex store we need to make a deep clone to prevent this error:
-    //     // "Do not mutate vuex store state outside mutation handlers."
-    //     let data = this.$store.getters['ehrData/assignmentData'] || {}
-    //     var modifiedValue = data.progressNotes || []
-    //     modifiedValue = modifiedValue ? JSON.parse(JSON.stringify(modifiedValue)) : []
-    //     modifiedValue.push(this.inputs)
-    //     // Prepare a payload to tell the API which property inside the assignment data to change
-    //     let payload = {
-    //       property: 'progressNotes',
-    //       value: modifiedValue
-    //     }
-    //     this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload)
-    //   }
-    // }
+    saveDialog: function() {
+      let data = this.$store.getters['ehrData/assignmentData'] || {}
+      let asStoredData = data.demographics || {}
+      asStoredData = asStoredData ? JSON.parse(JSON.stringify(asStoredData)) : {}
+      let toStoreData = Object.assign(asStoredData, this.demographics)
+      // Prepare a payload to tell the API which property inside the assignment data to change
+      let payload = {
+        property: 'demographics',
+        value: toStoreData
+      }
+      this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload)
+    }
   }
 }
 </script>

@@ -10,6 +10,14 @@ import resizeDirective from './resize-directive'
 import VTooltip from 'v-tooltip'
 import './scss/styles.scss'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCheckCircle, faTimesCircle, faEdit } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faCheckCircle, faTimesCircle, faEdit)
+
+Vue.component('fas-icon', FontAwesomeIcon)
+
 Vue.config.productionTip = false
 
 Vue.use(VTooltip)

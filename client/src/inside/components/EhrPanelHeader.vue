@@ -1,9 +1,10 @@
-<template>
-  <div :class="$options.name">
-    <h1>
-    <slot>Panel Title</slot>
-    </h1>
-  </div>
+<template lang="pug">
+  div(:class="$options.name")
+    div(class="title")
+      h1
+        slot(name="pageTitle") Panel Title
+    div(class="controls")
+      slot(name="controls")
 </template>
 
 <script>
@@ -24,6 +25,16 @@ export default {
     font-size: 30px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
+  }
+
+  .title {
+    display: table-cell;
+    float: left;
+  }
+
+  .controls {
+    display: table-cell;
+    float: right;
   }
 }
 </style>
