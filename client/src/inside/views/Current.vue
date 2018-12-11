@@ -7,7 +7,7 @@
         p Title: Current
         p Label: Current visit
         p Component name: Current
-        p Redirect: 
+        p Redirect: visit-details
         p Route name: current
         p Full path: /ehr/current
         hr

@@ -95,10 +95,12 @@ function findTreeItem (def, tree) {
 function makeTreeItem (def, tree) {
   var item = {}
   item.name = def.rn
+  if (def.redirect.length > 0) {
+    item.redirect = def.redirect
+  }
   item.label = def.label
-  item.fPath = def.path + '/' + def.rn
-  // the first part past '/ehr/' is the top level menu item name ...
-  item.topLevel = item.fPath.split('/')[2]
+  item.routeName = def.routeName
+  item.topLevel = def.topLevel
   item.def = def
   item.children = []
   var parent = findTreeItem(def, tree)

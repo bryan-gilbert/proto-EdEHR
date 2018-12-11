@@ -7,7 +7,7 @@
         p Title: History
         p Label: History
         p Component name: History
-        p Redirect: 
+        p Redirect: medical
         p Route name: history
         p Full path: /ehr/patient/history
         hr

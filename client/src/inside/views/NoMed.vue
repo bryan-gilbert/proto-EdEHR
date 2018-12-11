@@ -7,7 +7,7 @@
         p Title: No Med
         p Label: Non-medication orders
         p Component name: NoMed
-        p Redirect: /ehr/current/no-med/no-med-orders
+        p Redirect: no-med-orders
         p Route name: no-med
         p Full path: /ehr/current/no-med
         hr

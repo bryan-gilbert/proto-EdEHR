@@ -7,7 +7,7 @@
         p Title: Chart
         p Label: Patient chart
         p Component name: Chart
-        p Redirect: 
+        p Redirect: progress-notes
         p Route name: chart
         p Full path: /ehr/chart
         hr

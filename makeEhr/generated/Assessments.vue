@@ -7,7 +7,7 @@
         p Title: Assessments
         p Label: Assessments
         p Component name: Assessments
-        p Redirect: /ehr/current/assessments/neurological
+        p Redirect: neurological
         p Route name: assessments
         p Full path: /ehr/current/assessments
         hr
