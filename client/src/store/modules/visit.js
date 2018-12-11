@@ -50,7 +50,6 @@ const actions = {
       console.log('In load page ', url)
       function invalid(msg) {
         console.error(msg)
-        context.commit('resetInfo')
         reject(new Error(msg))
       }
       axios

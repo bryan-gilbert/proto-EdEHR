@@ -17,12 +17,23 @@ export default class VisitController extends BaseController {
         if (!activityData.assignmentData) {
           activityData.assignmentData = {}
         }
+        activityData.lastDate = Date.now()
         activityData.assignmentData[property] = value
         return activityData.save()
       }
     })
   }
-
+  updateScratchData (id, data) {
+    debug(`ActivityData update ${id} scratch data [${data}]`)
+    var value = data.value
+    return this.baseFindOneQuery(id).then(activityData => {
+      if (activityData) {
+        activityData.lastDate = Date.now()
+        activityData.scratchData = value
+        return activityData.save()
+      }
+    })
+  }
   updateEvaluationData (id, data) {
     return this.baseFindOneQuery(id).then(activityData => {
       if (activityData) {
@@ -34,7 +45,6 @@ export default class VisitController extends BaseController {
 
   route () {
     const router = super.route()
-
     router.put('/assignment-data/:key/', (req, res) => {
       var id = req.params.key
       /*
@@ -49,7 +59,13 @@ export default class VisitController extends BaseController {
         .then(ok(res))
         .then(null, fail(res))
     })
-
+    router.put('/scratch-data/:key/', (req, res) => {
+      var id = req.params.key
+      var data = req.body
+      this.updateScratchData(id, data)
+      .then(ok(res))
+      .then(null, fail(res))
+    })
     router.put('/evaluation-data/:key', (req, res) => {
       var id = req.params.key
       var data = req.body

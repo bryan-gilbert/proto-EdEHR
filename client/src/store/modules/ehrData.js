@@ -14,6 +14,10 @@ const getters = {
     // mergedData is the merge of assignment data and seed
     return state.sActivityData.mergedData
   },
+  scratchData: state => {
+    // scratchData is the student's notes
+    return state.sActivityData.scratchData
+  },
   seedData: state => {
     return state.sActivityData.seedData
   }
@@ -45,7 +49,20 @@ const actions = {
     // }
     return helper.putRequest(url, payload).then(results => {
       let activityData = results.data
-      console.log('ehrData commit activityData', JSON.stringify(activityData.assignmentData))
+      console.log('ehrData commit activityData with new assignmentData', JSON.stringify(activityData.assignmentData))
+      context.commit('setActivityData', activityData)
+      return activityData
+    })
+  },
+  sendScratchData(context, data) {
+    let visitState = context.rootState.visit
+    let apiUrl = visitState.apiUrl
+    let activityDataId = context.state.sActivityData._id
+    console.log('sendScratchData scratch, apiUrl ', activityDataId, apiUrl)
+    let url = `${apiUrl}/activity-data/scratch-data/${activityDataId}`
+    return helper.putRequest(url, {value: data}).then(results => {
+      let activityData = results.data
+      console.log('ehrData commit activityData with new scratchData', JSON.stringify(activityData.scratchData))
       context.commit('setActivityData', activityData)
       return activityData
     })
