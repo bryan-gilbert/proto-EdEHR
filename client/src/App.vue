@@ -24,7 +24,7 @@ export default {
         return Promise.resolve().then(() => {
           var apiUrl = params2.get('apiUrl')
           if (apiUrl) {
-            console.log('API url provided in query: ', apiUrl)
+            // console.log('API url provided in query: ', apiUrl)
           } else {
             console.log('No API url in query')
             if (this.$store.state.visit.apiUrl) {
@@ -64,9 +64,9 @@ export default {
           return this.$store.dispatch('visit/loadVisitInfo', visitId)
         })
         .then(() => {
-          console.log('here we should have user info', _this.$store.state.visit.sUserInfo.fullName)
-          if (_this.$store.state.visit.isInstructor) {
-            console.log("Load Instructor ...")
+          let isInstructor = _this.$store.getters['visit/isInstructor']
+          // console.log('here we should have user info', _this.$store.state.visit.sUserInfo.fullName, ' is Instructor: ', isInstructor)
+          if (isInstructor) {
             return _this.loadInstructor()
           }
         })

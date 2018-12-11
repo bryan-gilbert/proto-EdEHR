@@ -42,7 +42,7 @@ export default {
   computed: {
     username() {
       let n = this.$store.state.visit.sUserInfo.fullName
-      console.log('AppHeader GET NAME visit store getter for username "' + n + '"')
+      // console.log('AppHeader GET NAME visit store getter for username "' + n + '"')
       return n
     }
   }
