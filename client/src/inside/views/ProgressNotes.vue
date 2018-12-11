@@ -91,10 +91,13 @@ export default {
       return !enableEhrControls
     },
     progressNotes() {
-      return this.$store.getters['ehrData/progressNotes']
+      let data = this.$store.getters['ehrData/mergedData'] || {}
+      let pn = data.progressNotes || []
+      console.log('get PN ', data, pn)
+      return pn
     },
     isStudent() {
-      return this.$store.getters.isStudent
+      return this.$store.getters['visit/isStudent']
     }
   },
   methods: {
@@ -134,8 +137,8 @@ export default {
     },
     showDialog: function() {
       this.clearInputs()
-      var today = moment().format('DD MMM');
-      var time = moment().format('HH:mm');
+      var today = moment().format('DD MMM')
+      var time = moment().format('HH:mm')
       console.log('date is ', today, time)
       if (this.populate) {
         var inputs = this.inputs
@@ -159,7 +162,8 @@ export default {
         // We wish to send a modified object to the API server and not directly update our client side copy.
         // Because the data is stored in our Vuex store we need to make a deep clone to prevent this error:
         // "Do not mutate vuex store state outside mutation handlers."
-        var modifiedValue = this.progressNotes
+        let data = this.$store.getters['ehrData/assignmentData'] || {}
+        var modifiedValue = data.progressNotes || []
         modifiedValue = modifiedValue ? JSON.parse(JSON.stringify(modifiedValue)) : []
         modifiedValue.push(this.inputs)
         // Prepare a payload to tell the API which property inside the assignment data to change

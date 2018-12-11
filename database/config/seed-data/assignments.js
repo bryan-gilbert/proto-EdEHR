@@ -16,7 +16,7 @@ module.exports = function () {
       })
     }
 
-    function makeDef (id, name) {
+    function makeDef (id, name, description) {
       var newRow = {
         name: getName(),
         profession: 'Nurse',
@@ -28,6 +28,7 @@ module.exports = function () {
       const def = {
         externalId: id,
         name: name,
+        description: description,
         ehrRoutePath: '/ehr/chart/progress-notes',
         ehrRouteName: 'progress-notes',
         seedData: {progressNotes: [newRow]}
@@ -41,16 +42,19 @@ module.exports = function () {
       def = {
         externalId: 'defaultNonAssignment',
         name: 'Default Non Assignment',
+        description: 'This assignment is the default assignment that has no seed data and brings the user to the page that lists which assignments are available.',
         ehrRoutePath: '/assignments-listing',
         ehrRouteName: 'assignments-listing',
         seedData: {}
       }
       addOne(def)
 
-      def = makeDef('assignment1', 'Dummy assignment 1')
+      def = makeDef('assignment1', 'Proof of concept assignment 1',
+        'This assignment demonstrates the ability to add progress notes into the proof of concept version of the EdEHR')
       addOne(def)
-      def = makeDef('assignment2', 'Dummy assignment 2')
-      addOne(def)
+      def = makeDef('assignment2', 'Proof of concept assignment 2',
+        'This assignment demonstrates the ability to add progress notes into the proof of concept version of the EdEHR')
+          addOne(def)
     })
   })
 }

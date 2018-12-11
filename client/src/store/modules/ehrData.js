@@ -6,14 +6,16 @@ const state = {
 }
 
 const getters = {
-  progressNotes: state => {
-    var sc = state.sActivityData.currentData || {}
-    console.log('getter call to get progress notes', sc.progressNotes)
-    return sc.progressNotes
+  assignmentData: state => {
+    // assignmentData is the data without seed
+    return state.sActivityData.assignmentData
   },
-  currentData: state => {
-    // currentData is the merge of assignment data and seed
-    return state.sActivityData.currentData
+  mergedData: state => {
+    // mergedData is the merge of assignment data and seed
+    return state.sActivityData.mergedData
+  },
+  seedData: state => {
+    return state.sActivityData.seedData
   }
 }
 
@@ -43,6 +45,7 @@ const actions = {
     // }
     return helper.putRequest(url, payload).then(results => {
       let activityData = results.data
+      console.log('ehrData commit activityData', JSON.stringify(activityData.assignmentData))
       context.commit('setActivityData', activityData)
       return activityData
     })

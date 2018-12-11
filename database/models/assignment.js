@@ -5,6 +5,7 @@ import mongoose from 'mongoose'
 const Schema = new mongoose.Schema({
   externalId: {type: String},
   name: { type: String },
+  description: { type: String },
   ehrRoutePath: { type: String },
   ehrRouteName: { type: String },
   seedData: {type: Object}

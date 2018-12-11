@@ -75,7 +75,6 @@ const actions = {
           context.commit('setActivityInfo', visitInfo.activity)
           context.commit('ehrData/setActivityData', visitInfo.activityData, { root: true })
           resolve()
-          // context.commit('ehrData/setCurrentData', visitInfo.activityData.currentData)
         })
         .catch(error => {
           console.log(error.message)

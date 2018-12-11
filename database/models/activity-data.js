@@ -7,7 +7,7 @@ A ActivityData represents the student's work for a particular LMS activity (with
 and it includes
 - the students's data (assignmentData).
 - the activity's EdEHR assignment seed data (read only copy from assignment)
-- the combined seed data with the assignmentData (currentData),
+- the combined seed data with the assignmentData (mergedData),
 - the instructor's evaluation notes for the work contained in the assignment data
 Via the visit record we can access the LMS activity, the student, and the EdEHR assignment.
 The tool consumer field is here, as in other cases, to provide future sharding and data management tasks based
@@ -26,12 +26,12 @@ const ActivityDataSchema = new mongoose.Schema({
   toJSON: { virtuals: true }
 })
 
-ActivityDataSchema.virtual('currentData')
+ActivityDataSchema.virtual('mergedData')
 .get(function () {
   var aData = this.assignmentData || {}
   var sData = this.seedData || {}
-  var currentData = merge(sData, aData)
-  return currentData
+  var mergedData = merge(sData, aData)
+  return mergedData
 })
 
 const ActivityData = mongoose.model('ActivityData', ActivityDataSchema)

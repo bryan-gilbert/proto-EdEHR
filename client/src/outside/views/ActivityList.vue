@@ -73,7 +73,7 @@ export default {
   },
   created: function() {
     let activityId = this.$route.params.activityId
-    this.$store.dispatch('ehr/loadActivityData', activityId)
+    this.$store.dispatch('ehrData/loadActivityData', activityId)
     // this.loadActivityData()
     this.loadClassList()
   }
