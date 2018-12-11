@@ -73,7 +73,6 @@ $pageWidth: 1024px;
   &__nav {
     // @include wrapper('narrow');
     max-width: $navWidth;
-    height: $contentMinHeigth;
     padding: 0;
     margin: 0;
   }
