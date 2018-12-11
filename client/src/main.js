@@ -11,10 +11,12 @@ import VTooltip from 'v-tooltip'
 import './scss/styles.scss'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheckCircle, faTimesCircle, faEdit } from '@fortawesome/free-solid-svg-icons'
+import { faCheckCircle, faTimesCircle, faEdit, faClock } from '@fortawesome/free-solid-svg-icons'
+// import { faClock } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(faCheckCircle, faTimesCircle, faEdit)
+library.add(faClock)
 
 Vue.component('fas-icon', FontAwesomeIcon)
 

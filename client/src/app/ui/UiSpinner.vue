@@ -1,6 +1,6 @@
 <template lang="pug">
   transition(name="modal")
-    div(class="modal-mask")
+    div(class="modal-mask", v-show="loading")
       div(class="modal-wrapper")
         div(class="modal-container is-centered")
           spinner(:speed="1.0", :depth="5", :size="100", :color="'#6089b6'")
@@ -11,6 +11,9 @@ import Spinner from 'vue-spinner-component/src/Spinner.vue'
 
 export default {
   name: 'UiSpinner',
+  props: {
+    loading: { type: Boolean, default: false}
+  },
   components: {
     Spinner
   }
@@ -20,7 +23,7 @@ export default {
 <style lang="scss" scoped>
 .modal-mask {
   position: fixed;
-  z-index: 9998;
+  z-index: 999;
   top: 0;
   left: 0;
   width: 100%;

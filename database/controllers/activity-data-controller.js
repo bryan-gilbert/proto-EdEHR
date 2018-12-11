@@ -19,6 +19,7 @@ export default class VisitController extends BaseController {
         }
         activityData.lastDate = Date.now()
         activityData.assignmentData[property] = value
+        activityData.markModified('assignmentData');
         return activityData.save()
       }
     })

@@ -1,5 +1,6 @@
 <template lang="pug">
   div(:class="$options.name")
+    ui-spinner(:loading="loading")
     ehr-panel-header Patient Notes
     ehr-panel-content
       div(v-show="isStudent")
@@ -61,6 +62,7 @@ import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
 import AppDialog from '../../app/components/AppDialogShell'
 import moment from 'moment'
+import UiSpinner from '../../app/ui/UiSpinner'
 
 export default {
   name: 'ProgressNotes',
@@ -68,11 +70,13 @@ export default {
     EhrPanelHeader,
     EhrPanelContent,
     AppDialog,
-    UiButton
+    UiButton,
+    UiSpinner
   },
   data: function() {
     return {
       showModal: false,
+      loading: false,
       populate: true,
       inputs: {},
       errorList: []
@@ -153,6 +157,8 @@ export default {
     },
     saveDialog: function() {
       if (this.validateInputs()) {
+        const _this = this;
+        this.loading = true
         this.showModal = false
         // console.log('Saving Progress Notes', this.inputs)
         // We wish to send a modified object to the API server and not directly update our client side copy.
@@ -168,6 +174,9 @@ export default {
           value: modifiedValue
         }
         this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload)
+        .then( () => {
+          _this.loading = false
+        })
       }
     }
   }
