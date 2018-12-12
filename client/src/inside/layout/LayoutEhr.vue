@@ -1,21 +1,17 @@
-<template>
-  <div :class="$options.name">
-    <app-header />
-    <ehr-context-banner />
-    <main :class="`${$options.name}__main`">
-      <div name="mainContent" :class="`${$options.name}__main_content columns`">
-        <div name="nav" :class="`${$options.name}__nav column`"><ehr-nav-panel /></div>
-        <div name="content" :class="`${$options.name}__content column`">
-          <ehr-banner></ehr-banner>
-          <slot>
-            Main EHR content for a component will appear here. The component is selected by the router
-          </slot>
-        </div>
-      </div>
-    </main>
-    <app-footer />
-    <ehr-special />
-  </div>
+<template lang="pug">
+  div(:class="$options.name")
+    app-header
+    ehr-context-banner
+    main(:class="`${$options.name}__main`")
+      div(name="mainContent", :class="`${$options.name}__main_content columns`")
+        div(name="nav", :class="`${$options.name}__nav column`")
+          ehr-nav-panel
+        div(name="content", :class="`${$options.name}__content column`")
+          ehr-banner
+          slot Main EHR content for a component will appear here. The component is selected by the router
+    app-footer
+    input(class="checkbox", type="checkbox", v-model="showingSpecial")
+    ehr-special(v-show="showingSpecial")
 </template>
 
 <script>
@@ -36,6 +32,11 @@ export default {
     EhrNavPanel,
     EhrContextBanner,
     EhrSpecial
+  },
+  data: function() {
+    return {
+      showingSpecial: false
+    }
   },
   computed: {
     path() {

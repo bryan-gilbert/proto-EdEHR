@@ -37,31 +37,31 @@
           div(class="column is-one-third")
             label(for="gender") Gender {{demographics.gender}}
             div(class="select")
-              select(name="gender",v-model="demographics.gender")
-                option(v-for="option in genders", v-bind:value="option.value") {{ option.text}}
+              select(name="gender", v-bind:disabled="noEdit", v-model="demographics.gender")
+                option(v-for="option in genders", v-bind:value="option.text") {{ option.text}}
           div(class="column is-one-third")
             label(for="martialStatus") Martial Status
             div(class="select")
-              select(name="martialStatus",v-model="demographics.martialStatus")
-                option(v-for="option in mStatuses", v-bind:value="option.value") {{ option.text}}
+              select(name="martialStatus", v-bind:disabled="noEdit",v-model="demographics.martialStatus")
+                option(v-for="option in mStatuses", v-bind:value="option.text") {{ option.text}}
           div(class="column is-one-third")
             label(for="codeStatus") Code status
             div(class="select")
-              select(name="codeStatus",v-model="demographics.codeStatus")
-                option(v-for="option in codeStatuses", v-bind:value="option.value") {{ option.text}}
+              select(name="codeStatus", v-bind:disabled="noEdit",v-model="demographics.codeStatus")
+                option(v-for="option in codeStatuses", v-bind:value="option.text") {{ option.text}}
         div(class="columns")
           div(class="column is-one-third")
             label(for="languagePrimary") Primary language
             div(class="select")
-              select(name="languagePrimary",v-model="demographics.languagePrimary")
-                option(v-for="option in languages", v-bind:value="option.value") {{ option.text}}
+              select(name="languagePrimary", v-bind:disabled="noEdit",v-model="demographics.languagePrimary")
+                option(v-for="option in languages", v-bind:value="option.text") {{ option.text}}
           div(class="column is-one-third")
             label(for="religion") Religion
              input(class="input", v-bind:disabled="noEdit", name="religion",v-model="demographics.religion")
           div(class="column is-one-third")
             label(for="indigenous") Do you identify as an indigenous person?
-            div(class="select", name="indigenous",v-model="demographics.indigenous")
-              select
+            div(class="select")
+              select(name="indigenous", v-bind:disabled="noEdit",v-model="demographics.indigenous")
                 option(value='no') No
                 option(value='yes') Yes
         div(class="columns")
@@ -110,7 +110,7 @@
              input(class="input", v-bind:disabled="noEdit", name="genextOfKinnder",v-model="demographics.nextOfKin")
           div(class="column is-one-third")
             label(for="nextOfKinRelationsip") Next of kin relationship
-             input(class="input", v-bind:disabled="noEdit", name="dateOfnextOfKinRelationsipBirth",v-model="demographics.nextOfKinRelationsip")
+             input(class="input", v-bind:disabled="noEdit", name="nextOfKinRelationsip",v-model="demographics.nextOfKinRelationsip")
           div(class="column is-one-third")
             label(for="nextOfKinPhone") Next of kin phone
              input(class="input", v-bind:disabled="noEdit", name="nextOfKinPhone",v-model="demographics.nextOfKinPhone")
@@ -145,32 +145,38 @@ export default {
       noEdit: true,
       loading: false,
       genders: [
-        { text: 'unknown', value: 'Unknown' },
-        { text: 'Female', value: 'female' },
-        { text: 'male', value: 'Male' },
-        { text: 'transFem', value: 'Transgender female' },
-        { text: 'transMale', value: 'Transgender male' },
-        { text: 'undifferentiated', value: 'Undifferentiated' },
-        { text: 'noSay', value: 'Prefer not to say' }
+        { text: 'Unknown' },
+        { text: 'Female' },
+        { text: 'Male' },
+        { text: 'Transgender female' },
+        { text: 'Transgender male' },
+        { text: 'Undifferentiated' },
+        { text: 'Prefer not to say' }
       ],
       mStatuses: [
-        { text: 'Married', value: 'married' },
-        { text: 'Single', value: 'single' },
-        { text: 'Life Partner', value: 'life partner' },
-        { text: 'Divorced', value: 'divorced' },
-        { text: 'Separated', value: 'separated' },
-        { text: 'Widowed', value: 'widowed' }
+        { text: 'Married' },
+        { text: 'Single' },
+        { text: 'Life partner' },
+        { text: 'Divorced' },
+        { text: 'Separated' },
+        { text: 'Widowed' }
       ],
       codeStatuses: [
-        { text: 'N/A', value: 'N/A' },
-        { text: 'CPR', value: 'CPR' },
-        { text: 'DNR M1', value: 'DNRM1' },
-        { text: 'DNR M2', value: 'DNRM2' },
-        { text: 'DNR M3', value: 'DNRM3' },
-        { text: 'DNR C1', value: 'DNRC1' },
-        { text: 'DNR C2', value: 'DNRC2' }
+        { text: 'N/A' },
+        { text: 'CPR' },
+        { text: 'DNR M1' },
+        { text: 'DNR M2' },
+        { text: 'DNR M3' },
+        { text: 'DNR C1' },
+        { text: 'DNR C2' }
       ],
-      languages: [{ text: 'English', value: 'english' }]
+      languages: [
+        { text: 'English' },
+        { text: 'French' },
+        { text: 'Spanish' },
+        { text: 'German' },
+        { text: 'Chinese' }
+      ]
     }
   },
   computed: {
@@ -206,7 +212,7 @@ export default {
         value: toStoreData
       }
       this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
-       _this.loading = false
+        _this.loading = false
       })
     }
   }
