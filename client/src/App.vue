@@ -67,7 +67,7 @@ export default {
           let isInstructor = _this.$store.getters['visit/isInstructor']
           // console.log('here we should have user info', _this.$store.state.visit.sUserInfo.fullName, ' is Instructor: ', isInstructor)
           if (isInstructor) {
-            return _this.loadInstructor()
+            return this.$store.dispatch('instructor/loadInstructor')
           }
         })
     },
@@ -84,24 +84,12 @@ export default {
           this.$store.commit('setCourses', courses)
         })
       })
-    },
-
-    loadInstructor: function() {
-      console.log('Load instructor. This handles page refreshes')
-      /*
-      The first visit of an instructor they can select any of the courses they have access
-      to. Then they can select an activity (class assignment). Then from the resulting class list
-      they can select a student to evaluate. At each stage the choice needs to be recorded
-      in local storage so that on a page refresh we can restore the state.
-       */
     }
   },
   computed: {
     layout() {
-      // const matched = this.$route
-      const rl = this.$route.meta.layout
-      const l = (rl || DefaultLayout) + '-layout'
-      // console.log('using layout ', rl, l)
+      const l = (this.$route.meta.layout || DefaultLayout) + '-layout'
+      console.log('using layout ', l)
       return l
     },
     userInfo() {

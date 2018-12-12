@@ -1,4 +1,3 @@
-// import shop from '../../api/shop'
 import axios from 'axios' // '../node_modules/axios/dist/axios.min'
 
 const state = {

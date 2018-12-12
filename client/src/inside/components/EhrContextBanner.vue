@@ -2,7 +2,7 @@
   div(:class="$options.name", v-show="isInstructor")
     ehr-class-list-nav
     div(v-show="showDetails")
-      p  Current Student Visit _id: {{ currentEvaluationStudentId }}
+      p Current Student Visit _id: {{ currentEvaluationStudentId }}
       p Visit._id: {{ currentEvaluationStudent._id }}
       p Student: {{ currentEvaluationStudent.user.fullName }}
       p _id: {{ currentEvaluationStudent.user._id }}

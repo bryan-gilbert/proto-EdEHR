@@ -1,14 +1,14 @@
 <template lang="pug">
   div(:class="$options.name", v-show="isInstructor")
     div(:class="`${$options.name}__content`")
-      div Evaluating: {{ currentEvaluationStudent.user.fullName }}
-      div Course: {{ currentEvaluationStudent.activity.context_title}}
-      div Activity: {{ currentEvaluationStudent.activity.resource_link_title}}
+      div Evaluating: {{ panelInfo.studentName }}
+      div Course: {{ panelInfo.courseTitle}}
+      div Activity: {{ panelInfo.activityTitle}}
       div(:class="`${$options.name}__controls`")
         ui-button(v-on:buttonClicked="previousStudent", :class="`${$options.name}__navItem`") Previous
         ui-button(v-on:buttonClicked="nextStudent", :class="`${$options.name}__navItem`") Next
         ui-button(v-on:buttonClicked="showEvaluationNotes", :class="`${$options.name}__navItem`") Eval Notes
-        ehr-evaluation-dialog(v-show="showEvaluationDialog", @canceled="canceled", @saved="saved")
+        ehr-evaluation-dialog(v-show="showingEvaluationDialog", @canceled="canceled", @saved="saved")
 </template>
 
 <script>
@@ -19,30 +19,32 @@ export default {
   components: { UiButton, EhrEvaluationDialog },
   data: function() {
     return {
-      showDetails: false,
-      showEvaluationDialog: false
+      showingEvaluationDialog: false
     }
   },
   computed: {
-    currentEvaluationStudentId() {
-      return this.$store.state.sCurrentEvaluationStudentId
+    panelInfo() {
+      let ces = this.$store.getters.currentEvaluationStudent
+      let data = {
+        studentName: ces.user.fullName,
+        courseTitle: ces.activity.context_title,
+        activityTitle: ces.activity.resource_link_title
+      }
+      return data
     },
     classList() {
       return this.$store.state.sClassList || []
     },
     isInstructor() {
       return this.$store.getters.isInstructor
-    },
-    currentEvaluationStudent() {
-      return this.$store.getters.currentEvaluationStudent
     }
   },
   methods: {
     canceled() {
-      this.showEvaluationDialog = false
+      this.showingEvaluationDialog = false
     },
     saved() {
-      this.showEvaluationDialog = false
+      this.showingEvaluationDialog = false
     },
     previousStudent() {
       console.log('previous pressed')
@@ -51,7 +53,7 @@ export default {
       console.log('next pressed')
     },
     showEvaluationNotes() {
-      this.showEvaluationDialog = true
+      this.showingEvaluationDialog = true
     }
   }
 }
