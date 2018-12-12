@@ -19,9 +19,9 @@ export default class ActivityController extends BaseController {
       .then((activity) => {
         if (activity) {
           if (!activity.assignment.equals(assignment._id)) {
-            var msg = 'Can not change assignment for an activity. Changing to: ' + assignment.externalId
+            var msg = 'Changing assignment for this activity.'
             debug('updateCreateActivity ' + msg)
-            return reject(new AssignmentMismatchError(msg))
+            activity.assignment = assignment._id
           }
           debug('updateCreateActivity update activity ' + activity._id)
           return _this._updateHelper(activity, data)
