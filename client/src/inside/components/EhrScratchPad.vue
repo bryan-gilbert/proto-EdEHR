@@ -29,21 +29,23 @@ export default {
     }
   },
   methods: {
-    clearInputs: function() {
-      this.scratchPad = ''
+    resetScratch: function() {
+      let sp = this.$store.getters['ehrData/scratchData']
+      console.log("EhrScratchPad reset with existing ", sp)
+      this.scratchPad = sp
     },
     showDialog: function() {
-      this.clearInputs()
+      this.resetScratch()
       this.showingDialog = true
     },    
     cancelDialog: function() {
-      this.clearInputs()
+      this.resetScratch()
       this.showingDialog = false
     },
     saveDialog: function() {
       this.showingDialog = false
       console.log('Saving Scratch Pad', this.scratchPad)
-      // this.$store.dispatch('addPNotes', { note: this.inputs })
+      this.$store.dispatch('ehrData/sendScratchData', this.scratchPad)
     }
   }
 }

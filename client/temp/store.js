@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import StoreHelper from './storeHelper'
 import createLogger from 'vuex/dist/logger'
-import axios from '../node_modules/axios/dist/axios.min'
+
+var helper
 
 Vue.use(Vuex)
 
@@ -25,6 +27,7 @@ const store = new Vuex.Store({
     visitId: '',
     // fullName: '',
     sVisitInfo: {},
+    sCurrentActivity: {},
     sActivityData: {},
     sCurrentData: {},
     isLoggedIn: !!localStorage.getItem('token'),
@@ -33,7 +36,8 @@ const store = new Vuex.Store({
     sCourses: [],
     apiUrl: '',
     topLevelMenu: '',
-    sInstructorReturnUrl: 'assignments-listing'
+    sInstructorReturnUrl: '/instructor',
+    sCurrentEvaluationStudentId: ''
   },
   plugins: [createLogger()],
   getters: {
@@ -42,6 +46,16 @@ const store = new Vuex.Store({
         return state.sVisitInfo.toolConsumer.tool_consumer_instance_name
       }
       return ''
+    },
+    currentEvaluationStudent: state => {
+      var currentId = state.sCurrentEvaluationStudentId
+      var classList = state.sClassList
+      if (currentId && classList) {
+        return classList.find((elem) => {
+          return elem._id === currentId
+        })
+      }
+      return null
     }
   },
   mutations: {
@@ -67,10 +81,16 @@ const store = new Vuex.Store({
         state.sActivityData = info.activityData
         state.sCurrentData = info.activityData.currentData
       }
+      if (info.activity) {
+        state.sCurrentActivity = info.activity
+      }
     },
     setInstructorReturnUrl: (state, rUrl) => {
       console.log('save instructor return url' + rUrl)
       state.sInstructorReturnUrl = rUrl
+    },
+    setCurrentEvaluationStudentId: (state, id) => {
+      state.sCurrentEvaluationStudentId = id
     },
     setActivityData: (state, data) => {
       state.sActivityData = data
@@ -80,6 +100,11 @@ const store = new Vuex.Store({
       state.sCurrentData = data
     },
     setClassList: (state, list) => {
+      /*
+      list of Visit records (student only) for a particular LMS activity.
+      Each record contains a populated ActivityData (student's work)
+      (EdEHR) Assignment and User
+       */
       state.sClassList = list
     },
     setAssignments: (state, list) => {
@@ -111,7 +136,6 @@ const store = new Vuex.Store({
       }
       let url = `${context.state.apiUrl}/activity-data/evaluation-data/${vid}`
       // console.log('store save eval notes ', url, body)
-      let helper = new StoreHelper()
       return new Promise(resolve => {
         helper.putRequest(url, body).then(results => {
           let evaluationData = results.data
@@ -128,7 +152,6 @@ const store = new Vuex.Store({
       let vd = activityData.assignmentData || {}
       vd.progressNotes = vd.progressNotes || []
       vd.progressNotes.push(newNote)
-      let helper = new StoreHelper()
       return helper.putRequest(url, vd).then(results => {
         let activityData = results.data
         console.log(`addPNotes after post with ${activityData}`)
@@ -139,20 +162,6 @@ const store = new Vuex.Store({
   }
 })
 
-class StoreHelper {
-  putRequest (url, bodyData) {
-    return new Promise((resolve, reject) => {
-      axios
-        .put(url, bodyData)
-        .then(results => {
-          resolve(results)
-        })
-        .catch(error => {
-          var msg = `Failed put to ${url} with error: ${error.message}`
-          console.error(msg)
-          reject(msg)
-        })
-    })
-  }
-}
+helper = new StoreHelper(store)
+
 export default store

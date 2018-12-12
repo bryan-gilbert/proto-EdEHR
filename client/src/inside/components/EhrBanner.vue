@@ -4,33 +4,30 @@
       <div class="columns" :class="`${$options.name}__content`">
         <div class="column" :class="`${$options.name}__content_row--1`">
           <ul>
-            <li><b>Last,First, Middle names</b></li>
-            <li>Date of Birth: <b>DD-MM-YYY</b></li>
-            <li>Age: <b>74</b></li>
-            <li>Gender: <b>gender</b></li>
-            <li>Wieght: <b>## kg</b></li>
+            <li><b>{{lastFirstMiddle}}</b></li>
+            <li>Date of Birth: <b> {{ demographics.dateOfBirth }} </b></li>
+            <li>Age: <b>{{ demographics.personAge }}</b></li>
+            <li>Gender: <b>{{ demographics.gender }}</b></li>
+            <li>Wieght: <b> ??? </b></li>
           </ul>
         </div>
         <div class="column" :class="`${$options.name}__content_row--2`">
           <ul>
-            <li>Code Status: <b>example</b></li>
-            <li>PHN: <b>#####</b></li>
-            <li>MRN: <b>#####</b></li>
-            <li>MRP: <b>Last, first</b></li>
-            <li>MRP Phone: <b>(###)-###-####</b></li>
+            <li>Code Status: <b>{{ demographics.codeStatus }}</b></li>
+            <li>PHN: <b>{{ demographics.phn }}</b></li>
+            <li>MRN: <b>{{ demographics.mrn }}</b></li>
+            <li>MRP: <b> ?? </b></li>
+            <li>MRP Phone: <b> ?? </b></li>
           </ul>
         </div>
         <div class="column" :class="`${$options.name}__content_row--3`">
           <ul>
-            <li>Admitting Diagnosis: <b>example</b></li>
-            <li>Alergies: <b>example, example, example</b></li>
-            <li>Location: <b>example</b></li>
+            <li>Admitting Diagnosis: <b> </b></li>
+            <li>Alergies: <b> </b></li>
+            <li>Location: <b> </b></li>
             <li>
               Isolation Precautions:
-              <b
-                >Ut enim ad minima veniam, quis nostrum exercitationem ullam
-                corporis</b
-              >
+              <b>??? </b>
             </li>
           </ul>
         </div>
@@ -50,6 +47,20 @@ export default {
   props: {
     action: {
       type: Object
+    }
+  },
+  computed: {
+    demographics() {
+      let data = this.$store.getters['ehrData/mergedData'] || {}
+      let asStored = data.demographics || {}
+      let input = JSON.parse(JSON.stringify(asStored))
+      return input
+    },
+    lastFirstMiddle() {
+      let d = this.demographics
+      let n = `${d.familyName}, ${d.givenName}`
+      n += d.middleName ? ' ' + d.middleName : ''
+      return n
     }
   }
 }

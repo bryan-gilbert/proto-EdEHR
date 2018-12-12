@@ -38,8 +38,14 @@ export default class ActivityController extends BaseController {
     })
   }
 
-  listClassList (id) {
-    return Visit.find({ $and: [ {isStudent: true }, {activity: id} ] })
+  listClassList (_id) {
+    // TODO elide the student's scratch pad
+    /*
+      .findOne({personcode: code})
+      .select('-_id -__v')
+      .populate('bookids', '-_id -__v')
+     */
+    return Visit.find({ $and: [ {isStudent: true }, {activity: _id} ] })
     .populate('activityData')
     .populate('assignment')
     .populate('user')

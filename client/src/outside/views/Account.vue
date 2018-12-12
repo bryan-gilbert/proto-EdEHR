@@ -35,18 +35,18 @@ export default {
   },
   computed: {
     isLoggedIn() {
-      return this.$store.state.isLoggedIn
+      return this.$store.state.visit.isLoggedIn
     },
     token() {
-      return this.$store.state.token
+      return this.$store.state.visit.token
     },
     userInfo() {
-      return this.$store.state.sUserInfo
+      return this.$store.state.visit.sUserInfo
     },
     disableLogoutButton() {
       // if user is logged in then enable the logout button ... darn the double negatives
       // here ... don't disable the log out button if the user is logged on :-)
-      let isLoggedIn = this.$store.state.isLoggedIn
+      let isLoggedIn = this.isLoggedIn
       var enableLogoutButton = isLoggedIn
       return !enableLogoutButton
     }

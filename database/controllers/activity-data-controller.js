@@ -1,4 +1,4 @@
-import {ok, fail} from './utils'
+import { ok, fail } from './utils'
 import BaseController from './base'
 import ActivityData from '../models/activity-data'
 
@@ -9,18 +9,34 @@ export default class VisitController extends BaseController {
     super(ActivityData, '_id')
   }
   updateAssignmentData (id, data) {
-    return this.baseFindOneQuery(id)
-    .then((activityData) => {
+    var property = data.property
+    var value = data.value
+    debug(`ActivityData update ${id} assignmentData[${data.property}] with data`)
+    return this.baseFindOneQuery(id).then(activityData => {
       if (activityData) {
-        activityData.assignmentData = data
+        if (!activityData.assignmentData) {
+          activityData.assignmentData = {}
+        }
+        activityData.lastDate = Date.now()
+        activityData.assignmentData[property] = value
+        activityData.markModified('assignmentData');
         return activityData.save()
       }
     })
   }
-
+  updateScratchData (id, data) {
+    debug(`ActivityData update ${id} scratch data [${data}]`)
+    var value = data.value
+    return this.baseFindOneQuery(id).then(activityData => {
+      if (activityData) {
+        activityData.lastDate = Date.now()
+        activityData.scratchData = value
+        return activityData.save()
+      }
+    })
+  }
   updateEvaluationData (id, data) {
-    return this.baseFindOneQuery(id)
-    .then((activityData) => {
+    return this.baseFindOneQuery(id).then(activityData => {
       if (activityData) {
         activityData.evaluationData = data.evaluationData
         return activityData.save()
@@ -30,23 +46,33 @@ export default class VisitController extends BaseController {
 
   route () {
     const router = super.route()
-
-    router.put('/assignment-data/:key', (req, res) => {
+    router.put('/assignment-data/:key/', (req, res) => {
+      var id = req.params.key
+      /*
+      For example in caller:
+      let data = {
+        property: 'progressNotes',
+        value: activityData.assignmentData.progressNotes || []
+      }
+      */
+      var data = req.body
+      this.updateAssignmentData(id, data)
+        .then(ok(res))
+        .then(null, fail(res))
+    })
+    router.put('/scratch-data/:key/', (req, res) => {
       var id = req.params.key
       var data = req.body
-      this
-      .updateAssignmentData(id, data)
+      this.updateScratchData(id, data)
       .then(ok(res))
       .then(null, fail(res))
     })
-
     router.put('/evaluation-data/:key', (req, res) => {
       var id = req.params.key
       var data = req.body
-      this
-      .updateEvaluationData(id, data)
-      .then(ok(res))
-      .then(null, fail(res))
+      this.updateEvaluationData(id, data)
+        .then(ok(res))
+        .then(null, fail(res))
     })
     return router
   }

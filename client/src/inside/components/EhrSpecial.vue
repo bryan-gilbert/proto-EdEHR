@@ -3,6 +3,18 @@
     p This is the EHR special content panel
     div(:class="`${$options.name}__special`")
     hr
+    div(v-show="isInstructor")
+      h3 Instructor Data
+      p  Current Student Visit _id: {{ currentEvaluationStudentId }}
+      div(:class="`${$options.name}__data`")
+        li(class="classList", v-for="studentVisit in classList")
+          p Visit._id: {{ studentVisit._id }}
+          p Student: {{ studentVisit.user.fullName }}
+          p _id: {{ studentVisit.user._id }}
+          p Course: {{ studentVisit.activity.context_title}}
+          p Activity: {{ studentVisit.activity.resource_link_title}}
+          p Activity Description: {{ studentVisit.activity.resource_link_description}}
+      hr
     h3 Visit
     div(:class="`${$options.name}__data`")
       li(v-for="(value, propertyName) in visitInfo", v-bind:key="propertyName", v-if="skipVisitProp(propertyName)")
@@ -45,25 +57,34 @@ export default {
       // var vi = this.$store.state.sVisitInfo
       // var uInfo = vi.user ? vi.user : {}
       // return uInfo
-      return this.$store.state.sUserInfo
+      return this.$store.state.visit.sUserInfo || {}
     },
     visitInfo() {
-      return this.$store.state.sVisitInfo
+      return this.$store.state.visit.sVisitInfo || {}
     },
     data() {
-      var vi = this.$store.state.sVisitInfo
-      var act = vi.assignmentData ? vi.assignmentData : {}
+      var vi = this.visitInfo
+      var act = vi && vi.assignmentData ? vi.assignmentData : {}
       return act
     },
     assignment() {
-      var vi = this.$store.state.sVisitInfo
-      var act = vi.assignment ? vi.assignment : {}
+      var vi = this.visitInfo
+      var act = vi && vi.assignment ? vi.assignment : {}
       return act
     },
     activity() {
-      var vi = this.$store.state.sVisitInfo
-      var act = vi.activity ? vi.activity : {}
+      var act = this.$store.state.sCurrentActivity
       return act
+    },
+    currentEvaluationStudentId() {
+      return this.$store.state.sCurrentEvaluationStudentId
+    },
+    classList() {
+      return this.$store.state.sClassList || []
+    },
+    isInstructor() {
+      var vi = this.visitInfo
+      return vi ? vi.isInstructor : false
     }
   },
   methods: {

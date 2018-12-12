@@ -1,23 +1,27 @@
 <template lang="pug">
-  div
+  div(:class="$options.name")
     h1 Ed EHR Assignments
     div(v-if="error")
       p Error: {{ error }}
-      p Your LMS is asking for "{{ activity.custom_assignment }}" which must exist in the listing below
+      p Your LMS is asking for "{{ activity.custom_assignment }}".
+      p Adjust your LMS to use an assignment from the listing below
     div
-      p Below is a listing of assignments supported by this Ed EHR
     table.table
       thead
         tr
           th.name(title="Name") EdEHR Assignment Name
+          th.description(title="Description") Description
           th.external(title="External Id") Assignment External Id
           th.ehrRoute(title="Route") Internal Route
+          th.seedData(title="Seed Data") Seed Data
       tbody
         tr(v-for="item in assignmentsListing")
           td.name {{ item.name }}
+          td.description {{ item.description}}
           td.external {{ item.externalId}}
-          td.ehrRoute {{ item.ehrRoute}}
-          td.seedData {{ item.seedData}}
+          td.ehrRoute {{ item.ehrRouteName}}
+          td.seedData(v-bind:title="asString(item.seedData)") {{ item.seedData ? 'seed hover' : '&nbsp;' }}
+    h1 Current LMS Activity
     table.table
       thead
         tr
@@ -42,48 +46,50 @@
         tr
           td Activity Id
           td {{ activity.resource_link_id }}
-    a(:href="currentVisit.launch_presentation_return_url") Return to LMS
+    a(:href="returnUrl") Return to LMS
 </template>
 
 <script>
-import Configuration from '../../configuration'
-import axios from '../../../node_modules/axios/dist/axios.min'
-var config = new Configuration()
+  /*
+              v-popover
+              button Click me
+              template(slot="popover")
+                div {{ asString(item.seedData) }}
 
+   */
 export default {
   name: 'AssignmentsListing',
   components: {},
   computed: {
+    assignmentsListing() {
+      return this.$store.state.assignment.assignmentsListing
+    },
     currentVisit() {
       return this.$store.state.sVisitInfo
     },
     activity() {
-      var vi = this.$store.state.sVisitInfo
-      var act = vi.activity ? vi.activity : {}
+      var act = this.$store.state.visit.sCurrentActivity
       return act
+    },
+    returnUrl() {
+      return this.$store.getters['visit/returnUrl']
     }
   },
   data: function() {
     return {
-      error: null,
-      assignmentsListing: []
+      error: null
     }
   },
   methods: {
+    asString: function(obj) {
+      let str = JSON.stringify(obj)
+      console.log('what is here? ', str)
+      return str
+      // return JSON.stringify(item.seedData)
+    },
     loadAssignments: function() {
-      var apiUrl = this.$store.state.apiUrl
-      return new Promise((resolve, reject) => {
-        let url = apiUrl + '/assignments/'
-        axios.get(url).then(response => {
-          console.log('what is the get assignments response? ', response.data.assignments)
-          let list = response.data.assignments
-          if (!list) {
-            console.error('ERROR the system should have assignments')
-            reject(new Error('No assignments'))
-          }
-          this.assignmentsListing = list
-        })
-      })
+      console.log('load assignments for AssignmentListing component')
+      this.$store.dispatch('assignment/loadAssignments')
     }
   },
   mounted: function() {
@@ -94,3 +100,31 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.AssignmentsListing {
+  h1 {
+    font-size: 30px;
+  }
+}
+.seedDataPop {
+  background: lightgrey;
+}
+.tooltip {
+  &.popover {
+    $color: #f9f9f9;
+
+    .popover-inner {
+      background: $color;
+      color: black;
+      padding: 24px;
+      border-radius: 5px;
+      box-shadow: 0 5px 30px rgba(black, 0.1);
+    }
+
+    .popover-arrow {
+      border-color: $color;
+    }
+  }
+}
+</style>

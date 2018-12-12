@@ -16,54 +16,84 @@ export default {
   components: {},
   methods: {
     loadData: function() {
-      console.log('window.location', window.location)
+      // console.log('window.location', window.location)
       var url2 = new URL(window.location)
       var params2 = new URLSearchParams(url2.search)
-
       // API return url
-      var apiUrl = params2.get('apiUrl')
-      if (apiUrl) {
-        console.log('API url provided in query: ', apiUrl)
-      } else {
-        console.log('No API url in query')
-        if (this.$store.state.apiUrl) {
-          apiUrl = this.$store.state.apiUrl
-          console.log('Use API URL from $store', apiUrl)
-        } else {
-          apiUrl = config.getApiUrl()
-          console.log('Use API URL from configuration: ', apiUrl)
-        }
-      }
-      this.$store.commit('apiUrl', apiUrl)
-
-      // Visit Id
-      var visitId = params2.get('visit')
-      if (!visitId) {
-        console.log('No visit id on query so check local storage storage?')
-        visitId = localStorage.getItem('token')
-      }
-      if (!visitId) {
-        console.log('No visit id on query or local storage')
-        return
-      }
-      localStorage.setItem('token', visitId)
-
-      // Load information from server
-      return new Promise((resolve, reject) => {
-        let url = apiUrl + '/visits/flushed/' + visitId
-        console.log('In load page ', url)
-        axios.get(url).then(response => {
-          // console.log('what is the response? ', response.data)
-          let visitInfo = response.data
-          if (!visitInfo) {
-            console.error('ERROR because a visit should be registered')
-            this.$store.commit('resetInfo')
-            reject(new Error('No visit'))
+      function loadApiUrl() {
+        return Promise.resolve().then(() => {
+          var apiUrl = params2.get('apiUrl')
+          if (apiUrl) {
+            // console.log('API url provided in query: ', apiUrl)
+          } else {
+            console.log('No API url in query')
+            if (this.$store.state.visit.apiUrl) {
+              apiUrl = this.$store.state.visit.apiUrl
+              console.log('Use API URL from $store', apiUrl)
+            } else {
+              apiUrl = config.getApiUrl()
+              console.log('Use API URL from configuration: ', apiUrl)
+            }
           }
-          // console.log('Found information', visitInfo)
-          this.$store.commit('setVisitInfo', visitInfo)
+          this.$store.commit('visit/apiUrl', apiUrl)
+        })
+      }
+      // Visit Id
+      function loadVisitId() {
+        return new Promise((resolve, reject) => {
+          var visitId = params2.get('visit')
+          if (!visitId) {
+            console.log('No visit id on query so check local storage storage?')
+            visitId = localStorage.getItem('token')
+          }
+          if (!visitId) {
+            let msg = 'No visit id on query or local storage'
+            reject(msg)
+          }
+          localStorage.setItem('token', visitId)
+          resolve(visitId)
+        })
+      }
+      const _this = this
+      loadApiUrl
+        .call(this)
+        .then(() => {
+          return loadVisitId()
+        })
+        .then(visitId => {
+          return this.$store.dispatch('visit/loadVisitInfo', visitId)
+        })
+        .then(() => {
+          let isInstructor = _this.$store.getters['visit/isInstructor']
+          // console.log('here we should have user info', _this.$store.state.visit.sUserInfo.fullName, ' is Instructor: ', isInstructor)
+          if (isInstructor) {
+            return _this.loadInstructor()
+          }
+        })
+    },
+    loadInstructorCourses: function() {
+      var apiUrl = this.$store.state.visit.apiUrl
+      let userId = this.$store.state.visit.sUserInfo._id
+      // console.log('In load instructor courses data url/id: ' + apiUrl + ' / ' + userId)
+      return new Promise(() => {
+        let url = `${apiUrl}/users/instructor/courses/${userId}`
+        // console.log('In load instructor courses data ', url)
+        axios.get(url).then(response => {
+          // console.log('load courses', response.data)
+          var courses = response.data['courses']
+          this.$store.commit('setCourses', courses)
         })
       })
+    },
+
+    loadInstructor: function() {
+      console.log('Load instructor. This handles page refreshes')
+      /*
+      The first visit of an instructor they can select any of the courses they have access
+      to. Then they can select an activity (class assignment). Then from the resulting class list
+      they can select a student to evaluate. At each stage the choice needs to be recorded
+      in local storage so that on a page refresh we can restore the state.
+       */
     }
   },
   computed: {
@@ -87,5 +117,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

@@ -1,5 +1,6 @@
 <template lang="pug">
   div(:class="$options.name")
+    ui-spinner(:loading="loading")
     ehr-panel-header Patient Notes
     ehr-panel-content
       div(v-show="isStudent")
@@ -60,6 +61,8 @@ import { getPhrase } from '../poc-utils'
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
 import AppDialog from '../../app/components/AppDialogShell'
+import moment from 'moment'
+import UiSpinner from '../../app/ui/UiSpinner'
 
 export default {
   name: 'ProgressNotes',
@@ -67,11 +70,13 @@ export default {
     EhrPanelHeader,
     EhrPanelContent,
     AppDialog,
-    UiButton
+    UiButton,
+    UiSpinner
   },
   data: function() {
     return {
       showModal: false,
+      loading: false,
       populate: true,
       inputs: {},
       errorList: []
@@ -82,19 +87,17 @@ export default {
       return 'Add with sample data ' + (this.populate ? 'enabled' : 'disabled')
     },
     username() {
-      let info = this.$store.state.sUserInfo
-      return info.fullName
-    },
-    disableActions() {
-      let isValid = !!this.$store.state.sVisitInfo
-      // console.log('User is valid? ', isValid)
-      return !isValid
+      let info = this.$store.state.visit.sUserInfo
+      return info ? info.fullName : ''
     },
     progressNotes() {
-      return this.$store.state.sCurrentData.progressNotes
+      let data = this.$store.getters['ehrData/mergedData'] || {}
+      let pn = data.progressNotes || []
+      console.log('get PN ', data, pn)
+      return pn
     },
     isStudent() {
-      return this.$store.state.sVisitInfo.isStudent
+      return this.$store.getters['visit/isStudent']
     }
   },
   methods: {
@@ -133,19 +136,19 @@ export default {
       return this.errorList.length === 0
     },
     showDialog: function() {
-      // console.log('show dialog')
       this.clearInputs()
+      var today = moment().format('DD MMM')
+      var time = moment().format('HH:mm')
+      console.log('date is ', today, time)
       if (this.populate) {
         var inputs = this.inputs
         inputs.name = this.username
         inputs.notes = getPhrase(14)
         inputs.profession = 'Nurse'
         inputs.unit = 'ER'
-        inputs.day = '0'
-        inputs.time = '07:00'
-        // console.log("Prepop with ", this.inputs.notes)
+        inputs.day = today
+        inputs.time = time
       }
-      // this.validateInputs()
       this.showModal = true
     },
     cancelDialog: function() {
@@ -154,9 +157,26 @@ export default {
     },
     saveDialog: function() {
       if (this.validateInputs()) {
+        const _this = this;
+        this.loading = true
         this.showModal = false
         // console.log('Saving Progress Notes', this.inputs)
-        this.$store.dispatch('addPNotes', { note: this.inputs })
+        // We wish to send a modified object to the API server and not directly update our client side copy.
+        // Because the data is stored in our Vuex store we need to make a deep clone to prevent this error:
+        // "Do not mutate vuex store state outside mutation handlers."
+        let data = this.$store.getters['ehrData/assignmentData'] || {}
+        var modifiedValue = data.progressNotes || []
+        modifiedValue = modifiedValue ? JSON.parse(JSON.stringify(modifiedValue)) : []
+        modifiedValue.push(this.inputs)
+        // Prepare a payload to tell the API which property inside the assignment data to change
+        let payload = {
+          property: 'progressNotes',
+          value: modifiedValue
+        }
+        this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload)
+        .then( () => {
+          _this.loading = false
+        })
       }
     }
   }

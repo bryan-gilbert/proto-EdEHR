@@ -44,8 +44,8 @@ export default {
       return JSON.stringify(assignmentData)
     },
     loadData: function() {
-      var apiUrl = this.$store.state.apiUrl
-      let userId = this.$store.state.sUserInfo._id
+      var apiUrl = this.$store.state.visit.apiUrl
+      let userId = this.$store.state.visit.sUserInfo._id
       // Load information from server
       var asType = 'as' + this.visitorType
       var asVisitsType = asType + 'Visits'

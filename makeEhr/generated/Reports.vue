@@ -7,7 +7,7 @@
         p Title: Reports
         p Label: Reports and documents
         p Component name: Reports
-        p Redirect: /ehr/chart/reports/consults
+        p Redirect: consults
         p Route name: reports
         p Full path: /ehr/chart/reports
         hr

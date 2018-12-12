@@ -19,12 +19,16 @@ export default {
     StudentAssignmentInfo,
     ActivityHeader
   },
-  data: function() {
-    return {
-      activity: { assignment: {} }
-    }
-  },
+  // TO DO  test this component after store refactoring
+  // data: function() {
+  //   return {
+  //     activity: { assignment: {} }
+  //   }
+  // },
   computed: {
+    activity() {
+      return this.$store.state.ehrData.sActivityData
+    },
     userInfo() {
       return this.$store.state.sUserInfo
     },
@@ -42,19 +46,19 @@ export default {
     asString: function(obj) {
       return JSON.stringify(obj)
     },
-    loadActivityData: function() {
-      var apiUrl = this.$store.state.apiUrl
-      let activityId = this.$route.params.activityId
-      return new Promise(() => {
-        let url = `${apiUrl}/activities/flushed/${activityId}`
-        axios.get(url).then(response => {
-          // console.log('Got activity information ', response.data)
-          this.activity = response.data
-        })
-      })
-    },
+    // loadActivityData: function() {
+    //   var apiUrl = this.$store.state.visit.apiUrl
+    //   let activityId = this.$route.params.activityId
+    //   return new Promise(() => {
+    //     let url = `${apiUrl}/activities/flushed/${activityId}`
+    //     axios.get(url).then(response => {
+    //       // console.log('Got activity information ', response.data)
+    //       this.activity = response.data
+    //     })
+    //   })
+    // },
     loadClassList: function() {
-      var apiUrl = this.$store.state.apiUrl
+      var apiUrl = this.$store.state.visit.apiUrl
       let activityId = this.$route.params.activityId
       return new Promise(() => {
         let url = `${apiUrl}/activities/class/${activityId}`
@@ -68,7 +72,9 @@ export default {
     }
   },
   created: function() {
-    this.loadActivityData()
+    let activityId = this.$route.params.activityId
+    this.$store.dispatch('ehrData/loadActivityData', activityId)
+    // this.loadActivityData()
     this.loadClassList()
   }
 }

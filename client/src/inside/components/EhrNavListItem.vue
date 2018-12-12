@@ -1,7 +1,7 @@
 <template lang="pug">
   div(:class="`${$options.name}`")
     div(:class="outClass")
-      ui-link(:to="{ name: path.name }", :class="linkClass") {{ path.label }}
+      ui-link(:to="{ name: routeName(path) }", :class="linkClass") {{ path.label }}
 </template>
 
 <script>
@@ -22,6 +22,11 @@ export default {
     linkClass() {
       var lv = this.level || 1
       return 'EhrNavListItem__link' + lv
+    }
+  },
+  methods: {
+    routeName(path) {
+      return path.redirect ? path.redirect : path.name
     }
   },
   props: {

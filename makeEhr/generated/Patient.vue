@@ -7,7 +7,7 @@
         p Title: Patient
         p Label: Patient profile
         p Component name: Patient
-        p Redirect: 
+        p Redirect: demographics
         p Route name: patient
         p Full path: /ehr/patient
         hr

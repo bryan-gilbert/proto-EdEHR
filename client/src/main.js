@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+// import store from './store'
 import store from './store'
 import Outside from './outside/layout/LayoutOutside.vue'
 import Inside from './inside/layout/LayoutEhr.vue'
@@ -8,6 +9,16 @@ import dragDirective from './drag-directive'
 import resizeDirective from './resize-directive'
 import VTooltip from 'v-tooltip'
 import './scss/styles.scss'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCheckCircle, faTimesCircle, faEdit, faClock, faInfo } from '@fortawesome/free-solid-svg-icons'
+// import { faClock } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faCheckCircle, faTimesCircle, faEdit)
+library.add(faClock, faInfo)
+
+Vue.component('fas-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
 

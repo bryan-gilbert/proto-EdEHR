@@ -1,6 +1,6 @@
 <template lang="pug">
   div(class="outside-view home")
-    h1 Welcome Home {{ fullName }} to the EdEHR Proof Of Concept</h1>
+    h1 Welcome Home {{ username }} to the EdEHR Proof Of Concept</h1>
     p User Id: {{ userInfo.user_id }} Email: {{ userInfo.emailPrimary }}
     div(id="nav")
       ul
@@ -20,10 +20,10 @@ export default {
   },
   computed: {
     userInfo() {
-      return this.$store.state.sUserInfo
+      return this.$store.state.visit.sUserInfo
     },
-    fullName() {
-      return this.$store.state.fullName
+    username() {
+      return this.$store.state.visit.username
     }
   }
 }
