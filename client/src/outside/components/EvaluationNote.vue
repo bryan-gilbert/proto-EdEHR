@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     activityData() {
-      var classList = this.$store.state.sClassList
+      var classList = this.$store.state.instructor.sClassList
       var currentStudentVisit = classList.find(sv => {
         return sv._id === this.studentVisitId
       })

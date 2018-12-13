@@ -2,24 +2,46 @@ import StoreHelper from './storeHelper'
 const helper = new StoreHelper()
 
 const state = {
-  sActivityData: {}
+  sActivityData: {},
+  sCurrentStudentData: {}
+}
+function isInstructor(getters) {
+  return getters['visit/isInstructor']
 }
 
 const getters = {
-  assignmentData: state => {
-    // assignmentData is the data without seed
-    return state.sActivityData.assignmentData
+  assignmentData: (state, getters) => {
+    if (isInstructor(getters)) {
+      return state.sCurrentStudentData.assignmentData
+    } else {
+      // assignmentData is the data without seed
+      return state.sActivityData.assignmentData
+    }
   },
-  mergedData: state => {
-    // mergedData is the merge of assignment data and seed
-    return state.sActivityData.mergedData
+  mergedData: (state, getters) => {
+    if (isInstructor(getters)) {
+      return state.sCurrentStudentData.mergedData
+    } else {
+      // mergedData is the merge of assignment data and seed
+      return state.sActivityData.mergedData
+    }
   },
   scratchData: state => {
+    // only return for student
     // scratchData is the student's notes
     return state.sActivityData.scratchData
   },
-  seedData: state => {
-    return state.sActivityData.seedData
+  evaluationData: state => {
+    // only return for instructor
+    // evaluationData is the instructor's comments on the student's work
+    return state.sCurrentStudentData.evaluationData
+  },
+  seedData: (state, getters) => {
+    if (isInstructor(getters)) {
+      return state.sCurrentStudentData.seedData
+    } else {
+      return state.sActivityData.seedData
+    }
   }
 }
 
@@ -72,7 +94,12 @@ const actions = {
 
 const mutations = {
   setActivityData: (state, cData) => {
-    console.log('setActivityData', cData.assignment)
+    console.log('setActivityData', cData)
+    console.log('setActivityData\'s assignment', cData.assignment)
+    state.sActivityData = cData
+  },
+  setEvaluationData: (state, cData) => {
+    console.log('setEvaluationData', cData)
     state.sActivityData = cData
   }
 }

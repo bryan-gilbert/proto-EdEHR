@@ -23,6 +23,31 @@ const getters = {
 }
 
 const actions = {
+  changeCurrentEvaluationStudentId: (context, currentId) => {
+    context.commit('setCurrentEvaluationStudentId', currentId)
+    var classList = context.state.sClassList
+    console.log('changeCurrentEvaluationStudentId', currentId, classList)
+    var sv // a student's visit information
+    if (currentId && classList) {
+      sv = classList.find(elem => {
+        return elem._id === currentId
+      })
+    }
+    if (!sv) {
+      console.error('ERROR. Can\'t find student in class list. ', currentId)
+      return;
+    }
+    let ad = sv.activityData || {}
+    let evd = {
+      studentName: sv.user.fullName,
+      lastVisitDate: sv.lastVisitDate,
+      evaluationData: (ad.evaluationData || ''),
+      assignmentData: (ad.assignmentData || {}),
+      mergedData: (ad.mergedData || {} )
+    }
+    console.log("What do we have here? ", evd)
+    context.commit('ehrData/setEvaluationData', evd, { root: true })
+  },
   saveEvaluationNotes (context, payload) {
     let vid = payload.activityDataId
     let body = {
@@ -88,8 +113,9 @@ const mutations = {
   },
   setCurrentEvaluationStudentId: (state, id) => {
     state.sCurrentEvaluationStudentId = id
-  },
+  }
 }
+
 
 export default {
   namespaced: true,

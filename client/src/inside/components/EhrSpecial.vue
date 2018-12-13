@@ -77,10 +77,10 @@ export default {
       return act
     },
     currentEvaluationStudentId() {
-      return this.$store.state.sCurrentEvaluationStudentId
+      return this.$store.state.instructor.sCurrentEvaluationStudentId
     },
     classList() {
-      return this.$store.state.sClassList || []
+      return this.$store.state.instructor.sClassList || []
     },
     isInstructor() {
       var vi = this.visitInfo
