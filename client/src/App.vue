@@ -68,35 +68,46 @@ export default {
         .then(() => {
           let isInstructor = _this.$store.getters['visit/isInstructor']
           if (isInstructor) {
-            this.$store.dispatch('instructor/loadInstructor')
-            if (restoring) {
-              let rUrl = localStorage.getItem('sInstructorReturnUrl')
-              if (rUrl) {
-                console.log('Page load and restore instructor return url', rUrl)
-                this.$store.commit('instructor/setInstructorReturnUrl', rUrl)
-              }
-              let activityId = localStorage.getItem('activityId')
-              let studentId = localStorage.getItem('sCurrentEvaluationStudentId')
-              if (activityId) {
-                console.log('Page load and restore last activity', activityId)
-                this.$store
-                  .dispatch('ehrData/loadActivityData', activityId)
-                  .then(() => {
-                    return this.$store.dispatch('instructor/loadClassList', activityId)
-                  })
-                  .then(() => {
-                    if (studentId) {
-                      console.log('Page load and restore last student for evaluation', studentId)
-                      return this.$store.dispatch(
-                        'instructor/changeCurrentEvaluationStudentId',
-                        studentId
-                      )
-                    }
-                  })
-              }
-            }
+            console.log('Page load instructor')
+            return _this.$store
+              .dispatch('instructor/loadInstructor')
+              .then(() => {
+                console.log('Page load instructor restoring?', restoring)
+                if (restoring) {
+                  _this.reloadInstructor()
+                }
+              })
+              .catch(err => {
+                console.log('ERROR ', err)
+              })
           }
         })
+    },
+    reloadInstructor: function() {
+      console.log('Page load and restore instructor')
+      const _this = this
+      let rUrl = localStorage.getItem('sInstructorReturnUrl')
+      if (rUrl) {
+        console.log('Page load and restore instructor return url', rUrl)
+        _this.$store.commit('instructor/setInstructorReturnUrl', rUrl)
+      }
+      let activityId = localStorage.getItem('activityId')
+      let studentId = localStorage.getItem('sCurrentEvaluationStudentId')
+      if (activityId) {
+        console.log('Page load and restore last activity', activityId)
+        return this.$store
+          .dispatch('ehrData/loadActivityData', activityId)
+          .then(() => {
+            console.log('Page load and restore class list', activityId)
+            return _this.$store.dispatch('instructor/loadClassList', activityId)
+          })
+          .then(() => {
+            console.log('Page load and restore last student for evaluation', studentId)
+            if (studentId) {
+              return _this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', studentId)
+            }
+          })
+      }
     }
   },
   computed: {

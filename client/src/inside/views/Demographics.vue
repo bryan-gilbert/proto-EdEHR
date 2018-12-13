@@ -3,7 +3,7 @@
   div(:class="$options.name")
     ui-spinner(:loading="loading")
     ehr-panel-header
-      div(slot="pageTitle") Demographics
+      div Demographics
       div(slot="controls")
         button(v-on:click="beginEdit", v-show="notEditing")
           fas-icon(icon="edit")

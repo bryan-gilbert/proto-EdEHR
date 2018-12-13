@@ -105,16 +105,16 @@ export default {
       return act
     },
     assignmentData() {
-      return this.$store.state.ehrData.assignmentData
+      return this.$store.getters['ehrData/assignmentData']
     },
     mergedData() {
-      return this.$store.state.ehrData.mergedData
+      return this.$store.getters['ehrData/mergedData']
     },
     scratchData() {
-      return this.$store.state.ehrData.scratchData
+      return this.$store.getters['ehrData/scratchData']
     },
     evaluationData() {
-      return this.$store.state.ehrData.evaluationData
+      return this.$store.getters['ehrData/evaluationData']
     },
     sActivityData() {
       return this.$store.state.ehrData.sActivityData

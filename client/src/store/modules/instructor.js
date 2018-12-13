@@ -24,34 +24,37 @@ const getters = {
 
 const actions = {
   changeCurrentEvaluationStudentId: (context, currentId) => {
-    // TO DO store the id in localstorage to support page refresh
-    context.commit('setCurrentEvaluationStudentId', currentId)
-    var classList = context.state.sClassList
-    console.log('changeCurrentEvaluationStudentId', currentId, ' classList: ', classList)
-    var sv // a student's visit information
-    if (currentId && classList) {
-      sv = classList.find(elem => {
-        return elem._id === currentId
-      })
-    }
-    if (!sv) {
-      console.error('ERROR. Can\'t find student in class list. ', currentId)
-      return;
-    }
-    // console.log("What do we have here? ", sv, sv.activity)
-    let ad = sv.activityData || {}
-    let sva = sv.assignment
-    let evd = {
-      studentName: sv.user.fullName,
-      assignmentName: sva.name,
-      assignmentDescription: sva.description,
-      lastVisitDate: sv.lastVisitDate,
-      evaluationData: (ad.evaluationData || ''),
-      assignmentData: (ad.assignmentData || {}),
-      mergedData: (ad.mergedData || {} )
-    }
-    // console.log("setEvaluationData: ", evd)
-    context.commit('ehrData/setEvaluationData', evd, { root: true })
+    return new Promise(resolve => {
+      // TO DO store the id in localstorage to support page refresh
+      context.commit('setCurrentEvaluationStudentId', currentId)
+      var classList = context.state.sClassList
+      console.log('changeCurrentEvaluationStudentId', currentId, ' classList: ', classList)
+      var sv // a student's visit information
+      if (currentId && classList) {
+        sv = classList.find(elem => {
+          return elem._id === currentId
+        })
+      }
+      if (!sv) {
+        console.error('ERROR. Can\'t find student in class list. ', currentId)
+        return;
+      }
+      // console.log("What do we have here? ", sv, sv.activity)
+      let ad = sv.activityData || {}
+      let sva = sv.assignment
+      let evd = {
+        studentName: sv.user.fullName,
+        assignmentName: sva.name,
+        assignmentDescription: sva.description,
+        lastVisitDate: sv.lastVisitDate,
+        evaluationData: (ad.evaluationData || ''),
+        assignmentData: (ad.assignmentData || {}),
+        mergedData: (ad.mergedData || {})
+      }
+      // console.log("setEvaluationData: ", evd)
+      context.commit('ehrData/setEvaluationData', evd, {root: true})
+      resolve(evd)
+    })
   },
   saveEvaluationNotes (context, payload) {
     let vid = payload.activityDataId
@@ -74,24 +77,26 @@ const actions = {
     let userId = visitState.sUserInfo._id
     let url = `${apiUrl}/users/instructor/courses/${userId}`
     // console.log('In load instructor courses data ', url)
-    return new Promise(() => {
+    return new Promise((resolve) => {
       axios.get(url).then(response => {
         // console.log('load courses', response.data)
         var courses = response.data['courses']
         context.commit('setCourses', courses)
+        resolve(courses)
       })
     })
   },
   loadClassList (context, activityId) {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
-    return new Promise(() => {
+    return new Promise((resolve) => {
       let url = `${apiUrl}/activities/class/${activityId}`
       // console.log('In load instructor activities data ', url)
       axios.get(url).then(response => {
         // console.log('load activities', response.data)
         var classList = response.data['classList']
         context.commit('setClassList', classList)
+        resolve(classList)
       })
     })
   }

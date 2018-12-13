@@ -7,9 +7,14 @@ const state = {
 }
 
 const getters = {
-  assignmentData: (state, getters) => {
-    if (getters['visit/isInstructor']) {
-      console.log('Using current student from class list assignment data')
+  assignmentData: (state, getters, rootState) => {
+    /*
+    By the documentation getters['visit/isInstructor'] should work but it doesn't
+    So use the direct access of rootstate ...
+     */
+    let isInstructor = rootState.visit.sVisitInfo.isInstructor
+    if (isInstructor) {
+      console.log('Using current student from class list assignment data', state.sCurrentStudentData)
       return state.sCurrentStudentData.assignmentData
     } else {
       console.log("Using student's assignment data")
@@ -17,8 +22,9 @@ const getters = {
       return state.sActivityData.assignmentData
     }
   },
-  mergedData: (state, getters) => {
-    if (getters['visit/isInstructor']) {
+  mergedData: (state, getters, rootState) => {
+    let isInstructor = rootState.visit.sVisitInfo.isInstructor
+    if (isInstructor) {
       return state.sCurrentStudentData.mergedData
     } else {
       // mergedData is the merge of assignment data and seed
@@ -35,8 +41,9 @@ const getters = {
     // evaluationData is the instructor's comments on the student's work
     return state.sCurrentStudentData.evaluationData
   },
-  seedData: (state, getters) => {
-    if (getters['visit/isInstructor']) {
+  seedData: (state, getters, rootState) => {
+    let isInstructor = rootState.visit.sVisitInfo.isInstructor
+    if (isInstructor) {
       return state.sCurrentStudentData.seedData
     } else {
       return state.sActivityData.seedData
