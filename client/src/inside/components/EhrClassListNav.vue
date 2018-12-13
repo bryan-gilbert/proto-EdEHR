@@ -24,7 +24,7 @@ export default {
   },
   computed: {
     panelInfo() {
-      let ces = this.$store.getters.currentEvaluationStudent
+      let ces = this.$store.getters.currentEvaluationStudent || {user:{},activity:{}}
       let data = {
         studentName: ces.user.fullName,
         courseTitle: ces.activity.context_title,

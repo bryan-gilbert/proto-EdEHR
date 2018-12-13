@@ -19,12 +19,14 @@ export default class ActivityController extends BaseController {
       .then((activity) => {
         if (activity) {
           if (!activity.assignment.equals(assignment._id)) {
+            // console.log('was ', activity.assignment, 'seeking', assignment._id)
             var msg = 'Changing assignment for this activity.'
             debug('updateCreateActivity ' + msg)
             activity.assignment = assignment._id
+            // console.log('adasd',activity)
           }
           debug('updateCreateActivity update activity ' + activity._id)
-          return _this._updateHelper(activity, data)
+          return _this._updateHelper(activity, data, true)
         } else {
           data.toolConsumer = toolConsumerId
           data.assignment = assignment._id
@@ -55,7 +57,7 @@ export default class ActivityController extends BaseController {
   }
 
   findActivity (id) {
-    return Activity.findOne({_id: id})
+    return this.baseFindOneQuery(id)
     .populate('assignment')
   }
 
@@ -67,11 +69,11 @@ export default class ActivityController extends BaseController {
       return newActivity
     })
   }
-  _updateHelper (activity, data) {
+  _updateHelper (activity, data, forceSave) {
     let current = JSON.stringify(activity)
     Object.assign(activity, data)
     let updated = JSON.stringify(activity)
-    if (current !== updated) {
+    if (forceSave || current !== updated) {
       debug('updateCreateActivity there is something different in the activity. Saving new activity data ' + updated)
       return activity.save()
     } else {

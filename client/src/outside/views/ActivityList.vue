@@ -30,52 +30,27 @@ export default {
       return this.$store.state.ehrData.sActivityData
     },
     userInfo() {
-      return this.$store.state.sUserInfo
+      return this.$store.state.visit.sUserInfo
     },
     visitInfo() {
-      return this.$store.state.sVisitInfo
+      return this.$store.state.visit.sVisitInfo
     },
     classList() {
-      return this.$store.state.sClassList || []
+      return this.$store.state.instructor.sClassList || []
     },
     courses() {
-      return this.$store.state.sCourses
+      return this.$store.state.instructor.sCourses
     }
   },
   methods: {
     asString: function(obj) {
       return JSON.stringify(obj)
-    },
-    // loadActivityData: function() {
-    //   var apiUrl = this.$store.state.visit.apiUrl
-    //   let activityId = this.$route.params.activityId
-    //   return new Promise(() => {
-    //     let url = `${apiUrl}/activities/flushed/${activityId}`
-    //     axios.get(url).then(response => {
-    //       // console.log('Got activity information ', response.data)
-    //       this.activity = response.data
-    //     })
-    //   })
-    // },
-    loadClassList: function() {
-      var apiUrl = this.$store.state.visit.apiUrl
-      let activityId = this.$route.params.activityId
-      return new Promise(() => {
-        let url = `${apiUrl}/activities/class/${activityId}`
-        // console.log('In load instructor activities data ', url)
-        axios.get(url).then(response => {
-          // console.log('load activities', response.data)
-          var classList = response.data['classList']
-          this.$store.commit('setClassList', classList)
-        })
-      })
     }
   },
   created: function() {
     let activityId = this.$route.params.activityId
     this.$store.dispatch('ehrData/loadActivityData', activityId)
-    // this.loadActivityData()
-    this.loadClassList()
+    this.$store.dispatch('instructor/loadClassList', activityId)
   }
 }
 </script>

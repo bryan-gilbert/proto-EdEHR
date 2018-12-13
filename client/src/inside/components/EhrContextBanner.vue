@@ -1,7 +1,11 @@
 <template lang="pug">
   div(:class="$options.name", v-show="isInstructor")
     ehr-class-list-nav
-    div(v-show="showDetails")
+</template>
+
+<script>
+  /*
+      div(v-show="showDetails")
       p Current Student Visit _id: {{ currentEvaluationStudentId }}
       p Visit._id: {{ currentEvaluationStudent._id }}
       p Student: {{ currentEvaluationStudent.user.fullName }}
@@ -18,31 +22,29 @@
           p Activity: {{ studentVisit.activity.resource_link_title}}
           p Activity Description: {{ studentVisit.activity.resource_link_description}}
 
-</template>
-
-<script>
+   */
 import EhrClassListNav from './EhrClassListNav'
 export default {
   name: 'EhrContextBanner',
   components: { EhrClassListNav },
   data: function() {
     return {
-      showDetails: false
+      // showDetails: false
     }
   },
   computed: {
-    currentEvaluationStudentId() {
-      return this.$store.state.sCurrentEvaluationStudentId
-    },
     isInstructor() {
       return this.$store.getters.isInstructor
     },
-    currentEvaluationStudent() {
-      return this.$store.getters.currentEvaluationStudent
-    },
-    classList() {
-      return this.$store.state.sClassList || []
-    }
+    // currentEvaluationStudentId() {
+    //   return this.$store.state.sCurrentEvaluationStudentId
+    // },
+    // currentEvaluationStudent() {
+    //   return this.$store.getters.currentEvaluationStudent || {}
+    // },
+    // classList() {
+    //   return this.$store.state.sClassList || []
+    // }
   }
 }
 </script>

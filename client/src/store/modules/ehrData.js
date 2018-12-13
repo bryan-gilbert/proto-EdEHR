@@ -28,10 +28,11 @@ const actions = {
     context.commit('setActivityData', data)
   },
   loadActivityData(context, activityId) {
-    var apiUrl = this.$store.state.visit.apiUrl
+    let visitState = context.rootState.visit
+    let apiUrl = visitState.apiUrl
     let url = `${apiUrl}/activities/flushed/${activityId}`
     return helper.getRequest(url).then(response => {
-      console.log('Got activity information ', response.data)
+      console.log('Got activity information ') //, response.data)
       context.commit('setActivityData', response.data)
     })
   },
@@ -71,6 +72,7 @@ const actions = {
 
 const mutations = {
   setActivityData: (state, cData) => {
+    console.log('setActivityData', cData.assignment)
     state.sActivityData = cData
   }
 }

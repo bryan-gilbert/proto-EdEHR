@@ -39,21 +39,34 @@ const actions = {
   },
   loadInstructor (context) {
     console.log('Work in progress loading instructor information. ...')
-  },
-  loadInstructorCourses: function() {
-    var apiUrl = this.$store.state.visit.apiUrl
-    let userId = this.$store.state.visit.sUserInfo._id
-    // console.log('In load instructor courses data url/id: ' + apiUrl + ' / ' + userId)
+  // },
+  // loadInstructorCourses: function() {
+    let visitState = context.rootState.visit
+    let apiUrl = visitState.apiUrl
+    let userId = visitState.sUserInfo._id
+    let url = `${apiUrl}/users/instructor/courses/${userId}`
+    console.log('In load instructor courses data ', url)
     return new Promise(() => {
-      let url = `${apiUrl}/users/instructor/courses/${userId}`
-      // console.log('In load instructor courses data ', url)
       axios.get(url).then(response => {
-        // console.log('load courses', response.data)
+        console.log('load courses', response.data)
         var courses = response.data['courses']
-        this.$store.commit('setCourses', courses)
+        context.commit('setCourses', courses)
       })
     })
   },
+  loadClassList (context, activityId) {
+    let visitState = context.rootState.visit
+    let apiUrl = visitState.apiUrl
+    return new Promise(() => {
+      let url = `${apiUrl}/activities/class/${activityId}`
+      // console.log('In load instructor activities data ', url)
+      axios.get(url).then(response => {
+        // console.log('load activities', response.data)
+        var classList = response.data['classList']
+        context.commit('setClassList', classList)
+      })
+    })
+  }
 }
 
 const mutations = {

@@ -70,20 +70,6 @@ export default {
             return this.$store.dispatch('instructor/loadInstructor')
           }
         })
-    },
-    loadInstructorCourses: function() {
-      var apiUrl = this.$store.state.visit.apiUrl
-      let userId = this.$store.state.visit.sUserInfo._id
-      // console.log('In load instructor courses data url/id: ' + apiUrl + ' / ' + userId)
-      return new Promise(() => {
-        let url = `${apiUrl}/users/instructor/courses/${userId}`
-        // console.log('In load instructor courses data ', url)
-        axios.get(url).then(response => {
-          // console.log('load courses', response.data)
-          var courses = response.data['courses']
-          this.$store.commit('setCourses', courses)
-        })
-      })
     }
   },
   computed: {

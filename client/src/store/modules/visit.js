@@ -6,8 +6,7 @@ const state = {
   visitId: '',
   sVisitInfo: {},
   isLoggedIn: !!localStorage.getItem('token'),
-  topLevelMenu: '',
-  sCurrentActivity: {}
+  topLevelMenu: ''
 }
 
 const getters = {
@@ -67,7 +66,6 @@ const actions = {
           }
           context.commit('setVisitInfo', visitInfo)
           context.commit('setUserInfo', visitInfo.user)
-          context.commit('setActivityInfo', visitInfo.activity)
           context.commit('ehrData/setActivityData', visitInfo.activityData, { root: true })
           resolve()
         })
@@ -89,10 +87,6 @@ const mutations = {
   apiUrl: (state, url) => {
     // console.log('visit store set api url ' + url)
     state.apiUrl = url
-  },
-  setActivityInfo: (state, info) => {
-    // console.log('visit store set activity info ' + info._id)
-    state.sCurrentActivity = info
   },
   setVisitInfo: (state, info) => {
     // console.log('visit store set visit info ' + info._id)

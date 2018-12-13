@@ -73,7 +73,7 @@ export default {
       return act
     },
     activity() {
-      var act = this.$store.state.sCurrentActivity
+      var act = this.$store.state.ehrData.sActivityData
       return act
     },
     currentEvaluationStudentId() {
