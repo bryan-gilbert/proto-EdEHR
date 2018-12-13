@@ -76,17 +76,23 @@ export default {
                 this.$store.commit('instructor/setInstructorReturnUrl', rUrl)
               }
               let activityId = localStorage.getItem('activityId')
+              let studentId = localStorage.getItem('sCurrentEvaluationStudentId')
               if (activityId) {
                 console.log('Page load and restore last activity', activityId)
-                this.$store.dispatch('ehrData/loadActivityData', activityId)
-                this.$store.dispatch('instructor/loadClassList', activityId)
-
-                console.log('TO DO do we need to wait for the above to complete before ....?')
-                let studentId = localStorage.getItem('sCurrentEvaluationStudentId')
-                if (studentId) {
-                  console.log('Page load and restore last student for evaludation', studentId)
-                  this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', studentId)
-                }
+                this.$store
+                  .dispatch('ehrData/loadActivityData', activityId)
+                  .then(() => {
+                    return this.$store.dispatch('instructor/loadClassList', activityId)
+                  })
+                  .then(() => {
+                    if (studentId) {
+                      console.log('Page load and restore last student for evaluation', studentId)
+                      return this.$store.dispatch(
+                        'instructor/changeCurrentEvaluationStudentId',
+                        studentId
+                      )
+                    }
+                  })
               }
             }
           }

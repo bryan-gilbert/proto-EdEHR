@@ -38,7 +38,7 @@ const actions = {
       console.error('ERROR. Can\'t find student in class list. ', currentId)
       return;
     }
-    console.log("What do we have here? ", sv, sv.activity)
+    // console.log("What do we have here? ", sv, sv.activity)
     let ad = sv.activityData || {}
     let sva = sv.assignment
     let evd = {
@@ -68,15 +68,15 @@ const actions = {
     })
   },
   loadInstructor (context) {
-    console.log('Work in progress loading instructor information. ...')
+    // console.log('Loading instructor information. ...')
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
     let userId = visitState.sUserInfo._id
     let url = `${apiUrl}/users/instructor/courses/${userId}`
-    console.log('In load instructor courses data ', url)
+    // console.log('In load instructor courses data ', url)
     return new Promise(() => {
       axios.get(url).then(response => {
-        console.log('load courses', response.data)
+        // console.log('load courses', response.data)
         var courses = response.data['courses']
         context.commit('setCourses', courses)
       })
@@ -111,7 +111,7 @@ const mutations = {
     state.sCourses = list
   },
   setInstructorReturnUrl: (state, rUrl) => {
-    console.log('save instructor return url' + rUrl)
+    // console.log('save instructor return url' + rUrl)
     localStorage.setItem('sInstructorReturnUrl', rUrl)
     state.sInstructorReturnUrl = rUrl
   },

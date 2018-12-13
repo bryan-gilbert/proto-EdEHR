@@ -6,7 +6,7 @@
     div(v-show="isInstructor")
       h3 Instructor Data
       p sInstructorReturnUrl {{ sInstructorReturnUrl }}
-      p setCurrentEvaluationStudentId: {{ setCurrentEvaluationStudentId }}
+      p sCurrentEvaluationStudentId: {{ sCurrentEvaluationStudentId }}
       p Class List with Student Visit
       div(:class="`${$options.name}__data`")
         li(class="classList", v-for="studentVisit in classList")
@@ -131,8 +131,8 @@ export default {
     sInstructorReturnUrl() {
       return this.$store.state.instructor.sInstructorReturnUrl
     },
-    setCurrentEvaluationStudentId() {
-      return this.$store.state.instructor.setCurrentEvaluationStudentId
+    sCurrentEvaluationStudentId() {
+      return this.$store.state.instructor.sCurrentEvaluationStudentId
     },
     isInstructor() {
       return this.$store.getters['visit/isInstructor']

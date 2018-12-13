@@ -93,12 +93,12 @@ const actions = {
 
 const mutations = {
   setActivityData: (state, cData) => {
-    console.log('setActivityData', cData)
-    console.log('setActivityData\'s assignment', cData.assignment)
+    // console.log('setActivityData', cData)
+    // console.log('setActivityData\'s assignment', cData.assignment)
     state.sActivityData = cData
   },
   setEvaluationData: (state, cData) => {
-    console.log('set sCurrentStudentData', cData)
+    // console.log('set sCurrentStudentData', cData)
     state.sCurrentStudentData = cData
   }
 }
