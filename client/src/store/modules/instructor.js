@@ -27,7 +27,7 @@ const actions = {
     // TO DO store the id in localstorage to support page refresh
     context.commit('setCurrentEvaluationStudentId', currentId)
     var classList = context.state.sClassList
-    console.log('changeCurrentEvaluationStudentId', currentId, classList)
+    console.log('changeCurrentEvaluationStudentId', currentId, ' classList: ', classList)
     var sv // a student's visit information
     if (currentId && classList) {
       sv = classList.find(elem => {

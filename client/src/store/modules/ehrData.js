@@ -5,21 +5,20 @@ const state = {
   sActivityData: {},
   sCurrentStudentData: {}
 }
-function isInstructor(getters) {
-  return getters['visit/isInstructor']
-}
 
 const getters = {
   assignmentData: (state, getters) => {
-    if (isInstructor(getters)) {
+    if (getters['visit/isInstructor']) {
+      console.log('Using current student from class list assignment data')
       return state.sCurrentStudentData.assignmentData
     } else {
+      console.log("Using student's assignment data")
       // assignmentData is the data without seed
       return state.sActivityData.assignmentData
     }
   },
   mergedData: (state, getters) => {
-    if (isInstructor(getters)) {
+    if (getters['visit/isInstructor']) {
       return state.sCurrentStudentData.mergedData
     } else {
       // mergedData is the merge of assignment data and seed
@@ -37,7 +36,7 @@ const getters = {
     return state.sCurrentStudentData.evaluationData
   },
   seedData: (state, getters) => {
-    if (isInstructor(getters)) {
+    if (getters['visit/isInstructor']) {
       return state.sCurrentStudentData.seedData
     } else {
       return state.sActivityData.seedData

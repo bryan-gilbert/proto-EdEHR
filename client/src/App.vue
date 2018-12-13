@@ -19,6 +19,7 @@ export default {
       // console.log('window.location', window.location)
       var url2 = new URL(window.location)
       var params2 = new URLSearchParams(url2.search)
+      var restoring = false
       // API return url
       function loadApiUrl() {
         return Promise.resolve().then(() => {
@@ -44,6 +45,7 @@ export default {
           var visitId = params2.get('visit')
           if (!visitId) {
             console.log('No visit id on query so check local storage storage?')
+            restoring = true
             visitId = localStorage.getItem('token')
           }
           if (!visitId) {
@@ -65,18 +67,27 @@ export default {
         })
         .then(() => {
           let isInstructor = _this.$store.getters['visit/isInstructor']
-          // console.log('here we should have user info', _this.$store.state.visit.sUserInfo.fullName, ' is Instructor: ', isInstructor)
           if (isInstructor) {
             this.$store.dispatch('instructor/loadInstructor')
-            let rUrl = localStorage.getItem('sInstructorReturnUrl')
-            if (rUrl) {
-              console.log('Page load and set up instructor return url', rUrl)
-              this.$store.commit('instructor/setInstructorReturnUrl', rUrl)
-            }
-            let id = localStorage.getItem('sCurrentEvaluationStudentId')
-            if (id) {
-              console.log('Page load and set up last student for evaludation', id)
-              this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', id)
+            if (restoring) {
+              let rUrl = localStorage.getItem('sInstructorReturnUrl')
+              if (rUrl) {
+                console.log('Page load and restore instructor return url', rUrl)
+                this.$store.commit('instructor/setInstructorReturnUrl', rUrl)
+              }
+              let activityId = localStorage.getItem('activityId')
+              if (activityId) {
+                console.log('Page load and restore last activity', activityId)
+                this.$store.dispatch('ehrData/loadActivityData', activityId)
+                this.$store.dispatch('instructor/loadClassList', activityId)
+
+                console.log('TO DO do we need to wait for the above to complete before ....?')
+                let studentId = localStorage.getItem('sCurrentEvaluationStudentId')
+                if (studentId) {
+                  console.log('Page load and restore last student for evaludation', studentId)
+                  this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', studentId)
+                }
+              }
             }
           }
         })
