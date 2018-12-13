@@ -24,6 +24,7 @@ const getters = {
 
 const actions = {
   changeCurrentEvaluationStudentId: (context, currentId) => {
+    // TO DO store the id in localstorage to support page refresh
     context.commit('setCurrentEvaluationStudentId', currentId)
     var classList = context.state.sClassList
     console.log('changeCurrentEvaluationStudentId', currentId, classList)
@@ -68,8 +69,6 @@ const actions = {
   },
   loadInstructor (context) {
     console.log('Work in progress loading instructor information. ...')
-  // },
-  // loadInstructorCourses: function() {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
     let userId = visitState.sUserInfo._id
@@ -113,9 +112,11 @@ const mutations = {
   },
   setInstructorReturnUrl: (state, rUrl) => {
     console.log('save instructor return url' + rUrl)
+    localStorage.setItem('sInstructorReturnUrl', rUrl)
     state.sInstructorReturnUrl = rUrl
   },
   setCurrentEvaluationStudentId: (state, id) => {
+    localStorage.setItem('sCurrentEvaluationStudentId', id)
     state.sCurrentEvaluationStudentId = id
   }
 }

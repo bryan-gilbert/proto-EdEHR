@@ -67,7 +67,17 @@ export default {
           let isInstructor = _this.$store.getters['visit/isInstructor']
           // console.log('here we should have user info', _this.$store.state.visit.sUserInfo.fullName, ' is Instructor: ', isInstructor)
           if (isInstructor) {
-            return this.$store.dispatch('instructor/loadInstructor')
+            this.$store.dispatch('instructor/loadInstructor')
+            let rUrl = localStorage.getItem('sInstructorReturnUrl')
+            if (rUrl) {
+              console.log('Page load and set up instructor return url', rUrl)
+              this.$store.commit('instructor/setInstructorReturnUrl', rUrl)
+            }
+            let id = localStorage.getItem('sCurrentEvaluationStudentId')
+            if (id) {
+              console.log('Page load and set up last student for evaludation', id)
+              this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', id)
+            }
           }
         })
     }
