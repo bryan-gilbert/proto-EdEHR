@@ -24,11 +24,12 @@ export default {
   },
   computed: {
     panelInfo() {
-      let ces = this.$store.getters.currentEvaluationStudent || {user:{},activity:{}}
+      let scsd = this.$store.state.ehrData.sCurrentStudentData || {}
+      let sad = this.$store.state.ehrData.sActivityData || {}
       let data = {
-        studentName: ces.user.fullName,
-        courseTitle: ces.activity.context_title,
-        activityTitle: ces.activity.resource_link_title
+        studentName: scsd.studentName,
+        courseTitle: sad.context_title,
+        activityTitle: sad.resource_link_title
       }
       return data
     },
@@ -36,7 +37,7 @@ export default {
       return this.$store.state.sClassList || []
     },
     isInstructor() {
-      return this.$store.getters.isInstructor
+      return this.$store.getters['visit/isInstructor']
     }
   },
   methods: {

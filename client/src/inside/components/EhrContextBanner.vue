@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     isInstructor() {
-      return this.$store.getters.isInstructor
+      return this.$store.getters['visit/isInstructor']
     },
     // currentEvaluationStudentId() {
     //   return this.$store.state.sCurrentEvaluationStudentId

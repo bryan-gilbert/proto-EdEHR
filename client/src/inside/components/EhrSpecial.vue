@@ -5,7 +5,7 @@
     hr
     div(v-show="isInstructor")
       h3 Instructor Data
-      p  Current Student Visit _id: {{ currentEvaluationStudentId }}
+      p  Current Student Visit
       div(:class="`${$options.name}__data`")
         li(class="classList", v-for="studentVisit in classList")
           p Visit._id: {{ studentVisit._id }}
@@ -14,6 +14,12 @@
           p Course: {{ studentVisit.activity.context_title}}
           p Activity: {{ studentVisit.activity.resource_link_title}}
           p Activity Description: {{ studentVisit.activity.resource_link_description}}
+        hr
+        h3 sCurrentStudentData
+        div(:class="`${$options.name}__data`")
+          li(v-for="(value, propertyName) in sCurrentStudentData", v-bind:key="propertyName")
+            strong {{ propertyName }}
+            span : {{ value }}
       hr
     h3 Visit
     div(:class="`${$options.name}__data`")
@@ -33,9 +39,9 @@
         strong {{ propertyName }}
         span : {{ value }}
     hr
-    h3 Activity
+    h3 sActivityData
     div(:class="`${$options.name}__data`")
-      li(v-for="(value, propertyName) in visitInfo.activity", v-bind:key="propertyName")
+      li(v-for="(value, propertyName) in sActivityData", v-bind:key="propertyName")
         strong {{ propertyName }}
         span : {{ value }}
     hr
@@ -72,20 +78,25 @@ export default {
       var act = vi && vi.assignment ? vi.assignment : {}
       return act
     },
-    activity() {
+    sActivityData() {
       var act = this.$store.state.ehrData.sActivityData
       return act
     },
-    currentEvaluationStudentId() {
-      return this.$store.state.instructor.sCurrentEvaluationStudentId
+    sCurrentStudentData() {
+      return this.$store.state.ehrData.sCurrentStudentData
     },
     classList() {
       return this.$store.state.instructor.sClassList || []
     },
+    courses() {
+      return this.$store.state.instructor.sCourse || []
+    },
+    sInstructorReturnUrl() {
+      return this.$store.state.instructor.sInstructorReturnUrl
+    },
     isInstructor() {
-      var vi = this.visitInfo
-      return vi ? vi.isInstructor : false
-    }
+      return this.$store.getters['visit/isInstructor']
+    },
   },
   methods: {
     skipVisitProp(prop) {

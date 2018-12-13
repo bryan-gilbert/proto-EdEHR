@@ -19,12 +19,6 @@ export default {
     StudentAssignmentInfo,
     ActivityHeader
   },
-  // TO DO  test this component after store refactoring
-  // data: function() {
-  //   return {
-  //     activity: { assignment: {} }
-  //   }
-  // },
   computed: {
     activity() {
       return this.$store.state.ehrData.sActivityData

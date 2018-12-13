@@ -99,8 +99,8 @@ const mutations = {
     state.sActivityData = cData
   },
   setEvaluationData: (state, cData) => {
-    console.log('setEvaluationData', cData)
-    state.sActivityData = cData
+    console.log('set sCurrentStudentData', cData)
+    state.sCurrentStudentData = cData
   }
 }
 

@@ -37,15 +37,19 @@ const actions = {
       console.error('ERROR. Can\'t find student in class list. ', currentId)
       return;
     }
+    console.log("What do we have here? ", sv, sv.activity)
     let ad = sv.activityData || {}
+    let sva = sv.assignment
     let evd = {
       studentName: sv.user.fullName,
+      assignmentName: sva.name,
+      assignmentDescription: sva.description,
       lastVisitDate: sv.lastVisitDate,
       evaluationData: (ad.evaluationData || ''),
       assignmentData: (ad.assignmentData || {}),
       mergedData: (ad.mergedData || {} )
     }
-    console.log("What do we have here? ", evd)
+    // console.log("setEvaluationData: ", evd)
     context.commit('ehrData/setEvaluationData', evd, { root: true })
   },
   saveEvaluationNotes (context, payload) {
