@@ -6,7 +6,6 @@
 
 <script>
 import Configuration from './configuration'
-import axios from '../node_modules/axios/dist/axios.min'
 var config = new Configuration(process.env.NODE_ENV)
 
 const DefaultLayout = 'outside'
@@ -21,24 +20,6 @@ export default {
       var params2 = new URLSearchParams(url2.search)
       var restoring = false
       // API return url
-      function loadApiUrl() {
-        return Promise.resolve().then(() => {
-          var apiUrl = params2.get('apiUrl')
-          if (apiUrl) {
-            // console.log('API url provided in query: ', apiUrl)
-          } else {
-            console.log('No API url in query')
-            if (this.$store.state.visit.apiUrl) {
-              apiUrl = this.$store.state.visit.apiUrl
-              console.log('Use API URL from $store', apiUrl)
-            } else {
-              apiUrl = config.getApiUrl()
-              console.log('Use API URL from configuration: ', apiUrl)
-            }
-          }
-          this.$store.commit('visit/apiUrl', apiUrl)
-        })
-      }
       // Visit Id
       function loadVisitId() {
         return new Promise((resolve, reject) => {
@@ -57,8 +38,7 @@ export default {
         })
       }
       const _this = this
-      loadApiUrl
-        .call(this)
+      _this._loadApiUrl(params2)
         .then(() => {
           return loadVisitId()
         })
@@ -82,6 +62,34 @@ export default {
               })
           }
         })
+    },
+    /**
+     * This client expects the API server to provide the url to call
+     * back into the server.  This avoids the need to have client side configuration
+     * that has to be kept in sync with the server side configuration.  It means
+     * this client can be the front end for any backend because there are no connections
+     * other than what is provided by this API Url
+     * @param params2
+     * @return {Promise<void>}
+     * @private
+     */
+    _loadApiUrl(params2) {
+      return Promise.resolve().then(() => {
+        var apiUrl = params2.get('apiUrl')
+        if (apiUrl) {
+          // console.log('API url provided in query: ', apiUrl)
+        } else {
+          console.log('No API url in query')
+          if (this.$store.state.visit.apiUrl) {
+            apiUrl = this.$store.state.visit.apiUrl
+            console.log('Use API URL from $store', apiUrl)
+          } else {
+            apiUrl = config.getApiUrl()
+            console.log('Use API URL from configuration: ', apiUrl)
+          }
+        }
+        this.$store.commit('visit/apiUrl', apiUrl)
+      })
     },
     reloadInstructor: function() {
       console.log('Page load and restore instructor')

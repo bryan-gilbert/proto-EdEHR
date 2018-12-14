@@ -4,7 +4,7 @@
     ui-spinner(:loading="loading")
     ehr-panel-header
       div Demographics
-      div(slot="controls")
+      div(slot="controls", v-show="isStudent")
         button(v-on:click="beginEdit", v-show="notEditing")
           fas-icon(icon="edit")
         button(v-on:click="saveEdit", v-show="!notEditing")
@@ -188,12 +188,6 @@ export default {
     }
   },
   computed: {
-    demographicsssss() {
-      let data = this.$store.getters['ehrData/mergedData'] || {}
-      let asStored = data.demographics || {}
-      let input = JSON.parse(JSON.stringify(asStored))
-      return input
-    },
     isStudent() {
       return this.$store.getters['visit/isStudent']
     }
@@ -238,7 +232,7 @@ export default {
     const _this = this
     window.addEventListener('beforeunload', function(event) {
       let e = event || window.event
-      console.log('beforeunload ...', e)
+      // console.log('beforeunload ...', e)
       if (_this.unsavedData()) {
         // according to specs use preventDefault too.
         e.preventDefault()
@@ -248,7 +242,7 @@ export default {
         // set any value into e.returnValue and it is converted to a string and that makes the prompt appear
         // e.returnValue = null
       }
-      console.log('... beforeunload', e)
+      // console.log('... beforeunload', e)
     })
     this.setupData()
   },
