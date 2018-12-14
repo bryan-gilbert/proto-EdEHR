@@ -5,6 +5,8 @@ const helper = new StoreHelper()
 const state = {
   sInstructorReturnUrl: '/instructor',
   sCurrentEvaluationStudentId: '',
+  sCurrentActivityId: '',
+  sCurrentActivity: {},
   sClassList: [],
   sCourses: []
 }
@@ -70,13 +72,28 @@ const actions = {
       })
     })
   },
-  loadInstructor (context) {
-    // console.log('Loading instructor information. ...')
+  loadActivity (context, activityId) {
+    console.log('Loading activity. ', activityId)
+    context.commit('setCurrentActivityId', activityId)
+    let visitState = context.rootState.visit
+    let apiUrl = visitState.apiUrl
+    let url = `${apiUrl}/activity/get/${activityId}`
+    return new Promise((resolve) => {
+      axios.get(url).then(response => {
+        console.log('load activity', response.data)
+        var activity = response.data['activity']
+        context.commit('setCurrentActivity', activity)
+        resolve(activity)
+      })
+    })
+  },
+  loadCourses (context) {
+    // console.log('In instructor loadCourses')
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
     let userId = visitState.sUserInfo._id
     let url = `${apiUrl}/users/instructor/courses/${userId}`
-    // console.log('In load instructor courses data ', url)
+    // console.log('In instructor loadCourses ', url)
     return new Promise((resolve) => {
       axios.get(url).then(response => {
         // console.log('load courses', response.data)
@@ -110,6 +127,12 @@ const mutations = {
     (EdEHR) Assignment and User
      */
     state.sClassList = list
+  },
+  setCurrentActivityId: (state, id) => {
+    state.sCurrentActivityId = id
+  },
+  setCurrentActivity: (state, activity) => {
+    state.sCurrentActivity = activity
   },
   setCourses: (state, list) => {
     // console.log('set courses', list)

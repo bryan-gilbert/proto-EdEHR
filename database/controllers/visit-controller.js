@@ -17,7 +17,7 @@ export default class VisitController extends BaseController {
   findVisit (id) {
     return this.baseFindOneQuery(id)
     .populate('activity')
-    .populate('activityData')
+    // .populate('activityData')
     .populate('assignment')
     .populate('toolConsumer')
     .populate('user')

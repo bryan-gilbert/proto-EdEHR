@@ -149,7 +149,7 @@ export default {
   data: function() {
     return {
       notEditing: true,
-      demographics: {},
+      // demographics: {},
       cacheAsString: '',
       loading: false,
       genders: [
@@ -190,20 +190,21 @@ export default {
   computed: {
     isStudent() {
       return this.$store.getters['visit/isStudent']
+    },
+    demographics() {
+      let data = this.$store.getters['ehrData/mergedData'] || {}
+      let asStored = data.demographics || {}
+      return JSON.parse(JSON.stringify(asStored))
     }
   },
   methods: {
-    setupData: function() {
-      let data = this.$store.getters['ehrData/mergedData'] || {}
-      let asStored = data.demographics || {}
-      this.demographics = JSON.parse(JSON.stringify(asStored))
-    },
     beginEdit: function() {
       this.notEditing = false
       this.cacheAsString = JSON.stringify(this.demographics)
     },
     cancelEdit: function() {
-      this.setupData()
+      let activityId = localStorage.getItem('activityId')
+      this.$store.dispatch('ehrData/loadActivityData', activityId)
       this.notEditing = true
     },
     saveEdit: function() {
@@ -244,7 +245,6 @@ export default {
       }
       // console.log('... beforeunload', e)
     })
-    this.setupData()
   },
   beforeRouteLeave(to, from, next) {
     if (this.unsavedData() && !window.confirm(LEAVE_PROMPT)) {

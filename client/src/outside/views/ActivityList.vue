@@ -21,7 +21,7 @@ export default {
   },
   computed: {
     activity() {
-      return this.$store.state.ehrData.sActivityData
+      return this.$store.state.instructor.sCurrentActivity
     },
     userInfo() {
       return this.$store.state.visit.sUserInfo
@@ -45,7 +45,8 @@ export default {
     // TO DO move this to a more general location that can serve more than this page
     let activityId = this.$route.params.activityId
     localStorage.setItem('activityId', activityId)
-    this.$store.dispatch('ehrData/loadActivityData', activityId)
+    // this.$store.dispatch('ehrData/loadActivityData', activityId)
+    this.$store.dispatch('instructor/loadActivity', activityId)
     this.$store.dispatch('instructor/loadClassList', activityId)
   }
 }

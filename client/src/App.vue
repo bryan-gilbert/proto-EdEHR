@@ -50,7 +50,7 @@ export default {
           if (isInstructor) {
             console.log('Page load instructor')
             return _this.$store
-              .dispatch('instructor/loadInstructor')
+              .dispatch('instructor/loadCourses')
               .then(() => {
                 console.log('Page load instructor restoring?', restoring)
                 if (restoring) {
@@ -103,8 +103,9 @@ export default {
       let studentId = localStorage.getItem('sCurrentEvaluationStudentId')
       if (activityId) {
         console.log('Page load and restore last activity', activityId)
+        // no need to set localStorage because we are reloading from the value in localStorage
         return this.$store
-          .dispatch('ehrData/loadActivityData', activityId)
+          .dispatch('instructor/loadActivity', activityId)
           .then(() => {
             console.log('Page load and restore class list', activityId)
             return _this.$store.dispatch('instructor/loadClassList', activityId)

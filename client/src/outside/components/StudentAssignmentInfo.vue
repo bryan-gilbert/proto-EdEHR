@@ -67,6 +67,7 @@ export default {
     },
     activityData() {
       var activityData = this.studentVisit.activityData || {}
+      console.log('StudentAssignmentInfo component getting student activityData', activityData)
       return activityData
     },
     hasAssignmentData() {

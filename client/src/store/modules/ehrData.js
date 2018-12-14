@@ -3,6 +3,7 @@ const helper = new StoreHelper()
 
 const state = {
   sActivityData: {},
+  aActivityDataId: '',
   sCurrentStudentData: {}
 }
 
@@ -52,22 +53,22 @@ const getters = {
 }
 
 const actions = {
-  updateActivityData(context, data) {
-    context.commit('setActivityData', data)
-  },
-  loadActivityData(context, activityId) {
+  loadActivityData(context, activityDataId) {
+    // /activity-data
+    console.log('Get activityData  ', activityDataId)
+    context.commit('_setActivityDataId', activityDataId)
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
-    let url = `${apiUrl}/activities/flushed/${activityId}`
+    let url = `${apiUrl}/activity-data/get/${activityDataId}`
     return helper.getRequest(url).then(response => {
-      console.log('Got activity information ') //, response.data)
-      context.commit('setActivityData', response.data)
+      console.log('Got activity information ', response.data.activitydata)
+      context.commit('_setActivityData', response.data.activitydata)
     })
   },
   sendAssignmentDataUpdate(context, payload) {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
-    let activityDataId = context.state.sActivityData._id
+    let activityDataId = context.state.sActivityDataId
     console.log('sendAssignmentDataUpdate activityDataId, apiUrl, property: ', activityDataId, apiUrl, payload.propertyName)
     let url = `${apiUrl}/activity-data/assignment-data/${activityDataId}`
     // Update the contents of the current visit's activityData.assignmentData.
@@ -79,30 +80,33 @@ const actions = {
     return helper.putRequest(url, payload).then(results => {
       let activityData = results.data
       console.log('ehrData commit activityData with new assignmentData', JSON.stringify(activityData.assignmentData))
-      context.commit('setActivityData', activityData)
+      context.commit('_setActivityData', activityData)
       return activityData
     })
   },
   sendScratchData(context, data) {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
-    let activityDataId = context.state.sActivityData._id
+    let activityDataId = context.state.sActivityDataId
     console.log('sendScratchData scratch, apiUrl ', activityDataId, apiUrl)
     let url = `${apiUrl}/activity-data/scratch-data/${activityDataId}`
     return helper.putRequest(url, {value: data}).then(results => {
       let activityData = results.data
       console.log('ehrData commit activityData with new scratchData', JSON.stringify(activityData.scratchData))
-      context.commit('setActivityData', activityData)
+      context.commit('_setActivityData', activityData)
       return activityData
     })
   }
 }
 
 const mutations = {
-  setActivityData: (state, cData) => {
-    // console.log('setActivityData', cData)
-    // console.log('setActivityData\'s assignment', cData.assignment)
+  _setActivityData: (state, cData) => {
+    console.log('_setActivityData', cData)
+    // console.log('_setActivityData\'s assignment', cData.assignment)
     state.sActivityData = cData
+  },
+  _setActivityDataId: (state, id) => {
+    state.sActivityDataId = id
   },
   setEvaluationData: (state, cData) => {
     // console.log('set sCurrentStudentData', cData)
