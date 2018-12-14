@@ -11,7 +11,8 @@ export default class VisitController extends BaseController {
   updateAssignmentData (id, data) {
     var property = data.property
     var value = data.value
-    debug(`ActivityData update ${id} assignmentData[${data.property}] with data`)
+    debug(`ActivityData update ${id} assignmentData[${data.property}] with data:`)
+    debug(JSON.stringify(value))
     return this.baseFindOneQuery(id).then(activityData => {
       if (activityData) {
         if (!activityData.assignmentData) {

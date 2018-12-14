@@ -26,7 +26,7 @@ export default class ActivityController extends BaseController {
             // console.log('adasd',activity)
           }
           debug('updateCreateActivity update activity ' + activity._id)
-          return _this._updateHelper(activity, data, true)
+          return _this._updateHelper(activity, data)
         } else {
           data.toolConsumer = toolConsumerId
           data.assignment = assignment._id
@@ -69,11 +69,11 @@ export default class ActivityController extends BaseController {
       return newActivity
     })
   }
-  _updateHelper (activity, data, forceSave) {
+  _updateHelper (activity, data) {
     let current = JSON.stringify(activity)
     Object.assign(activity, data)
     let updated = JSON.stringify(activity)
-    if (forceSave || current !== updated) {
+    if (current !== updated) {
       debug('updateCreateActivity there is something different in the activity. Saving new activity data ' + updated)
       return activity.save()
     } else {
