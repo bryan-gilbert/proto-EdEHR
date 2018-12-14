@@ -69,7 +69,7 @@ const actions = {
           context.commit('setUserInfo', visitInfo.user)
           // visitInfo.activityData contains the id of the ActivityData record
           console.log('dispatch load active data', visitInfo.activityData)
-          context.dispatch('ehrData/loadActivityData', visitInfo.activityData, {root: true})
+          context.dispatch('ehrData/loadActivityData', {forStudent: true, id: visitInfo.activityData}, {root: true})
           console.log('after dispatch load active data', visitInfo.activityData)
           resolve()
         })

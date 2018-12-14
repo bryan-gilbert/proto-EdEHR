@@ -8,8 +8,6 @@
 </template>
 
 <script>
-import axios from '../../../node_modules/axios/dist/axios.min'
-
 import StudentAssignmentInfo from '../components/StudentAssignmentInfo'
 import ActivityHeader from '../components/ActivityHeader'
 
@@ -45,7 +43,6 @@ export default {
     // TO DO move this to a more general location that can serve more than this page
     let activityId = this.$route.params.activityId
     localStorage.setItem('activityId', activityId)
-    // this.$store.dispatch('ehrData/loadActivityData', activityId)
     this.$store.dispatch('instructor/loadActivity', activityId)
     this.$store.dispatch('instructor/loadClassList', activityId)
   }

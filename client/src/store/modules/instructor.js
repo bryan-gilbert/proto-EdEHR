@@ -38,27 +38,27 @@ const actions = {
         })
       }
       if (!sv) {
-        console.error('ERROR. Can\'t find student in class list. ', currentId)
-        return;
+        console.error('ERROR. Cannot find student in class list. ', currentId)
+        return
       }
       // console.log("What do we have here? ", sv, sv.activity)
-      let ad = sv.activityData || {}
       let sva = sv.assignment
       let evd = {
         studentName: sv.user.fullName,
         assignmentName: sva.name,
-        assignmentDescription: sva.description,
-        lastVisitDate: sv.lastVisitDate,
-        evaluationData: (ad.evaluationData || ''),
-        assignmentData: (ad.assignmentData || {}),
-        mergedData: (ad.mergedData || {})
+        assignmentDescription: sva.description
       }
-      // console.log("setEvaluationData: ", evd)
-      context.commit('ehrData/setEvaluationData', evd, {root: true})
-      resolve(evd)
+      console.log('setEvaluationInfo: ', evd)
+      context.commit('ehrData/setEvaluationInfo', evd, { root: true })
+      // sv.activityData is the id of the activity data record
+      context
+        .dispatch('ehrData/loadActivityData', { forStudent: false, id: sv.activityData }, { root: true })
+        .then(() => {
+          resolve(evd)
+        })
     })
   },
-  saveEvaluationNotes (context, payload) {
+  saveEvaluationNotes(context, payload) {
     let vid = payload.activityDataId
     let body = {
       evaluationData: payload.evalNotes
@@ -72,13 +72,13 @@ const actions = {
       })
     })
   },
-  loadActivity (context, activityId) {
+  loadActivity(context, activityId) {
     console.log('Loading activity. ', activityId)
     context.commit('setCurrentActivityId', activityId)
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
-    let url = `${apiUrl}/activity/get/${activityId}`
-    return new Promise((resolve) => {
+    let url = `${apiUrl}/activities/get/${activityId}`
+    return new Promise(resolve => {
       axios.get(url).then(response => {
         console.log('load activity', response.data)
         var activity = response.data['activity']
@@ -87,14 +87,14 @@ const actions = {
       })
     })
   },
-  loadCourses (context) {
+  loadCourses(context) {
     // console.log('In instructor loadCourses')
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
     let userId = visitState.sUserInfo._id
     let url = `${apiUrl}/users/instructor/courses/${userId}`
     // console.log('In instructor loadCourses ', url)
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       axios.get(url).then(response => {
         // console.log('load courses', response.data)
         var courses = response.data['courses']
@@ -103,10 +103,10 @@ const actions = {
       })
     })
   },
-  loadClassList (context, activityId) {
+  loadClassList(context, activityId) {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       let url = `${apiUrl}/activities/class/${activityId}`
       // console.log('In load instructor activities data ', url)
       axios.get(url).then(response => {
@@ -148,7 +148,6 @@ const mutations = {
     state.sCurrentEvaluationStudentId = id
   }
 }
-
 
 export default {
   namespaced: true,

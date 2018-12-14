@@ -17,6 +17,12 @@
           p Activity: {{ studentVisit.activity.resource_link_title}}
           p Activity Description: {{ studentVisit.activity.resource_link_description}}
         hr
+        h3 sCurrentStudentInfo
+        div(:class="`${$options.name}__data`")
+          li(v-for="(value, propertyName) in sCurrentStudentInfo", v-bind:key="propertyName")
+            strong {{ propertyName }}
+            span : {{ value }}
+        hr
         h3 sCurrentStudentData
         div(:class="`${$options.name}__data`")
           li(v-for="(value, propertyName) in sCurrentStudentData", v-bind:key="propertyName")
@@ -121,6 +127,9 @@ export default {
     },
     sCurrentStudentData() {
       return this.$store.state.ehrData.sCurrentStudentData
+    },
+    sCurrentStudentInfo() {
+      return this.$store.state.ehrData.sCurrentStudentInfo
     },
     classList() {
       return this.$store.state.instructor.sClassList || []

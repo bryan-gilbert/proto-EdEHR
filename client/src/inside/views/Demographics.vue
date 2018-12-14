@@ -204,7 +204,7 @@ export default {
     },
     cancelEdit: function() {
       let activityId = localStorage.getItem('activityId')
-      this.$store.dispatch('ehrData/loadActivityData', activityId)
+      this.$store.dispatch('ehrData/loadActivityData', {forStudent: true, id: activityId})
       this.notEditing = true
     },
     saveEdit: function() {

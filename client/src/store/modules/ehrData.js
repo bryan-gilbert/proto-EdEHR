@@ -4,7 +4,8 @@ const helper = new StoreHelper()
 const state = {
   sActivityData: {},
   aActivityDataId: '',
-  sCurrentStudentData: {}
+  sCurrentStudentData: {},
+  sCurrentStudentInfo: {}
 }
 
 const getters = {
@@ -53,16 +54,29 @@ const getters = {
 }
 
 const actions = {
-  loadActivityData(context, activityDataId) {
+  loadActivityData(context, options) {
     // /activity-data
+    let activityDataId = options.id
     console.log('Get activityData  ', activityDataId)
     context.commit('_setActivityDataId', activityDataId)
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
     let url = `${apiUrl}/activity-data/get/${activityDataId}`
     return helper.getRequest(url).then(response => {
-      console.log('Got activity information ', response.data.activitydata)
-      context.commit('_setActivityData', response.data.activitydata)
+      let ad = response.data.activitydata
+      console.log('Got activity information ', ad)
+      if(options.forStudent) {
+        context.commit('_setActivityData', ad)
+      } else {
+        let evd = {
+          evaluationData: ad.evaluationData || '',
+          assignmentData: ad.assignmentData || {},
+          mergedData: ad.mergedData || {},
+          lastDate: ad.lastDate
+        }
+        console.log('setEvaluationData: ', evd)
+        context.commit('setEvaluationData', evd)
+      }
     })
   },
   sendAssignmentDataUpdate(context, payload) {
@@ -111,6 +125,10 @@ const mutations = {
   setEvaluationData: (state, cData) => {
     // console.log('set sCurrentStudentData', cData)
     state.sCurrentStudentData = cData
+  },
+  setEvaluationInfo: (state, cData) => {
+    // console.log('set setEvaluationInfo', cData)
+    state.sCurrentStudentInfo = cData
   }
 }
 
