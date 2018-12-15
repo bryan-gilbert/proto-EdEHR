@@ -21,8 +21,8 @@
             div(class="dialog-footer-content is-pulled-right")
               ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
                 slot(name="cancel-button") {{ cancelButtonLabel }}
-              div(class="dialog-footer-button-space")
-              ui-button(v-on:buttonClicked="$emit('save')")
+              div(class="dialog-footer-button-space", v-show="useSave")
+              ui-button(v-on:buttonClicked="$emit('save')", v-show="useSave")
                 slot(name="save-button") {{ saveButtonLabel }}
 </template>
 
@@ -39,6 +39,7 @@ export default {
   },
   props: {
     isModal: { type: Boolean, default: false },
+    useSave: { type: Boolean, default: true },
     saveButtonLabel: {
       type: String,
       default: 'Save'
@@ -179,7 +180,8 @@ export default {
   position: absolute;
   overflow: auto;
   z-index: 999;
-  background-color: #fff;
+  background-color: $dialog-wrapper-background-color;
+  color: $dialog-wrapper-color;
   border: solid 10px;
   border-radius: 5px;
   box-sizing: border-box;
