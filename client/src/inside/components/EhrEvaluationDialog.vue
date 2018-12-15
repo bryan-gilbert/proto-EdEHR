@@ -7,8 +7,6 @@
           div(class="input-fieldrow")
             div(class="input-element input-element-full")
               textarea(v-model="theNotes")
-        div
-          p The notes: {{theNotes}}
 </template>
 
 <script>
@@ -26,12 +24,16 @@ export default {
       theNotes: ''
     }
   },
-  computed: {
-  },
+  computed: {},
   methods: {
     loadDialog: function() {
+      /*
+      The containing component needs to invoke this load method when it shows
+      this component/dialog. Here we get the data and store it for use in the form.
+      It is also possible to use this method to restore the data to what is in the db.
+       */
       let edata = this.$store.getters['ehrData/evaluationData']
-      console.log('EhrEvaluationDialog computed eval notes =', edata)
+      // console.log('EhrEvaluationDialog computed eval notes =', edata)
       this.theNotes = edata
     },
     cancelDialog: function() {
@@ -39,12 +41,10 @@ export default {
       this.$emit('canceled')
     },
     saveDialog: function() {
-      console.log('Save the evaluation notes', this.theNotes)
-      this.$store
-        .dispatch('ehrData/sendEvaluationNotes', this.theNotes)
-        .then( () => {
-          this.$emit('saved')
-        })
+      // console.log('Save the evaluation notes', this.theNotes)
+      this.$store.dispatch('ehrData/sendEvaluationNotes', this.theNotes).then(() => {
+        this.$emit('saved')
+      })
     }
   }
 }

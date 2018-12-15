@@ -73,6 +73,11 @@ export default {
     },
     showEvaluationNotes() {
       this.showingEvaluationDialog = true
+      /*
+      The trick is to add a ref attribute to the dialog component. This lets us invoke
+      a method in that component. Here we tell the dialog to load the data from the
+      vuex storage.  This lets the component perpare for a possible cancel/restore.
+       */
       this.$refs.evalDialog.loadDialog()
     }
   }

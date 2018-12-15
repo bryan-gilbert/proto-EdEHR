@@ -3,7 +3,7 @@
     div
       div(:class="modalClass")
 
-      div(:class="['dialog-wrapper', { moused: moused }]", v-resized="onResize", v-bind:style="{ top: top + 'px', left: left + 'px', width: width + 'px', height: height + 'px' }")
+      div(:class="['dialog-wrapper', { moused: moused }]", v-resized="onResize", v-bind:style="{ top: top + 'px', left: left + 'px', width: width + 'px' }")
         div(class="dialog-header columns", v-dragged="onDragged")
           div(class="dialog-header-content column is-10")
             slot(name="header") default header
@@ -27,7 +27,9 @@
 </template>
 
 <script>
-import UiClose from '../ui/UiClose'
+  // div(:class="['dialog-wrapper', { moused: moused }]", v-resized="onResize", v-bind:style="{ top: top + 'px', left: left + 'px', width: width + 'px', height: height + 'px' }")
+
+  import UiClose from '../ui/UiClose'
 import UiButton from '../ui/UiButton'
 export default {
   name: 'AppDialog',
@@ -71,7 +73,7 @@ export default {
       top: 100,
       left: 200,
       width: 900,
-      height: 500,
+      // height: 500,
       resizeDirection: '',
       moused: false
     }
@@ -95,15 +97,15 @@ export default {
       const MIN_HEIGHT = 300
       const vm = this
       function north() {
-        vm.height -= deltaY
-        vm.height = Math.max(MIN_HEIGHT, vm.height)
-        if (vm.height > MIN_HEIGHT) {
-          vm.top += deltaY
-        }
+        // vm.height -= deltaY
+        // vm.height = Math.max(MIN_HEIGHT, vm.height)
+        // if (vm.height > MIN_HEIGHT) {
+        //   vm.top += deltaY
+        // }
       }
       function south() {
-        vm.height += deltaY
-        vm.height = Math.max(MIN_HEIGHT, vm.height)
+        // vm.height += deltaY
+        // vm.height = Math.max(MIN_HEIGHT, vm.height)
       }
       function east() {
         vm.width += deltaX
@@ -189,6 +191,7 @@ export default {
 }
 .dialog-container {
   padding: 20px 30px;
+  overflow: hidden;
 }
 
 .dialog-header {
