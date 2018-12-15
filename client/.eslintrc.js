@@ -5,7 +5,7 @@ module.exports = {
   },
   extends: ['plugin:vue/essential', '@vue/prettier'],
   rules: {
-    'no-console': [ process.env.NODE_ENV === 'production' ? 'warn' : 'off', { allow: ["warn", "error"] }],
+    'no-console': 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     quotes: ['warn', 'single'],
     "space-before-function-paren": ["warn", "never"],
