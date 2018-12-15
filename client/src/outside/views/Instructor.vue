@@ -10,19 +10,11 @@ export default {
   name: 'Instructor',
   components: {
     AsInstructor
-  },
-  computed: {
-    userInfo() {
-      return this.$store.state.sUserInfo
-    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .Instructor {
-  &__main {
-    background-color: #f6fbfe;
-  }
 }
 </style>

@@ -3,7 +3,7 @@
     div
       div(:class="modalClass")
 
-      div(:class="['dialog-wrapper', { moused: moused }]", v-resized="onResize", v-bind:style="{ top: top + 'px', left: left + 'px', width: width + 'px', height: height + 'px' }")
+      div(:class="['dialog-wrapper', { moused: moused }]", v-resized="onResize", v-bind:style="{ top: top + 'px', left: left + 'px', width: width + 'px' }")
         div(class="dialog-header columns", v-dragged="onDragged")
           div(class="dialog-header-content column is-10")
             slot(name="header") default header
@@ -21,13 +21,15 @@
             div(class="dialog-footer-content is-pulled-right")
               ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
                 slot(name="cancel-button") {{ cancelButtonLabel }}
-              div(class="dialog-footer-button-space")
-              ui-button(v-on:buttonClicked="$emit('save')")
+              div(class="dialog-footer-button-space", v-show="useSave")
+              ui-button(v-on:buttonClicked="$emit('save')", v-show="useSave")
                 slot(name="save-button") {{ saveButtonLabel }}
 </template>
 
 <script>
-import UiClose from '../ui/UiClose'
+  // div(:class="['dialog-wrapper', { moused: moused }]", v-resized="onResize", v-bind:style="{ top: top + 'px', left: left + 'px', width: width + 'px', height: height + 'px' }")
+
+  import UiClose from '../ui/UiClose'
 import UiButton from '../ui/UiButton'
 export default {
   name: 'AppDialog',
@@ -37,6 +39,7 @@ export default {
   },
   props: {
     isModal: { type: Boolean, default: false },
+    useSave: { type: Boolean, default: true },
     saveButtonLabel: {
       type: String,
       default: 'Save'
@@ -71,7 +74,7 @@ export default {
       top: 100,
       left: 200,
       width: 900,
-      height: 500,
+      // height: 500,
       resizeDirection: '',
       moused: false
     }
@@ -95,15 +98,15 @@ export default {
       const MIN_HEIGHT = 300
       const vm = this
       function north() {
-        vm.height -= deltaY
-        vm.height = Math.max(MIN_HEIGHT, vm.height)
-        if (vm.height > MIN_HEIGHT) {
-          vm.top += deltaY
-        }
+        // vm.height -= deltaY
+        // vm.height = Math.max(MIN_HEIGHT, vm.height)
+        // if (vm.height > MIN_HEIGHT) {
+        //   vm.top += deltaY
+        // }
       }
       function south() {
-        vm.height += deltaY
-        vm.height = Math.max(MIN_HEIGHT, vm.height)
+        // vm.height += deltaY
+        // vm.height = Math.max(MIN_HEIGHT, vm.height)
       }
       function east() {
         vm.width += deltaX
@@ -177,7 +180,8 @@ export default {
   position: absolute;
   overflow: auto;
   z-index: 999;
-  background-color: #fff;
+  background-color: $dialog-wrapper-background-color;
+  color: $dialog-wrapper-color;
   border: solid 10px;
   border-radius: 5px;
   box-sizing: border-box;
@@ -189,6 +193,7 @@ export default {
 }
 .dialog-container {
   padding: 20px 30px;
+  overflow: hidden;
 }
 
 .dialog-header {

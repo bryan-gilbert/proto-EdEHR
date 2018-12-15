@@ -8,7 +8,7 @@
         div
           div(class="input-fieldrow")
             div(class="input-element input-element-full")
-              textarea(v-model="scratchPad")
+              textarea(v-model="theNotes")
 </template>
 
 <script>
@@ -25,27 +25,27 @@ export default {
     return {
       showingDialog: false,
       populate: true,
-      scratchPad: ''
+      theNotes: ''
     }
   },
   methods: {
-    resetScratch: function() {
+    resetNotes: function() {
       let sp = this.$store.getters['ehrData/scratchData']
-      console.log("EhrScratchPad reset with existing ", sp)
-      this.scratchPad = sp
+      console.log('EhrScratchPad reset with existing ', sp)
+      this.theNotes = sp
     },
     showDialog: function() {
-      this.resetScratch()
+      this.resetNotes()
       this.showingDialog = true
     },    
     cancelDialog: function() {
-      this.resetScratch()
+      this.resetNotes()
       this.showingDialog = false
     },
     saveDialog: function() {
       this.showingDialog = false
-      console.log('Saving Scratch Pad', this.scratchPad)
-      this.$store.dispatch('ehrData/sendScratchData', this.scratchPad)
+      console.log('EhrScratchPad saving ', this.theNotes)
+      this.$store.dispatch('ehrData/sendScratchData', this.theNotes)
     }
   }
 }

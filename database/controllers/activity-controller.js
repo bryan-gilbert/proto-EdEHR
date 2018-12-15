@@ -19,9 +19,11 @@ export default class ActivityController extends BaseController {
       .then((activity) => {
         if (activity) {
           if (!activity.assignment.equals(assignment._id)) {
+            // console.log('was ', activity.assignment, 'seeking', assignment._id)
             var msg = 'Changing assignment for this activity.'
             debug('updateCreateActivity ' + msg)
             activity.assignment = assignment._id
+            // console.log('adasd',activity)
           }
           debug('updateCreateActivity update activity ' + activity._id)
           return _this._updateHelper(activity, data)
@@ -46,7 +48,7 @@ export default class ActivityController extends BaseController {
       .populate('bookids', '-_id -__v')
      */
     return Visit.find({ $and: [ {isStudent: true }, {activity: _id} ] })
-    .populate('activityData')
+    // .populate('activityData')
     .populate('assignment')
     .populate('user')
     .then((visits) => {
@@ -55,7 +57,7 @@ export default class ActivityController extends BaseController {
   }
 
   findActivity (id) {
-    return Activity.findOne({_id: id})
+    return this.baseFindOneQuery(id)
     .populate('assignment')
   }
 

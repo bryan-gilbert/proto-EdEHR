@@ -23,13 +23,6 @@ export default {
     EhrEvaluationPad
   },
   computed: {
-    returnUrl() {
-      if (this.isStudent) {
-        return this.$store.getters['visit/returnUrl']
-      } else {
-        return 'Return to class list'
-      }
-    },
     returnButtonLabel() {
       if (this.isStudent) {
         return 'Return to ' + this.$store.getters['visit/lmsName']
@@ -56,10 +49,10 @@ export default {
     returnToClicked() {
       if (this.isStudent) {
         // hard return to the calling LMS
-        window.location = this.returnUrl
+        window.location = this.$store.getters['visit/returnUrl']
       } else {
         // stay within application and use router push
-        var pathname = this.$store.state.sInstructorReturnUrl
+        var pathname = this.$store.state.instructor.sInstructorReturnUrl
         console.log(
           'As instructor return via router push to retain veux state information',
           pathname

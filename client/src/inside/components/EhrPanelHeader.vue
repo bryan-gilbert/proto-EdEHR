@@ -2,7 +2,7 @@
   div(:class="$options.name")
     div(class="title")
       h1
-        slot(name="pageTitle") Panel Title
+        slot Panel Title
     div(class="controls")
       slot(name="controls")
 </template>

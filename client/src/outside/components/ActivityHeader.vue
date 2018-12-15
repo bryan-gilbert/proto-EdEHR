@@ -8,7 +8,7 @@
       div(class="aValue") {{ activity.resource_link_description }}
     div
       div(class="aName") EHR Assignment:
-      div(class="aValue") {{ activity.assignment.name }}  ( Id for LMS: {{ activity.assignment.externalId }} )
+      div(class="aValue") {{ assignment.name }}  ( Id for LMS: {{ assignment.externalId }} )
     router-view
 </template>
 
@@ -17,6 +17,13 @@ export default {
   name: 'ActivityHeader',
   props: {
     activity: { type: Object }
+  },
+  computed: {
+    assignment() {
+      console.log('What is in activity', this.activity)
+      let a = this.activity.assignment || {}
+      return a
+    }
   }
 }
 </script>

@@ -6,7 +6,6 @@
 
 <script>
 import Configuration from './configuration'
-import axios from '../node_modules/axios/dist/axios.min'
 var config = new Configuration(process.env.NODE_ENV)
 
 const DefaultLayout = 'outside'
@@ -19,31 +18,15 @@ export default {
       // console.log('window.location', window.location)
       var url2 = new URL(window.location)
       var params2 = new URLSearchParams(url2.search)
+      var restoring = false
       // API return url
-      function loadApiUrl() {
-        return Promise.resolve().then(() => {
-          var apiUrl = params2.get('apiUrl')
-          if (apiUrl) {
-            // console.log('API url provided in query: ', apiUrl)
-          } else {
-            console.log('No API url in query')
-            if (this.$store.state.visit.apiUrl) {
-              apiUrl = this.$store.state.visit.apiUrl
-              console.log('Use API URL from $store', apiUrl)
-            } else {
-              apiUrl = config.getApiUrl()
-              console.log('Use API URL from configuration: ', apiUrl)
-            }
-          }
-          this.$store.commit('visit/apiUrl', apiUrl)
-        })
-      }
       // Visit Id
       function loadVisitId() {
         return new Promise((resolve, reject) => {
           var visitId = params2.get('visit')
           if (!visitId) {
-            console.log('No visit id on query so check local storage storage?')
+            // console.log('No visit id on query so check local storage storage?')
+            restoring = true
             visitId = localStorage.getItem('token')
           }
           if (!visitId) {
@@ -55,8 +38,7 @@ export default {
         })
       }
       const _this = this
-      loadApiUrl
-        .call(this)
+      _this._loadApiUrl(params2)
         .then(() => {
           return loadVisitId()
         })
@@ -65,43 +47,82 @@ export default {
         })
         .then(() => {
           let isInstructor = _this.$store.getters['visit/isInstructor']
-          // console.log('here we should have user info', _this.$store.state.visit.sUserInfo.fullName, ' is Instructor: ', isInstructor)
           if (isInstructor) {
-            return _this.loadInstructor()
+            // console.log('Page load instructor')
+            return _this.$store
+              .dispatch('instructor/loadCourses')
+              .then(() => {
+                // console.log('Page load instructor restoring?', restoring)
+                if (restoring) {
+                  _this.reloadInstructor()
+                }
+              })
+              .catch(err => {
+                console.log('ERROR ', err)
+              })
           }
         })
     },
-    loadInstructorCourses: function() {
-      var apiUrl = this.$store.state.visit.apiUrl
-      let userId = this.$store.state.visit.sUserInfo._id
-      // console.log('In load instructor courses data url/id: ' + apiUrl + ' / ' + userId)
-      return new Promise(() => {
-        let url = `${apiUrl}/users/instructor/courses/${userId}`
-        // console.log('In load instructor courses data ', url)
-        axios.get(url).then(response => {
-          // console.log('load courses', response.data)
-          var courses = response.data['courses']
-          this.$store.commit('setCourses', courses)
-        })
+    /**
+     * This client expects the API server to provide the url to call
+     * back into the server.  This avoids the need to have client side configuration
+     * that has to be kept in sync with the server side configuration.  It means
+     * this client can be the front end for any backend because there are no connections
+     * other than what is provided by this API Url
+     * @param params2
+     * @return {Promise<void>}
+     * @private
+     */
+    _loadApiUrl(params2) {
+      return Promise.resolve().then(() => {
+        var apiUrl = params2.get('apiUrl')
+        if (apiUrl) {
+          // console.log('API url provided in query: ', apiUrl)
+        } else {
+          // console.log('No API url in query')
+          if (this.$store.state.visit.apiUrl) {
+            apiUrl = this.$store.state.visit.apiUrl
+            // console.log('Use API URL from $store', apiUrl)
+          } else {
+            apiUrl = config.getApiUrl()
+            // console.log('Use API URL from configuration: ', apiUrl)
+          }
+        }
+        this.$store.commit('visit/apiUrl', apiUrl)
       })
     },
-
-    loadInstructor: function() {
-      console.log('Load instructor. This handles page refreshes')
-      /*
-      The first visit of an instructor they can select any of the courses they have access
-      to. Then they can select an activity (class assignment). Then from the resulting class list
-      they can select a student to evaluate. At each stage the choice needs to be recorded
-      in local storage so that on a page refresh we can restore the state.
-       */
+    reloadInstructor: function() {
+      // console.log('Page load and restore instructor')
+      const _this = this
+      let rUrl = localStorage.getItem('sInstructorReturnUrl')
+      if (rUrl) {
+        // console.log('Page load and restore instructor return url', rUrl)
+        _this.$store.commit('instructor/setInstructorReturnUrl', rUrl)
+      }
+      let activityId = localStorage.getItem('activityId')
+      let studentId = localStorage.getItem('sCurrentEvaluationStudentId')
+      if (activityId) {
+        // console.log('Page load and restore last activity', activityId)
+        // no need to set localStorage because we are reloading from the value in localStorage
+        return this.$store
+          .dispatch('instructor/loadActivity', activityId)
+          .then(() => {
+            // console.log('Page load and restore class list', activityId)
+            return _this.$store.dispatch('instructor/loadClassList', activityId)
+          })
+          .then(() => {
+            // console.log('Page load and restore last student for evaluation', studentId)
+            if (studentId) {
+              return _this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', studentId)
+            }
+          })
+      }
     }
   },
   computed: {
     layout() {
-      // const matched = this.$route
-      const rl = this.$route.meta.layout
-      const l = (rl || DefaultLayout) + '-layout'
-      // console.log('using layout ', rl, l)
+      const l = (this.$route.meta.layout || DefaultLayout) + '-layout'
+      // console.log('using layout ', l)
       return l
     },
     userInfo() {

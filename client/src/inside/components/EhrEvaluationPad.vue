@@ -1,14 +1,15 @@
 <template lang="pug">
   div(:class="$options.name")
     div(:class="`${$options.name}__bottom`")
-      ui-button(v-on:buttonClicked="showDialog", :class="`${$options.name}__button`") Evaluation
+      ui-button(v-on:buttonClicked="showDialog", :class="`${$options.name}__button`")
+        fas-icon(icon="notes-medical")
     app-dialog( v-if="showingDialog", :isModal="false", @cancel="cancelDialog", @save="saveDialog")
       h3(slot="header") Evaluation [ ToDo  put student's name here ]
       div(slot="body")
         div
           div(class="input-fieldrow")
             div(class="input-element input-element-full")
-              textarea(v-model="scratchPad")
+              textarea(v-model="theNotes")
 </template>
 
 <script>
@@ -23,27 +24,29 @@ export default {
   },
   data: function() {
     return {
-      showingDialog: false,
+      showingDialog: true,
       populate: true,
-      scratchPad: ''
+      theNotes: ''
     }
   },
   methods: {
-    clearInputs: function() {
-      this.scratchPad = ''
+    resetNotes: function() {
+      let sp = this.$store.getters['ehrData/evaluationData']
+      console.log('EhrEvaluationPad reset with existing ', sp)
+      this.theNotes = sp
     },
     showDialog: function() {
-      this.clearInputs()
+      this.resetNotes()
       this.showingDialog = true
-    },    
+    },
     cancelDialog: function() {
-      this.clearInputs()
+      this.resetNotes()
       this.showingDialog = false
     },
     saveDialog: function() {
       this.showingDialog = false
-      console.log('Saving Scratch Pad', this.scratchPad)
-      // this.$store.dispatch('addPNotes', { note: this.inputs })
+      console.log('EhrEvaluationPad saving ', this.theNotes)
+      this.$store.dispatch('ehrData/sendScratchData', this.theNotes)
     }
   }
 }
@@ -53,13 +56,5 @@ export default {
 @import '../../scss/settings/forms';
 
 .EhrEvaluationPad {
-  margin-top: auto;
-  margin-bottom: 30px;
-  &__bottom {
-    padding: 15px;
-  }
-  &__button {
-    width: 100%;
-  }
 }
 </style>

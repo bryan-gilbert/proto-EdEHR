@@ -8,82 +8,42 @@
 </template>
 
 <script>
-import axios from '../../../node_modules/axios/dist/axios.min'
-
 import StudentAssignmentInfo from '../components/StudentAssignmentInfo'
 import ActivityHeader from '../components/ActivityHeader'
 
 export default {
-  name: 'ClassList',
+  name: 'ActivityList',
   components: {
     StudentAssignmentInfo,
     ActivityHeader
   },
-  // TO DO  test this component after store refactoring
-  // data: function() {
-  //   return {
-  //     activity: { assignment: {} }
-  //   }
-  // },
   computed: {
     activity() {
-      return this.$store.state.ehrData.sActivityData
-    },
-    userInfo() {
-      return this.$store.state.sUserInfo
+      return this.$store.state.instructor.sCurrentActivity
     },
     visitInfo() {
-      return this.$store.state.sVisitInfo
+      return this.$store.state.visit.sVisitInfo
     },
     classList() {
-      return this.$store.state.sClassList || []
-    },
-    courses() {
-      return this.$store.state.sCourses
+      return this.$store.state.instructor.sClassList || []
     }
   },
   methods: {
     asString: function(obj) {
       return JSON.stringify(obj)
-    },
-    // loadActivityData: function() {
-    //   var apiUrl = this.$store.state.visit.apiUrl
-    //   let activityId = this.$route.params.activityId
-    //   return new Promise(() => {
-    //     let url = `${apiUrl}/activities/flushed/${activityId}`
-    //     axios.get(url).then(response => {
-    //       // console.log('Got activity information ', response.data)
-    //       this.activity = response.data
-    //     })
-    //   })
-    // },
-    loadClassList: function() {
-      var apiUrl = this.$store.state.visit.apiUrl
-      let activityId = this.$route.params.activityId
-      return new Promise(() => {
-        let url = `${apiUrl}/activities/class/${activityId}`
-        // console.log('In load instructor activities data ', url)
-        axios.get(url).then(response => {
-          // console.log('load activities', response.data)
-          var classList = response.data['classList']
-          this.$store.commit('setClassList', classList)
-        })
-      })
     }
   },
   created: function() {
+    // TODO move this to a location that centralizes API like calls.Note this is replicated, almost, in App.vue
     let activityId = this.$route.params.activityId
-    this.$store.dispatch('ehrData/loadActivityData', activityId)
-    // this.loadActivityData()
-    this.loadClassList()
+    localStorage.setItem('activityId', activityId)
+    this.$store.dispatch('instructor/loadActivity', activityId)
+    this.$store.dispatch('instructor/loadClassList', activityId)
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.Instructor {
-  &__main {
-    background-color: #f6fbfe;
-  }
+.ActivityList {
 }
 </style>

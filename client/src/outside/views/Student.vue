@@ -27,7 +27,7 @@ export default {
     },
     activity() {
       // return this.$store.state.sActivityInfo
-      // console.log('TO DO ... get activity data here')
+      // console.log('TODO ... get activity data here')
       return {}
     }
   }

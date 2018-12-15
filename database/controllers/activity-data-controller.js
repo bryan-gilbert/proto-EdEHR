@@ -11,7 +11,8 @@ export default class VisitController extends BaseController {
   updateAssignmentData (id, data) {
     var property = data.property
     var value = data.value
-    debug(`ActivityData update ${id} assignmentData[${data.property}] with data`)
+    debug(`ActivityData update ${id} assignmentData[${data.property}] with data:`)
+    debug(JSON.stringify(value))
     return this.baseFindOneQuery(id).then(activityData => {
       if (activityData) {
         if (!activityData.assignmentData) {
@@ -36,9 +37,13 @@ export default class VisitController extends BaseController {
     })
   }
   updateEvaluationData (id, data) {
+    debug(`ActivityData update ${id} evaluationData [${JSON.stringify(data)}]`)
+    var value = data.value
     return this.baseFindOneQuery(id).then(activityData => {
       if (activityData) {
-        activityData.evaluationData = data.evaluationData
+        // only set the last date when the student is updating the record
+        // activityData.lastDate = Date.now()
+        activityData.evaluationData = value
         return activityData.save()
       }
     })

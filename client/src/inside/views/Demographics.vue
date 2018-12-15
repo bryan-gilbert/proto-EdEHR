@@ -3,8 +3,8 @@
   div(:class="$options.name")
     ui-spinner(:loading="loading")
     ehr-panel-header
-      div(slot="pageTitle") Demographics
-      div(slot="controls")
+      div Demographics
+      div(slot="controls", v-show="isStudent")
         button(v-on:click="beginEdit", v-show="notEditing")
           fas-icon(icon="edit")
         button(v-on:click="saveEdit", v-show="!notEditing")
@@ -149,7 +149,7 @@ export default {
   data: function() {
     return {
       notEditing: true,
-      demographics: {},
+      // demographics: {},
       cacheAsString: '',
       loading: false,
       genders: [
@@ -188,28 +188,23 @@ export default {
     }
   },
   computed: {
-    demographicsssss() {
-      let data = this.$store.getters['ehrData/mergedData'] || {}
-      let asStored = data.demographics || {}
-      let input = JSON.parse(JSON.stringify(asStored))
-      return input
-    },
     isStudent() {
       return this.$store.getters['visit/isStudent']
+    },
+    demographics() {
+      let data = this.$store.getters['ehrData/mergedData'] || {}
+      let asStored = data.demographics || {}
+      return JSON.parse(JSON.stringify(asStored))
     }
   },
   methods: {
-    setupData: function() {
-      let data = this.$store.getters['ehrData/mergedData'] || {}
-      let asStored = data.demographics || {}
-      this.demographics = JSON.parse(JSON.stringify(asStored))
-    },
     beginEdit: function() {
       this.notEditing = false
       this.cacheAsString = JSON.stringify(this.demographics)
     },
     cancelEdit: function() {
-      this.setupData()
+      let activityId = localStorage.getItem('activityId')
+      this.$store.dispatch('ehrData/loadActivityData', {forStudent: true, id: activityId})
       this.notEditing = true
     },
     saveEdit: function() {
@@ -238,7 +233,7 @@ export default {
     const _this = this
     window.addEventListener('beforeunload', function(event) {
       let e = event || window.event
-      console.log('beforeunload ...', e)
+      // console.log('beforeunload ...', e)
       if (_this.unsavedData()) {
         // according to specs use preventDefault too.
         e.preventDefault()
@@ -248,9 +243,8 @@ export default {
         // set any value into e.returnValue and it is converted to a string and that makes the prompt appear
         // e.returnValue = null
       }
-      console.log('... beforeunload', e)
+      // console.log('... beforeunload', e)
     })
-    this.setupData()
   },
   beforeRouteLeave(to, from, next) {
     if (this.unsavedData() && !window.confirm(LEAVE_PROMPT)) {

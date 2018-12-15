@@ -7,22 +7,28 @@ import Outside from './outside/layout/LayoutOutside.vue'
 import Inside from './inside/layout/LayoutEhr.vue'
 import dragDirective from './drag-directive'
 import resizeDirective from './resize-directive'
-import VTooltip from 'v-tooltip'
 import './scss/styles.scss'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheckCircle, faTimesCircle, faEdit, faClock, faInfo } from '@fortawesome/free-solid-svg-icons'
-// import { faClock } from '@fortawesome/free-regular-svg-icons'
+import {
+  faCheckCircle,
+  faTimesCircle,
+  faEdit,
+  faClock,
+  faInfoCircle,
+  faArrowRight,
+  faArrowLeft,
+  faNotesMedical
+} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(faCheckCircle, faTimesCircle, faEdit)
-library.add(faClock, faInfo)
-
+library.add(faClock, faInfoCircle, faArrowRight, faArrowLeft, faNotesMedical)
 Vue.component('fas-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
-
-Vue.use(VTooltip)
+Vue.use(require('vue-moment'))
+Vue.use(require('v-tooltip'))
 
 Vue.component('outside-layout', Outside)
 Vue.component('inside-layout', Inside)

@@ -9,7 +9,6 @@ const Schema = new mongoose.Schema({
   fullName: { type: String },
   emailPrimary: {type: String},
   ltiData: [ { type: String } ],
-  currentVisit: {type: mongoose.Schema.Types.ObjectId, ref: 'Visit'},
   asStudentVisits: [{type: mongoose.Schema.Types.ObjectId, ref: 'Visit'}],
   asInstructorVisits: [{type: mongoose.Schema.Types.ObjectId, ref: 'Visit'}],
   createDate: {type: Date, default: Date.now}

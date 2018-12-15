@@ -17,24 +17,15 @@
       div(class="inner")
         div
           div(class="aName") LMS Student Id:
-          div(class="aValue") {{ studentInfo.user_id }} {{url}}
+          div(class="aValue") {{ studentInfo.user_id }}
         div
           div(class="aName") Email
           div(class="aValue") {{ studentInfo.emailPrimary }}
         div
           div(class="aName") Last visit:
           div(class="aValue") {{ studentVisit.lastVisitDate }}
-        div
-          div(class="aName") route:
-          div(class="aValue") {{ studentVisit.assignment.ehrRouteName }}
       div(class="evaluation")
         evaluation-note(:studentVisitId="studentVisit._id")
-    h3 studentVisit
-    div(:class="`${$options.name}__data`")
-      li(v-for="(value, propertyName) in studentVisit", v-bind:key="propertyName")
-        strong {{ propertyName }}
-        span : {{ value }}
-
 </template>
 <script>
 import accordion from '../../app/components/accordion'
@@ -42,7 +33,14 @@ import EvaluationNote from './EvaluationNote'
 import UiButton from '../../app/ui/UiButton.vue'
 // div
 // pre {{ asString(activityData.assignmentData)}}
+/*
+    h3 studentVisit
+    div(:class="`${$options.name}__data`")
+      li(v-for="(value, propertyName) in studentVisit", v-bind:key="propertyName")
+        strong {{ propertyName }}
+        span : {{ value }}
 
+ */
 export default {
   name: 'StudentAssignmentInfo',
   components: {
@@ -69,6 +67,7 @@ export default {
     },
     activityData() {
       var activityData = this.studentVisit.activityData || {}
+      console.log('StudentAssignmentInfo component getting student activityData', activityData)
       return activityData
     },
     hasAssignmentData() {
@@ -90,11 +89,11 @@ export default {
     },
     goToEhr() {
       console.log('Store the pathname for the instructor to return here ', window.location.pathname)
-      this.$store.commit('setInstructorReturnUrl', window.location.pathname)
+      this.$store.commit('instructor/setInstructorReturnUrl', window.location.pathname)
       var studentId = this.studentVisit._id
       var name = this.studentVisit.assignment.ehrRoutePath
       console.log('Store the current student id that is being evaluated ', studentId)
-      this.$store.commit('setCurrentEvaluationStudentId', studentId)
+      this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', studentId)
       console.log("go to ehr with ", name)
       this.$router.push(name)
     }

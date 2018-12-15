@@ -20,34 +20,13 @@ export default {
   },
   computed: {
     courses() {
-      return this.$store.state.sCourses
+      return this.$store.state.instructor.sCourses
     }
   },
   methods: {
     asString: function(obj) {
       return JSON.stringify(obj)
-    },
-    loadData: function() {
-      // var apiUrl = this.$store.state.visit.apiUrl
-      // let userId = this.$store.state.sUserInfo._id
-      // // console.log('In load instructor courses data url/id: ' + apiUrl + ' / ' + userId)
-      // return new Promise(() => {
-      //   let url = `${apiUrl}/users/instructor/courses/${userId}`
-      //   // console.log('In load instructor courses data ', url)
-      //   axios.get(url).then(response => {
-      //     // console.log('load courses', response.data)
-      //     var courses = response.data['courses']
-      //     this.$store.commit('setCourses', courses)
-      //   })
-      // })
     }
-  },
-  mounted: function() {
-    var vm = this
-    this.$nextTick(function() {
-      // give the main component time to load the user and visit information
-      vm.loadData()
-    })
   }
 }
 </script>

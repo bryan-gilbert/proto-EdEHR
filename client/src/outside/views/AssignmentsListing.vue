@@ -68,7 +68,7 @@ export default {
       return this.$store.state.sVisitInfo
     },
     activity() {
-      var act = this.$store.state.visit.sCurrentActivity
+      var act = this.$store.state.ehrData.sActivityData
       return act
     },
     returnUrl() {

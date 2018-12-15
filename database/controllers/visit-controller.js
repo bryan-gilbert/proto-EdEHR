@@ -17,7 +17,6 @@ export default class VisitController extends BaseController {
   findVisit (id) {
     return this.baseFindOneQuery(id)
     .populate('activity')
-    .populate('activityData')
     .populate('assignment')
     .populate('toolConsumer')
     .populate('user')
@@ -45,13 +44,6 @@ export default class VisitController extends BaseController {
         // update the return URL for this visit in case it has changed
         visit.returnUrl = ltiData.launch_presentation_return_url
         return visit.save()
-        .then(() => {
-          if (user.currentVisit !== visit._id) {
-            user.currentVisit = visit._id
-            debugvc('updateVisit user ' + user._id + ' visit is changing to ' + activity.resource_link_title)
-            return user.save()
-          }
-        })
       } else {
         debugvc('Create a new visit record')
         let data = {
@@ -83,7 +75,6 @@ export default class VisitController extends BaseController {
         .then((visit) => {
           // return the updated visit
           theVisit = visit
-          user.currentVisit = visit._id
           if (role.isInstructor) {
             debugvc('Push visit record into user as instructor visit')
             user.asInstructorVisits.push(visit)
