@@ -7,7 +7,7 @@ export default class StoreHelper {
       axios
         .put(url, bodyData)
         .then(results => {
-          console.log('success storeHelper putRequest')
+          // console.log('success storeHelper putRequest')
           resolve(results)
         })
         .catch(error => {
@@ -18,12 +18,12 @@ export default class StoreHelper {
     })
   }
   getRequest(url) {
-    console.log('GET to this url', url)
+    // console.log('GET to this url', url)
     return new Promise((resolve, reject) => {
       axios
         .get(url)
         .then(results => {
-          console.log('success storeHelper getRequest')
+          // console.log('success storeHelper getRequest')
           resolve(results)
         })
         .catch(error => {

@@ -39,11 +39,11 @@ const getters = {
 
 const actions = {
   loadVisitInfo(context, visitId) {
-    console.log('loadVisitInfo')
+    // console.log('loadVisitInfo')
     return new Promise((resolve, reject) => {
       var apiUrl = context.state.apiUrl
       let url = apiUrl + '/visits/flushed/' + visitId
-      console.log('In load page ', url)
+      // console.log('In load page ', url)
       function invalid(msg) {
         console.log('ERROR', msg)
         reject(new Error(msg))
@@ -51,7 +51,7 @@ const actions = {
       axios
         .get(url)
         .then(response => {
-          console.log('what is the response? ', response.data)
+          // console.log('what is the response? ', response.data)
           let visitInfo = response.data
           if (!visitInfo) {
             return invalid('ERROR No visit information for ' + visitId)
@@ -68,9 +68,9 @@ const actions = {
           context.commit('setVisitInfo', visitInfo)
           context.commit('setUserInfo', visitInfo.user)
           // visitInfo.activityData contains the id of the ActivityData record
-          console.log('dispatch load active data', visitInfo.activityData)
+          // console.log('dispatch load active data', visitInfo.activityData)
           context.dispatch('ehrData/loadActivityData', {forStudent: true, id: visitInfo.activityData}, {root: true})
-          console.log('after dispatch load active data', visitInfo.activityData)
+          // console.log('after dispatch load active data', visitInfo.activityData)
           resolve()
         })
         .catch(error => {

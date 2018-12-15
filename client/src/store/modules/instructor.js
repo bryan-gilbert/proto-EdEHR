@@ -30,7 +30,7 @@ const actions = {
       // TODO store the id in localstorage to support page refresh
       context.commit('setCurrentEvaluationStudentId', currentId)
       var classList = context.state.sClassList
-      console.log('changeCurrentEvaluationStudentId', currentId, ' classList: ', classList)
+      // console.log('changeCurrentEvaluationStudentId', currentId, ' classList: ', classList)
       var sv // a student's visit information
       if (currentId && classList) {
         sv = classList.find(elem => {
@@ -48,7 +48,7 @@ const actions = {
         assignmentName: sva.name,
         assignmentDescription: sva.description
       }
-      console.log('setEvaluationInfo: ', evd)
+      // console.log('setEvaluationInfo: ', evd)
       context.commit('ehrData/setEvaluationInfo', evd, { root: true })
       // sv.activityData is the id of the activity data record
       context
@@ -73,14 +73,14 @@ const actions = {
     })
   },
   loadActivity(context, activityId) {
-    console.log('Loading activity. ', activityId)
+    // console.log('Loading activity. ', activityId)
     context.commit('setCurrentActivityId', activityId)
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
     let url = `${apiUrl}/activities/get/${activityId}`
     return new Promise(resolve => {
       axios.get(url).then(response => {
-        console.log('load activity', response.data)
+        // console.log('load activity', response.data)
         var activity = response.data['activity']
         context.commit('setCurrentActivity', activity)
         resolve(activity)

@@ -11,13 +11,20 @@
         div(class="row textField") Evaluating: {{ panelInfo.studentName }}
         div(class="row textField") Last visit: {{ panelInfo.lastVisitDate | moment("YYYY-MM-DD h:mm a") }}
       div(:class="`${$options.name}__controls column`")
-        ui-button(v-on:buttonClicked="previousStudent", :class="`${$options.name}__navItem`")
-          fas-icon(icon="arrow-left")
-        ui-button(v-on:buttonClicked="nextStudent", :class="`${$options.name}__navItem`")
-          fas-icon(icon="arrow-right")
-        ui-button(v-on:buttonClicked="showEvaluationNotes", :class="`${$options.name}__navItem`")
-          fas-icon(icon="notes-medical")
-        ehr-evaluation-dialog(ref="evalDialog", v-show="showingEvaluationDialog", @canceled="canceled", @saved="saved")
+        div(class="row")
+          ui-button(v-on:buttonClicked="previousStudent", :class="`${$options.name}__navItem`", :disabled="!enablePrev")
+            fas-icon(icon="arrow-left")
+          ui-button(v-on:buttonClicked="nextStudent", :class="`${$options.name}__navItem`", :disabled="!enableNext")
+            fas-icon(icon="arrow-right")
+          ui-button(v-on:buttonClicked="showEvaluationNotes", :class="`${$options.name}__navItem`")
+            fas-icon(icon="notes-medical")
+          ehr-evaluation-dialog(ref="evalDialog", v-show="showingEvaluationDialog", @canceled="canceled", @saved="saved")
+        div(class="row")
+          div(class="indicator")
+            div(class="indicator-label") A:
+            div(class="indicator-shape indicate-assignment-data", :class="hasAssignmentData") &nbsp;
+            div(class="indicator-label") E:
+            div(class="indicator-shape indicate-evaluation-notes", :class="hasEvaluationNotes") &nbsp;
 </template>
 
 <script>
@@ -35,13 +42,25 @@ export default {
       showingEvaluationDialog: false
     }
   },
-  /*
-        div(class="classList", v-for="studentVisit in classList")
-    classList() {
-      return this.$store.state.instructor.sClassList || []
-    },
-*/
   computed: {
+    enablePrev() {
+      var list = this.$store.state.instructor.sClassList || []
+      var id = this.$store.state.instructor.sCurrentEvaluationStudentId
+      var indx = list.findIndex(function(elem) {
+        return elem._id === id
+      })
+      // console.log('EhrClassListNav enablePrev', id, indx, list)
+      return indx > 0
+    },
+    enableNext() {
+      var list = this.$store.state.instructor.sClassList || []
+      var id = this.$store.state.instructor.sCurrentEvaluationStudentId
+      var indx = list.findIndex(function(elem) {
+        return elem._id === id
+      })
+      // console.log('EhrClassListNav enableNext', id, indx, list)
+      return indx < list.length  - 1
+    },
     panelInfo() {
       let evalInfo = this.$store.state.ehrData.sCurrentStudentInfo || {}
       let evalData = this.$store.state.ehrData.sCurrentStudentData || {}
@@ -52,6 +71,7 @@ export default {
         activityTitle: activity.resource_link_title,
         activityDescription: activity.resource_link_description,
         lastVisitDate: evalData.lastDate || {},
+        assignmentData: evalData.assignmentData,
         assignmentName: evalInfo.assignmentName,
         assignmentDescription: evalInfo.assignmentDescription
       }
@@ -62,7 +82,15 @@ export default {
     },
     isInstructor() {
       return this.$store.getters['visit/isInstructor']
+    },
+    hasAssignmentData() {
+      return this.panelInfo.assignmentData ? 'has-assignment-data' : ''
+    },
+    hasEvaluationNotes() {
+      let edata = this.$store.getters['ehrData/evaluationData']
+      return edata && edata.trim().length > 0 ? 'has-evaluation-notes' : ''
     }
+
   },
   methods: {
     canceled() {
@@ -72,10 +100,32 @@ export default {
       this.showingEvaluationDialog = false
     },
     previousStudent() {
-      console.log('previous pressed')
+      // console.log('previous pressed')
+      var list = this.$store.state.instructor.sClassList || []
+      var id = this.$store.state.instructor.sCurrentEvaluationStudentId
+      var indx = list.findIndex(function(elem) {
+        return elem._id === id
+      })
+      if (indx > 0) {
+        let s = list[indx-1]
+        let pid = s._id
+        // console.log('EhrClassListNav go to prev', pid)
+        this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', pid)
+      }
     },
     nextStudent() {
-      console.log('next pressed')
+      // console.log('next pressed')
+      var list = this.$store.state.instructor.sClassList || []
+      var id = this.$store.state.instructor.sCurrentEvaluationStudentId
+      var indx = list.findIndex(function(elem) {
+        return elem._id === id
+      })
+      if (indx < list.length  - 1) {
+        let s = list[indx+1]
+        let pid = s._id
+        // console.log('EhrClassListNav go to next', pid)
+        this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', pid)
+      }
     },
     showEvaluationNotes() {
       this.showingEvaluationDialog = true
@@ -119,5 +169,35 @@ export default {
       }
     }
   }
+
+  $indicatorColor: #006400;
+  .indicator {
+    display: flex;
+    flex-direction: row;
+  }
+  .indicator-label {
+    flex: 0 1 auto;
+    margin-right: 5px;
+  }
+  .indicator-shape {
+    flex: 0 0 20px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #222;
+    margin-top: 10px;
+  }
+  .indicate-assignment-data {
+    // square
+  }
+  .indicate-evaluation-notes {
+    border-radius: 50%; // circle
+  }
+  .has-assignment-data {
+    background: $indicatorColor;
+  }
+  .has-evaluation-notes {
+    background: $indicatorColor;
+  }
+
 }
 </style>

@@ -57,14 +57,14 @@ const actions = {
   loadActivityData(context, options) {
     // /activity-data
     let activityDataId = options.id
-    console.log('Get activityData  ', activityDataId)
-    context.commit('_setActivityDataId', activityDataId)
+    // console.log('Get activityData  ', activityDataId)
+    // context.commit('_setActivityDataId', activityDataId)
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
     let url = `${apiUrl}/activity-data/get/${activityDataId}`
     return helper.getRequest(url).then(response => {
       let ad = response.data.activitydata
-      console.log('Got activity information ', ad)
+      // console.log('Got activity information ', ad)
       if(options.forStudent) {
         context.commit('_setActivityData', ad)
       } else {
@@ -74,7 +74,7 @@ const actions = {
           mergedData: ad.mergedData || {},
           lastDate: ad.lastDate
         }
-        console.log('setEvaluationData: ', evd)
+        // console.log('setEvaluationData: ', evd)
         context.commit('setEvaluationData', evd)
       }
     })
@@ -128,7 +128,7 @@ const actions = {
 
 const mutations = {
   _setActivityData: (state, cData) => {
-    console.log('_setActivityData', cData)
+    // console.log('_setActivityData', cData)
     // console.log('_setActivityData\'s assignment', cData.assignment)
     state.sActivityData = cData
   },
