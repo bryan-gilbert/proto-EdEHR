@@ -68,14 +68,7 @@ const actions = {
       if(options.forStudent) {
         context.commit('_setActivityData', ad)
       } else {
-        let evd = {
-          evaluationData: ad.evaluationData || '',
-          assignmentData: ad.assignmentData || {},
-          mergedData: ad.mergedData || {},
-          lastDate: ad.lastDate
-        }
-        // console.log('setEvaluationData: ', evd)
-        context.commit('setEvaluationData', evd)
+        context.commit('_setCurrentStudentData', ad)
       }
     })
   },
@@ -102,11 +95,11 @@ const actions = {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
     let activityDataId = context.state.sActivityDataId
-    console.log('sendScratchData scratch, apiUrl ', activityDataId, apiUrl)
+    // console.log('sendScratchData scratch, apiUrl ', activityDataId, apiUrl)
     let url = `${apiUrl}/activity-data/scratch-data/${activityDataId}`
     return helper.putRequest(url, {value: data}).then(results => {
       let activityData = results.data
-      console.log('ehrData commit activityData with new scratchData', JSON.stringify(activityData.scratchData))
+      // console.log('ehrData commit activityData with new scratchData', JSON.stringify(activityData.scratchData))
       context.commit('_setActivityData', activityData)
       return activityData
     })
@@ -114,13 +107,13 @@ const actions = {
   sendEvaluationNotes(context, data) {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
-    let activityDataId = context.state.sActivityDataId
-    console.log('sendScratchData evaluation notes, apiUrl ', activityDataId, apiUrl)
+    let activityDataId = context.state.sCurrentStudentData.activityDataId
+    // console.log('sendEvaluationNotes activityDataId, apiUrl, data ', activityDataId, apiUrl, JSON.stringify(data))
     let url = `${apiUrl}/activity-data/evaluation-data/${activityDataId}`
     return helper.putRequest(url, {value: data}).then(results => {
       let activityData = results.data
-      console.log('ehrData commit activityData with new evaluation data', JSON.stringify(activityData.scratchData))
-      context.commit('_setActivityData', activityData)
+      console.log('ehrData update current student data with new evaluation data', JSON.stringify(activityData))
+      context.commit('_setCurrentStudentData', activityData)
       return activityData
     })
   }
@@ -135,12 +128,19 @@ const mutations = {
   _setActivityDataId: (state, id) => {
     state.sActivityDataId = id
   },
-  setEvaluationData: (state, cData) => {
-    // console.log('set sCurrentStudentData', cData)
-    state.sCurrentStudentData = cData
+  _setCurrentStudentData: (state, activitydata) => {
+    let _sCurrentStudentData = {
+      activityDataId: activitydata._id,
+      evaluationData: activitydata.evaluationData || '',
+      assignmentData: activitydata.assignmentData || {},
+      mergedData: activitydata.mergedData || {},
+      lastDate: activitydata.lastDate
+    }
+    // console.log('set sCurrentStudentData', _sCurrentStudentData)
+    state.sCurrentStudentData = _sCurrentStudentData
   },
-  setEvaluationInfo: (state, cData) => {
-    // console.log('set setEvaluationInfo', cData)
+  setCurrentStudentInfo: (state, cData) => {
+    // console.log('set setCurrentStudentInfo', cData)
     state.sCurrentStudentInfo = cData
   }
 }

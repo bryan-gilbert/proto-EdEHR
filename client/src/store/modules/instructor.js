@@ -43,18 +43,18 @@ const actions = {
       }
       // console.log("What do we have here? ", sv, sv.activity)
       let sva = sv.assignment
-      let evd = {
+      let currentStudentInfo = {
         studentName: sv.user.fullName,
         assignmentName: sva.name,
         assignmentDescription: sva.description
       }
-      // console.log('setEvaluationInfo: ', evd)
-      context.commit('ehrData/setEvaluationInfo', evd, { root: true })
+      // console.log('setCurrentStudentInfo: ', currentStudentInfo)
+      context.commit('ehrData/setCurrentStudentInfo', currentStudentInfo, { root: true })
       // sv.activityData is the id of the activity data record
       context
         .dispatch('ehrData/loadActivityData', { forStudent: false, id: sv.activityData }, { root: true })
         .then(() => {
-          resolve(evd)
+          resolve(currentStudentInfo)
         })
     })
   },

@@ -12,9 +12,9 @@
         div(class="row textField") Last visit: {{ panelInfo.lastVisitDate | moment("YYYY-MM-DD h:mm a") }}
       div(:class="`${$options.name}__controls column`")
         div(class="row")
-          ui-button(v-on:buttonClicked="previousStudent", :class="`${$options.name}__navItem`", :disabled="!enablePrev")
+          ui-button(v-on:buttonClicked="previousStudent", :class="`${$options.name}__navItem`", :disabled="!enablePrev || showingEvaluationDialog")
             fas-icon(icon="arrow-left")
-          ui-button(v-on:buttonClicked="nextStudent", :class="`${$options.name}__navItem`", :disabled="!enableNext")
+          ui-button(v-on:buttonClicked="nextStudent", :class="`${$options.name}__navItem`", :disabled="!enableNext || showingEvaluationDialog")
             fas-icon(icon="arrow-right")
           ui-button(v-on:buttonClicked="showEvaluationNotes", :class="`${$options.name}__navItem`")
             fas-icon(icon="notes-medical")
