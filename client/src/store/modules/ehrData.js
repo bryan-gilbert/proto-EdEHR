@@ -2,10 +2,17 @@ import StoreHelper from './storeHelper'
 const helper = new StoreHelper()
 
 const state = {
+  /*
+  sActivityData is a db model object containing the student's assignment work, scratch pad, instructors evaluation notes, etc
+   */
   sActivityData: {},
-  aActivityDataId: '',
-  sCurrentStudentData: {},
-  sCurrentStudentInfo: {}
+  /*
+  These two objects contain the information needed by the instructor to see and evaluate the student's work.
+  sCurrentStudentInfo contains information about the student.
+  sCurrentStudentData contains the student's assignment work and instructors evaluation notes
+   */
+  sCurrentStudentInfo: {},
+  sCurrentStudentData: {}
 }
 
 const getters = {
@@ -75,7 +82,7 @@ const actions = {
   sendAssignmentDataUpdate(context, payload) {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
-    let activityDataId = context.state.sActivityDataId
+    let activityDataId = context.state.sActivityData._id
     console.log('sendAssignmentDataUpdate activityDataId, apiUrl, property: ', activityDataId, apiUrl, payload.propertyName)
     let url = `${apiUrl}/activity-data/assignment-data/${activityDataId}`
     // Update the contents of the current visit's activityData.assignmentData.
