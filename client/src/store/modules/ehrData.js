@@ -65,7 +65,6 @@ const actions = {
     // /activity-data
     let activityDataId = options.id
     // console.log('Get activityData  ', activityDataId)
-    // context.commit('_setActivityDataId', activityDataId)
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
     let url = `${apiUrl}/activity-data/get/${activityDataId}`
@@ -101,7 +100,7 @@ const actions = {
   sendScratchData(context, data) {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
-    let activityDataId = context.state.sActivityDataId
+    let activityDataId = context.state.sActivityData._id
     // console.log('sendScratchData scratch, apiUrl ', activityDataId, apiUrl)
     let url = `${apiUrl}/activity-data/scratch-data/${activityDataId}`
     return helper.putRequest(url, {value: data}).then(results => {
@@ -131,9 +130,6 @@ const mutations = {
     // console.log('_setActivityData', cData)
     // console.log('_setActivityData\'s assignment', cData.assignment)
     state.sActivityData = cData
-  },
-  _setActivityDataId: (state, id) => {
-    state.sActivityDataId = id
   },
   _setCurrentStudentData: (state, activitydata) => {
     let _sCurrentStudentData = {
