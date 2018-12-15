@@ -35,6 +35,12 @@ export default {
       showingEvaluationDialog: false
     }
   },
+  /*
+        div(class="classList", v-for="studentVisit in classList")
+    classList() {
+      return this.$store.state.instructor.sClassList || []
+    },
+*/
   computed: {
     panelInfo() {
       let evalInfo = this.$store.state.ehrData.sCurrentStudentInfo || {}

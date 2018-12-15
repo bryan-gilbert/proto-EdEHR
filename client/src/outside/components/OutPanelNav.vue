@@ -2,29 +2,27 @@
   div(:class="$options.name")
     ul
       li(:class="`${$options.name}__nav`")
-        a(v-bind:href="returnUrl") Return to {{ lmsName }}
+        a(v-bind:href="returnUrl") Return to {{ returnLabel }}
         span |
       li(:class="`${$options.name}__nav`")
-        ui-link(:to="{ name: 'student' }") Student
-        span |
-      li(:class="`${$options.name}__nav`")
-        ui-link(:to="{ name: 'instructor' }") Instructor
+        ui-link(:to="{ name: 'instructor' }") Course List
 </template>
 
 <script>
-import UiLink from '../../app/ui/UiLink'
+  import UiButton from '../../app/ui/UiButton'
+  import UiLink from '../../app/ui/UiLink'
 export default {
   name: 'OutPanelNav',
   components: {
+    UiButton,
     UiLink
   },
   computed: {
-    returnUrl() {
-      var visit = this.$store.state.sVisitInfo
-      return visit ? visit.returnUrl : ''
+    returnLabel() {
+      return 'Return to ' + this.$store.getters['visit/lmsName']
     },
-    lmsName() {
-      return this.$store.getters.lmsName
+    returnUrl() {
+      return this.$store.getters['visit/returnUrl']
     }
   }
 }
@@ -32,15 +30,6 @@ export default {
 
 <style lang="scss" scoped>
 .OutPanelNav {
-  padding: 20px 1.5rem;
-
-  &__main {
-    font-size: 0.8rem;
-
-    .table th {
-      border-bottom: 2px solid #979797;
-    }
-  }
   &__nav {
     display: inline;
     margin-right: 1rem;

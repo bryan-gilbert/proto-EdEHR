@@ -12,7 +12,7 @@ import StudentAssignmentInfo from '../components/StudentAssignmentInfo'
 import ActivityHeader from '../components/ActivityHeader'
 
 export default {
-  name: 'ClassList',
+  name: 'ActivityList',
   components: {
     StudentAssignmentInfo,
     ActivityHeader
@@ -21,17 +21,11 @@ export default {
     activity() {
       return this.$store.state.instructor.sCurrentActivity
     },
-    userInfo() {
-      return this.$store.state.visit.sUserInfo
-    },
     visitInfo() {
       return this.$store.state.visit.sVisitInfo
     },
     classList() {
       return this.$store.state.instructor.sClassList || []
-    },
-    courses() {
-      return this.$store.state.instructor.sCourses
     }
   },
   methods: {
@@ -40,7 +34,7 @@ export default {
     }
   },
   created: function() {
-    // TODO move this to a more general location that can serve more than this page
+    // TODO move this to a location that centralizes API like calls.Note this is replicated, almost, in App.vue
     let activityId = this.$route.params.activityId
     localStorage.setItem('activityId', activityId)
     this.$store.dispatch('instructor/loadActivity', activityId)
@@ -50,9 +44,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.Instructor {
-  &__main {
-    background-color: #f6fbfe;
-  }
+.ActivityList {
 }
 </style>

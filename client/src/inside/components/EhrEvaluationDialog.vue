@@ -1,7 +1,7 @@
 <template lang="pug">
   div(:class="$options.name")
     app-dialog(:isModal="false", @cancel="cancelDialog", @save="saveDialog")
-      h3(slot="header") Evaluation [ TO DO  put student's name here ]
+      h3(slot="header") Evaluation {{ studentName }}
       div(slot="body")
         div
           div(class="input-fieldrow")
@@ -24,7 +24,12 @@ export default {
       theNotes: ''
     }
   },
-  computed: {},
+  computed: {
+    studentName() {
+      let sInfo = this.$store.state.ehrData.sCurrentStudentInfo || {}
+      return sInfo.studentName
+    }
+    },
   methods: {
     loadDialog: function() {
       /*
