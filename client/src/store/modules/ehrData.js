@@ -110,6 +110,19 @@ const actions = {
       context.commit('_setActivityData', activityData)
       return activityData
     })
+  },
+  sendEvaluationNotes(context, data) {
+    let visitState = context.rootState.visit
+    let apiUrl = visitState.apiUrl
+    let activityDataId = context.state.sActivityDataId
+    console.log('sendScratchData evaluation notes, apiUrl ', activityDataId, apiUrl)
+    let url = `${apiUrl}/activity-data/evaluation-data/${activityDataId}`
+    return helper.putRequest(url, {value: data}).then(results => {
+      let activityData = results.data
+      console.log('ehrData commit activityData with new evaluation data', JSON.stringify(activityData.scratchData))
+      context.commit('_setActivityData', activityData)
+      return activityData
+    })
   }
 }
 

@@ -27,7 +27,7 @@ const getters = {
 const actions = {
   changeCurrentEvaluationStudentId: (context, currentId) => {
     return new Promise(resolve => {
-      // TO DO store the id in localstorage to support page refresh
+      // TODO store the id in localstorage to support page refresh
       context.commit('setCurrentEvaluationStudentId', currentId)
       var classList = context.state.sClassList
       console.log('changeCurrentEvaluationStudentId', currentId, ' classList: ', classList)

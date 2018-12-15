@@ -17,13 +17,16 @@
           fas-icon(icon="arrow-right")
         ui-button(v-on:buttonClicked="showEvaluationNotes", :class="`${$options.name}__navItem`")
           fas-icon(icon="notes-medical")
-        ehr-evaluation-dialog(v-show="showingEvaluationDialog", @canceled="canceled", @saved="saved")
+        ehr-evaluation-dialog(ref="evalDialog", v-show="showingEvaluationDialog", @canceled="canceled", @saved="saved")
 </template>
 
 <script>
+// ehr-evaluation-dialog(v-show="showingEvaluationDialog", @canceled="canceled", @saved="saved")
+
 import UiButton from '../../app/ui/UiButton'
 import UiInfo from '../../app/ui/UiInfo'
 import EhrEvaluationDialog from './EhrEvaluationDialog'
+
 export default {
   name: 'EhrClassListNav',
   components: { UiButton, EhrEvaluationDialog, UiInfo },
@@ -42,7 +45,7 @@ export default {
         courseTitle: activity.context_title,
         activityTitle: activity.resource_link_title,
         activityDescription: activity.resource_link_description,
-        lastVisitDate: evalData.lastDate,
+        lastVisitDate: evalData.lastDate || {},
         assignmentName: evalInfo.assignmentName,
         assignmentDescription: evalInfo.assignmentDescription
       }
@@ -70,6 +73,7 @@ export default {
     },
     showEvaluationNotes() {
       this.showingEvaluationDialog = true
+      this.$refs.evalDialog.loadDialog()
     }
   }
 }

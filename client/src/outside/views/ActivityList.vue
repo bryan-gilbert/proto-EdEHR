@@ -40,7 +40,7 @@ export default {
     }
   },
   created: function() {
-    // TO DO move this to a more general location that can serve more than this page
+    // TODO move this to a more general location that can serve more than this page
     let activityId = this.$route.params.activityId
     localStorage.setItem('activityId', activityId)
     this.$store.dispatch('instructor/loadActivity', activityId)

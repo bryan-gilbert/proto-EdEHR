@@ -1,12 +1,14 @@
 <template lang="pug">
   div(:class="$options.name")
     app-dialog(:isModal="false", @cancel="cancelDialog", @save="saveDialog")
-      h3(slot="header") Evaluation [ ToDo  put student's name here ]
+      h3(slot="header") Evaluation [ TO DO  put student's name here ]
       div(slot="body")
         div
           div(class="input-fieldrow")
             div(class="input-element input-element-full")
-              textarea(v-model="evalNotes")
+              textarea(v-model="theNotes")
+        div
+          p The notes: {{theNotes}}
 </template>
 
 <script>
@@ -21,23 +23,28 @@ export default {
   },
   data: function() {
     return {
-      populate: true,
-      evalNotes: '',
+      theNotes: ''
     }
   },
+  computed: {
+  },
   methods: {
-    clearInputs: function() {
-      this.evalNotes = ''
+    loadDialog: function() {
+      let edata = this.$store.getters['ehrData/evaluationData']
+      console.log('EhrEvaluationDialog computed eval notes =', edata)
+      this.theNotes = edata
     },
     cancelDialog: function() {
-      this.clearInputs()
-      console.log('cancel')
+      this.loadDialog() // reset the data for next time
       this.$emit('canceled')
     },
     saveDialog: function() {
-      console.log('Saving evaluation notes', this.evalNotes)
-      this.$emit('saved')
-      // this.$store.dispatch('addPNotes', { note: this.inputs })
+      console.log('Save the evaluation notes', this.theNotes)
+      this.$store
+        .dispatch('ehrData/sendEvaluationNotes', this.theNotes)
+        .then( () => {
+          this.$emit('saved')
+        })
     }
   }
 }
@@ -47,13 +54,6 @@ export default {
 @import '../../scss/settings/forms';
 
 .EhrEvaluationDialog {
-  margin-top: auto;
-  margin-bottom: 30px;
-  &__bottom {
-    padding: 15px;
-  }
-  &__button {
-    width: 100%;
-  }
+  color: black;
 }
 </style>

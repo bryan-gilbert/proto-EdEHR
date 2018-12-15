@@ -9,14 +9,18 @@
       p sCurrentEvaluationStudentId: {{ sCurrentEvaluationStudentId }}
       p Class List with Student Visit
       div(:class="`${$options.name}__data`")
-        li(class="classList", v-for="studentVisit in classList")
-          p Visit._id: {{ studentVisit._id }}
-          p Student: {{ studentVisit.user.fullName }}
-          p _id: {{ studentVisit.user._id }}
-          p Course: {{ studentVisit.activity.context_title}}
-          p Activity: {{ studentVisit.activity.resource_link_title}}
-          p Activity Description: {{ studentVisit.activity.resource_link_description}}
+        ol
+          li(class="classList", v-for="studentVisit in classList")
+            ul
+              li(v-for="(value, propertyName) in studentVisit", v-bind:key="propertyName")
+                strong {{ propertyName }}
+                span : {{ value }}
         hr
+        h3 sCurrentActivity
+        div(:class="`${$options.name}__data`")
+          li(v-for="(value, propertyName) in sCurrentActivity", v-bind:key="propertyName")
+            strong {{ propertyName }} :
+            span {{ value }}
         h3 sCurrentStudentInfo
         div(:class="`${$options.name}__data`")
           li(v-for="(value, propertyName) in sCurrentStudentInfo", v-bind:key="propertyName")
@@ -31,10 +35,16 @@
     hr
     h3 Ehr Data
     div(:class="`${$options.name}__data`")
-      p assignmentData: {{ assignmentData }}
-      p mergedData: {{ mergedData }}
-      p scratchData: {{ scratchData }}
-      p evaluationData: {{ evaluationData }}
+      p mergedData:
+        li(v-for="(value, propertyName) in mergedData", v-bind:key="propertyName")
+          strong {{ propertyName }}
+          span : {{ value }}
+      p
+        strong scratchData
+        span : {{ scratchData }}
+      p
+        strong evaluationData
+        span : {{ evaluationData }}
     hr
     h3 Visit
     div(:class="`${$options.name}__data`")
@@ -133,6 +143,12 @@ export default {
     },
     classList() {
       return this.$store.state.instructor.sClassList || []
+    },
+    sCurrentActivityId() {
+      return this.$store.state.instructor.sCurrentActivityId || []
+    },
+    sCurrentActivity() {
+      return this.$store.state.instructor.sCurrentActivity || []
     },
     courses() {
       return this.$store.state.instructor.sCourses || []

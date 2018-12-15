@@ -37,9 +37,13 @@ export default class VisitController extends BaseController {
     })
   }
   updateEvaluationData (id, data) {
+    debug(`ActivityData update ${id} evaluationData [${JSON.stringify(data)}]`)
+    var value = data.value
     return this.baseFindOneQuery(id).then(activityData => {
       if (activityData) {
-        activityData.evaluationData = data.evaluationData
+        // only set the last date when the student is updating the record
+        // activityData.lastDate = Date.now()
+        activityData.evaluationData = value
         return activityData.save()
       }
     })
