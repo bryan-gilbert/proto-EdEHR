@@ -4,38 +4,13 @@
     ehr-panel-header Care Plan
     ehr-panel-content
       div(class="region")
-        p Title: Care Plan
+        p This Care Plan page is a generated placeholder. The actual content will be developed soon. So stay tuned.
         p Label: Interprofessional plan of care
         p Component name: CarePlan
         p Redirect: 
         p Route name: care-plan
         p Full path: /ehr/chart/care-plan
-        hr
-      div(class="region")
-        div(class="columns")
-          div(class="column is-one-third")
-            label(for="sampleTA") Sample Textarea
-            textarea(class="textarea" id="sampleTA", name="Sample TS")
-          div(class="column is-one-third")
-            label column two
-            input(class="input is-info" readonly value="read only text" type="text" placeholder="Text input")
-          div(class="column is-one-third")
-            label column three
-            input(class="input is-info" readonly value="read only text" type="text" placeholder="Text input")
-        div(class="columns")
-          div(class="column is-one-third")
-            label another
-            input(class="input", type="text")
-          div(class="column is-one-third")
-            label another
-            input(class="input", type="text")
-          div(class="column is-one-third")
-            label pick one
-            div(class="select")
-              select
-                option one
-                option two
-                option three
+        p Assignment Data: carePlan
 </template>
 
 <script>
@@ -47,22 +22,21 @@ export default {
   components: {
     EhrPanelHeader,
     EhrPanelContent
-  }
+  },
+  computed: {
+    isStudent() {
+      return this.$store.getters['visit/isStudent']
+    },
+    carePlan() {
+      let data = this.$store.getters['ehrData/mergedData'] || {}
+      let asStored = data.carePlan || {}
+      return JSON.parse(JSON.stringify(asStored))
+    }
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-.select {
-  display: block;
-}
-select {
-  width: 100%;
-}
-.region {
-  /* border: 1px dashed black; */
-}
 .CarePlan {
-  &__main {
-  }
 }
 </style>

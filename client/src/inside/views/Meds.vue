@@ -4,38 +4,13 @@
     ehr-panel-header Non-medication orders: Lab requisitions
     ehr-panel-content
       div(class="region")
-        p Title: Non-medication orders: Lab requisitions
+        p This Non-medication orders: Lab requisitions page is a generated placeholder. The actual content will be developed soon. So stay tuned.
         p Label: Medication orders
         p Component name: Meds
         p Redirect: 
         p Route name: meds
         p Full path: /ehr/current/meds
-        hr
-      div(class="region")
-        div(class="columns")
-          div(class="column is-one-third")
-            label(for="sampleTA") Sample Textarea
-            textarea(class="textarea" id="sampleTA", name="Sample TS")
-          div(class="column is-one-third")
-            label column two
-            input(class="input is-info" readonly value="read only text" type="text" placeholder="Text input")
-          div(class="column is-one-third")
-            label column three
-            input(class="input is-info" readonly value="read only text" type="text" placeholder="Text input")
-        div(class="columns")
-          div(class="column is-one-third")
-            label another
-            input(class="input", type="text")
-          div(class="column is-one-third")
-            label another
-            input(class="input", type="text")
-          div(class="column is-one-third")
-            label pick one
-            div(class="select")
-              select
-                option one
-                option two
-                option three
+        p Assignment Data: meds
 </template>
 
 <script>
@@ -47,22 +22,21 @@ export default {
   components: {
     EhrPanelHeader,
     EhrPanelContent
-  }
+  },
+  computed: {
+    isStudent() {
+      return this.$store.getters['visit/isStudent']
+    },
+    meds() {
+      let data = this.$store.getters['ehrData/mergedData'] || {}
+      let asStored = data.meds || {}
+      return JSON.parse(JSON.stringify(asStored))
+    }
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-.select {
-  display: block;
-}
-select {
-  width: 100%;
-}
-.region {
-  /* border: 1px dashed black; */
-}
 .Meds {
-  &__main {
-  }
 }
 </style>

@@ -4,38 +4,13 @@
     ehr-panel-header History
     ehr-panel-content
       div(class="region")
-        p Title: History
+        p This History page is a generated placeholder. The actual content will be developed soon. So stay tuned.
         p Label: History
         p Component name: History
         p Redirect: medical
         p Route name: history
         p Full path: /ehr/patient/history
-        hr
-      div(class="region")
-        div(class="columns")
-          div(class="column is-one-third")
-            label(for="sampleTA") Sample Textarea
-            textarea(class="textarea" id="sampleTA", name="Sample TS")
-          div(class="column is-one-third")
-            label column two
-            input(class="input is-info" readonly value="read only text" type="text" placeholder="Text input")
-          div(class="column is-one-third")
-            label column three
-            input(class="input is-info" readonly value="read only text" type="text" placeholder="Text input")
-        div(class="columns")
-          div(class="column is-one-third")
-            label another
-            input(class="input", type="text")
-          div(class="column is-one-third")
-            label another
-            input(class="input", type="text")
-          div(class="column is-one-third")
-            label pick one
-            div(class="select")
-              select
-                option one
-                option two
-                option three
+        p Assignment Data: history
 </template>
 
 <script>
@@ -47,22 +22,21 @@ export default {
   components: {
     EhrPanelHeader,
     EhrPanelContent
-  }
+  },
+  computed: {
+    isStudent() {
+      return this.$store.getters['visit/isStudent']
+    },
+    history() {
+      let data = this.$store.getters['ehrData/mergedData'] || {}
+      let asStored = data.history || {}
+      return JSON.parse(JSON.stringify(asStored))
+    }
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-.select {
-  display: block;
-}
-select {
-  width: 100%;
-}
-.region {
-  /* border: 1px dashed black; */
-}
 .History {
-  &__main {
-  }
 }
 </style>

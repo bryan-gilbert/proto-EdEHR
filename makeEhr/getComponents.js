@@ -40,6 +40,7 @@ function inside () {
 function flushDefs (defs, forInside) {
   defs.forEach(def => {
     def.componentName = def.componentName ? def.componentName : camelcase(def.rn, { pascalCase: true })
+    def.dataName = camelcase(def.rn)
     def.routeName = def.rn
     def.fullPath = def.path + '/' + def.rn
     def.title = def.title || splitCamelCase(def.componentName)
@@ -148,6 +149,7 @@ function makeVueFile (def, componentTemplate) {
     .replace(/{title}/g, def.title)
     .replace(/{label}/g, def.label)
     .replace(/{componentName}/g, def.componentName)
+    .replace(/{dataName}/g, def.dataName)
     .replace(/{redirect}/g, def.redirect)
     .replace(/{rName}/g, def.routeName)
     .replace(/{path}/g, def.fullPath)

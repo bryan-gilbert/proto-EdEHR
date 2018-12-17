@@ -4,38 +4,13 @@
     ehr-panel-header Genitourinary
     ehr-panel-content
       div(class="region")
-        p Title: Genitourinary
+        p This Genitourinary page is a generated placeholder. The actual content will be developed soon. So stay tuned.
         p Label: Genitourinary
         p Component name: Genitourinary
         p Redirect: 
         p Route name: genitourinary
         p Full path: /ehr/current/assessments/genitourinary
-        hr
-      div(class="region")
-        div(class="columns")
-          div(class="column is-one-third")
-            label(for="sampleTA") Sample Textarea
-            textarea(class="textarea" id="sampleTA", name="Sample TS")
-          div(class="column is-one-third")
-            label column two
-            input(class="input is-info" readonly value="read only text" type="text" placeholder="Text input")
-          div(class="column is-one-third")
-            label column three
-            input(class="input is-info" readonly value="read only text" type="text" placeholder="Text input")
-        div(class="columns")
-          div(class="column is-one-third")
-            label another
-            input(class="input", type="text")
-          div(class="column is-one-third")
-            label another
-            input(class="input", type="text")
-          div(class="column is-one-third")
-            label pick one
-            div(class="select")
-              select
-                option one
-                option two
-                option three
+        p Assignment Data: genitourinary
 </template>
 
 <script>
@@ -47,22 +22,21 @@ export default {
   components: {
     EhrPanelHeader,
     EhrPanelContent
-  }
+  },
+  computed: {
+    isStudent() {
+      return this.$store.getters['visit/isStudent']
+    },
+    genitourinary() {
+      let data = this.$store.getters['ehrData/mergedData'] || {}
+      let asStored = data.genitourinary || {}
+      return JSON.parse(JSON.stringify(asStored))
+    }
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-.select {
-  display: block;
-}
-select {
-  width: 100%;
-}
-.region {
-  /* border: 1px dashed black; */
-}
 .Genitourinary {
-  &__main {
-  }
 }
 </style>

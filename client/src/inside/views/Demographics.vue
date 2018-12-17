@@ -12,7 +12,7 @@
         button(v-on:click="cancelEdit", v-show="!notEditing")
           fas-icon(icon="times-circle")
     ehr-panel-content
-      div(class="region")
+      div(class="region ehr-form")
         div(class="columns")
           div(class="column is-one-third")
             label(for="familyName") Last name
@@ -258,12 +258,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/settings/forms';
-.select {
-  display: block;
-}
-select {
-  width: 100%;
-}
+
 .region {
   /* border: 1px dashed black; */
 }

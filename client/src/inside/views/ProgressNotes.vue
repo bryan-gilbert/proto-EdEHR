@@ -28,7 +28,7 @@
               td.notes {{ item.notes }}
     app-dialog( v-if="showModal", :isModal="true", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
       h3(slot="header") Create a new progress note
-      div(slot="body")
+      div(slot="body", class="ehr-form")
         div
           div(class="input-fieldrow")
             div(class="input-element input-element-medium input-name")
