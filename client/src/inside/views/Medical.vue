@@ -4,38 +4,13 @@
     ehr-panel-header Medical
     ehr-panel-content
       div(class="region")
-        p Title: Medical
+        p This Medical page is a generated placeholder. The actual content will be developed soon. So stay tuned.
         p Label: Medical
         p Component name: Medical
         p Redirect: 
         p Route name: medical
         p Full path: /ehr/patient/history/medical
-        hr
-      div(class="region")
-        div(class="columns")
-          div(class="column is-one-third")
-            label(for="sampleTA") Sample Textarea
-            textarea(class="textarea" id="sampleTA", name="Sample TS")
-          div(class="column is-one-third")
-            label column two
-            input(class="input is-info" readonly value="read only text" type="text" placeholder="Text input")
-          div(class="column is-one-third")
-            label column three
-            input(class="input is-info" readonly value="read only text" type="text" placeholder="Text input")
-        div(class="columns")
-          div(class="column is-one-third")
-            label another
-            input(class="input", type="text")
-          div(class="column is-one-third")
-            label another
-            input(class="input", type="text")
-          div(class="column is-one-third")
-            label pick one
-            div(class="select")
-              select
-                option one
-                option two
-                option three
+        p Assignment Data: medical
 </template>
 
 <script>
@@ -47,22 +22,21 @@ export default {
   components: {
     EhrPanelHeader,
     EhrPanelContent
-  }
+  },
+  computed: {
+    isStudent() {
+      return this.$store.getters['visit/isStudent']
+    },
+    medical() {
+      let data = this.$store.getters['ehrData/mergedData'] || {}
+      let asStored = data.medical || {}
+      return JSON.parse(JSON.stringify(asStored))
+    }
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-.select {
-  display: block;
-}
-select {
-  width: 100%;
-}
-.region {
-  /* border: 1px dashed black; */
-}
 .Medical {
-  &__main {
-  }
 }
 </style>
