@@ -32,7 +32,7 @@ export default {
       let asStored = data.psychosocial || {}
       return JSON.parse(JSON.stringify(asStored))
     }
-  },
+  }
 }
 </script>
 

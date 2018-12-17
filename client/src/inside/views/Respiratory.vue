@@ -32,7 +32,7 @@ export default {
       let asStored = data.respiratory || {}
       return JSON.parse(JSON.stringify(asStored))
     }
-  },
+  }
 }
 </script>
 

@@ -32,7 +32,7 @@ export default {
       let asStored = data.discharge || {}
       return JSON.parse(JSON.stringify(asStored))
     }
-  },
+  }
 }
 </script>
 

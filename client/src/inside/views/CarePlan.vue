@@ -32,7 +32,7 @@ export default {
       let asStored = data.carePlan || {}
       return JSON.parse(JSON.stringify(asStored))
     }
-  },
+  }
 }
 </script>
 

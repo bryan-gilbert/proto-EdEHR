@@ -31,7 +31,7 @@ export default {
       let asStored = data.{dataName} || {}
       return JSON.parse(JSON.stringify(asStored))
     }
-  },
+  }
 }
 </script>
 

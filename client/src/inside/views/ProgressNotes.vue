@@ -157,7 +157,7 @@ export default {
     },
     saveDialog: function() {
       if (this.validateInputs()) {
-        const _this = this;
+        const _this = this
         this.loading = true
         this.showModal = false
         // console.log('Saving Progress Notes', this.inputs)
@@ -173,8 +173,7 @@ export default {
           property: 'progressNotes',
           value: modifiedValue
         }
-        this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload)
-        .then( () => {
+        this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
           _this.loading = false
         })
       }

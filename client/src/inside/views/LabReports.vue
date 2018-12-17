@@ -32,7 +32,7 @@ export default {
       let asStored = data.labReports || {}
       return JSON.parse(JSON.stringify(asStored))
     }
-  },
+  }
 }
 </script>
 

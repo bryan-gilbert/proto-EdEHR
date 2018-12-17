@@ -32,7 +32,7 @@ export default {
       let asStored = data.operativeAnaesthesia || {}
       return JSON.parse(JSON.stringify(asStored))
     }
-  },
+  }
 }
 </script>
 
