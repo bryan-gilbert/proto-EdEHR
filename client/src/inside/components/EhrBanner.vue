@@ -22,9 +22,9 @@
         </div>
         <div class="column" :class="`${$options.name}__content_row--3`">
           <ul>
-            <li>Admitting Diagnosis: <b> </b></li>
+            <li>Admitting Diagnosis: <b> {{ visitDetails.admittingDiagnosis }} </b></li>
             <li>Alergies: <b> </b></li>
-            <li>Location: <b> </b></li>
+            <li>Location: <b> {{ location }} </b></li>
             <li>
               Isolation Precautions:
               <b>??? </b>
@@ -55,6 +55,21 @@ export default {
       let asStored = data.demographics || {}
       let input = JSON.parse(JSON.stringify(asStored))
       return input
+    },
+    visitDetails() {
+      let data = this.$store.getters['ehrData/mergedData'] || {}
+      let asStored = data.visitDetails || {}
+      let input = JSON.parse(JSON.stringify(asStored))
+      return input
+    },
+    location() {
+      var place = ''
+      var locations = this.visitDetails.locations || []
+      if (locations.length > 0) {
+        var now = locations[locations.length - 1]
+        place = now.patientLocation
+      }
+      return place
     },
     lastFirstMiddle() {
       let d = this.demographics

@@ -133,7 +133,7 @@ export default {
       return this.$store.getters['ehrData/evaluationData']
     },
     sActivityData() {
-      return this.$store.state.ehrData.sActivityData
+      return this.$store.state.ehrData.sActivityData || {}
     },
     sCurrentStudentData() {
       return this.$store.state.ehrData.sCurrentStudentData

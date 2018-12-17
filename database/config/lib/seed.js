@@ -60,7 +60,7 @@ function doIntegrations () {
     }
   })
 
-  checkIntegration('assignments6').then((go) => {
+  checkIntegration('assignments9').then((go) => {
     if (go) {
       require('../seed-data/assignments')(true)
     }

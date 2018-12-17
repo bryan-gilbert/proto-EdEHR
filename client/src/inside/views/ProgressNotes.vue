@@ -28,7 +28,7 @@
               td.notes {{ item.notes }}
     app-dialog( v-if="showModal", :isModal="true", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
       h3(slot="header") Create a new progress note
-      div(slot="body", class="ehr-form")
+      div(slot="body", class="ehr-page")
         div
           div(class="input-fieldrow")
             div(class="input-element input-element-medium input-name")
@@ -56,13 +56,13 @@
 </template>
 
 <script>
-import UiButton from '../../app/ui/UiButton.vue'
-import { getPhrase } from '../poc-utils'
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
+import UiButton from '../../app/ui/UiButton.vue'
+import UiSpinner from '../../app/ui/UiSpinner'
 import AppDialog from '../../app/components/AppDialogShell'
 import moment from 'moment'
-import UiSpinner from '../../app/ui/UiSpinner'
+import { getPhrase } from '../poc-utils'
 
 export default {
   name: 'ProgressNotes',
@@ -101,7 +101,7 @@ export default {
     }
   },
   methods: {
-    clearInputs: function() {
+    clearDialogInputs: function() {
       this.inputs = {
         name: '',
         profession: '',
@@ -136,7 +136,7 @@ export default {
       return this.errorList.length === 0
     },
     showDialog: function() {
-      this.clearInputs()
+      this.clearDialogInputs()
       var today = moment().format('DD MMM')
       var time = moment().format('HH:mm')
       console.log('date is ', today, time)
@@ -152,7 +152,7 @@ export default {
       this.showModal = true
     },
     cancelDialog: function() {
-      this.clearInputs()
+      this.clearDialogInputs()
       this.showModal = false
     },
     saveDialog: function() {

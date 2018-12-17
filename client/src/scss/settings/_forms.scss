@@ -3,16 +3,24 @@
    * Styling generic input elements that appear in EdEHR dialogs
    *
    */
-.ehr-form {
+.ehr-page {
   .input-fieldrow {
     display: flex;
   }
 
-  .input-element {
     label,
-    input {
+    input,
+    textarea {
       display: block;
     }
+  .label-checkbox {
+    display: inline;
+    vertical-align: top;
+  }
+  .checkbox {
+    display: inline;
+    margin-right: 5px;
+  }
     input,
     textarea {
       height: 2rem;
@@ -28,7 +36,6 @@
       height: 6rem;
       width: 100%;
     }
-  }
 
   .input-element-full {
     width: 100%;
