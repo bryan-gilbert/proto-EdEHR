@@ -11,7 +11,7 @@
   { "path": "/ehr/patient", "rn": "care-team", "label": "Care team" },
   { "path": "/ehr/patient", "rn": "past-appt", "label": "Past appointments" },
   { "path": "/ehr", "rn": "current", "label": "Current visit", "redirect": "visit-details" },
-  { "path": "/ehr/current", "rn": "visit-details", "label": "Visit details" },
+  { "novue": "true", "path": "/ehr/current", "rn": "visit-details", "label": "Visit details" },
   { "path": "/ehr/current", "rn": "vital-signs", "label": "Vital signs" },
   { "path": "/ehr/current", "rn": "assessments", "label": "Assessments", "redirect": "neurological" },
   { "path": "/ehr/current/assessments", "rn": "neurological", "label": "Neurological" },

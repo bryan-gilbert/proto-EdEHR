@@ -16,7 +16,7 @@ const actions = {
       let list = response.data.assignments
       if (!list) {
         console.error('ERROR the system should have assignments')
-        return;
+        return
       }
       this.assignmentsListing = list
       context.commit('setAssignmentsListing', list)

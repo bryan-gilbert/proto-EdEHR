@@ -220,6 +220,7 @@ export default {
 }
 
 .dialog-footer {
+  margin-top: 30px;
   align-items: flex-end;
   .dialog-footer-content {
     flex-grow: 1;

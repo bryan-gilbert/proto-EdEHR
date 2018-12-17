@@ -12,7 +12,7 @@
         button(v-on:click="cancelEdit", v-show="!notEditing")
           fas-icon(icon="times-circle")
     ehr-panel-content
-      div(class="region ehr-form")
+      div(class="region ehr-page")
         div(class="columns")
           div(class="column is-one-third")
             label(for="familyName") Last name
