@@ -1,7 +1,7 @@
 <template lang="pug">
   div(:class="$options.name")
     ui-spinner(:loading="loading")
-    ehr-panel-header Patient Notes
+    ehr-panel-header Progress notes
     ehr-panel-content
       div(v-show="isStudent")
         ui-button(v-on:buttonClicked="showDialog") Add a new progress notes
