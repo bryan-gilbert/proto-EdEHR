@@ -206,36 +206,6 @@ export default {
         value: this.theData
       }
     }
-    // beginEdit: function() {
-    //   this.notEditing = false
-    //   this.cacheAsString = JSON.stringify(this.demographics)
-    // },
-    // cancelEdit: function() {
-    //   let activityId = localStorage.getItem('activityId')
-    //   this.$store.dispatch('ehrData/loadActivityData', { forStudent: true, id: activityId })
-    //   this.notEditing = true
-    // },
-    // saveEdit: function() {
-    //   const _this = this
-    //   this.loading = true
-    //   let payload = {
-    //     property: 'demographics',
-    //     value: this.demographics
-    //   }
-    //   this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
-    //     _this.notEditing = true
-    //     _this.loading = false
-    //   })
-    // },
-    // unsavedData: function() {
-    //   let result = false
-    //   if (!this.notEditing) {
-    //     let currentData = JSON.stringify(this.demographics)
-    //     result = this.cacheAsString !== currentData
-    //     console.log('unsavedData changes detected', this.cacheAsString, currentData)
-    //   }
-    //   return result
-    // }
   },
   created() {
     let _this = this
@@ -247,31 +217,6 @@ export default {
   beforeRouteLeave(to, from, next) {
     this.ehrHelp.beforeRouteLeave(to, from, next)
   }
-
-  // created() {
-  //   const _this = this
-  //   window.addEventListener('beforeunload', function(event) {
-  //     let e = event || window.event
-  //     // console.log('beforeunload ...', e)
-  //     if (_this.unsavedData()) {
-  //       // according to specs use preventDefault too.
-  //       e.preventDefault()
-  //       // many browsers ignore the prompt and provide their own
-  //       e.returnValue = LEAVE_PROMPT
-  //     } else {
-  //       // set any value into e.returnValue and it is converted to a string and that makes the prompt appear
-  //       // e.returnValue = null
-  //     }
-  //     // console.log('... beforeunload', e)
-  //   })
-  // },
-  // beforeRouteLeave(to, from, next) {
-  //   if (this.unsavedData() && !window.confirm(LEAVE_PROMPT)) {
-  //     // unsaved data and the user wants to stay
-  //     return next(false)
-  //   }
-  //   next()
-  // }
 }
 </script>
 
