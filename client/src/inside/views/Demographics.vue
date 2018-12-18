@@ -3,7 +3,7 @@
   div(:class="$options.name")
     ehr-panel-header
       div Demographics
-      div(slot="controls", v-show="isStudent")
+      div(slot="controls", v-show="showEditControls")
         ehr-edit-controls(v-bind:ehrHelp="ehrHelp", @controlsCallback="controlsCallback")
     ehr-panel-content
       div(class="region ehr-page")
@@ -142,9 +142,9 @@ export default {
   },
   data: function() {
     return {
-      ehrHelp: {},
       dataKey: 'demographics',
-      cacheAsString: '',
+      ehrHelp: {},
+      hasForm: true,
       loading: false,
       genders: [
         { text: 'Unknown' },
@@ -182,37 +182,23 @@ export default {
     }
   },
   computed: {
-    isStudent() {
-      return this.$store.getters['visit/isStudent']
+    showEditControls() {
+      return this.ehrHelp.showEditControls()
     },
     notEditing() {
-      return !this.$store.state.system.isEditing
+      return !this.ehrHelp.isEditing()
     },
     theData() {
-      let data = this.$store.getters['ehrData/mergedData'] || {}
-      let asStored = data[this.dataKey] || {}
-      return JSON.parse(JSON.stringify(asStored))
+      return this.ehrHelp.theData()
     }
   },
   methods: {
     controlsCallback(callback) {
-      let data = this.getCurrentData()
-      callback(data)
-    },
-    getCurrentData() {
-      var key = this.dataKey
-      return {
-        property: key,
-        value: this.theData
-      }
+      callback(this.getCurrentData())
     }
   },
   created() {
-    let _this = this
-    this.ehrHelp = new EhrHelp(this, this.$store)
-    window.addEventListener('beforeunload', function(event) {
-      _this.ehrHelp.beforeUnloadListener(event)
-    })
+    this.ehrHelp = new EhrHelp(this, this.$store, this.dataKey, this.hasForm)
   },
   beforeRouteLeave(to, from, next) {
     this.ehrHelp.beforeRouteLeave(to, from, next)

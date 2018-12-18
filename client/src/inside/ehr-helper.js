@@ -1,22 +1,74 @@
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
 export default class EhrHelp {
-  constructor(component, store) {
+  constructor(component, store, dataKey, hasForm) {
     this.component = component
     this.$store = store
+    this.dataKey = dataKey
     this.cacheAsString = ''
+    const _this = this
+    if (hasForm) {
+      window.addEventListener('beforeunload', function(event) {
+        _this.beforeUnloadListener(event)
+      })
+    }
   }
 
-  cacheData(data) {
+  showEditControls() {
+    return this.$store.getters['visit/isStudent']
+  }
+
+  cacheData() {
     // console.log('ehr helper caching data ', data)
-    this.cacheAsString = data
+    this.cacheAsString = JSON.stringify(this.theData())
+  }
+
+  isEditing() {
+    return this.$store.state.system.isEditing
+  }
+
+  theData() {
+    let data = this.$store.getters['ehrData/mergedData'] || {}
+    let asStored = data[this.dataKey] || {}
+    return JSON.parse(JSON.stringify(asStored))
+  }
+
+  getCurrentData() {
+    return {
+      property: this.dataKey,
+      value: this.theData()
+    }
+  }
+
+  beginEdit() {
+    this.$store.commit('system/setEditing', true)
+    this.cacheData()
+  }
+
+  cancelEdit() {
+    const _this = this
+    _this.$store.commit('system/setEditing', false)
+    _this.$store.commit('system/setLoading', true)
+    setTimeout(function() {
+      _this.$store.commit('system/setLoading', false)
+    }, 1000)
+  }
+
+  saveEdit() {
+    const _this = this
+    _this.$store.commit('system/setEditing', false)
+    _this.$store.commit('system/setLoading', true)
+    let payload = this.getCurrentData()
+    _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
+      _this.$store.commit('system/setLoading', false)
+    })
   }
 
   unsavedData() {
     var isEditing = this.$store.state.system.isEditing
     var result = false
     if (isEditing) {
-      let dataDef = this.component.getCurrentData()
+      let dataDef = this.getCurrentData()
       let currentData = JSON.stringify(dataDef.value)
       // console.log('current data', currentData)
       // console.log('cacheAsString', this.cacheAsString)
