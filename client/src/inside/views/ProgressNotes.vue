@@ -1,6 +1,5 @@
 <template lang="pug">
   div(:class="$options.name")
-    ui-spinner(:loading="loading")
     ehr-panel-header Patient Notes
     ehr-panel-content
       div(v-show="isStudent")
@@ -19,7 +18,7 @@
               th.time(title="Time") Time
               th.notes(title="Progress Notes") Progress Notes
           tbody
-            tr(v-for="item in progressNotes")
+            tr(v-for="item in theData")
               td.name {{ item.name }}
               td.position {{ item.profession}}
               td.unit {{ item.unit }}
@@ -58,8 +57,8 @@
 <script>
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
+import EhrHelp from '../ehr-helper'
 import UiButton from '../../app/ui/UiButton.vue'
-import UiSpinner from '../../app/ui/UiSpinner'
 import AppDialog from '../../app/components/AppDialogShell'
 import moment from 'moment'
 import { getPhrase } from '../poc-utils'
@@ -70,13 +69,15 @@ export default {
     EhrPanelHeader,
     EhrPanelContent,
     AppDialog,
-    UiButton,
-    UiSpinner
+    UiButton
   },
   data: function() {
     return {
-      showModal: false,
+      dataKey: 'progressNotes',
+      ehrHelp: {},
+      hasForm: false,
       loading: false,
+      showModal: false,
       populate: true,
       inputs: {},
       errorList: []
@@ -89,6 +90,15 @@ export default {
     username() {
       let info = this.$store.state.visit.sUserInfo
       return info ? info.fullName : ''
+    },
+    showEditControls() {
+      return this.ehrHelp.showEditControls()
+    },
+    notEditing() {
+      return !this.ehrHelp.isEditing()
+    },
+    theData() {
+      return this.ehrHelp.theData()
     },
     progressNotes() {
       let data = this.$store.getters['ehrData/mergedData'] || {}
@@ -178,6 +188,12 @@ export default {
         })
       }
     }
+  },
+  created() {
+    this.ehrHelp = new EhrHelp(this, this.$store, this.dataKey, this.hasForm)
+  },
+  beforeRouteLeave(to, from, next) {
+    this.ehrHelp.beforeRouteLeave(to, from, next)
   }
 }
 </script>

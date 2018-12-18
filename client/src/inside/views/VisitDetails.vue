@@ -84,6 +84,7 @@ import UiButton from '../../app/ui/UiButton.vue'
 import UiSpinner from '../../app/ui/UiSpinner'
 import AppDialog from '../../app/components/AppDialogShell'
 import moment from 'moment'
+import EhrHelp from '../ehr-helper'
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
 export default {
@@ -97,6 +98,7 @@ export default {
   },
   data: function() {
     return {
+      ehrHelp: {},
       notEditing: true,
       cacheAsString: '',
       loading: false,
@@ -236,28 +238,10 @@ export default {
     }
   },
   created() {
-    const _this = this
-    window.addEventListener('beforeunload', function(event) {
-      let e = event || window.event
-      // console.log('beforeunload ...', e)
-      if (_this.unsavedData()) {
-        // according to specs use preventDefault too.
-        e.preventDefault()
-        // many browsers ignore the prompt and provide their own
-        e.returnValue = LEAVE_PROMPT
-      } else {
-        // set any value into e.returnValue and it is converted to a string and that makes the prompt appear
-        // e.returnValue = null
-      }
-      // console.log('... beforeunload', e)
-    })
+    this.ehrHelp = new EhrHelp(this, this.$store, this.dataKey, this.hasForm)
   },
   beforeRouteLeave(to, from, next) {
-    if (this.unsavedData() && !window.confirm(LEAVE_PROMPT)) {
-      // unsaved data and the user wants to stay
-      return next(false)
-    }
-    next()
+    this.ehrHelp.beforeRouteLeave(to, from, next)
   }
 }
 </script>

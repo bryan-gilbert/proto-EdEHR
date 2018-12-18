@@ -7,6 +7,14 @@
         ehr-edit-controls(v-bind:ehrHelp="ehrHelp", @controlsCallback="controlsCallback")
     ehr-panel-content
       div(class="region ehr-page")
+
+        div(class="columns", v-for="row in uiProps.rows", v-bind:key="row.rowNumber")
+          div(:class="row.classList", v-for="element in row.elements", v-bind:key="element.propertyKey")
+            div(:class="element.classList")
+              label(:for="element.propertyKey") {{element.label}}
+                input(class="input", v-bind:disabled="notEditing", :name="element.propertyKey",v-model="`theData[${element.propertyKey}]`")
+
+
         div(class="columns")
           div(class="column is-one-third")
             label(for="familyName") Last name
@@ -16,7 +24,7 @@
              input(class="input", v-bind:disabled="notEditing", name="givenName",v-model="theData.givenName")
           div(class="column is-one-third")
             label(for="middleName") Middle name(s)
-             input(class="input", v-bind:disabled="notEditing", name="middleName",v-model="theData.middleName")
+             input(class="input", v-bind:disabled="notEditing", name="middleName",v-model="theData['middleName']")
         div(class="columns")
           div(class="column is-one-third")
             label(for="preferredName") Preferred name
@@ -143,6 +151,32 @@ export default {
   data: function() {
     return {
       dataKey: 'demographics',
+      uiProps: {
+        rows: [
+          {
+            rowNumber: 1,
+            classList: 'form-row',
+            elements: [
+              {
+                classList:'column is-one-third',
+                propertyKey: 'familyName',
+                label: 'Last name G'
+              },
+              {
+                classList:'column is-one-third',
+                propertyKey: 'givenName',
+                label: 'First name G'
+              },
+              {
+                classList:'column is-one-third',
+                propertyKey: 'middleName',
+                label: 'Middle name G'
+              }
+
+            ]
+          }
+        ]
+      },
       ehrHelp: {},
       hasForm: true,
       loading: false,
