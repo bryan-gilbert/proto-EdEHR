@@ -8,23 +8,12 @@
     ehr-panel-content
       div(class="region ehr-page")
 
-        div(class="columns", v-for="row in uiProps.rows", v-bind:key="row.rowNumber")
-          div(:class="row.classList", v-for="element in row.elements", v-bind:key="element.propertyKey")
-            div(:class="element.classList")
-              label(:for="element.propertyKey") {{element.label}}
-                input(class="input", v-bind:disabled="notEditing", :name="element.propertyKey",v-model="`theData[${element.propertyKey}]`")
+        div(:class="row.classList", v-for="row in uiProps.rows", v-bind:key="row.rowNumber")
+          div(:class="element.classList", v-for="element in row.elements", v-bind:key="element.propertyKey")
+            label(v-bind:for="element.propertyKey") {{element.label}}
+            input(class="input", v-bind:disabled="notEditing", v-bind:name="element.propertyKey",v-model="theData[element.propertyKey]")
 
 
-        div(class="columns")
-          div(class="column is-one-third")
-            label(for="familyName") Last name
-             input(class="input", v-bind:disabled="notEditing", name="familyName",v-model="theData.familyName")
-          div(class="column is-one-third")
-            label(for="givenName") First name
-             input(class="input", v-bind:disabled="notEditing", name="givenName",v-model="theData.givenName")
-          div(class="column is-one-third")
-            label(for="middleName") Middle name(s)
-             input(class="input", v-bind:disabled="notEditing", name="middleName",v-model="theData['middleName']")
         div(class="columns")
           div(class="column is-one-third")
             label(for="preferredName") Preferred name
@@ -155,7 +144,7 @@ export default {
         rows: [
           {
             rowNumber: 1,
-            classList: 'form-row',
+            classList: 'form-row columns',
             elements: [
               {
                 classList:'column is-one-third',
@@ -228,7 +217,7 @@ export default {
   },
   methods: {
     controlsCallback(callback) {
-      callback(this.getCurrentData())
+      callback(this.theData())
     }
   },
   created() {
