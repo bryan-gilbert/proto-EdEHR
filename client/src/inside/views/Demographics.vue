@@ -32,40 +32,7 @@ export default {
       theData: {},
       ehrHelp: {},
       hasForm: true,
-      loading: false,
-      genders: [
-        { text: 'Unknown' },
-        { text: 'Female' },
-        { text: 'Male' },
-        { text: 'Transgender female' },
-        { text: 'Transgender male' },
-        { text: 'Undifferentiated' },
-        { text: 'Prefer not to say' }
-      ],
-      mStatuses: [
-        { text: 'Married' },
-        { text: 'Single' },
-        { text: 'Life partner' },
-        { text: 'Divorced' },
-        { text: 'Separated' },
-        { text: 'Widowed' }
-      ],
-      codeStatuses: [
-        { text: 'N/A' },
-        { text: 'CPR' },
-        { text: 'DNR M1' },
-        { text: 'DNR M2' },
-        { text: 'DNR M3' },
-        { text: 'DNR C1' },
-        { text: 'DNR C2' }
-      ],
-      languages: [
-        { text: 'English' },
-        { text: 'French' },
-        { text: 'Spanish' },
-        { text: 'German' },
-        { text: 'Chinese' }
-      ]
+      loading: false
     }
   },
   computed: {
@@ -131,21 +98,44 @@ export default {
               propertyKey: 'gender',
               label: 'Gender',
               type: 'select',
-              options: this.genders
+              options: [
+                { text: 'Unknown' },
+                { text: 'Female' },
+                { text: 'Male' },
+                { text: 'Transgender female' },
+                { text: 'Transgender male' },
+                { text: 'Undifferentiated' },
+                { text: 'Prefer not to say' }
+              ]
             },
             {
               classList: oneOfThree,
               propertyKey: 'martialStatus',
               label: 'Martial Status',
               type: 'select',
-              options: this.mStatuses
+              options: [
+                { text: 'Married' },
+                { text: 'Single' },
+                { text: 'Life partner' },
+                { text: 'Divorced' },
+                { text: 'Separated' },
+                { text: 'Widowed' }
+              ]
             },
             {
               classList: oneOfThree,
               propertyKey: 'codeStatus',
               label: 'Code status',
               type: 'select',
-              options: this.codeStatuses
+              options: [
+                { text: 'N/A' },
+                { text: 'CPR' },
+                { text: 'DNR M1' },
+                { text: 'DNR M2' },
+                { text: 'DNR M3' },
+                { text: 'DNR C1' },
+                { text: 'DNR C2' }
+              ]
             }
           ]
         },
@@ -158,7 +148,13 @@ export default {
               propertyKey: 'languagePrimary',
               label: 'Primary language',
               type: 'select',
-              options: this.languages
+              options: [
+                { text: 'English' },
+                { text: 'French' },
+                { text: 'Spanish' },
+                { text: 'German' },
+                { text: 'Chinese' }
+              ]
             },
             {
               classList: oneOfThree,
@@ -171,7 +167,7 @@ export default {
               propertyKey: 'indigenous',
               label: 'Do you identify as an indigenous person?',
               type: 'select',
-              options: [{ text: 'No' },{ text: 'Yes' }]
+              options: [{ text: 'No' }, { text: 'Yes' }]
             }
           ]
         },
@@ -312,7 +308,7 @@ export default {
               type: 'input'
             }
           ]
-        },
+        }
       ]
 
       return { rows: rows }
