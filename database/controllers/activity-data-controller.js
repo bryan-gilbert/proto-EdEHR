@@ -9,17 +9,17 @@ export default class VisitController extends BaseController {
     super(ActivityData, '_id')
   }
   updateAssignmentData (id, data) {
-    var property = data.property
+    var propertyName = data.propertyName
     var value = data.value
-    debug(`ActivityData update ${id} assignmentData[${data.property}] with data:`)
-    debug(JSON.stringify(value))
+    debug(`ActivityData update ${id} assignmentData[${data.propertyName}] with data:`)
+    debug(JSON.stringify(data))
     return this.baseFindOneQuery(id).then(activityData => {
       if (activityData) {
         if (!activityData.assignmentData) {
           activityData.assignmentData = {}
         }
         activityData.lastDate = Date.now()
-        activityData.assignmentData[property] = value
+        activityData.assignmentData[propertyName] = value
         activityData.markModified('assignmentData');
         return activityData.save()
       }

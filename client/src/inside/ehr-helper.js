@@ -35,8 +35,8 @@ export default class EhrHelp {
 
   getCurrentData() {
     return {
-      property: this.dataKey,
-      value: this.theData()
+      propertyName: this.dataKey,
+      value: this.component.getCurrentData()
     }
   }
 
@@ -59,6 +59,7 @@ export default class EhrHelp {
     _this.$store.commit('system/setEditing', false)
     _this.$store.commit('system/setLoading', true)
     let payload = this.getCurrentData()
+    // console.log('saveEdit payload', JSON.stringify(payload))
     _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
       _this.$store.commit('system/setLoading', false)
     })

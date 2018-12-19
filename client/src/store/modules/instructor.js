@@ -52,7 +52,11 @@ const actions = {
       context.commit('ehrData/setCurrentStudentInfo', currentStudentInfo, { root: true })
       // sv.activityData is the id of the activity data record
       context
-        .dispatch('ehrData/loadActivityData', { forStudent: false, id: sv.activityData }, { root: true })
+        .dispatch(
+          'ehrData/loadActivityData',
+          { forStudent: false, id: sv.activityData },
+          { root: true }
+        )
         .then(() => {
           resolve(currentStudentInfo)
         })

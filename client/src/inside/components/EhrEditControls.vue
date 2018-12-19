@@ -13,8 +13,7 @@ export default {
   name: 'EhrEditControls',
   components: {},
   data: function() {
-    return {
-    }
+    return {}
   },
   props: {
     ehrHelp: { type: Object }
@@ -38,4 +37,5 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>
