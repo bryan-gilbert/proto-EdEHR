@@ -1,0 +1,48 @@
+# System-wide .profile for sh(1)
+
+if [ -x /usr/libexec/path_helper ]; then
+	eval `/usr/libexec/path_helper -s`
+fi
+
+if [ "${BASH-no}" != "no" ]; then
+	[ -r /etc/bashrc ] && . /etc/bashrc
+fi
+alias lr="ls -lahrSG"
+alias ll="ls -lahG"
+alias l="ls -f1 -alF -G"
+alias x="exit"
+alias c="clear"
+export CLICOLOR=1
+# use yellow for directories
+##http://geoff.greer.fm/lscolors/
+#export LSCOLORS=Dxfxcxdxbxegedabagacad
+#export LSCOLORS=exfxcxdxbxeggdbhagahah
+export LSCOLORS=Dxfxcxdxbxeggdbhagahah
+export PATH="$PATH:~/scripts"
+# set title to show last part of PWD
+export PS1='\[\033]0; ${PWD##*/}\007\]\w$ '
+
+export ANT_HOME=/usr/share/ant/
+export PATH=$PATH:/r/dev/salesforceTools
+export PATH=$PATH:/r/bin
+export PATH=$PATH:/r/bin/mongodb/bin
+
+alias bare="ssh bgilbert@bryangilbert.ca"
+alias pword="cat /r/pwd.txt"
+#alias domem="ssh bryan@46.101.164.12"
+alias dotor="ssh bryan@159.203.1.130"
+alias doehr="ssh bryan@142.93.148.22"
+alias doehrm="ssh bryan@167.99.179.243"
+alias eprofile="sudo vi  /etc/profile"
+#alias msq="mysql -u root -p"
+alias mysq="sudo /usr/local/mysql/bin/mysql -u root -p "
+alias mysqlstart="sudo /usr/local/mysql/support-files/mysql.server start"
+alias mysqlstop="sudo /usr/local/mysql/support-files/mysql.server stop"
+alias mysqlserver="sudo /usr/local/mysql/support-files/mysql.server "
+
+alias pug="pug -w templates -o public"
+alias gitlog='git log --graph --oneline --decorate --all'
+alias h='history'
+HISTTIMEFORMAT="%d/%m/%y %T "
+alias robomongo='/Applications/Robomongo.app/Contents/MacOS/Robomongo'
+alias gitls='git show --pretty="" --name-only '
