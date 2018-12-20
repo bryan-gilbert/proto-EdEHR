@@ -1,14 +1,13 @@
-// Generated VUE file. Before modifying see docs about Vue file generation
 <template lang="pug">
   div(:class="$options.name")
     ehr-panel-header
       div Demographics
-      div(style="display:none") {{currentData}}
       div(slot="controls", v-show="showEditControls")
         ehr-edit-controls(v-bind:ehrHelp="ehrHelp", @controlsCallback="controlsCallback")
     ehr-panel-content
       div(class="region ehr-page")
         ehr-page-form(v-bind:uiProps="uiProps", v-bind:theData="theData", v-bind:notEditing="notEditing")
+    div(style="display:none") {{currentData}}
 </template>
 
 <script>

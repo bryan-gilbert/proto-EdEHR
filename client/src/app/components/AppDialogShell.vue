@@ -15,7 +15,7 @@
           div(class="dialog-footer")
             div(class="dialog-footer-errors")
               div(v-show="errors.length")
-                p {{ errorDirections }} eer
+                p {{ errorDirections }}
                 ul
                   li(v-for="error in errors") {{ error }}
             div(class="dialog-footer-content is-pulled-right")
