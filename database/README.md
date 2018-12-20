@@ -39,6 +39,7 @@ Add the volumes when deployed on a production server.  It does not work nor is i
 ## Run Server - Dev
 ```
 npm run start-dev
+DEBUG=server npm run start-dev
 ```
 
 ## Run Server - Prod
