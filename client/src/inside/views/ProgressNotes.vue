@@ -18,6 +18,8 @@
         div(class="input-fieldrow")
           ehr-dialog-form-element(v-for="formElement in uiProps.formDef.topRow", class="input-element", :class="formElement.classList", :def="formElement", :value="inputs[formElement.key]", @input="inputs[formElement.key] = $event")
         hr
+        div(v-for="column in uiProps.formDef.middleRange")
+          ehr-dialog-form-element(v-for="formElement in column.column", :def="formElement", :value="inputs[formElement.key]", @input="inputs[formElement.key] = $event")
         div(class="input-fieldrow")
           ehr-dialog-form-element(v-for="formElement in uiProps.formDef.lastRow", class="input-element", :class="formElement.classList", :def="formElement", :value="inputs[formElement.key]", @input="inputs[formElement.key] = $event")
       span(slot="save-button") Create and close
@@ -25,7 +27,7 @@
 </template>
 
 <script>
-  /*
+/*
             div(v-for="formElement in uiProps.formDef.lastRow", class="input-element", :class="formElement.classList")
             label {{formElement.label }}
             input(type="text", v-model="inputs[formElement.key]")
@@ -101,10 +103,10 @@ export default {
         {
           propertyKey: 'profession',
           label: 'Profession',
+          type: 'text',
           defaultValue: function($store) {
             return 'Nurse'
-          },
-          type: 'text'
+          }
         },
         {
           propertyKey: 'unit',
@@ -122,10 +124,10 @@ export default {
         {
           propertyKey: 'time',
           label: 'Time',
+          type: 'text',
           defaultValue: function($store) {
             return moment().format('HH:mm')
-          },
-          type: 'text'
+          }
         },
         {
           propertyKey: 'notes',
@@ -135,6 +137,22 @@ export default {
             return 'Some random words: ' + getPhrase(14)
           },
           validationRules: [{ required: true }]
+        },
+        {
+          propertyKey: 'airway',
+          label: 'Airway',
+          type: 'checklistWithOther',
+          options: [{ text: 'Patent' }, { text: 'Obstructed' }, { text: 'OETT' }, { text: 'Other' }]
+        },
+        {
+          propertyKey: 'oxygenTherapy',
+          label: 'Oxygen theraphy',
+          type: 'text'
+        },
+        {
+          propertyKey: 'oxygenFlow',
+          label: 'Oxygen flow',
+          type: 'text'
         }
       ]
       let formDef = {
@@ -160,13 +178,24 @@ export default {
             classList: 'input-element-small'
           }
         ],
-        middleRange: [],
+        middleRange: [
+          {column: [
+              {
+                key: 'airway'
+              },
+              {
+                key: 'oxygenTherapy'
+              },
+              {
+                key: 'oxygenFlow'
+              }
+            ]}
+        ],
         lastRow: [
           {
             key: 'notes',
             classList: 'input-element-full'
           }
-
         ]
       }
       return { tableCells: tableCells, formDef: formDef }

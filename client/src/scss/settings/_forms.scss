@@ -8,6 +8,10 @@
     display: flex;
   }
 
+  li {
+    list-style-type: none;
+  }
+
   label,
   input,
   textarea {
@@ -66,5 +70,13 @@
   }
   select {
     width: 100%;
+  }
+  .checklistWithOther {
+    label {
+      display: inline;
+    }
+    .checkbox {
+      height: 1rem;
+    }
   }
 }

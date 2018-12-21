@@ -12,8 +12,14 @@ export default class EhrDialogHelp {
       var cell = cells.find( c => key === c.propertyKey)
       def.label = cell.label
       def.type = cell.type
+      def.options = cell.options
     }
     uiProps.formDef.topRow.forEach((def) => { transfer(def) })
+    uiProps.formDef.middleRange.forEach((column) => {
+      column.column.forEach((def) => {
+        transfer(def)
+      })
+    })
     uiProps.formDef.lastRow.forEach((def) => { transfer(def) })
   }
   showingDialog() {
