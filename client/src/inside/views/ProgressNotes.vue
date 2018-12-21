@@ -4,9 +4,6 @@
     ehr-panel-content
       div(v-show="showEditControls")
         ui-button(v-on:buttonClicked="showDialog") Add a new progress notes
-        div(style="display: inline-block; margin-left: 1rem;")
-          input(type="checkbox", id="populate", v-model="populate")
-          label(style="margin-left: 3px;", for="populate") {{ populateMsg }}
       div(:class="`${$options.name}__main`")
         table.table
           thead
@@ -18,36 +15,28 @@
     app-dialog( v-if="showingModal", :isModal="true", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
       h3(slot="header") Create a new progress note
       div(slot="body", class="ehr-page")
-        div
-          div(class="input-fieldrow")
-            div(class="input-element input-element-medium")
-              label Name
-              input(type="text", v-model="inputs.name")
-            div(class="input-element input-element-medium")
-              label Profession
-              input(type="text", v-model="inputs.profession")
-            div(class="input-element input-element-small")
-              label Unit
-              input(type="text", v-model="inputs.unit")
-            div(class="input-element input-element-small")
-              label Day
-              input(type="text", v-model="inputs.day")
-            div(class="input-element input-element-small")
-              label Time
-              input(type="text", v-model="inputs.time")
+        div(class="input-fieldrow")
+          ehr-dialog-form-element(v-for="formElement in uiProps.formDef.topRow", class="input-element", :class="formElement.classList", :def="formElement", :value="inputs[formElement.key]", @input="inputs[formElement.key] = $event")
         hr
-        div
-          div(class="input-fieldrow")
-            div(class="input-element input-element-full")
-              label Progress notes
-              textarea(v-model="inputs.notes")
+        div(class="input-fieldrow")
+          ehr-dialog-form-element(v-for="formElement in uiProps.formDef.lastRow", class="input-element", :class="formElement.classList", :def="formElement", :value="inputs[formElement.key]", @input="inputs[formElement.key] = $event")
       span(slot="save-button") Create and close
     div(style="display:none") {{currentData}}
 </template>
 
 <script>
+  /*
+            div(v-for="formElement in uiProps.formDef.lastRow", class="input-element", :class="formElement.classList")
+            label {{formElement.label }}
+            input(type="text", v-model="inputs[formElement.key]")
+
+label {{formElement.label }}
+input(type="text", v-model="inputs[formElement.key]")
+
+   */
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
+import EhrDialogFormElement from '../components/EhrDialogFormElement.vue'
 import EhrHelp from '../ehr-helper'
 import EhrDialogHelp from '../ehr-dialog-helper'
 import UiButton from '../../app/ui/UiButton.vue'
@@ -60,6 +49,7 @@ export default {
   components: {
     EhrPanelHeader,
     EhrPanelContent,
+    EhrDialogFormElement,
     AppDialog,
     UiButton
   },
@@ -76,15 +66,10 @@ export default {
         dataKey: 'progressNotes'
       },
       inputs: {},
-      errorList:[],
-
-      populate: true
+      errorList: []
     }
   },
   computed: {
-    populateMsg() {
-      return 'Add with sample data ' + (this.populate ? 'enabled' : 'disabled')
-    },
     showingModal() {
       return this.ehrDialogHelp.showingDialog()
     },
@@ -111,13 +96,14 @@ export default {
           defaultValue: function($store) {
             return $store.state.visit.sUserInfo.fullName
           },
-          validationRules:[
-            { required: true }
-          ]
+          validationRules: [{ required: true }]
         },
         {
           propertyKey: 'profession',
           label: 'Profession',
+          defaultValue: function($store) {
+            return 'Nurse'
+          },
           type: 'text'
         },
         {
@@ -130,56 +116,60 @@ export default {
           label: 'Day',
           type: 'text',
           defaultValue: function() {
-            return '0'
+            return moment().format('DD MMM')
           }
         },
         {
           propertyKey: 'time',
           label: 'Time',
+          defaultValue: function($store) {
+            return moment().format('HH:mm')
+          },
           type: 'text'
         },
         {
           propertyKey: 'notes',
           label: 'Progress notes',
           type: 'textarea',
-          validationRules:[
-            { required: true }
-          ]
+          defaultValue: function($store) {
+            return 'Some random words: ' + getPhrase(14)
+          },
+          validationRules: [{ required: true }]
         }
       ]
-      let formInputs = [
-        {
-          propertyKey: 'name',
-          label: 'Name',
-          type: 'text'
-        },
-        {
-          propertyKey: 'profession',
-          label: 'Profession',
-          type: 'text'
-        },
-        {
-          propertyKey: 'unit',
-          label: 'Unit',
-          type: 'text'
-        },
-        {
-          propertyKey: 'day',
-          label: 'Day',
-          type: 'text'
-        },
-        {
-          propertyKey: 'time',
-          label: 'Time',
-          type: 'text'
-        },
-        {
-          propertyKey: 'notes',
-          label: 'Progress notes',
-          type: 'textarea'
-        }
-      ]
-      return { tableCells: tableCells, formInputs: formInputs }
+      let formDef = {
+        topRow: [
+          {
+            key: 'name',
+            classList: 'input-element-medium'
+          },
+          {
+            key: 'profession',
+            classList: 'input-element-medium'
+          },
+          {
+            key: 'unit',
+            classList: 'input-element-small'
+          },
+          {
+            key: 'day',
+            classList: 'input-element-small'
+          },
+          {
+            key: 'time',
+            classList: 'input-element-small'
+          }
+        ],
+        middleRange: [],
+        lastRow: [
+          {
+            key: 'notes',
+            classList: 'input-element-full'
+          }
+
+        ]
+      }
+      return { tableCells: tableCells, formDef: formDef }
     }
   },
   methods: {
@@ -196,6 +186,7 @@ export default {
   created() {
     this.ehrHelp = new EhrHelp(this, this.$store, this.dataKey, this.hasForm)
     this.ehrDialogHelp = new EhrDialogHelp(this, this.$store)
+    this.ehrDialogHelp.setupDialogDef(this.uiProps)
   },
   beforeRouteLeave(to, from, next) {
     this.ehrHelp.beforeRouteLeave(to, from, next)
@@ -203,7 +194,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '../../scss/settings/forms';
 .ProgressNotes {
   &__main {

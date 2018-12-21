@@ -5,31 +5,17 @@ export default class EhrDialogHelp {
     this.showModal = false
   }
 
-  beginEdit() {
-    this.$store.commit('system/setEditing', true)
-    this.cacheData()
+  setupDialogDef(uiProps) {
+    function transfer(def) {
+      var cells = uiProps.tableCells
+      var key = def.key
+      var cell = cells.find( c => key === c.propertyKey)
+      def.label = cell.label
+      def.type = cell.type
+    }
+    uiProps.formDef.topRow.forEach((def) => { transfer(def) })
+    uiProps.formDef.lastRow.forEach((def) => { transfer(def) })
   }
-
-  cancelEdit() {
-    const _this = this
-    _this.$store.commit('system/setEditing', false)
-    _this.$store.commit('system/setLoading', true)
-    setTimeout(function() {
-      _this.$store.commit('system/setLoading', false)
-    }, 1000)
-  }
-
-  saveEdit() {
-    const _this = this
-    _this.$store.commit('system/setEditing', false)
-    _this.$store.commit('system/setLoading', true)
-    let payload = this.getCurrentData()
-    // console.log('saveEdit payload', JSON.stringify(payload))
-    _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
-      _this.$store.commit('system/setLoading', false)
-    })
-  }
-
   showingDialog() {
     return this.showModal
   }
