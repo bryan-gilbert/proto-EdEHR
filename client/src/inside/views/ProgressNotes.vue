@@ -12,28 +12,29 @@
           tbody
             tr(v-for="item in theData")
               td(v-for="cell in uiProps.tableCells", :class="cell.propertyKey") {{ item[cell.propertyKey] }}
-    app-dialog( v-if="showingModal", :isModal="true", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
+    app-dialog( v-if="showingModal", :isModal="false", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
       h3(slot="header") Create a new progress note
       div(slot="body", class="ehr-page")
         div(class="input-fieldrow")
-          ehr-dialog-form-element(v-for="formElement in uiProps.formDef.topRow", class="input-element", :class="formElement.classList", :def="formElement", :value="inputs[formElement.key]", @input="inputs[formElement.key] = $event")
+          ehr-dialog-form-element(v-for="fmEl in topRow", :inputs="inputs", :key="fmEl.key", :def="fmEl", :value="inputs[fmEl.key]", @input="inputs[fmEl.key] = $event")
         hr
-        div(v-for="column in uiProps.formDef.middleRange")
-          ehr-dialog-form-element(v-for="formElement in column.column", :def="formElement", :value="inputs[formElement.key]", @input="inputs[formElement.key] = $event")
+        div(v-for="block in middleRange")
+          ehr-dialog-form-element(v-for="fmEl in block.column", :inputs="inputs", :key="fmEl.key", :def="fmEl", :value="inputs[fmEl.key]", @input="inputs[fmEl.key] = $event")
         div(class="input-fieldrow")
-          ehr-dialog-form-element(v-for="formElement in uiProps.formDef.lastRow", class="input-element", :class="formElement.classList", :def="formElement", :value="inputs[formElement.key]", @input="inputs[formElement.key] = $event")
+          ehr-dialog-form-element(v-for="fmEl in lastRow", :inputs="inputs",  :key="fmEl.key", :def="fmEl", :value="inputs[fmEl.key]", @input="inputs[fmEl.key] = $event")
       span(slot="save-button") Create and close
+    div() {{inputs}}
     div(style="display:none") {{currentData}}
 </template>
 
 <script>
 /*
-            div(v-for="formElement in uiProps.formDef.lastRow", class="input-element", :class="formElement.classList")
-            label {{formElement.label }}
-            input(type="text", v-model="inputs[formElement.key]")
+div(v-for="fmEl in uiProps.formDef.lastRow", class="input-element", :class="fmEl.classList")
+label {{fmEl.label }}
+input(type="text", v-model="inputs[fmEl.key]")
 
-label {{formElement.label }}
-input(type="text", v-model="inputs[formElement.key]")
+label {{fmEl.label }}
+input(type="text", v-model="inputs[fmEl.key]")
 
    */
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
@@ -134,7 +135,7 @@ export default {
           label: 'Progress notes',
           type: 'textarea',
           defaultValue: function($store) {
-            return 'Some random words: ' + getPhrase(14)
+            return 'Random: ' + getPhrase(4)
           },
           validationRules: [{ required: true }]
         },
@@ -145,8 +146,15 @@ export default {
           options: [{ text: 'Patent' }, { text: 'Obstructed' }, { text: 'OETT' }, { text: 'Other' }]
         },
         {
+          propertyKey: 'airwayOther',
+          label: '',
+          targetValue: 'Other',
+          type: 'dependant',
+          parent: 'airway'
+        },
+        {
           propertyKey: 'oxygenTherapy',
-          label: 'Oxygen theraphy',
+          label: 'Oxygen therapy',
           type: 'text'
         },
         {
@@ -184,6 +192,9 @@ export default {
                 key: 'airway'
               },
               {
+                key: 'airwayOther'
+              },
+              {
                 key: 'oxygenTherapy'
               },
               {
@@ -199,6 +210,15 @@ export default {
         ]
       }
       return { tableCells: tableCells, formDef: formDef }
+    },
+    topRow() {
+      return this.uiProps.formDef.topRow
+    },
+    middleRange() {
+      return this.uiProps.formDef.middleRange
+    },
+    lastRow() {
+      return this.uiProps.formDef.lastRow
     }
   },
   methods: {

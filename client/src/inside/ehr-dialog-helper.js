@@ -6,18 +6,25 @@ export default class EhrDialogHelp {
   }
 
   setupDialogDef(uiProps) {
-    function transfer(def) {
+    function transfer(def, defsList) {
       var cells = uiProps.tableCells
-      var key = def.key
-      var cell = cells.find( c => key === c.propertyKey)
+      var cell = cells.find(c => def.key === c.propertyKey)
       def.label = cell.label
       def.type = cell.type
       def.options = cell.options
+      if (cell.parent) {
+        console.log('look for cell parent', cell.parent, 'in', defsList)
+        var parent = defsList.find(c => cell.parent === c.key)
+        console.log('how to link related property', parent)
+        def.parent = parent
+        def.targetValue = cell.targetValue
+        console.log('resulting def', def)
+      }
     }
     uiProps.formDef.topRow.forEach((def) => { transfer(def) })
     uiProps.formDef.middleRange.forEach((column) => {
       column.column.forEach((def) => {
-        transfer(def)
+        transfer(def, column.column)
       })
     })
     uiProps.formDef.lastRow.forEach((def) => { transfer(def) })

@@ -17,11 +17,11 @@
   textarea {
     display: block;
   }
-  .label-checkbox {
+  .label-checkbox, .label-radio {
     display: inline;
     vertical-align: top;
   }
-  .checkbox {
+  .checkbox, .radio {
     display: inline;
     margin-right: 5px;
   }
@@ -75,7 +75,7 @@
     label {
       display: inline;
     }
-    .checkbox {
+    .radio {
       height: 1rem;
     }
   }
