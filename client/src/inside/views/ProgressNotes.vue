@@ -16,26 +16,17 @@
       h3(slot="header") Create a new progress note
       div(slot="body", class="ehr-page")
         div(class="input-fieldrow")
-          ehr-dialog-form-element(v-for="fmEl in topRow", :inputs="inputs", :def="fmEl")
+          ehr-dialog-form-element(v-for="fmEl in topRow", :key="def.key", :inputs="inputs", :def="fmEl")
         hr
         div(v-for="block in middleRange")
-          ehr-dialog-form-element(v-for="fmEl in block.column", :inputs="inputs", :def="fmEl")
+          ehr-dialog-form-element(v-for="fmEl in block.column", :key="def.key", :inputs="inputs", :def="fmEl")
         div(class="input-fieldrow")
-          ehr-dialog-form-element(v-for="fmEl in lastRow", :inputs="inputs", :def="fmEl")
+          ehr-dialog-form-element(v-for="fmEl in lastRow", :key="def.key", :inputs="inputs", :def="fmEl")
       span(slot="save-button") Create and close
     div(style="display:none") {{currentData}}
 </template>
 
 <script>
-/*
-div(v-for="fmEl in uiProps.formDef.lastRow", class="input-element", :class="fmEl.classList")
-label {{fmEl.label }}
-input(type="text", v-model="inputs[fmEl.key]")
-
-label {{fmEl.label }}
-input(type="text", v-model="inputs[fmEl.key]")
-
-   */
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
 import EhrDialogFormElement from '../components/EhrDialogFormElement.vue'
@@ -237,9 +228,6 @@ export default {
   },
   beforeRouteLeave(to, from, next) {
     this.ehrHelp.beforeRouteLeave(to, from, next)
-  },
-  beforeDestroy(to, from, next) {
-    this.ehrHelp.beforeDestroy()
   }
 }
 </script>

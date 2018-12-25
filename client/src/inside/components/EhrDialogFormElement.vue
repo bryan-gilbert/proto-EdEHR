@@ -16,8 +16,7 @@
 
 <script>
 import EventBus from '../../event-bus'
-// import {DIALOG_INPUT_EVENT} from '../../event-bus'
-const DIALOG_INPUT_EVENT = 'dialogInputEvent'
+import { DIALOG_INPUT_EVENT } from '../ehr-dialog-helper'
 
 export default {
   name: 'EhrPageForm',
@@ -40,8 +39,8 @@ export default {
     },
     parentData() {
       if (this.def.parent) {
-        let pVal =  this.inputs[this.def.parent.key]
-        console.log('this.inputs',this.inputs)
+        let pVal = this.inputs[this.def.parent.key]
+        console.log('this.inputs', this.inputs)
         console.log('daf.parent', this.def.parent, 'pVal', pVal)
         return pVal
       }
