@@ -16,14 +16,13 @@
       h3(slot="header") Create a new progress note
       div(slot="body", class="ehr-page")
         div(class="input-fieldrow")
-          ehr-dialog-form-element(v-for="fmEl in topRow", :inputs="inputs", :key="fmEl.key", :def="fmEl", :value="inputs[fmEl.key]", @input="inputs[fmEl.key] = $event")
+          ehr-dialog-form-element(v-for="fmEl in topRow", :inputs="inputs", :def="fmEl")
         hr
         div(v-for="block in middleRange")
-          ehr-dialog-form-element(v-for="fmEl in block.column", :inputs="inputs", :key="fmEl.key", :def="fmEl", :value="inputs[fmEl.key]", @input="inputs[fmEl.key] = $event")
+          ehr-dialog-form-element(v-for="fmEl in block.column", :inputs="inputs", :def="fmEl")
         div(class="input-fieldrow")
-          ehr-dialog-form-element(v-for="fmEl in lastRow", :inputs="inputs",  :key="fmEl.key", :def="fmEl", :value="inputs[fmEl.key]", @input="inputs[fmEl.key] = $event")
+          ehr-dialog-form-element(v-for="fmEl in lastRow", :inputs="inputs", :def="fmEl")
       span(slot="save-button") Create and close
-    div() {{inputs}}
     div(style="display:none") {{currentData}}
 </template>
 
@@ -235,10 +234,12 @@ export default {
   created() {
     this.ehrHelp = new EhrHelp(this, this.$store, this.dataKey, this.hasForm)
     this.ehrDialogHelp = new EhrDialogHelp(this, this.$store)
-    this.ehrDialogHelp.setupDialogDef(this.uiProps)
   },
   beforeRouteLeave(to, from, next) {
     this.ehrHelp.beforeRouteLeave(to, from, next)
+  },
+  beforeDestroy(to, from, next) {
+    this.ehrHelp.beforeDestroy()
   }
 }
 </script>

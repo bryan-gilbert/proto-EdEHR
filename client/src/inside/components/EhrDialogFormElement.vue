@@ -16,17 +16,28 @@
 
 <script>
 import EventBus from '../../event-bus'
+// import {DIALOG_INPUT_EVENT} from '../../event-bus'
+const DIALOG_INPUT_EVENT = 'dialogInputEvent'
+
 export default {
   name: 'EhrPageForm',
   props: {
-    value: {type: String},
+    // value: {type: String},
     inputs: {type : Object},
     def: {type: Object}
   },
   data() {
-    return { inputVal: this.value, gotHit: false, eventHandler: {}  }
+    return {
+      inputVal: this.computedValue, gotHit: false,
+      eventHandler: {}
+    }
   },
   computed: {
+    computedValue() {
+      let cV = this.def.helper.getInputValue(this.def)
+      console.log('computedValue', cV)
+      return cV
+    },
     parentData() {
       if (this.def.parent) {
         let pVal =  this.inputs[this.def.parent.key]
@@ -38,7 +49,7 @@ export default {
     },
     eventChannelListen() {
       if (this.def.parent) {
-        console.log('daf.parent', this.def.parent)
+        // console.log('eventChannelListen daf.parent', this.def.parent)
         return 'radio:' + this.def.parent.key
       }
       return null
@@ -53,7 +64,7 @@ export default {
       this.$nextTick(function () {
         // Send an event on our transmission channel with a payload containing this component's value
         let eData = {key: _this.def.key, value: _this.inputVal }
-        console.log('emit event',eData, _this.eventChannelBroadcast)
+        // console.log('emit event',eData, _this.eventChannelBroadcast)
         EventBus.$emit(_this.eventChannelBroadcast, eData)
       })
     },
@@ -61,11 +72,13 @@ export default {
       // we're receiving an event transmitted by another instance of this component. An instance
       // that has sent a message on the channel this component listens on.
       this.gotHit = this.def.targetValue === eData.value
-      console.log(`On channel ${this.eventChannelListen} from key ${eData.key} got hit? ${this.gotHit}`)
+      // console.log(`On channel ${this.eventChannelListen} from key ${eData.key} got hit? ${this.gotHit}`)
     }
 
   },
   mounted: function() {
+    let val = this.def.helper.getInputValue(this.def)
+    this.inputVal = val
     if(this.eventChannelListen) {
       const _this = this
       // register listener if needed
@@ -74,14 +87,16 @@ export default {
     }
   },
   beforeDestroy: function() {
-    if(this.eventHandler) {
-      // register listener if needed
+    if(this.eventChannelListen &&   this.eventHandler) {
+      // console.log('beforeDestroy, remove listener',this.eventChannelListen)
       EventBus.$off(this.eventChannelListen, this.eventHandler)
     }
   },
   watch: {
     inputVal(val) {
-      this.$emit('input', val)
+      // console.log('watch inputValue', val, DIALOG_INPUT_EVENT)
+      let def = this.def
+      EventBus.$emit(DIALOG_INPUT_EVENT, {key: def.key, value: val, def: def})
     }
   }
 }

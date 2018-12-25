@@ -1,24 +1,44 @@
+import EventBus from '../event-bus'
+
+export const DIALOG_INPUT_EVENT = 'dialogInputEvent'
+
 export default class EhrDialogHelp {
   constructor(component, store) {
     this.component = component
     this.$store = store
     this.showModal = false
+    const _this = this
+    this.eventHandler = function(eData) { _this.receiveEvent(eData)}
+    EventBus.$on(DIALOG_INPUT_EVENT, this.eventHandler) // eData => { this.receiveEvent(eData) })
+    this.setupDialogDef(this.component.uiProps)
+  }
+
+  receiveEvent(eData) {
+    // console.log(`On channel ${DIALOG_INPUT_EVENT} from key ${eData.key} got data: ${eData.value}`)
+    this.component.inputs[eData.key] = eData.value
+  }
+
+  getInputValue(def) {
+    var val = this.component.inputs[def.key]
+    // console.log('helper provides val for key ', val, def.key)
+    return val
   }
 
   setupDialogDef(uiProps) {
+    const _this = this
     function transfer(def, defsList) {
       var cells = uiProps.tableCells
       var cell = cells.find(c => def.key === c.propertyKey)
       def.label = cell.label
       def.type = cell.type
       def.options = cell.options
+      def.helper = _this
       if (cell.parent) {
-        console.log('look for cell parent', cell.parent, 'in', defsList)
+        // console.log('look for cell parent', cell.parent, 'in', defsList)
         var parent = defsList.find(c => cell.parent === c.key)
-        console.log('how to link related property', parent)
         def.parent = parent
         def.targetValue = cell.targetValue
-        console.log('resulting def', def)
+        // console.log('resulting def', def)
       }
     }
     uiProps.formDef.topRow.forEach((def) => { transfer(def) })
@@ -53,7 +73,7 @@ export default class EhrDialogHelp {
           var value = inputs[cell.propertyKey]
           if (rule.required && value.length === 0) {
             var msg = cell.label + ' is required'
-            console.log(msg)
+            // console.log('validateInput', msg)
             this.component.errorList.push(msg)
           }
         })
@@ -90,5 +110,13 @@ export default class EhrDialogHelp {
         _this.loading = false
       })
     }
+  }
+
+  dialogEvent(eData) {
+    const _this = this
+    // register listener if needed
+    this.eventHandler = function(eData) { _this.receiveEvent(eData)}
+    EventBus.$on(this.eventChannelListen, this.eventHandler) // eData => { this.receiveEvent(eData) })
+
   }
 }
