@@ -12,28 +12,18 @@
           tbody
             tr(v-for="item in theData")
               td(v-for="cell in uiProps.tableCells", :class="cell.propertyKey") {{ item[cell.propertyKey] }}
-    app-dialog( v-if="showingModal", :isModal="false", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
-      h3(slot="header") Create a new progress note
-      div(slot="body", class="ehr-page")
-        div(class="input-fieldrow")
-          ehr-dialog-form-element(v-for="fmEl in topRow", :key="fmEl.key", :inputs="inputs", :def="fmEl")
-        hr
-        div(v-for="block in middleRange")
-          ehr-dialog-form-element(v-for="fmEl in block.column", :key="fmEl.key", :inputs="inputs", :def="fmEl")
-        div(class="input-fieldrow")
-          ehr-dialog-form-element(v-for="fmEl in lastRow", :key="fmEl.key", :inputs="inputs", :def="fmEl")
-      span(slot="save-button") Create and close
     div(style="display:none") {{currentData}}
+    ehr-dialog-form(:ehrDialogHelp="ehrDialogHelp", :ui-props="uiProps", :inputs="inputs", :errorList="errorList" )
+
 </template>
 
 <script>
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
-import EhrDialogFormElement from '../components/EhrDialogFormElement.vue'
+import EhrDialogForm from '../components/EhrDialogForm.vue'
 import EhrHelp from '../ehr-helper'
 import EhrDialogHelp from '../ehr-dialog-helper'
 import UiButton from '../../app/ui/UiButton.vue'
-import AppDialog from '../../app/components/AppDialogShell'
 import moment from 'moment'
 import { getPhrase } from '../poc-utils'
 
@@ -42,8 +32,7 @@ export default {
   components: {
     EhrPanelHeader,
     EhrPanelContent,
-    EhrDialogFormElement,
-    AppDialog,
+    EhrDialogForm,
     UiButton
   },
   data: function() {

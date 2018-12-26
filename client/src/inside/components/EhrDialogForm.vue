@@ -1,0 +1,61 @@
+<template lang="pug">
+  app-dialog( v-if="showingModal", :isModal="false", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
+    h3(slot="header") Create a new progress note
+    div(slot="body", class="ehr-page")
+      div(class="input-fieldrow")
+        ehr-dialog-form-element(v-for="fmEl in topRow", :key="fmEl.key", :inputs="inputs", :def="fmEl")
+      hr
+      div(v-for="block in middleRange")
+        ehr-dialog-form-element(v-for="fmEl in block.column", :key="fmEl.key", :inputs="inputs", :def="fmEl")
+      div(class="input-fieldrow")
+        ehr-dialog-form-element(v-for="fmEl in lastRow", :key="fmEl.key", :inputs="inputs", :def="fmEl")
+    span(slot="save-button") Create and close
+</template>
+
+<script>
+import AppDialog from '../../app/components/AppDialogShell'
+import EhrDialogFormElement from '../components/EhrDialogFormElement.vue'
+// import EhrHelp from '../ehr-helper'
+// import EhrDialogHelp from '../ehr-dialog-helper'
+
+export default {
+  name: 'EhrDialogForm',
+  components: {
+    EhrDialogFormElement,
+    AppDialog
+  },
+  data: function() {
+    return {}
+  },
+  props: {
+    ehrDialogHelp: { type: Object },
+    uiProps: { type: Object },
+    inputs: { type: Object },
+    errorList: { type: Array }
+  },
+  computed: {
+    showingModal() {
+      return this.ehrDialogHelp.showingDialog()
+    },
+    topRow() {
+      return this.uiProps.formDef.topRow
+    },
+    middleRange() {
+      return this.uiProps.formDef.middleRange
+    },
+    lastRow() {
+      return this.uiProps.formDef.lastRow
+    }
+  },
+  methods: {
+    cancelDialog: function() {
+      this.ehrDialogHelp.cancelDialog()
+    },
+    saveDialog: function() {
+      this.ehrDialogHelp.saveDialog()
+    }
+  }
+}
+</script>
+
+<style scoped></style>
