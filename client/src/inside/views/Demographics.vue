@@ -320,7 +320,7 @@ export default {
     },
     currentData() {
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      this.theData = this.ehrHelp.theData()
+      this.theData = this.ehrHelp.mergedProperty()
       return this.theData
     }
   },

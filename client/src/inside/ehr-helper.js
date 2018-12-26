@@ -20,14 +20,14 @@ export default class EhrHelp {
 
   cacheData() {
     // console.log('ehr helper caching data ', data)
-    this.cacheAsString = JSON.stringify(this.theData())
+    this.cacheAsString = JSON.stringify(this.mergedProperty())
   }
 
   isEditing() {
     return this.$store.state.system.isEditing
   }
 
-  theData() {
+  mergedProperty() {
     let data = this.$store.getters['ehrData/mergedData'] || {}
     let asStored = data[this.dataKey] || {}
     return JSON.parse(JSON.stringify(asStored))

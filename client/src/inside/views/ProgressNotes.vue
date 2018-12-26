@@ -16,12 +16,12 @@
       h3(slot="header") Create a new progress note
       div(slot="body", class="ehr-page")
         div(class="input-fieldrow")
-          ehr-dialog-form-element(v-for="fmEl in topRow", :key="def.key", :inputs="inputs", :def="fmEl")
+          ehr-dialog-form-element(v-for="fmEl in topRow", :key="fmEl.key", :inputs="inputs", :def="fmEl")
         hr
         div(v-for="block in middleRange")
-          ehr-dialog-form-element(v-for="fmEl in block.column", :key="def.key", :inputs="inputs", :def="fmEl")
+          ehr-dialog-form-element(v-for="fmEl in block.column", :key="fmEl.key", :inputs="inputs", :def="fmEl")
         div(class="input-fieldrow")
-          ehr-dialog-form-element(v-for="fmEl in lastRow", :key="def.key", :inputs="inputs", :def="fmEl")
+          ehr-dialog-form-element(v-for="fmEl in lastRow", :key="fmEl.key", :inputs="inputs", :def="fmEl")
       span(slot="save-button") Create and close
     div(style="display:none") {{currentData}}
 </template>
@@ -71,7 +71,7 @@ export default {
     },
     currentData() {
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      this.theData = this.ehrHelp.theData()
+      this.theData = this.ehrHelp.mergedProperty()
       return this.theData
     },
     progressNotes() {
