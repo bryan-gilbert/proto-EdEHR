@@ -108,29 +108,6 @@ export default {
             return 'Random: ' + getPhrase(4)
           },
           validationRules: [{ required: true }]
-        },
-        {
-          propertyKey: 'airway',
-          label: 'Airway',
-          type: 'checklistWithOther',
-          options: [{ text: 'Patent' }, { text: 'Obstructed' }, { text: 'OETT' }, { text: 'Other' }]
-        },
-        {
-          propertyKey: 'airwayOther',
-          label: '',
-          targetValue: 'Other',
-          type: 'dependant',
-          parent: 'airway'
-        },
-        {
-          propertyKey: 'oxygenTherapy',
-          label: 'Oxygen therapy',
-          type: 'text'
-        },
-        {
-          propertyKey: 'oxygenFlow',
-          label: 'Oxygen flow',
-          type: 'text'
         }
       ]
       let formDef = {
@@ -156,22 +133,7 @@ export default {
             classList: 'input-element-small'
           }
         ],
-        middleRange: [
-          {column: [
-              {
-                key: 'airway'
-              },
-              {
-                key: 'airwayOther'
-              },
-              {
-                key: 'oxygenTherapy'
-              },
-              {
-                key: 'oxygenFlow'
-              }
-            ]}
-        ],
+        middleRange: [{ column: [] }],
         lastRow: [
           {
             key: 'notes',
@@ -180,7 +142,7 @@ export default {
         ]
       }
       return { tableCells: tableCells, formDef: formDef }
-    },
+    }
   },
   methods: {
     showDialog: function() {
