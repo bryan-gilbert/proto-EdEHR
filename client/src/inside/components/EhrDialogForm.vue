@@ -1,5 +1,5 @@
 <template lang="pug">
-  app-dialog( v-if="showingModal", :isModal="false", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
+  app-dialog(:class="$options.name", v-if="showingModal", :isModal="false", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
     h3(slot="header") Create a new progress note
     div(slot="body", class="ehr-page")
       div(class="input-fieldrow")
@@ -15,17 +15,12 @@
 <script>
 import AppDialog from '../../app/components/AppDialogShell'
 import EhrDialogFormElement from '../components/EhrDialogFormElement.vue'
-// import EhrHelp from '../ehr-helper'
-// import EhrDialogHelp from '../ehr-dialog-helper'
 
 export default {
   name: 'EhrDialogForm',
   components: {
     EhrDialogFormElement,
     AppDialog
-  },
-  data: function() {
-    return {}
   },
   props: {
     ehrDialogHelp: { type: Object },
@@ -58,4 +53,8 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style lang="scss">
+@import '../../scss/settings/forms';
+.EhrDialogForm {
+}
+</style>

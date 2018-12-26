@@ -52,9 +52,6 @@ export default {
     }
   },
   computed: {
-    showingModal() {
-      return this.ehrDialogHelp.showingDialog()
-    },
     showEditControls() {
       return this.ehrHelp.showEditControls()
     },
@@ -62,12 +59,6 @@ export default {
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       this.theData = this.ehrHelp.mergedProperty()
       return this.theData
-    },
-    progressNotes() {
-      let data = this.$store.getters['ehrData/mergedData'] || {}
-      let pn = data.progressNotes || []
-      console.log('get PN ', data, pn)
-      return pn
     },
     uiProps() {
       let tableCells = [
@@ -190,25 +181,10 @@ export default {
       }
       return { tableCells: tableCells, formDef: formDef }
     },
-    topRow() {
-      return this.uiProps.formDef.topRow
-    },
-    middleRange() {
-      return this.uiProps.formDef.middleRange
-    },
-    lastRow() {
-      return this.uiProps.formDef.lastRow
-    }
   },
   methods: {
     showDialog: function() {
       this.ehrDialogHelp.showDialog()
-    },
-    cancelDialog: function() {
-      this.ehrDialogHelp.cancelDialog()
-    },
-    saveDialog: function() {
-      this.ehrDialogHelp.saveDialog()
     }
   },
   created() {
@@ -222,9 +198,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../scss/settings/forms';
 .ProgressNotes {
-  &__main {
-  }
 }
 </style>
