@@ -1,18 +1,15 @@
-// Generated VUE file. Before modifying see docs about Vue file generation 
 <template lang="pug">
   div(:class="$options.name")
     ehr-panel-header Genitourinary
     ehr-panel-content
       div(v-show="showEditControls")
-        ui-button(v-on:buttonClicked="showDialog") Add a new progress notes
+        ui-button(v-on:buttonClicked="showDialog") Add a assessment
       div(:class="`${$options.name}__main`")
+        div This page is a WIP and is missing many EHR fields
         table.table
-          thead
-            tr
-              th(v-for="cell in uiProps.tableCells", :class="cell.propertyKey", :title="cell.propertyKey") {{ cell.label }}
           tbody
-            tr(v-for="item in theData")
-              td(v-for="cell in uiProps.tableCells", :class="cell.propertyKey") {{ item[cell.propertyKey] }}
+            tr(v-for="column in columnData")
+              td(v-for="cell in column") {{ cell.value }}
     div(style="display:none") {{currentData}}
     ehr-dialog-form(:ehrDialogHelp="ehrDialogHelp", :ui-props="uiProps", :inputs="inputs", :errorList="errorList" )
 </template>
@@ -54,6 +51,35 @@ export default {
   computed: {
     showEditControls() {
       return this.ehrHelp.showEditControls()
+    },
+    columnData() {
+      var columns = []
+      var row = []
+      this.uiProps.tableCells.forEach(cell => {
+        var entry = {
+          class: cell.propertyKey,
+          title: cell.propertyKey,
+          value: cell.label
+        }
+        row.push(entry)
+      })
+      columns.push(row)
+      var assessments = Array.isArray(this.theData ) ? this.theData  : []
+      assessments.forEach(item => {
+        var row = []
+        this.uiProps.tableCells.forEach(cell => {
+          var v = item[cell.propertyKey]
+          var entry = {
+            class: cell.propertyKey,
+            title: v,
+            value: v
+          }
+          row.push(entry)
+        })
+        columns.push(row)
+      })
+      var transpose = columns[0].map((col, i) => columns.map(row => row[i]))
+      return transpose
     },
     currentData() {
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
@@ -101,36 +127,35 @@ export default {
           }
         },
         {
-          propertyKey: 'notes',
-          label: 'Progress notes',
+          propertyKey: 'urinarySymptoms',
+          label: 'Urinary symptoms',
+          type: 'checklistWithOther',
+          options: [{ text: 'None' }, { text: 'Increased frequency' }, { text: 'Dysuria' }, { text: 'Hernaturia' }]
+        },
+        {
+          propertyKey: 'lastVoidedDay',
+          label: 'Last voided day',
+          type: 'text'
+        },
+        {
+          propertyKey: 'lastVoidedTime',
+          label: 'Last voided time',
+          type: 'text'
+        },
+        {
+          propertyKey: 'foley',
+          label: 'Foley',
+          type: 'select',
+          options: [{ text: 'No' }, { text: 'Yes' }]
+        },
+        {
+          propertyKey: 'comments',
+          label: 'Comments',
           type: 'textarea',
           defaultValue: function($store) {
             return 'Random: ' + getPhrase(4)
           },
           validationRules: [{ required: true }]
-        },
-        {
-          propertyKey: 'airway',
-          label: 'Airway',
-          type: 'checklistWithOther',
-          options: [{ text: 'Patent' }, { text: 'Obstructed' }, { text: 'OETT' }, { text: 'Other' }]
-        },
-        {
-          propertyKey: 'airwayOther',
-          label: '',
-          targetValue: 'Other',
-          type: 'dependant',
-          parent: 'airway'
-        },
-        {
-          propertyKey: 'oxygenTherapy',
-          label: 'Oxygen therapy',
-          type: 'text'
-        },
-        {
-          propertyKey: 'oxygenFlow',
-          label: 'Oxygen flow',
-          type: 'text'
         }
       ]
       let formDef = {
@@ -157,30 +182,32 @@ export default {
           }
         ],
         middleRange: [
-          {column: [
+          {
+            column: [
               {
-                key: 'airway'
+                key: 'urinarySymptoms'
               },
               {
-                key: 'airwayOther'
+                key: 'lastVoidedDay'
               },
               {
-                key: 'oxygenTherapy'
+                key: 'lastVoidedTime'
               },
               {
-                key: 'oxygenFlow'
+                key: 'foley'
               }
-            ]}
+            ]
+          }
         ],
         lastRow: [
           {
-            key: 'notes',
+            key: 'comments',
             classList: 'input-element-full'
           }
         ]
       }
       return { tableCells: tableCells, formDef: formDef }
-    },
+    }
   },
   methods: {
     showDialog: function() {

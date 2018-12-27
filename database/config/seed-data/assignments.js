@@ -77,6 +77,22 @@ module.exports = function() {
         }
       };
     }
+    function makeSeed4() {
+      return {
+        genitourinary : {
+          assessments: [
+            {
+              name: getName(),
+              profession: "Nurse",
+              unit: "ER",
+              day: "0",
+              time: "07:00",
+              notes: getPhrase(15)
+            }
+          ]
+        }
+      };
+    }
 
     let ass1 = {
       externalId: "assignment1",
@@ -107,6 +123,16 @@ module.exports = function() {
       seedData: makeSeed3()
     };
 
+
+    let ass4 = {
+      externalId: "assignment4",
+      name: "Proof of concept assignment 4",
+      description: "Genitourinary data",
+      ehrRoutePath: "/ehr/current/assessments/genitourinary",
+      ehrRouteName: "genitourinary",
+      seedData: makeSeed4()
+    };
+
     let defaultDef = {
       externalId: "defaultNonAssignment",
       name: "Default Non Assignment",
@@ -129,6 +155,9 @@ module.exports = function() {
       })
       .then(() => {
         return Assignment.create(ass3);
+      })
+      .then(() => {
+        return Assignment.create(ass4);
       })
       .then(() => {
         resolve();
