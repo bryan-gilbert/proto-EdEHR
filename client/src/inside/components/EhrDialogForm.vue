@@ -23,14 +23,14 @@ export default {
     AppDialog
   },
   props: {
-    ehrDialogHelp: { type: Object },
+    ehrHelp: { type: Object },
     uiProps: { type: Object },
     inputs: { type: Object },
     errorList: { type: Array }
   },
   computed: {
     showingModal() {
-      return this.ehrDialogHelp.showingDialog()
+      return this.ehrHelp.showingDialog()
     },
     topRow() {
       return this.uiProps.formDef.topRow
@@ -44,10 +44,10 @@ export default {
   },
   methods: {
     cancelDialog: function() {
-      this.ehrDialogHelp.cancelDialog()
+      this.ehrHelp.cancelDialog()
     },
     saveDialog: function() {
-      this.ehrDialogHelp.saveDialog()
+      this.ehrHelp.saveDialog()
     }
   }
 }

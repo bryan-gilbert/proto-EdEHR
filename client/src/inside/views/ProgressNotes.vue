@@ -13,7 +13,7 @@
             tr(v-for="item in theData")
               td(v-for="cell in uiProps.tableCells", :class="cell.propertyKey") {{ item[cell.propertyKey] }}
     div(style="display:none") {{currentData}}
-    ehr-dialog-form(:ehrDialogHelp="ehrDialogHelp", :ui-props="uiProps", :inputs="inputs", :errorList="errorList" )
+    ehr-dialog-form(:ehrHelp="ehrHelp", :ui-props="uiProps", :inputs="inputs", :errorList="errorList" )
 
 </template>
 
@@ -22,7 +22,6 @@ import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
 import EhrDialogForm from '../components/EhrDialogForm.vue'
 import EhrHelp from '../ehr-helper'
-import EhrDialogHelp from '../ehr-dialog-helper'
 import UiButton from '../../app/ui/UiButton.vue'
 import moment from 'moment'
 import { getPhrase } from '../poc-utils'
@@ -42,8 +41,6 @@ export default {
       ehrHelp: {},
       hasForm: false,
       loading: false,
-
-      ehrDialogHelp: {},
       dialogData: {
         dataKey: 'progressNotes'
       },
@@ -146,12 +143,11 @@ export default {
   },
   methods: {
     showDialog: function() {
-      this.ehrDialogHelp.showDialog()
+      this.ehrHelp.showDialog()
     }
   },
   created() {
     this.ehrHelp = new EhrHelp(this, this.$store, this.dataKey, this.hasForm)
-    this.ehrDialogHelp = new EhrDialogHelp(this, this.$store)
   },
   beforeRouteLeave(to, from, next) {
     this.ehrHelp.beforeRouteLeave(to, from, next)

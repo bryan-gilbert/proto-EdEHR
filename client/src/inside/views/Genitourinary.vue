@@ -11,7 +11,7 @@
             tr(v-for="column in columnData")
               td(v-for="cell in column") {{ cell.value }}
     div(style="display:none") {{currentData}}
-    ehr-dialog-form(:ehrDialogHelp="ehrDialogHelp", :ui-props="uiProps", :inputs="inputs", :errorList="errorList" )
+    ehr-dialog-form(:ehrHelp="ehrHelp", :ui-props="uiProps", :inputs="inputs", :errorList="errorList" )
 </template>
 
 <script>
@@ -19,7 +19,6 @@ import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
 import EhrDialogForm from '../components/EhrDialogForm.vue'
 import EhrHelp from '../ehr-helper'
-import EhrDialogHelp from '../ehr-dialog-helper'
 import UiButton from '../../app/ui/UiButton.vue'
 import moment from 'moment'
 import { getPhrase } from '../poc-utils'
@@ -36,11 +35,10 @@ export default {
     return {
       dataKey: 'genitourinary',
       theData: {},
-      ehrHelp: {},
       hasForm: false,
       loading: false,
 
-      ehrDialogHelp: {},
+      ehrHelp: {},
       dialogData: {
         dataKey: 'genitourinary'
       },
@@ -51,35 +49,6 @@ export default {
   computed: {
     showEditControls() {
       return this.ehrHelp.showEditControls()
-    },
-    columnData() {
-      var columns = []
-      var row = []
-      this.uiProps.tableCells.forEach(cell => {
-        var entry = {
-          class: cell.propertyKey,
-          title: cell.propertyKey,
-          value: cell.label
-        }
-        row.push(entry)
-      })
-      columns.push(row)
-      var assessments = Array.isArray(this.theData ) ? this.theData  : []
-      assessments.forEach(item => {
-        var row = []
-        this.uiProps.tableCells.forEach(cell => {
-          var v = item[cell.propertyKey]
-          var entry = {
-            class: cell.propertyKey,
-            title: v,
-            value: v
-          }
-          row.push(entry)
-        })
-        columns.push(row)
-      })
-      var transpose = columns[0].map((col, i) => columns.map(row => row[i]))
-      return transpose
     },
     currentData() {
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
@@ -207,16 +176,19 @@ export default {
         ]
       }
       return { tableCells: tableCells, formDef: formDef }
+    },
+    columnData() {
+      // The EHR Helper
+      return this.uiProps.transposedColumns
     }
   },
   methods: {
     showDialog: function() {
-      this.ehrDialogHelp.showDialog()
+      this.ehrHelp.showDialog()
     }
   },
   created() {
     this.ehrHelp = new EhrHelp(this, this.$store, this.dataKey, this.hasForm)
-    this.ehrDialogHelp = new EhrDialogHelp(this, this.$store)
   },
   beforeRouteLeave(to, from, next) {
     this.ehrHelp.beforeRouteLeave(to, from, next)
