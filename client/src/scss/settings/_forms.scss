@@ -1,9 +1,14 @@
 /* **********
-   *
-   * Styling generic input elements that appear in EdEHR dialogs
+
+ */
+.ehr-page {
+
+}
+
+/* **********
    *
    */
-.ehr-page {
+.ehr-page-content {
   .input-fieldrow {
     display: flex;
   }
@@ -78,5 +83,15 @@
     .radio {
       height: 1rem;
     }
+  }
+}
+
+.column_table {
+  .column_label {
+    text-align: right;
+  }
+
+  .column_value {
+    width: 5rem;
   }
 }

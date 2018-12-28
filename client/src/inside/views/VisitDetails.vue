@@ -11,7 +11,7 @@
         button(v-on:click="cancelEdit", v-show="!notEditing")
           fas-icon(icon="times-circle")
     ehr-panel-content
-      div(class="region ehr-page")
+      div(class="region ehr-page-content")
         div(class="columns")
           div(class="column is-one-third")
             label(for="admissionDay") Admission day
@@ -56,7 +56,7 @@
 
     app-dialog( v-if="showModal", :isModal="true", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
       h3(slot="header") Add new patient location
-      div(slot="body", class="ehr-page")
+      div(slot="body", class="ehr-page-content")
         div
           div(class="input-fieldrow")
             div(class="input-element input-element-medium input-name")

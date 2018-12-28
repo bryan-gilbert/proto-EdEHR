@@ -5,7 +5,7 @@
       div(slot="controls", v-show="showEditControls")
         ehr-edit-controls(v-bind:ehrHelp="ehrHelp", @controlsCallback="controlsCallback")
     ehr-panel-content
-      div(class="region ehr-page")
+      div(class="region ehr-page-content")
         ehr-page-form(v-bind:uiProps="uiProps", v-bind:theData="theData", v-bind:notEditing="notEditing")
     div(style="display:none") {{currentData}}
 </template>

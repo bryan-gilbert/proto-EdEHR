@@ -30,6 +30,11 @@ export default class EhrHelp {
     this.cacheAsString = JSON.stringify(this.mergedProperty())
   }
 
+  /**
+   * Get and return the merged (seed + student's work) for the current page
+   *
+   * @returns {any}
+   */
   mergedProperty() {
     let data = this.$store.getters['ehrData/mergedData'] || {}
     let asStored = data[this.dataKey] || {}
@@ -49,26 +54,35 @@ export default class EhrHelp {
     return val
   }
 
+  /**
+   Take the component's uiProps and the component's data and combine it into one table.
+   Then rotates the table to place the header labels into the first column and
+   each following row in a column.
+   Place the result into uiProps.transposedColumns
+   * @param uiProps
+   */
   setupColumnData(uiProps) {
-    var columns = []
-    var theData = this.ehrHelp.mergedProperty()
-    var row = []
+    /*
+     */
+    let theData = this.mergedProperty()
+    let assessments = Array.isArray(theData) ? theData : []
+    let columns = []
+    let row = []
     uiProps.tableCells.forEach(cell => {
       var entry = {
-        class: cell.propertyKey,
+        class: 'column_label',
         title: cell.propertyKey,
         value: cell.label
       }
       row.push(entry)
     })
     columns.push(row)
-    var assessments = Array.isArray(theData) ? theData : []
     assessments.forEach(item => {
-      var row = []
+      row = []
       uiProps.tableCells.forEach(cell => {
         var v = item[cell.propertyKey]
         var entry = {
-          class: cell.propertyKey,
+          class: 'column_value',
           title: v,
           value: v
         }
@@ -79,9 +93,6 @@ export default class EhrHelp {
     var transpose = columns[0].map((col, i) => columns.map(row => row[i]))
     uiProps.transposedColumns = transpose
   }
-
-
-  /* ********************* DIALOG  */
 
   setupDialogDef(uiProps) {
     const _this = this
@@ -108,6 +119,8 @@ export default class EhrHelp {
     })
     uiProps.formDef.lastRow.forEach((def) => { transfer(def) })
   }
+
+  /* ********************* DIALOG  */
 
   showingDialog() {
     return this.showModal

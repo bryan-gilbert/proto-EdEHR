@@ -1,15 +1,15 @@
 <template lang="pug">
-  div(:class="$options.name")
-    ehr-panel-header Genitourinary
+  div(class="ehr-page")
+    ehr-panel-header {{ uiProps.pageTitle }}
     ehr-panel-content
       div(v-show="showEditControls")
-        ui-button(v-on:buttonClicked="showDialog") Add a assessment
-      div(:class="`${$options.name}__main`")
+        ui-button(v-on:buttonClicked="showDialog") {{ uiProps.addButtonText }}
+      div(class="column_table")
         div This page is a WIP and is missing many EHR fields
         table.table
           tbody
             tr(v-for="column in columnData")
-              td(v-for="cell in column") {{ cell.value }}
+              td(v-for="cell in column", :class="cell.class") {{ cell.value }}
     div(style="display:none") {{currentData}}
     ehr-dialog-form(:ehrHelp="ehrHelp", :ui-props="uiProps", :inputs="inputs", :errorList="errorList" )
 </template>
@@ -47,16 +47,12 @@ export default {
     }
   },
   computed: {
-    showEditControls() {
-      return this.ehrHelp.showEditControls()
-    },
-    currentData() {
-      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      this.theData = this.ehrHelp.mergedProperty()
-      return this.theData
-    },
     uiProps() {
-      let tableCells = [
+      let uiP = {
+        pageTitle: 'Genitourinary',
+        addButtonText: 'Add a assessment'
+      }
+      uiP.tableCells = [
         {
           propertyKey: 'name',
           label: 'Name',
@@ -127,7 +123,7 @@ export default {
           validationRules: [{ required: true }]
         }
       ]
-      let formDef = {
+      uiP.formDef = {
         topRow: [
           {
             key: 'name',
@@ -175,11 +171,19 @@ export default {
           }
         ]
       }
-      return { tableCells: tableCells, formDef: formDef }
+      return uiP
     },
     columnData() {
-      // The EHR Helper
+      // The EHR Helper combines the uiProps and this component's data into a transposed table
       return this.uiProps.transposedColumns
+    },
+    showEditControls() {
+      return this.ehrHelp.showEditControls()
+    },
+    currentData() {
+      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+      this.theData = this.ehrHelp.mergedProperty()
+      return this.theData
     }
   },
   methods: {
@@ -196,7 +200,6 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.Genitourinary {
-}
+<style lang="scss">
+@import '../../scss/settings/forms';
 </style>

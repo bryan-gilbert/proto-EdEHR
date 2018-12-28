@@ -16,18 +16,18 @@
 
 <script>
 import EventBus from '../../event-bus'
-import { DIALOG_INPUT_EVENT } from '../ehr-dialog-helper'
+import { DIALOG_INPUT_EVENT } from '../ehr-helper'
 
 export default {
   name: 'EhrPageForm',
   props: {
-    // value: {type: String},
     inputs: {type : Object},
     def: {type: Object}
   },
   data() {
     return {
-      inputVal: this.computedValue, gotHit: false,
+      inputVal: this.computedValue,
+      gotHit: false,
       eventHandler: {}
     }
   },
@@ -73,20 +73,18 @@ export default {
       this.gotHit = this.def.targetValue === eData.value
       // console.log(`On channel ${this.eventChannelListen} from key ${eData.key} got hit? ${this.gotHit}`)
     }
-
   },
   mounted: function() {
-    let val = this.def.helper.getInputValue(this.def)
-    this.inputVal = val
+    this.inputVal = this.def.helper.getInputValue(this.def)
     if(this.eventChannelListen) {
       const _this = this
       // register listener if needed
-      this.eventHandler = function(eData) { _this.receiveEvent(eData)}
+      this.eventHandler = function(eData) {_this.receiveEvent(eData)}
       EventBus.$on(this.eventChannelListen, this.eventHandler) // eData => { this.receiveEvent(eData) })
     }
   },
   beforeDestroy: function() {
-    if(this.eventChannelListen &&   this.eventHandler) {
+    if (this.eventChannelListen && this.eventHandler) {
       // console.log('beforeDestroy, remove listener',this.eventChannelListen)
       EventBus.$off(this.eventChannelListen, this.eventHandler)
     }
@@ -102,7 +100,7 @@ export default {
 </script>
 
 <style scoped>
-  .otherForChecklist {
-    margin-left: 1rem;
-  }
+.otherForChecklist {
+  margin-left: 1rem;
+}
 </style>
