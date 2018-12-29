@@ -9,7 +9,7 @@
             option(disabled,value="") Please select one
             option(v-for="option in element.options", v-bind:value="option.text") {{ option.text}}
         input(v-if="element.type === 'checkbox'", class="checkbox", type="checkbox", v-bind:name="element.propertyKey", v-model="theData[element.propertyKey]")
-        label(v-if="element.type === 'checkbox'", v-bind:for="element.propertyKey") No address
+        label(v-if="element.type === 'checkbox'", v-bind:for="element.propertyKey") {{element.label}}
 
 </template>
 
