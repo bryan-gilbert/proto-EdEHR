@@ -1,0 +1,193 @@
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Demographics}	eCell	eCell	{FQN: PatientProfile.Demographics}	eCell	eCell	eCell	eCell	eCell	{css: ehr-page}	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{css: ehr-page-form}	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: First name}	{Element_Name: Given}	{Element_Key: given}	{FQN: PatientProfile.Demographics.given}	{Input_type: text}	eCell	eCell	{row: 1}	{col: 1}	eCell	{Mandatory: yes}	eCell	{Data_From: case}	{Data_case_study: Erin}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Middle name(s)}	{Element_Name: Middle}	{Element_Key: middle}	{FQN: PatientProfile.Demographics.middle}	{Input_type: text}	eCell	eCell	{row: 1}	{col: 2}	eCell	eCell	eCell	{Data_From: case}	eCell	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Last name}	{Element_Name: Family}	{Element_Key: family}	{FQN: PatientProfile.Demographics.family}	{Input_type: text}	eCell	eCell	{row: 1}	{col: 3}	eCell	{Mandatory: yes}	eCell	{Data_From: case}	{Data_case_study: Johns}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Preferred name}	{Element_Name: Preferred name}	{Element_Key: preferred_name}	{FQN: PatientProfile.Demographics.preferred_name}	{Input_type: text}	eCell	eCell	{row: 2}	{col: 1}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: Erin}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Date of birth}	{Element_Name: Date of birth}	{Element_Key: date_of_birth}	{FQN: PatientProfile.Demographics.date_of_birth}	{Input_type: text}	eCell	eCell	{row: 2}	{col: 2}	eCell	eCell	eCell	{Data_From: manually entered}	{Data_case_study: 09-SEP-19##}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Age}	{Element_Name: Age}	{Element_Key: age}	{FQN: PatientProfile.Demographics.age}	{Input_type: text}	eCell	eCell	{row: 2}	{col: 3}	eCell	{Mandatory: yes}	eCell	{Data_From: case}	{Data_case_study: 74}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Gender}	{Element_Name: Gender}	{Element_Key: gender}	{FQN: PatientProfile.Demographics.gender}	{Input_type: select}	eCell	"{Options: Unknown
+Female
+Male
+Transgender female
+Transgender male
+Undifferentiated
+Prefer not to say}"	{row: 3}	{col: 1}	eCell	{Mandatory: yes}	eCell	{Data_From: case}	{Data_case_study: Female}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Martial status}	{Element_Name: Martial status}	{Element_Key: martial_status}	{FQN: PatientProfile.Demographics.martial_status}	{Input_type: select}	eCell	"{Options: Married
+Single
+Life partner
+Divorced
+Separated
+Widowed}"	{row: 3}	{col: 2}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: Widow}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Code status}	{Element_Name: Code status}	{Element_Key: code_status}	{FQN: PatientProfile.Demographics.code_status}	{Input_type: select}	eCell	"{Options: N/A
+CPR
+DNR M1
+DNR M2
+DNR M3
+DNR C1
+DNR C2}"	{row: 3}	{col: 3}	eCell	eCell	eCell	{Data_From: ?}	eCell	{Assignment: N/A}	"{Helper_Text: Do Not Attempt Cardiopulmonary Resuscitation (DNACPR: No chest compressions
+or other direct means of restarting the heart), and:
+Option 1 (M1)* No CPR. Supportive care, symptom management, and comfort
+measures. Allow natural death.
+Option 2 (M2) No CPR. Option 1 (M1) plus therapeutic measures and medications
+to manage acute conditions within the current setting. If in residential
+care or hospice, transfer to acute care will not occur except in special
+circumstances (eg fracture).
+Option 3 (M3) No CPR. Option 2 (M2) plus admission to an acute care hospital (if
+not already admitted) for medical/surgical treatment as indicated. No
+referral to Critical Care.
+Option 4 (C1) No CPR. Maximum therapeutic effort as in Option 3 (M3) including
+referral to Critical Care but not including intubation and ventilation.
+Option 5 (C2) No CPR. Maximum therapeutic effort as in Option 4 (C1) including
+referral to Critical Care and including intubation and ventilation}"
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Primary language}	{Element_Name: Primary language}	{Element_Key: primary_language}	{FQN: PatientProfile.Demographics.primary_language}	{Input_type: select}	eCell	"{Options: English
+French
+Spanish
+German
+Chinese}"	{row: 4}	{col: 1}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: English}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Religion}	{Element_Name: Religion}	{Element_Key: religion}	{FQN: PatientProfile.Demographics.religion}	{Input_type: text}	eCell	eCell	{row: 4}	{col: 2}	eCell	eCell	eCell	{Data_From: ?}	eCell	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Do you identify as an indigenous person?}	{Element_Name: Identify as indigenous}	{Element_Key: identify_as_indigenous}	{FQN: PatientProfile.Demographics.identify_as_indigenous}	{Input_type: select}	eCell	"{Options: Yes
+No}"	{row: 4}	{col: 3}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: (Not ticked)}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Street address}	{Element_Name: Street address}	{Element_Key: street_address}	{FQN: PatientProfile.Demographics.street_address}	{Input_type: text}	eCell	eCell	{row: 5}	{col: 1}	{css: twoOfThree}	eCell	eCell	{Data_From: manually entered}	{Data_case_study: 402 Willow St.}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: City}	{Element_Name: City}	{Element_Key: city}	{FQN: PatientProfile.Demographics.city}	{Input_type: text}	eCell	eCell	{row: 5}	{col: 3}	eCell	eCell	eCell	{Data_From: manually entered}	{Data_case_study: Vancouver}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Country}	{Element_Name: Country}	{Element_Key: country}	{FQN: PatientProfile.Demographics.country}	{Input_type: text}	{Default_value: Canada}	eCell	{row: 6}	{col: 1}	eCell	eCell	eCell	{Data_From: manually entered}	{Data_case_study: Canada}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Postal code}	{Element_Name: Postal code}	{Element_Key: postal_code}	{FQN: PatientProfile.Demographics.postal_code}	{Input_type: text}	eCell	eCell	{row: 6}	{col: 2}	eCell	eCell	eCell	{Data_From: manually entered}	{Data_case_study: V3F 9R2}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: No address}	{Element_Name: No address}	{Element_Key: no_address}	{FQN: PatientProfile.Demographics.no_address}	{Input_type: checkbox}	eCell	eCell	{row: 6}	{col: 3}	eCell	eCell	eCell	{Data_From: manually entered}	{Data_case_study: (Not ticked)}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Phone number}	{Element_Name: Phone number}	{Element_Key: phone_number}	{FQN: PatientProfile.Demographics.phone_number}	{Input_type: phone}	eCell	eCell	{row: 7}	{col: 1}	eCell	eCell	eCell	{Data_From: manually entered}	{Data_case_study: (778) 555-2947}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Email address}	{Element_Name: Email address}	{Element_Key: email_address}	{FQN: PatientProfile.Demographics.email_address}	{Input_type: email}	eCell	eCell	{row: 7}	{col: 2}	eCell	eCell	eCell	{Data_From: manually entered}	{Data_case_study: (leave empty)}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Occupation/student}	{Element_Name: Occupation student}	{Element_Key: occupation_student}	{FQN: PatientProfile.Demographics.occupation_student}	{Input_type: text}	eCell	eCell	{row: 7}	{col: 3}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: Retired}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: PHN}	{Element_Name: PHN}	{Element_Key: phn}	{FQN: PatientProfile.Demographics.phn}	{Input_type: text}	eCell	eCell	{row: 8}	{col: 1}	eCell	eCell	eCell	{Data_From: manually entered}	{Data_case_study: 12345678}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: MRN}	{Element_Name: MRN}	{Element_Key: mrn}	{FQN: PatientProfile.Demographics.mrn}	{Input_type: text}	eCell	eCell	{row: 8}	{col: 2}	eCell	eCell	eCell	{Data_From: manually entered}	eCell	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Patient service}	{Element_Name: Patient service}	{Element_Key: patient_service}	{FQN: PatientProfile.Demographics.patient_service}	{Input_type: text}	eCell	eCell	{row: 8}	{col: 3}	eCell	eCell	eCell	{Data_From: ?}	eCell	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Next of kin name}	{Element_Name: Next of kin name}	{Element_Key: next_of_kin_name}	{FQN: PatientProfile.Demographics.next_of_kin_name}	{Input_type: text}	eCell	eCell	{row: 9}	{col: 1}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: Thomas Johns}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Next of kin relationship}	{Element_Name: Next of kin relationship}	{Element_Key: next_of_kin_relationship}	{FQN: PatientProfile.Demographics.next_of_kin_relationship}	{Input_type: select}	eCell	"{Options: Wife
+Husband
+Mother
+Father
+Guardian
+Sister
+Brother
+Daughter
+Son
+Aunt
+Uncle
+Grandmother
+Grandfather
+Friend
+Other}"	{row: 9}	{col: 2}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: Son}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Next of kin phone}	{Element_Name: Next of kin phone}	{Element_Key: next_of_kin_phone}	{FQN: PatientProfile.Demographics.next_of_kin_phone}	{Input_type: phone}	eCell	eCell	{row: 9}	{col: 3}	eCell	eCell	eCell	{Data_From: manually entered}	{Data_case_study: 604-555-9865}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Decision maker name}	{Element_Name: Decision maker name}	{Element_Key: decision_maker_name}	{FQN: PatientProfile.Demographics.decision_maker_name}	{Input_type: text}	eCell	eCell	{row: 10}	{col: 1}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: Thomas Johns}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Decision maker relationship}	{Element_Name: Decision maker relationship}	{Element_Key: decision_maker_relationship}	{FQN: PatientProfile.Demographics.decision_maker_relationship}	{Input_type: select}	eCell	"{Options: Spouse
+Child
+Parent
+Sibling
+Grandparent
+Grandchild
+Friend
+Anyone else related by partnership
+Public guardian and trustee employee
+Other}"	{row: 10}	{col: 2}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: Son}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Demographics}	eCell	{Label: Decision maker phone}	{Element_Name: Decision maker phone}	{Element_Key: decision_maker_phone}	{FQN: PatientProfile.Demographics.decision_maker_phone}	{Input_type: phone}	eCell	eCell	{row: 10}	{col: 3}	eCell	eCell	eCell	{Data_From: manually entered}	{Data_case_study: 604-555-9865}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Allergies}	eCell	{Label: Allergies}	eCell	{Element_Key: }	{FQN: PatientProfile.Allergies.}	eCell	eCell	eCell	eCell	eCell	{css: ehr-page}	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: Allergies}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{css: ehr-page-form}	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: Allergies}	eCell	{Label: Allergies search}	{Element_Name: Allergies}	{Element_Key: allergies}	{FQN: PatientProfile.Allergies.allergies}	{Input_type: text}	eCell	eCell	{row: 2}	{col: 1}	eCell	eCell	{Validation: one of these two need to be filled}	eCell	eCell	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Allergies}	eCell	{Label: No known allergies}	{Element_Name: Has no allergies}	{Element_Key: has_no_allergies}	{FQN: PatientProfile.Allergies.has_no_allergies}	{Input_type: checkbox}	eCell	eCell	{row: 1}	{col: 1}	eCell	eCell	{Validation: one of these two need to be filled}	{Data_From: case}	{Data_case_study: (ticked)}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: History Medical}	eCell	eCell	eCell	{Element_Key: }	{FQN: PatientProfile.History_Medical.}	eCell	eCell	eCell	eCell	eCell	{css: ehr-page}	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Medical}	eCell	{Label: Past medical history}	{Element_Name: Past medical history}	{Element_Key: past_medical_history}	{FQN: PatientProfile.History_Medical.past_medical_history}	{Input_type: textarea}	eCell	eCell	{row: 1}	{col: 1}	eCell	eCell	eCell	{Data_From: case}	eCell	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: History Psychosocial}	eCell	eCell	eCell	{Element_Key: }	{FQN: PatientProfile.History_Psychosocial.}	eCell	eCell	eCell	eCell	eCell	{css: ehr-page}	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Psychosocial}	eCell	eCell	eCell	eCell	eCell	{Input_type: fieldset}	eCell	eCell	eCell	eCell	{css: ehr-page-form}	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Psychosocial}	eCell	{Label: Psychosocial history}	{Element_Name: Psychosocial history}	{Element_Key: psychosocial_history}	{FQN: PatientProfile.History_Psychosocial.psychosocial_history}	{Input_type: textarea}	eCell	eCell	{row: 1}	{col: 1}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: Feels down when she thinks about her lower financial status and her advancing age, and how she is becoming more forgetful and less energetic. Often feels alone and worries about falling and not being able to alert anyone to come to her rescue. Driving is becoming hard for her.}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: History Psychosocial}	eCell	{Label: Diet}	{Element_Name: Diet}	{Element_Key: diet}	{FQN: PatientProfile.History_Psychosocial.diet}	{Input_type: textarea}	eCell	eCell	{row: 1}	{col: 2}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: Regular}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: History Psychosocial}	eCell	{Label: Living situation}	{Element_Name: Living situation}	{Element_Key: living_situation}	{FQN: PatientProfile.History_Psychosocial.living_situation}	{Input_type: textarea}	eCell	eCell	{row: 1}	{col: 3}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: Son lives with her in her house}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: History Psychosocial}	eCell	{Label: Employment/school}	{Element_Name: Employment school}	{Element_Key: employment_school}	{FQN: PatientProfile.History_Psychosocial.employment_school}	{Input_type: textarea}	eCell	eCell	{row: 2}	{col: 1}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: Retired hairdresser}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: History Psychosocial}	eCell	{Label: Hobbies}	{Element_Name: Hobbies}	{Element_Key: hobbies}	{FQN: PatientProfile.History_Psychosocial.hobbies}	{Input_type: textarea}	eCell	eCell	{row: 2}	{col: 2}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: Bingo, Netflix, playing “Solitaire and Scrabble with friends” on her iPad}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: History Psychosocial}	{Subsection: Behaviours Frequency}	eCell	eCell	{Element_Key: }	eCell	eCell	eCell	eCell	eCell	eCell	{css: check_with_text_group}	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Psychosocial}	{Subsection: Behaviours Frequency}	{Label: Exercise}	{Element_Name: Exercise}	{Element_Key: exercise}	eCell	{Input_type: checkbox}	eCell	eCell	{row: 1}	{col: 1}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: (exercise ticked) < 1 day/week}	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Psychosocial}	{Subsection: Behaviours Frequency}	{Label: Exercise frequency}	{Element_Name: Exercise frequency}	{Element_Key: exercise_frequency}	eCell	{Input_type: text}	eCell	eCell	{row: 1}	{col: 2}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: (exercise ticked) < 1 day/week}	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Psychosocial}	{Subsection: Behaviours Frequency}	{Label: Caffeine use}	{Element_Name: Caffeine use}	{Element_Key: caffeine_use}	eCell	{Input_type: checkbox}	eCell	eCell	{row: 2}	{col: 1}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: (caffeine use ticked) 1-2 cups/day}	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Psychosocial}	{Subsection: Behaviours Frequency}	{Label: Caffeine use frequency}	{Element_Name: Caffeine use frequency}	{Element_Key: caffeine_use_frequency}	eCell	{Input_type: text}	eCell	eCell	{row: 2}	{col: 2}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: (caffeine use ticked) 1-2 cups/day}	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Psychosocial}	{Subsection: Behaviours Frequency}	{Label: Tobacco use}	{Element_Name: Tobacco use}	{Element_Key: tobacco_use}	eCell	{Input_type: checkbox}	eCell	eCell	{row: 3}	{col: 1}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: (tobacco use ticked) History of smoking}	eCell	"{Helper_Text: Have you used any tobacco products in the last 6 months?
+Have you used any tobacco products in the last 7 days?}"
+{TopLevel: PatientProfile}	{Page: History Psychosocial}	{Subsection: Behaviours Frequency}	{Label: Tobacco use frequency}	{Element_Name: Tobacco use frequency}	{Element_Key: tobacco_use_frequency}	eCell	{Input_type: text}	eCell	eCell	{row: 3}	{col: 2}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: (tobacco use ticked) History of smoking}	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Psychosocial}	{Subsection: Behaviours Frequency}	{Label: Cannabis use}	{Element_Name: Cannabis use}	{Element_Key: cannabis_use}	eCell	{Input_type: checkbox}	eCell	eCell	{row: 4}	{col: 1}	eCell	eCell	eCell	{Data_From: case}	eCell	eCell	"{Helper_Text: Have you used any cannabis products in the last 6 months?
+Have you used any cannabis products in the last 7 days?}"
+{TopLevel: PatientProfile}	{Page: History Psychosocial}	{Subsection: Behaviours Frequency}	{Label: Cannabis use frequency}	{Element_Name: Cannabis use frequency}	{Element_Key: cannabis_use_frequency}	eCell	{Input_type: text}	eCell	eCell	{row: 4}	{col: 2}	eCell	eCell	eCell	{Data_From: case}	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Psychosocial}	{Subsection: Behaviours Frequency}	{Label: Alcohol use}	{Element_Name: Alcohol use}	{Element_Key: alcohol_use}	eCell	{Input_type: checkbox}	eCell	eCell	{row: 5}	{col: 1}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: (alcohol use ticked) Social}	eCell	"{Helper_Text: CAGE questionaire
+Have you ever felt that you should cut down on your drinking?
+Have you ever become annoyed by criticisms of your drinking?
+Have you ever felt guilty about your drinking?
+Have you ever had a morning eye opener to get rid of a hangover?}"
+{TopLevel: PatientProfile}	{Page: History Psychosocial}	{Subsection: Behaviours Frequency}	{Label: Alcohol use frequency}	{Element_Name: Alcohol use frequency}	{Element_Key: alcohol_use_frequency}	eCell	{Input_type: text}	eCell	eCell	{row: 5}	{col: 2}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: (alcohol use ticked) Social}	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Psychosocial}	{Subsection: Behaviours Frequency}	{Label: Substance use}	{Element_Name: Substance use}	{Element_Key: substance_use}	{FQN: PatientProfile.History_Psychosocial.substance_use}	{Input_type: checkbox}	eCell	eCell	{row: 6}	{col: 1}	eCell	eCell	eCell	{Data_From: case}	eCell	{Assignment: N/A}	"{Helper_Text: Have you used any substances in the last 6 months?
+Have you used any substances in the last 7 days?}"
+{TopLevel: PatientProfile}	{Page: History Psychosocial}	{Subsection: Behaviours Frequency}	{Label: Substance use frequency}	{Element_Name: Substance use frequency}	{Element_Key: substance_use_frequency}	{FQN: PatientProfile.History_Psychosocial.substance_use_frequency}	{Input_type: text}	eCell	eCell	{row: 6}	{col: 2}	eCell	eCell	eCell	{Data_From: case}	eCell	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: History Surgical}	eCell	{Label: History Surgical}	eCell	{Element_Key: }	eCell	eCell	eCell	eCell	eCell	eCell	{css: ehr-page}	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Surgical}	eCell	eCell	{Element_Name: }	{Element_Key: }	eCell	eCell	eCell	eCell	eCell	eCell	{css: row_table}	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Surgical}	eCell	{Label: Surgery/procedure}	{Element_Name: Surgery procedure}	{Element_Key: surgery_procedure}	{FQN: PatientProfile.History_Surgical.surgery_procedure}	{Input_type: text}	eCell	eCell	eCell	{col: 1}	eCell	eCell	eCell	{Data_From: manual}	{Data_case_study: Cesarean section}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: History Surgical}	eCell	{Label: Date}	{Element_Name: Surgery procedure date}	{Element_Key: surgery_procedure_date}	{FQN: PatientProfile.History_Surgical.surgery_procedure_date}	{Input_type: text - date}	eCell	eCell	eCell	{col: 2}	eCell	eCell	eCell	{Data_From: manual}	{Data_case_study: 24-MAY-##}	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Surgical}	eCell	eCell	eCell	{Element_Key: }	eCell	eCell	eCell	eCell	eCell	eCell	{css: row_table}	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Surgical}	eCell	{Label: Previous admissions}	{Element_Name: Previous admissions}	{Element_Key: previous_admissions}	{FQN: PatientProfile.History_Surgical.previous_admissions}	{Input_type: Text box}	eCell	eCell	eCell	{col: 1}	eCell	eCell	eCell	{Data_From: manual}	eCell	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: History Surgical}	eCell	{Label: Date}	{Element_Name: Previous admissions date}	{Element_Key: previous_admissions_date}	{FQN: PatientProfile.History_Surgical.previous_admissions_date}	{Input_type: text - date}	eCell	eCell	eCell	{col: 2}	eCell	eCell	eCell	{Data_From: manual}	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	eCell	eCell	{Element_Key: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{css: check_with_text_group}	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	{Label: Hep A}	{Element_Name: Hep A}	{Element_Key: hep_a}	{FQN: PatientProfile.History_Immunization.hep_a}	{Input_type: checkbox}	eCell	eCell	{row: 1}	{col: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	{Label: Hep A Date}	{Element_Name: Hep A Date}	{Element_Key: hep_a_date}	{FQN: PatientProfile.History_Immunization.hep_a_date}	{Input_type: date}	eCell	eCell	{row: 1}	{col: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	{Label: Hep B}	{Element_Name: Hep B}	{Element_Key: hep_b}	{FQN: PatientProfile.History_Immunization.hep_b}	{Input_type: checkbox}	eCell	eCell	{row: 2}	{col: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	{Label: Hep B Date}	{Element_Name: Hep B Date}	{Element_Key: hep_b_date}	{FQN: PatientProfile.History_Immunization.hep_b_date}	{Input_type: date}	eCell	eCell	{row: 2}	{col: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	{Label: MMR}	{Element_Name: MMR}	{Element_Key: mmr}	{FQN: PatientProfile.History_Immunization.mmr}	{Input_type: checkbox}	eCell	eCell	{row: 3}	{col: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	{Label: MMR Date}	{Element_Name: MMR Date}	{Element_Key: mmr_date}	{FQN: PatientProfile.History_Immunization.mmr_date}	{Input_type: date}	eCell	eCell	{row: 3}	{col: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	{Label: Pneumococcal}	{Element_Name: Pneumococcal}	{Element_Key: pneumococcal}	{FQN: PatientProfile.History_Immunization.pneumococcal}	{Input_type: checkbox}	eCell	eCell	{row: 4}	{col: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	{Label: Pneumococcal Date}	{Element_Name: Pneumococcal Date}	{Element_Key: pneumococcal_date}	{FQN: PatientProfile.History_Immunization.pneumococcal_date}	{Input_type: date}	eCell	eCell	{row: 4}	{col: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	{Label: Polio diptheria pertussis}	{Element_Name: Polio diptheria pertussis}	{Element_Key: polio_diptheria_pertussis}	{FQN: PatientProfile.History_Immunization.polio_diptheria_pertussis}	{Input_type: checkbox}	eCell	eCell	{row: 5}	{col: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	{Label: Polio diptheria pertussis Date}	{Element_Name: Polio diptheria pertussis Date}	{Element_Key: polio_diptheria_pertussis_date}	{FQN: PatientProfile.History_Immunization.polio_diptheria_pertussis_date}	{Input_type: date}	eCell	eCell	{row: 5}	{col: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	{Label: TB}	{Element_Name: TB}	{Element_Key: tb}	{FQN: PatientProfile.History_Immunization.tb}	{Input_type: checkbox}	eCell	eCell	{row: 6}	{col: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	{Label: TB Date}	{Element_Name: TB Date}	{Element_Key: tb_date}	{FQN: PatientProfile.History_Immunization.tb_date}	{Input_type: date}	eCell	eCell	{row: 6}	{col: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	{Label: Tetanus}	{Element_Name: Tetanus}	{Element_Key: tetanus}	{FQN: PatientProfile.History_Immunization.tetanus}	{Input_type: checkbox}	eCell	eCell	{row: 7}	{col: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	{Label: Tetanus Date}	{Element_Name: Tetanus Date}	{Element_Key: tetanus_date}	{FQN: PatientProfile.History_Immunization.tetanus_date}	{Input_type: date}	eCell	eCell	{row: 7}	{col: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	eCell	{Element_Name: Other1}	{Element_Key: other1}	{FQN: PatientProfile.History_Immunization.other1}	{Input_type: text}	eCell	eCell	{row: 8}	{col: 1}	eCell	eCell	{Validation: If other is selected, this is mandatory}	{Data_From: case}	{Data_case_study: (Nothing filled in)}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	{Label: Date}	{Element_Name: Other date1}	{Element_Key: other_date1}	{FQN: PatientProfile.History_Immunization.other_date1}	{Input_type: date}	eCell	eCell	{row: 8}	{col: 2}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: (Nothing ticked)}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	eCell	{Element_Name: Other2}	{Element_Key: other2}	{FQN: PatientProfile.History_Immunization.other2}	{Input_type: text}	eCell	eCell	{row: 9}	{col: 1}	eCell	eCell	{Validation: If other is selected, this is mandatory}	{Data_From: case}	{Data_case_study: (Nothing filled in)}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	{Label: Date}	{Element_Name: Other date2}	{Element_Key: other_date2}	{FQN: PatientProfile.History_Immunization.other_date2}	{Input_type: date}	eCell	eCell	{row: 9}	{col: 2}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: (Nothing ticked)}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	eCell	{Element_Name: Other3}	{Element_Key: other3}	{FQN: PatientProfile.History_Immunization.other3}	{Input_type: text}	eCell	eCell	{row: 10}	{col: 1}	eCell	eCell	{Validation: If other is selected, this is mandatory}	{Data_From: case}	{Data_case_study: (Nothing filled in)}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: History Immunization}	eCell	{Label: Date}	{Element_Name: Other date3}	{Element_Key: other_date3}	{FQN: PatientProfile.History_Immunization.other_date3}	{Input_type: date}	eCell	eCell	{row: 10}	{col: 2}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: (Nothing ticked)}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: History Family}	eCell	eCell	eCell	{Element_Key: }	{FQN: PatientProfile.History_Family.}	{Input_type: page}	eCell	eCell	eCell	eCell	{css: ehr-page}	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Family}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{css: ehr-page-form}	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: History Family}	eCell	{Label: Family medical history}	{Element_Name: Family medical history}	{Element_Key: family_medical_history}	{FQN: PatientProfile.History_Family.family_medical_history}	{Input_type: textarea}	eCell	eCell	{row: 1}	{col: 1}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: (empty)}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Care team}	eCell	eCell	eCell	{Element_Key: }	{FQN: PatientProfile.Care_team.}	{Input_type: page}	eCell	eCell	eCell	eCell	{css: ehr-page}	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: Care team}	eCell	eCell	eCell	{Element_Key: }	eCell	{Input_type: table}	eCell	{Options: Add new care team member}	eCell	eCell	{css: row_table}	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: Care team}	eCell	{Label: Name}	{Element_Name: Name}	{Element_Key: name}	{FQN: PatientProfile.Care_team.name}	{Input_type: text}	eCell	eCell	eCell	{col: 1}	eCell	eCell	eCell	{Data_From: case}	"{Data_case_study: Dr. Singh
+Dr. Notley
+Jason
+Jackie
+Gurpreet
+Alexa
+Matt
+Serge
+Trache
+Dr. Hunnicutt
+Jim
+Gladys
+Herman}"	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Care team}	eCell	{Label: Profession}	{Element_Name: Profession}	{Element_Key: profession}	{FQN: PatientProfile.Care_team.profession}	{Input_type: text}	eCell	eCell	eCell	{col: 2}	eCell	eCell	eCell	{Data_From: case}	"{Data_case_study: Physician
+Physician
+Nurse
+Nurse
+Medical radiograpeor
+Medical laboratory technician
+Medical radiographer
+RN
+Physician
+RN
+Pysiotherapy student
+Resp. therapist}"	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Past appointments}	eCell	eCell	eCell	{Element_Key: }	{FQN: PatientProfile.Past_appointments.}	{Input_type: page}	eCell	eCell	eCell	eCell	{css: ehr-page}	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: Past appointments}	{Subsection: Encounters}	{Label: Past encounters}	eCell	eCell	eCell	{Input_type: table}	eCell	{Options: Add past encounter}	eCell	eCell	{css: row_table}	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: Past appointments}	{Subsection: Encounters}	{Label: Date}	{Element_Name: Date}	{Element_Key: date}	{FQN: PatientProfile.Past_appointments.date}	{Input_type: text}	eCell	eCell	eCell	{col: 1}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: (none available)}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Past appointments}	{Subsection: Encounters}	{Label: Site}	{Element_Name: Site}	{Element_Key: site}	{FQN: PatientProfile.Past_appointments.site}	{Input_type: text}	eCell	eCell	eCell	{col: 2}	eCell	eCell	eCell	{Data_From: case}	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: Past appointments}	{Subsection: Encounters}	{Label: Diagnosis}	{Element_Name: Diagnosis}	{Element_Key: diagnosis}	{FQN: PatientProfile.Past_appointments.diagnosis}	{Input_type: text}	eCell	eCell	eCell	{col: 3}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: (none available)}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Past appointments}	{Subsection: Encounters}	{Label: Most responsible person}	{Element_Name: MRP}	{Element_Key: mrp}	{FQN: PatientProfile.Past_appointments.mrp}	{Input_type: text}	eCell	eCell	eCell	{col: 4}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: (none available)}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Past appointments}	{Subsection: Outpatient}	{Label: Outpatient appointments}	eCell	eCell	eCell	{Input_type: table}	eCell	{Options: Add outpatient visit}	eCell	eCell	{css: row_table}	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: PatientProfile}	{Page: Past appointments}	{Subsection: Outpatient}	{Label: Date}	{Element_Name: Date}	{Element_Key: date}	{FQN: PatientProfile.Past_appointments.date}	{Input_type: text}	eCell	eCell	eCell	{col: 1}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: 1 week ago}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Past appointments}	{Subsection: Outpatient}	{Label: Site}	{Element_Name: Site}	{Element_Key: site}	{FQN: PatientProfile.Past_appointments.site}	{Input_type: text}	eCell	eCell	eCell	{col: 2}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: Clinic}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Past appointments}	{Subsection: Outpatient}	{Label: Reason for visit}	{Element_Name: Reason for visit}	{Element_Key: reason_for_visit}	{FQN: PatientProfile.Past_appointments.reason_for_visit}	{Input_type: text}	eCell	eCell	eCell	{col: 3}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: Shortness of breath x 24 hrs}	{Assignment: N/A}	eCell
+{TopLevel: PatientProfile}	{Page: Past appointments}	{Subsection: Outpatient}	{Label: Diagnosis}	{Element_Name: Diagnosis}	{Element_Key: diagnosis}	{FQN: PatientProfile.Past_appointments.diagnosis}	{Input_type: text}	eCell	eCell	eCell	{col: 4}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: COPD}	{Assignment: N/A}	eCell
