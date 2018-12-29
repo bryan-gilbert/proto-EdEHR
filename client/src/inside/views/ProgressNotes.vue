@@ -1,10 +1,10 @@
 <template lang="pug">
-  div(:class="$options.name")
-    ehr-panel-header Patient Notes
+  div(class="ehr-page")
+    ehr-panel-header {{ uiProps.pageTitle }}
     ehr-panel-content
       div(v-show="showEditControls")
-        ui-button(v-on:buttonClicked="showDialog") Add a new progress notes
-      div(:class="`${$options.name}__main`")
+        ui-button(v-on:buttonClicked="showDialog") {{ uiProps.addButtonText }}
+      div(class="row_table")
         table.table
           thead
             tr
@@ -14,7 +14,6 @@
               td(v-for="cell in uiProps.tableCells", :class="cell.propertyKey") {{ item[cell.propertyKey] }}
     div(style="display:none") {{currentData}}
     ehr-dialog-form(:ehrHelp="ehrHelp", :ui-props="uiProps", :inputs="inputs", :errorList="errorList" )
-
 </template>
 
 <script>
@@ -58,7 +57,15 @@ export default {
       return this.theData
     },
     uiProps() {
-      let tableCells = [
+      let uiP = {
+        pageTitle: 'Progress notes',
+        dataKey: 'genitourinary',
+        addButtonText: 'Add a new progress notes',
+        hasForm: false,
+        hasDialog: true,
+        hasTransposedTable: false
+      }
+      uiP.tableCells = [
         {
           propertyKey: 'name',
           label: 'Name',
@@ -107,7 +114,7 @@ export default {
           validationRules: [{ required: true }]
         }
       ]
-      let formDef = {
+      uiP.formDef = {
         topRow: [
           {
             key: 'name',
@@ -138,7 +145,7 @@ export default {
           }
         ]
       }
-      return { tableCells: tableCells, formDef: formDef }
+      return uiP
     }
   },
   methods: {
@@ -147,7 +154,7 @@ export default {
     }
   },
   created() {
-    this.ehrHelp = new EhrHelp(this, this.$store, this.dataKey, this.hasForm)
+    this.ehrHelp = new EhrHelp(this, this.$store, this.dataKey, this.uiProps)
   },
   beforeRouteLeave(to, from, next) {
     this.ehrHelp.beforeRouteLeave(to, from, next)

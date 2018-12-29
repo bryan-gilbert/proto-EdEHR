@@ -1,7 +1,6 @@
 <template lang="pug">
-  div(:class="$options.name")
-    ehr-panel-header
-      div Demographics
+  div(class="ehr-page")
+    ehr-panel-header {{ uiProps.pageTitle }}
       div(slot="controls", v-show="showEditControls")
         ehr-edit-controls(v-bind:ehrHelp="ehrHelp", @controlsCallback="controlsCallback")
     ehr-panel-content
@@ -36,10 +35,17 @@ export default {
   },
   computed: {
     uiProps() {
+      let uiP = {
+        pageTitle: 'Demographics',
+        dataKey: 'demographics',
+        hasForm: true,
+        hasDialog: false,
+        hasTransposedTable: false
+      }
       let oneOfThree = 'column is-one-third'
       let twoOfThree = 'column is-two-third'
       let rowClasses = 'form-row columns'
-      let rows = [
+      uiP.rows = [
         {
           rowNumber: 1,
           classList: rowClasses,
@@ -47,19 +53,19 @@ export default {
             {
               classList: oneOfThree,
               propertyKey: 'familyName',
-              label: 'Last name G',
+              label: 'Last name',
               type: 'input'
             },
             {
               classList: oneOfThree,
               propertyKey: 'givenName',
-              label: 'First name G',
+              label: 'First name',
               type: 'input'
             },
             {
               classList: oneOfThree,
               propertyKey: 'middleName',
-              label: 'Middle name G',
+              label: 'Middle name',
               type: 'input'
             }
           ]
@@ -309,8 +315,7 @@ export default {
           ]
         }
       ]
-
-      return { rows: rows }
+      return uiP
     },
     showEditControls() {
       return this.ehrHelp.showEditControls()
@@ -333,7 +338,7 @@ export default {
     }
   },
   created() {
-    this.ehrHelp = new EhrHelp(this, this.$store, this.dataKey, this.hasForm)
+    this.ehrHelp = new EhrHelp(this, this.$store, this.dataKey, this.uiProps)
   },
   beforeRouteLeave(to, from, next) {
     this.ehrHelp.beforeRouteLeave(to, from, next)

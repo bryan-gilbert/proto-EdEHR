@@ -5,22 +5,26 @@ export const DIALOG_INPUT_EVENT = 'dialogInputEvent'
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
 export default class EhrHelp {
-  constructor(component, store, dataKey, hasForm) {
+  constructor(component, store, dataKey, uiProps) {
     this.component = component
     this.$store = store
     this.dataKey = dataKey
     this.cacheAsString = ''
     const _this = this
-    if (hasForm) {
+    if (uiProps.hasForm) {
       window.addEventListener('beforeunload', function(event) {
         _this.beforeUnloadListener(event)
       })
     }
     this.showModal = false
     this.eventHandler = function(eData) { _this.receiveEvent(eData)}
-    EventBus.$on(DIALOG_INPUT_EVENT, this.eventHandler) // eData => { this.receiveEvent(eData) })
-    this.setupDialogDef(this.component.uiProps)
-    this.setupColumnData(this.component.uiProps)
+    EventBus.$on(DIALOG_INPUT_EVENT, this.eventHandler)
+    if (uiProps.hasDialog) {
+      this.setupDialogDef(uiProps)
+    }
+    if (uiProps.hasTransposedTable) {
+      this.setupColumnData(uiProps)
+    }
   }
 
   /* ********************* DATA  */

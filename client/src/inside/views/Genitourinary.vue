@@ -5,7 +5,6 @@
       div(v-show="showEditControls")
         ui-button(v-on:buttonClicked="showDialog") {{ uiProps.addButtonText }}
       div(class="column_table")
-        div This page is a WIP and is missing many EHR fields
         table.table
           tbody
             tr(v-for="column in columnData")
@@ -50,7 +49,11 @@ export default {
     uiProps() {
       let uiP = {
         pageTitle: 'Genitourinary',
-        addButtonText: 'Add a assessment'
+        dataKey: 'genitourinary',
+        addButtonText: 'Add a assessment',
+        hasForm: false,
+        hasDialog: true,
+        hasTransposedTable: true
       }
       uiP.tableCells = [
         {
@@ -192,7 +195,7 @@ export default {
     }
   },
   created() {
-    this.ehrHelp = new EhrHelp(this, this.$store, this.dataKey, this.hasForm)
+    this.ehrHelp = new EhrHelp(this, this.$store, this.dataKey, this.uiProps)
   },
   beforeRouteLeave(to, from, next) {
     this.ehrHelp.beforeRouteLeave(to, from, next)
