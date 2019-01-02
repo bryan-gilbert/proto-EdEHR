@@ -1,42 +1,72 @@
-// Generated VUE file. Before modifying see docs about Vue file generation 
 <template lang="pug">
-  div(:class="$options.name")
-    ehr-panel-header Allergies
+  div(class="ehr-page")
+    ehr-panel-header {{ uiProps.pageTitle }}
+      div(slot="controls", v-show="showEditControls")
+        ehr-edit-controls(v-bind:ehrHelp="ehrHelp", @controlsCallback="controlsCallback")
     ehr-panel-content
-      div(class="region")
-        p This Allergies page is a generated placeholder. The actual content will be developed soon. So stay tuned.
-        p Label: Allergies
-        p Component name: Allergies
-        p Redirect: 
-        p Route name: allergies
-        p Full path: /ehr/patient/allergies
-        p Assignment Data: allergies
+      div(class="region ehr-page-content")
+        ehr-page-form(v-bind:uiProps="uiProps", v-bind:theData="theData", v-bind:notEditing="notEditing")
+    div(style="display:none") {{currentData}}
 </template>
 
 <script>
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
+import EhrEditControls from '../components/EhrEditControls.vue'
+import EhrPageForm from '../components/EhrPageForm.vue'
+import EhrHelp from '../ehr-helper'
 
 export default {
   name: 'Allergies',
   components: {
     EhrPanelHeader,
-    EhrPanelContent
+    EhrPanelContent,
+    EhrPageForm,
+    EhrEditControls
+  },
+  data: function() {
+    return {
+      dataKey: 'allergies',
+      theData: {},
+      ehrHelp: {},
+      hasForm: true,
+      loading: false
+    }
   },
   computed: {
-    isStudent() {
-      return this.$store.getters['visit/isStudent']
+    uiProps() {
+      let defs = require('../defs/patient-profile')()
+      return defs[this.dataKey]
     },
-    allergies() {
-      let data = this.$store.getters['ehrData/mergedData'] || {}
-      let asStored = data.allergies || {}
-      return JSON.parse(JSON.stringify(asStored))
+    showEditControls() {
+      return this.ehrHelp.showEditControls()
+    },
+    notEditing() {
+      return !this.ehrHelp.isEditing()
+    },
+    currentData() {
+      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+      this.theData = this.ehrHelp.mergedProperty()
+      return this.theData
     }
+  },
+  methods: {
+    controlsCallback(callback) {
+      callback(this.theData)
+    },
+    getCurrentData() {
+      return this.theData
+    }
+  },
+  created() {
+    this.ehrHelp = new EhrHelp(this, this.$store, this.dataKey, this.uiProps)
+  },
+  beforeRouteLeave(to, from, next) {
+    this.ehrHelp.beforeRouteLeave(to, from, next)
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.Allergies {
-}
+@import '../../scss/settings/forms';
 </style>

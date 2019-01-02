@@ -17,11 +17,14 @@ class MasterDefToPages {
         page.children.forEach (child => {
           if (child.row) {
             let rowNumber = child.row
+            let colNumber = child.col
             let row = uiP.rows[rowNumber-1]
             if (!row) {
               row = {
                 rowNumber: rowNumber,
+                colNumber: colNumber,
                 classList: rowClasses,
+                uiContainer: child.uiContainer,
                 elements: []
               }
               uiP.rows[rowNumber-1] = row
@@ -33,7 +36,13 @@ class MasterDefToPages {
               type: child.inputType,
               mandatory: child.mandatory
             }
-            // TODO child.options  "options": "English-NL-French-NL-Spanish-NL-German-NL-Chinese",
+            if (child.options) {
+              let parts = child.options.split('-NL-')
+              let opts = parts.map( p => {
+                return { text: p }
+              })
+              element.options = opts
+            }
             // TODO day, time types
             row.elements.push(element)
           }

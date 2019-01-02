@@ -22,6 +22,7 @@ function main () {
 
 function convertFile(fName) {
   let fSrc = pathUtil.join(source, fName) + '.txt'
+  let fTmp = pathUtil.join(destination, fName)  + '.tmp'
   let fDest = pathUtil.join(destination, fName)  + '.js'
   console.log('read file ', fSrc)
   fs.readFile(fSrc, 'utf8', function (err, contents) {
@@ -29,8 +30,9 @@ function convertFile(fName) {
     var moduleName = pathUtil.basename(fName, '.txt')
     console.log('moduleName', moduleName)
     var masterPageDefs = inputToDef.getDefinitions(contents, moduleName)
-    var pages = tp.toPages(masterPageDefs)
+    fs.writeFileSync(fTmp, JSON.stringify(masterPageDefs, null, 2))
 
+    var pages = tp.toPages(masterPageDefs)
     var results = JSON.stringify(pages, null, 2)
     results = results.replace(/'/g, "\\'")
     results = results.replace(/"/g, "'")
