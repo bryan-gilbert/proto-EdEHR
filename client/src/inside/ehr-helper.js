@@ -27,6 +27,9 @@ export default class EhrHelp {
     }
   }
 
+  getUiDefs(pageDataKey) {
+    return require('./defs/demographics')()
+  }
   /* ********************* DATA  */
 
   cacheData() {

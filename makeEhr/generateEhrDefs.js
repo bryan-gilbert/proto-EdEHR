@@ -2,11 +2,16 @@ const fs = require('fs')
 const pathUtil = require('path')
 const camelcase = require('camelcase')
 const RawInputToDef = require('./generators/raw-input-to-def')
+const MasterDefToPages = require('./generators/defs-to-pages')
 
 
-const destination = pathUtil.join(process.cwd(), 'ehr_defs')
+const destination = pathUtil.join(process.cwd(), 'generated', 'ehrDefs')
 const source = pathUtil.join(process.cwd(), 'raw_data')
-const sourceFiles = ['current-visit', 'patient-profile']
+// const sourceFiles = ['current-visit', 'patient-profile']
+const sourceFiles = ['patient-profile']
+const tp = new MasterDefToPages()
+
+
 main()
 
 function main () {
@@ -20,13 +25,18 @@ function convertFile(fName) {
   let fDest = pathUtil.join(destination, fName)  + '.js'
   console.log('read file ', fSrc)
   fs.readFile(fSrc, 'utf8', function (err, contents) {
-    var df = new RawInputToDef()
+    var inputToDef = new RawInputToDef()
     var moduleName = pathUtil.basename(fName, '.txt')
     console.log('moduleName', moduleName)
-    var schemaModule = df.getDefinitions(contents, moduleName)
-    var newContents = Buffer.from(schemaModule)
-    // console.log('new contents', newContents)
-    fs.writeFileSync(fDest, newContents)
+    var masterPageDefs = inputToDef.getDefinitions(contents, moduleName)
+    var pages = tp.toPages(masterPageDefs)
+
+    var results = JSON.stringify(pages, null, 2)
+    results = results.replace(/'/g, "\\'")
+    results = results.replace(/"/g, "'")
+    var modDef = 'module.exports = function () {\n  return ' + results + '\n}'
+
+    fs.writeFileSync(fDest, modDef)
   })
 }
 

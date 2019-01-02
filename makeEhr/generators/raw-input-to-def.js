@@ -14,7 +14,7 @@ class RawInputToDef {
    * @param fileBaseName
    * @returns {string}
    */
-  getDefinitions (contents, fileBaseName, makeSchema) {
+  getDefinitions(contents, fileBaseName) {
     let modName = camelCase(fileBaseName)
     let c = contents
     c = this._zapGremlins(c)
@@ -22,16 +22,20 @@ class RawInputToDef {
     c = this._fixTabs(c)
     // Fields may have data that spans multiple lines.
     // Replace linefeeds with a marker we can use to mark the end of each line.
-    let mlFields = ['Options:',
+    let mlFields = [
+      'Options:',
       'Data_case_study:',
       'Data_first_case_study:',
       'Data_second_case_study',
-      'Label:', 'Helper_Text:', 'Notes:',
+      'Label:',
+      'Helper_Text:',
+      'Notes:',
       'Questions_for_the_group',
-    'Mandatory']
+      'Mandatory'
+    ]
 
     // Section	Label	Input_type	Options	Data_From	Input_format	Data_first_case_study	Data_second_case_study	Helper_Text	Mandatory	Validation	Notes	Questions_for_the_group	Element_Key	FQN	NavURL	Dependant_On_FQN
-    mlFields.forEach((hdr) => {
+    mlFields.forEach(hdr => {
       let nlSep = '-NL-'
       c = this._fixMultiLineFields(c, hdr, nlSep)
     })
@@ -41,36 +45,13 @@ class RawInputToDef {
     schema[modName] = { fqn: modName, inputType: 'topLevel', entry: {} }
     let entries = this._rawToEntries(c)
     // entries.forEach( e => delete e.topLevel)
-    if (!makeSchema) {
-      var pages = this._groupByPages(entries)
-      var results = JSON.stringify(pages, null, 2)
-      results = results.replace(/'/g, "\\'")
-      results = results.replace(/"/g, "'")
-      var modDef = 'module.exports = function() { return' + results + '\n}'
-      return modDef
-    }
-    // make the schema object
-    this._rawToSchema(entries, schema, modName)
-    // take the data in the entry property and transfer to the container
-    // fs.writeFileSync('_rawToSchema.txt', newContents)
-    this._transferEntryData(schema)
-    // Now convert the flat structure into a nested parent/child/grandchild structure.
-    // Key to remove are all the original children. They are now stored under the parent so the old objects can be removed
-    var keysToRemove = this._schemaCrossLink(schema)
-    keysToRemove.forEach((key) => {
-      schema[key] = undefined
-    })
-    // return a string representation of a module
-    // clean up the stringify to produce code that complies with 'standard' javascript
-    var results = JSON.stringify(schema, null, 2)
-    results = results.replace(/'/g, "\\'")
-    results = results.replace(/"/g, "'")
-    // var modDef = 'const ' + modName + ' = ' + results + '\n'
-    // modDef += 'module.exports = ' + modName + '\n'
-    // var modDef = 'const ' + modName + ' = ' + results + '\n'
-    var modDef = 'module.exports = function() { return' + results + '\n}'
-
-    return modDef
+    var pages = this._groupByPages(entries)
+    return pages
+    // var results = JSON.stringify(pages, null, 2)
+    // results = results.replace(/'/g, "\\'")
+    // results = results.replace(/"/g, "'")
+    // var modDef = 'module.exports = function() { return' + results + '\n}'
+    // return modDef
   }
 
   /**
@@ -78,9 +59,9 @@ class RawInputToDef {
    * @private
    * @param entries
    */
-  _groupByPages (entries) {
+  _groupByPages(entries) {
     let pages = {}
-    entries.forEach( entry => {
+    entries.forEach(entry => {
       if (!entry.page) {
         console.log('Why no page for this entry?', entry)
         return
@@ -98,72 +79,6 @@ class RawInputToDef {
     return pages
   }
 
-
-  /**
-   * Take the entries and make schemas
-   * @private
-   * @param entries
-   * @param schema
-   * @param modName
-   */
-  _rawToSchema (entries, schema, modName) {
-    // Take the entries and place them into a map
-    entries.map((entry) => {
-      entry.fqn = modName + '.' + entry.fqn
-      let fqn = entry.fqn
-      let parts = fqn.split('.')
-      parts.pop()
-      let parentFQN = parts.length > 0 ? parts.join('.') : ''
-      let schemaElem = { fqn: fqn, parentFQN: parentFQN, entry: entry }
-      schema[fqn] = schemaElem
-    })
-  }
-
-  /**
-   * take the map of entries and cross link entries with parents and parents with children.
-   * @param schema
-   * @returns {Array}
-   * @private
-   */
-  _schemaCrossLink (schema) {
-    var keysToRemove = []
-    Object.entries(schema).forEach(([key, element]) => {
-      if (element.parentFQN) {
-        let parent = schema[element.parentFQN]
-        if (!parent) {
-          let msg = `Unexpectedly did not find a parent for this schema entry ${element.fqn}`
-          console.error(msg)
-          // throw new Error(msg)
-        } else {
-          // Don't link element up to parent because it creates circular references.
-          // element.parent = parent
-          // let parent know about all of its children.
-          parent.children = parent.children || []
-          parent.children.push(element)
-          keysToRemove.push(key)
-        }
-      }
-    })
-    return keysToRemove
-  }
-
-  /**
-   * transfer data from the entry field (data from the raw import) onto the new schema element
-   * Do this before cross linking so that all elements are fully flushed out.
-   * @param schema
-   */
-  _transferEntryData (schema) {
-    // take the map of entries and cross link entries with parents and parents with children.
-    Object.entries(schema).forEach(([key, element]) => {
-      if (element.entry) {
-        Object.assign(element, element.entry)
-        element.entry = undefined
-        element.section = undefined
-        element.elementKey = undefined
-      }
-    })
-  }
-
   /**
    * The text content contains one line per entry.
    * Each line contains some key/value pairs.
@@ -172,18 +87,18 @@ class RawInputToDef {
    * @param content
    * @returns {Array}
    */
-  _rawToEntries (content) {
+  _rawToEntries(content) {
     let lines = content.split('\n')
     let entries = []
-    lines.forEach((aLine) => {
+    lines.forEach(aLine => {
       let entry = {}
       let regexp = /\{[^}]*\}/g
       let found = aLine.match(regexp)
-      if(!found){
-        console.log("ERROR unable to find kv pair", aLine)
-        return;
+      if (!found) {
+        console.log('ERROR unable to find kv pair', aLine)
+        return
       }
-      found.forEach((part) => {
+      found.forEach(part => {
         let seq = part.slice(1, -1)
         let parts = seq.split(':')
         let key = camelCase(this._cleanStr(parts[0]))
@@ -200,7 +115,7 @@ class RawInputToDef {
    * @param str
    * @returns {string}
    */
-  _cleanStr (str) {
+  _cleanStr(str) {
     let res = str.trim()
     if (res.length >= 2 && res.charAt(0) === '"') {
       res = res.slice(1, -1)
@@ -226,15 +141,15 @@ class RawInputToDef {
    * @param sep
    * @returns {string | * | void}
    */
-  _fixMultiLineFields (contents, root, sep) {
+  _fixMultiLineFields(contents, root, sep) {
     let s = '"{' + root + '[^"]*}"'
     let optsAll = new RegExp(s, 'g')
     // let found1 = contents.match(optsAll);
-    let newContents = contents.replace(optsAll, function (opts) {
+    let newContents = contents.replace(optsAll, function(opts) {
       let re = '({' + root + ')([^}]*)(}")'
       let regexp = new RegExp(re)
       let found = opts.match(regexp)
-      let raw = found[2].split('\n').map((e) => {
+      let raw = found[2].split('\n').map(e => {
         return e.trim()
       })
       let results = '{' + root + ' "' + raw.join(sep) + '"}'
@@ -249,7 +164,7 @@ class RawInputToDef {
    * @param contents
    * @returns {string}
    */
-  _fixEmptyCells (contents) {
+  _fixEmptyCells(contents) {
     let optsAll = /\teCell/g
     let newContents = contents.replace(optsAll, '')
     let emptyLine = /(eCell\n)/g
@@ -262,7 +177,7 @@ class RawInputToDef {
    * @param contents
    * @returns {string | * | void}
    */
-  _fixTabs (contents) {
+  _fixTabs(contents) {
     let optsAll = /\t/g
     let newContents = contents.replace(optsAll, ' ')
     return newContents
@@ -273,7 +188,7 @@ class RawInputToDef {
    * @param contents
    * @returns {string | * | void}
    */
-  _zapGremlins (contents) {
+  _zapGremlins(contents) {
     // eslint-disable-next-line no-control-regex
     return contents.replace(/[^\x00-\x7F]/g, '')
   }
