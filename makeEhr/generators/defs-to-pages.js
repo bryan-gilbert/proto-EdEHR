@@ -17,14 +17,14 @@ class MasterDefToPages {
         page.children.forEach (child => {
           if (child.row) {
             let rowNumber = child.row
-            let row = uiP.rows[rowNumber]
+            let row = uiP.rows[rowNumber-1]
             if (!row) {
               row = {
                 rowNumber: rowNumber,
                 classList: rowClasses,
                 elements: []
               }
-              uiP.rows[rowNumber] = row
+              uiP.rows[rowNumber-1] = row
             }
             let element = {
               classList: child.css ? child.css : 'is-one-third',

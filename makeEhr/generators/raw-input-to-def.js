@@ -47,11 +47,6 @@ class RawInputToDef {
     // entries.forEach( e => delete e.topLevel)
     var pages = this._groupByPages(entries)
     return pages
-    // var results = JSON.stringify(pages, null, 2)
-    // results = results.replace(/'/g, "\\'")
-    // results = results.replace(/"/g, "'")
-    // var modDef = 'module.exports = function() { return' + results + '\n}'
-    // return modDef
   }
 
   /**

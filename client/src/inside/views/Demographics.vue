@@ -36,9 +36,7 @@ export default {
   computed: {
     uiProps() {
       let defs = require('../defs/patient-profile')()
-      let page = defs[this.dataKey]
-      console.log('demographichs page', page)
-      return page
+      return defs[this.dataKey]
     },
     showEditControls() {
       return this.ehrHelp.showEditControls()
@@ -71,12 +69,4 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/settings/forms';
-
-.region {
-  /* border: 1px dashed black; */
-}
-.Demographics {
-  &__main {
-  }
-}
 </style>

@@ -34,10 +34,19 @@ function convertFile(fName) {
     var results = JSON.stringify(pages, null, 2)
     results = results.replace(/'/g, "\\'")
     results = results.replace(/"/g, "'")
+
+    results = _fixBooleans(results)
+
     var modDef = 'module.exports = function () {\n  return ' + results + '\n}'
 
     fs.writeFileSync(fDest, modDef)
   })
+}
+
+
+function _fixBooleans(contents) {
+  let newContents = contents.replace(/'FALSE'/g, 'false')
+  return newContents.replace(/'TRUE'/g, 'true')
 }
 
 function splitCamelCase (string) {

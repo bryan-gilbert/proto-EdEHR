@@ -3,11 +3,10 @@ module.exports = function () {
   'demographics': {
     'pageTitle': 'Demographics',
     'dataKey': 'demographics',
-    'hasForm': 'TRUE',
-    'hasDialog': 'FALSE',
-    'hasTransposedTable': 'FALSE',
+    'hasForm': true,
+    'hasDialog': false,
+    'hasTransposedTable': false,
     'rows': [
-      null,
       {
         'rowNumber': '1',
         'classList': 'form-row columns',
