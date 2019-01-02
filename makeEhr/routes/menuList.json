@@ -237,6 +237,7 @@
       "routeName": "visit-details",
       "topLevel": "current",
       "def": {
+        "novue": "true",
         "path": "/ehr/current",
         "rn": "visit-details",
         "label": "Visit details",
@@ -370,6 +371,7 @@
           "routeName": "genitourinary",
           "topLevel": "current",
           "def": {
+            "novue": "true",
             "path": "/ehr/current/assessments",
             "rn": "genitourinary",
             "label": "Genitourinary",

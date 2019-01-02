@@ -5,7 +5,7 @@ const camelcase = require('camelcase')
 // TODO add this on back into defs
 //   { "p": "ehr/chart", "n": "progress-notes", "l": "Progress notes"},
 
-const destVueFiles = './generated'
+const destVueFiles = './generated/vue'
 const destRouteFiles = './routes'
 const source = 'source'
 
