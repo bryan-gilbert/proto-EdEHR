@@ -1,4 +1,5 @@
 'use strict'
+const fs = require('fs')
 
 /**
 ule dependencies.
@@ -13,7 +14,7 @@ class RawInputToDef {
    * @param fileBaseName
    * @returns {string}
    */
-  getDefinitions (contents, fileBaseName) {
+  getDefinitions (contents, fileBaseName, makeSchema) {
     let modName = camelCase(fileBaseName)
     let c = contents
     c = this._zapGremlins(c)
@@ -38,9 +39,20 @@ class RawInputToDef {
     // compose the return value ...
     let schema = {}
     schema[modName] = { fqn: modName, inputType: 'topLevel', entry: {} }
+    let entries = this._rawToEntries(c)
+    // entries.forEach( e => delete e.topLevel)
+    if (!makeSchema) {
+      var pages = this._groupByPages(entries)
+      var results = JSON.stringify(pages, null, 2)
+      results = results.replace(/'/g, "\\'")
+      results = results.replace(/"/g, "'")
+      var modDef = 'module.exports = function() { return' + results + '\n}'
+      return modDef
+    }
     // make the schema object
-    this._rawToSchema(c, schema, modName)
+    this._rawToSchema(entries, schema, modName)
     // take the data in the entry property and transfer to the container
+    // fs.writeFileSync('_rawToSchema.txt', newContents)
     this._transferEntryData(schema)
     // Now convert the flat structure into a nested parent/child/grandchild structure.
     // Key to remove are all the original children. They are now stored under the parent so the old objects can be removed
@@ -62,14 +74,39 @@ class RawInputToDef {
   }
 
   /**
-   * Take the raw blob of content and split into entries
+   * Take the array of entries and regroup the entries by page
    * @private
-   * @param contents
+   * @param entries
+   */
+  _groupByPages (entries) {
+    let pages = {}
+    entries.forEach( entry => {
+      if (!entry.page) {
+        console.log('Why no page for this entry?', entry)
+        return
+      }
+      let p = entry.page
+      delete entry.page
+      pages[p] = pages[p] || []
+      if (entry.inputType === 'page') {
+        pages[p] = entry
+        pages[p].children = []
+      } else {
+        pages[p].children.push(entry)
+      }
+    })
+    return pages
+  }
+
+
+  /**
+   * Take the entries and make schemas
+   * @private
+   * @param entries
    * @param schema
    * @param modName
    */
-  _rawToSchema (contents, schema, modName) {
-    let entries = this._rawToEntries(contents)
+  _rawToSchema (entries, schema, modName) {
     // Take the entries and place them into a map
     entries.map((entry) => {
       entry.fqn = modName + '.' + entry.fqn
@@ -95,7 +132,7 @@ class RawInputToDef {
         let parent = schema[element.parentFQN]
         if (!parent) {
           let msg = `Unexpectedly did not find a parent for this schema entry ${element.fqn}`
-          // console.error(msg)
+          console.error(msg)
           // throw new Error(msg)
         } else {
           // Don't link element up to parent because it creates circular references.
