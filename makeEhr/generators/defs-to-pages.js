@@ -7,12 +7,7 @@ class MasterDefToPages {
       let uiP = {};
       uiP.pageTitle = page.label;
       uiP.dataKey = page.elementKey;
-      uiP.hasForm = page.hasForm;
-      uiP.hasDialog = page.hasDialog;
-      uiP.hasTransposedTable = page.hasTransposedTable;
-      if (uiP.hasForm) {
-        this._pageFormElement(uiP, page)
-      }
+      this._pageFormElement(uiP, page)
       pages[uiP.dataKey] = uiP
     });
     return pages;

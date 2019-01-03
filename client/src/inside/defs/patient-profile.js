@@ -4,8 +4,6 @@ module.exports = function() {
       pageTitle: 'Demographics',
       dataKey: 'demographics',
       hasForm: true,
-      hasDialog: false,
-      hasTransposedTable: false,
       page_form: {
         rows: [
           {
@@ -552,8 +550,6 @@ module.exports = function() {
       pageTitle: 'Allergies',
       dataKey: 'allergies',
       hasForm: true,
-      hasDialog: false,
-      hasTransposedTable: false,
       page_form: {
         rows: [
           {
@@ -599,8 +595,6 @@ module.exports = function() {
       pageTitle: 'History Medical',
       dataKey: 'medical',
       hasForm: true,
-      hasDialog: false,
-      hasTransposedTable: false,
       page_form: {
         rows: [
           {
@@ -627,8 +621,6 @@ module.exports = function() {
       pageTitle: 'History Psychosocial',
       dataKey: 'psychosocial',
       hasForm: true,
-      hasDialog: false,
-      hasTransposedTable: false,
       page_form: {
         rows: [
           {
@@ -638,9 +630,9 @@ module.exports = function() {
             elements: [
               {
                 colNumber: '1',
-                elementKey: 'psychosocialHistory',
+                elementKey: 'history',
                 elementName: 'psychosocialHistory',
-                fqn: 'psychosocial.psychosocialHistory',
+                fqn: 'psychosocial.history',
                 inputType: 'textarea',
                 label: 'Psychosocial history',
                 rowNumber: '1',
@@ -700,34 +692,49 @@ module.exports = function() {
     },
     surgical: {
       pageTitle: 'History Surgical',
-      dataKey: 'surgical',
-      hasForm: true,
-      hasDialog: false,
-      hasTransposedTable: false
+      dataKey: 'surgical'
     },
     immunization: {
       pageTitle: 'History Immunization',
       dataKey: 'immunization',
       hasForm: true,
-      hasDialog: false,
-      hasTransposedTable: false,
       page_form: {
         rows: []
       }
     },
     familyHistory: {
-      pageTitle: 'Care team',
+      pageTitle: 'History Family',
       dataKey: 'familyHistory',
-      hasForm: false,
-      hasDialog: true,
-      hasTransposedTable: false
+      hasForm: true,
+      page_form: {
+        rows: [
+          {
+            rowNumber: '1',
+            classList: 'form-row columns',
+            uiContainer: 'familyHistory.form',
+            elements: [
+              {
+                colNumber: '1',
+                elementKey: 'history',
+                elementName: 'familyMedicalHistory',
+                fqn: 'familyHistory.history',
+                inputType: 'textarea',
+                label: 'Family medical history',
+                rowNumber: '1',
+                uiContainer: 'familyHistory.form'
+              }
+            ]
+          }
+        ]
+      }
     },
-    past: {
+    careTeam: {
+      pageTitle: 'Care team',
+      dataKey: 'careTeam'
+    },
+    pastAppointments: {
       pageTitle: 'Past appointments',
-      dataKey: 'past',
-      hasForm: false,
-      hasDialog: true,
-      hasTransposedTable: false
+      dataKey: 'pastAppointments'
     }
   }
 }
