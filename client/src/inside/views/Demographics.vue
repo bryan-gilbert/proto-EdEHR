@@ -5,7 +5,7 @@
         ehr-edit-controls(v-bind:ehrHelp="ehrHelp", @controlsCallback="controlsCallback")
     ehr-panel-content
       div(class="region ehr-page-content")
-        ehr-page-form(v-bind:uiProps="uiProps", v-bind:theData="theData", v-bind:notEditing="notEditing")
+        ehr-page-form(v-bind:uiProps="uiProps.page_form", v-bind:theData="theData", v-bind:notEditing="notEditing")
     div(style="display:none") {{currentData}}
 </template>
 
@@ -36,6 +36,8 @@ export default {
   computed: {
     uiProps() {
       let defs = require('../defs/patient-profile')()
+      let pageDef = defs[this.dataKey]
+      console.log('pageDef ', this.dataKey, pageDef)
       return defs[this.dataKey]
     },
     showEditControls() {

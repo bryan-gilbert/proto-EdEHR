@@ -56,7 +56,7 @@ class RawInputToDef {
    */
   _groupByPages(entries) {
     let pages = {}
-    let cntTypes = ['form', 'table', 'subgroup']
+    let cntTypes = ['page_form', 'table_row', 'table_column', 'subgroup']
     entries.forEach(entry => {
       if (!entry.page) {
         console.log('Why no page for this entry?', entry)
@@ -73,12 +73,13 @@ class RawInputToDef {
         let pg = pages[p]
         pg.rawElements.push(entry)
         let cnt = entry.fqn
-        console.log('add container to page', pg.label, 'cnt', cnt)
+        // console.log('add container to page', pg.label, 'cnt', cnt)
         let container = {
           fqn: entry.uiContainer,
           type: entry.inputType,
           css: entry.css,
-          children: []
+          columnCount: entry.colNumber,
+          elements: []
         }
         pg.containers[cnt] = container
       } else {
@@ -86,9 +87,12 @@ class RawInputToDef {
         pg.rawElements.push(entry)
         let containerKey = entry.uiContainer
         let container = pg.containers[containerKey]
+        // console.log('containerKey container', containerKey, container)
+        // TODO day, time types
+
         let containerChild = {
           css: entry.css,
-          col: entry.col,
+          colNumber: entry.colNumber,
           elementKey: entry.elementKey,
           elementName: entry.elementName,
           defaultValue: entry.defaultValue,
@@ -97,12 +101,19 @@ class RawInputToDef {
           inputType: entry.inputType,
           label: entry.label,
           mandatory: entry.mandatory,
-          options: entry.options,
-          row: entry.row,
+          rowNumber: entry.rowNumber,
           uiContainer: entry.uiContainer,
           validation: entry.validation
         }
-        container.children.push(containerChild)
+        if (entry.options) {
+          let parts = entry.options.split('-NL-')
+          let opts = parts.map(p => {
+            return { text: p }
+          })
+          containerChild.options = opts
+        }
+        container.elements.push(containerChild)
+        // DATA
         let dataChild = {
           label: entry.label,
           elementKey: entry.elementKey,
