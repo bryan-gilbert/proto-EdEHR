@@ -1,3 +1,4 @@
+// Generated VUE file. Before modifying see docs about Vue file generation 
 <template lang="pug">
   div(class="ehr-page")
     ehr-panel-header {{ uiProps.pageTitle }}
@@ -5,8 +6,16 @@
         ehr-edit-controls(v-bind:ehrHelp="ehrHelp", @controlsCallback="controlsCallback")
     ehr-panel-content
       div(class="region ehr-page-content")
-        ehr-page-form(v-bind:uiProps="uiProps", v-bind:theData="theData", v-bind:notEditing="notEditing")
+        ehr-page-form(v-bind:uiProps="uiProps.page_form", v-bind:theData="theData", v-bind:notEditing="notEditing")
     div(style="display:none") {{currentData}}
+    div(style="display:none")
+      p This Allergies page is generated.
+      p Label: Allergies
+      p Data Key: allergies
+      p Component name: Allergies
+      p Redirect: 
+      p Route name: allergies
+      p Full path: /ehr/patient/allergies
 </template>
 
 <script>
@@ -36,6 +45,8 @@ export default {
   computed: {
     uiProps() {
       let defs = require('../defs/patient-profile')()
+      let pageDef = defs[this.dataKey]
+      console.log('pageDef ', this.dataKey, pageDef)
       return defs[this.dataKey]
     },
     showEditControls() {

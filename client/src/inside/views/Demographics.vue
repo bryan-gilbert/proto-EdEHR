@@ -1,3 +1,4 @@
+// Generated VUE file. Before modifying see docs about Vue file generation 
 <template lang="pug">
   div(class="ehr-page")
     ehr-panel-header {{ uiProps.pageTitle }}
@@ -7,6 +8,14 @@
       div(class="region ehr-page-content")
         ehr-page-form(v-bind:uiProps="uiProps.page_form", v-bind:theData="theData", v-bind:notEditing="notEditing")
     div(style="display:none") {{currentData}}
+    div(style="display:none")
+      p This Demographics page is generated.
+      p Label: Demographics
+      p Data Key: demographics
+      p Component name: Demographics
+      p Redirect: 
+      p Route name: demographics
+      p Full path: /ehr/patient/demographics
 </template>
 
 <script>

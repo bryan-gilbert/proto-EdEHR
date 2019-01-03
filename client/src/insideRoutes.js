@@ -75,11 +75,7 @@ export function inside() {
       name: 'past-appt',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/PastAppt.vue'),
-      meta: {
-        layout: 'inside',
-        label: 'Past appointments',
-        topLevel: 'patient'
-      }
+      meta: { layout: 'inside', label: 'Past appointments', topLevel: 'patient' }
     },
     {
       path: '/ehr/current',
@@ -170,11 +166,7 @@ export function inside() {
       name: 'no-med',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/NoMed.vue'),
-      meta: {
-        layout: 'inside',
-        label: 'Non-medication orders',
-        topLevel: 'current'
-      }
+      meta: { layout: 'inside', label: 'Non-medication orders', topLevel: 'current' }
     },
     {
       path: '/ehr/current/no-med/no-med-orders',
@@ -188,11 +180,7 @@ export function inside() {
       name: 'referrals',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Referrals.vue'),
-      meta: {
-        layout: 'inside',
-        label: 'Referrals to other disciplines',
-        topLevel: 'current'
-      }
+      meta: { layout: 'inside', label: 'Referrals to other disciplines', topLevel: 'current' }
     },
     {
       path: '/ehr/current/no-med/lab-reqs',
@@ -206,11 +194,7 @@ export function inside() {
       name: 'meds',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Meds.vue'),
-      meta: {
-        layout: 'inside',
-        label: 'Medication orders',
-        topLevel: 'current'
-      }
+      meta: { layout: 'inside', label: 'Medication orders', topLevel: 'current' }
     },
     {
       path: '/ehr/current/mar',
@@ -224,11 +208,7 @@ export function inside() {
       name: 'discharge',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Discharge.vue'),
-      meta: {
-        layout: 'inside',
-        label: 'Discharge summary',
-        topLevel: 'current'
-      }
+      meta: { layout: 'inside', label: 'Discharge summary', topLevel: 'current' }
     },
     {
       path: '/ehr/current/billing',
@@ -256,22 +236,14 @@ export function inside() {
       name: 'care-plan',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/CarePlan.vue'),
-      meta: {
-        layout: 'inside',
-        label: 'Interprofessional plan of care',
-        topLevel: 'chart'
-      }
+      meta: { layout: 'inside', label: 'Interprofessional plan of care', topLevel: 'chart' }
     },
     {
       path: '/ehr/chart/reports',
       name: 'reports',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Reports.vue'),
-      meta: {
-        layout: 'inside',
-        label: 'Reports and documents',
-        topLevel: 'chart'
-      }
+      meta: { layout: 'inside', label: 'Reports and documents', topLevel: 'chart' }
     },
     {
       path: '/ehr/chart/reports/consults',

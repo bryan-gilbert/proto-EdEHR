@@ -1,6 +1,8 @@
 const fs = require('fs')
 const pathUtil = require('path')
 const camelcase = require('camelcase')
+const RawPagesToDefs = require('./generators/raw-pages-to-def')
+
 
 // TODO add this on back into defs
 //   { "p": "ehr/chart", "n": "progress-notes", "l": "Progress notes"},
@@ -8,13 +10,34 @@ const camelcase = require('camelcase')
 const destVueFiles = './generated/vue'
 const destRouteFiles = './routes'
 const source = 'source'
+const rawDataSource = 'raw_data'
+const insidePageRawDefFileName = 'inside-pages'
+const destEhrDefs = './generated/ehrDefs'
 
 main()
 
 function main () {
+  generateInsidePageDefs()
   outside()
   inside()
 }
+
+function generateInsidePageDefs() {
+  let fSrc = pathUtil.join(rawDataSource, insidePageRawDefFileName) + '.txt'
+  let fDest = pathUtil.join(destEhrDefs, insidePageRawDefFileName)  + '.js'
+  console.log('read file ', fSrc)
+  fs.readFile(fSrc, 'utf8', function (err, contents) {
+    var inputToDef = new RawPagesToDefs()
+    var masterPageDefs = inputToDef.getDefinitions(contents)
+    var results = JSON.stringify(masterPageDefs, null, 2)
+    results = results.replace(/'/g, "\\'")
+    results = results.replace(/"/g, "'")
+    // results = _fixBooleans(results)
+    var modDef = 'module.exports = function () {\n  return ' + results + '\n}'
+    fs.writeFileSync(fDest, modDef)
+  })
+}
+
 
 function outside () {
   const outsideDefs = require('./outsideDefs')
@@ -24,7 +47,7 @@ function outside () {
 }
 
 function inside () {
-  const insideDefs = require('./insideDefs')
+  const insideDefs = require('./generated/ehrDefs/inside-pages')()
   flushDefs(insideDefs, true)
   var outfilename = pathUtil.join(destRouteFiles, 'treeDef.json')
 
@@ -39,10 +62,10 @@ function inside () {
 
 function flushDefs (defs, forInside) {
   defs.forEach(def => {
-    def.componentName = def.componentName ? def.componentName : camelcase(def.rn, { pascalCase: true })
-    def.dataName = camelcase(def.rn)
-    def.routeName = def.rn
-    def.fullPath = def.path + '/' + def.rn
+    def.componentName = def.componentName ? def.componentName : camelcase(def.routeName, { pascalCase: true })
+    def.dataName = camelcase(def.routeName)
+    def.routeName = def.routeName
+    def.fullPath = def.path + '/' + def.routeName
     def.title = def.title || splitCamelCase(def.componentName)
     def.label = def.label || def.title
     def.redirect = def.redirect ? def.redirect : ''
@@ -95,7 +118,7 @@ function findTreeItem (def, tree) {
 }
 function makeTreeItem (def, tree) {
   var item = {}
-  item.name = def.rn
+  item.name = def.routeName
   if (def.redirect.length > 0) {
     item.redirect = def.redirect
   }
@@ -131,10 +154,11 @@ function makeMenu (tree, outfilename) {
 }
 
 function makeVueFiles (defs) {
-  const templateFileName = pathUtil.join(__dirname, source, 'baseTemplate.txt')
+  const templateFileName = pathUtil.join(__dirname, source, 'newTemplate.txt')
   const componentTemplate = fs.readFileSync(templateFileName, 'utf8')
   defs.forEach(def => {
-    if (!def.novue) {
+    // console.log('def.generateComponent',  def.generateComponent)
+    if (def.generateComponent === 'yes') {
       makeVueFile(def, componentTemplate)
     }
   })
@@ -149,9 +173,9 @@ function makeVueFile (def, componentTemplate) {
     .replace(/{title}/g, def.title)
     .replace(/{label}/g, def.label)
     .replace(/{componentName}/g, def.componentName)
-    .replace(/{dataName}/g, def.dataName)
+    .replace(/{dataKey}/g, def.dataKey)
     .replace(/{redirect}/g, def.redirect)
-    .replace(/{rName}/g, def.routeName)
+    .replace(/{routeName}/g, def.routeName)
     .replace(/{path}/g, def.fullPath)
   content = '// Generated VUE file. Before modifying see docs about Vue file generation \n' + content
   var outfilename = pathUtil.join(destVueFiles, def.componentName + '.vue')

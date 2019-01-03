@@ -1,4 +1,3 @@
-// Generated VUE file. Before modifying see docs about Vue file generation 
 <template lang="pug">
   div(class="ehr-page")
     ehr-panel-header {{ uiProps.pageTitle }}
@@ -9,13 +8,13 @@
         ehr-page-form(v-bind:uiProps="uiProps.page_form", v-bind:theData="theData", v-bind:notEditing="notEditing")
     div(style="display:none") {{currentData}}
     div(style="display:none")
-      p This Care Team page is generated.
-      p Label: Care team
-      p Data Key: care-team
-      p Component name: CareTeam
-      p Redirect: 
-      p Route name: care-team
-      p Full path: /ehr/patient/care-team
+      p This {title} page is generated.
+      p Label: {label}
+      p Data Key: {dataKey}
+      p Component name: {componentName}
+      p Redirect: {redirect}
+      p Route name: {routeName}
+      p Full path: {path}
 </template>
 
 <script>
@@ -26,7 +25,7 @@ import EhrPageForm from '../components/EhrPageForm.vue'
 import EhrHelp from '../ehr-helper'
 
 export default {
-  name: 'CareTeam',
+  name: '{componentName}',
   components: {
     EhrPanelHeader,
     EhrPanelContent,
@@ -35,7 +34,7 @@ export default {
   },
   data: function() {
     return {
-      dataKey: 'care-team',
+      dataKey: '{dataKey}',
       theData: {},
       ehrHelp: {},
       hasForm: true,
