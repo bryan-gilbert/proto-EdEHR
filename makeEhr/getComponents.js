@@ -24,7 +24,7 @@ function outside () {
 }
 
 function inside () {
-  const insideDefs = require('./defs')
+  const insideDefs = require('./insideDefs')
   flushDefs(insideDefs, true)
   var outfilename = pathUtil.join(destRouteFiles, 'treeDef.json')
 
