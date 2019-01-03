@@ -21,8 +21,12 @@ class MasterDefToPages {
   _pageFormElement(uiP, page) {
     let rowClasses = 'form-row columns'
     console.log('Build form for page', page.label)
+    uiP.forms = []
     uiP.rows = []
     page.children.forEach(child => {
+      if (child.ui_container) {
+        let cnt = child.ui_container
+      }
       if (child.row) {
         let rowNumber = child.row
         let colNumber = child.col

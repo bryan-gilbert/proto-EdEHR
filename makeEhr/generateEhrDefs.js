@@ -22,7 +22,7 @@ function main () {
 
 function convertFile(fName) {
   let fSrc = pathUtil.join(source, fName) + '.txt'
-  let fTmp = pathUtil.join(destination, fName)  + '.tmp'
+  let fTmp = pathUtil.join(destination, fName)  + '.json'
   let fDest = pathUtil.join(destination, fName)  + '.js'
   console.log('read file ', fSrc)
   fs.readFile(fSrc, 'utf8', function (err, contents) {

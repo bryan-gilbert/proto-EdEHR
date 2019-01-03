@@ -56,19 +56,62 @@ class RawInputToDef {
    */
   _groupByPages(entries) {
     let pages = {}
+    let cntTypes = ['form', 'table', 'subgroup']
     entries.forEach(entry => {
       if (!entry.page) {
         console.log('Why no page for this entry?', entry)
         return
       }
       let p = entry.page
-      delete entry.page
-      pages[p] = pages[p] || []
+      // delete entry.page
       if (entry.inputType === 'page') {
         pages[p] = entry
         pages[p].children = []
+        pages[p].rawElements = []
+        pages[p].containers = {}
+      } else if (cntTypes.indexOf(entry.inputType) >= 0) {
+        let pg = pages[p]
+        pg.rawElements.push(entry)
+        let cnt = entry.fqn
+        console.log('add container to page', pg.label, 'cnt', cnt)
+        let container = {
+          fqn: entry.uiContainer,
+          type: entry.inputType,
+          css: entry.css,
+          children: []
+        }
+        pg.containers[cnt] = container
       } else {
-        pages[p].children.push(entry)
+        let pg = pages[p]
+        pg.rawElements.push(entry)
+        let containerKey = entry.uiContainer
+        let container = pg.containers[containerKey]
+        let containerChild = {
+          css: entry.css,
+          col: entry.col,
+          elementKey: entry.elementKey,
+          elementName: entry.elementName,
+          defaultValue: entry.defaultValue,
+          fqn: entry.fqn,
+          helperText: entry.helperText,
+          inputType: entry.inputType,
+          label: entry.label,
+          mandatory: entry.mandatory,
+          options: entry.options,
+          row: entry.row,
+          uiContainer: entry.uiContainer,
+          validation: entry.validation
+        }
+        container.children.push(containerChild)
+        let dataChild = {
+          label: entry.label,
+          elementKey: entry.elementKey,
+          fqn: entry.fqn,
+          dataFrom: entry.dataFrom,
+          dataCaseStudy: entry.dataCaseStudy,
+          assignment: entry.assignment
+        }
+        pg.children.push(dataChild)
       }
     })
     return pages
