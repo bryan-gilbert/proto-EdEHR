@@ -115,34 +115,35 @@ export default {
         }
       ]
       uiP.formDef = {
-        topRow: [
-          {
-            key: 'name',
-            classList: 'input-element-medium'
-          },
-          {
-            key: 'profession',
-            classList: 'input-element-medium'
-          },
-          {
-            key: 'unit',
-            classList: 'input-element-small'
-          },
-          {
-            key: 'day',
-            classList: 'input-element-small'
-          },
-          {
-            key: 'time',
-            classList: 'input-element-small'
-          }
-        ],
-        middleRange: [{ column: [] }],
-        lastRow: [
-          {
-            key: 'notes',
-            classList: 'input-element-full'
-          }
+        rows: [
+          [
+            {
+              key: 'name',
+              classList: 'input-element-medium'
+            },
+            {
+              key: 'profession',
+              classList: 'input-element-medium'
+            },
+            {
+              key: 'unit',
+              classList: 'input-element-small'
+            },
+            {
+              key: 'day',
+              classList: 'input-element-small'
+            },
+            {
+              key: 'time',
+              classList: 'input-element-small'
+            }
+          ],
+          [
+            {
+              key: 'notes',
+              classList: 'input-element-full'
+            }
+          ]
         ]
       }
       return uiP

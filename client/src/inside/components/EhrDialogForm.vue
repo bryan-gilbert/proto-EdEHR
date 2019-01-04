@@ -5,8 +5,8 @@
       div(class="input-fieldrow")
         ehr-dialog-form-element(v-for="fmEl in topRow", :key="fmEl.key", :inputs="inputs", :def="fmEl")
       hr
-      div(v-for="block in middleRange")
-        ehr-dialog-form-element(v-for="fmEl in block.column", :key="fmEl.key", :inputs="inputs", :def="fmEl")
+      div(v-for="row in middleRange")
+        ehr-dialog-form-element(v-for="fmEl in row", :key="fmEl.key", :inputs="inputs", :def="fmEl")
       div(class="input-fieldrow")
         ehr-dialog-form-element(v-for="fmEl in lastRow", :key="fmEl.key", :inputs="inputs", :def="fmEl")
     span(slot="save-button") Create and close
@@ -33,13 +33,18 @@ export default {
       return this.ehrHelp.showingDialog()
     },
     topRow() {
-      return this.uiProps.formDef.topRow
+      let rows = this.uiProps.formDef.rows
+      return rows[0]
     },
     middleRange() {
-      return this.uiProps.formDef.middleRange
+      let rows = this.uiProps.formDef.rows
+      let middle = rows.slice(1, rows.length -1)
+      console.log('middle', middle)
+      return middle
     },
     lastRow() {
-      return this.uiProps.formDef.lastRow
+      let rows = this.uiProps.formDef.rows
+      return rows[rows.length -1]
     }
   },
   methods: {

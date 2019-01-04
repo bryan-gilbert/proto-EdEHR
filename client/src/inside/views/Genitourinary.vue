@@ -98,7 +98,12 @@ export default {
           propertyKey: 'urinarySymptoms',
           label: 'Urinary symptoms',
           type: 'checklistWithOther',
-          options: [{ text: 'None' }, { text: 'Increased frequency' }, { text: 'Dysuria' }, { text: 'Hernaturia' }]
+          options: [
+            { text: 'None' },
+            { text: 'Increased frequency' },
+            { text: 'Dysuria' },
+            { text: 'Hernaturia' }
+          ]
         },
         {
           propertyKey: 'lastVoidedDay',
@@ -127,51 +132,49 @@ export default {
         }
       ]
       uiP.formDef = {
-        topRow: [
-          {
-            key: 'name',
-            classList: 'input-element-medium'
-          },
-          {
-            key: 'profession',
-            classList: 'input-element-medium'
-          },
-          {
-            key: 'unit',
-            classList: 'input-element-small'
-          },
-          {
-            key: 'day',
-            classList: 'input-element-small'
-          },
-          {
-            key: 'time',
-            classList: 'input-element-small'
-          }
-        ],
-        middleRange: [
-          {
-            column: [
-              {
-                key: 'urinarySymptoms'
-              },
-              {
-                key: 'lastVoidedDay'
-              },
-              {
-                key: 'lastVoidedTime'
-              },
-              {
-                key: 'foley'
-              }
-            ]
-          }
-        ],
-        lastRow: [
-          {
-            key: 'comments',
-            classList: 'input-element-full'
-          }
+        rows: [
+          [
+            {
+              key: 'name',
+              classList: 'input-element-medium'
+            },
+            {
+              key: 'profession',
+              classList: 'input-element-medium'
+            },
+            {
+              key: 'unit',
+              classList: 'input-element-small'
+            },
+            {
+              key: 'day',
+              classList: 'input-element-small'
+            },
+            {
+              key: 'time',
+              classList: 'input-element-small'
+            }
+          ],
+          [
+            {
+              key: 'urinarySymptoms'
+            },
+            {
+              key: 'lastVoidedDay'
+            },
+            {
+              key: 'lastVoidedTime'
+            },
+            {
+              key: 'foley'
+            }
+          ],
+          [
+            {
+              key: 'comments',
+              classList: 'input-element-full'
+            }
+          ]
         ]
       }
       return uiP

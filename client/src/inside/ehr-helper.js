@@ -17,7 +17,9 @@ export default class EhrHelp {
       })
     }
     this.showModal = false
-    this.eventHandler = function(eData) { _this.receiveEvent(eData)}
+    this.eventHandler = function(eData) {
+      _this.receiveEvent(eData)
+    }
     EventBus.$on(DIALOG_INPUT_EVENT, this.eventHandler)
     if (uiProps.hasDialog) {
       this.setupDialogDef(uiProps)
@@ -118,13 +120,23 @@ export default class EhrHelp {
         // console.log('resulting def', def)
       }
     }
-    uiProps.formDef.topRow.forEach((def) => { transfer(def) })
-    uiProps.formDef.middleRange.forEach((column) => {
-      column.column.forEach((def) => {
-        transfer(def, column.column)
+    // if (uiProps.formDef.topRow) {
+    //   uiProps.formDef.topRow.forEach((def) => { transfer(def) })
+    //   uiProps.formDef.middleRange.forEach((column) => {
+    //     column.column.forEach((def) => {
+    //       transfer(def, column.column)
+    //     })
+    //   })
+    //   uiProps.formDef.lastRow.forEach((def) => { transfer(def) })
+    // } else {
+    let rows = uiProps.formDef.rows
+
+    rows.forEach(row => {
+      row.forEach(def => {
+        transfer(def) // , column.column)
       })
     })
-    uiProps.formDef.lastRow.forEach((def) => { transfer(def) })
+    // }
   }
 
   /* ********************* DIALOG  */
@@ -135,8 +147,10 @@ export default class EhrHelp {
 
   clearDialogInputs() {
     var cells = this.component.uiProps.tableCells
-    cells.forEach((cell)=>{
-      this.component.inputs[cell.propertyKey] = cell.defaultValue ? cell.defaultValue(this.$store) : ''
+    cells.forEach(cell => {
+      this.component.inputs[cell.propertyKey] = cell.defaultValue
+        ? cell.defaultValue(this.$store)
+        : ''
     })
     // empty the error list array
     this.component.errorList.length = 0
@@ -146,12 +160,12 @@ export default class EhrHelp {
     var inputs = this.component.inputs
     var cells = this.component.uiProps.tableCells
     this.component.errorList.length = 0
-    cells.forEach((cell)=>{
-      if(cell.type === 'text') {
+    cells.forEach(cell => {
+      if (cell.type === 'text') {
         inputs[cell.propertyKey] = inputs[cell.propertyKey].trim()
       }
-      if(cell.validationRules) {
-        cell.validationRules.forEach((rule) => {
+      if (cell.validationRules) {
+        cell.validationRules.forEach(rule => {
           var value = inputs[cell.propertyKey]
           if (rule.required && value.length === 0) {
             var msg = cell.label + ' is required'
@@ -198,7 +212,6 @@ export default class EhrHelp {
   }
 
   /* ********************* FORM  */
-
 
   showEditControls() {
     return this.$store.getters['visit/isStudent']
@@ -283,14 +296,14 @@ export default class EhrHelp {
   dialogEvent(eData) {
     const _this = this
     // register listener if needed
-    this.eventHandler = function(eData) { _this.receiveEvent(eData)}
+    this.eventHandler = function(eData) {
+      _this.receiveEvent(eData)
+    }
     EventBus.$on(this.eventChannelListen, this.eventHandler) // eData => { this.receiveEvent(eData) })
-
   }
 
   receiveEvent(eData) {
     // console.log(`On channel ${DIALOG_INPUT_EVENT} from key ${eData.key} got data: ${eData.value}`)
     this.component.inputs[eData.key] = eData.value
   }
-
 }
