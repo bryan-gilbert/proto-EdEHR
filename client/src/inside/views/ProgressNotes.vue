@@ -2,26 +2,15 @@
   div(class="ehr-page")
     ehr-panel-header {{ uiProps.pageTitle }}
     ehr-panel-content
-      div(v-show="showEditControls")
-        ui-button(v-on:buttonClicked="showDialog") {{ uiProps.addButtonText }}
-      div(class="row_table")
-        table.table
-          thead
-            tr
-              th(v-for="cell in uiProps.tableCells", :class="cell.propertyKey", :title="cell.propertyKey") {{ cell.label }}
-          tbody
-            tr(v-for="item in theData")
-              td(v-for="cell in uiProps.tableCells", :class="cell.propertyKey") {{ item[cell.propertyKey] }}
+      ehr-page-table(v-for="tableDef in uiProps.tables", :tableDef="tableDef", :theData="theData", :ehrHelp="ehrHelp", :showEditControls="showEditControls")
     div(style="display:none") {{currentData}}
-    ehr-dialog-form(:ehrHelp="ehrHelp", :ui-props="uiProps", :inputs="inputs", :errorList="errorList" )
 </template>
 
 <script>
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
-import EhrDialogForm from '../components/EhrDialogForm.vue'
+import EhrPageTable from '../components/EhrPageTable'
 import EhrHelp from '../ehr-helper'
-import UiButton from '../../app/ui/UiButton.vue'
 import moment from 'moment'
 import { getPhrase } from '../poc-utils'
 
@@ -30,13 +19,12 @@ export default {
   components: {
     EhrPanelHeader,
     EhrPanelContent,
-    EhrDialogForm,
-    UiButton
+    EhrPageTable
   },
   data: function() {
     return {
       dataKey: 'progressNotes',
-      theData: {},
+      theData: [],
       ehrHelp: {},
       hasForm: false,
       loading: false,
@@ -53,19 +41,19 @@ export default {
     },
     currentData() {
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      this.theData = this.ehrHelp.mergedProperty()
+      this.theData = this.ehrHelp.mergedProperty([])
       return this.theData
     },
     uiProps() {
       let uiP = {
         pageTitle: 'Progress notes',
         dataKey: 'genitourinary',
-        addButtonText: 'Add a new progress notes',
         hasForm: false,
         hasDialog: true,
         hasTransposedTable: false
       }
-      uiP.tableCells = [
+      uiP.tables = []
+      let tableCells = [
         {
           propertyKey: 'name',
           label: 'Name',
@@ -114,7 +102,7 @@ export default {
           validationRules: [{ required: true }]
         }
       ]
-      uiP.formDef = {
+      let formDef = {
         rows: [
           [
             {
@@ -146,6 +134,12 @@ export default {
           ]
         ]
       }
+      let table = {
+        addButtonText: 'Add a new progress notes',
+        tableCells: tableCells,
+        formDef: formDef
+      }
+      uiP.tables.push(table)
       return uiP
     }
   },

@@ -24,7 +24,7 @@ export default {
   },
   props: {
     ehrHelp: { type: Object },
-    uiProps: { type: Object },
+    formDef: { type: Object },
     inputs: { type: Object },
     errorList: { type: Array }
   },
@@ -33,17 +33,17 @@ export default {
       return this.ehrHelp.showingDialog()
     },
     topRow() {
-      let rows = this.uiProps.formDef.rows
+      let rows = this.formDef.rows
       return rows[0]
     },
     middleRange() {
-      let rows = this.uiProps.formDef.rows
+      let rows = this.formDef.rows
       let middle = rows.slice(1, rows.length -1)
       console.log('middle', middle)
       return middle
     },
     lastRow() {
-      let rows = this.uiProps.formDef.rows
+      let rows = this.formDef.rows
       return rows[rows.length -1]
     }
   },

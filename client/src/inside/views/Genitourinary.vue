@@ -2,15 +2,6 @@
   div(class="ehr-page")
     ehr-panel-header {{ uiProps.pageTitle }}
     ehr-panel-content
-      div(v-show="showEditControls")
-        ui-button(v-on:buttonClicked="showDialog") {{ uiProps.addButtonText }}
-      div(class="column_table")
-        table.table
-          tbody
-            tr(v-for="column in columnData")
-              td(v-for="cell in column", :class="cell.class") {{ cell.value }}
-    div(style="display:none") {{currentData}}
-    ehr-dialog-form(:ehrHelp="ehrHelp", :ui-props="uiProps", :inputs="inputs", :errorList="errorList" )
 </template>
 
 <script>
@@ -21,7 +12,18 @@ import EhrHelp from '../ehr-helper'
 import UiButton from '../../app/ui/UiButton.vue'
 import moment from 'moment'
 import { getPhrase } from '../poc-utils'
+/*
+      div(v-show="showEditControls")
+        ui-button(v-on:buttonClicked="showDialog") {{ uiProps.addButtonText }}
+      div(class="column_table")
+        table.table
+          tbody
+            tr(v-for="column in columnData")
+              td(v-for="cell in column", :class="cell.class") {{ cell.value }}
+    div(style="display:none") {{currentData}}
+    ehr-dialog-form(:ehrHelp="ehrHelp", :ui-props="uiProps", :inputs="inputs", :errorList="errorList" )
 
+ */
 export default {
   name: 'Genitourinary',
   components: {
@@ -50,12 +52,12 @@ export default {
       let uiP = {
         pageTitle: 'Genitourinary',
         dataKey: 'genitourinary',
-        addButtonText: 'Add a assessment',
         hasForm: false,
         hasDialog: true,
         hasTransposedTable: true
       }
-      uiP.tableCells = [
+      uiP.tables = []
+      let tableCells = [
         {
           propertyKey: 'name',
           label: 'Name',
@@ -131,7 +133,7 @@ export default {
           validationRules: [{ required: true }]
         }
       ]
-      uiP.formDef = {
+      let formDef = {
         rows: [
           [
             {
@@ -177,6 +179,12 @@ export default {
           ]
         ]
       }
+      let table = {
+        addButtonText: 'Add a assessment',
+        tableCells: tableCells,
+        formDef: formDef
+      }
+      uiP.tables.push(table)
       return uiP
     },
     columnData() {

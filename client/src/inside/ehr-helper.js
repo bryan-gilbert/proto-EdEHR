@@ -44,9 +44,10 @@ export default class EhrHelp {
    *
    * @returns {any}
    */
-  mergedProperty() {
+  mergedProperty(defaultValue) {
+    defaultValue = defaultValue || {}
     let data = this.$store.getters['ehrData/mergedData'] || {}
-    let asStored = data[this.dataKey] || {}
+    let asStored = data[this.dataKey] || defaultValue
     return JSON.parse(JSON.stringify(asStored))
   }
 
@@ -105,8 +106,10 @@ export default class EhrHelp {
 
   setupDialogDef(uiProps) {
     const _this = this
+    let tables = uiProps.tables
+    let table = tables[0]
     function transfer(def, defsList) {
-      var cells = uiProps.tableCells
+      var cells = table.tableCells
       var cell = cells.find(c => def.key === c.propertyKey)
       def.label = cell.label
       def.type = cell.type
@@ -120,23 +123,12 @@ export default class EhrHelp {
         // console.log('resulting def', def)
       }
     }
-    // if (uiProps.formDef.topRow) {
-    //   uiProps.formDef.topRow.forEach((def) => { transfer(def) })
-    //   uiProps.formDef.middleRange.forEach((column) => {
-    //     column.column.forEach((def) => {
-    //       transfer(def, column.column)
-    //     })
-    //   })
-    //   uiProps.formDef.lastRow.forEach((def) => { transfer(def) })
-    // } else {
-    let rows = uiProps.formDef.rows
-
+    let rows = table.formDef.rows
     rows.forEach(row => {
       row.forEach(def => {
         transfer(def) // , column.column)
       })
     })
-    // }
   }
 
   /* ********************* DIALOG  */
