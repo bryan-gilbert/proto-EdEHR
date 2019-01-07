@@ -27,6 +27,13 @@ class MasterDefToPages {
       } else if (container.type ==='table_row') {
         uiP.hasTable = true
         uiP.tables = uiP.tables || []
+        let tableCells = this._pageTableCells(container)
+        let table = {
+          addButtonText: 'testongggg',
+          tableCells: tableCells,
+          // formDef:
+        }
+        uiP.tables.push(table)
       }
     })
   }
@@ -56,29 +63,12 @@ class MasterDefToPages {
     return rows
   }
 
-  _pageTableElement(container) {
-    let rows = []
+  _pageTableCells(container) {
+    let tableCells = []
     container.elements.forEach(element => {
-      let rowNumber = element.rowNumber
-      let row = rows[rowNumber - 1]
-      if (!row) {
-        row = {
-          rowNumber: rowNumber,
-          classList: 'form-row columns',
-          uiContainer: element.uiContainer,
-          elements: []
-        }
-        rows[rowNumber - 1] = row
-      }
-      row.elements.push(element)
+      tableCells.push(element)
     })
-    // sort the rows
-    rows.sort((a, b) => a.rowNumber - b.rowNumber)
-    // sort the columns within a row
-    rows.forEach(row => {
-      row.elements.sort((a, b) => a.colNumber - b.colNumber)
-    })
-    return rows
+    return tableCells
   }
 
 }

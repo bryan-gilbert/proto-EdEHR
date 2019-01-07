@@ -694,7 +694,54 @@ module.exports = function() {
       pageTitle: 'History Surgical',
       dataKey: 'surgical',
       hasTable: true,
-      tables: []
+      tables: [
+        {
+          addButtonText: 'testongggg',
+          tableCells: [
+            {
+              colNumber: '1',
+              elementKey: 'surgeryProcedure',
+              elementName: 'surgeryProcedure',
+              fqn: 'surgical.surgeryProcedure',
+              inputType: 'text',
+              label: 'Surgery/procedure',
+              uiContainer: 'surgical.table1'
+            },
+            {
+              colNumber: '2',
+              elementKey: 'surgeryProcedureDate',
+              elementName: 'surgeryProcedureDate',
+              fqn: 'surgical.surgeryProcedureDate',
+              inputType: 'date',
+              label: 'Date',
+              uiContainer: 'surgical.table1'
+            }
+          ]
+        },
+        {
+          addButtonText: 'testongggg',
+          tableCells: [
+            {
+              colNumber: '1',
+              elementKey: 'previousAdmissions',
+              elementName: 'previousAdmissions',
+              fqn: 'surgical.previousAdmissions',
+              inputType: 'text',
+              label: 'Previous admissions',
+              uiContainer: 'surgical.table2'
+            },
+            {
+              colNumber: '2',
+              elementKey: 'previousAdmissionsDate',
+              elementName: 'previousAdmissionsDate',
+              fqn: 'surgical.previousAdmissionsDate',
+              inputType: 'date',
+              label: 'Date',
+              uiContainer: 'surgical.table2'
+            }
+          ]
+        }
+      ]
     },
     immunization: {
       pageTitle: 'History Immunization',
@@ -734,13 +781,121 @@ module.exports = function() {
       pageTitle: 'Care team',
       dataKey: 'careTeam',
       hasTable: true,
-      tables: []
+      tables: [
+        {
+          addButtonText: 'testongggg',
+          tableCells: [
+            {
+              colNumber: '1',
+              elementKey: 'name',
+              elementName: 'name',
+              fqn: 'careTeam.name',
+              inputType: 'text',
+              label: 'Name',
+              uiContainer: 'careTeam.table'
+            },
+            {
+              colNumber: '2',
+              elementKey: 'profession',
+              elementName: 'profession',
+              fqn: 'careTeam.profession',
+              inputType: 'text',
+              label: 'Profession',
+              uiContainer: 'careTeam.table'
+            }
+          ]
+        }
+      ]
     },
     pastAppointments: {
       pageTitle: 'Past appointments',
       dataKey: 'pastAppointments',
+      defaultData: '{encounters',
       hasTable: true,
-      tables: []
+      tables: [
+        {
+          addButtonText: 'testongggg',
+          tableCells: [
+            {
+              colNumber: '1',
+              elementKey: 'date',
+              elementName: 'date',
+              fqn: 'pastAppointments.date',
+              inputType: 'text',
+              label: 'Date',
+              uiContainer: 'pastAppointments.encounters'
+            },
+            {
+              colNumber: '2',
+              elementKey: 'site',
+              elementName: 'site',
+              fqn: 'pastAppointments.site',
+              inputType: 'text',
+              label: 'Site',
+              uiContainer: 'pastAppointments.encounters'
+            },
+            {
+              colNumber: '3',
+              elementKey: 'diagnosis',
+              elementName: 'diagnosis',
+              fqn: 'pastAppointments.diagnosis',
+              inputType: 'text',
+              label: 'Diagnosis',
+              uiContainer: 'pastAppointments.encounters'
+            },
+            {
+              colNumber: '4',
+              elementKey: 'mrp',
+              elementName: 'mrp',
+              fqn: 'pastAppointments.mrp',
+              inputType: 'text',
+              label: 'Most responsible person',
+              uiContainer: 'pastAppointments.encounters'
+            }
+          ]
+        },
+        {
+          addButtonText: 'testongggg',
+          tableCells: [
+            {
+              colNumber: '1',
+              elementKey: 'date',
+              elementName: 'date',
+              fqn: 'pastAppointments.date',
+              inputType: 'text',
+              label: 'Date',
+              uiContainer: 'pastAppointments.outpatient'
+            },
+            {
+              colNumber: '2',
+              elementKey: 'site',
+              elementName: 'site',
+              fqn: 'pastAppointments.site',
+              inputType: 'text',
+              label: 'Site',
+              uiContainer: 'pastAppointments.outpatient'
+            },
+            {
+              colNumber: '3',
+              elementKey: 'reasonForVisit',
+              elementName: 'reasonForVisit',
+              fqn: 'pastAppointments.reasonForVisit',
+              inputType: 'text',
+              label: 'Reason for visit',
+              uiContainer: 'pastAppointments.outpatient'
+            },
+            {
+              colNumber: '4',
+              elementKey: 'diagnosis',
+              elementName: 'diagnosis',
+              fqn: 'pastAppointments.diagnosis',
+              inputType: 'text',
+              label: 'Diagnosis',
+              uiContainer: 'pastAppointments.outpatient'
+            }
+          ]
+        }
+      ]
     }
   }
 }

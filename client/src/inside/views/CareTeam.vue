@@ -6,7 +6,9 @@
         ehr-edit-controls(v-bind:ehrHelp="ehrHelp", @controlsCallback="controlsCallback")
     ehr-panel-content
       div(class="region ehr-page-content")
-        ehr-page-form(v-bind:formDefs="uiProps.page_form", v-bind:theData="theData", v-bind:notEditing="notEditing")
+        ehr-page-form(v-if="uiProps.hasForm", v-bind:formDefs="uiProps.page_form", v-bind:theData="theData", v-bind:notEditing="notEditing")
+        div(v-if="uiProps.hasTable")
+          ehr-page-table(v-for="tableDef in uiProps.tables", :tableDef="tableDef", :theData="theData", :ehrHelp="ehrHelp", :showEditControls="showEditControls")
     div(style="display:none") {{currentData}}
     div(style="display:none")
       p This Care Team page is generated.
@@ -22,6 +24,7 @@
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
 import EhrEditControls from '../components/EhrEditControls.vue'
+import EhrPageTable from '../components/EhrPageTable'
 import EhrPageForm from '../components/EhrPageForm.vue'
 import EhrHelp from '../ehr-helper'
 
@@ -31,6 +34,7 @@ export default {
     EhrPanelHeader,
     EhrPanelContent,
     EhrPageForm,
+    EhrPageTable,
     EhrEditControls
   },
   data: function() {
