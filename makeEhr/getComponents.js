@@ -19,7 +19,6 @@ main()
 function main () {
   generateInsidePageDefs()
   outside()
-  inside()
 }
 
 function generateInsidePageDefs() {
@@ -35,6 +34,7 @@ function generateInsidePageDefs() {
     // results = _fixBooleans(results)
     var modDef = 'module.exports = function () {\n  return ' + results + '\n}'
     fs.writeFileSync(fDest, modDef)
+    inside()
   })
 }
 

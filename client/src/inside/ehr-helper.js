@@ -264,6 +264,10 @@ export default class EhrHelp {
         return next(false)
       }
     }
+    var isEditing = this.$store.state.system.isEditing
+    if (isEditing) {
+      this.$store.commit('system/setEditing', false)
+    }
     next()
   }
 

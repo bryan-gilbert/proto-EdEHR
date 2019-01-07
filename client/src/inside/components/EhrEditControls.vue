@@ -20,7 +20,7 @@ export default {
   },
   computed: {
     isEditing() {
-      return this.$store.state.system.isEditing
+      return this.ehrHelp.isEditing()
     }
   },
   methods: {

@@ -692,7 +692,9 @@ module.exports = function() {
     },
     surgical: {
       pageTitle: 'History Surgical',
-      dataKey: 'surgical'
+      dataKey: 'surgical',
+      hasTable: true,
+      tables: []
     },
     immunization: {
       pageTitle: 'History Immunization',
@@ -730,11 +732,15 @@ module.exports = function() {
     },
     careTeam: {
       pageTitle: 'Care team',
-      dataKey: 'careTeam'
+      dataKey: 'careTeam',
+      hasTable: true,
+      tables: []
     },
     pastAppointments: {
       pageTitle: 'Past appointments',
-      dataKey: 'pastAppointments'
+      dataKey: 'pastAppointments',
+      hasTable: true,
+      tables: []
     }
   }
 }

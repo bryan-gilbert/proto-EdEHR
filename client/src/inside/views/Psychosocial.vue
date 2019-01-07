@@ -6,7 +6,7 @@
         ehr-edit-controls(v-bind:ehrHelp="ehrHelp", @controlsCallback="controlsCallback")
     ehr-panel-content
       div(class="region ehr-page-content")
-        ehr-page-form(v-bind:uiProps="uiProps.page_form", v-bind:theData="theData", v-bind:notEditing="notEditing")
+        ehr-page-form(v-bind:formDefs="uiProps.page_form", v-bind:theData="theData", v-bind:notEditing="notEditing")
     div(style="display:none") {{currentData}}
     div(style="display:none")
       p This Psychosocial page is generated.
