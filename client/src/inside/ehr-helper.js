@@ -220,11 +220,11 @@ export default class EhrHelp {
 
   cancelEdit() {
     const _this = this
-    _this.$store.commit('system/setEditing', false)
     _this.$store.commit('system/setLoading', true)
-    setTimeout(function() {
+    this.$store.dispatch('ehrData/restoreActivityData').then(() => {
+      _this.$store.commit('system/setEditing', false)
       _this.$store.commit('system/setLoading', false)
-    }, 1000)
+    })
   }
 
   saveEdit() {

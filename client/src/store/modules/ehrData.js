@@ -6,6 +6,7 @@ const state = {
   sActivityData is a db model object containing the student's assignment work, scratch pad, instructors evaluation notes, etc
    */
   sActivityData: {},
+  forStudent: false,
   /*
   These two objects contain the information needed by the instructor to see and evaluate the student's work.
   sCurrentStudentInfo contains information about the student.
@@ -73,6 +74,7 @@ const actions = {
     let url = `${apiUrl}/activity-data/get/${activityDataId}`
     return helper.getRequest(url).then(response => {
       let ad = response.data.activitydata
+      context.commit('_setForStudent', options.forStudent)
       // console.log('Got activity information ', ad)
       if (options.forStudent) {
         context.commit('_setActivityData', ad)
@@ -80,6 +82,21 @@ const actions = {
         context.commit('_setCurrentStudentData', ad)
       }
     })
+  },
+  restoreActivityData(context) {
+    let forStudent = context.state.forStudent
+    // console.log('restoreActivityData ', forStudent)
+    if (forStudent) {
+      let visitState = context.rootState.visit
+      let apiUrl = visitState.apiUrl
+      let activityDataId = context.state.sActivityData._id
+      let url = `${apiUrl}/activity-data/get/${activityDataId}`
+      return helper.getRequest(url).then(response => {
+        let ad = response.data.activitydata
+        // console.log('Got activity information ', ad)
+        context.commit('_setActivityData', ad)
+      })
+    }
   },
   sendAssignmentDataUpdate(context, payload) {
     let visitState = context.rootState.visit
@@ -138,6 +155,9 @@ const actions = {
 }
 
 const mutations = {
+  _setForStudent: (state, value) => {
+    state.forStudent = value
+  },
   _setActivityData: (state, cData) => {
     // console.log('_setActivityData', cData)
     // console.log('_setActivityData\'s assignment', cData.assignment)
