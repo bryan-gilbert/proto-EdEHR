@@ -5,6 +5,7 @@ const fs = require('fs')
 ule dependencies.
  */
 const camelCase = require('camelcase')
+const DEFAULT_KEY = 'defaultValue'
 
 class RawInputToDef {
   /**
@@ -48,6 +49,27 @@ class RawInputToDef {
     var pages = this._groupByPages(entries)
     return pages
   }
+
+  toPages(masterPageDefs) {
+    // let defs = require("../ehr_defs/patient-profile")();
+    let pages = {}
+    Object.values(masterPageDefs).forEach(page => {
+      let uiP = {}
+      uiP.pageTitle = page.label
+      uiP.dataKey = page.elementKey
+      if (page[DEFAULT_KEY]) {
+        uiP[DEFAULT_KEY] = page[DEFAULT_KEY]
+      } else {
+        uiP[DEFAULT_KEY] = '{}'
+      }
+      this._page(uiP, page)
+      pages[uiP.dataKey] = uiP
+    })
+    return pages
+  }
+  // TODO day, time types
+
+  /* *************** definition helpers ******** */
 
   /**
    * Take the array of entries and regroup the entries by page
@@ -144,19 +166,91 @@ class RawInputToDef {
       let regexp = /\{[^}]*\}/g
       let found = aLine.match(regexp)
       if (!found) {
-        console.log('ERROR unable to find kv pair', aLine)
+        console.log('ERROR unable to find any kv pairs in this content:', aLine)
         return
       }
       found.forEach(part => {
+        // slice off the surrounding {}
         let seq = part.slice(1, -1)
-        let parts = seq.split(':')
-        let key = camelCase(this._cleanStr(parts[0]))
-        entry[key] = this._cleanStr(parts[1])
+        let indexOfFirst = seq.indexOf(':')
+        let key = seq.slice(0, indexOfFirst)
+        let value = seq.slice(indexOfFirst + 1)
+        key = camelCase(this._cleanStr(key))
+        value = this._cleanStr(value)
+        if (DEFAULT_KEY === key) {
+          indexOfFirst = value.indexOf(':')
+          if (indexOfFirst > 0) {
+            value = '{' + value + '}'
+            console.log('adjust ' + DEFAULT_KEY + ' to object syntax', value)
+          }
+        }
+        entry[key] = value
       })
       entries.push(entry)
     })
     return entries
   }
+
+  /* *************** to pages helpers ******** */
+
+  _page(uiP, page) {
+    console.log('Build form for page', page.label)
+    Object.keys(page.containers).forEach(key => {
+      let container = page.containers[key]
+      if (container.type === 'page_form') {
+        uiP.hasForm = true
+        let rows = this._pageFormElement(container)
+        uiP.page_form = {
+          rows: rows
+        }
+      } else if (container.type === 'table_row') {
+        uiP.hasTable = true
+        uiP.tables = uiP.tables || []
+        let tableCells = this._pageTableCells(container)
+        let table = {
+          addButtonText: 'testongggg',
+          tableCells: tableCells
+          // formDef:
+        }
+        uiP.tables.push(table)
+      }
+    })
+  }
+
+  _pageFormElement(container) {
+    let rows = []
+    container.elements.forEach(element => {
+      let rowNumber = element.rowNumber
+      let row = rows[rowNumber - 1]
+      if (!row) {
+        row = {
+          rowNumber: rowNumber,
+          classList: 'form-row columns',
+          uiContainer: element.uiContainer,
+          elements: []
+        }
+        rows[rowNumber - 1] = row
+      }
+      row.elements.push(element)
+    })
+    // sort the rows
+    rows.sort((a, b) => a.rowNumber - b.rowNumber)
+    // sort the columns within a row
+    rows.forEach(row => {
+      row.elements.sort((a, b) => a.colNumber - b.colNumber)
+    })
+    return rows
+  }
+
+  _pageTableCells(container) {
+    let tableCells = []
+    container.elements.forEach(element => {
+      tableCells.push(element)
+    })
+    return tableCells
+  }
+
+  /* *************** UTILITIES ******** */
 
   /**
    * Trim white space.

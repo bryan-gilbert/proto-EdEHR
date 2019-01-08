@@ -5,7 +5,7 @@
 rm generated/ehrDefs/*.js
 
 # run the generator
-node generateEhrDefs
+node generate-ehr-defs
 
 ## The vue cli run prettier. This next call runs prettier on our generated file so we can checkin a file
 ## that is exactly what the vue cli wants.

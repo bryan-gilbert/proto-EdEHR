@@ -1,16 +1,11 @@
 const fs = require('fs')
 const pathUtil = require('path')
-const camelcase = require('camelcase')
 const RawInputToDef = require('./generators/raw-input-to-def')
-const MasterDefToPages = require('./generators/defs-to-pages')
-
 
 const destination = pathUtil.join(process.cwd(), 'generated', 'ehrDefs')
 const source = pathUtil.join(process.cwd(), 'raw_data')
 // const sourceFiles = ['current-visit', 'patient-profile']
 const sourceFiles = ['patient-profile']
-const tp = new MasterDefToPages()
-
 
 main()
 
@@ -32,7 +27,7 @@ function convertFile(fName) {
     var masterPageDefs = inputToDef.getDefinitions(contents, moduleName)
     fs.writeFileSync(fTmp, JSON.stringify(masterPageDefs, null, 2))
 
-    var pages = tp.toPages(masterPageDefs)
+    var pages = inputToDef.toPages(masterPageDefs)
     var results = JSON.stringify(pages, null, 2)
     results = results.replace(/'/g, "\\'")
     results = results.replace(/"/g, "'")

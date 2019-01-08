@@ -5,7 +5,7 @@
 rm generated/vue/*.vue
 
 # run the generator
-node getComponents
+node generate-components
 
 ## The vue cli run prettier. This next call runs prettier on our generated file so we can checkin a file
 ## that is exactly what the vue cli wants.
