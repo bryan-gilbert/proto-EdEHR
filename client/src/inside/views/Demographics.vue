@@ -41,9 +41,7 @@ export default {
     return {
       dataKey: 'demographics',
       theData: {},
-      ehrHelp: {},
-      hasForm: true,
-      loading: false
+      ehrHelp: {}
     }
   },
   computed: {

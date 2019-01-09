@@ -41,9 +41,7 @@ export default {
     return {
       dataKey: 'medical',
       theData: {},
-      ehrHelp: {},
-      hasForm: true,
-      loading: false
+      ehrHelp: {}
     }
   },
   computed: {

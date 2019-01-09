@@ -103,38 +103,36 @@ export default class EhrHelp {
 
   showDialog(tableDef, dialogInputs) {
     const _this = this
+    let dialog  = { tableDef: tableDef, inputs: dialogInputs }
     let key = tableDef.tableKey
     let eData = { key: key, value: true }
     let channel = 'modal:' + key
+    // console.log('showDialog for this tableDef', tableDef)
     EventBus.$emit(channel, eData)
-
-    let dialog  = { tableDef: tableDef, inputs: dialogInputs }
+    // add this dialog to the map
     this.dialogMap[key] = dialog
-    console.log('showDialog for this tableDef', tableDef)
+    // console.log('set helper into each form element', tableDef.tableForm)
     let rows = tableDef.tableForm.rows
-    console.log('set helper into each form element', tableDef.tableForm)
     rows.forEach(row => {
       row.elements.forEach(def => {
         def.helper = _this
       })
     })
     this._clearDialogInputs(key)
-    tableDef.showModal = true
   }
 
   cancelDialog(key) {
+    const _this = this
     console.log('cancel dialog ', key)
     this._clearDialogInputs(key)
-    let d = this.dialogMap[key]
-    d.tableDef.showModal = false
   }
 
   saveDialog(key) {
+    const _this = this
     if (this._validateInputs(key)) {
-      this.loading = true
+      _this.$store.commit('system/setLoading', true)
       let data = this.$store.getters['ehrData/assignmentData'] || {}
       let d = this.dialogMap[key]
-      d.tableDef.showModal = false
       let inputs = d.inputs
       // let key = d.tableDef.tableKey
       console.log('save dialog data into ', key)
@@ -147,16 +145,10 @@ export default class EhrHelp {
         propertyName: key,
         value: modifiedValue
       }
-      const _this = this
       this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
-        _this.loading = false
+        _this.$store.commit('system/setLoading', false)
       })
     }
-  }
-
-  showingDialog(key) {
-    let d = this.dialogMap[key]
-    return d ? d.tableDef.showModal : false
   }
 
   getErrorList(key) {

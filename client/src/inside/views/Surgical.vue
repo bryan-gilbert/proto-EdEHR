@@ -41,9 +41,7 @@ export default {
     return {
       dataKey: 'surgical',
       theData: {},
-      ehrHelp: {},
-      hasForm: true,
-      loading: false
+      ehrHelp: {}
     }
   },
   computed: {
@@ -77,8 +75,8 @@ export default {
       return this.theData
     },
     tableData(tableDef) {
+      console.log('return table data', tableDef.tableKey)
       let td = this.theData[tableDef.tableKey]
-      console.log('return table data', tableDef.tableKey, td)
       return td
     }
   },

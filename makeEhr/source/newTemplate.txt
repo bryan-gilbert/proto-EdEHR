@@ -40,9 +40,7 @@ export default {
     return {
       dataKey: '{dataKey}',
       theData: {},
-      ehrHelp: {},
-      hasForm: true,
-      loading: false
+      ehrHelp: {}
     }
   },
   computed: {
