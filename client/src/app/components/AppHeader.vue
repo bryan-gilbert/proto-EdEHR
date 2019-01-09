@@ -73,6 +73,7 @@ export default {
   }
 
   &__nav {
+    padding-right: 2rem;
   }
 
   &__navList {

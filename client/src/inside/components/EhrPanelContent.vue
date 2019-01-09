@@ -14,8 +14,7 @@ export default {
 @import '../../scss/settings/color.scss';
 
 .EhrPanelContent {
-  padding: 20px 1.5rem;
-    font-size: 0.8rem;
+  padding: 1.25rem 2rem;
 
   &__main {
 

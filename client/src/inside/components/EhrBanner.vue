@@ -88,6 +88,7 @@ export default {
 .EhrBanner {
   @include wrapper(s);
   width: 100%;
+  padding-bottom: 12px;
   background-color: $grey10;
   color: $grey60;
   // Todo fix this force height in a more repsonsive manner
@@ -95,14 +96,13 @@ export default {
 
   &__content {
     margin: 0;
-    padding: 0 1rem;
-    font-size: 0.8rem;
+    padding: 0 1.25rem;
   }
   &__content_row--1 {
-    flex-grow: 0.8;
+    flex-grow: 1;
   }
   &__content_row--2 {
-    flex-grow: 0.9;
+    flex-grow: 1;
   }
   &__content_row--3 {
     flex-grow: 1.5;
