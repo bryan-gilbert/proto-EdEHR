@@ -10,7 +10,7 @@
         tbody
           tr(v-for="item in theData")
             td(v-for="cell in tableDef.tableCells", :class="cell.propertyKey") {{ item[cell.propertyKey] }}
-    ehr-dialog-form(:ehrHelp="ehrHelp", :formDef="tableDef.tableForm", :inputs="inputs", :errorList="errorList" )
+    ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :inputs="inputs", :errorList="errorList" )
 </template>
 
 <script>
@@ -35,19 +35,19 @@ export default {
     showEditControls: { type: Boolean }
   },
   computed: {
+    tableForm() {
+      let form = this.tableDef.tableForm
+      console.log('ehr page table get table form', this.tableDef)
+      return form
+    },
     errorList() {
-      return this.ehrHelp.getErrorList()
+      return this.ehrHelp.getErrorList(this.tableDef.tableKey)
     }
   },
   methods: {
     showDialog: function() {
+      console.log('send event here')
       this.ehrHelp.showDialog(this.tableDef, this.inputs)
-    },
-    cancelDialog: function() {
-      this.ehrHelp.cancelDialog()
-    },
-    saveDialog: function() {
-      this.ehrHelp.saveDialog()
     }
   }
 }

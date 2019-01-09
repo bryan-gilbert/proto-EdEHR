@@ -72,7 +72,7 @@ export default {
       const _this = this
       this.$nextTick(function() {
         // Send an event on our transmission channel with a payload containing this component's value
-        let eData = { key: _this.def.elementKey, value: _this.inputVal }
+        let eData = { key: _this.def, value: _this.inputVal }
         // console.log('emit event',eData, _this.eventChannelBroadcast)
         EventBus.$emit(_this.eventChannelBroadcast, eData)
       })
