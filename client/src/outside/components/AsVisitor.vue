@@ -67,9 +67,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../scss/settings/color.scss';
+
 .AsVisitor {
   &__main {
-    background-color: #f6fbfe;
+    background-color: $grey03;
   }
 }
 </style>

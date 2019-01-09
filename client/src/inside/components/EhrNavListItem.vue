@@ -52,7 +52,7 @@ export default {
   &__level1,
   &__level2 {
     & a {
-      color: #cbced1;
+      color: $grey20;
     }
   }
   active {
@@ -60,6 +60,7 @@ export default {
   }
   &__level1 {
     background-color: $nav-level1;
+    font-size: 18px;
     height: 40px;
     & a {
       color: $nav-color-level1;

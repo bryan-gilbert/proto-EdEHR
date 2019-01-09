@@ -258,9 +258,10 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/settings/forms';
+@import '../../scss/settings/color.scss';
 
 .region {
-  /* border: 1px dashed black; */
+  /* border: 1px dashed $black; */
 }
 .Demographics {
   &__main {

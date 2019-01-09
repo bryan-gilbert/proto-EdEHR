@@ -52,11 +52,12 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/settings/color';
 @import '../../scss/objects/wrapper.mixin';
+@import '../../scss/styles.scss';
 
 .AppHeader {
   background: $toolbar-background-color;
   color: $toolbar-color;
-  /*font-family: "Open Sans", open-sans, sans-serif;*/
+  /*font-family: $bodyFontFamily;*/
   @include wrapper('page');
   padding: 1rem;
 

@@ -36,17 +36,19 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/objects/wrapper.mixin';
-$contentMinHeigth: 800px;
+@import '../../scss/settings/color.scss';
+
+$contentMinHeight: 800px;
 $navWidth: 234px;
 $pageWidth: 1024px;
 body {
-  background: #e9ebed;
+  background: $grey10;
 }
 
 .LayoutOutside {
   &__main {
-    color: #6a6c73;
-    background-color: white;
+    color: $grey60;
+    background-color: $white;
     @include wrapper('page');
   }
   &__header {
@@ -60,7 +62,7 @@ body {
     margin: 0;
   }
   &__content {
-    min-height: $contentMinHeigth;
+    min-height: $contentMinHeight;
     padding: 0;
     margin: 0;
   }
