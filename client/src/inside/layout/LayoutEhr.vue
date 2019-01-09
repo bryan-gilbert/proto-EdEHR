@@ -49,7 +49,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/objects/wrapper.mixin';
-$contentMinHeigth: 700px;
+$contentMinHeight: 700px;
 $navWidth: 234px;
 $pageWidth: 1024px;
 @import '../../scss/settings/color.scss';
@@ -79,7 +79,7 @@ $pageWidth: 1024px;
     margin: 0;
   }
   &__content {
-    height: $contentMinHeigth;
+    min-height: $contentMinHeight;
     padding: 0;
     margin: 0;
     overflow-y: auto;
