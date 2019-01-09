@@ -57,7 +57,8 @@ export default class EhrHelp {
   }
 
   getInputValue(def) {
-    var val = this.component.inputs[def.key]
+    let inputs = this.currentDialog.inputs
+    var val = inputs[def.elementKey]
     // console.log('helper provides val for key ', val, def.key)
     return val
   }
@@ -122,6 +123,8 @@ export default class EhrHelp {
   getErrorList() {
     return this.errorList
   }
+
+  // TODO validation will need rework as part of the DDD refactor
   validateInputs() {
     let cells = this.currentDialog.dialogDef.tableCells
     let inputs = this.currentDialog.inputs
@@ -169,11 +172,12 @@ export default class EhrHelp {
       this.showModal = false
       this.loading = true
       let data = this.$store.getters['ehrData/assignmentData'] || {}
-      let key = this.component.dialogData.dataKey
+      let inputs = this.currentDialog.inputs
+      let key = this.currentDialog.dialogDef.tableKey
       console.log('save dialog data into ', key)
       var modifiedValue = data[key] || []
       modifiedValue = modifiedValue ? JSON.parse(JSON.stringify(modifiedValue)) : []
-      modifiedValue.push(this.component.inputs)
+      modifiedValue.push(inputs)
       console.log('storing this: ', modifiedValue)
       // Prepare a payload to tell the API which property inside the assignment data to change
       let payload = {
@@ -284,6 +288,7 @@ export default class EhrHelp {
 
   receiveEvent(eData) {
     // console.log(`On channel ${DIALOG_INPUT_EVENT} from key ${eData.key} got data: ${eData.value}`)
-    this.component.inputs[eData.key] = eData.value
+    let inputs = this.currentDialog.inputs
+    inputs[eData.key] = eData.value
   }
 }

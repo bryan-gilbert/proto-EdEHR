@@ -3,12 +3,12 @@
     h3(slot="header") Create a new progress note
     div(slot="body", class="ehr-page-content")
       div(class="input-fieldrow")
-        ehr-dialog-form-element(v-for="fmEl in topRow", :key="fmEl.key", :inputs="inputs", :def="fmEl")
+        ehr-dialog-form-element(v-for="fmEl in topRow.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")
       hr
       div(v-for="row in middleRange")
-        ehr-dialog-form-element(v-for="fmEl in row", :key="fmEl.key", :inputs="inputs", :def="fmEl")
+        ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")
       div(class="input-fieldrow")
-        ehr-dialog-form-element(v-for="fmEl in lastRow", :key="fmEl.key", :inputs="inputs", :def="fmEl")
+        ehr-dialog-form-element(v-for="fmEl in lastRow.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")
     span(slot="save-button") Create and close
 </template>
 

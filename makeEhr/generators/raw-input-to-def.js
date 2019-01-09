@@ -110,6 +110,8 @@ class RawInputToDef {
       },
    */
 
+  // TODO implement dependent form elements. E.g. checkbox enable text box. See EhrDialogFormElement parent
+
   /**
    * STEP 2
    * Take the array of entries and regroup the entries by page
