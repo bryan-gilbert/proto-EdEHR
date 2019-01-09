@@ -11,6 +11,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../scss/settings/color.scss';
+
 .OutPanelContent {
   padding: 20px 1.5rem;
 
@@ -18,7 +20,7 @@ export default {
     font-size: 0.8rem;
 
     .table th {
-      border-bottom: 2px solid #979797;
+      border-bottom: 2px solid $grey40;
     }
   }
 }

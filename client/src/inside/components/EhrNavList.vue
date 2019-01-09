@@ -50,13 +50,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../scss/settings/color.scss';
+
 .EhrNavList {
   padding: 0;
   &__teaserList {
     margin-left: 0;
   }
   &__link {
-    color: white;
+    color: $white;
   }
 }
 </style>

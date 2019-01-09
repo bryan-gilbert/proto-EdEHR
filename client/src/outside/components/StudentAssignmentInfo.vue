@@ -102,6 +102,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../scss/settings/color.scss';
+
 .header-content {
   display: flex;
   flex-direction: row;
@@ -111,7 +113,7 @@ export default {
   }
 }
 
-$indicatorColor: #006400;
+$indicatorColor: $brand-primary;
 .indicator {
   display: flex;
   flex-direction: row;
@@ -124,7 +126,7 @@ $indicatorColor: #006400;
   flex: 0 0 20px;
   width: 20px;
   height: 20px;
-  border: 1px solid #222;
+  border: 1px solid $grey80;
   margin-top: 10px;
 }
 .indicate-assignment-data {
@@ -161,7 +163,7 @@ $indicatorColor: #006400;
     margin-right: 1rem;
   }
   .evaluation-input {
-    border: 1px solid #cbced1;
+    border: 1px solid $grey20;
     border-radius: 3px;
     box-shadow: inset 0 1px 0 0 rgba(21, 26, 36, 0.5);
     height: 6rem;

@@ -11,14 +11,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../scss/settings/color.scss';
+
 .EhrPanelContent {
   padding: 20px 1.5rem;
-
-  &__main {
     font-size: 0.8rem;
 
+  &__main {
+
     .table th {
-      border-bottom: 2px solid #979797;
+      border-bottom: 2px solid $grey60;
     }
   }
 }

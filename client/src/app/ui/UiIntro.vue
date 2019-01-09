@@ -10,8 +10,6 @@ export default {
 
 <style lang="scss" scoped>
 .UiIntro {
-  font-size: 1.25em;
-
   > :not(:first-child) {
     margin-top: 1.25em;
   }

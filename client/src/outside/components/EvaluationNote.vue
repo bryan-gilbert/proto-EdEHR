@@ -62,6 +62,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../scss/settings/color.scss';
+
 .aName {
   display: inline-block;
   width: 10rem;
@@ -83,7 +85,7 @@ export default {
     margin-right: 1rem;
   }
   .evaluation-input {
-    border: 1px solid #cbced1;
+    border: 1px solid $grey20;
     border-radius: 3px;
     box-shadow: inset 0 1px 0 0 rgba(21, 26, 36, 0.5);
     height: 6rem;

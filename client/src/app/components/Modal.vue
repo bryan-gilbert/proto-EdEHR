@@ -38,6 +38,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../scss/settings/color.scss';
+
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -60,11 +62,11 @@ export default {
   margin: 0px auto;
   padding: 20px 30px;
   overflow: hidden;
-  background-color: #fff;
+  background-color: $white;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: $bodyFontFamily;
 }
 
 .modal-header h3 {
@@ -72,7 +74,7 @@ export default {
   font-size: 24px;
   font-weight: 600;
   line-height: 28px;
-  color: #383c45;
+  color: $grey70;
 }
 
 .modal-body {
@@ -94,23 +96,23 @@ export default {
 }
 
 .modal-default-button {
-  background-color: #3396ff;
+  background-color: $grey70;
   border-radius: 4px;
   border: none;
-  box-shadow: inset 0 2px 0 0 #ffffff, 0 1px 2px 0 rgba(21, 26, 36, 0.2);
-  color: #ffffff;
+  box-shadow: inset 0 2px 0 0 $white, 0 1px 2px 0 rgba(21, 26, 36, 0.2);
+  color: $white;
   text-align: center;
-  text-shadow: 0 1px 0 0 #ffffff;
+  text-shadow: 0 1px 0 0 $white;
   line-height: 19px;
   font-size: 15px;
 }
 
 .modal-close-button {
   border: none;
-  background: white;
+  background: $white;
   font-weight: 600;
   font-size: 16px;
-  color: #000000;
+  color: $black;
 }
 
 /* **********
@@ -130,7 +132,7 @@ export default {
   input,
   textarea {
     height: 2rem;
-    border: 1px solid #cbced1;
+    border: 1px solid $grey20;
     border-radius: 3px;
     box-shadow: inset 0 1px 0 0 rgba(21, 26, 36, 0.5);
   }

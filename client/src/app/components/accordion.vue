@@ -39,8 +39,10 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '../../scss/settings/color.scss';
+
 .accordion {
-  background-color: #e8ebed;
+  background-color: $grey10;
   .header {
     height: 40px;
     line-height: 40px;

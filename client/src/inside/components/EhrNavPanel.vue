@@ -73,7 +73,7 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
-  /*color: #efefef;*/
+  /*color: $grey10;*/
 
   &__top {
     padding: 15px;
@@ -82,7 +82,7 @@ export default {
     padding: 15px;
   }
   a {
-    color: white;
+    color: $white;
   }
   &__button {
     width: 100%;

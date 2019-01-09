@@ -3,7 +3,7 @@
     div(class="modal-mask", v-show="loading")
       div(class="modal-wrapper")
         div(class="modal-container is-centered")
-          spinner(:speed="1.0", :depth="5", :size="100", :color="'#6089b6'")
+          spinner(:speed="1.0", :depth="5", :size="100", :color="'$brand-primary'")
 </template>
 
 <script>
