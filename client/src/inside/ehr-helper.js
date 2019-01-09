@@ -19,7 +19,7 @@ export default class EhrHelp {
     }
     this.dialogMap = {}
     this.eventHandler = function(eData) {
-      _this.receiveEvent(eData)
+      _this._handleDialogInputChangeEvent(eData)
     }
     EventBus.$on(DIALOG_INPUT_EVENT, this.eventHandler)
     if (uiProps.hasTransposedTable) {
@@ -55,7 +55,7 @@ export default class EhrHelp {
   getInputValue(def) {
     let inputs = this.currentDialog.inputs
     var val = inputs[def.elementKey]
-    // console.log('helper provides val for key ', val, def.key)
+    console.log('helper provides val for key ', val, def.key)
     return val
   }
 
@@ -103,7 +103,7 @@ export default class EhrHelp {
 
   showDialog(tableDef, dialogInputs) {
     const _this = this
-    let dialog  = { tableDef: tableDef, inputs: dialogInputs }
+    let dialog = { tableDef: tableDef, inputs: dialogInputs }
     let key = tableDef.tableKey
     let eData = { key: key, value: true }
     let channel = 'modal:' + key
@@ -122,7 +122,6 @@ export default class EhrHelp {
   }
 
   cancelDialog(key) {
-    const _this = this
     console.log('cancel dialog ', key)
     this._clearDialogInputs(key)
   }
@@ -171,25 +170,27 @@ export default class EhrHelp {
   // TODO validation will need rework as part of the DDD refactor
   _validateInputs(key) {
     let d = this.dialogMap[key]
-    let cells = d.tableDef.tableCells
+    // let cells = d.tableDef.tableCells
     let inputs = d.inputs
-    d.errorList = []
-    cells.forEach(cell => {
-      if (cell.type === 'text') {
-        inputs[cell.elementKey] = inputs[cell.elementKey].trim()
-      }
-      if (cell.validationRules) {
-        cell.validationRules.forEach(rule => {
-          var value = inputs[cell.elementKey]
-          if (rule.required && value.length === 0) {
-            var msg = cell.label + ' is required'
-            // console.log('validateInput', msg)
-            d.errorList.push(msg)
-          }
-        })
-      }
-    })
-    return d.errorList.length === 0
+    console.log('what is in the inputs? ', inputs)
+    return false
+    // d.errorList = []
+    // cells.forEach(cell => {
+    //   if (cell.type === 'text') {
+    //     inputs[cell.elementKey] = inputs[cell.elementKey].trim()
+    //   }
+    //   if (cell.validationRules) {
+    //     cell.validationRules.forEach(rule => {
+    //       var value = inputs[cell.elementKey]
+    //       if (rule.required && value.length === 0) {
+    //         var msg = cell.label + ' is required'
+    //         // console.log('validateInput', msg)
+    //         d.errorList.push(msg)
+    //       }
+    //     })
+    //   }
+    // })
+    // return d.errorList.length === 0
   }
 
   /* ********************* FORM  */
@@ -278,18 +279,16 @@ export default class EhrHelp {
     // e.returnValue = LEAVE_PROMPT
   }
 
-  dialogEvent(eData) {
-    const _this = this
-    // register listener if needed
-    this.eventHandler = function(eData) {
-      _this.receiveEvent(eData)
-    }
-    EventBus.$on(this.eventChannelListen, this.eventHandler) // eData => { this.receiveEvent(eData) })
-  }
-
-  receiveEvent(eData) {
-    console.log(`On channel ${DIALOG_INPUT_EVENT} from key ${eData.key} got data: ${eData.value}`)
-    // let inputs = this.currentDialog.inputs
-    // inputs[eData.key] = eData.value
+  _handleDialogInputChangeEvent(eData) {
+    let def = eData.def
+    let tableKey = def.tableKey
+    let elementKey = def.elementKey
+    let value = eData.value
+    let d = this.dialogMap[tableKey]
+    let inputs = d.inputs
+    console.log(
+      `On channel ${DIALOG_INPUT_EVENT} event from ${tableKey} ${elementKey} with data: ${value}`
+    )
+    inputs[elementKey] = value
   }
 }

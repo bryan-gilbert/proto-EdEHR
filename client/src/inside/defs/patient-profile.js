@@ -687,7 +687,8 @@ module.exports = function() {
               formColumn: '1',
               formRow: '1',
               dataParent: 'surgical.surgery',
-              page: 'History Surgical'
+              page: 'History Surgical',
+              tableKey: 'surgery'
             },
             {
               elementKey: 'date',
@@ -698,7 +699,8 @@ module.exports = function() {
               formColumn: '2',
               formRow: '1',
               dataParent: 'surgical.surgery',
-              page: 'History Surgical'
+              page: 'History Surgical',
+              tableKey: 'surgery'
             }
           ],
           tableForm: {
@@ -715,7 +717,8 @@ module.exports = function() {
                     formColumn: '1',
                     formRow: '1',
                     dataParent: 'surgical.surgery',
-                    page: 'History Surgical'
+                    page: 'History Surgical',
+                    tableKey: 'surgery'
                   },
                   {
                     elementKey: 'date',
@@ -726,7 +729,8 @@ module.exports = function() {
                     formColumn: '2',
                     formRow: '1',
                     dataParent: 'surgical.surgery',
-                    page: 'History Surgical'
+                    page: 'History Surgical',
+                    tableKey: 'surgery'
                   }
                 ]
               }
@@ -747,7 +751,8 @@ module.exports = function() {
               formColumn: '1',
               formRow: '1',
               dataParent: 'surgical.previous',
-              page: 'History Surgical'
+              page: 'History Surgical',
+              tableKey: 'previous'
             },
             {
               elementKey: 'previousAdmissionsDate',
@@ -758,7 +763,8 @@ module.exports = function() {
               formColumn: '2',
               formRow: '1',
               dataParent: 'surgical.previous',
-              page: 'History Surgical'
+              page: 'History Surgical',
+              tableKey: 'previous'
             }
           ],
           tableForm: {
@@ -775,7 +781,8 @@ module.exports = function() {
                     formColumn: '1',
                     formRow: '1',
                     dataParent: 'surgical.previous',
-                    page: 'History Surgical'
+                    page: 'History Surgical',
+                    tableKey: 'previous'
                   },
                   {
                     elementKey: 'previousAdmissionsDate',
@@ -786,7 +793,8 @@ module.exports = function() {
                     formColumn: '2',
                     formRow: '1',
                     dataParent: 'surgical.previous',
-                    page: 'History Surgical'
+                    page: 'History Surgical',
+                    tableKey: 'previous'
                   }
                 ]
               }
@@ -1103,7 +1111,8 @@ module.exports = function() {
               label: 'Name',
               formColumn: '1',
               dataParent: 'careTeam.teams',
-              page: 'Care team'
+              page: 'Care team',
+              tableKey: 'teams'
             },
             {
               elementKey: 'profession',
@@ -1112,7 +1121,8 @@ module.exports = function() {
               label: 'Profession',
               formColumn: '2',
               dataParent: 'careTeam.teams',
-              page: 'Care team'
+              page: 'Care team',
+              tableKey: 'teams'
             }
           ],
           tableForm: {
@@ -1143,7 +1153,8 @@ module.exports = function() {
               formColumn: '1',
               formRow: '1',
               dataParent: 'pastAppointments.encounters',
-              page: 'Past appointments'
+              page: 'Past appointments',
+              tableKey: 'encounters'
             },
             {
               elementKey: 'site',
@@ -1154,7 +1165,8 @@ module.exports = function() {
               formColumn: '2',
               formRow: '1',
               dataParent: 'pastAppointments.encounters',
-              page: 'Past appointments'
+              page: 'Past appointments',
+              tableKey: 'encounters'
             },
             {
               elementKey: 'diagnosis',
@@ -1165,7 +1177,8 @@ module.exports = function() {
               formColumn: '1',
               formRow: '2',
               dataParent: 'pastAppointments.encounters',
-              page: 'Past appointments'
+              page: 'Past appointments',
+              tableKey: 'encounters'
             },
             {
               elementKey: 'mrp',
@@ -1176,7 +1189,8 @@ module.exports = function() {
               formColumn: '2',
               formRow: '2',
               dataParent: 'pastAppointments.encounters',
-              page: 'Past appointments'
+              page: 'Past appointments',
+              tableKey: 'encounters'
             }
           ],
           tableForm: {
@@ -1193,7 +1207,8 @@ module.exports = function() {
                     formColumn: '1',
                     formRow: '1',
                     dataParent: 'pastAppointments.encounters',
-                    page: 'Past appointments'
+                    page: 'Past appointments',
+                    tableKey: 'encounters'
                   },
                   {
                     elementKey: 'site',
@@ -1204,7 +1219,8 @@ module.exports = function() {
                     formColumn: '2',
                     formRow: '1',
                     dataParent: 'pastAppointments.encounters',
-                    page: 'Past appointments'
+                    page: 'Past appointments',
+                    tableKey: 'encounters'
                   }
                 ]
               },
@@ -1220,7 +1236,8 @@ module.exports = function() {
                     formColumn: '1',
                     formRow: '2',
                     dataParent: 'pastAppointments.encounters',
-                    page: 'Past appointments'
+                    page: 'Past appointments',
+                    tableKey: 'encounters'
                   },
                   {
                     elementKey: 'mrp',
@@ -1231,7 +1248,8 @@ module.exports = function() {
                     formColumn: '2',
                     formRow: '2',
                     dataParent: 'pastAppointments.encounters',
-                    page: 'Past appointments'
+                    page: 'Past appointments',
+                    tableKey: 'encounters'
                   }
                 ]
               }
@@ -1252,7 +1270,8 @@ module.exports = function() {
               formColumn: '1',
               formRow: '1',
               dataParent: 'pastAppointments.outpatientAppointments',
-              page: 'Past appointments'
+              page: 'Past appointments',
+              tableKey: 'outpatientAppointments'
             },
             {
               elementKey: 'site',
@@ -1263,7 +1282,8 @@ module.exports = function() {
               formColumn: '2',
               formRow: '1',
               dataParent: 'pastAppointments.outpatientAppointments',
-              page: 'Past appointments'
+              page: 'Past appointments',
+              tableKey: 'outpatientAppointments'
             },
             {
               elementKey: 'reasonForVisit',
@@ -1274,7 +1294,8 @@ module.exports = function() {
               formColumn: '1',
               formRow: '2',
               dataParent: 'pastAppointments.outpatientAppointments',
-              page: 'Past appointments'
+              page: 'Past appointments',
+              tableKey: 'outpatientAppointments'
             },
             {
               elementKey: 'diagnosis',
@@ -1285,7 +1306,8 @@ module.exports = function() {
               formColumn: '2',
               formRow: '2',
               dataParent: 'pastAppointments.outpatientAppointments',
-              page: 'Past appointments'
+              page: 'Past appointments',
+              tableKey: 'outpatientAppointments'
             }
           ],
           tableForm: {
@@ -1302,7 +1324,8 @@ module.exports = function() {
                     formColumn: '1',
                     formRow: '1',
                     dataParent: 'pastAppointments.outpatientAppointments',
-                    page: 'Past appointments'
+                    page: 'Past appointments',
+                    tableKey: 'outpatientAppointments'
                   },
                   {
                     elementKey: 'site',
@@ -1313,7 +1336,8 @@ module.exports = function() {
                     formColumn: '2',
                     formRow: '1',
                     dataParent: 'pastAppointments.outpatientAppointments',
-                    page: 'Past appointments'
+                    page: 'Past appointments',
+                    tableKey: 'outpatientAppointments'
                   }
                 ]
               },
@@ -1329,7 +1353,8 @@ module.exports = function() {
                     formColumn: '1',
                     formRow: '2',
                     dataParent: 'pastAppointments.outpatientAppointments',
-                    page: 'Past appointments'
+                    page: 'Past appointments',
+                    tableKey: 'outpatientAppointments'
                   },
                   {
                     elementKey: 'diagnosis',
@@ -1340,7 +1365,8 @@ module.exports = function() {
                     formColumn: '2',
                     formRow: '2',
                     dataParent: 'pastAppointments.outpatientAppointments',
-                    page: 'Past appointments'
+                    page: 'Past appointments',
+                    tableKey: 'outpatientAppointments'
                   }
                 ]
               }
@@ -1444,7 +1470,8 @@ module.exports = function() {
               formColumn: '1',
               formRow: '1',
               dataParent: 'visit.locations',
-              page: 'Visit'
+              page: 'Visit',
+              tableKey: 'locations'
             },
             {
               elementKey: 'transfer_in_day',
@@ -1455,7 +1482,8 @@ module.exports = function() {
               formColumn: '1',
               formRow: '2',
               dataParent: 'visit.locations',
-              page: 'Visit'
+              page: 'Visit',
+              tableKey: 'locations'
             },
             {
               elementKey: 'transfer_in_time',
@@ -1466,7 +1494,8 @@ module.exports = function() {
               formColumn: '2',
               formRow: '2',
               dataParent: 'visit.locations',
-              page: 'Visit'
+              page: 'Visit',
+              tableKey: 'locations'
             }
           ],
           tableForm: {
@@ -1484,7 +1513,8 @@ module.exports = function() {
                     formColumn: '1',
                     formRow: '1',
                     dataParent: 'visit.locations',
-                    page: 'Visit'
+                    page: 'Visit',
+                    tableKey: 'locations'
                   }
                 ]
               },
@@ -1500,7 +1530,8 @@ module.exports = function() {
                     formColumn: '1',
                     formRow: '2',
                     dataParent: 'visit.locations',
-                    page: 'Visit'
+                    page: 'Visit',
+                    tableKey: 'locations'
                   },
                   {
                     elementKey: 'transfer_in_time',
@@ -1511,7 +1542,8 @@ module.exports = function() {
                     formColumn: '2',
                     formRow: '2',
                     dataParent: 'visit.locations',
-                    page: 'Visit'
+                    page: 'Visit',
+                    tableKey: 'locations'
                   }
                 ]
               }

@@ -46,8 +46,8 @@ export default {
   computed: {
     uiProps() {
       let defs = require('../defs/patient-profile')()
-      let pageDef = defs[this.dataKey]
-      console.log('pageDef ', this.dataKey, pageDef)
+      // let pageDef = defs[this.dataKey]
+      // console.log('pageDef ', this.dataKey, pageDef)
       return defs[this.dataKey]
     },
     showEditControls() {
@@ -59,10 +59,10 @@ export default {
     currentData() {
       let p = this.uiProps
       let defaultData = p.pageData
-      console.log('page default data: ', p, defaultData)
+      // console.log('page default data: ', p, defaultData)
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       this.theData = this.ehrHelp.mergedProperty(defaultData)
-      console.log('page current data', this.theData)
+      // console.log('page current data', this.theData)
       return this.theData
     }
   },
@@ -74,7 +74,7 @@ export default {
       return this.theData
     },
     tableData(tableDef) {
-      console.log('return table data', tableDef.tableKey)
+      // console.log('return table data', tableDef.tableKey)
       let td = this.theData[tableDef.tableKey]
       return td
     }

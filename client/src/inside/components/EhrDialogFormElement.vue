@@ -108,7 +108,7 @@ export default {
     inputVal(val) {
       // console.log('watch inputValue', val, DIALOG_INPUT_EVENT)
       let def = this.def
-      EventBus.$emit(DIALOG_INPUT_EVENT, { key: def.elementKey, value: val, def: def })
+      EventBus.$emit(DIALOG_INPUT_EVENT, { value: val, def: def })
     }
   }
 }

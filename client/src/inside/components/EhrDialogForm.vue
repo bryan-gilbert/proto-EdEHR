@@ -40,7 +40,7 @@ export default {
     },
     topRow() {
       console.log('dialog get top row from ', this.tableDef)
-      if(!this.tableDef.tableForm) {
+      if (!this.tableDef.tableForm) {
         return []
       }
       let rows = this.tableDef.tableForm.rows
@@ -49,7 +49,7 @@ export default {
       return top
     },
     middleRange() {
-      if(!this.tableDef.tableForm) {
+      if (!this.tableDef.tableForm) {
         return []
       }
       let rows = this.tableDef.tableForm.rows
@@ -58,7 +58,7 @@ export default {
       return middle
     },
     lastRow() {
-      if(!this.tableDef.tableForm) {
+      if (!this.tableDef.tableForm) {
         return []
       }
       let rows = this.tableDef.tableForm.rows
@@ -66,7 +66,7 @@ export default {
       console.log('last row ', last)
       return last
     },
-    eventChannelListen() {
+    showThisDialogEventChannel() {
       return 'modal:' + this.tableKey
     }
   },
@@ -77,8 +77,8 @@ export default {
       this.$nextTick(function() {
         // Send an event on our transmission channel
         // with a payload containing this false
-        console.log('emit event',eData, _this.eventChannelListen)
-        EventBus.$emit(_this.eventChannelListen, eData)
+        console.log('emit event', eData, _this.showThisDialogEventChannel)
+        EventBus.$emit(_this.showThisDialogEventChannel, eData)
       })
     },
     cancelDialog: function() {
@@ -90,9 +90,12 @@ export default {
       this.ehrHelp.saveDialog(this.tableKey)
     },
     receiveEvent(eData) {
+      let ch = this.showThisDialogEventChannel
+      let key = eData.key
+      let value = eData.value
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      this.showDialog = eData.value;//this.tableKey === eData.key ?  eData.value : this.showDialog
-      console.log(`On channel ${this.eventChannelListen} from key ${eData.key} got hit? ${this.showDialog}`)
+      this.showDialog = value //this.tableKey === eData.key ?  eData.value : this.showDialog
+      console.log(`On channel ${ch} from ${key} got ${value}`)
     }
   },
   mounted: function() {
@@ -100,14 +103,14 @@ export default {
     this.eventHandler = function(eData) {
       _this.receiveEvent(eData)
     }
-    EventBus.$on(this.eventChannelListen, this.eventHandler) // eData => { this.receiveEvent(eData) })
+    EventBus.$on(this.showThisDialogEventChannel, this.eventHandler) // eData => { this.receiveEvent(eData) })
   },
   beforeDestroy: function() {
-    if (this.eventChannelListen && this.eventHandler) {
-      // console.log('beforeDestroy, remove listener',this.eventChannelListen)
-      EventBus.$off(this.eventChannelListen, this.eventHandler)
+    if (this.showThisDialogEventChannel && this.eventHandler) {
+      // console.log('beforeDestroy, remove listener',this.showThisDialogEventChannel)
+      EventBus.$off(this.showThisDialogEventChannel, this.eventHandler)
     }
-  },
+  }
 }
 </script>
 

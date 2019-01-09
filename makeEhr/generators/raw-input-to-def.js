@@ -295,7 +295,9 @@ class RawInputToDef {
 
   _extractTableForm(container, tableCells) {
     let rows = []
-    container.elements.forEach(element => {
+    let tableKey = container.containerKey
+
+      container.elements.forEach(element => {
       let formRow = element.formRow
       let cell = tableCells.find(c => element.elementKey === c.elementKey)
       assert.ok(cell, 'Must have a table cell to match with form cell', element.elementKey)
@@ -307,6 +309,7 @@ class RawInputToDef {
         }
         rows[formRow - 1] = row
       }
+      cell.tableKey = tableKey
       row.elements.push(cell)
     })
     this._sortFormElements(rows)
