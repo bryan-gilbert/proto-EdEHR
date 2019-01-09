@@ -32,6 +32,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../scss/settings/color.scss';
+
 .AsInstructor {
   margin-left: 1.5rem;
   .courses {
@@ -47,17 +49,17 @@ export default {
   }
   .activities {
     margin-bottom: 2rem;
-    background-color: #f8f9fa;
-    border: 1px solid #444;
+    background-color: $grey03;
+    border: 1px solid $grey60;
     .activities-inner {
       margin-left: 15px;
     }
   }
   .students {
-    border-bottom: 1px solid #888;
+    border-bottom: 1px solid $grey40;
   }
   &__main {
-    background-color: #f6fbfe;
+    background-color: $grey03;
   }
 }
 </style>

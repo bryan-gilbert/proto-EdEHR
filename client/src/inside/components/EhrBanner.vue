@@ -8,7 +8,7 @@
             <li>Date of Birth: <b> {{ demographics.dateOfBirth }} </b></li>
             <li>Age: <b>{{ demographics.personAge }}</b></li>
             <li>Gender: <b>{{ demographics.gender }}</b></li>
-            <li>Wieght: <b> ??? </b></li>
+            <li>Weight: <b> ??? </b></li>
           </ul>
         </div>
         <div class="column" :class="`${$options.name}__content_row--2`">
@@ -23,11 +23,11 @@
         <div class="column" :class="`${$options.name}__content_row--3`">
           <ul>
             <li>Admitting Diagnosis: <b> {{ visitDetails.admittingDiagnosis }} </b></li>
-            <li>Alergies: <b> </b></li>
+            <li>Allergies: <b> </b></li>
             <li>Location: <b> {{ location }} </b></li>
             <li>
               Isolation Precautions:
-              <b>??? </b>
+              <b>None</b>
             </li>
           </ul>
         </div>
@@ -83,12 +83,13 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/objects/wrapper.mixin';
+@import '../../scss/settings/color.scss';
 
 .EhrBanner {
   @include wrapper(s);
   width: 100%;
-  background-color: #e9ebed;
-  color: #63666c;
+  background-color: $grey10;
+  color: $grey60;
   // Todo fix this force height in a more repsonsive manner
   //  height: 140px;
 

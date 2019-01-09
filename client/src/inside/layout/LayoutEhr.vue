@@ -52,15 +52,16 @@ export default {
 $contentMinHeigth: 700px;
 $navWidth: 234px;
 $pageWidth: 1024px;
+@import '../../scss/settings/color.scss';
 
 .LayoutDefault {
-  background-color: #4f545c;
+  background-color: $grey60;
   h1 {
     font-size: 3rem;
   }
   &__main {
-    color: #6a6c73;
-    background-color: white;
+    color: $grey60;
+    background-color: $white;
     /*padding-left: 0;*/
     @include wrapper('page');
     overflow: hidden;

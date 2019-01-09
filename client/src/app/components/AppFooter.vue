@@ -42,7 +42,7 @@ export default {
 .AppFooter {
   padding-top: 1em;
   padding-bottom: 1em;
-  background-color: $color-secondary;
+  background-color: $grey60;
   text-align: center;
 
   &__wrapper {

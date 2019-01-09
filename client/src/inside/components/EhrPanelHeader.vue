@@ -15,15 +15,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../scss/settings/color.scss';
+@import '../../scss/styles.scss';
 .EhrPanelHeader {
   padding: 0.4rem 1.5rem;
-  background-color: #f7f9fa;
-  color: #50545b;
+  background-color: $grey03;
+  color: $grey60;
   height: 60px;
 
   h1 {
     font-size: 30px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: $bodyFontFamily;
     font-weight: 600;
   }
 

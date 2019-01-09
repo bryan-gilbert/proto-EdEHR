@@ -102,28 +102,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../scss/settings/color.scss';
+
 .AssignmentsListing {
   h1 {
     font-size: 30px;
   }
 }
 .seedDataPop {
-  background: lightgrey;
+  background: $grey10;
 }
 .tooltip {
   &.popover {
-    $color: #f9f9f9;
 
     .popover-inner {
-      background: $color;
-      color: black;
+      background: $grey03;
+      color: $black;
       padding: 24px;
       border-radius: 5px;
-      box-shadow: 0 5px 30px rgba(black, 0.1);
+      box-shadow: 0 5px 30px rgba($black, 0.1);
     }
 
     .popover-arrow {
-      border-color: $color;
+      border-color: $grey03;
     }
   }
 }

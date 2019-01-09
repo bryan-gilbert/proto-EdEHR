@@ -57,8 +57,9 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/settings/forms';
+@import '../../scss/settings/color.scss';
 
 .EhrEvaluationDialog {
-  color: black;
+  color: $black;
 }
 </style>

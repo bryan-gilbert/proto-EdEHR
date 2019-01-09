@@ -43,6 +43,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../scss/settings/color.scss';
+
 .select {
   display: block;
 }
@@ -50,7 +52,7 @@ select {
   width: 100%;
 }
 .region {
-  /* border: 1px dashed black; */
+  /* border: 1px dashed $black; */
 }
 .Respirator {
   padding: 1rem;

@@ -170,7 +170,7 @@ export default {
     }
   }
 
-  $indicatorColor: #006400;
+  $indicatorColor: $brand-primary;
   .indicator {
     display: flex;
     flex-direction: row;
@@ -183,7 +183,7 @@ export default {
     flex: 0 0 20px;
     width: 20px;
     height: 20px;
-    border: 1px solid #222;
+    border: 1px solid $grey80;
     margin-top: 10px;
   }
   .indicate-assignment-data {
