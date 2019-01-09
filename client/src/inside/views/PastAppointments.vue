@@ -11,13 +11,13 @@
           ehr-page-table(v-for="tableDef in uiProps.tables", :tableDef="tableDef", :key="tableDef.tableKey", :theData="tableData(tableDef)", :ehrHelp="ehrHelp", :showEditControls="showEditControls")
     div(style="display:none") {{currentData}}
     div(style="display:none")
-      p This History page is generated.
-      p Label: History
-      p Data Key: history
-      p Component name: History
-      p Redirect: medical
-      p Route name: history
-      p Full path: /ehr/patient/history
+      p This Past Appointments page is generated.
+      p Label: Past appointments
+      p Data Key: pastAppointments
+      p Component name: PastAppointments
+      p Redirect: 
+      p Route name: past-appointments
+      p Full path: /ehr/patient/past-appointments
 </template>
 
 <script>
@@ -29,7 +29,7 @@ import EhrPageForm from '../components/EhrPageForm.vue'
 import EhrHelp from '../ehr-helper'
 
 export default {
-  name: 'History',
+  name: 'PastAppointments',
   components: {
     EhrPanelHeader,
     EhrPanelContent,
@@ -39,7 +39,7 @@ export default {
   },
   data: function() {
     return {
-      dataKey: 'history',
+      dataKey: 'pastAppointments',
       theData: {},
       ehrHelp: {},
       hasForm: true,

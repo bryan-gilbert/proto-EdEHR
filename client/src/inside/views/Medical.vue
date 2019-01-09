@@ -8,7 +8,7 @@
       div(class="region ehr-page-content")
         ehr-page-form(v-if="uiProps.hasForm", v-bind:formDefs="uiProps.page_form", v-bind:theData="theData", v-bind:notEditing="notEditing")
         div(v-if="uiProps.hasTable")
-          ehr-page-table(v-for="tableDef in uiProps.tables", :tableDef="tableDef", :theData="theData", :ehrHelp="ehrHelp", :showEditControls="showEditControls")
+          ehr-page-table(v-for="tableDef in uiProps.tables", :tableDef="tableDef", :key="tableDef.tableKey", :theData="tableData(tableDef)", :ehrHelp="ehrHelp", :showEditControls="showEditControls")
     div(style="display:none") {{currentData}}
     div(style="display:none")
       p This Medical page is generated.
@@ -60,8 +60,12 @@ export default {
       return !this.ehrHelp.isEditing()
     },
     currentData() {
+      let p = this.uiProps
+      let defaultData = p.pageData
+      console.log('page default data: ', p, defaultData)
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      this.theData = this.ehrHelp.mergedProperty()
+      this.theData = this.ehrHelp.mergedProperty(defaultData)
+      console.log('page current data', this.theData)
       return this.theData
     }
   },
@@ -71,6 +75,11 @@ export default {
     },
     getCurrentData() {
       return this.theData
+    },
+    tableData(tableDef) {
+      console.log('return table data', tableDef.tableKey)
+      let td = this.theData[tableDef.tableKey]
+      return td
     }
   },
   created() {

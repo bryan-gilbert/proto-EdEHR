@@ -9,7 +9,7 @@ module.exports = function() {
     console.log("Running seeding assignments (case studies)");
 
     function makeSeed1() {
-      return {
+      return addDefaultSeed( {
         progressNotes: [
           {
             name: getName(),
@@ -20,10 +20,10 @@ module.exports = function() {
             notes: getPhrase(15)
           }
         ]
-      };
+      })
     }
     function makeSeed2() {
-      return {
+      return addDefaultSeed( {
         demographics: {
           familyName: "Johns",
           givenName: "Erin",
@@ -54,11 +54,11 @@ module.exports = function() {
           decisionMakerName: "Thomas John",
           decisionMakerRelationship: "Son",
           decisionMakerPhone: "604-555-9865"
-        }
-      };
+        },
+      })
     }
     function makeSeed3() {
-      return {
+      return addDefaultSeed( {
         visitDetails: {
           admissionDay: "0",
           admissionTime: "07:00",
@@ -75,10 +75,10 @@ module.exports = function() {
           admissionStatus: "Admitted",
           consentForTreatment: true
         }
-      };
+      })
     }
     function makeSeed4() {
-      return {
+      return addDefaultSeed( {
         genitourinary : {
           assessments: [
             {
@@ -91,7 +91,11 @@ module.exports = function() {
             }
           ]
         }
-      };
+      })
+    }
+    function addDefaultSeed(data) {
+      data.allergies = {hasNoAllergies: false, allergies:'peanuts'}
+      return data
     }
 
     let ass1 = {

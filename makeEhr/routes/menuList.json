@@ -165,7 +165,7 @@
           "def": {
             "path": "/ehr/patient/history",
             "routeName": "family-history",
-            "dataKey": "family-history",
+            "dataKey": "familyHistory",
             "label": "Family History",
             "redirect": "",
             "generateComponent": "yes",
@@ -187,7 +187,7 @@
       "def": {
         "path": "/ehr/patient",
         "routeName": "care-team",
-        "dataKey": "care-team",
+        "dataKey": "careTeam",
         "label": "Care team",
         "redirect": "",
         "generateComponent": "yes",
@@ -200,21 +200,21 @@
       "children": []
     },
     {
-      "name": "past-appt",
+      "name": "past-appointments",
       "label": "Past appointments",
-      "routeName": "past-appt",
+      "routeName": "past-appointments",
       "topLevel": "patient",
       "def": {
         "path": "/ehr/patient",
-        "routeName": "past-appt",
-        "dataKey": "past-appt",
+        "routeName": "past-appointments",
+        "dataKey": "pastAppointments",
         "label": "Past appointments",
         "redirect": "",
         "generateComponent": "yes",
-        "componentName": "PastAppt",
-        "dataName": "pastAppt",
-        "fullPath": "/ehr/patient/past-appt",
-        "title": "Past Appt",
+        "componentName": "PastAppointments",
+        "dataName": "pastAppointments",
+        "fullPath": "/ehr/patient/past-appointments",
+        "title": "Past Appointments",
         "topLevel": "patient"
       },
       "children": []
@@ -493,19 +493,20 @@
           "children": []
         },
         {
-          "name": "lab-reqs",
+          "name": "lab-requisitions",
           "label": "Lab requisitions",
-          "routeName": "lab-reqs",
+          "routeName": "lab-requisitions",
           "topLevel": "current",
           "def": {
             "path": "/ehr/current/no-med",
-            "routeName": "lab-reqs",
+            "routeName": "lab-requisitions",
+            "dataKey": "labRequisitions",
             "label": "Lab requisitions",
             "redirect": "",
-            "componentName": "LabReqs",
-            "dataName": "labReqs",
-            "fullPath": "/ehr/current/no-med/lab-reqs",
-            "title": "Lab Reqs",
+            "componentName": "LabRequisitions",
+            "dataName": "labRequisitions",
+            "fullPath": "/ehr/current/no-med/lab-requisitions",
+            "title": "Lab Requisitions",
             "topLevel": "current"
           },
           "children": []

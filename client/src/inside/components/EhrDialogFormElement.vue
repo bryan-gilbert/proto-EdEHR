@@ -18,11 +18,13 @@
 import EventBus from '../../event-bus'
 import { DIALOG_INPUT_EVENT } from '../ehr-helper'
 
+// TODO day, time types
+
 export default {
   name: 'EhrPageForm',
   props: {
-    inputs: {type : Object},
-    def: {type: Object}
+    inputs: { type: Object },
+    def: { type: Object }
   },
   data() {
     return {
@@ -60,9 +62,9 @@ export default {
   methods: {
     emitGlobalClickEvent() {
       const _this = this
-      this.$nextTick(function () {
+      this.$nextTick(function() {
         // Send an event on our transmission channel with a payload containing this component's value
-        let eData = {key: _this.def.key, value: _this.inputVal }
+        let eData = { key: _this.def.key, value: _this.inputVal }
         // console.log('emit event',eData, _this.eventChannelBroadcast)
         EventBus.$emit(_this.eventChannelBroadcast, eData)
       })
@@ -76,10 +78,12 @@ export default {
   },
   mounted: function() {
     this.inputVal = this.def.helper.getInputValue(this.def)
-    if(this.eventChannelListen) {
+    if (this.eventChannelListen) {
       const _this = this
       // register listener if needed
-      this.eventHandler = function(eData) {_this.receiveEvent(eData)}
+      this.eventHandler = function(eData) {
+        _this.receiveEvent(eData)
+      }
       EventBus.$on(this.eventChannelListen, this.eventHandler) // eData => { this.receiveEvent(eData) })
     }
   },
@@ -93,7 +97,7 @@ export default {
     inputVal(val) {
       // console.log('watch inputValue', val, DIALOG_INPUT_EVENT)
       let def = this.def
-      EventBus.$emit(DIALOG_INPUT_EVENT, {key: def.key, value: val, def: def})
+      EventBus.$emit(DIALOG_INPUT_EVENT, { key: def.key, value: val, def: def })
     }
   }
 }

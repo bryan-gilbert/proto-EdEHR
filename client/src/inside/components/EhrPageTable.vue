@@ -10,7 +10,7 @@
         tbody
           tr(v-for="item in theData")
             td(v-for="cell in tableDef.tableCells", :class="cell.propertyKey") {{ item[cell.propertyKey] }}
-    ehr-dialog-form(:ehrHelp="ehrHelp", :formDef="tableDef.formDef", :inputs="inputs", :errorList="errorList" )
+    ehr-dialog-form(:ehrHelp="ehrHelp", :formDef="tableDef.tableForm", :inputs="inputs", :errorList="errorList" )
 </template>
 
 <script>
@@ -25,8 +25,7 @@ export default {
   },
   data: function() {
     return {
-      inputs: {},
-      errorList: []
+      inputs: {}
     }
   },
   props: {
@@ -35,9 +34,14 @@ export default {
     ehrHelp: { type: Object },
     showEditControls: { type: Boolean }
   },
+  computed: {
+    errorList() {
+      return this.ehrHelp.getErrorList()
+    }
+  },
   methods: {
     showDialog: function() {
-      this.ehrHelp.showDialog()
+      this.ehrHelp.showDialog(this.tableDef, this.inputs)
     },
     cancelDialog: function() {
       this.ehrHelp.cancelDialog()

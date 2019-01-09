@@ -7,97 +7,91 @@ module.exports = function() {
       page_form: {
         rows: [
           {
-            rowNumber: '1',
-            classList: 'form-row columns',
-            uiContainer: 'demographics.form',
+            formRow: '1',
             elements: [
               {
-                colNumber: '1',
                 elementKey: 'familyName',
-                elementName: 'familyName',
                 fqn: 'demographics.familyName',
                 inputType: 'text',
                 label: 'Last name',
-                mandatory: 'yes',
-                rowNumber: '1',
-                uiContainer: 'demographics.form'
+                formColumn: '1',
+                formRow: '1',
+                dataParent: 'demographics',
+                page: 'Demographics',
+                mandatory: 'yes'
               },
               {
-                colNumber: '2',
                 elementKey: 'givenName',
-                elementName: 'givenName',
                 fqn: 'demographics.givenName',
                 inputType: 'text',
                 label: 'First name',
-                mandatory: 'yes',
-                rowNumber: '1',
-                uiContainer: 'demographics.form'
+                formColumn: '2',
+                formRow: '1',
+                dataParent: 'demographics',
+                page: 'Demographics',
+                mandatory: 'yes'
               },
               {
-                colNumber: '3',
                 elementKey: 'middleName',
-                elementName: 'middleName',
                 fqn: 'demographics.middleName',
                 inputType: 'text',
                 label: 'Middle name(s)',
-                rowNumber: '1',
-                uiContainer: 'demographics.form'
+                formColumn: '3',
+                formRow: '1',
+                dataParent: 'demographics',
+                page: 'Demographics'
               }
             ]
           },
           {
-            rowNumber: '2',
-            classList: 'form-row columns',
-            uiContainer: 'demographics.form',
+            formRow: '2',
             elements: [
               {
-                colNumber: '1',
                 elementKey: 'preferredName',
-                elementName: 'preferredName',
                 fqn: 'demographics.preferredName',
                 inputType: 'text',
                 label: 'Preferred name',
-                rowNumber: '2',
-                uiContainer: 'demographics.form'
+                formColumn: '1',
+                formRow: '2',
+                dataParent: 'demographics',
+                page: 'Demographics'
               },
               {
-                colNumber: '2',
                 elementKey: 'dateOfBirth',
-                elementName: 'dateOfBirth',
                 fqn: 'demographics.dateOfBirth',
                 inputType: 'text',
                 label: 'Date of birth',
-                rowNumber: '2',
-                uiContainer: 'demographics.form'
+                formColumn: '2',
+                formRow: '2',
+                dataParent: 'demographics',
+                page: 'Demographics'
               },
               {
-                colNumber: '3',
                 elementKey: 'personAge',
-                elementName: 'personAge',
                 fqn: 'demographics.personAge',
                 inputType: 'text',
                 label: 'Age',
-                mandatory: 'yes',
-                rowNumber: '2',
-                uiContainer: 'demographics.form'
+                formColumn: '3',
+                formRow: '2',
+                dataParent: 'demographics',
+                page: 'Demographics',
+                mandatory: 'yes'
               }
             ]
           },
           {
-            rowNumber: '3',
-            classList: 'form-row columns',
-            uiContainer: 'demographics.form',
+            formRow: '3',
             elements: [
               {
-                colNumber: '1',
                 elementKey: 'gender',
-                elementName: 'gender',
                 fqn: 'demographics.gender',
                 inputType: 'select',
                 label: 'Gender',
+                formColumn: '1',
+                formRow: '3',
+                dataParent: 'demographics',
+                page: 'Demographics',
                 mandatory: 'yes',
-                rowNumber: '3',
-                uiContainer: 'demographics.form',
                 options: [
                   {
                     text: 'Unknown'
@@ -123,14 +117,14 @@ module.exports = function() {
                 ]
               },
               {
-                colNumber: '2',
                 elementKey: 'martialStatus',
-                elementName: 'martialStatus',
                 fqn: 'demographics.martialStatus',
                 inputType: 'select',
                 label: 'Martial status',
-                rowNumber: '3',
-                uiContainer: 'demographics.form',
+                formColumn: '2',
+                formRow: '3',
+                dataParent: 'demographics',
+                page: 'Demographics',
                 options: [
                   {
                     text: 'Married'
@@ -153,15 +147,16 @@ module.exports = function() {
                 ]
               },
               {
-                colNumber: '3',
                 elementKey: 'codeStatus',
-                elementName: 'codeStatus',
                 fqn: 'demographics.codeStatus',
-                helperText: 'Do Not Attempt Cardiopulmonary Resuscitation (DNACP',
                 inputType: 'select',
                 label: 'Code status',
-                rowNumber: '3',
-                uiContainer: 'demographics.form',
+                formColumn: '3',
+                formRow: '3',
+                dataParent: 'demographics',
+                page: 'Demographics',
+                helperText:
+                  'Do Not Attempt Cardiopulmonary Resuscitation (DNACPR: No chest compressions-NL-or other direct means of restarting the heart), and:-NL-Option 1 (M1)* No CPR. Supportive care, symptom management, and comfort-NL-measures. Allow natural death.-NL-Option 2 (M2) No CPR. Option 1 (M1) plus therapeutic measures and medications-NL-to manage acute conditions within the current setting. If in residential-NL-care or hospice, transfer to acute care will not occur except in special-NL-circumstances (eg fracture).-NL-Option 3 (M3) No CPR. Option 2 (M2) plus admission to an acute care hospital (if-NL-not already admitted) for medical/surgical treatment as indicated. No-NL-referral to Critical Care.-NL-Option 4 (C1) No CPR. Maximum therapeutic effort as in Option 3 (M3) including-NL-referral to Critical Care but not including intubation and ventilation.-NL-Option 5 (C2) No CPR. Maximum therapeutic effort as in Option 4 (C1) including-NL-referral to Critical Care and including intubation and ventilation',
                 options: [
                   {
                     text: 'N/A'
@@ -189,19 +184,17 @@ module.exports = function() {
             ]
           },
           {
-            rowNumber: '4',
-            classList: 'form-row columns',
-            uiContainer: 'demographics.form',
+            formRow: '4',
             elements: [
               {
-                colNumber: '1',
                 elementKey: 'languagePrimary',
-                elementName: 'languagePrimary',
                 fqn: 'demographics.languagePrimary',
                 inputType: 'select',
                 label: 'Primary language',
-                rowNumber: '4',
-                uiContainer: 'demographics.form',
+                formColumn: '1',
+                formRow: '4',
+                dataParent: 'demographics',
+                page: 'Demographics',
                 options: [
                   {
                     text: 'English'
@@ -221,24 +214,24 @@ module.exports = function() {
                 ]
               },
               {
-                colNumber: '2',
                 elementKey: 'religion',
-                elementName: 'religion',
                 fqn: 'demographics.religion',
                 inputType: 'text',
                 label: 'Religion',
-                rowNumber: '4',
-                uiContainer: 'demographics.form'
+                formColumn: '2',
+                formRow: '4',
+                dataParent: 'demographics',
+                page: 'Demographics'
               },
               {
-                colNumber: '3',
                 elementKey: 'indigenousIdentifyAs',
-                elementName: 'indigenousIdentifyAs',
                 fqn: 'demographics.indigenousIdentifyAs',
                 inputType: 'select',
                 label: 'Do you identify as an indigenous person?',
-                rowNumber: '4',
-                uiContainer: 'demographics.form',
+                formColumn: '3',
+                formRow: '4',
+                dataParent: 'demographics',
+                page: 'Demographics',
                 options: [
                   {
                     text: 'Yes'
@@ -251,169 +244,159 @@ module.exports = function() {
             ]
           },
           {
-            rowNumber: '5',
-            classList: 'form-row columns',
-            uiContainer: 'demographics.form',
+            formRow: '5',
             elements: [
               {
-                css: 'twoOfThree',
-                colNumber: '1',
                 elementKey: 'streetAddress',
-                elementName: 'streetAddress',
                 fqn: 'demographics.streetAddress',
                 inputType: 'text',
                 label: 'Street address',
-                rowNumber: '5',
-                uiContainer: 'demographics.form'
+                formCss: 'twoOfThree',
+                formColumn: '1',
+                formRow: '5',
+                dataParent: 'demographics',
+                page: 'Demographics'
               },
               {
-                colNumber: '3',
                 elementKey: 'city',
-                elementName: 'city',
                 fqn: 'demographics.city',
                 inputType: 'text',
                 label: 'City',
-                rowNumber: '5',
-                uiContainer: 'demographics.form'
+                formColumn: '3',
+                formRow: '5',
+                dataParent: 'demographics',
+                page: 'Demographics'
               }
             ]
           },
           {
-            rowNumber: '6',
-            classList: 'form-row columns',
-            uiContainer: 'demographics.form',
+            formRow: '6',
             elements: [
               {
-                colNumber: '1',
                 elementKey: 'country',
-                elementName: 'country',
-                defaultValue: 'Canada',
                 fqn: 'demographics.country',
                 inputType: 'text',
                 label: 'Country',
-                rowNumber: '6',
-                uiContainer: 'demographics.form'
+                formColumn: '1',
+                formRow: '6',
+                dataParent: 'demographics',
+                page: 'Demographics',
+                defaultValue: 'Canada'
               },
               {
-                colNumber: '2',
                 elementKey: 'postalCode',
-                elementName: 'postalCode',
                 fqn: 'demographics.postalCode',
                 inputType: 'text',
                 label: 'Postal code',
-                rowNumber: '6',
-                uiContainer: 'demographics.form'
+                formColumn: '2',
+                formRow: '6',
+                dataParent: 'demographics',
+                page: 'Demographics'
               },
               {
-                colNumber: '3',
                 elementKey: 'noAddress',
-                elementName: 'noAddress',
                 fqn: 'demographics.noAddress',
                 inputType: 'checkbox',
                 label: 'No address',
-                rowNumber: '6',
-                uiContainer: 'demographics.form'
+                formColumn: '3',
+                formRow: '6',
+                dataParent: 'demographics',
+                page: 'Demographics'
               }
             ]
           },
           {
-            rowNumber: '7',
-            classList: 'form-row columns',
-            uiContainer: 'demographics.form',
+            formRow: '7',
             elements: [
               {
-                colNumber: '1',
                 elementKey: 'phoneNumber',
-                elementName: 'phoneNumber',
                 fqn: 'demographics.phoneNumber',
                 inputType: 'text',
                 label: 'Phone number',
-                rowNumber: '7',
-                uiContainer: 'demographics.form'
+                formColumn: '1',
+                formRow: '7',
+                dataParent: 'demographics',
+                page: 'Demographics'
               },
               {
-                colNumber: '2',
                 elementKey: 'emailAddress',
-                elementName: 'emailAddress',
                 fqn: 'demographics.emailAddress',
                 inputType: 'text',
                 label: 'Email address',
-                rowNumber: '7',
-                uiContainer: 'demographics.form'
+                formColumn: '2',
+                formRow: '7',
+                dataParent: 'demographics',
+                page: 'Demographics'
               },
               {
-                colNumber: '3',
                 elementKey: 'occupationStudent',
-                elementName: 'occupationStudent',
                 fqn: 'demographics.occupationStudent',
                 inputType: 'text',
                 label: 'Occupation/student',
-                rowNumber: '7',
-                uiContainer: 'demographics.form'
+                formColumn: '3',
+                formRow: '7',
+                dataParent: 'demographics',
+                page: 'Demographics'
               }
             ]
           },
           {
-            rowNumber: '8',
-            classList: 'form-row columns',
-            uiContainer: 'demographics.form',
+            formRow: '8',
             elements: [
               {
-                colNumber: '1',
                 elementKey: 'phn',
-                elementName: 'phn',
                 fqn: 'demographics.phn',
                 inputType: 'text',
                 label: 'PHN',
-                rowNumber: '8',
-                uiContainer: 'demographics.form'
+                formColumn: '1',
+                formRow: '8',
+                dataParent: 'demographics',
+                page: 'Demographics'
               },
               {
-                colNumber: '2',
                 elementKey: 'mrn',
-                elementName: 'mrn',
                 fqn: 'demographics.mrn',
                 inputType: 'text',
                 label: 'MRN',
-                rowNumber: '8',
-                uiContainer: 'demographics.form'
+                formColumn: '2',
+                formRow: '8',
+                dataParent: 'demographics',
+                page: 'Demographics'
               },
               {
-                colNumber: '3',
                 elementKey: 'patientService',
-                elementName: 'patientService',
                 fqn: 'demographics.patientService',
                 inputType: 'text',
                 label: 'Patient service',
-                rowNumber: '8',
-                uiContainer: 'demographics.form'
+                formColumn: '3',
+                formRow: '8',
+                dataParent: 'demographics',
+                page: 'Demographics'
               }
             ]
           },
           {
-            rowNumber: '9',
-            classList: 'form-row columns',
-            uiContainer: 'demographics.form',
+            formRow: '9',
             elements: [
               {
-                colNumber: '1',
                 elementKey: 'nextOfKinName',
-                elementName: 'nextOfKinName',
                 fqn: 'demographics.nextOfKinName',
                 inputType: 'text',
                 label: 'Next of kin name',
-                rowNumber: '9',
-                uiContainer: 'demographics.form'
+                formColumn: '1',
+                formRow: '9',
+                dataParent: 'demographics',
+                page: 'Demographics'
               },
               {
-                colNumber: '2',
                 elementKey: 'nextOfKinRelationship',
-                elementName: 'nextOfKinRelationship',
                 fqn: 'demographics.nextOfKinRelationship',
                 inputType: 'select',
                 label: 'Next of kin relationship',
-                rowNumber: '9',
-                uiContainer: 'demographics.form',
+                formColumn: '2',
+                formRow: '9',
+                dataParent: 'demographics',
+                page: 'Demographics',
                 options: [
                   {
                     text: 'Wife'
@@ -463,41 +446,39 @@ module.exports = function() {
                 ]
               },
               {
-                colNumber: '3',
                 elementKey: 'nextOfKinPhone',
-                elementName: 'nextOfKinPhone',
                 fqn: 'demographics.nextOfKinPhone',
                 inputType: 'text',
                 label: 'Next of kin phone',
-                rowNumber: '9',
-                uiContainer: 'demographics.form'
+                formColumn: '3',
+                formRow: '9',
+                dataParent: 'demographics',
+                page: 'Demographics'
               }
             ]
           },
           {
-            rowNumber: '10',
-            classList: 'form-row columns',
-            uiContainer: 'demographics.form',
+            formRow: '10',
             elements: [
               {
-                colNumber: '1',
                 elementKey: 'decisionMakerName',
-                elementName: 'decisionMakerName',
                 fqn: 'demographics.decisionMakerName',
                 inputType: 'text',
                 label: 'Decision maker name',
-                rowNumber: '10',
-                uiContainer: 'demographics.form'
+                formColumn: '1',
+                formRow: '10',
+                dataParent: 'demographics',
+                page: 'Demographics'
               },
               {
-                colNumber: '2',
                 elementKey: 'decisionMakerRelationship',
-                elementName: 'decisionMakerRelationship',
                 fqn: 'demographics.decisionMakerRelationship',
                 inputType: 'select',
                 label: 'Decision maker relationship',
-                rowNumber: '10',
-                uiContainer: 'demographics.form',
+                formColumn: '2',
+                formRow: '10',
+                dataParent: 'demographics',
+                page: 'Demographics',
                 options: [
                   {
                     text: 'Spouse'
@@ -532,19 +513,21 @@ module.exports = function() {
                 ]
               },
               {
-                colNumber: '3',
                 elementKey: 'decisionMakerPhone',
-                elementName: 'decisionMakerPhone',
                 fqn: 'demographics.decisionMakerPhone',
                 inputType: 'text',
                 label: 'Decision maker phone',
-                rowNumber: '10',
-                uiContainer: 'demographics.form'
+                formColumn: '3',
+                formRow: '10',
+                dataParent: 'demographics',
+                page: 'Demographics'
               }
             ]
           }
-        ]
-      }
+        ],
+        columnsCount: 3
+      },
+      pageData: {}
     },
     allergies: {
       pageTitle: 'Allergies',
@@ -553,43 +536,41 @@ module.exports = function() {
       page_form: {
         rows: [
           {
-            rowNumber: '1',
-            classList: 'form-row columns',
-            uiContainer: 'allergies.form',
+            formRow: '1',
             elements: [
               {
-                colNumber: '1',
                 elementKey: 'hasNoAllergies',
-                elementName: 'hasNoAllergies',
                 fqn: 'allergies.hasNoAllergies',
                 inputType: 'checkbox',
                 label: 'No known allergies',
-                rowNumber: '1',
-                uiContainer: 'allergies.form',
+                formColumn: '1',
+                formRow: '1',
+                dataParent: 'allergies',
+                page: 'Allergies',
                 validation: 'one of these two need to be filled'
               }
             ]
           },
           {
-            rowNumber: '2',
-            classList: 'form-row columns',
-            uiContainer: 'allergies.form',
+            formRow: '2',
             elements: [
               {
-                colNumber: '1',
                 elementKey: 'allergies',
-                elementName: 'allergies',
                 fqn: 'allergies.allergies',
                 inputType: 'text',
                 label: 'Allergies search',
-                rowNumber: '2',
-                uiContainer: 'allergies.form',
+                formColumn: '1',
+                formRow: '2',
+                dataParent: 'allergies',
+                page: 'Allergies',
                 validation: 'one of these two need to be filled'
               }
             ]
           }
-        ]
-      }
+        ],
+        columnsCount: 1
+      },
+      pageData: {}
     },
     medical: {
       pageTitle: 'History Medical',
@@ -598,24 +579,24 @@ module.exports = function() {
       page_form: {
         rows: [
           {
-            rowNumber: '1',
-            classList: 'form-row columns',
-            uiContainer: 'medical.form',
+            formRow: '1',
             elements: [
               {
-                colNumber: '1',
                 elementKey: 'history',
-                elementName: 'history',
                 fqn: 'medical.history',
                 inputType: 'textarea',
                 label: 'Past medical history',
-                rowNumber: '1',
-                uiContainer: 'medical.form'
+                formColumn: '1',
+                formRow: '1',
+                dataParent: 'medical',
+                page: 'History Medical'
               }
             ]
           }
-        ]
-      }
+        ],
+        columnsCount: 1
+      },
+      pageData: {}
     },
     psychosocial: {
       pageTitle: 'History Psychosocial',
@@ -624,71 +605,69 @@ module.exports = function() {
       page_form: {
         rows: [
           {
-            rowNumber: '1',
-            classList: 'form-row columns',
-            uiContainer: 'psychosocial.form',
+            formRow: '1',
             elements: [
               {
-                colNumber: '1',
                 elementKey: 'history',
-                elementName: 'psychosocialHistory',
                 fqn: 'psychosocial.history',
                 inputType: 'textarea',
                 label: 'Psychosocial history',
-                rowNumber: '1',
-                uiContainer: 'psychosocial.form'
+                formColumn: '1',
+                formRow: '1',
+                dataParent: 'psychosocial',
+                page: 'History Psychosocial'
               },
               {
-                colNumber: '2',
                 elementKey: 'diet',
-                elementName: 'diet',
                 fqn: 'psychosocial.diet',
                 inputType: 'textarea',
                 label: 'Diet',
-                rowNumber: '1',
-                uiContainer: 'psychosocial.form'
+                formColumn: '2',
+                formRow: '1',
+                dataParent: 'psychosocial',
+                page: 'History Psychosocial'
               },
               {
-                colNumber: '3',
                 elementKey: 'livingSituation',
-                elementName: 'livingSituation',
                 fqn: 'psychosocial.livingSituation',
                 inputType: 'textarea',
                 label: 'Living situation',
-                rowNumber: '1',
-                uiContainer: 'psychosocial.form'
+                formColumn: '3',
+                formRow: '1',
+                dataParent: 'psychosocial',
+                page: 'History Psychosocial'
               }
             ]
           },
           {
-            rowNumber: '2',
-            classList: 'form-row columns',
-            uiContainer: 'psychosocial.form',
+            formRow: '2',
             elements: [
               {
-                colNumber: '1',
                 elementKey: 'employmentSchool',
-                elementName: 'employmentSchool',
                 fqn: 'psychosocial.employmentSchool',
                 inputType: 'textarea',
                 label: 'Employment/school',
-                rowNumber: '2',
-                uiContainer: 'psychosocial.form'
+                formColumn: '1',
+                formRow: '2',
+                dataParent: 'psychosocial',
+                page: 'History Psychosocial'
               },
               {
-                colNumber: '2',
                 elementKey: 'hobbies',
-                elementName: 'hobbies',
                 fqn: 'psychosocial.hobbies',
                 inputType: 'textarea',
                 label: 'Hobbies',
-                rowNumber: '2',
-                uiContainer: 'psychosocial.form'
+                formColumn: '2',
+                formRow: '2',
+                dataParent: 'psychosocial',
+                page: 'History Psychosocial'
               }
             ]
           }
-        ]
-      }
+        ],
+        columnsCount: 3
+      },
+      pageData: {}
     },
     surgical: {
       pageTitle: 'History Surgical',
@@ -696,60 +675,391 @@ module.exports = function() {
       hasTable: true,
       tables: [
         {
-          addButtonText: 'testongggg',
+          tableKey: 'surgery',
+          addButtonText: 'Add surgery',
           tableCells: [
             {
-              colNumber: '1',
-              elementKey: 'surgeryProcedure',
-              elementName: 'surgeryProcedure',
-              fqn: 'surgical.surgeryProcedure',
+              elementKey: 'procedure',
+              fqn: 'surgical.surgery.procedure',
               inputType: 'text',
               label: 'Surgery/procedure',
-              uiContainer: 'surgical.table1'
+              tableColumn: '1',
+              formColumn: '1',
+              formRow: '1',
+              dataParent: 'surgical.surgery',
+              page: 'History Surgical'
             },
             {
-              colNumber: '2',
-              elementKey: 'surgeryProcedureDate',
-              elementName: 'surgeryProcedureDate',
-              fqn: 'surgical.surgeryProcedureDate',
+              elementKey: 'date',
+              fqn: 'surgical.surgery.date',
               inputType: 'date',
               label: 'Date',
-              uiContainer: 'surgical.table1'
+              tableColumn: '2',
+              formColumn: '2',
+              formRow: '1',
+              dataParent: 'surgical.surgery',
+              page: 'History Surgical'
             }
-          ]
+          ],
+          tableForm: {
+            rows: [
+              {
+                formRow: '1',
+                elements: [
+                  {
+                    elementKey: 'procedure',
+                    fqn: 'surgical.surgery.procedure',
+                    inputType: 'text',
+                    label: 'Surgery/procedure',
+                    tableColumn: '1',
+                    formColumn: '1',
+                    formRow: '1',
+                    dataParent: 'surgical.surgery',
+                    page: 'History Surgical'
+                  },
+                  {
+                    elementKey: 'date',
+                    fqn: 'surgical.surgery.date',
+                    inputType: 'date',
+                    label: 'Date',
+                    tableColumn: '2',
+                    formColumn: '2',
+                    formRow: '1',
+                    dataParent: 'surgical.surgery',
+                    page: 'History Surgical'
+                  }
+                ]
+              }
+            ],
+            columnsCount: 2
+          }
         },
         {
-          addButtonText: 'testongggg',
+          tableKey: 'previous',
+          addButtonText: 'Add previous appointment',
           tableCells: [
             {
-              colNumber: '1',
               elementKey: 'previousAdmissions',
-              elementName: 'previousAdmissions',
-              fqn: 'surgical.previousAdmissions',
+              fqn: 'surgical.previous.previousAdmissions',
               inputType: 'text',
-              label: 'Previous admissions',
-              uiContainer: 'surgical.table2'
+              label: 'Previous admission reason',
+              tableColumn: '1',
+              formColumn: '1',
+              formRow: '1',
+              dataParent: 'surgical.previous',
+              page: 'History Surgical'
             },
             {
-              colNumber: '2',
               elementKey: 'previousAdmissionsDate',
-              elementName: 'previousAdmissionsDate',
-              fqn: 'surgical.previousAdmissionsDate',
+              fqn: 'surgical.previous.previousAdmissionsDate',
               inputType: 'date',
               label: 'Date',
-              uiContainer: 'surgical.table2'
+              tableColumn: '2',
+              formColumn: '2',
+              formRow: '1',
+              dataParent: 'surgical.previous',
+              page: 'History Surgical'
             }
-          ]
+          ],
+          tableForm: {
+            rows: [
+              {
+                formRow: '1',
+                elements: [
+                  {
+                    elementKey: 'previousAdmissions',
+                    fqn: 'surgical.previous.previousAdmissions',
+                    inputType: 'text',
+                    label: 'Previous admission reason',
+                    tableColumn: '1',
+                    formColumn: '1',
+                    formRow: '1',
+                    dataParent: 'surgical.previous',
+                    page: 'History Surgical'
+                  },
+                  {
+                    elementKey: 'previousAdmissionsDate',
+                    fqn: 'surgical.previous.previousAdmissionsDate',
+                    inputType: 'date',
+                    label: 'Date',
+                    tableColumn: '2',
+                    formColumn: '2',
+                    formRow: '1',
+                    dataParent: 'surgical.previous',
+                    page: 'History Surgical'
+                  }
+                ]
+              }
+            ],
+            columnsCount: 2
+          }
         }
-      ]
+      ],
+      pageData: {
+        surgery: [],
+        previous: []
+      }
     },
     immunization: {
       pageTitle: 'History Immunization',
       dataKey: 'immunization',
       hasForm: true,
       page_form: {
-        rows: []
-      }
+        rows: [
+          {
+            formRow: '1',
+            elements: [
+              {
+                elementKey: 'hepA',
+                fqn: 'immunization.hepA',
+                inputType: 'checkbox',
+                label: 'Hep A',
+                formColumn: '1',
+                formRow: '1',
+                dataParent: 'immunization',
+                page: 'History Immunization'
+              },
+              {
+                elementKey: 'hepADate',
+                fqn: 'immunization.hepADate',
+                inputType: 'date',
+                label: 'Hep A Date',
+                formColumn: '2',
+                formRow: '1',
+                dataParent: 'immunization',
+                page: 'History Immunization'
+              }
+            ]
+          },
+          {
+            formRow: '2',
+            elements: [
+              {
+                elementKey: 'hepB',
+                fqn: 'immunization.hepB',
+                inputType: 'checkbox',
+                label: 'Hep B',
+                formColumn: '1',
+                formRow: '2',
+                dataParent: 'immunization',
+                page: 'History Immunization'
+              },
+              {
+                elementKey: 'hepBDate',
+                fqn: 'immunization.hepBDate',
+                inputType: 'date',
+                label: 'Hep B Date',
+                formColumn: '2',
+                formRow: '2',
+                dataParent: 'immunization',
+                page: 'History Immunization'
+              }
+            ]
+          },
+          {
+            formRow: '3',
+            elements: [
+              {
+                elementKey: 'mmr',
+                fqn: 'immunization.mmr',
+                inputType: 'checkbox',
+                label: 'MMR',
+                formColumn: '1',
+                formRow: '3',
+                dataParent: 'immunization',
+                page: 'History Immunization'
+              },
+              {
+                elementKey: 'mmrDate',
+                fqn: 'immunization.mmrDate',
+                inputType: 'date',
+                label: 'MMR Date',
+                formColumn: '2',
+                formRow: '3',
+                dataParent: 'immunization',
+                page: 'History Immunization'
+              }
+            ]
+          },
+          {
+            formRow: '4',
+            elements: [
+              {
+                elementKey: 'pneumococcal',
+                fqn: 'immunization.pneumococcal',
+                inputType: 'checkbox',
+                label: 'Pneumococcal',
+                formColumn: '1',
+                formRow: '4',
+                dataParent: 'immunization',
+                page: 'History Immunization'
+              },
+              {
+                elementKey: 'pneumococcalDate',
+                fqn: 'immunization.pneumococcalDate',
+                inputType: 'date',
+                label: 'Pneumococcal Date',
+                formColumn: '2',
+                formRow: '4',
+                dataParent: 'immunization',
+                page: 'History Immunization'
+              }
+            ]
+          },
+          {
+            formRow: '5',
+            elements: [
+              {
+                elementKey: 'polioDiptheriaPertussis',
+                fqn: 'immunization.polioDiptheriaPertussis',
+                inputType: 'checkbox',
+                label: 'Polio diptheria pertussis',
+                formColumn: '1',
+                formRow: '5',
+                dataParent: 'immunization',
+                page: 'History Immunization'
+              },
+              {
+                elementKey: 'polioDiptheriaPertussisDate',
+                fqn: 'immunization.polioDiptheriaPertussisDate',
+                inputType: 'date',
+                label: 'Polio diptheria pertussis Date',
+                formColumn: '2',
+                formRow: '5',
+                dataParent: 'immunization',
+                page: 'History Immunization'
+              }
+            ]
+          },
+          {
+            formRow: '6',
+            elements: [
+              {
+                elementKey: 'tb',
+                fqn: 'immunization.tb',
+                inputType: 'checkbox',
+                label: 'TB',
+                formColumn: '1',
+                formRow: '6',
+                dataParent: 'immunization',
+                page: 'History Immunization'
+              },
+              {
+                elementKey: 'tbDate',
+                fqn: 'immunization.tbDate',
+                inputType: 'date',
+                label: 'TB Date',
+                formColumn: '2',
+                formRow: '6',
+                dataParent: 'immunization',
+                page: 'History Immunization'
+              }
+            ]
+          },
+          {
+            formRow: '7',
+            elements: [
+              {
+                elementKey: 'tetanus',
+                fqn: 'immunization.tetanus',
+                inputType: 'checkbox',
+                label: 'Tetanus',
+                formColumn: '1',
+                formRow: '7',
+                dataParent: 'immunization',
+                page: 'History Immunization'
+              },
+              {
+                elementKey: 'tetanusDate',
+                fqn: 'immunization.tetanusDate',
+                inputType: 'date',
+                label: 'Tetanus Date',
+                formColumn: '2',
+                formRow: '7',
+                dataParent: 'immunization',
+                page: 'History Immunization'
+              }
+            ]
+          },
+          {
+            formRow: '8',
+            elements: [
+              {
+                elementKey: 'other1',
+                fqn: 'immunization.other1',
+                inputType: 'text',
+                formColumn: '1',
+                formRow: '8',
+                dataParent: 'immunization',
+                page: 'History Immunization',
+                validation: 'If other is selected, this is mandatory'
+              },
+              {
+                elementKey: 'otherDate1',
+                fqn: 'immunization.otherDate1',
+                inputType: 'date',
+                label: 'Date',
+                formColumn: '2',
+                formRow: '8',
+                dataParent: 'immunization',
+                page: 'History Immunization'
+              }
+            ]
+          },
+          {
+            formRow: '9',
+            elements: [
+              {
+                elementKey: 'other2',
+                fqn: 'immunization.other2',
+                inputType: 'text',
+                formColumn: '1',
+                formRow: '9',
+                dataParent: 'immunization',
+                page: 'History Immunization',
+                validation: 'If other is selected, this is mandatory'
+              },
+              {
+                elementKey: 'otherDate2',
+                fqn: 'immunization.otherDate2',
+                inputType: 'date',
+                label: 'Date',
+                formColumn: '2',
+                formRow: '9',
+                dataParent: 'immunization',
+                page: 'History Immunization'
+              }
+            ]
+          },
+          {
+            formRow: '10',
+            elements: [
+              {
+                elementKey: 'other3',
+                fqn: 'immunization.other3',
+                inputType: 'text',
+                formColumn: '1',
+                formRow: '10',
+                dataParent: 'immunization',
+                page: 'History Immunization',
+                validation: 'If other is selected, this is mandatory'
+              },
+              {
+                elementKey: 'otherDate3',
+                fqn: 'immunization.otherDate3',
+                inputType: 'date',
+                label: 'Date',
+                formColumn: '2',
+                formRow: '10',
+                dataParent: 'immunization',
+                page: 'History Immunization'
+              }
+            ]
+          }
+        ],
+        columnsCount: 2
+      },
+      pageData: {}
     },
     familyHistory: {
       pageTitle: 'History Family',
@@ -758,24 +1068,24 @@ module.exports = function() {
       page_form: {
         rows: [
           {
-            rowNumber: '1',
-            classList: 'form-row columns',
-            uiContainer: 'familyHistory.form',
+            formRow: '1',
             elements: [
               {
-                colNumber: '1',
                 elementKey: 'history',
-                elementName: 'familyMedicalHistory',
                 fqn: 'familyHistory.history',
                 inputType: 'textarea',
                 label: 'Family medical history',
-                rowNumber: '1',
-                uiContainer: 'familyHistory.form'
+                formColumn: '1',
+                formRow: '1',
+                dataParent: 'familyHistory',
+                page: 'History Family'
               }
             ]
           }
-        ]
-      }
+        ],
+        columnsCount: 1
+      },
+      pageData: {}
     },
     careTeam: {
       pageTitle: 'Care team',
@@ -783,119 +1093,436 @@ module.exports = function() {
       hasTable: true,
       tables: [
         {
-          addButtonText: 'testongggg',
+          tableKey: 'teams',
+          addButtonText: 'Add new care team member',
           tableCells: [
             {
-              colNumber: '1',
               elementKey: 'name',
-              elementName: 'name',
-              fqn: 'careTeam.name',
+              fqn: 'careTeam.teams.name',
               inputType: 'text',
               label: 'Name',
-              uiContainer: 'careTeam.table'
+              formColumn: '1',
+              dataParent: 'careTeam.teams',
+              page: 'Care team'
             },
             {
-              colNumber: '2',
               elementKey: 'profession',
-              elementName: 'profession',
-              fqn: 'careTeam.profession',
+              fqn: 'careTeam.teams.profession',
               inputType: 'text',
               label: 'Profession',
-              uiContainer: 'careTeam.table'
+              formColumn: '2',
+              dataParent: 'careTeam.teams',
+              page: 'Care team'
             }
-          ]
+          ],
+          tableForm: {
+            rows: [],
+            columnsCount: 0
+          }
         }
-      ]
+      ],
+      pageData: {
+        teams: []
+      }
     },
     pastAppointments: {
       pageTitle: 'Past appointments',
       dataKey: 'pastAppointments',
-      defaultData: '{encounters',
       hasTable: true,
       tables: [
         {
-          addButtonText: 'testongggg',
+          tableKey: 'encounters',
+          addButtonText: 'Add past encounter',
           tableCells: [
             {
-              colNumber: '1',
               elementKey: 'date',
-              elementName: 'date',
-              fqn: 'pastAppointments.date',
+              fqn: 'pastAppointments.encounters.date',
               inputType: 'text',
               label: 'Date',
-              uiContainer: 'pastAppointments.encounters'
+              tableColumn: '1',
+              formColumn: '1',
+              formRow: '1',
+              dataParent: 'pastAppointments.encounters',
+              page: 'Past appointments'
             },
             {
-              colNumber: '2',
               elementKey: 'site',
-              elementName: 'site',
-              fqn: 'pastAppointments.site',
+              fqn: 'pastAppointments.encounters.site',
               inputType: 'text',
               label: 'Site',
-              uiContainer: 'pastAppointments.encounters'
+              tableColumn: '2',
+              formColumn: '2',
+              formRow: '1',
+              dataParent: 'pastAppointments.encounters',
+              page: 'Past appointments'
             },
             {
-              colNumber: '3',
               elementKey: 'diagnosis',
-              elementName: 'diagnosis',
-              fqn: 'pastAppointments.diagnosis',
+              fqn: 'pastAppointments.encounters.diagnosis',
               inputType: 'text',
               label: 'Diagnosis',
-              uiContainer: 'pastAppointments.encounters'
+              tableColumn: '3',
+              formColumn: '1',
+              formRow: '2',
+              dataParent: 'pastAppointments.encounters',
+              page: 'Past appointments'
             },
             {
-              colNumber: '4',
               elementKey: 'mrp',
-              elementName: 'mrp',
-              fqn: 'pastAppointments.mrp',
+              fqn: 'pastAppointments.encounters.mrp',
               inputType: 'text',
               label: 'Most responsible person',
-              uiContainer: 'pastAppointments.encounters'
+              tableColumn: '4',
+              formColumn: '2',
+              formRow: '2',
+              dataParent: 'pastAppointments.encounters',
+              page: 'Past appointments'
             }
-          ]
+          ],
+          tableForm: {
+            rows: [
+              {
+                formRow: '1',
+                elements: [
+                  {
+                    elementKey: 'date',
+                    fqn: 'pastAppointments.encounters.date',
+                    inputType: 'text',
+                    label: 'Date',
+                    tableColumn: '1',
+                    formColumn: '1',
+                    formRow: '1',
+                    dataParent: 'pastAppointments.encounters',
+                    page: 'Past appointments'
+                  },
+                  {
+                    elementKey: 'site',
+                    fqn: 'pastAppointments.encounters.site',
+                    inputType: 'text',
+                    label: 'Site',
+                    tableColumn: '2',
+                    formColumn: '2',
+                    formRow: '1',
+                    dataParent: 'pastAppointments.encounters',
+                    page: 'Past appointments'
+                  }
+                ]
+              },
+              {
+                formRow: '2',
+                elements: [
+                  {
+                    elementKey: 'diagnosis',
+                    fqn: 'pastAppointments.encounters.diagnosis',
+                    inputType: 'text',
+                    label: 'Diagnosis',
+                    tableColumn: '3',
+                    formColumn: '1',
+                    formRow: '2',
+                    dataParent: 'pastAppointments.encounters',
+                    page: 'Past appointments'
+                  },
+                  {
+                    elementKey: 'mrp',
+                    fqn: 'pastAppointments.encounters.mrp',
+                    inputType: 'text',
+                    label: 'Most responsible person',
+                    tableColumn: '4',
+                    formColumn: '2',
+                    formRow: '2',
+                    dataParent: 'pastAppointments.encounters',
+                    page: 'Past appointments'
+                  }
+                ]
+              }
+            ],
+            columnsCount: 2
+          }
         },
         {
-          addButtonText: 'testongggg',
+          tableKey: 'outpatientAppointments',
+          addButtonText: 'Add outpatient visit',
           tableCells: [
             {
-              colNumber: '1',
               elementKey: 'date',
-              elementName: 'date',
-              fqn: 'pastAppointments.date',
+              fqn: 'pastAppointments.outpatientAppointments.date',
               inputType: 'text',
               label: 'Date',
-              uiContainer: 'pastAppointments.outpatient'
+              tableColumn: '1',
+              formColumn: '1',
+              formRow: '1',
+              dataParent: 'pastAppointments.outpatientAppointments',
+              page: 'Past appointments'
             },
             {
-              colNumber: '2',
               elementKey: 'site',
-              elementName: 'site',
-              fqn: 'pastAppointments.site',
+              fqn: 'pastAppointments.outpatientAppointments.site',
               inputType: 'text',
               label: 'Site',
-              uiContainer: 'pastAppointments.outpatient'
+              tableColumn: '2',
+              formColumn: '2',
+              formRow: '1',
+              dataParent: 'pastAppointments.outpatientAppointments',
+              page: 'Past appointments'
             },
             {
-              colNumber: '3',
               elementKey: 'reasonForVisit',
-              elementName: 'reasonForVisit',
-              fqn: 'pastAppointments.reasonForVisit',
+              fqn: 'pastAppointments.outpatientAppointments.reasonForVisit',
               inputType: 'text',
               label: 'Reason for visit',
-              uiContainer: 'pastAppointments.outpatient'
+              tableColumn: '3',
+              formColumn: '1',
+              formRow: '2',
+              dataParent: 'pastAppointments.outpatientAppointments',
+              page: 'Past appointments'
             },
             {
-              colNumber: '4',
               elementKey: 'diagnosis',
-              elementName: 'diagnosis',
-              fqn: 'pastAppointments.diagnosis',
+              fqn: 'pastAppointments.outpatientAppointments.diagnosis',
               inputType: 'text',
               label: 'Diagnosis',
-              uiContainer: 'pastAppointments.outpatient'
+              tableColumn: '4',
+              formColumn: '2',
+              formRow: '2',
+              dataParent: 'pastAppointments.outpatientAppointments',
+              page: 'Past appointments'
             }
-          ]
+          ],
+          tableForm: {
+            rows: [
+              {
+                formRow: '1',
+                elements: [
+                  {
+                    elementKey: 'date',
+                    fqn: 'pastAppointments.outpatientAppointments.date',
+                    inputType: 'text',
+                    label: 'Date',
+                    tableColumn: '1',
+                    formColumn: '1',
+                    formRow: '1',
+                    dataParent: 'pastAppointments.outpatientAppointments',
+                    page: 'Past appointments'
+                  },
+                  {
+                    elementKey: 'site',
+                    fqn: 'pastAppointments.outpatientAppointments.site',
+                    inputType: 'text',
+                    label: 'Site',
+                    tableColumn: '2',
+                    formColumn: '2',
+                    formRow: '1',
+                    dataParent: 'pastAppointments.outpatientAppointments',
+                    page: 'Past appointments'
+                  }
+                ]
+              },
+              {
+                formRow: '2',
+                elements: [
+                  {
+                    elementKey: 'reasonForVisit',
+                    fqn: 'pastAppointments.outpatientAppointments.reasonForVisit',
+                    inputType: 'text',
+                    label: 'Reason for visit',
+                    tableColumn: '3',
+                    formColumn: '1',
+                    formRow: '2',
+                    dataParent: 'pastAppointments.outpatientAppointments',
+                    page: 'Past appointments'
+                  },
+                  {
+                    elementKey: 'diagnosis',
+                    fqn: 'pastAppointments.outpatientAppointments.diagnosis',
+                    inputType: 'text',
+                    label: 'Diagnosis',
+                    tableColumn: '4',
+                    formColumn: '2',
+                    formRow: '2',
+                    dataParent: 'pastAppointments.outpatientAppointments',
+                    page: 'Past appointments'
+                  }
+                ]
+              }
+            ],
+            columnsCount: 2
+          }
         }
-      ]
+      ],
+      pageData: {
+        encounters: [],
+        outpatientAppointments: []
+      }
+    },
+    visit: {
+      pageTitle: 'Visit',
+      dataKey: 'visit',
+      hasForm: true,
+      page_form: {
+        rows: [
+          {
+            formRow: '1',
+            elements: [
+              {
+                elementKey: 'day',
+                fqn: 'visit.day',
+                inputType: 'day',
+                label: 'Admission day',
+                formColumn: '1',
+                formRow: '1',
+                dataParent: 'visit',
+                page: 'Visit'
+              },
+              {
+                elementKey: 'time',
+                fqn: 'visit.time',
+                inputType: 'time',
+                label: 'Admission time',
+                formColumn: '2',
+                formRow: '1',
+                dataParent: 'visit',
+                page: 'Visit'
+              }
+            ]
+          },
+          {
+            formRow: '2',
+            elements: [
+              {
+                elementKey: 'consent',
+                fqn: 'visit.consent',
+                inputType: 'checkbox',
+                label: 'Consent for treatment',
+                formColumn: '1',
+                formRow: '2',
+                dataParent: 'visit',
+                page: 'Visit'
+              },
+              {
+                elementKey: 'status',
+                fqn: 'visit.status',
+                inputType: 'select',
+                label: 'Admission status',
+                formColumn: '2',
+                formRow: '2',
+                dataParent: 'visit',
+                page: 'Visit'
+              }
+            ]
+          },
+          {
+            formRow: '3',
+            elements: [
+              {
+                elementKey: 'diagnosis',
+                fqn: 'visit.diagnosis',
+                inputType: 'text',
+                label: 'Admitting diagnosis',
+                formCss: 'fullWidth',
+                formColumn: '1',
+                formRow: '3',
+                dataParent: 'visit',
+                page: 'Visit'
+              }
+            ]
+          }
+        ],
+        columnsCount: 2
+      },
+      hasTable: true,
+      tables: [
+        {
+          tableKey: 'locations',
+          tableCells: [
+            {
+              elementKey: 'location',
+              fqn: 'visit.locations.location',
+              inputType: 'text',
+              label: 'Patient location',
+              formCss: 'fullWidth',
+              tableColumn: '1',
+              formColumn: '1',
+              formRow: '1',
+              dataParent: 'visit.locations',
+              page: 'Visit'
+            },
+            {
+              elementKey: 'transfer_in_day',
+              fqn: 'visit.locations.transfer_in_day',
+              inputType: 'day',
+              label: 'Transfer in day',
+              tableColumn: '2',
+              formColumn: '1',
+              formRow: '2',
+              dataParent: 'visit.locations',
+              page: 'Visit'
+            },
+            {
+              elementKey: 'transfer_in_time',
+              fqn: 'visit.locations.transfer_in_time',
+              inputType: 'time',
+              label: 'Transfer in time',
+              tableColumn: '3',
+              formColumn: '2',
+              formRow: '2',
+              dataParent: 'visit.locations',
+              page: 'Visit'
+            }
+          ],
+          tableForm: {
+            rows: [
+              {
+                formRow: '1',
+                elements: [
+                  {
+                    elementKey: 'location',
+                    fqn: 'visit.locations.location',
+                    inputType: 'text',
+                    label: 'Patient location',
+                    formCss: 'fullWidth',
+                    tableColumn: '1',
+                    formColumn: '1',
+                    formRow: '1',
+                    dataParent: 'visit.locations',
+                    page: 'Visit'
+                  }
+                ]
+              },
+              {
+                formRow: '2',
+                elements: [
+                  {
+                    elementKey: 'transfer_in_day',
+                    fqn: 'visit.locations.transfer_in_day',
+                    inputType: 'day',
+                    label: 'Transfer in day',
+                    tableColumn: '2',
+                    formColumn: '1',
+                    formRow: '2',
+                    dataParent: 'visit.locations',
+                    page: 'Visit'
+                  },
+                  {
+                    elementKey: 'transfer_in_time',
+                    fqn: 'visit.locations.transfer_in_time',
+                    inputType: 'time',
+                    label: 'Transfer in time',
+                    tableColumn: '3',
+                    formColumn: '2',
+                    formRow: '2',
+                    dataParent: 'visit.locations',
+                    page: 'Visit'
+                  }
+                ]
+              }
+            ],
+            columnsCount: 2
+          }
+        }
+      ],
+      pageData: {
+        locations: []
+      }
     }
   }
 }

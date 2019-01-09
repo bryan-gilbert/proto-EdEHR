@@ -15,6 +15,8 @@
 </template>
 
 <script>
+// TODO checkboxes may not be reading data from the seed correctly
+// TODO ? day and time types
 export default {
   name: 'EhrPageForm',
   props: {

@@ -7,6 +7,7 @@ const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 export default class EhrHelp {
   constructor(component, store, dataKey, uiProps) {
     this.component = component
+    this.errorList = []
     this.$store = store
     this.dataKey = dataKey
     this.cacheAsString = ''
@@ -21,9 +22,6 @@ export default class EhrHelp {
       _this.receiveEvent(eData)
     }
     EventBus.$on(DIALOG_INPUT_EVENT, this.eventHandler)
-    if (uiProps.hasDialog) {
-      this.setupDialogDef(uiProps)
-    }
     if (uiProps.hasTransposedTable) {
       this.setupColumnData(uiProps)
     }
@@ -81,7 +79,7 @@ export default class EhrHelp {
     uiProps.tableCells.forEach(cell => {
       var entry = {
         class: 'column_label',
-        title: cell.propertyKey,
+        title: cell.elementKey,
         value: cell.label
       }
       row.push(entry)
@@ -90,7 +88,7 @@ export default class EhrHelp {
     assessments.forEach(item => {
       row = []
       uiProps.tableCells.forEach(cell => {
-        var v = item[cell.propertyKey]
+        var v = item[cell.elementKey]
         var entry = {
           class: 'column_value',
           title: v,
@@ -104,33 +102,6 @@ export default class EhrHelp {
     uiProps.transposedColumns = transpose
   }
 
-  setupDialogDef(uiProps) {
-    const _this = this
-    let tables = uiProps.tables
-    let table = tables[0]
-    function transfer(def, defsList) {
-      var cells = table.tableCells
-      var cell = cells.find(c => def.key === c.propertyKey)
-      def.label = cell.label
-      def.type = cell.type
-      def.options = cell.options
-      def.helper = _this
-      if (cell.parent) {
-        // console.log('look for cell parent', cell.parent, 'in', defsList)
-        var parent = defsList.find(c => cell.parent === c.key)
-        def.parent = parent
-        def.targetValue = cell.targetValue
-        // console.log('resulting def', def)
-      }
-    }
-    let rows = table.formDef.rows
-    rows.forEach(row => {
-      row.forEach(def => {
-        transfer(def) // , column.column)
-      })
-    })
-  }
-
   /* ********************* DIALOG  */
 
   showingDialog() {
@@ -138,39 +109,52 @@ export default class EhrHelp {
   }
 
   clearDialogInputs() {
-    var cells = this.component.uiProps.tableCells
+    let cells = this.currentDialog.dialogDef.tableCells
+    let inputs = this.currentDialog.inputs
+    // TODO check that default values are working
     cells.forEach(cell => {
-      this.component.inputs[cell.propertyKey] = cell.defaultValue
-        ? cell.defaultValue(this.$store)
-        : ''
+      inputs[cell.elementKey] = cell.defaultValue ? cell.defaultValue(this.$store) : ''
     })
     // empty the error list array
-    this.component.errorList.length = 0
+    this.errorList.length = 0
   }
 
+  getErrorList() {
+    return this.errorList
+  }
   validateInputs() {
-    var inputs = this.component.inputs
-    var cells = this.component.uiProps.tableCells
-    this.component.errorList.length = 0
+    let cells = this.currentDialog.dialogDef.tableCells
+    let inputs = this.currentDialog.inputs
+    this.errorList.length = 0
     cells.forEach(cell => {
       if (cell.type === 'text') {
-        inputs[cell.propertyKey] = inputs[cell.propertyKey].trim()
+        inputs[cell.elementKey] = inputs[cell.elementKey].trim()
       }
       if (cell.validationRules) {
         cell.validationRules.forEach(rule => {
-          var value = inputs[cell.propertyKey]
+          var value = inputs[cell.elementKey]
           if (rule.required && value.length === 0) {
             var msg = cell.label + ' is required'
             // console.log('validateInput', msg)
-            this.component.errorList.push(msg)
+            this.errorList.push(msg)
           }
         })
       }
     })
-    return this.component.errorList.length === 0
+    return this.errorList.length === 0
   }
 
-  showDialog() {
+  showDialog(dialogDef, dialogInputs) {
+    const _this = this
+    console.log('showDialog for this dialogDef', dialogDef)
+    this.currentDialog = { dialogDef: dialogDef, inputs: dialogInputs }
+    let rows = dialogDef.tableForm.rows
+    console.log('set helper into each form element', dialogDef.tableForm)
+    rows.forEach(row => {
+      row.elements.forEach(def => {
+        def.helper = _this
+      })
+    })
     this.clearDialogInputs()
     this.showModal = true
   }

@@ -71,10 +71,10 @@ export function inside() {
       meta: { layout: 'inside', label: 'Care team', topLevel: 'patient' }
     },
     {
-      path: '/ehr/patient/past-appt',
-      name: 'past-appt',
+      path: '/ehr/patient/past-appointments',
+      name: 'past-appointments',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/PastAppt.vue'),
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/PastAppointments.vue'),
       meta: { layout: 'inside', label: 'Past appointments', topLevel: 'patient' }
     },
     {
@@ -183,10 +183,10 @@ export function inside() {
       meta: { layout: 'inside', label: 'Referrals to other disciplines', topLevel: 'current' }
     },
     {
-      path: '/ehr/current/no-med/lab-reqs',
-      name: 'lab-reqs',
+      path: '/ehr/current/no-med/lab-requisitions',
+      name: 'lab-requisitions',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/LabReqs.vue'),
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/LabRequisitions.vue'),
       meta: { layout: 'inside', label: 'Lab requisitions', topLevel: 'current' }
     },
     {

@@ -34,17 +34,21 @@ export default {
     },
     topRow() {
       let rows = this.formDef.rows
-      return rows[0]
+      let top = rows.length > 0 ? rows[0] : []
+      console.log('top row ', top)
+      return top
     },
     middleRange() {
       let rows = this.formDef.rows
-      let middle = rows.slice(1, rows.length -1)
+      let middle = rows.length > 2 ? rows.slice(1, rows.length - 1) : []
       console.log('middle', middle)
       return middle
     },
     lastRow() {
       let rows = this.formDef.rows
-      return rows[rows.length -1]
+      let last = rows.length > 1 ? rows[rows.length - 1] : []
+      console.log('last row ', last)
+      return last
     }
   },
   methods: {
