@@ -11,19 +11,20 @@
       <nav :class="`${$options.name}__nav column`">
         <ul :class="`${$options.name}__navList is-pulled-right`">
           <li :class="`${$options.name}__navItem`">
+            <router-link :to="{ name: `lms` }" :class="`${$options.name}__navLink`"
+              >Moodle</router-link
+            >
+          </li>
+          <li :class="`${$options.name}__navItem`">
             <router-link :to="{ name: `dashboard` }" :class="`${$options.name}__navLink`"
               >Dashboard</router-link
             >
           </li>
           <li :class="`${$options.name}__navItem`">
-            <router-link :to="{ name: `progress-notes` }" :class="`${$options.name}__navLink`"
+            <router-link :to="{ name: `demographics` }" :class="`${$options.name}__navLink`"
               >EHR</router-link
             >
           </li>
-          <li :class="`${$options.name}__navItem`">
-            <router-link :to="{ name: `account` }" :class="`${$options.name}__navLink`"
-              >Account - {{ username }}</router-link
-            >
           </li>
           <li :class="`${$options.name}__navItem`">
             <router-link :to="{ name: `help` }" :class="`${$options.name}__navLink`"
