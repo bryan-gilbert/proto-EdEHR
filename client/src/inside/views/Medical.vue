@@ -41,15 +41,12 @@ export default {
     return {
       dataKey: 'medical',
       theData: {},
-      ehrHelp: {}
+      ehrHelp: undefined
     }
   },
   computed: {
     uiProps() {
-      let defs = require('../defs/patient-profile')()
-      // let pageDef = defs[this.dataKey]
-      // console.log('pageDef ', this.dataKey, pageDef)
-      return defs[this.dataKey]
+      return this.ehrHelp ? this.ehrHelp.getPageDefinition(this.dataKey) : {}
     },
     showEditControls() {
       return this.ehrHelp.showEditControls()
@@ -58,11 +55,11 @@ export default {
       return !this.ehrHelp.isEditing()
     },
     currentData() {
-      let p = this.uiProps
-      let defaultData = p.pageData
-      // console.log('page default data: ', p, defaultData)
+      // Note this property is invoked in a div above. Then hidden from view.
+      // By invoking this property theData is set (intentional side-effect)
+      // and theData contains data from the database
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      this.theData = this.ehrHelp.mergedProperty(defaultData)
+      this.theData = this.ehrHelp ? this.ehrHelp.mergedProperty(this.dataKey) : {}
       // console.log('page current data', this.theData)
       return this.theData
     }

@@ -75,12 +75,12 @@ export default {
       this.ehrHelp.saveDialog(this.tableKey)
     },
     receiveEvent(eData) {
-      let key = eData.key
+      // let key = eData.key
       let value = eData.value
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       this.showDialog = value //this.tableKey === eData.key ?  eData.value : this.showDialog
-      let ch = this.ehrHelp.getCloseChannelHandle(this.tableKey)
-      console.log(`On channel ${ch} from ${key} got ${value}`)
+      // let ch = this.ehrHelp.getCloseChannelHandle(this.tableKey)
+      // console.log(`On channel ${ch} from ${key} got ${value}`)
     }
   },
   mounted: function() {

@@ -46,7 +46,6 @@ export default {
   },
   methods: {
     showDialog: function() {
-      console.log('send event here')
       this.ehrHelp.showDialog(this.tableDef, this.inputs)
     }
   }

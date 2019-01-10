@@ -527,7 +527,9 @@ module.exports = function() {
         ],
         columnsCount: 3
       },
-      pageData: {}
+      pageData: {
+        demographics: {}
+      }
     },
     allergies: {
       pageTitle: 'Allergies',
@@ -570,7 +572,9 @@ module.exports = function() {
         ],
         columnsCount: 1
       },
-      pageData: {}
+      pageData: {
+        allergies: {}
+      }
     },
     medical: {
       pageTitle: 'History Medical',
@@ -596,7 +600,9 @@ module.exports = function() {
         ],
         columnsCount: 1
       },
-      pageData: {}
+      pageData: {
+        medical: {}
+      }
     },
     psychosocial: {
       pageTitle: 'History Psychosocial',
@@ -667,7 +673,9 @@ module.exports = function() {
         ],
         columnsCount: 3
       },
-      pageData: {}
+      pageData: {
+        psychosocial: {}
+      }
     },
     surgical: {
       pageTitle: 'History Surgical',
@@ -804,8 +812,10 @@ module.exports = function() {
         }
       ],
       pageData: {
-        surgery: [],
-        previous: []
+        surgical: {
+          surgery: [],
+          previous: []
+        }
       }
     },
     immunization: {
@@ -1067,7 +1077,9 @@ module.exports = function() {
         ],
         columnsCount: 2
       },
-      pageData: {}
+      pageData: {
+        immunization: {}
+      }
     },
     familyHistory: {
       pageTitle: 'History Family',
@@ -1093,7 +1105,9 @@ module.exports = function() {
         ],
         columnsCount: 1
       },
-      pageData: {}
+      pageData: {
+        familyHistory: {}
+      }
     },
     careTeam: {
       pageTitle: 'Care team',
@@ -1132,7 +1146,9 @@ module.exports = function() {
         }
       ],
       pageData: {
-        teams: []
+        careTeam: {
+          teams: []
+        }
       }
     },
     pastAppointments: {
@@ -1376,8 +1392,10 @@ module.exports = function() {
         }
       ],
       pageData: {
-        encounters: [],
-        outpatientAppointments: []
+        pastAppointments: {
+          encounters: [],
+          outpatientAppointments: []
+        }
       }
     },
     visit: {
@@ -1553,7 +1571,9 @@ module.exports = function() {
         }
       ],
       pageData: {
-        locations: []
+        visit: {
+          locations: []
+        }
       }
     }
   }

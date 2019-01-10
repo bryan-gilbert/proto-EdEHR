@@ -1,6 +1,8 @@
 import EventBus from '../event-bus'
 import Vue from 'vue'
 
+const pageDefsPP = require('../inside/defs/patient-profile')()
+
 export const DIALOG_INPUT_EVENT = 'dialogInputEvent'
 
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
@@ -29,8 +31,15 @@ export default class EhrHelp {
   }
   /* ********************* DATA  */
 
+  getPageDefinition(pageKey) {
+    let pageDef = pageDefsPP[pageKey]
+    console.log('pageDef ', pageKey, pageDef)
+    return pageDef
+  }
+
   cacheData() {
     // console.log('ehr helper caching data ', data)
+    // TO DO  fix inconsist use of mergedProperty -- where is the default here?
     this.cacheAsString = JSON.stringify(this.mergedProperty())
   }
 
@@ -39,10 +48,26 @@ export default class EhrHelp {
    *
    * @returns {any}
    */
-  mergedProperty(defaultValue) {
-    defaultValue = defaultValue || {}
+  mergedProperty(pageKey) {
+    console.log('get merged data')
+    let p = this.getPageDefinition(pageKey)
+    let defaultValue = p.pageData
+    if (!defaultValue) {
+      let d = {}
+      d[pageKey] = {}
+      defaultValue = d
+      console.log('Page defs did not spec a default so create one ', d)
+    }
+    // console.log('page default data: ', p, defaultData)
+    // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+    // this.theData = this.ehrHelp.mergedProperty(defaultData)
+
     let data = this.$store.getters['ehrData/mergedData'] || {}
+    console.log('as stored all data', data)
     let asStored = data[this.dataKey] || defaultValue
+    console.log('as stored or default this page data "' + this.dataKey + '" data:', asStored)
+    // Intentional conversion to string to object to break connection with Vuex store.
+    // We need this step because the UI isn't allowed to modify the as stored value
     return JSON.parse(JSON.stringify(asStored))
   }
 
@@ -123,7 +148,7 @@ export default class EhrHelp {
   }
 
   cancelDialog(key) {
-    console.log('cancel dialog ', key)
+    // console.log('cancel dialog ', key)
     this._clearDialogInputs(key)
     this._emitCloseEvent(key)
   }
@@ -134,6 +159,7 @@ export default class EhrHelp {
       _this.$store.commit('system/setLoading', true)
       let data = this.$store.getters['ehrData/assignmentData'] || {}
       let d = this.dialogMap[key]
+      console.log('saveDialog', d)
       let inputs = d.inputs
       console.log('save dialog data into ', key)
       var modifiedValue = data[key] || []
@@ -163,13 +189,12 @@ export default class EhrHelp {
   }
 
   _emitCloseEvent(key) {
-    const _this = this
     let eData = { key: key, value: false }
     let channel = this.getCloseChannelHandle(key)
     Vue.nextTick(function() {
       // Send an event on our transmission channel
       // with a payload containing this false
-      console.log('emit event', eData, _this.showThisDialogEventChannel)
+      // console.log('emit event', eData, 'on', channel)
       EventBus.$emit(channel, eData)
     })
   }
@@ -337,6 +362,7 @@ export default class EhrHelp {
 
   /**
    * When a dialog form input changes we get an update message here.
+   * DIALOG_INPUT_EVENT
    * This message is from a child component and it's passing the new value up to the parent's helper (here).
    * Take the value and stash it into the appropriate input so we have access to the inputs when it's time to save.
    * @param eData
@@ -348,8 +374,8 @@ export default class EhrHelp {
     let elementKey = def.elementKey
     let value = eData.value
     let d = this.dialogMap[tableKey]
+    console.log(`On event from ${tableKey} ${elementKey} with dialog: ${d}`)
     let inputs = d.inputs
-    // console.log(`On channel ${DIALOG_INPUT_EVENT} event from ${tableKey} ${elementKey} with data: ${value}`)
     inputs[elementKey] = value
   }
 }

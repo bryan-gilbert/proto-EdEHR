@@ -76,9 +76,10 @@ class RawInputToDef {
       uiP.dataKey = page.elementKey
       this._page(uiP, page)
       let pageData = {}
+      let pd = pageData[uiP.dataKey] = {}
       if (uiP.hasTable) {
         uiP.tables.forEach(table => {
-          pageData[table.tableKey] = []
+          pd[table.tableKey] = []
         })
       }
       console.log('Data structure for page ' + uiP.dataKey + ' is ', pageData)
