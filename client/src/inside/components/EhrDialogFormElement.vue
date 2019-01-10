@@ -86,12 +86,8 @@ export default {
     }
   },
   mounted: function() {
-    // TODO do I need this set of input value? If so then we need a way to get the helper during mount
-    console.log('helper? ')
-    // this.inputVal = this.def.helper.getInputValue(this.def)
+    const _this = this
     if (this.eventChannelListen) {
-      const _this = this
-      // register listener if needed
       this.eventHandler = function(eData) {
         _this.receiveEvent(eData)
       }

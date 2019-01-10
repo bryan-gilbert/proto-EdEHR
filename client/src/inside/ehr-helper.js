@@ -1,4 +1,5 @@
 import EventBus from '../event-bus'
+import Vue from 'vue'
 
 export const DIALOG_INPUT_EVENT = 'dialogInputEvent'
 
@@ -124,6 +125,7 @@ export default class EhrHelp {
   cancelDialog(key) {
     console.log('cancel dialog ', key)
     this._clearDialogInputs(key)
+    this._emitCloseEvent(key)
   }
 
   saveDialog(key) {
@@ -133,7 +135,6 @@ export default class EhrHelp {
       let data = this.$store.getters['ehrData/assignmentData'] || {}
       let d = this.dialogMap[key]
       let inputs = d.inputs
-      // let key = d.tableDef.tableKey
       console.log('save dialog data into ', key)
       var modifiedValue = data[key] || []
       modifiedValue = modifiedValue ? JSON.parse(JSON.stringify(modifiedValue)) : []
@@ -145,14 +146,32 @@ export default class EhrHelp {
         value: modifiedValue
       }
       this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
+        _this._emitCloseEvent(key)
         _this.$store.commit('system/setLoading', false)
       })
     }
   }
 
+  getCloseChannelHandle(key) {
+    let channel = 'modal:' + key
+    return channel
+  }
+
   getErrorList(key) {
     let d = this.dialogMap[key]
     return d ? d.errorList : []
+  }
+
+  _emitCloseEvent(key) {
+    const _this = this
+    let eData = { key: key, value: false }
+    let channel = this.getCloseChannelHandle(key)
+    Vue.nextTick(function() {
+      // Send an event on our transmission channel
+      // with a payload containing this false
+      console.log('emit event', eData, _this.showThisDialogEventChannel)
+      EventBus.$emit(channel, eData)
+    })
   }
 
   _clearDialogInputs(key) {
@@ -170,44 +189,62 @@ export default class EhrHelp {
   // TODO validation will need rework as part of the DDD refactor
   _validateInputs(key) {
     let d = this.dialogMap[key]
-    // let cells = d.tableDef.tableCells
+    let cells = d.tableDef.tableCells
     let inputs = d.inputs
     console.log('what is in the inputs? ', inputs)
-    return false
-    // d.errorList = []
-    // cells.forEach(cell => {
-    //   if (cell.type === 'text') {
-    //     inputs[cell.elementKey] = inputs[cell.elementKey].trim()
-    //   }
-    //   if (cell.validationRules) {
-    //     cell.validationRules.forEach(rule => {
-    //       var value = inputs[cell.elementKey]
-    //       if (rule.required && value.length === 0) {
-    //         var msg = cell.label + ' is required'
-    //         // console.log('validateInput', msg)
-    //         d.errorList.push(msg)
-    //       }
-    //     })
-    //   }
-    // })
-    // return d.errorList.length === 0
+    d.errorList = []
+    cells.forEach(cell => {
+      if (cell.type === 'text') {
+        inputs[cell.elementKey] = inputs[cell.elementKey].trim()
+      }
+      if (cell.validationRules) {
+        cell.validationRules.forEach(rule => {
+          var value = inputs[cell.elementKey]
+          if (rule.required && value.length === 0) {
+            var msg = cell.label + ' is required'
+            console.log('validateInput', msg)
+            d.errorList.push(msg)
+          }
+        })
+      }
+    })
+    d.errorList.push('TODO remove force success once ready')
+    // TODO remove force success once ready
+    return true // d.errorList.length === 0
   }
 
   /* ********************* FORM  */
 
+  /**
+   * Show or don't show page edit controls or table open dialog buttons.
+   * Currently the rule is simply "is the user a student" but this will need to
+   * be changed if there is a need to let instructors "do the assignment" or
+   * if we want to let the application be the place to edit seed data.
+   * @return {*}
+   */
   showEditControls() {
     return this.$store.getters['visit/isStudent']
   }
 
+  /**
+   * Return true if a page form is open for edit.
+   * @return {(function())|default.computed.isEditing|boolean|*}
+   */
   isEditing() {
     return this.$store.state.system.isEditing
   }
 
+  /**
+   * Begin editing a page form
+   */
   beginEdit() {
     this.$store.commit('system/setEditing', true)
     this.cacheData()
   }
 
+  /**
+   * Cancel the edit on a page form. Restore values from the database.
+   */
   cancelEdit() {
     const _this = this
     _this.$store.commit('system/setLoading', true)
@@ -217,6 +254,9 @@ export default class EhrHelp {
     })
   }
 
+  /**
+   * Save changes made on a page form
+   */
   saveEdit() {
     const _this = this
     _this.$store.commit('system/setEditing', false)
@@ -228,6 +268,10 @@ export default class EhrHelp {
     })
   }
 
+  /**
+   * Report if there is a page form open for edit and the data on the form has been modified
+   * @return {boolean}
+   */
   unsavedData() {
     var isEditing = this.$store.state.system.isEditing
     var result = false
@@ -237,13 +281,20 @@ export default class EhrHelp {
       // console.log('current data', currentData)
       // console.log('cacheAsString', this.cacheAsString)
       result = this.cacheAsString !== currentData
-      // console.log('unsavedData changes detected', this.cacheAsString, currentData)
     }
     return result
   }
 
   /* ********************* EVENTS  */
 
+  /**
+   * If a page form is in edit mode and there are changes then warn the user before they navigate to
+   * another part of this app.
+   * @param to
+   * @param from
+   * @param next
+   * @return {*}
+   */
   beforeRouteLeave(to, from, next) {
     // console.log('beforeRouteLeave ...', to)
     let unsaved = this.unsavedData()
@@ -261,6 +312,11 @@ export default class EhrHelp {
     next()
   }
 
+  /**
+   * If the page form is in edit mode and there are changes then warn the user before they navigate
+   * to another site
+   * @param event
+   */
   beforeUnloadListener(event) {
     let e = event || window.event
     // console.log('beforeunload ...', e)
@@ -279,6 +335,13 @@ export default class EhrHelp {
     // e.returnValue = LEAVE_PROMPT
   }
 
+  /**
+   * When a dialog form input changes we get an update message here.
+   * This message is from a child component and it's passing the new value up to the parent's helper (here).
+   * Take the value and stash it into the appropriate input so we have access to the inputs when it's time to save.
+   * @param eData
+   * @private
+   */
   _handleDialogInputChangeEvent(eData) {
     let def = eData.def
     let tableKey = def.tableKey
@@ -286,9 +349,7 @@ export default class EhrHelp {
     let value = eData.value
     let d = this.dialogMap[tableKey]
     let inputs = d.inputs
-    console.log(
-      `On channel ${DIALOG_INPUT_EVENT} event from ${tableKey} ${elementKey} with data: ${value}`
-    )
+    // console.log(`On channel ${DIALOG_INPUT_EVENT} event from ${tableKey} ${elementKey} with data: ${value}`)
     inputs[elementKey] = value
   }
 }
