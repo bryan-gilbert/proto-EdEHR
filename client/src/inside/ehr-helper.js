@@ -4,6 +4,7 @@ const pageDefsPP = require('../inside/defs/patient-profile')()
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
 export const DIALOG_INPUT_EVENT = 'dialogInputEvent'
+export const PAGE_FORM_INPUT_EVENT = 'PAGE_FORM_INPUT_EVENT'
 
 export default class EhrHelp {
   constructor(component, store, dataKey, uiProps) {
@@ -19,10 +20,14 @@ export default class EhrHelp {
       })
     }
     this.dialogMap = {}
-    this.eventHandler = function(eData) {
+    this.dialogInputChangeEventHandler = function(eData) {
       _this._handleDialogInputChangeEvent(eData)
     }
-    EventBus.$on(DIALOG_INPUT_EVENT, this.eventHandler)
+    EventBus.$on(DIALOG_INPUT_EVENT, this.dialogInputChangeEventHandler)
+    this.pageFormInputChangeEventHandler = function(eData) {
+      _this._handlePageFormInputChangeEvent(eData)
+    }
+    EventBus.$on(PAGE_FORM_INPUT_EVENT, this.pageFormInputChangeEventHandler)
     if (uiProps.hasTransposedTable) {
       this.setupColumnData(uiProps)
     }
@@ -73,13 +78,6 @@ export default class EhrHelp {
     // We need this step because the UI isn't allowed to modify the as stored value
     return results
   }
-
-  // getCurrentData() {
-  //   return {
-  //     propertyName: this.dataKey,
-  //     value: this.component.getCurrentData()
-  //   }
-  // }
 
   getInputValue(def) {
     let inputs = this.currentDialog.inputs
@@ -269,6 +267,10 @@ export default class EhrHelp {
    */
   beginEdit(pageDataKey) {
     this.$store.commit('system/setEditing', true)
+    this.pageFormData = {
+      property: pageDataKey,
+      value: {}
+    }
     this.cacheData(pageDataKey)
   }
 
@@ -282,6 +284,7 @@ export default class EhrHelp {
       _this.$store.commit('system/setEditing', false)
       _this.$store.commit('system/setLoading', false)
     })
+    this.pageFormData = undefined
   }
 
   /**
@@ -291,8 +294,8 @@ export default class EhrHelp {
     const _this = this
     _this.$store.commit('system/setEditing', false)
     _this.$store.commit('system/setLoading', true)
-    let payload = this.getCurrentData()
-    // debugehr('saveEdit payload', JSON.stringify(payload))
+    let payload = this.pageFormData
+    debugehr('saveEdit payload', JSON.stringify(payload))
     _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
       _this.$store.commit('system/setLoading', false)
     })
@@ -306,10 +309,9 @@ export default class EhrHelp {
     var isEditing = this.$store.state.system.isEditing
     var result = false
     if (isEditing) {
-      let dataDef = this.getCurrentData()
-      let currentData = JSON.stringify(dataDef.value)
-      // debugehr('current data', currentData)
-      // debugehr('cacheAsString', this.cacheAsString)
+      let currentData = JSON.stringify(this.pageFormData.value)
+      debugehr('current data', currentData)
+      debugehr('cacheAsString', this.cacheAsString)
       result = this.cacheAsString !== currentData
     }
     return result
@@ -382,6 +384,16 @@ export default class EhrHelp {
     console.log(`On event from ${tableKey} ${elementKey} with dialog: ${d}`)
     let inputs = d.inputs
     inputs[elementKey] = value
+  }
+
+  _handlePageFormInputChangeEvent(eData) {
+    let element = eData.element
+    let elementKey = element.elementKey
+    let value = eData.value
+    console.log(`On event from ${elementKey} value: ${value}`)
+    // don't know yet where to put the data
+    // let inputs = d.inputs
+    // inputs[elementKey] = value
   }
 }
 

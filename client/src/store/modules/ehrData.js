@@ -93,7 +93,7 @@ const actions = {
       let url = `${apiUrl}/activity-data/get/${activityDataId}`
       return helper.getRequest(url).then(response => {
         let ad = response.data.activitydata
-        // console.log('Got activity information ', ad)
+        console.log('Got activity information ', ad)
         context.commit('_setActivityData', ad)
       })
     }

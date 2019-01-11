@@ -9,11 +9,12 @@
         option(v-for="option in element.options", v-bind:value="option.text") {{ option.text}}
     input(v-if="element.inputType === 'checkbox'", class="checkbox", type="checkbox", v-bind:name="element.elementKey", v-model="inputVal")
     label(v-if="element.inputType === 'checkbox'", class="label-checkbox", v-bind:for="element.elementKey") {{element.label}}
-    div {{computedValue}} {{inputVal}}
+    div(style="display:none") {{computedValue}} {{inputVal}}
 </template>
 
 <script>
 import EventBus from '../../event-bus'
+import { PAGE_FORM_INPUT_EVENT } from '../ehr-helper'
 
 // TODO checkboxes may not be reading data from the seed correctly
 // TODO day and time types
@@ -43,7 +44,18 @@ export default {
       return this.initialValue
     }
   },
-  methods: {}
+  methods: {},
+  watch: {
+    inputVal(val) {
+      if(this.notEditing) {
+        return
+      }
+      console.log('watch inputValue', val, PAGE_FORM_INPUT_EVENT)
+      // Send event when any input changes. The listener (EhrHelper) will collect the changes
+      // and be ready to send the changes to the server.
+      EventBus.$emit(PAGE_FORM_INPUT_EVENT, { value: val, element: this.element })
+    }
+  }
 }
 </script>
 
