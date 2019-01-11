@@ -1,14 +1,14 @@
 {path: /ehr}	{routeName: patient}	eCell	{label: Patient profile}	{redirect: demographics}	eCell
-{path: /ehr/patient}	{routeName: demographics}	{dataKey: demographics}	{label: Demographics}	{redirect: }	{generateComponent: yes}
-{path: /ehr/patient}	{routeName: allergies}	{dataKey: allergies}	{label: Allergies}	{redirect: }	{generateComponent: yes}
-{path: /ehr/patient}	{routeName: history}	{dataKey: history}	{label: History}	{redirect: medical}	{generateComponent: yes}
-{path: /ehr/patient/history}	{routeName: medical}	{dataKey: medical}	{label: Medical}	{redirect: }	{generateComponent: yes}
-{path: /ehr/patient/history}	{routeName: psychosocial}	{dataKey: psychosocial}	{label: Psychosocial}	{redirect: }	{generateComponent: yes}
-{path: /ehr/patient/history}	{routeName: surgical}	{dataKey: surgical}	{label: Surgical}	{redirect: }	{generateComponent: yes}
-{path: /ehr/patient/history}	{routeName: immunization}	{dataKey: immunization}	{label: Immunization}	{redirect: }	{generateComponent: yes}
-{path: /ehr/patient/history}	{routeName: family-history}	{dataKey: familyHistory}	{label: Family History}	{redirect: }	{generateComponent: yes}
-{path: /ehr/patient}	{routeName: care-team}	{dataKey: careTeam}	{label: Care team}	{redirect: }	{generateComponent: yes}
-{path: /ehr/patient}	{routeName: past-appointments}	{dataKey: pastAppointments}	{label: Past appointments}	{redirect: }	{generateComponent: yes}
+{path: /ehr/patient}	{routeName: demographics}	{pageDataKey: demographics}	{label: Demographics}	{redirect: }	{generateComponent: yes}
+{path: /ehr/patient}	{routeName: allergies}	{pageDataKey: allergies}	{label: Allergies}	{redirect: }	{generateComponent: yes}
+{path: /ehr/patient}	{routeName: history}	{pageDataKey: history}	{label: History}	{redirect: medical}	{generateComponent: yes}
+{path: /ehr/patient/history}	{routeName: medical}	{pageDataKey: medical}	{label: Medical}	{redirect: }	{generateComponent: yes}
+{path: /ehr/patient/history}	{routeName: psychosocial}	{pageDataKey: psychosocial}	{label: Psychosocial}	{redirect: }	{generateComponent: yes}
+{path: /ehr/patient/history}	{routeName: surgical}	{pageDataKey: surgical}	{label: Surgical}	{redirect: }	{generateComponent: yes}
+{path: /ehr/patient/history}	{routeName: immunization}	{pageDataKey: immunization}	{label: Immunization}	{redirect: }	{generateComponent: yes}
+{path: /ehr/patient/history}	{routeName: family-history}	{pageDataKey: familyHistory}	{label: Family History}	{redirect: }	{generateComponent: yes}
+{path: /ehr/patient}	{routeName: care-team}	{pageDataKey: careTeam}	{label: Care team}	{redirect: }	{generateComponent: yes}
+{path: /ehr/patient}	{routeName: past-appointments}	{pageDataKey: pastAppointments}	{label: Past appointments}	{redirect: }	{generateComponent: yes}
 {path: /ehr}	{routeName: current}	eCell	{label: Current visit}	{redirect: visit-details}	eCell
 {path: /ehr/current}	{routeName: visit-details}	eCell	{label: Visit details}	{redirect: }	eCell
 {path: /ehr/current}	{routeName: vital-signs}	eCell	{label: Vital signs}	{redirect: }	eCell
@@ -24,7 +24,7 @@
 {path: /ehr/current}	{routeName: no-med}	eCell	{label: Non-medication orders}	{redirect: no-med-orders}	eCell
 {path: /ehr/current/no-med}	{routeName: no-med-orders}	eCell	{label: Orders}	{redirect: }	eCell
 {path: /ehr/current/no-med}	{routeName: referrals}	eCell	{label: Referrals to other disciplines}	{redirect: }	eCell
-{path: /ehr/current/no-med}	{routeName: lab-requisitions}	{dataKey: labRequisitions}	{label: Lab requisitions}	{redirect: }	eCell
+{path: /ehr/current/no-med}	{routeName: lab-requisitions}	{pageDataKey: labRequisitions}	{label: Lab requisitions}	{redirect: }	eCell
 {path: /ehr/current}	{routeName: meds}	eCell	{label: Medication orders}	{redirect: }	eCell
 {path: /ehr/current}	{routeName: mar}	eCell	{label: MAR}	{redirect: }	eCell
 {path: /ehr/current}	{routeName: discharge}	eCell	{label: Discharge summary}	{redirect: }	eCell

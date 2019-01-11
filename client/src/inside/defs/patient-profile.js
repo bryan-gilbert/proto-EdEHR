@@ -2,7 +2,7 @@ module.exports = function() {
   return {
     demographics: {
       pageTitle: 'Demographics',
-      dataKey: 'demographics',
+      pageDataKey: 'demographics',
       hasForm: true,
       page_form: {
         rows: [
@@ -527,13 +527,11 @@ module.exports = function() {
         ],
         columnsCount: 3
       },
-      pageData: {
-        demographics: {}
-      }
+      pageData: {}
     },
     allergies: {
       pageTitle: 'Allergies',
-      dataKey: 'allergies',
+      pageDataKey: 'allergies',
       hasForm: true,
       page_form: {
         rows: [
@@ -549,6 +547,7 @@ module.exports = function() {
                 formRow: '1',
                 dataParent: 'allergies',
                 page: 'Allergies',
+                defaultValue: true,
                 validation: 'one of these two need to be filled'
               }
             ]
@@ -572,13 +571,11 @@ module.exports = function() {
         ],
         columnsCount: 1
       },
-      pageData: {
-        allergies: {}
-      }
+      pageData: {}
     },
     medical: {
       pageTitle: 'History Medical',
-      dataKey: 'medical',
+      pageDataKey: 'medical',
       hasForm: true,
       page_form: {
         rows: [
@@ -593,20 +590,19 @@ module.exports = function() {
                 formColumn: '1',
                 formRow: '1',
                 dataParent: 'medical',
-                page: 'History Medical'
+                page: 'History Medical',
+                defaultValue: 'sample default value'
               }
             ]
           }
         ],
         columnsCount: 1
       },
-      pageData: {
-        medical: {}
-      }
+      pageData: {}
     },
     psychosocial: {
       pageTitle: 'History Psychosocial',
-      dataKey: 'psychosocial',
+      pageDataKey: 'psychosocial',
       hasForm: true,
       page_form: {
         rows: [
@@ -673,13 +669,11 @@ module.exports = function() {
         ],
         columnsCount: 3
       },
-      pageData: {
-        psychosocial: {}
-      }
+      pageData: {}
     },
     surgical: {
       pageTitle: 'History Surgical',
-      dataKey: 'surgical',
+      pageDataKey: 'surgical',
       hasTable: true,
       tables: [
         {
@@ -812,15 +806,13 @@ module.exports = function() {
         }
       ],
       pageData: {
-        surgical: {
-          surgery: [],
-          previous: []
-        }
+        surgery: [],
+        previous: []
       }
     },
     immunization: {
       pageTitle: 'History Immunization',
-      dataKey: 'immunization',
+      pageDataKey: 'immunization',
       hasForm: true,
       page_form: {
         rows: [
@@ -1077,13 +1069,11 @@ module.exports = function() {
         ],
         columnsCount: 2
       },
-      pageData: {
-        immunization: {}
-      }
+      pageData: {}
     },
     familyHistory: {
       pageTitle: 'History Family',
-      dataKey: 'familyHistory',
+      pageDataKey: 'familyHistory',
       hasForm: true,
       page_form: {
         rows: [
@@ -1105,13 +1095,11 @@ module.exports = function() {
         ],
         columnsCount: 1
       },
-      pageData: {
-        familyHistory: {}
-      }
+      pageData: {}
     },
     careTeam: {
       pageTitle: 'Care team',
-      dataKey: 'careTeam',
+      pageDataKey: 'careTeam',
       hasTable: true,
       tables: [
         {
@@ -1146,14 +1134,12 @@ module.exports = function() {
         }
       ],
       pageData: {
-        careTeam: {
-          teams: []
-        }
+        teams: []
       }
     },
     pastAppointments: {
       pageTitle: 'Past appointments',
-      dataKey: 'pastAppointments',
+      pageDataKey: 'pastAppointments',
       hasTable: true,
       tables: [
         {
@@ -1392,15 +1378,13 @@ module.exports = function() {
         }
       ],
       pageData: {
-        pastAppointments: {
-          encounters: [],
-          outpatientAppointments: []
-        }
+        encounters: [],
+        outpatientAppointments: []
       }
     },
     visit: {
       pageTitle: 'Visit',
-      dataKey: 'visit',
+      pageDataKey: 'visit',
       hasForm: true,
       page_form: {
         rows: [
@@ -1571,9 +1555,7 @@ module.exports = function() {
         }
       ],
       pageData: {
-        visit: {
-          locations: []
-        }
+        locations: []
       }
     }
   }

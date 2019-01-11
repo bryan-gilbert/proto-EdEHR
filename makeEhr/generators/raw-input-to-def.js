@@ -73,18 +73,18 @@ class RawInputToDef {
     Object.values(masterPageDefs).forEach(page => {
       let uiP = {}
       uiP.pageTitle = page.label
-      uiP.dataKey = page.elementKey
+      uiP.pageDataKey = page.elementKey
       this._page(uiP, page)
       let pageData = {}
-      let pd = pageData[uiP.dataKey] = {}
+      // let pd = pageData[uiP.pageDataKey] = {}
       if (uiP.hasTable) {
         uiP.tables.forEach(table => {
-          pd[table.tableKey] = []
+          pageData[table.tableKey] = []
         })
       }
-      console.log('Data structure for page ' + uiP.dataKey + ' is ', pageData)
+      console.log('Data structure for page ' + uiP.pageDataKey + ' is ', pageData)
       uiP.pageData = pageData
-      pages[uiP.dataKey] = uiP
+      pages[uiP.pageDataKey] = uiP
     })
     return pages
   }
@@ -221,6 +221,7 @@ class RawInputToDef {
       let container = page.containers[key]
       if (container.type === PAGE_FORM) {
         uiP.hasForm = true
+        // TODO change to pageForm
         uiP.page_form = this._extractPageForm(container)
       } else if (container.type === TABLE_ROW) {
         uiP.hasTable = true

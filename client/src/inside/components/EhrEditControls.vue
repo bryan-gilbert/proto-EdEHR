@@ -16,7 +16,8 @@ export default {
     return {}
   },
   props: {
-    ehrHelp: { type: Object }
+    ehrHelp: { type: Object },
+    pageDataKey: { type: String }
   },
   computed: {
     isEditing() {
@@ -25,13 +26,13 @@ export default {
   },
   methods: {
     beginEdit: function() {
-      this.ehrHelp.beginEdit()
+      this.ehrHelp.beginEdit(this.pageDataKey)
     },
     cancelEdit: function() {
-      this.ehrHelp.cancelEdit()
+      this.ehrHelp.cancelEdit(this.pageDataKey)
     },
     saveEdit: function() {
-      this.ehrHelp.saveEdit()
+      this.ehrHelp.saveEdit(this.pageDataKey)
     }
   }
 }

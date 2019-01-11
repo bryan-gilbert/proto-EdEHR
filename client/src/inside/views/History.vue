@@ -3,13 +3,13 @@
   div(class="ehr-page")
     ehr-panel-header {{ uiProps.pageTitle }}
       div(slot="controls", v-show="showEditControls")
-        ehr-edit-controls(v-bind:ehrHelp="ehrHelp", @controlsCallback="controlsCallback")
+        ehr-edit-controls(v-bind:ehrHelp="ehrHelp", :pageDataKey="pageDataKey", @controlsCallback="controlsCallback")
     ehr-panel-content
       div(class="region ehr-page-content")
         ehr-page-form(v-if="uiProps.hasForm", v-bind:formDefs="uiProps.page_form", v-bind:theData="theData", v-bind:notEditing="notEditing")
         div(v-if="uiProps.hasTable")
           ehr-page-table(v-for="tableDef in uiProps.tables", :tableDef="tableDef", :key="tableDef.tableKey", :theData="tableData(tableDef)", :ehrHelp="ehrHelp", :showEditControls="showEditControls")
-    div(style="display:none") {{currentData}}
+    div(style="display:bock") {{currentData}}
     div(style="display:none")
       p This History page is generated.
       p Label: History
@@ -39,14 +39,14 @@ export default {
   },
   data: function() {
     return {
-      dataKey: 'history',
+      pageDataKey: 'history',
       theData: {},
       ehrHelp: undefined
     }
   },
   computed: {
     uiProps() {
-      return this.ehrHelp ? this.ehrHelp.getPageDefinition(this.dataKey) : {}
+      return this.ehrHelp ? this.ehrHelp.getPageDefinition(this.pageDataKey) : {}
     },
     showEditControls() {
       return this.ehrHelp.showEditControls()
@@ -59,8 +59,8 @@ export default {
       // By invoking this property theData is set (intentional side-effect)
       // and theData contains data from the database
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      this.theData = this.ehrHelp ? this.ehrHelp.mergedProperty(this.dataKey) : {}
-      // console.log('page current data', this.theData)
+      this.theData = this.ehrHelp ? this.ehrHelp.mergedProperty(this.pageDataKey) : {}
+      console.log('page current data', this.theData)
       return this.theData
     }
   },
@@ -78,7 +78,7 @@ export default {
     }
   },
   created() {
-    this.ehrHelp = new EhrHelp(this, this.$store, this.dataKey, this.uiProps)
+    this.ehrHelp = new EhrHelp(this, this.$store, this.pageDataKey, this.uiProps)
   },
   beforeRouteLeave(to, from, next) {
     this.ehrHelp.beforeRouteLeave(to, from, next)

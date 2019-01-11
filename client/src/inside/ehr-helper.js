@@ -1,11 +1,9 @@
 import EventBus from '../event-bus'
 import Vue from 'vue'
-
 const pageDefsPP = require('../inside/defs/patient-profile')()
+const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
 export const DIALOG_INPUT_EVENT = 'dialogInputEvent'
-
-const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
 export default class EhrHelp {
   constructor(component, store, dataKey, uiProps) {
@@ -33,42 +31,47 @@ export default class EhrHelp {
 
   getPageDefinition(pageKey) {
     let pageDef = pageDefsPP[pageKey]
-    console.log('pageDef ', pageKey, pageDef)
+    debugehr('getPageDefinition ' + pageKey, pageDef)
     return pageDef
   }
 
-  cacheData() {
-    // console.log('ehr helper caching data ', data)
-    // TO DO  fix inconsist use of mergedProperty -- where is the default here?
-    this.cacheAsString = JSON.stringify(this.mergedProperty())
+  cacheData(pageDataKey) {
+    debugehr('ehr helper caching data ', pageDataKey)
+    this.cacheAsString = JSON.stringify(this.mergedProperty(pageDataKey))
   }
 
+  getTableData() {
+    // TODO move tableData code from compoent here
+  }
   /**
    * Get and return the merged (seed + student's work) for the current page
    *
    * @returns {any}
    */
   mergedProperty(pageKey) {
-    console.log('get merged data')
+    if (!pageKey) {
+      errorehr('Must provide page key to get mergedPropert')
+      return
+    }
+    debugehr('mergedProperty get for', pageKey)
     let p = this.getPageDefinition(pageKey)
     let defaultValue = p.pageData
     if (!defaultValue) {
-      let d = {}
-      d[pageKey] = {}
-      defaultValue = d
-      console.log('Page defs did not spec a default so create one ', d)
+      defaultValue = {}
+      debugehr('mergedProperty page defs did not spec a default so create one ', d)
+    } else {
+      debugehr('mergedProperty page default data is ', JSON.stringify(defaultValue))
     }
-    // console.log('page default data: ', p, defaultData)
-    // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-    // this.theData = this.ehrHelp.mergedProperty(defaultData)
-
     let data = this.$store.getters['ehrData/mergedData'] || {}
-    console.log('as stored all data', data)
-    let asStored = data[this.dataKey] || defaultValue
-    console.log('as stored or default this page data "' + this.dataKey + '" data:', asStored)
+    let pageDataAsStored = data[pageKey]
+    let asStored = pageDataAsStored || defaultValue
+    let results = JSON.parse(JSON.stringify(asStored))
+    debugehr('mergedProperty as stored all data', data)
+    debugehr('mergedProperty as stored page data', pageDataAsStored)
+    debugehr('mergedProperty return results', results)
     // Intentional conversion to string to object to break connection with Vuex store.
     // We need this step because the UI isn't allowed to modify the as stored value
-    return JSON.parse(JSON.stringify(asStored))
+    return results
   }
 
   getCurrentData() {
@@ -81,7 +84,7 @@ export default class EhrHelp {
   getInputValue(def) {
     let inputs = this.currentDialog.inputs
     var val = inputs[def.elementKey]
-    console.log('helper provides val for key ', val, def.key)
+    debugehr('helper provides val for key ', val, def.key)
     return val
   }
 
@@ -95,6 +98,8 @@ export default class EhrHelp {
   setupColumnData(uiProps) {
     /*
      */
+    // TO DO get page key and pass to mergerProperty
+    console.log('TO DO get page key and pass to mergerProperty')
     let theData = this.mergedProperty()
     let assessments = Array.isArray(theData) ? theData : []
     let columns = []
@@ -133,11 +138,11 @@ export default class EhrHelp {
     let key = tableDef.tableKey
     let eData = { key: key, value: true }
     let channel = 'modal:' + key
-    // console.log('showDialog for this tableDef', tableDef)
+    // debugehr('showDialog for this tableDef', tableDef)
     EventBus.$emit(channel, eData)
     // add this dialog to the map
     this.dialogMap[key] = dialog
-    // console.log('set helper into each form element', tableDef.tableForm)
+    // debugehr('set helper into each form element', tableDef.tableForm)
     let rows = tableDef.tableForm.rows
     rows.forEach(row => {
       row.elements.forEach(def => {
@@ -148,7 +153,7 @@ export default class EhrHelp {
   }
 
   cancelDialog(key) {
-    // console.log('cancel dialog ', key)
+    // debugehr('cancel dialog ', key)
     this._clearDialogInputs(key)
     this._emitCloseEvent(key)
   }
@@ -159,13 +164,13 @@ export default class EhrHelp {
       _this.$store.commit('system/setLoading', true)
       let data = this.$store.getters['ehrData/assignmentData'] || {}
       let d = this.dialogMap[key]
-      console.log('saveDialog', d)
+      debugehr('saveDialog', d, 'data', data)
       let inputs = d.inputs
-      console.log('save dialog data into ', key)
+      debugehr('save dialog data into ', key)
       var modifiedValue = data[key] || []
       modifiedValue = modifiedValue ? JSON.parse(JSON.stringify(modifiedValue)) : []
       modifiedValue.push(inputs)
-      console.log('storing this: ', modifiedValue)
+      debugehr('storing this: ', modifiedValue, key, d.tableKey)
       // Prepare a payload to tell the API which property inside the assignment data to change
       let payload = {
         propertyName: key,
@@ -194,7 +199,7 @@ export default class EhrHelp {
     Vue.nextTick(function() {
       // Send an event on our transmission channel
       // with a payload containing this false
-      // console.log('emit event', eData, 'on', channel)
+      // debugehr('emit event', eData, 'on', channel)
       EventBus.$emit(channel, eData)
     })
   }
@@ -216,7 +221,7 @@ export default class EhrHelp {
     let d = this.dialogMap[key]
     let cells = d.tableDef.tableCells
     let inputs = d.inputs
-    console.log('what is in the inputs? ', inputs)
+    debugehr('what is in the inputs? ', inputs)
     d.errorList = []
     cells.forEach(cell => {
       if (cell.type === 'text') {
@@ -227,7 +232,7 @@ export default class EhrHelp {
           var value = inputs[cell.elementKey]
           if (rule.required && value.length === 0) {
             var msg = cell.label + ' is required'
-            console.log('validateInput', msg)
+            debugehr('validateInput', msg)
             d.errorList.push(msg)
           }
         })
@@ -262,9 +267,9 @@ export default class EhrHelp {
   /**
    * Begin editing a page form
    */
-  beginEdit() {
+  beginEdit(pageDataKey) {
     this.$store.commit('system/setEditing', true)
-    this.cacheData()
+    this.cacheData(pageDataKey)
   }
 
   /**
@@ -287,7 +292,7 @@ export default class EhrHelp {
     _this.$store.commit('system/setEditing', false)
     _this.$store.commit('system/setLoading', true)
     let payload = this.getCurrentData()
-    // console.log('saveEdit payload', JSON.stringify(payload))
+    // debugehr('saveEdit payload', JSON.stringify(payload))
     _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
       _this.$store.commit('system/setLoading', false)
     })
@@ -303,8 +308,8 @@ export default class EhrHelp {
     if (isEditing) {
       let dataDef = this.getCurrentData()
       let currentData = JSON.stringify(dataDef.value)
-      // console.log('current data', currentData)
-      // console.log('cacheAsString', this.cacheAsString)
+      // debugehr('current data', currentData)
+      // debugehr('cacheAsString', this.cacheAsString)
       result = this.cacheAsString !== currentData
     }
     return result
@@ -321,9 +326,9 @@ export default class EhrHelp {
    * @return {*}
    */
   beforeRouteLeave(to, from, next) {
-    // console.log('beforeRouteLeave ...', to)
+    // debugehr('beforeRouteLeave ...', to)
     let unsaved = this.unsavedData()
-    // console.log('beforeRouteLeave ...', unsaved)
+    // debugehr('beforeRouteLeave ...', unsaved)
     if (unsaved) {
       if (!window.confirm(LEAVE_PROMPT)) {
         // unsaved data and the user wants to stay
@@ -344,9 +349,9 @@ export default class EhrHelp {
    */
   beforeUnloadListener(event) {
     let e = event || window.event
-    // console.log('beforeunload ...', e)
+    // debugehr('beforeunload ...', e)
     let unsaved = this.unsavedData()
-    console.log('beforeunload ...', unsaved)
+    debugehr('beforeunload ...', unsaved)
     if (unsaved) {
       // according to specs use preventDefault too.
       e.preventDefault()
@@ -378,4 +383,13 @@ export default class EhrHelp {
     let inputs = d.inputs
     inputs[elementKey] = value
   }
+}
+
+function debugehr(msg) {
+  var args = Array.prototype.slice.call(arguments)
+  args.shift()
+  console.log('EHRhlp', msg, args)
+}
+function errorehr(msg, ...args) {
+  console.log('ERROR EHRhlp', msg, args)
 }

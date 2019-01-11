@@ -25,7 +25,7 @@
       "def": {
         "path": "/ehr/patient",
         "routeName": "demographics",
-        "dataKey": "demographics",
+        "pageDataKey": "demographics",
         "label": "Demographics",
         "redirect": "",
         "generateComponent": "yes",
@@ -45,7 +45,7 @@
       "def": {
         "path": "/ehr/patient",
         "routeName": "allergies",
-        "dataKey": "allergies",
+        "pageDataKey": "allergies",
         "label": "Allergies",
         "redirect": "",
         "generateComponent": "yes",
@@ -66,7 +66,7 @@
       "def": {
         "path": "/ehr/patient",
         "routeName": "history",
-        "dataKey": "history",
+        "pageDataKey": "history",
         "label": "History",
         "redirect": "medical",
         "generateComponent": "yes",
@@ -85,7 +85,7 @@
           "def": {
             "path": "/ehr/patient/history",
             "routeName": "medical",
-            "dataKey": "medical",
+            "pageDataKey": "medical",
             "label": "Medical",
             "redirect": "",
             "generateComponent": "yes",
@@ -105,7 +105,7 @@
           "def": {
             "path": "/ehr/patient/history",
             "routeName": "psychosocial",
-            "dataKey": "psychosocial",
+            "pageDataKey": "psychosocial",
             "label": "Psychosocial",
             "redirect": "",
             "generateComponent": "yes",
@@ -125,7 +125,7 @@
           "def": {
             "path": "/ehr/patient/history",
             "routeName": "surgical",
-            "dataKey": "surgical",
+            "pageDataKey": "surgical",
             "label": "Surgical",
             "redirect": "",
             "generateComponent": "yes",
@@ -145,7 +145,7 @@
           "def": {
             "path": "/ehr/patient/history",
             "routeName": "immunization",
-            "dataKey": "immunization",
+            "pageDataKey": "immunization",
             "label": "Immunization",
             "redirect": "",
             "generateComponent": "yes",
@@ -165,7 +165,7 @@
           "def": {
             "path": "/ehr/patient/history",
             "routeName": "family-history",
-            "dataKey": "familyHistory",
+            "pageDataKey": "familyHistory",
             "label": "Family History",
             "redirect": "",
             "generateComponent": "yes",
@@ -187,7 +187,7 @@
       "def": {
         "path": "/ehr/patient",
         "routeName": "care-team",
-        "dataKey": "careTeam",
+        "pageDataKey": "careTeam",
         "label": "Care team",
         "redirect": "",
         "generateComponent": "yes",
@@ -207,7 +207,7 @@
       "def": {
         "path": "/ehr/patient",
         "routeName": "past-appointments",
-        "dataKey": "pastAppointments",
+        "pageDataKey": "pastAppointments",
         "label": "Past appointments",
         "redirect": "",
         "generateComponent": "yes",
@@ -500,7 +500,7 @@
           "def": {
             "path": "/ehr/current/no-med",
             "routeName": "lab-requisitions",
-            "dataKey": "labRequisitions",
+            "pageDataKey": "labRequisitions",
             "label": "Lab requisitions",
             "redirect": "",
             "componentName": "LabRequisitions",
