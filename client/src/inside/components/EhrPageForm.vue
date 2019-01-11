@@ -1,25 +1,22 @@
 <template lang="pug">
   div
-    div  {{pageDataKey}} kk
+    div
     div(:class="row.classList", v-for="row in formDefs.rows", v-bind:key="row.rowNumber")
       div(class="column" :class="element.classList", v-for="element in row.elements", v-bind:key="element.elementKey")
-        label(v-if="element.inputType !== 'checkbox'", v-bind:for="element.elementKey") {{element.label}} {{element.elementKey}} {{theData[element.elementKey]}} qed
-        input(v-if="element.inputType === 'text'", class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="theData[element.elementKey]")
-        textarea(v-if="element.inputType === 'textarea'", class="ehr-page-form-textarea", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="theData[element.elementKey]")
-        div(v-if="element.inputType === 'select'", class="select")
-          select(v-bind:name="element.elementKey", v-bind:disabled="notEditing", v-model="theData[element.elementKey]")
-            option(disabled,value="") Please select one
-            option(v-for="option in element.options", v-bind:value="option.text") {{ option.text}}
-        input(v-if="element.inputType === 'checkbox'", class="checkbox", type="checkbox", v-bind:name="element.elementKey", v-model="theData[element.elementKey]")
-        label(v-if="element.inputType === 'checkbox'", class="label-checkbox", v-bind:for="element.elementKey") {{element.label}}
+        ehr-page-form-element(:notEditing="notEditing", :element="element", :ehrHelp="ehrHelp" :initialValue="theData[element.elementKey]")
     div(style="display:none") {{currentData}}
 </template>
 
 <script>
+import EhrPageFormElement from '../components/EhrPageFormElement.vue'
+
 // TODO checkboxes may not be reading data from the seed correctly
 // TODO ? day and time types
 export default {
   name: 'EhrPageForm',
+  components: {
+    EhrPageFormElement
+  },
   data: function() {
     return {
       theData: {}
@@ -30,7 +27,6 @@ export default {
     ehrHelp: { type: Object }
   },
   computed: {
-    // v-bind:formDefs="uiProps.page_form", v-bind:theData="theData", v-bind:notEditing="notEditing"
     formDefs() {
       let pageDef = this.ehrHelp
         ? this.ehrHelp.getPageDefinition(this.pageDataKey)
@@ -49,7 +45,7 @@ export default {
       // and theData contains data from the database
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       this.theData = this.setUpDefaults()
-      console.log('EHR Page Form: page current data', this.theData)
+      // console.log('EHR Page Form: page current data', this.theData)
       return this.theData
     }
   },

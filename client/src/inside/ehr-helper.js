@@ -31,7 +31,7 @@ export default class EhrHelp {
 
   getPageDefinition(pageKey) {
     let pageDef = pageDefsPP[pageKey]
-    debugehr('getPageDefinition ' + pageKey, pageDef)
+    // debugehr('getPageDefinition ' + pageKey, pageDef)
     return pageDef
   }
 
@@ -53,33 +53,33 @@ export default class EhrHelp {
       errorehr('Must provide page key to get mergedPropert')
       return
     }
-    debugehr('mergedProperty get for', pageKey)
+    // debugehr('mergedProperty get for', pageKey)
     let p = this.getPageDefinition(pageKey)
     let defaultValue = p.pageData
     if (!defaultValue) {
       defaultValue = {}
-      debugehr('mergedProperty page defs did not spec a default so create one ', d)
+      debugehr('mergedProperty page defs did not spec a default so create one ', defaultValue)
     } else {
-      debugehr('mergedProperty page default data is ', JSON.stringify(defaultValue))
+      // debugehr('mergedProperty page default data is ', JSON.stringify(defaultValue))
     }
     let data = this.$store.getters['ehrData/mergedData'] || {}
     let pageDataAsStored = data[pageKey]
     let asStored = pageDataAsStored || defaultValue
     let results = JSON.parse(JSON.stringify(asStored))
-    debugehr('mergedProperty as stored all data', data)
-    debugehr('mergedProperty as stored page data', pageDataAsStored)
-    debugehr('mergedProperty return results', results)
+    // debugehr('mergedProperty as stored all data', data)
+    // debugehr('mergedProperty as stored page data', pageDataAsStored)
+    // debugehr('mergedProperty return results', results)
     // Intentional conversion to string to object to break connection with Vuex store.
     // We need this step because the UI isn't allowed to modify the as stored value
     return results
   }
 
-  getCurrentData() {
-    return {
-      propertyName: this.dataKey,
-      value: this.component.getCurrentData()
-    }
-  }
+  // getCurrentData() {
+  //   return {
+  //     propertyName: this.dataKey,
+  //     value: this.component.getCurrentData()
+  //   }
+  // }
 
   getInputValue(def) {
     let inputs = this.currentDialog.inputs

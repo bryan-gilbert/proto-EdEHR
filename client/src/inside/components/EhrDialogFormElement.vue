@@ -103,6 +103,8 @@ export default {
   watch: {
     inputVal(val) {
       // console.log('watch inputValue', val, DIALOG_INPUT_EVENT)
+      // Send event when any input changes. The listener (EhrHelper) will collect the changes
+      // and be ready to send the changes to the server.
       let def = this.def
       EventBus.$emit(DIALOG_INPUT_EVENT, { value: val, def: def })
     }
