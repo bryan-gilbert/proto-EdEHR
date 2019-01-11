@@ -44,29 +44,12 @@ export default {
       // By invoking this property theData is set (intentional side-effect)
       // and theData contains data from the database
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      this.theData = this.setUpDefaults()
+      this.theData = this.ehrHelp.mergedProperty(this.pageDataKey)
       // console.log('EHR Page Form: page current data', this.theData)
       return this.theData
     }
   },
   methods: {
-    setUpDefaults() {
-      let theData = this.ehrHelp.mergedProperty(this.pageDataKey)
-      let pageDef = this.ehrHelp.getPageDefinition(this.pageDataKey)
-      let formDefs = pageDef.page_form
-      let rows = formDefs.rows
-      rows.forEach(row => {
-        row.elements.forEach(element => {
-          // console.log(element)
-          let defaultValue = element.defaultValue || ''
-          // TODO see about date, time, and boolean default values
-          if (!theData[element.elementKey]) {
-            this.$set(theData, element.elementKey, defaultValue)
-          }
-        })
-      })
-      return theData
-    }
   }
 }
 </script>

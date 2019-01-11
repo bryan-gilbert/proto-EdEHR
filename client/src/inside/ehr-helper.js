@@ -59,24 +59,39 @@ export default class EhrHelp {
       return
     }
     // debugehr('mergedProperty get for', pageKey)
-    let p = this.getPageDefinition(pageKey)
-    let defaultValue = p.pageData
-    if (!defaultValue) {
-      defaultValue = {}
-      debugehr('mergedProperty page defs did not spec a default so create one ', defaultValue)
-    } else {
-      // debugehr('mergedProperty page default data is ', JSON.stringify(defaultValue))
-    }
-    let data = this.$store.getters['ehrData/mergedData'] || {}
-    let pageDataAsStored = data[pageKey]
-    let asStored = pageDataAsStored || defaultValue
-    let results = JSON.parse(JSON.stringify(asStored))
-    // debugehr('mergedProperty as stored all data', data)
-    // debugehr('mergedProperty as stored page data', pageDataAsStored)
-    // debugehr('mergedProperty return results', results)
+    let pageDef = this.getPageDefinition(pageKey)
+    let data = this.$store.getters['ehrData/mergedData']
     // Intentional conversion to string to object to break connection with Vuex store.
     // We need this step because the UI isn't allowed to modify the as stored value
-    return results
+    data = JSON.parse(JSON.stringify(data))
+    let pageData = data[pageKey]
+    if (!pageData) {
+      let defaultPageValue = pageDef.pageData
+      if (!defaultPageValue) {
+        defaultPageValue = {}
+        debugehr('mergedProperty page defs did not spec a default so create one ', defaultPageValue)
+      } else {
+        debugehr('mergedProperty page default data is ', JSON.stringify(defaultPageValue))
+      }
+      pageData = defaultPageValue
+    }
+    let formDefs = pageDef.page_form
+    if(formDefs) {
+      let rows = formDefs.rows
+      rows.forEach(row => {
+        row.elements.forEach(element => {
+          // console.log(element)
+          let defaultValue = element.defaultValue || ''
+          // TODO see about date, time, and boolean default values
+          if (!pageData[element.elementKey]) {
+            pageData[element.elementKey] = defaultValue
+          }
+        })
+      })
+    }
+    debugehr('mergedProperty as stored all data', data)
+    debugehr('mergedProperty as stored page data', pageData)
+    return pageData
   }
 
   getInputValue(def) {
