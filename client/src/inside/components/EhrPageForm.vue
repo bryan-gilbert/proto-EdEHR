@@ -9,6 +9,8 @@
 
 <script>
 import EhrPageFormElement from '../components/EhrPageFormElement.vue'
+import EventBus from '../../event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from '../ehr-helper'
 
 // TODO checkboxes may not be reading data from the seed correctly
 // TODO ? day and time types
@@ -44,12 +46,29 @@ export default {
       // By invoking this property theData is set (intentional side-effect)
       // and theData contains data from the database
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      this.theData = this.ehrHelp.mergedProperty(this.pageDataKey)
+      // this.theData = this.ehrHelp.mergedProperty(this.pageDataKey)
+      this.refresh()
       // console.log('EHR Page Form: page current data', this.theData)
       return this.theData
     }
   },
   methods: {
+    refresh() {
+      this.theData = this.ehrHelp.getAsLoadedPageData()
+    }
+  },
+  mounted: function() {
+    const _this = this
+    this.refreshEventHandler = function() {
+      console.log('received page refresh event')
+      _this.refresh()
+    }
+    EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+  },
+  beforeDestroy: function() {
+    if (this.refreshEventHandler) {
+      EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+    }
   }
 }
 </script>

@@ -5,6 +5,7 @@ const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
 export const DIALOG_INPUT_EVENT = 'dialogInputEvent'
 export const PAGE_FORM_INPUT_EVENT = 'PAGE_FORM_INPUT_EVENT'
+export const PAGE_DATA_REFRESH_EVENT = 'PAGE_DATA_REFRESH_EVENT'
 
 export default class EhrHelp {
   constructor(component, store, dataKey, uiProps) {
@@ -36,13 +37,14 @@ export default class EhrHelp {
 
   getPageDefinition(pageKey) {
     let pageDef = pageDefsPP[pageKey]
-    // debugehr('getPageDefinition ' + pageKey, pageDef)
+    debugehr('getPageDefinition ' + pageKey, pageDef)
     return pageDef
   }
 
-  cacheData(pageDataKey) {
-    debugehr('ehr helper caching data ', pageDataKey)
-    this.cacheAsString = JSON.stringify(this.mergedProperty(pageDataKey))
+  getAsLoadedPageData() {
+    let pageKey = this.$store.state.system.currentPageKey
+    let pageDef = this.getPageDefinition(pageKey)
+    return pageDef.asLoadedData
   }
 
   getTableData() {
@@ -58,9 +60,10 @@ export default class EhrHelp {
       errorehr('Must provide page key to get mergedPropert')
       return
     }
-    // debugehr('mergedProperty get for', pageKey)
+    debugehr('MERGED mergedProperty get for', pageKey)
+    this.$store.commit('system/setCurrentPageKey', pageKey)
     let pageDef = this.getPageDefinition(pageKey)
-    let data = this.$store.getters['ehrData/mergedData']
+    let data = this.$store.getters['ehrData/mergedData'] || {}
     // Intentional conversion to string to object to break connection with Vuex store.
     // We need this step because the UI isn't allowed to modify the as stored value
     data = JSON.parse(JSON.stringify(data))
@@ -91,6 +94,7 @@ export default class EhrHelp {
     }
     debugehr('mergedProperty as stored all data', data)
     debugehr('mergedProperty as stored page data', pageData)
+    pageDef.asLoadedData = pageData
     return pageData
   }
 
@@ -286,7 +290,7 @@ export default class EhrHelp {
       property: pageDataKey,
       value: {}
     }
-    this.cacheData(pageDataKey)
+    // this.cacheData(pageDataKey)
   }
 
   /**
@@ -294,10 +298,13 @@ export default class EhrHelp {
    */
   cancelEdit() {
     const _this = this
-    _this.$store.commit('system/setLoading', true)
+    let pageKey = this.$store.state.system.currentPageKey
+    this.$store.commit('system/setLoading', true)
     this.$store.dispatch('ehrData/restoreActivityData').then(() => {
       _this.$store.commit('system/setEditing', false)
       _this.$store.commit('system/setLoading', false)
+      _this.mergedProperty(pageKey)
+      EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
     })
     this.pageFormData = undefined
   }
@@ -310,9 +317,12 @@ export default class EhrHelp {
     _this.$store.commit('system/setEditing', false)
     _this.$store.commit('system/setLoading', true)
     let payload = this.pageFormData
+    let pageKey = this.$store.state.system.currentPageKey
     debugehr('saveEdit payload', JSON.stringify(payload))
     _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
       _this.$store.commit('system/setLoading', false)
+      _this.mergedProperty(pageKey)
+      EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
     })
   }
 
@@ -322,12 +332,14 @@ export default class EhrHelp {
    */
   unsavedData() {
     var isEditing = this.$store.state.system.isEditing
+    let asLoadedData = this.getAsLoadedPageData()
     var result = false
     if (isEditing) {
       let currentData = JSON.stringify(this.pageFormData.value)
+      let cacheData = JSON.stringify(asLoadedData)
       debugehr('current data', currentData)
-      debugehr('cacheAsString', this.cacheAsString)
-      result = this.cacheAsString !== currentData
+      debugehr('cacheAsString', cacheData)
+      result = cacheData !== currentData
     }
     return result
   }
@@ -405,7 +417,7 @@ export default class EhrHelp {
     let element = eData.element
     let elementKey = element.elementKey
     let value = eData.value
-    console.log(`On event from ${elementKey} value: ${value}`)
+    debugehr(`On event from ${elementKey} value: ${value}`)
     // don't know yet where to put the data
     // let inputs = d.inputs
     // inputs[elementKey] = value

@@ -1,6 +1,7 @@
 const state = {
   isLoading: false,
-  isEditing: false
+  isEditing: false,
+  currentPageKey: ''
 }
 
 const getters = {}
@@ -13,6 +14,9 @@ const mutations = {
   },
   setEditing: (state, isEditing) => {
     state.isEditing = isEditing
+  },
+  setCurrentPageKey: (state, pageKey) => {
+    state.currentPageKey = pageKey
   }
 }
 

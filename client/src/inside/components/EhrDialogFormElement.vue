@@ -56,9 +56,9 @@ export default {
       }
       return ''
     },
-    eventChannelListen() {
+    dependentPropertyChangeChannel() {
       if (this.def.parent) {
-        // console.log('eventChannelListen daf.parent', this.def.parent)
+        // console.log('dependentPropertyChangeChannel daf.parent', this.def.parent)
         return 'radio:' + this.def.parent.elementKey
       }
       return null
@@ -82,22 +82,22 @@ export default {
       // we're receiving an event transmitted by another instance of this component. An instance
       // that has sent a message on the channel this component listens on.
       this.gotHit = this.def.targetValue === eData.value
-      // console.log(`On channel ${this.eventChannelListen} from key ${eData.key} got hit? ${this.gotHit}`)
+      // console.log(`On channel ${this.dependentPropertyChangeChannel} from key ${eData.key} got hit? ${this.gotHit}`)
     }
   },
   mounted: function() {
     const _this = this
-    if (this.eventChannelListen) {
+    if (this.dependentPropertyChangeChannel) {
       this.eventHandler = function(eData) {
         _this.receiveEvent(eData)
       }
-      EventBus.$on(this.eventChannelListen, this.eventHandler) // eData => { this.receiveEvent(eData) })
+      EventBus.$on(this.dependentPropertyChangeChannel, this.eventHandler) // eData => { this.receiveEvent(eData) })
     }
   },
   beforeDestroy: function() {
-    if (this.eventChannelListen && this.eventHandler) {
-      // console.log('beforeDestroy, remove listener',this.eventChannelListen)
-      EventBus.$off(this.eventChannelListen, this.eventHandler)
+    if (this.dependentPropertyChangeChannel && this.eventHandler) {
+      // console.log('beforeDestroy, remove listener',this.dependentPropertyChangeChannel)
+      EventBus.$off(this.dependentPropertyChangeChannel, this.eventHandler)
     }
   },
   watch: {

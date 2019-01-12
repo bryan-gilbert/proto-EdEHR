@@ -15,6 +15,7 @@
 <script>
 import EventBus from '../../event-bus'
 import { PAGE_FORM_INPUT_EVENT } from '../ehr-helper'
+import { PAGE_DATA_REFRESH_EVENT } from '../ehr-helper'
 
 // TODO checkboxes may not be reading data from the seed correctly
 // TODO day and time types
@@ -32,7 +33,7 @@ export default {
     ehrHelp: { type: Object },
     initialValue: {
       // to accept any object type we provide a validator that accepts all types
-      validator: function (value) {
+      validator: function(value) {
         return true
       }
     }
@@ -44,16 +45,41 @@ export default {
       return this.initialValue
     }
   },
-  methods: {},
+  methods: {
+    refresh() {
+      let pageData = this.ehrHelp.getAsLoadedPageData()
+      let key = this.element.elementKey
+      let value = pageData[key]
+      console.log('EhrPageForm refresh page data ', key, value, this.notEditing)
+      this.inputVal = value
+    }
+  },
   watch: {
     inputVal(val) {
-      if(this.notEditing) {
+      if (this.notEditing) {
+        // only broadcast if user is editing the form
         return
       }
-      console.log('watch inputValue', val, PAGE_FORM_INPUT_EVENT)
+      // console.log('EhrPageForm watch inputValue', val, PAGE_FORM_INPUT_EVENT)
       // Send event when any input changes. The listener (EhrHelper) will collect the changes
       // and be ready to send the changes to the server.
       EventBus.$emit(PAGE_FORM_INPUT_EVENT, { value: val, element: this.element })
+    },
+    initialValue(val) {
+      console.log('EhrPageForm page form element watching initial value', val)
+    }
+  },
+  mounted: function() {
+    const _this = this
+    this.refreshEventHandler = function() {
+      console.log('EhrPageForm received page refresh event')
+      _this.refresh()
+    }
+    EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+  },
+  beforeDestroy: function() {
+    if (this.refreshEventHandler) {
+      EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
     }
   }
 }
