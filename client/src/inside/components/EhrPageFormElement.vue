@@ -20,7 +20,7 @@ import { PAGE_DATA_REFRESH_EVENT } from '../ehr-helper'
 // TODO checkboxes may not be reading data from the seed correctly
 // TODO day and time types
 export default {
-  name: 'EhrPageForm',
+  name: 'EhrPageFormElement',
   data: function() {
     return {
       inputVal: this.computedValue,
@@ -40,6 +40,8 @@ export default {
   },
   computed: {
     computedValue() {
+      // let key = this.element.elementKey
+      // console.log('EhrPageFormElement initialValue', key,  this.initialValue)
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       this.inputVal = this.initialValue
       return this.initialValue
@@ -50,7 +52,7 @@ export default {
       let pageData = this.ehrHelp.getAsLoadedPageData()
       let key = this.element.elementKey
       let value = pageData[key]
-      console.log('EhrPageForm refresh page data ', key, value, this.notEditing)
+      // console.log('EhrPageFormElement refresh page data ', key, value, this.notEditing)
       this.inputVal = value
     }
   },
@@ -60,19 +62,21 @@ export default {
         // only broadcast if user is editing the form
         return
       }
-      // console.log('EhrPageForm watch inputValue', val, PAGE_FORM_INPUT_EVENT)
+      // console.log('EhrPageFormElement watch inputValue', val, PAGE_FORM_INPUT_EVENT)
       // Send event when any input changes. The listener (EhrHelper) will collect the changes
       // and be ready to send the changes to the server.
       EventBus.$emit(PAGE_FORM_INPUT_EVENT, { value: val, element: this.element })
-    },
-    initialValue(val) {
-      console.log('EhrPageForm page form element watching initial value', val)
     }
+    // ,
+    // initialValue(val) {
+    //   // TODO why watch?
+    //   console.log('EhrPageFormElement page form element (TODO WHY) watching initial value', val)
+    // }
   },
   mounted: function() {
     const _this = this
     this.refreshEventHandler = function() {
-      console.log('EhrPageForm received page refresh event')
+      console.log('EhrPageFormElement received page refresh event')
       _this.refresh()
     }
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)

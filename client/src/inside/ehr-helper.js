@@ -1,5 +1,6 @@
 import EventBus from '../event-bus'
 import Vue from 'vue'
+import {ACTIVITY_DATA_EVENT} from '../event-bus'
 const pageDefsPP = require('../inside/defs/patient-profile')()
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
@@ -29,6 +30,12 @@ export default class EhrHelp {
       _this._handlePageFormInputChangeEvent(eData)
     }
     EventBus.$on(PAGE_FORM_INPUT_EVENT, this.pageFormInputChangeEventHandler)
+
+    this.activityDataChangeEventHandler = function(eData) {
+      _this._handleActivityDataChangeEvent(eData)
+    }
+    EventBus.$on(ACTIVITY_DATA_EVENT, this.activityDataChangeEventHandler)
+
     if (uiProps.hasTransposedTable) {
       this.setupColumnData(uiProps)
     }
@@ -37,7 +44,7 @@ export default class EhrHelp {
 
   getPageDefinition(pageKey) {
     let pageDef = pageDefsPP[pageKey]
-    debugehr('getPageDefinition ' + pageKey, pageDef)
+    // debugehr('getPageDefinition ' + pageKey, pageDef)
     return pageDef
   }
 
@@ -50,6 +57,7 @@ export default class EhrHelp {
   getTableData() {
     // TODO move tableData code from compoent here
   }
+
   /**
    * Get and return the merged (seed + student's work) for the current page
    *
@@ -115,8 +123,8 @@ export default class EhrHelp {
   setupColumnData(uiProps) {
     /*
      */
-    // TO DO get page key and pass to mergerProperty
-    console.log('TO DO get page key and pass to mergerProperty')
+    // TODO get page key and pass to mergerProperty
+    console.log('TODO get page key and pass to mergerProperty')
     let theData = this.mergedProperty()
     let assessments = Array.isArray(theData) ? theData : []
     let columns = []
@@ -287,7 +295,7 @@ export default class EhrHelp {
   beginEdit(pageDataKey) {
     this.$store.commit('system/setEditing', true)
     this.pageFormData = {
-      property: pageDataKey,
+      propertyName: pageDataKey,
       value: {}
     }
     // this.cacheData(pageDataKey)
@@ -321,8 +329,6 @@ export default class EhrHelp {
     debugehr('saveEdit payload', JSON.stringify(payload))
     _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
       _this.$store.commit('system/setLoading', false)
-      _this.mergedProperty(pageKey)
-      EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
     })
   }
 
@@ -417,10 +423,17 @@ export default class EhrHelp {
     let element = eData.element
     let elementKey = element.elementKey
     let value = eData.value
-    debugehr(`On event from ${elementKey} value: ${value}`)
-    // don't know yet where to put the data
-    // let inputs = d.inputs
-    // inputs[elementKey] = value
+    let pageData = this.pageFormData.value
+    let oldVal = pageData[elementKey]
+    debugehr(`Input change event from ${elementKey} value: ${value} old val: ${oldVal}`)
+    pageData[elementKey] = value
+  }
+
+  _handleActivityDataChangeEvent() {
+    debugehr('Activity data changed. Trigger a load and refres')
+    let pageKey = this.$store.state.system.currentPageKey
+    this.mergedProperty(pageKey)
+    EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   }
 }
 

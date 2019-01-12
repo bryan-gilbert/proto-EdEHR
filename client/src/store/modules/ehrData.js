@@ -1,4 +1,6 @@
 import StoreHelper from './storeHelper'
+import EventBus from '../../event-bus'
+import {ACTIVITY_DATA_EVENT} from '../../event-bus'
 const helper = new StoreHelper()
 
 const state = {
@@ -75,7 +77,7 @@ const actions = {
     return helper.getRequest(url).then(response => {
       let ad = response.data.activitydata
       context.commit('_setForStudent', options.forStudent)
-      // console.log('Got activity information ', ad)
+      console.log('Got activity information ', ad.mergedData.demographics)
       if (options.forStudent) {
         context.commit('_setActivityData', ad)
       } else {
@@ -162,6 +164,7 @@ const mutations = {
     // console.log('_setActivityData', cData)
     // console.log('_setActivityData\'s assignment', cData.assignment)
     state.sActivityData = cData
+    EventBus.$emit(ACTIVITY_DATA_EVENT)
   },
   _setCurrentStudentData: (state, activitydata) => {
     let _sCurrentStudentData = {

@@ -60,7 +60,7 @@ export default {
   mounted: function() {
     const _this = this
     this.refreshEventHandler = function() {
-      console.log('received page refresh event')
+      // console.log('received page refresh event')
       _this.refresh()
     }
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
