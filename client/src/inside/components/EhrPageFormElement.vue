@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    label(v-if="element.inputType !== 'checkbox'", v-bind:for="element.elementKey") {{element.label}} {{element.elementKey}} val: {{inputVal}}
+    label(v-if="element.inputType !== 'checkbox'", v-bind:for="element.elementKey") {{element.label}}
     input(v-if="element.inputType === 'text'", class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
     textarea(v-if="element.inputType === 'textarea'", class="ehr-page-form-textarea", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
     div(v-if="element.inputType === 'select'", class="select")

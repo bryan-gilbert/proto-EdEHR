@@ -251,7 +251,7 @@ module.exports = function() {
                 fqn: 'demographics.streetAddress',
                 inputType: 'text',
                 label: 'Street address',
-                formCss: 'twoOfThree',
+                formCss: 'is-two-thirds',
                 formColumn: '1',
                 formRow: '5',
                 dataParent: 'demographics',

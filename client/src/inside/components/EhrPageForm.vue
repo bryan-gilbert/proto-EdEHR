@@ -1,8 +1,7 @@
 <template lang="pug">
   div
-    div
-    div(:class="row.classList", v-for="row in formDefs.rows", v-bind:key="row.rowNumber")
-      div(class="column" :class="element.classList", v-for="element in row.elements", v-bind:key="element.elementKey")
+    div(:class="row.classList", class="columns", v-for="row in formDefs.rows", v-bind:key="row.rowNumber")
+      div(class="column", :class="[formColClass(element)]", v-for="element in row.elements", v-bind:key="element.elementKey")
         ehr-page-form-element(:notEditing="notEditing", :element="element", :ehrHelp="ehrHelp" :initialValue="theData[element.elementKey]")
     div(style="display:none") {{currentData}}
 </template>
@@ -50,9 +49,12 @@ export default {
       this.refresh()
       // console.log('EHR Page Form: page current data', this.theData)
       return this.theData
-    }
+    },
   },
   methods: {
+    formColClass: function (element) {
+      return element.formCss ? element.formCss : 'is-one-thirds'
+    },
     refresh() {
       this.theData = this.ehrHelp.getAsLoadedPageData()
     }
