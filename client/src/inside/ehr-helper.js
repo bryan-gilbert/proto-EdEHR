@@ -176,7 +176,7 @@ export default class EhrHelp {
     let key = tableDef.tableKey
     let eData = { key: key, value: true }
     let channel = 'modal:' + key
-    // debugehr('showDialog for this tableDef', tableDef)
+    debugehr('showDialog for key' + key + ' tableDef', tableDef)
     EventBus.$emit(channel, eData)
     // add this dialog to the map
     this.dialogMap[key] = dialog
@@ -199,6 +199,7 @@ export default class EhrHelp {
   saveDialog(key) {
     const _this = this
     if (this._validateInputs(key)) {
+      debugehr('saveDialog for key' + key)
       _this.$store.commit('system/setLoading', true)
       let data = this.$store.getters['ehrData/assignmentData'] || {}
       let d = this.dialogMap[key]
@@ -227,6 +228,7 @@ export default class EhrHelp {
   }
 
   getErrorList(key) {
+    debugehr('get error list for key' + key)
     let d = this.dialogMap[key]
     return d ? d.errorList : []
   }
@@ -243,6 +245,7 @@ export default class EhrHelp {
   }
 
   _clearDialogInputs(key) {
+    debugehr('clear dialog for key' + key)
     let d = this.dialogMap[key]
     let cells = d.tableDef.tableCells
     let inputs = d.inputs
@@ -256,6 +259,7 @@ export default class EhrHelp {
 
   // TODO validation will need rework as part of the DDD refactor
   _validateInputs(key) {
+    debugehr('validate dialog for key' + key)
     let d = this.dialogMap[key]
     let cells = d.tableDef.tableCells
     let inputs = d.inputs
@@ -430,6 +434,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
     let tableKey = def.tableKey
     let elementKey = def.elementKey
     let value = eData.value
+    debugehr('hanlde dialog input change for key' + tableKey)
     let d = this.dialogMap[tableKey]
     console.log(`On event from ${tableKey} ${elementKey} with dialog: ${d}`)
     let inputs = d.inputs

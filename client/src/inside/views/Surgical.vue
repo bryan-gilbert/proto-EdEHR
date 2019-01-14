@@ -6,9 +6,9 @@
         ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey", @controlsCallback="controlsCallback")
     ehr-panel-content
       div(class="region ehr-page-content")
-        ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
-        div(v-if="uiProps.hasTable")
-          ehr-page-table(v-for="tableDef in uiProps.tables", :tableDef="tableDef", :key="tableDef.tableKey", :theData="tableData(tableDef)", :ehrHelp="ehrHelp", :showEditControls="showEditControls")
+        ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
+        div(v-if="uiProps.hasTable", v-for="tableDef in uiProps.tables", :key="tableDef.tableKey")
+          ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
     div(style="display:none")
       p This Surgical page is generated.
       p Label: Surgical
@@ -56,8 +56,11 @@ export default {
       callback(this.theData)
     },
     tableData(tableDef) {
-      // console.log('return table data', tableDef.tableKey)
-      let td = this.theData[tableDef.tableKey]
+      let key = tableDef.tableKey
+      let theData = this.theData
+      console.log('tableData get data for', key, theData)
+      let td = theData[key]
+      console.log('tableData return ', td)
       return td
     }
   },
