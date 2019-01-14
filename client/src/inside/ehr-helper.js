@@ -1,6 +1,6 @@
 import EventBus from '../event-bus'
 import Vue from 'vue'
-import {ACTIVITY_DATA_EVENT} from '../event-bus'
+import { ACTIVITY_DATA_EVENT } from '../event-bus'
 const pageDefsPP = require('../inside/defs/patient-profile')()
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
@@ -78,6 +78,7 @@ export default class EhrHelp {
     let pageDef = this.prepareAsLoadedData(pageKey)
     return pageDef.asLoadedData
   }
+
   prepareAsLoadedData(pageKey) {
     let pageDef = this.getPageDefinition(pageKey)
     let data = this.$store.getters['ehrData/mergedData'] || {}
@@ -96,7 +97,7 @@ export default class EhrHelp {
       pageData = defaultPageValue
     }
     let formDefs = pageDef.page_form
-    if(formDefs) {
+    if (formDefs) {
       let rows = formDefs.rows
       rows.forEach(row => {
         row.elements.forEach(element => {
@@ -303,11 +304,11 @@ export default class EhrHelp {
    */
   beginEdit(pageDataKey) {
     this.$store.commit('system/setEditing', true)
+    let asLoadedData = this.getAsLoadedPageData(pageDataKey)
     this.pageFormData = {
       propertyName: pageDataKey,
-      value: {}
+      value: asLoadedData
     }
-    // this.cacheData(pageDataKey)
   }
 
   /**
