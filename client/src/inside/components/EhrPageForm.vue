@@ -49,14 +49,18 @@ export default {
       this.refresh()
       // console.log('EHR Page Form: page current data', this.theData)
       return this.theData
-    },
+    }
   },
   methods: {
-    formColClass: function (element) {
+    formColClass: function(element) {
+      // TODO determine correct css class based on form's column count
+      console.log('EhrPageForm need to get correct css class here based on form column count')
       return element.formCss ? element.formCss : 'is-one-thirds'
     },
     refresh() {
-      this.theData = this.ehrHelp.getAsLoadedPageData()
+      console.log('EhrPageForm rehresh for page key', this.pageDataKey)
+      this.theData = this.ehrHelp.getAsLoadedPageData(this.pageDataKey)
+      console.log('EhrPageForm rehresh found data', this.theData)
     }
   },
   mounted: function() {

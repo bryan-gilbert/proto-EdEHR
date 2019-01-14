@@ -22,6 +22,7 @@ const containerElementProperties = [
   'tableColumn',
   'formColumn',
   'formRow',
+  'pageDataKey',
   'dataParent',
   'page',
   'defaultValue',

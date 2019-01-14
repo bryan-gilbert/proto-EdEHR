@@ -63,7 +63,6 @@ export default {
   },
   created() {
     this.ehrHelp = new EhrHelp(this, this.$store, this.pageDataKey, this.uiProps)
-    this.ehrHelp.mergedProperty(this.pageDataKey)
   },
   beforeRouteLeave(to, from, next) {
     this.ehrHelp.beforeRouteLeave(to, from, next)

@@ -49,7 +49,8 @@ export default {
   },
   methods: {
     refresh() {
-      let pageData = this.ehrHelp.getAsLoadedPageData()
+      let pageDataKey = this.element.pageDataKey
+      let pageData = this.ehrHelp.getAsLoadedPageData(pageDataKey)
       let key = this.element.elementKey
       let value = pageData[key]
       // console.log('EhrPageFormElement refresh page data ', key, value, this.notEditing)

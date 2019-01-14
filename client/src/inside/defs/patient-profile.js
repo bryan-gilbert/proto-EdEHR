@@ -16,6 +16,7 @@ module.exports = function() {
                 label: 'Last name',
                 formColumn: '1',
                 formRow: '1',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics',
                 mandatory: 'yes'
@@ -27,6 +28,7 @@ module.exports = function() {
                 label: 'First name',
                 formColumn: '2',
                 formRow: '1',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics',
                 mandatory: 'yes'
@@ -38,6 +40,7 @@ module.exports = function() {
                 label: 'Middle name(s)',
                 formColumn: '3',
                 formRow: '1',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics'
               }
@@ -53,6 +56,7 @@ module.exports = function() {
                 label: 'Preferred name',
                 formColumn: '1',
                 formRow: '2',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics'
               },
@@ -63,6 +67,7 @@ module.exports = function() {
                 label: 'Date of birth',
                 formColumn: '2',
                 formRow: '2',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics'
               },
@@ -73,6 +78,7 @@ module.exports = function() {
                 label: 'Age',
                 formColumn: '3',
                 formRow: '2',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics',
                 mandatory: 'yes'
@@ -89,6 +95,7 @@ module.exports = function() {
                 label: 'Gender',
                 formColumn: '1',
                 formRow: '3',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics',
                 mandatory: 'yes',
@@ -123,6 +130,7 @@ module.exports = function() {
                 label: 'Martial status',
                 formColumn: '2',
                 formRow: '3',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics',
                 options: [
@@ -153,6 +161,7 @@ module.exports = function() {
                 label: 'Code status',
                 formColumn: '3',
                 formRow: '3',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics',
                 helperText:
@@ -193,6 +202,7 @@ module.exports = function() {
                 label: 'Primary language',
                 formColumn: '1',
                 formRow: '4',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics',
                 options: [
@@ -220,6 +230,7 @@ module.exports = function() {
                 label: 'Religion',
                 formColumn: '2',
                 formRow: '4',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics'
               },
@@ -230,6 +241,7 @@ module.exports = function() {
                 label: 'Do you identify as an indigenous person?',
                 formColumn: '3',
                 formRow: '4',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics',
                 options: [
@@ -254,6 +266,7 @@ module.exports = function() {
                 formCss: 'is-two-thirds',
                 formColumn: '1',
                 formRow: '5',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics'
               },
@@ -264,6 +277,7 @@ module.exports = function() {
                 label: 'City',
                 formColumn: '3',
                 formRow: '5',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics'
               }
@@ -279,6 +293,7 @@ module.exports = function() {
                 label: 'Country',
                 formColumn: '1',
                 formRow: '6',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics',
                 defaultValue: 'Canada'
@@ -290,6 +305,7 @@ module.exports = function() {
                 label: 'Postal code',
                 formColumn: '2',
                 formRow: '6',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics'
               },
@@ -300,6 +316,7 @@ module.exports = function() {
                 label: 'No address',
                 formColumn: '3',
                 formRow: '6',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics'
               }
@@ -315,6 +332,7 @@ module.exports = function() {
                 label: 'Phone number',
                 formColumn: '1',
                 formRow: '7',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics'
               },
@@ -325,6 +343,7 @@ module.exports = function() {
                 label: 'Email address',
                 formColumn: '2',
                 formRow: '7',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics'
               },
@@ -335,6 +354,7 @@ module.exports = function() {
                 label: 'Occupation/student',
                 formColumn: '3',
                 formRow: '7',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics'
               }
@@ -350,6 +370,7 @@ module.exports = function() {
                 label: 'PHN',
                 formColumn: '1',
                 formRow: '8',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics'
               },
@@ -360,6 +381,7 @@ module.exports = function() {
                 label: 'MRN',
                 formColumn: '2',
                 formRow: '8',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics'
               },
@@ -370,6 +392,7 @@ module.exports = function() {
                 label: 'Patient service',
                 formColumn: '3',
                 formRow: '8',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics'
               }
@@ -385,6 +408,7 @@ module.exports = function() {
                 label: 'Next of kin name',
                 formColumn: '1',
                 formRow: '9',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics'
               },
@@ -395,6 +419,7 @@ module.exports = function() {
                 label: 'Next of kin relationship',
                 formColumn: '2',
                 formRow: '9',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics',
                 options: [
@@ -452,6 +477,7 @@ module.exports = function() {
                 label: 'Next of kin phone',
                 formColumn: '3',
                 formRow: '9',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics'
               }
@@ -467,6 +493,7 @@ module.exports = function() {
                 label: 'Decision maker name',
                 formColumn: '1',
                 formRow: '10',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics'
               },
@@ -477,6 +504,7 @@ module.exports = function() {
                 label: 'Decision maker relationship',
                 formColumn: '2',
                 formRow: '10',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics',
                 options: [
@@ -519,6 +547,7 @@ module.exports = function() {
                 label: 'Decision maker phone',
                 formColumn: '3',
                 formRow: '10',
+                pageDataKey: 'demographics',
                 dataParent: 'demographics',
                 page: 'Demographics'
               }
@@ -545,6 +574,7 @@ module.exports = function() {
                 label: 'No known allergies',
                 formColumn: '1',
                 formRow: '1',
+                pageDataKey: 'allergies',
                 dataParent: 'allergies',
                 page: 'Allergies',
                 defaultValue: true,
@@ -562,6 +592,7 @@ module.exports = function() {
                 label: 'Allergies search',
                 formColumn: '1',
                 formRow: '2',
+                pageDataKey: 'allergies',
                 dataParent: 'allergies',
                 page: 'Allergies',
                 validation: 'one of these two need to be filled'
@@ -589,6 +620,7 @@ module.exports = function() {
                 label: 'Past medical history',
                 formColumn: '1',
                 formRow: '1',
+                pageDataKey: 'medical',
                 dataParent: 'medical',
                 page: 'History Medical',
                 defaultValue: 'sample default value'
@@ -616,6 +648,7 @@ module.exports = function() {
                 label: 'Psychosocial history',
                 formColumn: '1',
                 formRow: '1',
+                pageDataKey: 'psychosocial',
                 dataParent: 'psychosocial',
                 page: 'History Psychosocial'
               },
@@ -626,6 +659,7 @@ module.exports = function() {
                 label: 'Diet',
                 formColumn: '2',
                 formRow: '1',
+                pageDataKey: 'psychosocial',
                 dataParent: 'psychosocial',
                 page: 'History Psychosocial'
               },
@@ -636,6 +670,7 @@ module.exports = function() {
                 label: 'Living situation',
                 formColumn: '3',
                 formRow: '1',
+                pageDataKey: 'psychosocial',
                 dataParent: 'psychosocial',
                 page: 'History Psychosocial'
               }
@@ -651,6 +686,7 @@ module.exports = function() {
                 label: 'Employment/school',
                 formColumn: '1',
                 formRow: '2',
+                pageDataKey: 'psychosocial',
                 dataParent: 'psychosocial',
                 page: 'History Psychosocial'
               },
@@ -661,6 +697,7 @@ module.exports = function() {
                 label: 'Hobbies',
                 formColumn: '2',
                 formRow: '2',
+                pageDataKey: 'psychosocial',
                 dataParent: 'psychosocial',
                 page: 'History Psychosocial'
               }
@@ -688,6 +725,7 @@ module.exports = function() {
               tableColumn: '1',
               formColumn: '1',
               formRow: '1',
+              pageDataKey: 'surgical',
               dataParent: 'surgical.surgery',
               page: 'History Surgical',
               tableKey: 'surgery'
@@ -700,6 +738,7 @@ module.exports = function() {
               tableColumn: '2',
               formColumn: '2',
               formRow: '1',
+              pageDataKey: 'surgical',
               dataParent: 'surgical.surgery',
               page: 'History Surgical',
               tableKey: 'surgery'
@@ -718,6 +757,7 @@ module.exports = function() {
                     tableColumn: '1',
                     formColumn: '1',
                     formRow: '1',
+                    pageDataKey: 'surgical',
                     dataParent: 'surgical.surgery',
                     page: 'History Surgical',
                     tableKey: 'surgery'
@@ -730,6 +770,7 @@ module.exports = function() {
                     tableColumn: '2',
                     formColumn: '2',
                     formRow: '1',
+                    pageDataKey: 'surgical',
                     dataParent: 'surgical.surgery',
                     page: 'History Surgical',
                     tableKey: 'surgery'
@@ -752,6 +793,7 @@ module.exports = function() {
               tableColumn: '1',
               formColumn: '1',
               formRow: '1',
+              pageDataKey: 'surgical',
               dataParent: 'surgical.previous',
               page: 'History Surgical',
               tableKey: 'previous'
@@ -764,6 +806,7 @@ module.exports = function() {
               tableColumn: '2',
               formColumn: '2',
               formRow: '1',
+              pageDataKey: 'surgical',
               dataParent: 'surgical.previous',
               page: 'History Surgical',
               tableKey: 'previous'
@@ -782,6 +825,7 @@ module.exports = function() {
                     tableColumn: '1',
                     formColumn: '1',
                     formRow: '1',
+                    pageDataKey: 'surgical',
                     dataParent: 'surgical.previous',
                     page: 'History Surgical',
                     tableKey: 'previous'
@@ -794,6 +838,7 @@ module.exports = function() {
                     tableColumn: '2',
                     formColumn: '2',
                     formRow: '1',
+                    pageDataKey: 'surgical',
                     dataParent: 'surgical.previous',
                     page: 'History Surgical',
                     tableKey: 'previous'
@@ -826,6 +871,7 @@ module.exports = function() {
                 label: 'Hep A',
                 formColumn: '1',
                 formRow: '1',
+                pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
               },
@@ -836,6 +882,7 @@ module.exports = function() {
                 label: 'Hep A Date',
                 formColumn: '2',
                 formRow: '1',
+                pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
               }
@@ -851,6 +898,7 @@ module.exports = function() {
                 label: 'Hep B',
                 formColumn: '1',
                 formRow: '2',
+                pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
               },
@@ -861,6 +909,7 @@ module.exports = function() {
                 label: 'Hep B Date',
                 formColumn: '2',
                 formRow: '2',
+                pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
               }
@@ -876,6 +925,7 @@ module.exports = function() {
                 label: 'MMR',
                 formColumn: '1',
                 formRow: '3',
+                pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
               },
@@ -886,6 +936,7 @@ module.exports = function() {
                 label: 'MMR Date',
                 formColumn: '2',
                 formRow: '3',
+                pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
               }
@@ -901,6 +952,7 @@ module.exports = function() {
                 label: 'Pneumococcal',
                 formColumn: '1',
                 formRow: '4',
+                pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
               },
@@ -911,6 +963,7 @@ module.exports = function() {
                 label: 'Pneumococcal Date',
                 formColumn: '2',
                 formRow: '4',
+                pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
               }
@@ -926,6 +979,7 @@ module.exports = function() {
                 label: 'Polio diptheria pertussis',
                 formColumn: '1',
                 formRow: '5',
+                pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
               },
@@ -936,6 +990,7 @@ module.exports = function() {
                 label: 'Polio diptheria pertussis Date',
                 formColumn: '2',
                 formRow: '5',
+                pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
               }
@@ -951,6 +1006,7 @@ module.exports = function() {
                 label: 'TB',
                 formColumn: '1',
                 formRow: '6',
+                pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
               },
@@ -961,6 +1017,7 @@ module.exports = function() {
                 label: 'TB Date',
                 formColumn: '2',
                 formRow: '6',
+                pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
               }
@@ -976,6 +1033,7 @@ module.exports = function() {
                 label: 'Tetanus',
                 formColumn: '1',
                 formRow: '7',
+                pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
               },
@@ -986,6 +1044,7 @@ module.exports = function() {
                 label: 'Tetanus Date',
                 formColumn: '2',
                 formRow: '7',
+                pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
               }
@@ -1000,6 +1059,7 @@ module.exports = function() {
                 inputType: 'text',
                 formColumn: '1',
                 formRow: '8',
+                pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization',
                 validation: 'If other is selected, this is mandatory'
@@ -1011,6 +1071,7 @@ module.exports = function() {
                 label: 'Date',
                 formColumn: '2',
                 formRow: '8',
+                pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
               }
@@ -1025,6 +1086,7 @@ module.exports = function() {
                 inputType: 'text',
                 formColumn: '1',
                 formRow: '9',
+                pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization',
                 validation: 'If other is selected, this is mandatory'
@@ -1036,6 +1098,7 @@ module.exports = function() {
                 label: 'Date',
                 formColumn: '2',
                 formRow: '9',
+                pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
               }
@@ -1050,6 +1113,7 @@ module.exports = function() {
                 inputType: 'text',
                 formColumn: '1',
                 formRow: '10',
+                pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization',
                 validation: 'If other is selected, this is mandatory'
@@ -1061,6 +1125,7 @@ module.exports = function() {
                 label: 'Date',
                 formColumn: '2',
                 formRow: '10',
+                pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
               }
@@ -1087,6 +1152,7 @@ module.exports = function() {
                 label: 'Family medical history',
                 formColumn: '1',
                 formRow: '1',
+                pageDataKey: 'familyHistory',
                 dataParent: 'familyHistory',
                 page: 'History Family'
               }
@@ -1112,6 +1178,7 @@ module.exports = function() {
               inputType: 'text',
               label: 'Name',
               formColumn: '1',
+              pageDataKey: 'careTeam',
               dataParent: 'careTeam.teams',
               page: 'Care team',
               tableKey: 'teams'
@@ -1122,6 +1189,7 @@ module.exports = function() {
               inputType: 'text',
               label: 'Profession',
               formColumn: '2',
+              pageDataKey: 'careTeam',
               dataParent: 'careTeam.teams',
               page: 'Care team',
               tableKey: 'teams'
@@ -1154,6 +1222,7 @@ module.exports = function() {
               tableColumn: '1',
               formColumn: '1',
               formRow: '1',
+              pageDataKey: 'pastAppointments',
               dataParent: 'pastAppointments.encounters',
               page: 'Past appointments',
               tableKey: 'encounters'
@@ -1166,6 +1235,7 @@ module.exports = function() {
               tableColumn: '2',
               formColumn: '2',
               formRow: '1',
+              pageDataKey: 'pastAppointments',
               dataParent: 'pastAppointments.encounters',
               page: 'Past appointments',
               tableKey: 'encounters'
@@ -1178,6 +1248,7 @@ module.exports = function() {
               tableColumn: '3',
               formColumn: '1',
               formRow: '2',
+              pageDataKey: 'pastAppointments',
               dataParent: 'pastAppointments.encounters',
               page: 'Past appointments',
               tableKey: 'encounters'
@@ -1190,6 +1261,7 @@ module.exports = function() {
               tableColumn: '4',
               formColumn: '2',
               formRow: '2',
+              pageDataKey: 'pastAppointments',
               dataParent: 'pastAppointments.encounters',
               page: 'Past appointments',
               tableKey: 'encounters'
@@ -1208,6 +1280,7 @@ module.exports = function() {
                     tableColumn: '1',
                     formColumn: '1',
                     formRow: '1',
+                    pageDataKey: 'pastAppointments',
                     dataParent: 'pastAppointments.encounters',
                     page: 'Past appointments',
                     tableKey: 'encounters'
@@ -1220,6 +1293,7 @@ module.exports = function() {
                     tableColumn: '2',
                     formColumn: '2',
                     formRow: '1',
+                    pageDataKey: 'pastAppointments',
                     dataParent: 'pastAppointments.encounters',
                     page: 'Past appointments',
                     tableKey: 'encounters'
@@ -1237,6 +1311,7 @@ module.exports = function() {
                     tableColumn: '3',
                     formColumn: '1',
                     formRow: '2',
+                    pageDataKey: 'pastAppointments',
                     dataParent: 'pastAppointments.encounters',
                     page: 'Past appointments',
                     tableKey: 'encounters'
@@ -1249,6 +1324,7 @@ module.exports = function() {
                     tableColumn: '4',
                     formColumn: '2',
                     formRow: '2',
+                    pageDataKey: 'pastAppointments',
                     dataParent: 'pastAppointments.encounters',
                     page: 'Past appointments',
                     tableKey: 'encounters'
@@ -1271,6 +1347,7 @@ module.exports = function() {
               tableColumn: '1',
               formColumn: '1',
               formRow: '1',
+              pageDataKey: 'pastAppointments',
               dataParent: 'pastAppointments.outpatientAppointments',
               page: 'Past appointments',
               tableKey: 'outpatientAppointments'
@@ -1283,6 +1360,7 @@ module.exports = function() {
               tableColumn: '2',
               formColumn: '2',
               formRow: '1',
+              pageDataKey: 'pastAppointments',
               dataParent: 'pastAppointments.outpatientAppointments',
               page: 'Past appointments',
               tableKey: 'outpatientAppointments'
@@ -1295,6 +1373,7 @@ module.exports = function() {
               tableColumn: '3',
               formColumn: '1',
               formRow: '2',
+              pageDataKey: 'pastAppointments',
               dataParent: 'pastAppointments.outpatientAppointments',
               page: 'Past appointments',
               tableKey: 'outpatientAppointments'
@@ -1307,6 +1386,7 @@ module.exports = function() {
               tableColumn: '4',
               formColumn: '2',
               formRow: '2',
+              pageDataKey: 'pastAppointments',
               dataParent: 'pastAppointments.outpatientAppointments',
               page: 'Past appointments',
               tableKey: 'outpatientAppointments'
@@ -1325,6 +1405,7 @@ module.exports = function() {
                     tableColumn: '1',
                     formColumn: '1',
                     formRow: '1',
+                    pageDataKey: 'pastAppointments',
                     dataParent: 'pastAppointments.outpatientAppointments',
                     page: 'Past appointments',
                     tableKey: 'outpatientAppointments'
@@ -1337,6 +1418,7 @@ module.exports = function() {
                     tableColumn: '2',
                     formColumn: '2',
                     formRow: '1',
+                    pageDataKey: 'pastAppointments',
                     dataParent: 'pastAppointments.outpatientAppointments',
                     page: 'Past appointments',
                     tableKey: 'outpatientAppointments'
@@ -1354,6 +1436,7 @@ module.exports = function() {
                     tableColumn: '3',
                     formColumn: '1',
                     formRow: '2',
+                    pageDataKey: 'pastAppointments',
                     dataParent: 'pastAppointments.outpatientAppointments',
                     page: 'Past appointments',
                     tableKey: 'outpatientAppointments'
@@ -1366,6 +1449,7 @@ module.exports = function() {
                     tableColumn: '4',
                     formColumn: '2',
                     formRow: '2',
+                    pageDataKey: 'pastAppointments',
                     dataParent: 'pastAppointments.outpatientAppointments',
                     page: 'Past appointments',
                     tableKey: 'outpatientAppointments'
@@ -1398,6 +1482,7 @@ module.exports = function() {
                 label: 'Admission day',
                 formColumn: '1',
                 formRow: '1',
+                pageDataKey: 'visit',
                 dataParent: 'visit',
                 page: 'Visit'
               },
@@ -1408,6 +1493,7 @@ module.exports = function() {
                 label: 'Admission time',
                 formColumn: '2',
                 formRow: '1',
+                pageDataKey: 'visit',
                 dataParent: 'visit',
                 page: 'Visit'
               }
@@ -1423,6 +1509,7 @@ module.exports = function() {
                 label: 'Consent for treatment',
                 formColumn: '1',
                 formRow: '2',
+                pageDataKey: 'visit',
                 dataParent: 'visit',
                 page: 'Visit'
               },
@@ -1433,6 +1520,7 @@ module.exports = function() {
                 label: 'Admission status',
                 formColumn: '2',
                 formRow: '2',
+                pageDataKey: 'visit',
                 dataParent: 'visit',
                 page: 'Visit'
               }
@@ -1449,6 +1537,7 @@ module.exports = function() {
                 formCss: 'fullWidth',
                 formColumn: '1',
                 formRow: '3',
+                pageDataKey: 'visit',
                 dataParent: 'visit',
                 page: 'Visit'
               }
@@ -1471,6 +1560,7 @@ module.exports = function() {
               tableColumn: '1',
               formColumn: '1',
               formRow: '1',
+              pageDataKey: 'visit',
               dataParent: 'visit.locations',
               page: 'Visit',
               tableKey: 'locations'
@@ -1483,6 +1573,7 @@ module.exports = function() {
               tableColumn: '2',
               formColumn: '1',
               formRow: '2',
+              pageDataKey: 'visit',
               dataParent: 'visit.locations',
               page: 'Visit',
               tableKey: 'locations'
@@ -1495,6 +1586,7 @@ module.exports = function() {
               tableColumn: '3',
               formColumn: '2',
               formRow: '2',
+              pageDataKey: 'visit',
               dataParent: 'visit.locations',
               page: 'Visit',
               tableKey: 'locations'
@@ -1514,6 +1606,7 @@ module.exports = function() {
                     tableColumn: '1',
                     formColumn: '1',
                     formRow: '1',
+                    pageDataKey: 'visit',
                     dataParent: 'visit.locations',
                     page: 'Visit',
                     tableKey: 'locations'
@@ -1531,6 +1624,7 @@ module.exports = function() {
                     tableColumn: '2',
                     formColumn: '1',
                     formRow: '2',
+                    pageDataKey: 'visit',
                     dataParent: 'visit.locations',
                     page: 'Visit',
                     tableKey: 'locations'
@@ -1543,6 +1637,7 @@ module.exports = function() {
                     tableColumn: '3',
                     formColumn: '2',
                     formRow: '2',
+                    pageDataKey: 'visit',
                     dataParent: 'visit.locations',
                     page: 'Visit',
                     tableKey: 'locations'

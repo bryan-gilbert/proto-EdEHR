@@ -9,11 +9,11 @@ export const PAGE_FORM_INPUT_EVENT = 'PAGE_FORM_INPUT_EVENT'
 export const PAGE_DATA_REFRESH_EVENT = 'PAGE_DATA_REFRESH_EVENT'
 
 export default class EhrHelp {
-  constructor(component, store, dataKey, uiProps) {
+  constructor(component, store, pageKey, uiProps) {
     // the commponent reference is needed to save page form data
     this.component = component
     this.$store = store
-    this.dataKey = dataKey
+    this.pageKey = pageKey
     this.cacheAsString = ''
     const _this = this
     if (uiProps.hasForm) {
@@ -32,6 +32,7 @@ export default class EhrHelp {
     EventBus.$on(PAGE_FORM_INPUT_EVENT, this.pageFormInputChangeEventHandler)
 
     this.activityDataChangeEventHandler = function(eData) {
+      eData.pageKey = pageKey
       _this._handleActivityDataChangeEvent(eData)
     }
     EventBus.$on(ACTIVITY_DATA_EVENT, this.activityDataChangeEventHandler)
@@ -44,13 +45,15 @@ export default class EhrHelp {
 
   getPageDefinition(pageKey) {
     let pageDef = pageDefsPP[pageKey]
-    // debugehr('getPageDefinition ' + pageKey, pageDef)
+    debugehr('getPageDefinition ' + pageKey, pageDef)
     return pageDef
   }
 
-  getAsLoadedPageData() {
-    let pageKey = this.$store.state.system.currentPageKey
+  getAsLoadedPageData(pageKey) {
     let pageDef = this.getPageDefinition(pageKey)
+    if (!pageDef.asLoadedData) {
+      pageDef = this.prepareAsLoadedData(pageKey)
+    }
     return pageDef.asLoadedData
   }
 
@@ -69,7 +72,13 @@ export default class EhrHelp {
       return
     }
     debugehr('MERGED mergedProperty get for', pageKey)
+    // TODO rationalize the following side effect. Need to rework sometime to avoid such things
+    // set this.$store.state.system.currentPageKey ...
     this.$store.commit('system/setCurrentPageKey', pageKey)
+    let pageDef = this.prepareAsLoadedData(pageKey)
+    return pageDef.asLoadedData
+  }
+  prepareAsLoadedData(pageKey) {
     let pageDef = this.getPageDefinition(pageKey)
     let data = this.$store.getters['ehrData/mergedData'] || {}
     // Intentional conversion to string to object to break connection with Vuex store.
@@ -103,7 +112,7 @@ export default class EhrHelp {
     debugehr('mergedProperty as stored all data', data)
     debugehr('mergedProperty as stored page data', pageData)
     pageDef.asLoadedData = pageData
-    return pageData
+    return pageDef
   }
 
   getInputValue(def) {
@@ -338,9 +347,10 @@ export default class EhrHelp {
    */
   unsavedData() {
     var isEditing = this.$store.state.system.isEditing
-    let asLoadedData = this.getAsLoadedPageData()
     var result = false
     if (isEditing) {
+      let pageKey = this.$store.state.system.currentPageKey
+      let asLoadedData = this.getAsLoadedPageData(pageKey)
       let currentData = JSON.stringify(this.pageFormData.value)
       let cacheData = JSON.stringify(asLoadedData)
       debugehr('current data', currentData)
@@ -362,16 +372,16 @@ export default class EhrHelp {
    */
   beforeRouteLeave(to, from, next) {
     // debugehr('beforeRouteLeave ...', to)
-    let unsaved = this.unsavedData()
-    // debugehr('beforeRouteLeave ...', unsaved)
-    if (unsaved) {
-      if (!window.confirm(LEAVE_PROMPT)) {
-        // unsaved data and the user wants to stay
-        return next(false)
-      }
-    }
     var isEditing = this.$store.state.system.isEditing
     if (isEditing) {
+      let unsaved = this.unsavedData()
+      // debugehr('beforeRouteLeave ...', unsaved)
+      if (unsaved) {
+        if (!window.confirm(LEAVE_PROMPT)) {
+          // unsaved data and the user wants to stay
+          return next(false)
+        }
+      }
       this.$store.commit('system/setEditing', false)
     }
     next()
@@ -429,9 +439,9 @@ export default class EhrHelp {
     pageData[elementKey] = value
   }
 
-  _handleActivityDataChangeEvent() {
-    debugehr('Activity data changed. Trigger a load and refres')
-    let pageKey = this.$store.state.system.currentPageKey
+  _handleActivityDataChangeEvent(eData) {
+    debugehr('Activity data changed. Trigger a load and refresh')
+    let pageKey = eData.pageKey
     this.mergedProperty(pageKey)
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   }
