@@ -1,12 +1,12 @@
 import EventBus from '../event-bus'
 import Vue from 'vue'
 import { ACTIVITY_DATA_EVENT } from '../event-bus'
+import { DIALOG_INPUT_EVENT } from '../event-bus'
+import { PAGE_FORM_INPUT_EVENT } from '../event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from '../event-bus'
+
 const pageDefsPP = require('../inside/defs/patient-profile')()
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
-
-export const DIALOG_INPUT_EVENT = 'dialogInputEvent'
-export const PAGE_FORM_INPUT_EVENT = 'PAGE_FORM_INPUT_EVENT'
-export const PAGE_DATA_REFRESH_EVENT = 'PAGE_DATA_REFRESH_EVENT'
 
 export default class EhrHelp {
   constructor(component, store, pageKey, uiProps) {
@@ -32,6 +32,7 @@ export default class EhrHelp {
     EventBus.$on(PAGE_FORM_INPUT_EVENT, this.pageFormInputChangeEventHandler)
 
     this.activityDataChangeEventHandler = function(eData) {
+      eData = eData || {}
       eData.pageKey = pageKey
       _this._handleActivityDataChangeEvent(eData)
     }

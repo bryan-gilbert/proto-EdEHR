@@ -19,7 +19,7 @@
 
 <script>
 import EventBus from '../../event-bus'
-import { DIALOG_INPUT_EVENT } from '../ehr-helper'
+import { DIALOG_INPUT_EVENT } from '../../event-bus'
 
 // TODO day, time types
 

@@ -882,6 +882,7 @@ module.exports = function() {
                 label: 'Hep A Date',
                 formColumn: '2',
                 formRow: '1',
+                formOption: 'hideLabel',
                 pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
@@ -909,6 +910,7 @@ module.exports = function() {
                 label: 'Hep B Date',
                 formColumn: '2',
                 formRow: '2',
+                formOption: 'hideLabel',
                 pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
@@ -936,6 +938,7 @@ module.exports = function() {
                 label: 'MMR Date',
                 formColumn: '2',
                 formRow: '3',
+                formOption: 'hideLabel',
                 pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
@@ -963,6 +966,7 @@ module.exports = function() {
                 label: 'Pneumococcal Date',
                 formColumn: '2',
                 formRow: '4',
+                formOption: 'hideLabel',
                 pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
@@ -990,6 +994,7 @@ module.exports = function() {
                 label: 'Polio diptheria pertussis Date',
                 formColumn: '2',
                 formRow: '5',
+                formOption: 'hideLabel',
                 pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
@@ -1017,6 +1022,7 @@ module.exports = function() {
                 label: 'TB Date',
                 formColumn: '2',
                 formRow: '6',
+                formOption: 'hideLabel',
                 pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
@@ -1044,6 +1050,7 @@ module.exports = function() {
                 label: 'Tetanus Date',
                 formColumn: '2',
                 formRow: '7',
+                formOption: 'hideLabel',
                 pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
@@ -1071,6 +1078,7 @@ module.exports = function() {
                 label: 'Date',
                 formColumn: '2',
                 formRow: '8',
+                formOption: 'hideLabel',
                 pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
@@ -1098,6 +1106,7 @@ module.exports = function() {
                 label: 'Date',
                 formColumn: '2',
                 formRow: '9',
+                formOption: 'hideLabel',
                 pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
@@ -1125,6 +1134,7 @@ module.exports = function() {
                 label: 'Date',
                 formColumn: '2',
                 formRow: '10',
+                formOption: 'hideLabel',
                 pageDataKey: 'immunization',
                 dataParent: 'immunization',
                 page: 'History Immunization'
@@ -1556,8 +1566,8 @@ module.exports = function() {
               fqn: 'visit.locations.location',
               inputType: 'text',
               label: 'Patient location',
-              formCss: 'fullWidth',
               tableColumn: '1',
+              formCss: 'fullWidth',
               formColumn: '1',
               formRow: '1',
               pageDataKey: 'visit',
@@ -1602,8 +1612,8 @@ module.exports = function() {
                     fqn: 'visit.locations.location',
                     inputType: 'text',
                     label: 'Patient location',
-                    formCss: 'fullWidth',
                     tableColumn: '1',
+                    formCss: 'fullWidth',
                     formColumn: '1',
                     formRow: '1',
                     pageDataKey: 'visit',

@@ -18,10 +18,11 @@ const containerElementProperties = [
   'label',
   'css',
   'tableCss',
-  'formCss',
   'tableColumn',
+  'formCss',
   'formColumn',
   'formRow',
+  'formOption',
   'pageDataKey',
   'dataParent',
   'page',
@@ -263,7 +264,7 @@ class RawInputToDef {
     this._sortFormElements(rows)
     let form = {
       rows: rows,
-      // TODO in client code not here: adjust form column layout dependant on actual # of cols
+      // TODO column count in client code not here: adjust form column layout dependant on actual # of cols
       columnsCount: this._formColumnCount(rows)
     }
     return form

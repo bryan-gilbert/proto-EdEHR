@@ -1,24 +1,36 @@
 <template lang="pug">
   div
-    label(v-if="element.inputType !== 'checkbox'", v-bind:for="element.elementKey") {{element.label}}
+    label(v-if="element.inputType !== 'checkbox' && element.formOption !== 'hideLabel'", v-bind:for="element.elementKey") {{element.label}}
     input(v-if="element.inputType === 'text'", class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
+    input(v-if="element.inputType === 'date'", class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
     textarea(v-if="element.inputType === 'textarea'", class="ehr-page-form-textarea", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
     div(v-if="element.inputType === 'select'", class="select")
       select(v-bind:name="element.elementKey", v-bind:disabled="notEditing", v-model="inputVal")
         option(disabled,value="") Please select one
         option(v-for="option in element.options", v-bind:value="option.text") {{ option.text}}
-    input(v-if="element.inputType === 'checkbox'", class="checkbox", type="checkbox", v-bind:name="element.elementKey", v-model="inputVal")
+    input(v-if="element.inputType === 'checkbox'", class="checkbox", type="checkbox", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
     label(v-if="element.inputType === 'checkbox'", class="label-checkbox", v-bind:for="element.elementKey") {{element.label}}
     div(style="display:none") {{computedValue}} {{inputVal}}
 </template>
 
 <script>
 import EventBus from '../../event-bus'
-import { PAGE_FORM_INPUT_EVENT } from '../ehr-helper'
-import { PAGE_DATA_REFRESH_EVENT } from '../ehr-helper'
+import { PAGE_FORM_INPUT_EVENT } from '../../event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from '../../event-bus'
+/*
+TODO perhaps the markup could be a series of divs selected by inputType
+and their content could then be clean and clear markup for each of the input types.
+The way it is now is tight code but it's hard to understand.
 
-// TODO checkboxes may not be reading data from the seed correctly
-// TODO day and time types
+TODO date, day and time types
+
+TODO document the hideLabel value in the formOption property
+
+TODO on the Immunization and other pages there are fields that should only be active
+if the checkbox is checked. Implement the event based dependency
+that I've done in the EhrDialogFormElement
+ */
+
 export default {
   name: 'EhrPageFormElement',
   data: function() {
@@ -42,6 +54,7 @@ export default {
     computedValue() {
       // let key = this.element.elementKey
       // console.log('EhrPageFormElement initialValue', key,  this.initialValue)
+      // TODO check if this approach to initialization is the best. If so the document it here...
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       this.inputVal = this.initialValue
       return this.initialValue

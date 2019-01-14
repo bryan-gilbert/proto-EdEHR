@@ -9,10 +9,11 @@
 <script>
 import EhrPageFormElement from '../components/EhrPageFormElement.vue'
 import EventBus from '../../event-bus'
-import { PAGE_DATA_REFRESH_EVENT } from '../ehr-helper'
+import { PAGE_DATA_REFRESH_EVENT } from '../../event-bus'
+/*
+TODO on the History Immunization page we need a header label above all the dates.
+ */
 
-// TODO checkboxes may not be reading data from the seed correctly
-// TODO ? day and time types
 export default {
   name: 'EhrPageForm',
   components: {
