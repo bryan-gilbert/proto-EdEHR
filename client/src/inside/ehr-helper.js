@@ -167,7 +167,9 @@ export default class EhrHelp {
   }
 
   /* ********************* DIALOG  */
-
+  /*
+  TODO The table dialogs are still under development
+   */
   showDialog(tableDef, dialogInputs) {
     const _this = this
     let dialog = { tableDef: tableDef, inputs: dialogInputs }
@@ -312,6 +314,9 @@ export default class EhrHelp {
     }
   }
 
+  /*
+TODO the cancel edit page form is not restoring the as loaded data correctly, consistently
+ */
   /**
    * Cancel the edit on a page form. Restore values from the database.
    */
