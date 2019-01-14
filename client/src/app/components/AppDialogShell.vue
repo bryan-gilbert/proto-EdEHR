@@ -95,7 +95,7 @@ export default {
       }
       // console.log('resizeDirection', this.resizeDirection)
       const MIN_WIDTH = 200
-      const MIN_HEIGHT = 300
+      // const MIN_HEIGHT = 300
       const vm = this
       function north() {
         // vm.height -= deltaY

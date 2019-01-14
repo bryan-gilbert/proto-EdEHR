@@ -37,7 +37,7 @@ export default {
     showDialog: function() {
       this.resetNotes()
       this.showingDialog = true
-    },    
+    },
     cancelDialog: function() {
       this.resetNotes()
       this.showingDialog = false
@@ -68,6 +68,5 @@ export default {
     width: 100%;
     height: 6rem;
   }
-
 }
 </style>

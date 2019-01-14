@@ -341,7 +341,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
     _this.$store.commit('system/setEditing', false)
     _this.$store.commit('system/setLoading', true)
     let payload = this.pageFormData
-    let pageKey = this.$store.state.system.currentPageKey
+    // let pageKey = this.$store.state.system.currentPageKey
     debugehr('saveEdit payload', JSON.stringify(payload))
     _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
       _this.$store.commit('system/setLoading', false)

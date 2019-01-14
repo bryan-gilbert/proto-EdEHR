@@ -46,7 +46,7 @@ export default {
       // console.log('this.$route', this.$route)
       return this.$route.path
     },
-    isLoading () {
+    isLoading() {
       return this.$store.state.system.isLoading
     }
   }

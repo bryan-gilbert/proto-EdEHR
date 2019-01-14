@@ -1,6 +1,6 @@
 import StoreHelper from './storeHelper'
 import EventBus from '../../event-bus'
-import {ACTIVITY_DATA_EVENT} from '../../event-bus'
+import { ACTIVITY_DATA_EVENT } from '../../event-bus'
 const helper = new StoreHelper()
 
 const state = {
