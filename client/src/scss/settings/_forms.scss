@@ -1,6 +1,11 @@
 /* **********
-   *
-   * Styling generic input elements that appear in EdEHR dialogs
+
+ */
+.ehr-page {
+
+}
+
+/* **********
    *
    */
 @import '../../scss/settings/color.scss';
@@ -10,16 +15,21 @@
     display: flex;
   }
 
-    label,
-    input,
-    textarea {
-      display: block;
-    }
-  .label-checkbox {
+  li {
+    list-style-type: none;
+  }
+
+  label,
+  input,
+  textarea {
+    display: block;
+  }
+  .label-checkbox, .label-radio {
     display: inline;
     vertical-align: top;
+    margin-left: 5px;
   }
-  .checkbox {
+  .checkbox, .radio {
     display: inline;
     margin-right: 5px;
   }
@@ -39,21 +49,23 @@
       width: 100%;
     }
 
+  .input-element {
+    margin-right: 20px;
+  }
+
+  .input-element:last-child {
+    margin-right: 0;
+  }
+
   .input-element-full {
     width: 100%;
   }
 
   .input-element-small {
-    flex: 1 0 auto;
-    input {
-      width: 5rem;
-    }
+    flex: 1 0 5rem;
   }
   .input-element-medium {
-    flex: 2 0 auto;
-    input {
-      width: 15rem;
-    }
+    flex: 2 0 15rem;
   }
 
   .select select {
@@ -66,5 +78,23 @@
   }
   select {
     width: 100%;
+  }
+  .checklistWithOther {
+    label {
+      display: inline;
+    }
+    .radio {
+      height: 1rem;
+    }
+  }
+}
+
+.column_table {
+  .column_label {
+    text-align: right;
+  }
+
+  .column_value {
+    width: 5rem;
   }
 }

@@ -1,42 +1,75 @@
 // Generated VUE file. Before modifying see docs about Vue file generation 
 <template lang="pug">
-  div(:class="$options.name")
-    ehr-panel-header Surgical
+  div(class="ehr-page")
+    ehr-panel-header {{ uiProps.pageTitle }}
+      div(slot="controls", v-show="showEditControls")
+        ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey", @controlsCallback="controlsCallback")
     ehr-panel-content
-      div(class="region")
-        p This Surgical page is a generated placeholder. The actual content will be developed soon. So stay tuned.
-        p Label: Surgical
-        p Component name: Surgical
-        p Redirect: 
-        p Route name: surgical
-        p Full path: /ehr/patient/history/surgical
-        p Assignment Data: surgical
+      div(class="region ehr-page-content")
+        ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
+        div(v-if="uiProps.hasTable")
+          ehr-page-table(v-for="tableDef in uiProps.tables", :tableDef="tableDef", :key="tableDef.tableKey", :theData="tableData(tableDef)", :ehrHelp="ehrHelp", :showEditControls="showEditControls")
+    div(style="display:none")
+      p This Surgical page is generated.
+      p Label: Surgical
+      p Data Key: surgical
+      p Component name: Surgical
+      p Redirect: 
+      p Route name: surgical
+      p Full path: /ehr/patient/history/surgical
 </template>
 
 <script>
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
+import EhrEditControls from '../components/EhrEditControls.vue'
+import EhrPageTable from '../components/EhrPageTable'
+import EhrPageForm from '../components/EhrPageForm.vue'
+import EhrHelp from '../ehr-helper'
 
 export default {
   name: 'Surgical',
   components: {
     EhrPanelHeader,
-    EhrPanelContent
+    EhrPanelContent,
+    EhrPageForm,
+    EhrPageTable,
+    EhrEditControls
+  },
+  data: function() {
+    return {
+      pageDataKey: 'surgical',
+      theData: {},
+      ehrHelp: undefined
+    }
   },
   computed: {
-    isStudent() {
-      return this.$store.getters['visit/isStudent']
+    uiProps() {
+      return this.ehrHelp ? this.ehrHelp.getPageDefinition(this.pageDataKey) : {}
     },
-    surgical() {
-      let data = this.$store.getters['ehrData/mergedData'] || {}
-      let asStored = data.surgical || {}
-      return JSON.parse(JSON.stringify(asStored))
+    showEditControls() {
+      return this.ehrHelp.showEditControls()
     }
+  },
+  methods: {
+    controlsCallback(callback) {
+      callback(this.theData)
+    },
+    tableData(tableDef) {
+      // console.log('return table data', tableDef.tableKey)
+      let td = this.theData[tableDef.tableKey]
+      return td
+    }
+  },
+  created() {
+    this.ehrHelp = new EhrHelp(this, this.$store, this.pageDataKey, this.uiProps)
+  },
+  beforeRouteLeave(to, from, next) {
+    this.ehrHelp.beforeRouteLeave(to, from, next)
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.Surgical {
-}
+@import '../../scss/settings/forms';
 </style>
