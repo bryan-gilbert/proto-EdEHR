@@ -38,7 +38,8 @@ export default {
         })
       }
       const _this = this
-      _this._loadApiUrl(params2)
+      _this
+        ._loadApiUrl(params2)
         .then(() => {
           return loadVisitId()
         })
@@ -49,18 +50,16 @@ export default {
           let isInstructor = _this.$store.getters['visit/isInstructor']
           if (isInstructor) {
             // console.log('Page load instructor')
-            return _this.$store
-              .dispatch('instructor/loadCourses')
-              .then(() => {
-                // console.log('Page load instructor restoring?', restoring)
-                if (restoring) {
-                  _this.reloadInstructor()
-                }
-              })
-              .catch(err => {
-                console.log('ERROR ', err)
-              })
+            return _this.$store.dispatch('instructor/loadCourses').then(() => {
+              // console.log('Page load instructor restoring?', restoring)
+              if (restoring) {
+                return _this.reloadInstructor()
+              }
+            })
           }
+        })
+        .catch(err => {
+          alert(err + '\nSystem Error')
         })
     },
     /**
