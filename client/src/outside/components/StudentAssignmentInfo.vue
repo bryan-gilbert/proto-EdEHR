@@ -75,7 +75,8 @@ export default {
     },
     hasEvaluationNotes() {
       return this.activityData.evaluationData && this.activityData.evaluationData.trim().length > 0
-        ? 'has-evaluation-notes' : ''
+        ? 'has-evaluation-notes'
+        : ''
     }
   },
   data: function() {
@@ -94,7 +95,7 @@ export default {
       var name = this.studentVisit.assignment.ehrRoutePath
       console.log('Store the current student id that is being evaluated ', studentId)
       this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', studentId)
-      console.log("go to ehr with ", name)
+      console.log('go to ehr with ', name)
       this.$router.push(name)
     }
   }

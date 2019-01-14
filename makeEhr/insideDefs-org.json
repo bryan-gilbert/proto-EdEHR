@@ -18,7 +18,7 @@
   { "path": "/ehr/current/assessments", "rn": "respiratory", "label": "Respiratory" },
   { "path": "/ehr/current/assessments", "rn": "cardiovascular", "label": "Cardiovascular" },
   { "path": "/ehr/current/assessments", "rn": "gastrointestinal", "label": "Gastrointestinal"  },
-  { "path": "/ehr/current/assessments", "rn": "genitourinary", "label": "Genitourinary" },
+  { "novue": "true", "path": "/ehr/current/assessments", "rn": "genitourinary", "label": "Genitourinary" },
   { "path": "/ehr/current/assessments", "rn": "musculoskeletal", "label": "Musculoskeletal" },
   { "path": "/ehr/current/assessments", "rn": "pain", "label": "Pain" },
   { "path": "/ehr/current/assessments", "rn": "biopsychosocial", "label": "Biopsychosocial" },

@@ -1,5 +1,6 @@
 <template lang="pug">
   div(:class="$options.name")
+    ui-spinner(:loading="isLoading")
     app-header
     ehr-context-banner
     main(:class="`${$options.name}__main`")
@@ -21,6 +22,7 @@ import EhrSpecial from '../components/EhrSpecial.vue'
 import EhrNavPanel from '../components/EhrNavPanel.vue'
 import EhrBanner from '../components/EhrBanner.vue'
 import EhrContextBanner from '../components/EhrContextBanner'
+import UiSpinner from '../../app/ui/UiSpinner'
 
 export default {
   name: 'LayoutDefault',
@@ -31,7 +33,8 @@ export default {
     // EhrPanel,
     EhrNavPanel,
     EhrContextBanner,
-    EhrSpecial
+    EhrSpecial,
+    UiSpinner
   },
   data: function() {
     return {
@@ -42,6 +45,9 @@ export default {
     path() {
       // console.log('this.$route', this.$route)
       return this.$route.path
+    },
+    isLoading () {
+      return this.$store.state.system.isLoading
     }
   }
 }

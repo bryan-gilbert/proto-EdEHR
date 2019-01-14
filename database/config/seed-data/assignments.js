@@ -9,7 +9,7 @@ module.exports = function() {
     console.log("Running seeding assignments (case studies)");
 
     function makeSeed1() {
-      return {
+      return addDefaultSeed({
         progressNotes: [
           {
             name: getName(),
@@ -20,10 +20,10 @@ module.exports = function() {
             notes: getPhrase(15)
           }
         ]
-      };
+      });
     }
     function makeSeed2() {
-      return {
+      return addDefaultSeed({
         demographics: {
           familyName: "Johns",
           givenName: "Erin",
@@ -31,12 +31,12 @@ module.exports = function() {
           preferredName: "Erin",
           dateOfBirth: "09-SEP-1944",
           personAge: "74",
-          gender: "female",
-          martialStatus: "widowed",
+          gender: "Female",
+          martialStatus: "Widowed",
           codeStatus: "N/A",
-          languagePrimary: "english",
+          languagePrimary: "English",
           religion: "",
-          indigenous: "no",
+          indigenousIdentifyAs: "No",
           streetAddress: "402 Willow St.",
           city: "Vancouver",
           country: "Canada",
@@ -48,17 +48,17 @@ module.exports = function() {
           phn: "123456789",
           mrn: "",
           patientService: "",
-          nextOfKin: "Thomas Johns",
-          nextOfKinRelationsip: "Son",
+          nextOfKinName: "Thomas Johns",
+          nextOfKinRelationship: "Son",
           nextOfKinPhone: "604-555-9865",
           decisionMakerName: "Thomas John",
           decisionMakerRelationship: "Son",
           decisionMakerPhone: "604-555-9865"
         }
-      };
+      });
     }
     function makeSeed3() {
-      return {
+      return addDefaultSeed({
         visitDetails: {
           admissionDay: "0",
           admissionTime: "07:00",
@@ -75,7 +75,27 @@ module.exports = function() {
           admissionStatus: "Admitted",
           consentForTreatment: true
         }
-      };
+      });
+    }
+    function makeSeed4() {
+      return addDefaultSeed({
+        genitourinary: {
+          assessments: [
+            {
+              name: getName(),
+              profession: "Nurse",
+              unit: "ER",
+              day: "0",
+              time: "07:00",
+              notes: getPhrase(15)
+            }
+          ]
+        }
+      });
+    }
+    function addDefaultSeed(data) {
+      data.allergies = { hasNoAllergies: false, allergies: "peanuts" };
+      return data;
     }
 
     let ass1 = {
@@ -107,6 +127,34 @@ module.exports = function() {
       seedData: makeSeed3()
     };
 
+    let ass4 = {
+      externalId: "assignment4",
+      name: "Proof of concept assignment 4",
+      description: "Genitourinary data",
+      ehrRoutePath: "/ehr/current/assessments/genitourinary",
+      ehrRouteName: "genitourinary",
+      seedData: makeSeed4()
+    };
+
+    let ass5 = {
+      externalId: "assignment5",
+      name: "Proof of concept assignment 5",
+      description: "Surgical data",
+      ehrRoutePath: "/ehr/patient/history/surgical",
+      ehrRouteName: "surgical",
+      seedData: makeSeed2()
+    };
+
+    let ass6 = {
+      externalId: "assignment6",
+      name: "Proof of concept assignment 6",
+      description: "Medical History",
+      ehrRoutePath: "/ehr/patient/history/medical",
+      ehrRouteName: "medical",
+      seedData: makeSeed2()
+    };
+
+
     let defaultDef = {
       externalId: "defaultNonAssignment",
       name: "Default Non Assignment",
@@ -130,6 +178,15 @@ module.exports = function() {
       .then(() => {
         return Assignment.create(ass3);
       })
+      .then(() => {
+        return Assignment.create(ass4);
+      })
+      .then(() => {
+        return Assignment.create(ass5);
+      })
+    .then(() => {
+      return Assignment.create(ass6);
+    })
       .then(() => {
         resolve();
       });

@@ -40,11 +40,7 @@ export function outside() {
       name: 'assignments-listing',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/AssignmentsListing.vue'),
-      meta: {
-        layout: 'outside',
-        label: 'Assignments Listing',
-        topLevel: 'undefined'
-      }
+      meta: { layout: 'outside', label: 'Assignments Listing', topLevel: 'undefined' }
     },
     {
       path: '/activity-list/:activityId',
