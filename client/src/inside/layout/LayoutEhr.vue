@@ -1,16 +1,18 @@
 <template lang="pug">
-  div(:class="$options.name")
-    div(:class="`${$options.name}__page`")
+  div(class="ehr_layout")
+    div(class="ehr_layout__wrapper")
       ui-spinner(:loading="isLoading")
       app-header
-      main(:class="`${$options.name}__main`")
-        ehr-context-banner
-        div(name="mainContent", :class="`${$options.name}__main_content columns`")
-          div(name="nav", :class="`${$options.name}__nav column`")
+      ehr-context-banner
+      main(class="ehr_layout__main")
+        div(class="ehr_layout__main_content columns")
+          div(class="ehr_layout__nav column")
             ehr-nav-panel
-          div(name="content", :class="`${$options.name}__content`")
-            ehr-banner
-            div(name="content", :class="`${$options.name}__content_panel column`")
+          div(class="ehr_layout__content column")
+            div(class="ehr_layout__content_banner")
+              div(class="ehr_layout__content_banner_content")
+                ehr-banner
+            div(class="ehr_layout__content_page")
               slot Main EHR content for a component will appear here. The component is selected by the router
       app-footer
       input(class="checkbox", type="checkbox", v-model="showingSpecial")
@@ -57,16 +59,21 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/objects/wrapper.mixin';
-$contentMinHeigth: 700px;
-$navWidth: 234px;
+$contentMinHeight: 700px;
+$navMinWidth: 235px;
+/* $navMaxWidth: 360px; */
+/* for dev on my small box only ... */
+$navMaxWidth: 280px;
 $pageWidth: 1024px;
 @import '../../scss/settings/color.scss';
 
-.LayoutEhr {
+.ehr_layout {
+  margin: 1px;
   background-color: $grey60;
-  &__page {
-    @include wrapper('page');
+  &__wrapper {
+    width: 100%;
     border: $border-width solid $border1;
+    margin: 2px;
   }
   h1 {
     font-size: 3rem;
@@ -77,32 +84,51 @@ $pageWidth: 1024px;
     /*padding-left: 0;*/
     overflow: hidden;
     border: $border-width solid $border2;
+    margin: 2px;
   }
   &__main_content {
-    margin: 0;
+    /*margin: 0;*/
     border: $border-width solid $border3;
+    margin: 2px;
   }
   &__nav {
     /* max-width: $navWidth; */
-    min-width: 235px;
-    max-width: 360px;
+    min-width: $navMinWidth;
+    max-width: $navMaxWidth;
     width: 20%; /* of page width */
     padding: 0;
-    margin: 0;
+    /*margin: 0;*/
     border: $border-width solid $border4;
+    margin: 2px;
   }
   &__content {
-    /*
-    height: $contentMinHeigth;
     padding: 0;
+    border: $border-width solid $border4;
+    margin: 1px;
+    /*
+    height: $contentMinHeight;
     margin: 0;
     overflow-y: auto;
     */
-    border: 3px solid $border5;
   }
-  &__content_panel {
+  &__content_banner {
+    background-color: $grey10;
+    color: $grey60;
     border: $border-width solid $border6;
+    margin: 1px;
     padding: 0;
+  }
+  &__content_banner_content {
+    border: $border-width solid $border7;
+    margin: 1px;
+    padding: 0;
+    max-width: 80%;
+  }
+  &__content_page {
+    border: $border-width solid $border6;
+    margin: 1px;
+    padding: 0;
+    max-width: 80%
   }
 }
 </style>

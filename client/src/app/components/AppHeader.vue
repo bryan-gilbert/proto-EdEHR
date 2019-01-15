@@ -37,7 +37,6 @@ export default {
 .apphdr {
   background: $toolbar-background-color;
   color: $toolbar-color;
-  @include wrapper('page');
   border: $border-width solid $border1;
 
   .wrapper {
@@ -47,7 +46,6 @@ export default {
 
   .navList {
     display: flex;
-    border: $border-width solid $border5;
     /* default is flow in row without wrap */
   }
 
@@ -61,7 +59,6 @@ export default {
   }
 
   .navItem {
-    border: $border-width solid $border6;
     margin-right: 1em;
   }
 

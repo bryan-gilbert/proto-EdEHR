@@ -86,12 +86,6 @@ export default {
 @import '../../scss/settings/color.scss';
 
 .EhrBanner {
-  border: $border-width solid $border3;
-  background-color: $grey10;
-  color: $grey60;
-  // Todo fix this force height in a more repsonsive manner
-  //  height: 140px;
-
   &__content {
     margin: 0;
     padding: 0 1rem;
