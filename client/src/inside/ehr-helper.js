@@ -16,13 +16,14 @@ export default class EhrHelp {
     this.$store = store
     this.pageKey = pageKey
     this.cacheAsString = ''
-    const _this = this
-    if (uiProps.hasForm) {
-      window.addEventListener('beforeunload', function(event) {
-        _this.beforeUnloadListener(event)
-      })
-    }
     this.dialogMap = {}
+
+    const _this = this
+    this.windowUnloadHandler = function(eData) {
+      _this.beforeUnloadListener(eData)
+    }
+    window.addEventListener('beforeunload', this.windowUnloadHandler)
+
     this.dialogInputChangeEventHandler = function(eData) {
       _this._handleDialogInputChangeEvent(eData)
     }
@@ -47,6 +48,7 @@ export default class EhrHelp {
 
   beforeDestroy(pageKey) {
     debugehr('Before destroy', this.pageKey, pageKey)
+    window.removeEventListener('beforeunload', this.windowUnloadHandler)
     EventBus.$off(DIALOG_INPUT_EVENT, this.dialogInputChangeEventHandler)
     let pfuEventChannel = PAGE_FORM_INPUT_EVENT + pageKey
     EventBus.$off(pfuEventChannel, this.pageFormInputChangeEventHandler)

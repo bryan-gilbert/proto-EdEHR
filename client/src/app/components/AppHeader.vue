@@ -3,11 +3,11 @@
     div(class="wrapper")
       ul(class="navList")
         li(class="navItem")
-          router-link(class="navLink homeLink", :to="{ name: home }") Educational Electronic Health Record - {{ username }}
+          span(class="apptitle") Educational Electronic Health Record - {{ username }}
         li(class="navItem push")
           a(:href="lmsUrl", class="navLink") {{lmsName}}
         li(class="navItem")
-          router-link(:to="{ name: help }", class="navLink") Help
+          router-link(:to="{ name: `help` }", class="navLink") Help
 </template>
 
 <script>
@@ -51,6 +51,11 @@ export default {
     /* default is flow in row without wrap */
   }
 
+  .apptitle {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
   .push {
     margin-left: auto;
   }
@@ -60,10 +65,6 @@ export default {
     margin-right: 1em;
   }
 
-  .homeLink {
-    text-decoration: none;
-    font-weight: 500;
-  }
 
   .navLink {
     text-decoration: none;
