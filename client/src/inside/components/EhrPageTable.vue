@@ -8,14 +8,18 @@
           tr
             th(v-for="cell in tableDef.tableCells", :class="cell.propertyKey", :title="cell.propertyKey") {{ cell.label }}
         tbody
-          tr(v-for="item in theData")
-            td(v-for="cell in tableDef.tableCells", :class="cell.propertyKey") {{ item[cell.propertyKey] }}
-    ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :inputs="inputs", :errorList="errorList" )
+          tr(v-for="item in tableData")
+            td(v-for="cell in tableDef.tableCells", :class="cell.tableCss") {{ tableCellData(item, cell) }}
+    ehr-dialog-form(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :tableDef="tableDef", :inputs="inputs", :errorList="errorList" )
+    div(style="display:none") {{currentData}}
 </template>
 
 <script>
 import EhrDialogForm from '../components/EhrDialogForm.vue'
 import UiButton from '../../app/ui/UiButton.vue'
+import moment from 'moment'
+import EventBus from '../../event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from '../../event-bus'
 
 export default {
   name: 'EhrPageTable',
@@ -25,19 +29,30 @@ export default {
   },
   data: function() {
     return {
+      tableData: [],
       inputs: {}
     }
   },
   props: {
-    tableDef: { type: Object },
-    theData: { type: Array },
+    pageDataKey: { type: String },
     ehrHelp: { type: Object },
-    showEditControls: { type: Boolean }
+    tableDef: { type: Object }
   },
   computed: {
+    showEditControls() {
+      return this.ehrHelp.showEditControls()
+    },
+    currentData() {
+      // Note this property is invoked in a div above. Then hidden from view.
+      // By invoking this property tableData is set (intentional side-effect)
+      // and tableData contains data from the database
+      this.refresh()
+      console.log('EhrPageTable current table data', this.tableData)
+      return this.tableData
+    },
     tableForm() {
       let form = this.tableDef.tableForm
-      console.log('ehr page table get table form', this.tableDef)
+      console.log('EhrPageTable get table form', this.tableDef)
       return form
     },
     errorList() {
@@ -47,6 +62,36 @@ export default {
   methods: {
     showDialog: function() {
       this.ehrHelp.showDialog(this.tableDef, this.inputs)
+    },
+    tableCellData: function(item, cell) {
+      let value = item[cell.elementKey]
+      if (cell.inputType === 'date') {
+        let mom = moment(value, 'YYYY-MM-DDTHH:mm:ss ZZ')
+        if (mom.isValid()) value = mom.format('DD MMM YYYY')
+      }
+      return value
+    },
+    refresh() {
+      let tableKey = this.tableDef.tableKey
+      let pageKey = this.pageDataKey
+      console.log('EhrPageTable refresh for page table key', pageKey, tableKey)
+      let pageData = this.ehrHelp.getAsLoadedPageData(pageKey)
+      // store the current data into local data property for display
+      this.tableData = pageData[tableKey]
+      console.log('EhrPageTable refresh found data', this.tableData)
+    }
+  },
+  mounted: function() {
+    const _this = this
+    this.refreshEventHandler = function() {
+      console.log('EhrPageTable received page refresh event')
+      _this.refresh()
+    }
+    EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+  },
+  beforeDestroy: function() {
+    if (this.refreshEventHandler) {
+      EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
     }
   }
 }

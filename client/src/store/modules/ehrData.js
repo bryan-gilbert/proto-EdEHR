@@ -77,7 +77,7 @@ const actions = {
     return helper.getRequest(url).then(response => {
       let ad = response.data.activitydata
       context.commit('_setForStudent', options.forStudent)
-      console.log('Got activity information ', ad.mergedData.demographics)
+      // console.log('Got activity information ', ad.mergedData)
       if (options.forStudent) {
         context.commit('_setActivityData', ad)
       } else {

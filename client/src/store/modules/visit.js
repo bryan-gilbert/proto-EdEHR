@@ -45,7 +45,7 @@ const actions = {
       let url = apiUrl + '/visits/flushed/' + visitId
       // console.log('In load page ', url)
       function invalid(msg) {
-        console.log('ERROR', msg)
+        console.log('INVALID LoadVisit', msg)
         reject(new Error(msg))
       }
       axios

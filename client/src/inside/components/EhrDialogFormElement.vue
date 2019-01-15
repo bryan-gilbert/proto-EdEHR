@@ -5,7 +5,7 @@
       input(class="input", type="text", v-model="inputVal")
     div(v-if="def.inputType === 'date'")
       label {{def.label}}
-      input(class="input", type="text", v-model="inputVal")
+      datepicker(v-model="inputVal")
     div(v-if="def.inputType === 'textarea'")
       label {{def.label}}
       textarea(v-model="inputVal")
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import Datepicker from 'vuejs-datepicker';
 import EventBus from '../../event-bus'
 import { DIALOG_INPUT_EVENT } from '../../event-bus'
 
@@ -30,6 +31,9 @@ import { DIALOG_INPUT_EVENT } from '../../event-bus'
 
 export default {
   name: 'EhrPageForm',
+  components: {
+    Datepicker
+  },
   props: {
     inputs: { type: Object },
     def: { type: Object }

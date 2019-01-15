@@ -156,7 +156,7 @@ Have you used any substances in the last 7 days?}"	eCell	eCell
 {TopLevel: PatientProfile}	{Page: History Family}	eCell	{Label: Family medical history}	{pageDataKey: familyHistory}	{dataParent: familyHistory}	{elementKey: history}	{FQN: familyHistory.history}	{inputType: textarea}	eCell	eCell	{formRow: 1}	{formColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: (empty)}	{Assignment: N/A}	eCell	eCell	eCell
 {TopLevel: PatientProfile}	{Page: Care team}	eCell	{Label: Care team}	eCell	eCell	{elementKey: careTeam}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {TopLevel: PatientProfile}	{Page: Care team}	eCell	eCell	{pageDataKey: careTeam}	{dataParent: careTeam}	{elementKey: teams}	{FQN: careTeam.teams}	{inputType: table_row}	eCell	{Options: Add new care team member}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{TopLevel: PatientProfile}	{Page: Care team}	eCell	{Label: Name}	{pageDataKey: careTeam}	{dataParent: careTeam.teams}	{elementKey: name}	{FQN: careTeam.teams.name}	{inputType: text}	eCell	eCell	eCell	{formColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	{Data_From: case}	"{Data_case_study: Dr. Singh
+{TopLevel: PatientProfile}	{Page: Care team}	eCell	{Label: Name}	{pageDataKey: careTeam}	{dataParent: careTeam.teams}	{elementKey: name}	{FQN: careTeam.teams.name}	{inputType: text}	eCell	eCell	{formRow: 1}	{formColumn: 1}	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	{Data_From: case}	"{Data_case_study: Dr. Singh
 Dr. Notley
 Jason
 Jackie
@@ -169,7 +169,7 @@ Dr. Hunnicutt
 Jim
 Gladys
 Herman}"	{Assignment: N/A}	eCell	eCell	eCell
-{TopLevel: PatientProfile}	{Page: Care team}	eCell	{Label: Profession}	{pageDataKey: careTeam}	{dataParent: careTeam.teams}	{elementKey: profession}	{FQN: careTeam.teams.profession}	{inputType: text}	eCell	eCell	eCell	{formColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	{Data_From: case}	"{Data_case_study: Physician
+{TopLevel: PatientProfile}	{Page: Care team}	eCell	{Label: Profession}	{pageDataKey: careTeam}	{dataParent: careTeam.teams}	{elementKey: profession}	{FQN: careTeam.teams.profession}	{inputType: text}	eCell	eCell	{formRow: 1}	{formColumn: 2}	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	{Data_From: case}	"{Data_case_study: Physician
 Physician
 Nurse
 Nurse

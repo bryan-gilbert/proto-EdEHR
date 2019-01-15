@@ -2,7 +2,7 @@
   div
     label(v-if="element.inputType !== 'checkbox' && element.formOption !== 'hideLabel'", v-bind:for="element.elementKey") {{element.label}}
     input(v-if="element.inputType === 'text'", class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
-    input(v-if="element.inputType === 'date'", class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
+    datepicker(v-if="element.inputType === 'date'", placeholder="Select Date", class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
     textarea(v-if="element.inputType === 'textarea'", class="ehr-page-form-textarea", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
     div(v-if="element.inputType === 'select'", class="select")
       select(v-bind:name="element.elementKey", v-bind:disabled="notEditing", v-model="inputVal")
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import Datepicker from 'vuejs-datepicker';
 import EventBus from '../../event-bus'
 import { PAGE_FORM_INPUT_EVENT } from '../../event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from '../../event-bus'
@@ -33,6 +34,9 @@ that I've done in the EhrDialogFormElement
 
 export default {
   name: 'EhrPageFormElement',
+  components: {
+    Datepicker
+  },
   data: function() {
     return {
       inputVal: this.computedValue,
@@ -76,10 +80,12 @@ export default {
         // only broadcast if user is editing the form
         return
       }
-      // console.log('EhrPageFormElement watch inputValue', val, PAGE_FORM_INPUT_EVENT)
       // Send event when any input changes. The listener (EhrHelper) will collect the changes
       // and be ready to send the changes to the server.
-      EventBus.$emit(PAGE_FORM_INPUT_EVENT, { value: val, element: this.element })
+      let pageDataKey = this.element.pageDataKey
+      let pfuEventChannel = PAGE_FORM_INPUT_EVENT + pageDataKey
+      console.log('EhrPageFormElement watch inputValue', pfuEventChannel,  val, this.element)
+      EventBus.$emit(pfuEventChannel, { value: val, element: this.element })
     }
     // ,
     // initialValue(val) {
