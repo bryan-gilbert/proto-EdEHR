@@ -213,7 +213,6 @@ export default class EhrHelp {
     if (this._validateInputs(tableKey)) {
       // debugehr('saveDialog for page/table', pageKey, tableKey)
       _this.$store.commit('system/setLoading', true)
-      let data = this.$store.getters['ehrData/assignmentData'] || {}
       let dialog = this.dialogMap[tableKey]
       // debugehr('saveDialog', dialog, 'data', data)
       let inputs = dialog.inputs
@@ -467,7 +466,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
     let value = eData.value
     debugehr(`Input change event from ${elementKey} value: ${value}`)
     let pageData = this.pageFormData.value
-    let oldVal = pageData[elementKey]
+    // let oldVal = pageData[elementKey]
     pageData[elementKey] = value
   }
 

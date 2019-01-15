@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import Datepicker from 'vuejs-datepicker';
+import Datepicker from 'vuejs-datepicker'
 import EventBus from '../../event-bus'
 import { PAGE_FORM_INPUT_EVENT } from '../../event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from '../../event-bus'
@@ -84,7 +84,7 @@ export default {
       // and be ready to send the changes to the server.
       let pageDataKey = this.element.pageDataKey
       let pfuEventChannel = PAGE_FORM_INPUT_EVENT + pageDataKey
-      console.log('EhrPageFormElement watch inputValue', pfuEventChannel,  val, this.element)
+      console.log('EhrPageFormElement watch inputValue', pfuEventChannel, val, this.element)
       EventBus.$emit(pfuEventChannel, { value: val, element: this.element })
     }
     // ,
