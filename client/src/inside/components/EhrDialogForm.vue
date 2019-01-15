@@ -1,6 +1,6 @@
 <template lang="pug">
   app-dialog(:class="$options.name", v-if="showDialog", :isModal="false", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
-    h3(slot="header") Create a new progress note
+    h3(slot="header") {{ tableDef.addButtonText }}
     div(slot="body", class="ehr-page-content")
       div(class="input-fieldrow")
         ehr-dialog-form-element(v-for="fmEl in topRow.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")
@@ -29,6 +29,7 @@ export default {
     }
   },
   props: {
+    pageDataKey: { type: String },
     ehrHelp: { type: Object },
     tableDef: { type: Object },
     inputs: { type: Object },
@@ -72,26 +73,24 @@ export default {
       this.ehrHelp.cancelDialog(this.tableKey)
     },
     saveDialog: function() {
-      this.ehrHelp.saveDialog(this.tableKey)
+      this.ehrHelp.saveDialog(this.pageDataKey, this.tableKey)
     },
-    receiveEvent(eData) {
-      // let key = eData.key
+    receiveCloseEvent(eData) {
       let value = eData.value
-      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      this.showDialog = value //this.tableKey === eData.key ?  eData.value : this.showDialog
-      // let ch = this.ehrHelp.getCloseChannelHandle(this.tableKey)
-      // console.log(`On channel ${ch} from ${key} got ${value}`)
+      this.showDialog = value
     }
   },
   mounted: function() {
+    console.log('EhrDialogForm mounted', this.pageDataKey)
     const _this = this
     let ch = this.ehrHelp.getCloseChannelHandle(this.tableKey)
     this.eventHandler = function(eData) {
-      _this.receiveEvent(eData)
+      _this.receiveCloseEvent(eData)
     }
-    EventBus.$on(ch, this.eventHandler) // eData => { this.receiveEvent(eData) })
+    EventBus.$on(ch, this.eventHandler)
   },
   beforeDestroy: function() {
+    console.log('EhrDialogForm beforeDestroy', this.pageDataKey)
     let ch = this.ehrHelp.getCloseChannelHandle(this.tableKey)
     if (this.eventHandler) {
       console.log('beforeDestroy, remove listener', ch)

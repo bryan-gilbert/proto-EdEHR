@@ -11,6 +11,7 @@ const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 export default class EhrHelp {
   constructor(component, store, pageKey, uiProps) {
     // the commponent reference is needed to save page form data
+    debugehr('Construct helper', pageKey)
     this.component = component
     this.$store = store
     this.pageKey = pageKey
@@ -29,7 +30,8 @@ export default class EhrHelp {
     this.pageFormInputChangeEventHandler = function(eData) {
       _this._handlePageFormInputChangeEvent(eData)
     }
-    EventBus.$on(PAGE_FORM_INPUT_EVENT, this.pageFormInputChangeEventHandler)
+    let pfuEventChannel = PAGE_FORM_INPUT_EVENT + pageKey
+    EventBus.$on(pfuEventChannel, this.pageFormInputChangeEventHandler)
 
     this.activityDataChangeEventHandler = function(eData) {
       eData = eData || {}
@@ -42,8 +44,17 @@ export default class EhrHelp {
       this.setupColumnData(uiProps)
     }
   }
+
+  beforeDestroy(pageKey) {
+    debugehr('Before destroy', this.pageKey, pageKey)
+    EventBus.$off(DIALOG_INPUT_EVENT, this.dialogInputChangeEventHandler)
+    let pfuEventChannel = PAGE_FORM_INPUT_EVENT + pageKey
+    EventBus.$off(pfuEventChannel, this.pageFormInputChangeEventHandler)
+    EventBus.$off(ACTIVITY_DATA_EVENT, this.activityDataChangeEventHandler)
+  }
   /* ********************* DATA  */
 
+  // TODO there are four calls to this method for each page load. Streamline.
   getPageDefinition(pageKey) {
     let pageDef = pageDefsPP[pageKey]
     debugehr('getPageDefinition ' + pageKey, pageDef)
@@ -72,7 +83,7 @@ export default class EhrHelp {
       errorehr('Must provide page key to get mergedPropert')
       return
     }
-    debugehr('MERGED mergedProperty get for', pageKey)
+    // debugehr('MERGED mergedProperty get for', pageKey)
     // TODO rationalize the following side effect. Need to rework sometime to avoid such things
     // set this.$store.state.system.currentPageKey ...
     this.$store.commit('system/setCurrentPageKey', pageKey)
@@ -86,14 +97,15 @@ export default class EhrHelp {
     // Intentional conversion to string to object to break connection with Vuex store.
     // We need this step because the UI isn't allowed to modify the as stored value
     data = JSON.parse(JSON.stringify(data))
+    // debugehr('prepareAsLoadedData page data', data)
     let pageData = data[pageKey]
     if (!pageData) {
       let defaultPageValue = pageDef.pageData
       if (!defaultPageValue) {
         defaultPageValue = {}
-        debugehr('mergedProperty page defs did not spec a default so create one ', defaultPageValue)
+        // debugehr('prepareAsLoadedData page defs did not spec a default so create one ', defaultPageValue)
       } else {
-        debugehr('mergedProperty page default data is ', JSON.stringify(defaultPageValue))
+        // debugehr('prepareAsLoadedData page default data is ', JSON.stringify(defaultPageValue))
       }
       pageData = defaultPageValue
     }
@@ -111,8 +123,8 @@ export default class EhrHelp {
         })
       })
     }
-    debugehr('mergedProperty as stored all data', data)
-    debugehr('mergedProperty as stored page data', pageData)
+    // debugehr('prepareAsLoadedData as stored all data', data)
+    // debugehr('prepareAsLoadedData as stored page data', pageData.surgical)
     pageDef.asLoadedData = pageData
     return pageDef
   }
@@ -120,7 +132,7 @@ export default class EhrHelp {
   getInputValue(def) {
     let inputs = this.currentDialog.inputs
     var val = inputs[def.elementKey]
-    debugehr('helper provides val for key ', val, def.key)
+    // debugehr('helper provides val for key ', val, def.key)
     return val
   }
 
@@ -176,7 +188,7 @@ export default class EhrHelp {
     let key = tableDef.tableKey
     let eData = { key: key, value: true }
     let channel = 'modal:' + key
-    debugehr('showDialog for key' + key + ' tableDef', tableDef)
+    // debugehr('showDialog for key' + key + ' tableDef', tableDef)
     EventBus.$emit(channel, eData)
     // add this dialog to the map
     this.dialogMap[key] = dialog
@@ -190,52 +202,55 @@ export default class EhrHelp {
     this._clearDialogInputs(key)
   }
 
-  cancelDialog(key) {
-    // debugehr('cancel dialog ', key)
-    this._clearDialogInputs(key)
-    this._emitCloseEvent(key)
+  cancelDialog(tableKey) {
+    // debugehr('cancel dialog (indexed by tableKey)', tableKey)
+    this._clearDialogInputs(tableKey)
+    this._emitCloseEvent(tableKey)
   }
 
-  saveDialog(key) {
+  saveDialog(pageKey, tableKey) {
     const _this = this
-    if (this._validateInputs(key)) {
-      debugehr('saveDialog for key' + key)
+    if (this._validateInputs(tableKey)) {
+      // debugehr('saveDialog for page/table', pageKey, tableKey)
       _this.$store.commit('system/setLoading', true)
       let data = this.$store.getters['ehrData/assignmentData'] || {}
-      let d = this.dialogMap[key]
-      debugehr('saveDialog', d, 'data', data)
-      let inputs = d.inputs
-      debugehr('save dialog data into ', key)
-      var modifiedValue = data[key] || []
-      modifiedValue = modifiedValue ? JSON.parse(JSON.stringify(modifiedValue)) : []
-      modifiedValue.push(inputs)
-      debugehr('storing this: ', modifiedValue, key, d.tableKey)
+      let dialog = this.dialogMap[tableKey]
+      // debugehr('saveDialog', dialog, 'data', data)
+      let inputs = dialog.inputs
+      // debugehr('save dialog data into ', tableKey)
+      let asLoadedPageData = this.getAsLoadedPageData(pageKey)
+      let table = asLoadedPageData[tableKey] || []
+      // var modifiedValue = data[tableKey] || []
+      // modifiedValue = modifiedValue ? JSON.parse(JSON.stringify(modifiedValue)) : []
+      // modifiedValue.push(inputs)
+      table.push(inputs)
+      // debugehr('storing this: ', asLoadedPageData, tableKey, dialog.tableKey)
       // Prepare a payload to tell the API which property inside the assignment data to change
       let payload = {
-        propertyName: key,
-        value: modifiedValue
+        propertyName: pageKey,
+        value: asLoadedPageData
       }
       this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
-        _this._emitCloseEvent(key)
+        _this._emitCloseEvent(tableKey)
         _this.$store.commit('system/setLoading', false)
       })
     }
   }
 
-  getCloseChannelHandle(key) {
-    let channel = 'modal:' + key
+  getCloseChannelHandle(dialogKey) {
+    let channel = 'modal:' + dialogKey
     return channel
   }
 
-  getErrorList(key) {
-    debugehr('get error list for key' + key)
-    let d = this.dialogMap[key]
+  getErrorList(dialogKey) {
+    // debugehr('get error list for key', dialogKey)
+    let d = this.dialogMap[dialogKey]
     return d ? d.errorList : []
   }
 
-  _emitCloseEvent(key) {
-    let eData = { key: key, value: false }
-    let channel = this.getCloseChannelHandle(key)
+  _emitCloseEvent(dialogKey) {
+    let eData = { key: dialogKey, value: false }
+    let channel = this.getCloseChannelHandle(dialogKey)
     Vue.nextTick(function() {
       // Send an event on our transmission channel
       // with a payload containing this false
@@ -244,8 +259,9 @@ export default class EhrHelp {
     })
   }
 
+  // TODO clear dialog when used by cancel should restore values as stored in db
   _clearDialogInputs(key) {
-    debugehr('clear dialog for key' + key)
+    // debugehr('clear dialog for key' + key)
     let d = this.dialogMap[key]
     let cells = d.tableDef.tableCells
     let inputs = d.inputs
@@ -259,11 +275,11 @@ export default class EhrHelp {
 
   // TODO validation will need rework as part of the DDD refactor
   _validateInputs(key) {
-    debugehr('validate dialog for key' + key)
+    // debugehr('validate dialog for key' + key)
     let d = this.dialogMap[key]
     let cells = d.tableDef.tableCells
     let inputs = d.inputs
-    debugehr('what is in the inputs? ', inputs)
+    // debugehr('what is in the inputs? ', inputs)
     d.errorList = []
     cells.forEach(cell => {
       if (cell.type === 'text') {
@@ -309,11 +325,15 @@ export default class EhrHelp {
   /**
    * Begin editing a page form
    */
-  beginEdit(pageDataKey) {
+  beginEdit(pageKey) {
+    this.$store.commit('system/setCurrentPageKey', pageKey)
     this.$store.commit('system/setEditing', true)
-    let asLoadedData = this.getAsLoadedPageData(pageDataKey)
+    debugehr('beginEdit', this.pageKey, pageKey)
+    let asLoadedData = this.getAsLoadedPageData(pageKey)
+    let cacheData = JSON.stringify(asLoadedData)
     this.pageFormData = {
-      propertyName: pageDataKey,
+      propertyName: pageKey,
+      cacheData: cacheData,
       value: asLoadedData
     }
   }
@@ -346,7 +366,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
     _this.$store.commit('system/setLoading', true)
     let payload = this.pageFormData
     // let pageKey = this.$store.state.system.currentPageKey
-    debugehr('saveEdit payload', JSON.stringify(payload))
+    // debugehr('saveEdit payload', JSON.stringify(payload))
     _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
       _this.$store.commit('system/setLoading', false)
     })
@@ -360,14 +380,13 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
     var isEditing = this.$store.state.system.isEditing
     var result = false
     if (isEditing) {
-      let pageKey = this.$store.state.system.currentPageKey
-      let asLoadedData = this.getAsLoadedPageData(pageKey)
       let currentData = JSON.stringify(this.pageFormData.value)
-      let cacheData = JSON.stringify(asLoadedData)
+      let cacheData = this.pageFormData.cacheData
       debugehr('current data', currentData)
       debugehr('cacheAsString', cacheData)
       result = cacheData !== currentData
     }
+    debugehr('unsaved data?', isEditing, result)
     return result
   }
 
@@ -407,7 +426,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
     let e = event || window.event
     // debugehr('beforeunload ...', e)
     let unsaved = this.unsavedData()
-    debugehr('beforeunload ...', unsaved)
+    // debugehr('beforeunload ...', unsaved)
     if (unsaved) {
       // according to specs use preventDefault too.
       e.preventDefault()
@@ -434,25 +453,26 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
     let tableKey = def.tableKey
     let elementKey = def.elementKey
     let value = eData.value
-    debugehr('hanlde dialog input change for key' + tableKey)
+    // debugehr('hanlde dialog input change for key' + tableKey)
     let d = this.dialogMap[tableKey]
-    console.log(`On event from ${tableKey} ${elementKey} with dialog: ${d}`)
+    // debugehr(`On event from ${tableKey} ${elementKey} with dialog: ${d}`)
     let inputs = d.inputs
     inputs[elementKey] = value
   }
 
   _handlePageFormInputChangeEvent(eData) {
     let element = eData.element
+    debugehr('_handlePageFormInputChangeEvent', this.pageKey, element.pageDataKey)
     let elementKey = element.elementKey
     let value = eData.value
+    debugehr(`Input change event from ${elementKey} value: ${value}`)
     let pageData = this.pageFormData.value
     let oldVal = pageData[elementKey]
-    debugehr(`Input change event from ${elementKey} value: ${value} old val: ${oldVal}`)
     pageData[elementKey] = value
   }
 
   _handleActivityDataChangeEvent(eData) {
-    debugehr('Activity data changed. Trigger a load and refresh')
+    // debugehr('Activity data changed. Trigger a load and refresh')
     let pageKey = eData.pageKey
     this.mergedProperty(pageKey)
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)

@@ -6,7 +6,7 @@
         ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey", @controlsCallback="controlsCallback")
     ehr-panel-content
       div(class="region ehr-page-content")
-        ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
+        ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
         div(v-if="uiProps.hasTable", v-for="tableDef in uiProps.tables", :key="tableDef.tableKey")
           ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
     div(style="display:none")
@@ -56,11 +56,8 @@ export default {
       callback(this.theData)
     },
     tableData(tableDef) {
-      let key = tableDef.tableKey
-      let theData = this.theData
-      console.log('tableData get data for', key, theData)
-      let td = theData[key]
-      console.log('tableData return ', td)
+      // console.log('return table data', tableDef.tableKey)
+      let td = this.theData[tableDef.tableKey]
       return td
     }
   },
@@ -69,6 +66,9 @@ export default {
   },
   beforeRouteLeave(to, from, next) {
     this.ehrHelp.beforeRouteLeave(to, from, next)
+  },
+  beforeDestroy: function() {
+    this.ehrHelp.beforeDestroy(this.pageDataKey)
   }
 }
 </script>

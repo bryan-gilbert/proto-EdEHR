@@ -1187,7 +1187,9 @@ module.exports = function() {
               fqn: 'careTeam.teams.name',
               inputType: 'text',
               label: 'Name',
+              tableColumn: '1',
               formColumn: '1',
+              formRow: '1',
               pageDataKey: 'careTeam',
               dataParent: 'careTeam.teams',
               page: 'Care team',
@@ -1198,7 +1200,9 @@ module.exports = function() {
               fqn: 'careTeam.teams.profession',
               inputType: 'text',
               label: 'Profession',
+              tableColumn: '2',
               formColumn: '2',
+              formRow: '1',
               pageDataKey: 'careTeam',
               dataParent: 'careTeam.teams',
               page: 'Care team',
@@ -1206,8 +1210,40 @@ module.exports = function() {
             }
           ],
           tableForm: {
-            rows: [],
-            columnsCount: 0
+            rows: [
+              {
+                formRow: '1',
+                elements: [
+                  {
+                    elementKey: 'name',
+                    fqn: 'careTeam.teams.name',
+                    inputType: 'text',
+                    label: 'Name',
+                    tableColumn: '1',
+                    formColumn: '1',
+                    formRow: '1',
+                    pageDataKey: 'careTeam',
+                    dataParent: 'careTeam.teams',
+                    page: 'Care team',
+                    tableKey: 'teams'
+                  },
+                  {
+                    elementKey: 'profession',
+                    fqn: 'careTeam.teams.profession',
+                    inputType: 'text',
+                    label: 'Profession',
+                    tableColumn: '2',
+                    formColumn: '2',
+                    formRow: '1',
+                    pageDataKey: 'careTeam',
+                    dataParent: 'careTeam.teams',
+                    page: 'Care team',
+                    tableKey: 'teams'
+                  }
+                ]
+              }
+            ],
+            columnsCount: 2
           }
         }
       ],

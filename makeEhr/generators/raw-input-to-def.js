@@ -300,8 +300,7 @@ class RawInputToDef {
   _extractTableForm(container, tableCells) {
     let rows = []
     let tableKey = container.containerKey
-
-      container.elements.forEach(element => {
+    container.elements.forEach(element => {
       let formRow = element.formRow
       let cell = tableCells.find(c => element.elementKey === c.elementKey)
       assert.ok(cell, 'Must have a table cell to match with form cell', element.elementKey)
