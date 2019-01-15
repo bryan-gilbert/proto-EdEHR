@@ -1,20 +1,18 @@
 <template lang="pug">
   div(:class="$options.name")
-    div(:class="`${$options.name}__page`")
-      ui-spinner(:loading="isLoading")
-      app-header
-      main(:class="`${$options.name}__main`")
-        ehr-context-banner
-        div(name="mainContent", :class="`${$options.name}__main_content columns`")
-          div(name="nav", :class="`${$options.name}__nav column`")
-            ehr-nav-panel
-          div(name="content", :class="`${$options.name}__content`")
-            ehr-banner
-            div(name="content", :class="`${$options.name}__content_panel column`")
-              slot Main EHR content for a component will appear here. The component is selected by the router
-      app-footer
-      input(class="checkbox", type="checkbox", v-model="showingSpecial")
-      ehr-special(v-show="showingSpecial")
+    ui-spinner(:loading="isLoading")
+    app-header
+    ehr-context-banner
+    main(:class="`${$options.name}__main`")
+      div(name="mainContent", :class="`${$options.name}__main_content columns`")
+        div(name="nav", :class="`${$options.name}__nav column`")
+          ehr-nav-panel
+        div(name="content", :class="`${$options.name}__content column`")
+          ehr-banner
+          slot Main EHR content for a component will appear here. The component is selected by the router
+    app-footer
+    input(class="checkbox", type="checkbox", v-model="showingSpecial")
+    ehr-special(v-show="showingSpecial")
 </template>
 
 <script>
@@ -27,7 +25,7 @@ import EhrContextBanner from '../components/EhrContextBanner'
 import UiSpinner from '../../app/ui/UiSpinner'
 
 export default {
-  name: 'LayoutEhr',
+  name: 'LayoutDefault',
   components: {
     AppHeader,
     AppFooter,
@@ -62,12 +60,8 @@ $navWidth: 234px;
 $pageWidth: 1024px;
 @import '../../scss/settings/color.scss';
 
-.LayoutEhr {
+.LayoutDefault {
   background-color: $grey60;
-  &__page {
-    @include wrapper('page');
-    border: $border-width solid $border1;
-  }
   h1 {
     font-size: 3rem;
   }
@@ -75,34 +69,26 @@ $pageWidth: 1024px;
     color: $grey60;
     background-color: $white;
     /*padding-left: 0;*/
+    @include wrapper('page');
     overflow: hidden;
-    border: $border-width solid $border2;
+  }
+  &__header {
+    max-width: $pageWidth;
   }
   &__main_content {
     margin: 0;
-    border: $border-width solid $border3;
   }
   &__nav {
-    /* max-width: $navWidth; */
-    min-width: 235px;
-    max-width: 360px;
-    width: 20%; /* of page width */
+    // @include wrapper('narrow');
+    max-width: $navWidth;
     padding: 0;
     margin: 0;
-    border: $border-width solid $border4;
   }
   &__content {
-    /*
     height: $contentMinHeigth;
     padding: 0;
     margin: 0;
     overflow-y: auto;
-    */
-    border: 3px solid $border5;
-  }
-  &__content_panel {
-    border: $border-width solid $border6;
-    padding: 0;
   }
 }
 </style>
