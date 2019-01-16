@@ -6,6 +6,9 @@ import { PAGE_FORM_INPUT_EVENT } from '../event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from '../event-bus'
 
 const pageDefsPP = require('../inside/defs/patient-profile')()
+const pageDefsCV = require('../inside/defs/current-visit')()
+const pageDefs = Object.assign(pageDefsPP, pageDefsCV)
+
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
 export default class EhrHelp {
@@ -58,7 +61,7 @@ export default class EhrHelp {
 
   // TODO there are four calls to this method for each page load. Streamline.
   getPageDefinition(pageKey) {
-    let pageDef = pageDefsPP[pageKey]
+    let pageDef = pageDefs[pageKey]
     debugehr('getPageDefinition ' + pageKey, pageDef)
     return pageDef
   }
