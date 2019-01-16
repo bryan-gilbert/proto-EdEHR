@@ -12,7 +12,7 @@
     div(style="display:none")
       p This Cardiovascular page is generated.
       p Label: Cardiovascular
-      p Data Key: undefined
+      p Data Key: cardiovascular
       p Component name: Cardiovascular
       p Redirect: 
       p Route name: cardiovascular
@@ -38,7 +38,7 @@ export default {
   },
   data: function() {
     return {
-      pageDataKey: 'undefined',
+      pageDataKey: 'cardiovascular',
       theData: {},
       ehrHelp: undefined
     }

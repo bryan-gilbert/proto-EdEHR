@@ -12,7 +12,7 @@
     div(style="display:none")
       p This Gastrointestinal page is generated.
       p Label: Gastrointestinal
-      p Data Key: undefined
+      p Data Key: gastrointestinal
       p Component name: Gastrointestinal
       p Redirect: 
       p Route name: gastrointestinal
@@ -38,7 +38,7 @@ export default {
   },
   data: function() {
     return {
-      pageDataKey: 'undefined',
+      pageDataKey: 'gastrointestinal',
       theData: {},
       ehrHelp: undefined
     }

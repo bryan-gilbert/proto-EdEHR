@@ -12,7 +12,7 @@
     div(style="display:none")
       p This Respiratory page is generated.
       p Label: Respiratory
-      p Data Key: undefined
+      p Data Key: respiratory
       p Component name: Respiratory
       p Redirect: 
       p Route name: respiratory
@@ -38,7 +38,7 @@ export default {
   },
   data: function() {
     return {
-      pageDataKey: 'undefined',
+      pageDataKey: 'respiratory',
       theData: {},
       ehrHelp: undefined
     }

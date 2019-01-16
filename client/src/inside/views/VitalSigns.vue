@@ -12,7 +12,7 @@
     div(style="display:none")
       p This Vital Signs page is generated.
       p Label: Vital signs
-      p Data Key: undefined
+      p Data Key: vitals
       p Component name: VitalSigns
       p Redirect: 
       p Route name: vital-signs
@@ -38,7 +38,7 @@ export default {
   },
   data: function() {
     return {
-      pageDataKey: 'undefined',
+      pageDataKey: 'vitals',
       theData: {},
       ehrHelp: undefined
     }

@@ -1,6 +1,6 @@
 <template lang="pug">
   div(class="input-element", :class="def.classList")
-    div(v-if="def.inputType === 'text'")
+    div(v-if="def.inputType === 'text' || def.inputType === 'day' || def.inputType === 'time'")
       label {{def.label}}
       input(class="input", type="text", v-model="inputVal")
     div(v-if="def.inputType === 'date'")

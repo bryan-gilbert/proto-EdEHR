@@ -12,7 +12,7 @@
     div(style="display:none")
       p This Neurological page is generated.
       p Label: Neurological
-      p Data Key: undefined
+      p Data Key: neurological
       p Component name: Neurological
       p Redirect: 
       p Route name: neurological
@@ -38,7 +38,7 @@ export default {
   },
   data: function() {
     return {
-      pageDataKey: 'undefined',
+      pageDataKey: 'neurological',
       theData: {},
       ehrHelp: undefined
     }

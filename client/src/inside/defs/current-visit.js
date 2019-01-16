@@ -104,6 +104,7 @@ module.exports = function() {
       tables: [
         {
           tableKey: 'location',
+          addButtonText: 'Add new patient location',
           tableCells: [
             {
               elementKey: 'location',
@@ -849,12 +850,13 @@ module.exports = function() {
       }
     },
     neurological: {
-      pageTitle: 'Assessments',
+      pageTitle: 'Assessments: Neurological',
       pageDataKey: 'neurological',
       hasTable: true,
       tables: [
         {
           tableKey: 'aments',
+          addButtonText: 'Add new neurological assessment',
           tableCells: [
             {
               elementKey: 'name',
@@ -1004,12 +1006,13 @@ module.exports = function() {
       }
     },
     respiratory: {
-      pageTitle: 'Respiratory',
+      pageTitle: 'Assessments: Respiratory',
       pageDataKey: 'respiratory',
       hasTable: true,
       tables: [
         {
           tableKey: 'table',
+          addButtonText: 'Add a new respiratory assessment',
           tableCells: [
             {
               elementKey: 'name',
@@ -1191,12 +1194,13 @@ module.exports = function() {
       }
     },
     cardiovascular: {
-      pageTitle: 'Cardiovascular',
+      pageTitle: 'Assessments: Cardiovascular',
       pageDataKey: 'cardiovascular',
       hasTable: true,
       tables: [
         {
           tableKey: 'table',
+          addButtonText: 'Add a new cardiovascular assessment',
           tableCells: [
             {
               elementKey: 'name',
@@ -2517,12 +2521,13 @@ module.exports = function() {
       }
     },
     gastrointestinal: {
-      pageTitle: 'Gastrointestinal',
+      pageTitle: 'Assessments: Gastrointestinal',
       pageDataKey: 'gastrointestinal',
       hasTable: true,
       tables: [
         {
           tableKey: 'table',
+          addButtonText: 'Add a new gastrointestinal assessment',
           tableCells: [
             {
               elementKey: 'name',

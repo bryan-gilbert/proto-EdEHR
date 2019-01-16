@@ -12,7 +12,7 @@
     div(style="display:none")
       p This Visit Details page is generated.
       p Label: Visit details
-      p Data Key: undefined
+      p Data Key: visit
       p Component name: VisitDetails
       p Redirect: 
       p Route name: visit-details
@@ -38,7 +38,7 @@ export default {
   },
   data: function() {
     return {
-      pageDataKey: 'undefined',
+      pageDataKey: 'visit',
       theData: {},
       ehrHelp: undefined
     }
