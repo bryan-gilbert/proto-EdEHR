@@ -4,8 +4,8 @@ const RawInputToDef = require('./generators/raw-input-to-def')
 const transformer = new RawInputToDef()
 const destination = pathUtil.join(process.cwd(), 'generated', 'ehrDefs')
 const source = pathUtil.join(process.cwd(), 'raw_data')
-// const sourceFiles = ['current-visit', 'patient-profile']
-const sourceFiles = ['patient-profile']
+const sourceFiles = ['current-visit', 'patient-profile']
+// const sourceFiles = ['patient-profile']
 
 main()
 
@@ -18,6 +18,7 @@ function convertFile(fName) {
   let fDest = pathUtil.join(destination, fName)  + '.js'
   console.log('read file ', fSrc)
   fs.readFile(fSrc, 'utf8', function (err, contents) {
+    console.log('transform file ', fName)
     var pages = transformer.getDefinitions(contents)
     var results = JSON.stringify(pages, null, 2)
     results = results.replace(/'/g, "\\'")

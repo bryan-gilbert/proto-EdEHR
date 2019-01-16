@@ -8,8 +8,9 @@ const PAGE_FORM = 'page_form'
 const TABLE_ROW = 'table_row'
 const TABLE_COL = 'table_column'
 const SUBGROUP = 'subgroup'
+const FIELDSET = 'fieldset'
 const PAGE_INPUT_TYPE = 'page'
-const CONTAINER_INPUT_TYPES = [PAGE_FORM, TABLE_ROW, TABLE_COL, SUBGROUP]
+const CONTAINER_INPUT_TYPES = [PAGE_FORM, TABLE_ROW, TABLE_COL, SUBGROUP,FIELDSET]
 
 const containerElementProperties = [
   'elementKey',
@@ -19,6 +20,9 @@ const containerElementProperties = [
   'css',
   'tableCss',
   'tableColumn',
+  'fieldset',
+  'fsetRow', // fieldset row and column
+  'fsetCol',
   'formCss',
   'formColumn',
   'formRow',
@@ -130,6 +134,7 @@ class RawInputToDef {
       }
       let p = entry.page
       if (entry.inputType === PAGE_INPUT_TYPE) {
+        console.log('Page:',p)
         pages[p] = entry
         let pg = pages[p]
         pg.children = []
@@ -138,6 +143,9 @@ class RawInputToDef {
       } else if (CONTAINER_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
         // entry is a container
         let pg = pages[p]
+        if (!pg) {
+          console.log('ERROR container has no page', p, entry)
+        }
         pg.rawElements.push(entry)
         let cnt = entry.fqn
         let container = entry
@@ -148,10 +156,15 @@ class RawInputToDef {
       } else {
         // entry is a regular element
         let pg = pages[p]
+        if (!pg) {
+          console.log('ERROR element has no page', p, entry)
+        }
         pg.rawElements.push(entry)
         let containerKey = entry.dataParent
         let container = pg.containers[containerKey]
-        // console.log('containerKey container', containerKey, container)
+        if (!container || !container.elements) {
+          console.log('ERROR containerKey has no container', containerKey, container, entry)
+        }
         let containerChild = {}
         containerElementProperties.forEach(prop => {
           if (entry[prop]) {

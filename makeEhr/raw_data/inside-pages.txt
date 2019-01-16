@@ -9,14 +9,14 @@
 {path: /ehr/patient/history}	{routeName: family-history}	{pageDataKey: familyHistory}	{label: Family History}	{redirect: }	{generateComponent: yes}
 {path: /ehr/patient}	{routeName: care-team}	{pageDataKey: careTeam}	{label: Care team}	{redirect: }	{generateComponent: yes}
 {path: /ehr/patient}	{routeName: past-appointments}	{pageDataKey: pastAppointments}	{label: Past appointments}	{redirect: }	{generateComponent: yes}
-{path: /ehr}	{routeName: current}	eCell	{label: Current visit}	{redirect: visit-details}	eCell
-{path: /ehr/current}	{routeName: visit-details}	eCell	{label: Visit details}	{redirect: }	eCell
-{path: /ehr/current}	{routeName: vital-signs}	eCell	{label: Vital signs}	{redirect: }	eCell
-{path: /ehr/current}	{routeName: assessments}	eCell	{label: Assessments}	{redirect: neurological}	eCell
-{path: /ehr/current/assessments}	{routeName: neurological}	eCell	{label: Neurological}	{redirect: }	eCell
-{path: /ehr/current/assessments}	{routeName: respiratory}	eCell	{label: Respiratory}	{redirect: }	eCell
-{path: /ehr/current/assessments}	{routeName: cardiovascular}	eCell	{label: Cardiovascular}	{redirect: }	eCell
-{path: /ehr/current/assessments}	{routeName: gastrointestinal}	eCell	{label: Gastrointestinal}	{redirect: }	eCell
+{path: /ehr}	{routeName: current}	eCell	{label: Current visit}	{redirect: visit-details}	{generateComponent: yes}
+{path: /ehr/current}	{routeName: visit-details}	eCell	{label: Visit details}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current}	{routeName: vital-signs}	eCell	{label: Vital signs}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current}	{routeName: assessments}	eCell	{label: Assessments}	{redirect: neurological}	{generateComponent: yes}
+{path: /ehr/current/assessments}	{routeName: neurological}	eCell	{label: Neurological}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current/assessments}	{routeName: respiratory}	eCell	{label: Respiratory}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current/assessments}	{routeName: cardiovascular}	eCell	{label: Cardiovascular}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current/assessments}	{routeName: gastrointestinal}	eCell	{label: Gastrointestinal}	{redirect: }	{generateComponent: yes}
 {path: /ehr/current/assessments}	{routeName: genitourinary}	eCell	{label: Genitourinary}	{redirect: }	eCell
 {path: /ehr/current/assessments}	{routeName: musculoskeletal}	eCell	{label: Musculoskeletal}	{redirect: }	eCell
 {path: /ehr/current/assessments}	{routeName: pain}	eCell	{label: Pain}	{redirect: }	eCell
