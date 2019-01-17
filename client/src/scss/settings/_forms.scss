@@ -36,8 +36,13 @@
   .fieldset-rows {
     //@include debugColor(a)
   }
-  .fieldset-row {
+  .fieldset-col {
+    padding: 0;
     //@include debugColor(b)
+  }
+
+  .ehr-one-of-two {
+    //width: 50%;
   }
 
   li {
@@ -104,7 +109,7 @@
   .select-element {
   }
   .select {
-    display: block;
+    //display: block;
   }
   .select select{
     width: 15rem;

@@ -1,13 +1,16 @@
 <template lang="pug">
   div(class="input-element ehrdfe")
+    div(v-if="def.inputType === 'label'")
+      label {{def.label}}
+      ui-info(text="TODO split the label on -NL- and make a list of lines")
     div(v-if="def.inputType === 'text' || def.inputType === 'day' || def.inputType === 'time'")
       label {{def.label}}
       input(class="input", type="text", v-model="inputVal")
-    div(v-if="def.inputType === 'fieldset'", class="fieldset-wrapper input-fieldset input-element-full")
+    div(v-if="def.inputType === 'fieldset'", class="fieldset-wrapper input-fieldset")
       label(class="fieldset-label") {{def.label}}
       // div {{ def.formFieldSet }}
       div(v-for="row in def.formFieldSet.rows", :key="row.formRow" class="fieldset-rows columns")
-        div(v-for="fmEl in row.elements", :key="fmEl.elementKey", class="fieldset-row input-fieldrow")
+        div(v-for="fmEl in row.elements", :key="fmEl.elementKey", class="fieldset-col column")
           ehr-dialog-form-element(:inputs="inputs", :def="fmEl", :class="formCss(fmEl)")
       // div(v-for="fmEl in def.elements", :key="fmEl.elementKey") {{ fmEl }}
       //ehr-dialog-form-element(v-for="fmEl in def.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")
@@ -39,6 +42,7 @@ import Datepicker from 'vuejs-datepicker';
 import EhrDialogFormElement from './EhrDialogFormElement.vue'
 import EventBus from '../../event-bus'
 import { DIALOG_INPUT_EVENT } from '../../event-bus'
+import UiInfo from '../../app/ui/UiInfo'
 
 // TODO day, time types
 
@@ -51,6 +55,7 @@ export default {
   name: 'EhrDialogFormElement',
   components: {
     EhrDialogFormElement,
+    UiInfo,
     Datepicker
   },
   props: {
