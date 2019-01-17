@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import Datepicker from 'vuejs-datepicker';
+import Datepicker from 'vuejs-datepicker'
 import EhrDialogFormElement from './EhrDialogFormElement.vue'
 import EventBus from '../../event-bus'
 import { DIALOG_INPUT_EVENT } from '../../event-bus'

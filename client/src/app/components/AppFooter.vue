@@ -54,6 +54,5 @@ export default {
   .footer_link {
     color: white;
   }
-
 }
 </style>
