@@ -15,6 +15,11 @@
     display: flex;
   }
 
+  .input-fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+
   li {
     list-style-type: none;
   }
@@ -73,11 +78,11 @@
     box-shadow: inset 0 1px 0 0 $white, 0 1px 2px 0 rgba(21, 26, 36, 0.2);
   }
 
+  .select-element {
+    border: 1px solid blue;
+  }
   .select {
     display: block;
-  }
-  select {
-    width: 100%;
   }
   .checklistWithOther {
     label {

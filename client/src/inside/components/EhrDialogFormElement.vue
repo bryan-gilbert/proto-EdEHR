@@ -3,6 +3,23 @@
     div(v-if="def.inputType === 'text' || def.inputType === 'day' || def.inputType === 'time'")
       label {{def.label}}
       input(class="input", type="text", v-model="inputVal")
+    div(v-if="def.inputType === 'fieldset'", class="input-fieldset input-element-full")
+      label {{def.label}}
+      // div {{ def.formFieldSet }}
+      div(v-for="row in def.formFieldSet.rows", :key="row.formRow")
+        div(v-for="fmEl in row.elements", :key="fmEl.elementKey", class="input-fieldrow", :class="def.classList")
+          ehr-dialog-form-element(:inputs="inputs", :def="fmEl")
+      // div(v-for="fmEl in def.elements", :key="fmEl.elementKey") {{ fmEl }}
+      //ehr-dialog-form-element(v-for="fmEl in def.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")
+    div(v-if="def.inputType === 'checkbox'")
+      input(class="checkbox", type="checkbox", v-bind:name="def.elementKey", v-model="inputVal")
+      label(class="label-checkbox", v-bind:for="def.elementKey") {{def.label}}
+    div(v-if="def.inputType === 'select'", class="select-element")
+      label {{def.label}}
+      div(class="select")
+        select(v-bind:name="def.elementKey", v-model="inputVal")
+          option(disabled,value="") Please select one
+          option(v-for="option in def.options", v-bind:value="option.text") {{ option.text}}
     div(v-if="def.inputType === 'date'")
       label {{def.label}}
       datepicker(v-model="inputVal")
@@ -19,6 +36,7 @@
 
 <script>
 import Datepicker from 'vuejs-datepicker';
+import EhrDialogFormElement from './EhrDialogFormElement.vue'
 import EventBus from '../../event-bus'
 import { DIALOG_INPUT_EVENT } from '../../event-bus'
 
@@ -30,8 +48,9 @@ import { DIALOG_INPUT_EVENT } from '../../event-bus'
  */
 
 export default {
-  name: 'EhrPageForm',
+  name: 'EhrDialogFormElement',
   components: {
+    EhrDialogFormElement,
     Datepicker
   },
   props: {

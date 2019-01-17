@@ -10,7 +10,8 @@ const TABLE_COL = 'table_column'
 const SUBGROUP = 'subgroup'
 const FIELDSET = 'fieldset'
 const PAGE_INPUT_TYPE = 'page'
-const CONTAINER_INPUT_TYPES = [PAGE_FORM, TABLE_ROW, TABLE_COL, SUBGROUP,FIELDSET]
+const CONTAINER_INPUT_TYPES = [PAGE_FORM, TABLE_ROW, TABLE_COL]
+const SUBCONTAINER_INPUT_TYPES = [SUBGROUP, FIELDSET]
 
 const containerElementProperties = [
   'elementKey',
@@ -134,64 +135,103 @@ class RawInputToDef {
       }
       let p = entry.page
       if (entry.inputType === PAGE_INPUT_TYPE) {
-        console.log('Page:',p)
-        pages[p] = entry
-        let pg = pages[p]
-        pg.children = []
-        pg.rawElements = []
-        pg.containers = {}
+        this._pageForGroup(p, pages, entry)
       } else if (CONTAINER_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
-        // entry is a container
-        let pg = pages[p]
-        if (!pg) {
-          console.log('ERROR container has no page', p, entry)
-        }
-        pg.rawElements.push(entry)
-        let cnt = entry.fqn
-        let container = entry
-        container.elements = []
-        container.type = entry.inputType
-        container.containerKey = entry.elementKey
-        pg.containers[cnt] = container
+        this._topLevelContainerForGroup(pages, p, entry)
+      } else if (SUBCONTAINER_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
+        this._subcontainerForGroup(pages, p, entry)
       } else {
         // entry is a regular element
-        let pg = pages[p]
-        if (!pg) {
-          console.log('ERROR element has no page', p, entry)
-        }
-        pg.rawElements.push(entry)
-        let containerKey = entry.dataParent
-        let container = pg.containers[containerKey]
-        if (!container || !container.elements) {
-          console.log('ERROR containerKey has no container', containerKey, container, entry)
-        }
-        let containerChild = {}
-        containerElementProperties.forEach(prop => {
-          if (entry[prop]) {
-            containerChild[prop] = entry[prop]
-          }
-        })
-        if (entry.options) {
-          let parts = entry.options.split(nlSep)
-          let opts = parts.map(p => {
-            return { text: p }
-          })
-          containerChild.options = opts
-        }
-        container.elements.push(containerChild)
-        // DATA
-        let dataChild = {
-          label: entry.label,
-          elementKey: entry.elementKey,
-          fqn: entry.fqn,
-          dataFrom: entry.dataFrom,
-          dataCaseStudy: entry.dataCaseStudy,
-          assignment: entry.assignment
-        }
-        pg.children.push(dataChild)
+        this._elementForGroup(pages, p, entry)
       }
     })
     return pages
+  }
+
+  _pageForGroup(p, pages, entry) {
+    console.log('Page:', p)
+    pages[p] = entry
+    let pg = pages[p]
+    pg.children = []
+    pg.rawElements = []
+    pg.containers = {}
+  }
+
+  _topLevelContainerForGroup(pages, p, entry) {
+    // entry is a container
+    let pg = pages[p]
+    if (!pg) {
+      console.log('ERROR container has no page', p, entry)
+    }
+    pg.rawElements.push(entry)
+    let cntId = entry.fqn
+    // let container = entry
+    let container = {}
+    containerElementProperties.forEach(prop => {
+      if (entry[prop]) {
+        container[prop] = entry[prop]
+      }
+    })
+
+    container.elements = []
+    container.type = entry.inputType
+    container.containerKey = entry.elementKey
+    pg.containers[cntId] = container
+    return { pg, container }
+  }
+
+  _subcontainerForGroup(pages, p, entry) {
+    // entry is a fieldset or other group inside a table or form
+    let { pg, container } = this._topLevelContainerForGroup(pages, p, entry)
+    let dp = container.dataParent
+    let toplevel = pg.containers[dp]
+    toplevel.elements.push(container)
+    // console.log('subcontainer now linked into ', container, toplevel)
+    // connect the sub group with it top level group
+  }
+
+  _elementForGroup(pages, p, entry) {
+    let pg = pages[p]
+    if (!pg) {
+      console.log('ERROR element has no page', p, entry)
+    }
+    pg.rawElements.push(entry)
+    let containerKey = entry.dataParent
+    let container = pg.containers[containerKey]
+    assert.ok(
+      container && container.elements,
+      'ERROR containerKey has no container ' +
+        containerKey +
+        ' ' +
+        JSON.stringify(container) +
+        ' ' +
+        JSON.stringify(entry)
+    )
+    let containerChild = {}
+    containerElementProperties.forEach(prop => {
+      if (entry[prop]) {
+        containerChild[prop] = entry[prop]
+      }
+    })
+    if (entry.options) {
+      let parts = entry.options.split(nlSep)
+      let opts = parts.map(p => {
+        return { text: p }
+      })
+      containerChild.options = opts
+    }
+    container.elements.push(containerChild)
+    // DATA
+    let dataChild = {
+      label: entry.label,
+      elementKey: entry.elementKey,
+      fqn: entry.fqn,
+      dataFrom: entry.dataFrom,
+      dataCaseStudy: entry.dataCaseStudy,
+      assignment: entry.assignment
+    }
+    // TODO this children property is not yet used. It'll be for seed data. Rename it when it's used.
+    pg.children.push(dataChild)
   }
 
   /**
@@ -209,10 +249,10 @@ class RawInputToDef {
       let entry = {}
       let regexp = /\{[^}]*\}/g
       let found = aLine.match(regexp)
-      if (!found) {
-        console.log('ERROR unable to find any kv pairs in this content:', aLine)
-        return
-      }
+      assert.ok(
+        found,
+        'ERROR unable to find any kv pairs in this content: ' + JSON.stringify(aLine)
+      )
       found.forEach(part => {
         // slice off the surrounding {}
         let seq = part.slice(1, -1)
@@ -256,6 +296,8 @@ class RawInputToDef {
       } else if (container.type === SUBGROUP) {
         // TODO
         console.log('TODO !!!!! sub groups ', container.containerKey)
+      } else if (container.type === FIELDSET) {
+        console.log('FIELDSET ', container.containerKey)
       }
     })
   }
@@ -303,7 +345,14 @@ class RawInputToDef {
   _pageTableCells(container) {
     let tableCells = []
     container.elements.forEach(element => {
+      if (element.inputType == FIELDSET) {
+        element.elements.forEach(child => {
+          tableCells.push(child)
+        })
+      }
+      // else {
       tableCells.push(element)
+      // }
     })
     // sort by tableColumn
     tableCells.sort((a, b) => a.tableColumn - b.tableColumn)
@@ -316,7 +365,7 @@ class RawInputToDef {
     container.elements.forEach(element => {
       let formRow = element.formRow
       let cell = tableCells.find(c => element.elementKey === c.elementKey)
-      assert.ok(cell, 'Must have a table cell to match with form cell', element.elementKey)
+      assert.ok(cell, 'Must have a table cell to match with form cell ' + element.elementKey)
       let row = rows[formRow - 1]
       if (!row) {
         row = {
@@ -327,6 +376,11 @@ class RawInputToDef {
       }
       cell.tableKey = tableKey
       row.elements.push(cell)
+      if (element.inputType == FIELDSET) {
+        console.log('fieldset ', element)
+        let formFieldSet = this._extractFieldSet(element, tableCells, tableKey)
+        element.formFieldSet = formFieldSet
+      }
     })
     this._sortFormElements(rows)
     let form = {
@@ -335,6 +389,32 @@ class RawInputToDef {
     }
     console.log('extracted table form for ', container.fqn)
     return form
+  }
+
+  _extractFieldSet(fieldset, tableCells, tableKey) {
+    let rows = []
+    fieldset.elements.forEach(element => {
+      let formRow = element.fsetRow
+      let cell = tableCells.find(c => element.elementKey === c.elementKey)
+      assert.ok(cell, 'Must have a table cell to match with fieldset cell ' + element.elementKey)
+      let row = rows[formRow - 1]
+      if (!row) {
+        row = {
+          formRow: formRow,
+          elements: []
+        }
+        rows[formRow - 1] = row
+      }
+      cell.tableKey = tableKey
+      cell.formColumn = element.fsetCol
+      row.elements.push(cell)
+    })
+    this._sortFormElements(rows)
+    let formFieldSet = {
+      rows: rows,
+      columnsCount: this._formColumnCount(rows)
+    }
+    return formFieldSet
   }
 
   /* *************** UTILITIES ******** */
