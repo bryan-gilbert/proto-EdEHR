@@ -5,8 +5,9 @@
       div(class="input-fieldrow")
         ehr-dialog-form-element(v-for="fmEl in topRow.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")
       hr
-      div(v-for="row in middleRange")
-        ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")
+      div(v-for="row in middleRange", class="input-fieldrow")
+        div(v-for="fmEl in row.elements", :key="fmEl.elementKey", class="input-fieldrow input-element column")
+          ehr-dialog-form-element(:inputs="inputs", :def="fmEl")
       div(class="input-fieldrow")
         ehr-dialog-form-element(v-for="fmEl in lastRow.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")
     span(slot="save-button") Create and close

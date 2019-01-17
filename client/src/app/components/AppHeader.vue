@@ -43,7 +43,6 @@ export default {
     @include wrapper('content');
     border: $border-width solid $border2;
   }
-
   .navList {
     display: flex;
     /* default is flow in row without wrap */
@@ -61,7 +60,6 @@ export default {
   .navItem {
     margin-right: 1em;
   }
-
 
   .navLink {
     text-decoration: none;

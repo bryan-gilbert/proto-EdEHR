@@ -246,8 +246,10 @@
       "def": {
         "path": "/ehr/current",
         "routeName": "visit-details",
+        "pageDataKey": "visit",
         "label": "Visit details",
         "redirect": "",
+        "generateComponent": "yes",
         "componentName": "VisitDetails",
         "dataName": "visitDetails",
         "fullPath": "/ehr/current/visit-details",
@@ -264,8 +266,10 @@
       "def": {
         "path": "/ehr/current",
         "routeName": "vital-signs",
+        "pageDataKey": "vitals",
         "label": "Vital signs",
         "redirect": "",
+        "generateComponent": "yes",
         "componentName": "VitalSigns",
         "dataName": "vitalSigns",
         "fullPath": "/ehr/current/vital-signs",
@@ -300,8 +304,10 @@
           "def": {
             "path": "/ehr/current/assessments",
             "routeName": "neurological",
+            "pageDataKey": "neurological",
             "label": "Neurological",
             "redirect": "",
+            "generateComponent": "yes",
             "componentName": "Neurological",
             "dataName": "neurological",
             "fullPath": "/ehr/current/assessments/neurological",
@@ -318,8 +324,10 @@
           "def": {
             "path": "/ehr/current/assessments",
             "routeName": "respiratory",
+            "pageDataKey": "respiratory",
             "label": "Respiratory",
             "redirect": "",
+            "generateComponent": "yes",
             "componentName": "Respiratory",
             "dataName": "respiratory",
             "fullPath": "/ehr/current/assessments/respiratory",
@@ -336,8 +344,10 @@
           "def": {
             "path": "/ehr/current/assessments",
             "routeName": "cardiovascular",
+            "pageDataKey": "cardiovascular",
             "label": "Cardiovascular",
             "redirect": "",
+            "generateComponent": "yes",
             "componentName": "Cardiovascular",
             "dataName": "cardiovascular",
             "fullPath": "/ehr/current/assessments/cardiovascular",
@@ -354,8 +364,10 @@
           "def": {
             "path": "/ehr/current/assessments",
             "routeName": "gastrointestinal",
+            "pageDataKey": "gastrointestinal",
             "label": "Gastrointestinal",
             "redirect": "",
+            "generateComponent": "yes",
             "componentName": "Gastrointestinal",
             "dataName": "gastrointestinal",
             "fullPath": "/ehr/current/assessments/gastrointestinal",
@@ -372,6 +384,7 @@
           "def": {
             "path": "/ehr/current/assessments",
             "routeName": "genitourinary",
+            "pageDataKey": "genitourinary",
             "label": "Genitourinary",
             "redirect": "",
             "componentName": "Genitourinary",
@@ -390,6 +403,7 @@
           "def": {
             "path": "/ehr/current/assessments",
             "routeName": "musculoskeletal",
+            "pageDataKey": "musculoskeletal",
             "label": "Musculoskeletal",
             "redirect": "",
             "componentName": "Musculoskeletal",
@@ -408,6 +422,7 @@
           "def": {
             "path": "/ehr/current/assessments",
             "routeName": "pain",
+            "pageDataKey": "pain",
             "label": "Pain",
             "redirect": "",
             "componentName": "Pain",
@@ -426,6 +441,7 @@
           "def": {
             "path": "/ehr/current/assessments",
             "routeName": "biopsychosocial",
+            "pageDataKey": "biopsychosocial",
             "label": "Biopsychosocial",
             "redirect": "",
             "componentName": "Biopsychosocial",

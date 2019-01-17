@@ -128,7 +128,7 @@ $pageWidth: 1024px;
     border: $border-width solid $border6;
     margin: 1px;
     padding: 0;
-    max-width: 80%
+    max-width: 80%;
   }
 }
 </style>

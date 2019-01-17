@@ -107,6 +107,11 @@ export default {
   * Styling generic input elements that appear in EdEHR dialogs
   *
   */
+/* **********
+* TODO  rename this class to something like dialog-row.
+* TODO move css here into _form.scss and standardize or create a _dialog.scss file near the _form.scss and let these two files share stuff.
+*/
+
 .input-fieldrow {
   display: flex;
 }

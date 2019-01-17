@@ -1,42 +1,79 @@
 // Generated VUE file. Before modifying see docs about Vue file generation 
 <template lang="pug">
-  div(:class="$options.name")
-    ehr-panel-header Assessments
+  div(class="ehr-page")
+    ehr-panel-header {{ uiProps.pageTitle }}
+      div(slot="controls", v-show="showEditControls")
+        ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey", @controlsCallback="controlsCallback")
     ehr-panel-content
-      div(class="region")
-        p This Assessments page is a generated placeholder. The actual content will be developed soon. So stay tuned.
-        p Label: Assessments
-        p Component name: Assessments
-        p Redirect: neurological
-        p Route name: assessments
-        p Full path: /ehr/current/assessments
-        p Assignment Data: assessments
+      div(class="region ehr-page-content")
+        ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
+        div(v-if="uiProps.hasTable", v-for="tableDef in uiProps.tables", :key="tableDef.tableKey")
+          ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
+    div(style="display:none")
+      p This Assessments page is generated.
+      p Label: Assessments
+      p Data Key: undefined
+      p Component name: Assessments
+      p Redirect: neurological
+      p Route name: assessments
+      p Full path: /ehr/current/assessments
 </template>
 
 <script>
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
+import EhrEditControls from '../components/EhrEditControls.vue'
+import EhrPageTable from '../components/EhrPageTable'
+import EhrPageForm from '../components/EhrPageForm.vue'
+import EhrHelp from '../ehr-helper'
 
 export default {
   name: 'Assessments',
   components: {
     EhrPanelHeader,
-    EhrPanelContent
+    EhrPanelContent,
+    EhrPageForm,
+    EhrPageTable,
+    EhrEditControls
+  },
+  data: function() {
+    return {
+      pageDataKey: 'undefined',
+      theData: {},
+      ehrHelp: undefined
+    }
   },
   computed: {
-    isStudent() {
-      return this.$store.getters['visit/isStudent']
+    uiProps() {
+      return this.ehrHelp ? this.ehrHelp.getPageDefinition(this.pageDataKey) : {}
     },
-    assessments() {
-      let data = this.$store.getters['ehrData/mergedData'] || {}
-      let asStored = data.assessments || {}
-      return JSON.parse(JSON.stringify(asStored))
+    showEditControls() {
+      return this.ehrHelp.showEditControls()
     }
+  },
+  methods: {
+    controlsCallback(callback) {
+      callback(this.theData)
+    },
+    tableData(tableDef) {
+      // console.log('return table data', tableDef.tableKey)
+      let td = this.theData[tableDef.tableKey]
+      return td
+    }
+  },
+  created() {
+    this.ehrHelp = new EhrHelp(this, this.$store, this.pageDataKey, this.uiProps)
+  },
+  beforeRouteLeave(to, from, next) {
+    this.ehrHelp.beforeRouteLeave(to, from, next)
+  },
+  beforeDestroy: function() {
+    this.ehrHelp.beforeDestroy(this.pageDataKey)
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.Assessments {
-}
+@import '../../scss/settings/forms';
+@import '../../scss/settings/inside';
 </style>
