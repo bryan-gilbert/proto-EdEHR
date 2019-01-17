@@ -1,8 +1,8 @@
 <template lang="pug">
   div(class="input-element ehrdfe")
-    div(v-if="def.inputType === 'label'")
-      label {{def.label}}
-      ui-info(text="TODO split the label on -NL- and make a list of lines")
+    div(v-if="def.inputType === 'form-label'")
+      div {{def.label}}
+      // "TODO split the label on -NL- and make a list of lines")
     div(v-if="def.inputType === 'text' || def.inputType === 'day' || def.inputType === 'time'")
       label {{def.label}}
       input(class="input", type="text", v-model="inputVal")
@@ -18,7 +18,7 @@
       input(class="checkbox", type="checkbox", v-bind:name="def.elementKey", v-model="inputVal")
       label(class="label-checkbox", v-bind:for="def.elementKey") {{def.label}}
     div(v-if="def.inputType === 'select'", class="select-element")
-      label(class="select-label") {{def.label}}
+      label(v-if="!(def.formOption === 'noLabel')", class="select-label") {{def.label}}
       div(class="select")
         select(v-bind:name="def.elementKey", v-model="inputVal")
           option(disabled,value="") Please select one

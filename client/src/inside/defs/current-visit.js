@@ -2860,7 +2860,7 @@ module.exports = function() {
                 },
                 {
                   elementKey: 'resources',
-                  inputType: 'label',
+                  inputType: 'form-label',
                   label:
                     'Resources-NL-Morse Fall Score (url)-NL-Mini-mental state examination (MMSE) (url)',
                   tableColumn: '45',
@@ -2872,17 +2872,6 @@ module.exports = function() {
                   pageDataKey: 'neurological',
                   dataParent: 'neurological.aments.stroke',
                   page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: 'Resources'
-                    },
-                    {
-                      text: 'Morse Fall Score (url)'
-                    },
-                    {
-                      text: 'Mini-mental state examination (MMSE) (url)'
-                    }
-                  ],
                   tableKey: 'aments',
                   formColumn: '2'
                 }
@@ -3397,7 +3386,7 @@ module.exports = function() {
                       },
                       {
                         elementKey: 'resources',
-                        inputType: 'label',
+                        inputType: 'form-label',
                         label:
                           'Resources-NL-Morse Fall Score (url)-NL-Mini-mental state examination (MMSE) (url)',
                         tableColumn: '45',
@@ -3409,17 +3398,6 @@ module.exports = function() {
                         pageDataKey: 'neurological',
                         dataParent: 'neurological.aments.stroke',
                         page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: 'Resources'
-                          },
-                          {
-                            text: 'Morse Fall Score (url)'
-                          },
-                          {
-                            text: 'Mini-mental state examination (MMSE) (url)'
-                          }
-                        ],
                         tableKey: 'aments',
                         formColumn: '2'
                       }
@@ -3891,7 +3869,7 @@ module.exports = function() {
             },
             {
               elementKey: 'resources',
-              inputType: 'label',
+              inputType: 'form-label',
               label:
                 'Resources-NL-Morse Fall Score (url)-NL-Mini-mental state examination (MMSE) (url)',
               tableColumn: '45',
@@ -3903,17 +3881,6 @@ module.exports = function() {
               pageDataKey: 'neurological',
               dataParent: 'neurological.aments.stroke',
               page: 'Assessments: Neurological',
-              options: [
-                {
-                  text: 'Resources'
-                },
-                {
-                  text: 'Morse Fall Score (url)'
-                },
-                {
-                  text: 'Mini-mental state examination (MMSE) (url)'
-                }
-              ],
               tableKey: 'aments',
               formColumn: '2'
             }
@@ -5510,7 +5477,7 @@ module.exports = function() {
                       },
                       {
                         elementKey: 'resources',
-                        inputType: 'label',
+                        inputType: 'form-label',
                         label:
                           'Resources-NL-Morse Fall Score (url)-NL-Mini-mental state examination (MMSE) (url)',
                         tableColumn: '45',
@@ -5522,17 +5489,6 @@ module.exports = function() {
                         pageDataKey: 'neurological',
                         dataParent: 'neurological.aments.stroke',
                         page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: 'Resources'
-                          },
-                          {
-                            text: 'Morse Fall Score (url)'
-                          },
-                          {
-                            text: 'Mini-mental state examination (MMSE) (url)'
-                          }
-                        ],
                         tableKey: 'aments',
                         formColumn: '2'
                       }
@@ -6048,7 +6004,7 @@ module.exports = function() {
                             },
                             {
                               elementKey: 'resources',
-                              inputType: 'label',
+                              inputType: 'form-label',
                               label:
                                 'Resources-NL-Morse Fall Score (url)-NL-Mini-mental state examination (MMSE) (url)',
                               tableColumn: '45',
@@ -6060,17 +6016,6 @@ module.exports = function() {
                               pageDataKey: 'neurological',
                               dataParent: 'neurological.aments.stroke',
                               page: 'Assessments: Neurological',
-                              options: [
-                                {
-                                  text: 'Resources'
-                                },
-                                {
-                                  text: 'Morse Fall Score (url)'
-                                },
-                                {
-                                  text: 'Mini-mental state examination (MMSE) (url)'
-                                }
-                              ],
                               tableKey: 'aments',
                               formColumn: '2'
                             }
@@ -6555,8 +6500,7 @@ module.exports = function() {
               formColumn: '2'
             },
             {
-              inputType: 'label',
-              label: '-',
+              inputType: 'form-label',
               tableColumn: 'spacer',
               fieldset: 'breath',
               fsetRow: '2',
@@ -6864,8 +6808,7 @@ module.exports = function() {
                   formColumn: '2'
                 },
                 {
-                  inputType: 'label',
-                  label: '-',
+                  inputType: 'form-label',
                   tableColumn: 'spacer',
                   fieldset: 'breath',
                   fsetRow: '2',
@@ -7175,8 +7118,7 @@ module.exports = function() {
                     formRow: '2',
                     elements: [
                       {
-                        inputType: 'label',
-                        label: '-',
+                        inputType: 'form-label',
                         tableColumn: 'spacer',
                         fieldset: 'breath',
                         fsetRow: '2',
@@ -7867,8 +7809,7 @@ module.exports = function() {
                         formColumn: '2'
                       },
                       {
-                        inputType: 'label',
-                        label: '-',
+                        inputType: 'form-label',
                         tableColumn: 'spacer',
                         fieldset: 'breath',
                         fsetRow: '2',
@@ -8178,8 +8119,7 @@ module.exports = function() {
                           formRow: '2',
                           elements: [
                             {
-                              inputType: 'label',
-                              label: '-',
+                              inputType: 'form-label',
                               tableColumn: 'spacer',
                               fieldset: 'breath',
                               fsetRow: '2',
@@ -8603,8 +8543,8 @@ module.exports = function() {
               tableKey: 'table'
             },
             {
-              inputType: 'label',
-              label: '-',
+              elementKey: 'spacer1',
+              inputType: 'form-label',
               formColumn: '1',
               formRow: '3',
               formOption: 'spacer',
@@ -8614,116 +8554,92 @@ module.exports = function() {
               tableKey: 'table'
             },
             {
-              inputType: 'label',
+              elementKey: 'labelCapRefill',
+              inputType: 'form-label',
               label: 'Cap refill',
               formColumn: '2',
               formRow: '3',
               pageDataKey: 'cardiovascular',
               dataParent: 'cardiovascular.table',
               page: 'Assessments: Cardiovascular',
-              options: [
-                {
-                  text: 'Cap refill'
-                }
-              ]
+              tableKey: 'table'
             },
             {
-              inputType: 'label',
+              elementKey: 'labelTemperature',
+              inputType: 'form-label',
               label: 'Temperature',
               formColumn: '3',
               formRow: '3',
               pageDataKey: 'cardiovascular',
               dataParent: 'cardiovascular.table',
               page: 'Assessments: Cardiovascular',
-              options: [
-                {
-                  text: 'Temperature'
-                }
-              ]
+              tableKey: 'table'
             },
             {
-              inputType: 'label',
+              elementKey: 'labelPeripheral',
+              inputType: 'form-label',
               label: 'Peripheral edema',
               formColumn: '4',
               formRow: '3',
               pageDataKey: 'cardiovascular',
               dataParent: 'cardiovascular.table',
               page: 'Assessments: Cardiovascular',
-              options: [
-                {
-                  text: 'Peripheral edema'
-                }
-              ]
+              tableKey: 'table'
             },
             {
-              inputType: 'label',
+              elementKey: 'labelNailBed',
+              inputType: 'form-label',
               label: 'Nail bed colour',
               formColumn: '5',
               formRow: '3',
               pageDataKey: 'cardiovascular',
               dataParent: 'cardiovascular.table',
               page: 'Assessments: Cardiovascular',
-              options: [
-                {
-                  text: 'Nail bed colour'
-                }
-              ]
+              tableKey: 'table'
             },
             {
-              inputType: 'label',
+              elementKey: 'lableRight',
+              inputType: 'form-label',
               label: 'Right hand',
               formColumn: '1',
               formRow: '4',
               pageDataKey: 'cardiovascular',
               dataParent: 'cardiovascular.table',
               page: 'Assessments: Cardiovascular',
-              options: [
-                {
-                  text: 'Right hand'
-                }
-              ]
+              tableKey: 'table'
             },
             {
-              inputType: 'label',
+              elementKey: 'lableLeftHand',
+              inputType: 'form-label',
               label: 'Left hand',
               formColumn: '1',
               formRow: '5',
               pageDataKey: 'cardiovascular',
               dataParent: 'cardiovascular.table',
               page: 'Assessments: Cardiovascular',
-              options: [
-                {
-                  text: 'Left hand'
-                }
-              ]
+              tableKey: 'table'
             },
             {
-              inputType: 'label',
+              elementKey: 'labelRightFoot',
+              inputType: 'form-label',
               label: 'Right foot',
               formColumn: '1',
               formRow: '6',
               pageDataKey: 'cardiovascular',
               dataParent: 'cardiovascular.table',
               page: 'Assessments: Cardiovascular',
-              options: [
-                {
-                  text: 'Right foot'
-                }
-              ]
+              tableKey: 'table'
             },
             {
-              inputType: 'label',
+              elementKey: 'labelLeftFoot',
+              inputType: 'form-label',
               label: 'Left foot',
               formColumn: '1',
               formRow: '7',
               pageDataKey: 'cardiovascular',
               dataParent: 'cardiovascular.table',
               page: 'Assessments: Cardiovascular',
-              options: [
-                {
-                  text: 'Left foot'
-                }
-              ]
+              tableKey: 'table'
             },
             {
               elementKey: 'profession',
@@ -9264,8 +9180,8 @@ module.exports = function() {
                 formRow: '3',
                 elements: [
                   {
-                    inputType: 'label',
-                    label: '-',
+                    elementKey: 'spacer1',
+                    inputType: 'form-label',
                     formColumn: '1',
                     formRow: '3',
                     formOption: 'spacer',
@@ -9275,44 +9191,44 @@ module.exports = function() {
                     tableKey: 'table'
                   },
                   {
-                    inputType: 'label',
-                    label: '-',
-                    formColumn: '1',
+                    elementKey: 'labelCapRefill',
+                    inputType: 'form-label',
+                    label: 'Cap refill',
+                    formColumn: '2',
                     formRow: '3',
-                    formOption: 'spacer',
                     pageDataKey: 'cardiovascular',
                     dataParent: 'cardiovascular.table',
                     page: 'Assessments: Cardiovascular',
                     tableKey: 'table'
                   },
                   {
-                    inputType: 'label',
-                    label: '-',
-                    formColumn: '1',
+                    elementKey: 'labelTemperature',
+                    inputType: 'form-label',
+                    label: 'Temperature',
+                    formColumn: '3',
                     formRow: '3',
-                    formOption: 'spacer',
                     pageDataKey: 'cardiovascular',
                     dataParent: 'cardiovascular.table',
                     page: 'Assessments: Cardiovascular',
                     tableKey: 'table'
                   },
                   {
-                    inputType: 'label',
-                    label: '-',
-                    formColumn: '1',
+                    elementKey: 'labelPeripheral',
+                    inputType: 'form-label',
+                    label: 'Peripheral edema',
+                    formColumn: '4',
                     formRow: '3',
-                    formOption: 'spacer',
                     pageDataKey: 'cardiovascular',
                     dataParent: 'cardiovascular.table',
                     page: 'Assessments: Cardiovascular',
                     tableKey: 'table'
                   },
                   {
-                    inputType: 'label',
-                    label: '-',
-                    formColumn: '1',
+                    elementKey: 'labelNailBed',
+                    inputType: 'form-label',
+                    label: 'Nail bed colour',
+                    formColumn: '5',
                     formRow: '3',
-                    formOption: 'spacer',
                     pageDataKey: 'cardiovascular',
                     dataParent: 'cardiovascular.table',
                     page: 'Assessments: Cardiovascular',
@@ -9324,11 +9240,11 @@ module.exports = function() {
                 formRow: '4',
                 elements: [
                   {
-                    inputType: 'label',
-                    label: '-',
+                    elementKey: 'lableRight',
+                    inputType: 'form-label',
+                    label: 'Right hand',
                     formColumn: '1',
-                    formRow: '3',
-                    formOption: 'spacer',
+                    formRow: '4',
                     pageDataKey: 'cardiovascular',
                     dataParent: 'cardiovascular.table',
                     page: 'Assessments: Cardiovascular',
@@ -9436,11 +9352,11 @@ module.exports = function() {
                 formRow: '5',
                 elements: [
                   {
-                    inputType: 'label',
-                    label: '-',
+                    elementKey: 'lableLeftHand',
+                    inputType: 'form-label',
+                    label: 'Left hand',
                     formColumn: '1',
-                    formRow: '3',
-                    formOption: 'spacer',
+                    formRow: '5',
                     pageDataKey: 'cardiovascular',
                     dataParent: 'cardiovascular.table',
                     page: 'Assessments: Cardiovascular',
@@ -9548,11 +9464,11 @@ module.exports = function() {
                 formRow: '6',
                 elements: [
                   {
-                    inputType: 'label',
-                    label: '-',
+                    elementKey: 'labelRightFoot',
+                    inputType: 'form-label',
+                    label: 'Right foot',
                     formColumn: '1',
-                    formRow: '3',
-                    formOption: 'spacer',
+                    formRow: '6',
                     pageDataKey: 'cardiovascular',
                     dataParent: 'cardiovascular.table',
                     page: 'Assessments: Cardiovascular',
@@ -9660,11 +9576,11 @@ module.exports = function() {
                 formRow: '7',
                 elements: [
                   {
-                    inputType: 'label',
-                    label: '-',
+                    elementKey: 'labelLeftFoot',
+                    inputType: 'form-label',
+                    label: 'Left foot',
                     formColumn: '1',
-                    formRow: '3',
-                    formOption: 'spacer',
+                    formRow: '7',
                     pageDataKey: 'cardiovascular',
                     dataParent: 'cardiovascular.table',
                     page: 'Assessments: Cardiovascular',
@@ -9817,11 +9733,11 @@ module.exports = function() {
               tableKey: 'table'
             },
             {
-              elementKey: 'emesis',
-              fqn: 'gastrointestinal.table.emesis',
+              elementKey: 'bowel',
+              fqn: 'gastrointestinal.table.bowel',
               inputType: 'fieldset',
-              label: 'Emesis',
-              fieldset: 'emesis',
+              label: 'Bowel',
+              fieldset: 'bowel',
               formColumn: '1',
               formRow: '2',
               pageDataKey: 'gastrointestinal',
@@ -9829,68 +9745,157 @@ module.exports = function() {
               page: 'Assessments: Gastrointestinal',
               elements: [
                 {
-                  elementKey: 'none',
-                  fqn: 'gastrointestinal.table.emesis.none',
+                  elementKey: 'bowelMovement',
+                  fqn: 'gastrointestinal.table.bowel.bowelMovement',
                   inputType: 'select',
-                  label: 'None',
-                  fieldset: 'emesis',
-                  fsetRow: '1',
-                  fsetCol: '1',
+                  label: 'Bowel',
                   pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.emesis',
+                  dataParent: 'gastrointestinal.table.bowel',
                   page: 'Assessments: Gastrointestinal',
                   options: [
                     {
-                      text: 'Need'
+                      text: 'Constipation'
                     },
                     {
-                      text: 'Data'
+                      text: 'Diarrhea'
                     },
                     {
-                      text: 'Here'
+                      text: 'Melena'
+                    },
+                    {
+                      text: 'Incontinent'
                     }
                   ],
-                  tableKey: 'table',
-                  formColumn: '1'
+                  tableKey: 'table'
+                },
+                {
+                  elementKey: 'lastBm',
+                  fqn: 'gastrointestinal.table.bowel.lastBm',
+                  inputType: 'text',
+                  label: 'Last BM',
+                  pageDataKey: 'gastrointestinal',
+                  dataParent: 'gastrointestinal.table.bowel',
+                  page: 'Assessments: Gastrointestinal',
+                  tableKey: 'table'
+                },
+                {
+                  elementKey: 'bowelSounds',
+                  fqn: 'gastrointestinal.table.bowel.bowelSounds',
+                  inputType: 'select',
+                  label: 'Bowel sounds',
+                  pageDataKey: 'gastrointestinal',
+                  dataParent: 'gastrointestinal.table.bowel',
+                  page: 'Assessments: Gastrointestinal',
+                  options: [
+                    {
+                      text: 'None'
+                    },
+                    {
+                      text: 'LUQ'
+                    },
+                    {
+                      text: 'RUQ'
+                    },
+                    {
+                      text: 'LLQ'
+                    },
+                    {
+                      text: 'RLQ'
+                    }
+                  ],
+                  tableKey: 'table'
+                },
+                {
+                  elementKey: 'stoolColour',
+                  fqn: 'gastrointestinal.table.bowel.stoolColour',
+                  inputType: 'select',
+                  label: 'Stool colour',
+                  pageDataKey: 'gastrointestinal',
+                  dataParent: 'gastrointestinal.table.bowel',
+                  page: 'Assessments: Gastrointestinal',
+                  options: [
+                    {
+                      text: 'Brown'
+                    },
+                    {
+                      text: 'Green'
+                    },
+                    {
+                      text: 'Clay coloured'
+                    },
+                    {
+                      text: 'Yellow'
+                    },
+                    {
+                      text: 'Black'
+                    },
+                    {
+                      text: 'Bright red'
+                    },
+                    {
+                      text: 'Dark red'
+                    }
+                  ],
+                  tableKey: 'table'
+                },
+                {
+                  elementKey: 'stoolDescription',
+                  fqn: 'gastrointestinal.table.bowel.stoolDescription',
+                  inputType: 'text',
+                  label: 'Description',
+                  pageDataKey: 'gastrointestinal',
+                  dataParent: 'gastrointestinal.table.bowel',
+                  page: 'Assessments: Gastrointestinal',
+                  tableKey: 'table'
+                },
+                {
+                  elementKey: 'stoolAmount',
+                  fqn: 'gastrointestinal.table.bowel.stoolAmount',
+                  inputType: 'text',
+                  label: 'Amount',
+                  pageDataKey: 'gastrointestinal',
+                  dataParent: 'gastrointestinal.table.bowel',
+                  page: 'Assessments: Gastrointestinal',
+                  tableKey: 'table'
+                },
+                {
+                  elementKey: 'stoolSource',
+                  fqn: 'gastrointestinal.table.bowel.stoolSource',
+                  inputType: 'select',
+                  label: 'Source',
+                  pageDataKey: 'gastrointestinal',
+                  dataParent: 'gastrointestinal.table.bowel',
+                  page: 'Assessments: Gastrointestinal',
+                  options: [
+                    {
+                      text: 'Observed'
+                    },
+                    {
+                      text: 'As per patient observed'
+                    },
+                    {
+                      text: 'Not observed'
+                    }
+                  ],
+                  tableKey: 'table'
+                },
+                {
+                  elementKey: 'comments',
+                  fqn: 'gastrointestinal.table.bowel.comments',
+                  inputType: 'textarea',
+                  label: 'Comments',
+                  pageDataKey: 'gastrointestinal',
+                  dataParent: 'gastrointestinal.table.bowel',
+                  page: 'Assessments: Gastrointestinal',
+                  tableKey: 'table'
                 }
               ],
               type: 'fieldset',
-              containerKey: 'emesis',
+              containerKey: 'bowel',
               tableKey: 'table',
               formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'none',
-                        fqn: 'gastrointestinal.table.emesis.none',
-                        inputType: 'select',
-                        label: 'None',
-                        fieldset: 'emesis',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.emesis',
-                        page: 'Assessments: Gastrointestinal',
-                        options: [
-                          {
-                            text: 'Need'
-                          },
-                          {
-                            text: 'Data'
-                          },
-                          {
-                            text: 'Here'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
+                rows: [],
+                columnsCount: 0
               }
             },
             {
@@ -9975,17 +9980,18 @@ module.exports = function() {
               formColumn: '1'
             },
             {
-              elementKey: 'profession',
-              fqn: 'gastrointestinal.table.profession',
-              inputType: 'text',
-              label: 'Profession',
-              formCss: 'is-3',
-              formColumn: '2',
-              formRow: '1',
+              elementKey: 'guarding',
+              fqn: 'gastrointestinal.table.abdomen.guarding',
+              inputType: 'checkbox',
+              label: 'Guarding',
+              fieldset: 'abdomen',
+              fsetRow: '4',
+              fsetCol: '1',
               pageDataKey: 'gastrointestinal',
-              dataParent: 'gastrointestinal.table',
+              dataParent: 'gastrointestinal.table.abdomen',
               page: 'Assessments: Gastrointestinal',
-              tableKey: 'table'
+              tableKey: 'table',
+              formColumn: '1'
             },
             {
               elementKey: 'distended',
@@ -10039,7 +10045,8 @@ module.exports = function() {
             },
             {
               fqn: 'gastrointestinal.table.abdomen.',
-              inputType: 'label',
+              inputType: 'form-label',
+              label: 'If answered yes, please complete the pain assessent',
               fieldset: 'abdomen',
               fsetRow: '8',
               fsetCol: '1',
@@ -10047,11 +10054,6 @@ module.exports = function() {
               pageDataKey: 'gastrointestinal',
               dataParent: 'gastrointestinal.table.abdomen',
               page: 'Assessments: Gastrointestinal',
-              options: [
-                {
-                  text: 'If answered yes, please complete the pain assessent'
-                }
-              ],
               tableKey: 'table',
               formColumn: '1'
             },
@@ -10175,7 +10177,8 @@ module.exports = function() {
                 },
                 {
                   fqn: 'gastrointestinal.table.abdomen.',
-                  inputType: 'label',
+                  inputType: 'form-label',
+                  label: 'If answered yes, please complete the pain assessent',
                   fieldset: 'abdomen',
                   fsetRow: '8',
                   fsetCol: '1',
@@ -10183,11 +10186,6 @@ module.exports = function() {
                   pageDataKey: 'gastrointestinal',
                   dataParent: 'gastrointestinal.table.abdomen',
                   page: 'Assessments: Gastrointestinal',
-                  options: [
-                    {
-                      text: 'If answered yes, please complete the pain assessent'
-                    }
-                  ],
                   tableKey: 'table',
                   formColumn: '1'
                 }
@@ -10343,7 +10341,8 @@ module.exports = function() {
                     elements: [
                       {
                         fqn: 'gastrointestinal.table.abdomen.',
-                        inputType: 'label',
+                        inputType: 'form-label',
+                        label: 'If answered yes, please complete the pain assessent',
                         fieldset: 'abdomen',
                         fsetRow: '8',
                         fsetCol: '1',
@@ -10351,11 +10350,6 @@ module.exports = function() {
                         pageDataKey: 'gastrointestinal',
                         dataParent: 'gastrointestinal.table.abdomen',
                         page: 'Assessments: Gastrointestinal',
-                        options: [
-                          {
-                            text: 'If answered yes, please complete the pain assessent'
-                          }
-                        ],
                         tableKey: 'table',
                         formColumn: '1'
                       }
@@ -10391,16 +10385,616 @@ module.exports = function() {
               formColumn: '1'
             },
             {
-              elementKey: 'guarding',
-              fqn: 'gastrointestinal.table.abdomen.guarding',
-              inputType: 'checkbox',
-              label: 'Guarding',
-              fieldset: 'abdomen',
+              elementKey: 'nausea',
+              fqn: 'gastrointestinal.table.emesis.nausea',
+              inputType: 'text',
+              label: 'Nausea',
+              fieldset: 'emesis',
+              fsetRow: '2',
+              fsetCol: '1',
+              pageDataKey: 'gastrointestinal',
+              dataParent: 'gastrointestinal.table.emesis',
+              page: 'Assessments: Gastrointestinal',
+              tableKey: 'table',
+              formColumn: '1'
+            },
+            {
+              elementKey: 'vomiting',
+              fqn: 'gastrointestinal.table.emesis.vomiting',
+              inputType: 'text',
+              label: 'Vomiting',
+              fieldset: 'emesis',
+              fsetRow: '3',
+              fsetCol: '1',
+              pageDataKey: 'gastrointestinal',
+              dataParent: 'gastrointestinal.table.emesis',
+              page: 'Assessments: Gastrointestinal',
+              tableKey: 'table',
+              formColumn: '1'
+            },
+            {
+              elementKey: 'profession',
+              fqn: 'gastrointestinal.table.profession',
+              inputType: 'text',
+              label: 'Profession',
+              formCss: 'is-3',
+              formColumn: '2',
+              formRow: '1',
+              pageDataKey: 'gastrointestinal',
+              dataParent: 'gastrointestinal.table',
+              page: 'Assessments: Gastrointestinal',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'description',
+              fqn: 'gastrointestinal.table.emesis.description',
+              inputType: 'text',
+              label: 'Description',
+              fieldset: 'emesis',
+              fsetRow: '5',
+              fsetCol: '1',
+              pageDataKey: 'gastrointestinal',
+              dataParent: 'gastrointestinal.table.emesis',
+              page: 'Assessments: Gastrointestinal',
+              tableKey: 'table',
+              formColumn: '1'
+            },
+            {
+              elementKey: 'amount',
+              fqn: 'gastrointestinal.table.emesis.amount',
+              inputType: 'select',
+              label: 'Amount',
+              fieldset: 'emesis',
+              fsetRow: '6',
+              fsetCol: '1',
+              pageDataKey: 'gastrointestinal',
+              dataParent: 'gastrointestinal.table.emesis',
+              page: 'Assessments: Gastrointestinal',
+              options: [
+                {
+                  text: 'Small'
+                },
+                {
+                  text: 'Moderate'
+                },
+                {
+                  text: 'Large'
+                }
+              ],
+              tableKey: 'table',
+              formColumn: '1'
+            },
+            {
+              elementKey: 'emesis',
+              fqn: 'gastrointestinal.table.emesis',
+              inputType: 'fieldset',
+              label: 'Emesis',
+              fieldset: 'emesis',
+              formColumn: '1',
+              formRow: '2',
+              pageDataKey: 'gastrointestinal',
+              dataParent: 'gastrointestinal.table',
+              page: 'Assessments: Gastrointestinal',
+              elements: [
+                {
+                  elementKey: 'none',
+                  fqn: 'gastrointestinal.table.emesis.none',
+                  inputType: 'select',
+                  label: 'None',
+                  fieldset: 'emesis',
+                  fsetRow: '1',
+                  fsetCol: '1',
+                  pageDataKey: 'gastrointestinal',
+                  dataParent: 'gastrointestinal.table.emesis',
+                  page: 'Assessments: Gastrointestinal',
+                  options: [
+                    {
+                      text: 'Need'
+                    },
+                    {
+                      text: 'Data'
+                    },
+                    {
+                      text: 'Here'
+                    }
+                  ],
+                  tableKey: 'table',
+                  formColumn: '1'
+                },
+                {
+                  elementKey: 'nausea',
+                  fqn: 'gastrointestinal.table.emesis.nausea',
+                  inputType: 'text',
+                  label: 'Nausea',
+                  fieldset: 'emesis',
+                  fsetRow: '2',
+                  fsetCol: '1',
+                  pageDataKey: 'gastrointestinal',
+                  dataParent: 'gastrointestinal.table.emesis',
+                  page: 'Assessments: Gastrointestinal',
+                  tableKey: 'table',
+                  formColumn: '1'
+                },
+                {
+                  elementKey: 'vomiting',
+                  fqn: 'gastrointestinal.table.emesis.vomiting',
+                  inputType: 'text',
+                  label: 'Vomiting',
+                  fieldset: 'emesis',
+                  fsetRow: '3',
+                  fsetCol: '1',
+                  pageDataKey: 'gastrointestinal',
+                  dataParent: 'gastrointestinal.table.emesis',
+                  page: 'Assessments: Gastrointestinal',
+                  tableKey: 'table',
+                  formColumn: '1'
+                },
+                {
+                  elementKey: 'colour',
+                  fqn: 'gastrointestinal.table.emesis.colour',
+                  inputType: 'select',
+                  label: 'Emesis colour',
+                  fieldset: 'emesis',
+                  fsetRow: '4',
+                  fsetCol: '1',
+                  pageDataKey: 'gastrointestinal',
+                  dataParent: 'gastrointestinal.table.emesis',
+                  page: 'Assessments: Gastrointestinal',
+                  options: [
+                    {
+                      text: 'Need'
+                    },
+                    {
+                      text: 'Data'
+                    },
+                    {
+                      text: 'Here'
+                    }
+                  ],
+                  tableKey: 'table',
+                  formColumn: '1'
+                },
+                {
+                  elementKey: 'description',
+                  fqn: 'gastrointestinal.table.emesis.description',
+                  inputType: 'text',
+                  label: 'Description',
+                  fieldset: 'emesis',
+                  fsetRow: '5',
+                  fsetCol: '1',
+                  pageDataKey: 'gastrointestinal',
+                  dataParent: 'gastrointestinal.table.emesis',
+                  page: 'Assessments: Gastrointestinal',
+                  tableKey: 'table',
+                  formColumn: '1'
+                },
+                {
+                  elementKey: 'amount',
+                  fqn: 'gastrointestinal.table.emesis.amount',
+                  inputType: 'select',
+                  label: 'Amount',
+                  fieldset: 'emesis',
+                  fsetRow: '6',
+                  fsetCol: '1',
+                  pageDataKey: 'gastrointestinal',
+                  dataParent: 'gastrointestinal.table.emesis',
+                  page: 'Assessments: Gastrointestinal',
+                  options: [
+                    {
+                      text: 'Small'
+                    },
+                    {
+                      text: 'Moderate'
+                    },
+                    {
+                      text: 'Large'
+                    }
+                  ],
+                  tableKey: 'table',
+                  formColumn: '1'
+                }
+              ],
+              type: 'fieldset',
+              containerKey: 'emesis',
+              tableKey: 'table',
+              formFieldSet: {
+                rows: [
+                  {
+                    formRow: '1',
+                    elements: [
+                      {
+                        elementKey: 'none',
+                        fqn: 'gastrointestinal.table.emesis.none',
+                        inputType: 'select',
+                        label: 'None',
+                        fieldset: 'emesis',
+                        fsetRow: '1',
+                        fsetCol: '1',
+                        pageDataKey: 'gastrointestinal',
+                        dataParent: 'gastrointestinal.table.emesis',
+                        page: 'Assessments: Gastrointestinal',
+                        options: [
+                          {
+                            text: 'Need'
+                          },
+                          {
+                            text: 'Data'
+                          },
+                          {
+                            text: 'Here'
+                          }
+                        ],
+                        tableKey: 'table',
+                        formColumn: '1'
+                      }
+                    ]
+                  },
+                  {
+                    formRow: '2',
+                    elements: [
+                      {
+                        elementKey: 'nausea',
+                        fqn: 'gastrointestinal.table.emesis.nausea',
+                        inputType: 'text',
+                        label: 'Nausea',
+                        fieldset: 'emesis',
+                        fsetRow: '2',
+                        fsetCol: '1',
+                        pageDataKey: 'gastrointestinal',
+                        dataParent: 'gastrointestinal.table.emesis',
+                        page: 'Assessments: Gastrointestinal',
+                        tableKey: 'table',
+                        formColumn: '1'
+                      }
+                    ]
+                  },
+                  {
+                    formRow: '3',
+                    elements: [
+                      {
+                        elementKey: 'vomiting',
+                        fqn: 'gastrointestinal.table.emesis.vomiting',
+                        inputType: 'text',
+                        label: 'Vomiting',
+                        fieldset: 'emesis',
+                        fsetRow: '3',
+                        fsetCol: '1',
+                        pageDataKey: 'gastrointestinal',
+                        dataParent: 'gastrointestinal.table.emesis',
+                        page: 'Assessments: Gastrointestinal',
+                        tableKey: 'table',
+                        formColumn: '1'
+                      }
+                    ]
+                  },
+                  {
+                    formRow: '4',
+                    elements: [
+                      {
+                        elementKey: 'colour',
+                        fqn: 'gastrointestinal.table.emesis.colour',
+                        inputType: 'select',
+                        label: 'Emesis colour',
+                        fieldset: 'emesis',
+                        fsetRow: '4',
+                        fsetCol: '1',
+                        pageDataKey: 'gastrointestinal',
+                        dataParent: 'gastrointestinal.table.emesis',
+                        page: 'Assessments: Gastrointestinal',
+                        options: [
+                          {
+                            text: 'Need'
+                          },
+                          {
+                            text: 'Data'
+                          },
+                          {
+                            text: 'Here'
+                          }
+                        ],
+                        tableKey: 'table',
+                        formColumn: '1'
+                      }
+                    ]
+                  },
+                  {
+                    formRow: '5',
+                    elements: [
+                      {
+                        elementKey: 'description',
+                        fqn: 'gastrointestinal.table.emesis.description',
+                        inputType: 'text',
+                        label: 'Description',
+                        fieldset: 'emesis',
+                        fsetRow: '5',
+                        fsetCol: '1',
+                        pageDataKey: 'gastrointestinal',
+                        dataParent: 'gastrointestinal.table.emesis',
+                        page: 'Assessments: Gastrointestinal',
+                        tableKey: 'table',
+                        formColumn: '1'
+                      }
+                    ]
+                  },
+                  {
+                    formRow: '6',
+                    elements: [
+                      {
+                        elementKey: 'amount',
+                        fqn: 'gastrointestinal.table.emesis.amount',
+                        inputType: 'select',
+                        label: 'Amount',
+                        fieldset: 'emesis',
+                        fsetRow: '6',
+                        fsetCol: '1',
+                        pageDataKey: 'gastrointestinal',
+                        dataParent: 'gastrointestinal.table.emesis',
+                        page: 'Assessments: Gastrointestinal',
+                        options: [
+                          {
+                            text: 'Small'
+                          },
+                          {
+                            text: 'Moderate'
+                          },
+                          {
+                            text: 'Large'
+                          }
+                        ],
+                        tableKey: 'table',
+                        formColumn: '1'
+                      }
+                    ]
+                  }
+                ],
+                columnsCount: 1
+              }
+            },
+            {
+              inputType: 'fieldset',
+              fieldset: 'eating',
+              formColumn: '1',
+              formRow: '2',
+              formOption: 'withoutLabel',
+              pageDataKey: 'gastrointestinal',
+              dataParent: 'gastrointestinal.table',
+              page: 'Assessments: Gastrointestinal',
+              elements: [],
+              type: 'fieldset',
+              formFieldSet: {
+                rows: [],
+                columnsCount: 0
+              }
+            },
+            {
+              elementKey: 'eating',
+              fqn: 'gastrointestinal.table.eating',
+              inputType: 'select',
+              label: 'Eating',
+              fieldset: 'eating',
+              fsetRow: '1',
+              fsetCol: '1',
+              formOption: 'boldLabel',
+              pageDataKey: 'gastrointestinal',
+              dataParent: 'gastrointestinal.table',
+              page: 'Assessments: Gastrointestinal',
+              options: [
+                {
+                  text: 'Regular'
+                },
+                {
+                  text: 'Difficult'
+                }
+              ],
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'reason',
+              fqn: 'gastrointestinal.table.reason',
+              inputType: 'text',
+              label: 'Reason',
+              fieldset: 'eating',
+              fsetRow: '2',
+              fsetCol: '1',
+              pageDataKey: 'gastrointestinal',
+              dataParent: 'gastrointestinal.table',
+              page: 'Assessments: Gastrointestinal',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'npoSinceDate',
+              fqn: 'gastrointestinal.table.npoSinceDate',
+              inputType: 'day',
+              label: 'NPO since',
+              fieldset: 'eating',
+              fsetRow: '3',
+              fsetCol: '1',
+              formOption: 'boldLabel',
+              pageDataKey: 'gastrointestinal',
+              dataParent: 'gastrointestinal.table',
+              page: 'Assessments: Gastrointestinal',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'npoSinceTime',
+              fqn: 'gastrointestinal.table.npoSinceTime',
+              inputType: 'time',
+              label: 'Time',
+              fieldset: 'eating',
               fsetRow: '4',
               fsetCol: '1',
               pageDataKey: 'gastrointestinal',
-              dataParent: 'gastrointestinal.table.abdomen',
+              dataParent: 'gastrointestinal.table',
               page: 'Assessments: Gastrointestinal',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'bowelMovement',
+              fqn: 'gastrointestinal.table.bowel.bowelMovement',
+              inputType: 'select',
+              label: 'Bowel',
+              pageDataKey: 'gastrointestinal',
+              dataParent: 'gastrointestinal.table.bowel',
+              page: 'Assessments: Gastrointestinal',
+              options: [
+                {
+                  text: 'Constipation'
+                },
+                {
+                  text: 'Diarrhea'
+                },
+                {
+                  text: 'Melena'
+                },
+                {
+                  text: 'Incontinent'
+                }
+              ],
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'lastBm',
+              fqn: 'gastrointestinal.table.bowel.lastBm',
+              inputType: 'text',
+              label: 'Last BM',
+              pageDataKey: 'gastrointestinal',
+              dataParent: 'gastrointestinal.table.bowel',
+              page: 'Assessments: Gastrointestinal',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'bowelSounds',
+              fqn: 'gastrointestinal.table.bowel.bowelSounds',
+              inputType: 'select',
+              label: 'Bowel sounds',
+              pageDataKey: 'gastrointestinal',
+              dataParent: 'gastrointestinal.table.bowel',
+              page: 'Assessments: Gastrointestinal',
+              options: [
+                {
+                  text: 'None'
+                },
+                {
+                  text: 'LUQ'
+                },
+                {
+                  text: 'RUQ'
+                },
+                {
+                  text: 'LLQ'
+                },
+                {
+                  text: 'RLQ'
+                }
+              ],
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'stoolColour',
+              fqn: 'gastrointestinal.table.bowel.stoolColour',
+              inputType: 'select',
+              label: 'Stool colour',
+              pageDataKey: 'gastrointestinal',
+              dataParent: 'gastrointestinal.table.bowel',
+              page: 'Assessments: Gastrointestinal',
+              options: [
+                {
+                  text: 'Brown'
+                },
+                {
+                  text: 'Green'
+                },
+                {
+                  text: 'Clay coloured'
+                },
+                {
+                  text: 'Yellow'
+                },
+                {
+                  text: 'Black'
+                },
+                {
+                  text: 'Bright red'
+                },
+                {
+                  text: 'Dark red'
+                }
+              ],
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'stoolDescription',
+              fqn: 'gastrointestinal.table.bowel.stoolDescription',
+              inputType: 'text',
+              label: 'Description',
+              pageDataKey: 'gastrointestinal',
+              dataParent: 'gastrointestinal.table.bowel',
+              page: 'Assessments: Gastrointestinal',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'stoolAmount',
+              fqn: 'gastrointestinal.table.bowel.stoolAmount',
+              inputType: 'text',
+              label: 'Amount',
+              pageDataKey: 'gastrointestinal',
+              dataParent: 'gastrointestinal.table.bowel',
+              page: 'Assessments: Gastrointestinal',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'stoolSource',
+              fqn: 'gastrointestinal.table.bowel.stoolSource',
+              inputType: 'select',
+              label: 'Source',
+              pageDataKey: 'gastrointestinal',
+              dataParent: 'gastrointestinal.table.bowel',
+              page: 'Assessments: Gastrointestinal',
+              options: [
+                {
+                  text: 'Observed'
+                },
+                {
+                  text: 'As per patient observed'
+                },
+                {
+                  text: 'Not observed'
+                }
+              ],
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'comments',
+              fqn: 'gastrointestinal.table.bowel.comments',
+              inputType: 'textarea',
+              label: 'Comments',
+              pageDataKey: 'gastrointestinal',
+              dataParent: 'gastrointestinal.table.bowel',
+              page: 'Assessments: Gastrointestinal',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'colour',
+              fqn: 'gastrointestinal.table.emesis.colour',
+              inputType: 'select',
+              label: 'Emesis colour',
+              fieldset: 'emesis',
+              fsetRow: '4',
+              fsetCol: '1',
+              pageDataKey: 'gastrointestinal',
+              dataParent: 'gastrointestinal.table.emesis',
+              page: 'Assessments: Gastrointestinal',
+              options: [
+                {
+                  text: 'Need'
+                },
+                {
+                  text: 'Data'
+                },
+                {
+                  text: 'Here'
+                }
+              ],
               tableKey: 'table',
               formColumn: '1'
             }
@@ -10600,7 +11194,8 @@ module.exports = function() {
                       },
                       {
                         fqn: 'gastrointestinal.table.abdomen.',
-                        inputType: 'label',
+                        inputType: 'form-label',
+                        label: 'If answered yes, please complete the pain assessent',
                         fieldset: 'abdomen',
                         fsetRow: '8',
                         fsetCol: '1',
@@ -10608,11 +11203,6 @@ module.exports = function() {
                         pageDataKey: 'gastrointestinal',
                         dataParent: 'gastrointestinal.table.abdomen',
                         page: 'Assessments: Gastrointestinal',
-                        options: [
-                          {
-                            text: 'If answered yes, please complete the pain assessent'
-                          }
-                        ],
                         tableKey: 'table',
                         formColumn: '1'
                       }
@@ -10768,7 +11358,8 @@ module.exports = function() {
                           elements: [
                             {
                               fqn: 'gastrointestinal.table.abdomen.',
-                              inputType: 'label',
+                              inputType: 'form-label',
+                              label: 'If answered yes, please complete the pain assessent',
                               fieldset: 'abdomen',
                               fsetRow: '8',
                               fsetCol: '1',
@@ -10776,11 +11367,6 @@ module.exports = function() {
                               pageDataKey: 'gastrointestinal',
                               dataParent: 'gastrointestinal.table.abdomen',
                               page: 'Assessments: Gastrointestinal',
-                              options: [
-                                {
-                                  text: 'If answered yes, please complete the pain assessent'
-                                }
-                              ],
                               tableKey: 'table',
                               formColumn: '1'
                             }
@@ -10826,6 +11412,98 @@ module.exports = function() {
                         ],
                         tableKey: 'table',
                         formColumn: '1'
+                      },
+                      {
+                        elementKey: 'nausea',
+                        fqn: 'gastrointestinal.table.emesis.nausea',
+                        inputType: 'text',
+                        label: 'Nausea',
+                        fieldset: 'emesis',
+                        fsetRow: '2',
+                        fsetCol: '1',
+                        pageDataKey: 'gastrointestinal',
+                        dataParent: 'gastrointestinal.table.emesis',
+                        page: 'Assessments: Gastrointestinal',
+                        tableKey: 'table',
+                        formColumn: '1'
+                      },
+                      {
+                        elementKey: 'vomiting',
+                        fqn: 'gastrointestinal.table.emesis.vomiting',
+                        inputType: 'text',
+                        label: 'Vomiting',
+                        fieldset: 'emesis',
+                        fsetRow: '3',
+                        fsetCol: '1',
+                        pageDataKey: 'gastrointestinal',
+                        dataParent: 'gastrointestinal.table.emesis',
+                        page: 'Assessments: Gastrointestinal',
+                        tableKey: 'table',
+                        formColumn: '1'
+                      },
+                      {
+                        elementKey: 'colour',
+                        fqn: 'gastrointestinal.table.emesis.colour',
+                        inputType: 'select',
+                        label: 'Emesis colour',
+                        fieldset: 'emesis',
+                        fsetRow: '4',
+                        fsetCol: '1',
+                        pageDataKey: 'gastrointestinal',
+                        dataParent: 'gastrointestinal.table.emesis',
+                        page: 'Assessments: Gastrointestinal',
+                        options: [
+                          {
+                            text: 'Need'
+                          },
+                          {
+                            text: 'Data'
+                          },
+                          {
+                            text: 'Here'
+                          }
+                        ],
+                        tableKey: 'table',
+                        formColumn: '1'
+                      },
+                      {
+                        elementKey: 'description',
+                        fqn: 'gastrointestinal.table.emesis.description',
+                        inputType: 'text',
+                        label: 'Description',
+                        fieldset: 'emesis',
+                        fsetRow: '5',
+                        fsetCol: '1',
+                        pageDataKey: 'gastrointestinal',
+                        dataParent: 'gastrointestinal.table.emesis',
+                        page: 'Assessments: Gastrointestinal',
+                        tableKey: 'table',
+                        formColumn: '1'
+                      },
+                      {
+                        elementKey: 'amount',
+                        fqn: 'gastrointestinal.table.emesis.amount',
+                        inputType: 'select',
+                        label: 'Amount',
+                        fieldset: 'emesis',
+                        fsetRow: '6',
+                        fsetCol: '1',
+                        pageDataKey: 'gastrointestinal',
+                        dataParent: 'gastrointestinal.table.emesis',
+                        page: 'Assessments: Gastrointestinal',
+                        options: [
+                          {
+                            text: 'Small'
+                          },
+                          {
+                            text: 'Moderate'
+                          },
+                          {
+                            text: 'Large'
+                          }
+                        ],
+                        tableKey: 'table',
+                        formColumn: '1'
                       }
                     ],
                     type: 'fieldset',
@@ -10862,9 +11540,306 @@ module.exports = function() {
                               formColumn: '1'
                             }
                           ]
+                        },
+                        {
+                          formRow: '2',
+                          elements: [
+                            {
+                              elementKey: 'nausea',
+                              fqn: 'gastrointestinal.table.emesis.nausea',
+                              inputType: 'text',
+                              label: 'Nausea',
+                              fieldset: 'emesis',
+                              fsetRow: '2',
+                              fsetCol: '1',
+                              pageDataKey: 'gastrointestinal',
+                              dataParent: 'gastrointestinal.table.emesis',
+                              page: 'Assessments: Gastrointestinal',
+                              tableKey: 'table',
+                              formColumn: '1'
+                            }
+                          ]
+                        },
+                        {
+                          formRow: '3',
+                          elements: [
+                            {
+                              elementKey: 'vomiting',
+                              fqn: 'gastrointestinal.table.emesis.vomiting',
+                              inputType: 'text',
+                              label: 'Vomiting',
+                              fieldset: 'emesis',
+                              fsetRow: '3',
+                              fsetCol: '1',
+                              pageDataKey: 'gastrointestinal',
+                              dataParent: 'gastrointestinal.table.emesis',
+                              page: 'Assessments: Gastrointestinal',
+                              tableKey: 'table',
+                              formColumn: '1'
+                            }
+                          ]
+                        },
+                        {
+                          formRow: '4',
+                          elements: [
+                            {
+                              elementKey: 'colour',
+                              fqn: 'gastrointestinal.table.emesis.colour',
+                              inputType: 'select',
+                              label: 'Emesis colour',
+                              fieldset: 'emesis',
+                              fsetRow: '4',
+                              fsetCol: '1',
+                              pageDataKey: 'gastrointestinal',
+                              dataParent: 'gastrointestinal.table.emesis',
+                              page: 'Assessments: Gastrointestinal',
+                              options: [
+                                {
+                                  text: 'Need'
+                                },
+                                {
+                                  text: 'Data'
+                                },
+                                {
+                                  text: 'Here'
+                                }
+                              ],
+                              tableKey: 'table',
+                              formColumn: '1'
+                            }
+                          ]
+                        },
+                        {
+                          formRow: '5',
+                          elements: [
+                            {
+                              elementKey: 'description',
+                              fqn: 'gastrointestinal.table.emesis.description',
+                              inputType: 'text',
+                              label: 'Description',
+                              fieldset: 'emesis',
+                              fsetRow: '5',
+                              fsetCol: '1',
+                              pageDataKey: 'gastrointestinal',
+                              dataParent: 'gastrointestinal.table.emesis',
+                              page: 'Assessments: Gastrointestinal',
+                              tableKey: 'table',
+                              formColumn: '1'
+                            }
+                          ]
+                        },
+                        {
+                          formRow: '6',
+                          elements: [
+                            {
+                              elementKey: 'amount',
+                              fqn: 'gastrointestinal.table.emesis.amount',
+                              inputType: 'select',
+                              label: 'Amount',
+                              fieldset: 'emesis',
+                              fsetRow: '6',
+                              fsetCol: '1',
+                              pageDataKey: 'gastrointestinal',
+                              dataParent: 'gastrointestinal.table.emesis',
+                              page: 'Assessments: Gastrointestinal',
+                              options: [
+                                {
+                                  text: 'Small'
+                                },
+                                {
+                                  text: 'Moderate'
+                                },
+                                {
+                                  text: 'Large'
+                                }
+                              ],
+                              tableKey: 'table',
+                              formColumn: '1'
+                            }
+                          ]
                         }
                       ],
                       columnsCount: 1
+                    }
+                  },
+                  {
+                    fqn: 'gastrointestinal.table.abdomen.',
+                    inputType: 'form-label',
+                    label: 'If answered yes, please complete the pain assessent',
+                    fieldset: 'abdomen',
+                    fsetRow: '8',
+                    fsetCol: '1',
+                    formOption: 'labelWithPageRef',
+                    pageDataKey: 'gastrointestinal',
+                    dataParent: 'gastrointestinal.table.abdomen',
+                    page: 'Assessments: Gastrointestinal',
+                    tableKey: 'table',
+                    formColumn: '1'
+                  },
+                  {
+                    elementKey: 'bowel',
+                    fqn: 'gastrointestinal.table.bowel',
+                    inputType: 'fieldset',
+                    label: 'Bowel',
+                    fieldset: 'bowel',
+                    formColumn: '1',
+                    formRow: '2',
+                    pageDataKey: 'gastrointestinal',
+                    dataParent: 'gastrointestinal.table',
+                    page: 'Assessments: Gastrointestinal',
+                    elements: [
+                      {
+                        elementKey: 'bowelMovement',
+                        fqn: 'gastrointestinal.table.bowel.bowelMovement',
+                        inputType: 'select',
+                        label: 'Bowel',
+                        pageDataKey: 'gastrointestinal',
+                        dataParent: 'gastrointestinal.table.bowel',
+                        page: 'Assessments: Gastrointestinal',
+                        options: [
+                          {
+                            text: 'Constipation'
+                          },
+                          {
+                            text: 'Diarrhea'
+                          },
+                          {
+                            text: 'Melena'
+                          },
+                          {
+                            text: 'Incontinent'
+                          }
+                        ],
+                        tableKey: 'table'
+                      },
+                      {
+                        elementKey: 'lastBm',
+                        fqn: 'gastrointestinal.table.bowel.lastBm',
+                        inputType: 'text',
+                        label: 'Last BM',
+                        pageDataKey: 'gastrointestinal',
+                        dataParent: 'gastrointestinal.table.bowel',
+                        page: 'Assessments: Gastrointestinal',
+                        tableKey: 'table'
+                      },
+                      {
+                        elementKey: 'bowelSounds',
+                        fqn: 'gastrointestinal.table.bowel.bowelSounds',
+                        inputType: 'select',
+                        label: 'Bowel sounds',
+                        pageDataKey: 'gastrointestinal',
+                        dataParent: 'gastrointestinal.table.bowel',
+                        page: 'Assessments: Gastrointestinal',
+                        options: [
+                          {
+                            text: 'None'
+                          },
+                          {
+                            text: 'LUQ'
+                          },
+                          {
+                            text: 'RUQ'
+                          },
+                          {
+                            text: 'LLQ'
+                          },
+                          {
+                            text: 'RLQ'
+                          }
+                        ],
+                        tableKey: 'table'
+                      },
+                      {
+                        elementKey: 'stoolColour',
+                        fqn: 'gastrointestinal.table.bowel.stoolColour',
+                        inputType: 'select',
+                        label: 'Stool colour',
+                        pageDataKey: 'gastrointestinal',
+                        dataParent: 'gastrointestinal.table.bowel',
+                        page: 'Assessments: Gastrointestinal',
+                        options: [
+                          {
+                            text: 'Brown'
+                          },
+                          {
+                            text: 'Green'
+                          },
+                          {
+                            text: 'Clay coloured'
+                          },
+                          {
+                            text: 'Yellow'
+                          },
+                          {
+                            text: 'Black'
+                          },
+                          {
+                            text: 'Bright red'
+                          },
+                          {
+                            text: 'Dark red'
+                          }
+                        ],
+                        tableKey: 'table'
+                      },
+                      {
+                        elementKey: 'stoolDescription',
+                        fqn: 'gastrointestinal.table.bowel.stoolDescription',
+                        inputType: 'text',
+                        label: 'Description',
+                        pageDataKey: 'gastrointestinal',
+                        dataParent: 'gastrointestinal.table.bowel',
+                        page: 'Assessments: Gastrointestinal',
+                        tableKey: 'table'
+                      },
+                      {
+                        elementKey: 'stoolAmount',
+                        fqn: 'gastrointestinal.table.bowel.stoolAmount',
+                        inputType: 'text',
+                        label: 'Amount',
+                        pageDataKey: 'gastrointestinal',
+                        dataParent: 'gastrointestinal.table.bowel',
+                        page: 'Assessments: Gastrointestinal',
+                        tableKey: 'table'
+                      },
+                      {
+                        elementKey: 'stoolSource',
+                        fqn: 'gastrointestinal.table.bowel.stoolSource',
+                        inputType: 'select',
+                        label: 'Source',
+                        pageDataKey: 'gastrointestinal',
+                        dataParent: 'gastrointestinal.table.bowel',
+                        page: 'Assessments: Gastrointestinal',
+                        options: [
+                          {
+                            text: 'Observed'
+                          },
+                          {
+                            text: 'As per patient observed'
+                          },
+                          {
+                            text: 'Not observed'
+                          }
+                        ],
+                        tableKey: 'table'
+                      },
+                      {
+                        elementKey: 'comments',
+                        fqn: 'gastrointestinal.table.bowel.comments',
+                        inputType: 'textarea',
+                        label: 'Comments',
+                        pageDataKey: 'gastrointestinal',
+                        dataParent: 'gastrointestinal.table.bowel',
+                        page: 'Assessments: Gastrointestinal',
+                        tableKey: 'table'
+                      }
+                    ],
+                    type: 'fieldset',
+                    containerKey: 'bowel',
+                    tableKey: 'table',
+                    formFieldSet: {
+                      rows: [],
+                      columnsCount: 0
                     }
                   }
                 ]
