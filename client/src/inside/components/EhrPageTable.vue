@@ -2,7 +2,13 @@
   div
     div(v-show="showEditControls")
       ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
-    div(class="row_table")
+    div(v-if="tableDef.isTransposed", class="column_table")
+      table.table
+        tbody
+          tr(v-for="column in transposedColumns")
+            td(v-for="cell in column", :class="cell.tableCss") {{ cell.value }}
+
+    div(v-if="!tableDef.isTransposed", class="row_table")
       table.table
         thead
           tr
@@ -30,6 +36,7 @@ export default {
   data: function() {
     return {
       tableData: [],
+      transposedColumns: [],
       inputs: {}
     }
   },
@@ -39,6 +46,9 @@ export default {
     tableDef: { type: Object }
   },
   computed: {
+    columnData() {
+      // return this.tableDef.transposedColumns
+    },
     showEditControls() {
       return this.ehrHelp.showEditControls()
     },
@@ -78,6 +88,8 @@ export default {
       let pageData = this.ehrHelp.getAsLoadedPageData(pageKey)
       // store the current data into local data property for display
       this.tableData = pageData[tableKey]
+      this.transposedColumns = this.tableDef.transposedColumns
+
       console.log('EhrPageTable refresh found data', this.tableData)
     }
   },
