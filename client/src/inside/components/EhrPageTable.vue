@@ -46,9 +46,6 @@ export default {
     tableDef: { type: Object }
   },
   computed: {
-    columnData() {
-      // return this.tableDef.transposedColumns
-    },
     showEditControls() {
       return this.ehrHelp.showEditControls()
     },
