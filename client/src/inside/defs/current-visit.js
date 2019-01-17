@@ -104,6 +104,7 @@ module.exports = function() {
       tables: [
         {
           tableKey: 'location',
+          addButtonText: 'Add new patient location',
           tableCells: [
             {
               elementKey: 'location',
@@ -210,6 +211,7 @@ module.exports = function() {
       tables: [
         {
           tableKey: 'table',
+          addButtonText: 'Add vital sign record',
           tableCells: [
             {
               elementKey: 'name',
@@ -854,6 +856,7 @@ module.exports = function() {
       tables: [
         {
           tableKey: 'aments',
+          addButtonText: 'Add new neurological assessment',
           tableCells: [
             {
               elementKey: 'name',
@@ -1050,7 +1053,6 @@ module.exports = function() {
               formFieldSet: {
                 rows: [
                   {
-                    index: '1',
                     formRow: '1',
                     elements: [
                       {
@@ -1071,7 +1073,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '2',
                     formRow: '2',
                     elements: [
                       {
@@ -1092,7 +1093,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '3',
                     formRow: '3',
                     elements: [
                       {
@@ -1113,7 +1113,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '4',
                     formRow: '4',
                     elements: [
                       {
@@ -1134,7 +1133,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '5',
                     formRow: '5',
                     elements: [
                       {
@@ -1155,7 +1153,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '6',
                     formRow: '6',
                     elements: [
                       {
@@ -1176,7 +1173,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '7',
                     formRow: '7',
                     elements: [
                       {
@@ -1365,7 +1361,6 @@ module.exports = function() {
               formFieldSet: {
                 rows: [
                   {
-                    index: '1',
                     formRow: '1',
                     elements: [
                       {
@@ -1396,7 +1391,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '2',
                     formRow: '2',
                     elements: [
                       {
@@ -1597,7 +1591,6 @@ module.exports = function() {
               formFieldSet: {
                 rows: [
                   {
-                    index: '1',
                     formRow: '1',
                     elements: [
                       {
@@ -1635,7 +1628,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '2',
                     formRow: '2',
                     elements: [
                       {
@@ -1676,7 +1668,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '3',
                     formRow: '3',
                     elements: [
                       {
@@ -1717,7 +1708,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '4',
                     formRow: '4',
                     elements: [
                       {
@@ -1875,11 +1865,12 @@ module.exports = function() {
                   elementKey: 'leftPupilSize',
                   fqn: 'neurological.aments.pupils.leftPupilSize',
                   inputType: 'select',
-                  label: 'Left pupil size',
+                  label: 'Left pupil size dd',
                   tableColumn: '23',
                   fieldset: 'pupils',
                   fsetRow: '1',
                   fsetCol: '1',
+                  formCss: 'leftPupilCss',
                   pageDataKey: 'neurological',
                   dataParent: 'neurological.aments.pupils',
                   page: 'Assessments: Neurological',
@@ -2041,14 +2032,13 @@ module.exports = function() {
               formFieldSet: {
                 rows: [
                   {
-                    index: '1',
                     formRow: '1',
                     elements: [
                       {
                         elementKey: 'leftPupilSize',
                         fqn: 'neurological.aments.pupils.leftPupilSize',
                         inputType: 'select',
-                        label: 'Left pupil size',
+                        label: 'Left pupil size que',
                         tableColumn: '23',
                         fieldset: 'pupils',
                         fsetRow: '1',
@@ -2158,7 +2148,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '2',
                     formRow: '2',
                     elements: [
                       {
@@ -2223,7 +2212,7 @@ module.exports = function() {
               elementKey: 'leftPupilSize',
               fqn: 'neurological.aments.pupils.leftPupilSize',
               inputType: 'select',
-              label: 'Left pupil size',
+              label: 'Left pupil size wek',
               tableColumn: '23',
               fieldset: 'pupils',
               fsetRow: '1',
@@ -2873,7 +2862,6 @@ module.exports = function() {
               formFieldSet: {
                 rows: [
                   {
-                    index: '1',
                     formRow: '1',
                     elements: [
                       {
@@ -2934,7 +2922,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '2',
                     formRow: '2',
                     elements: [
                       {
@@ -2995,7 +2982,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '3',
                     formRow: '3',
                     elements: [
                       {
@@ -3056,7 +3042,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '4',
                     formRow: '4',
                     elements: [
                       {
@@ -3120,7 +3105,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '5',
                     formRow: '5',
                     elements: [
                       {
@@ -3187,7 +3171,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '6',
                     formRow: '6',
                     elements: [
                       {
@@ -3254,7 +3237,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '7',
                     formRow: '7',
                     elements: [
                       {
@@ -3318,7 +3300,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '8',
                     formRow: '8',
                     elements: [
                       {
@@ -3350,7 +3331,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '9',
                     formRow: '9',
                     elements: [
                       {
@@ -4078,7 +4058,6 @@ module.exports = function() {
                     formFieldSet: {
                       rows: [
                         {
-                          index: '1',
                           formRow: '1',
                           elements: [
                             {
@@ -4099,7 +4078,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '2',
                           formRow: '2',
                           elements: [
                             {
@@ -4120,7 +4098,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '3',
                           formRow: '3',
                           elements: [
                             {
@@ -4141,7 +4118,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '4',
                           formRow: '4',
                           elements: [
                             {
@@ -4162,7 +4138,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '5',
                           formRow: '5',
                           elements: [
                             {
@@ -4183,7 +4158,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '6',
                           formRow: '6',
                           elements: [
                             {
@@ -4204,7 +4178,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '7',
                           formRow: '7',
                           elements: [
                             {
@@ -4288,7 +4261,6 @@ module.exports = function() {
                     formFieldSet: {
                       rows: [
                         {
-                          index: '1',
                           formRow: '1',
                           elements: [
                             {
@@ -4319,7 +4291,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '2',
                           formRow: '2',
                           elements: [
                             {
@@ -4480,7 +4451,6 @@ module.exports = function() {
                     formFieldSet: {
                       rows: [
                         {
-                          index: '1',
                           formRow: '1',
                           elements: [
                             {
@@ -4518,7 +4488,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '2',
                           formRow: '2',
                           elements: [
                             {
@@ -4559,7 +4528,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '3',
                           formRow: '3',
                           elements: [
                             {
@@ -4600,7 +4568,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '4',
                           formRow: '4',
                           elements: [
                             {
@@ -4646,7 +4613,7 @@ module.exports = function() {
                         elementKey: 'leftPupilSize',
                         fqn: 'neurological.aments.pupils.leftPupilSize',
                         inputType: 'select',
-                        label: 'Left pupil size',
+                        label: 'Left pupil size elem',
                         tableColumn: '23',
                         fieldset: 'pupils',
                         fsetRow: '1',
@@ -4812,18 +4779,18 @@ module.exports = function() {
                     formFieldSet: {
                       rows: [
                         {
-                          index: '1',
                           formRow: '1',
                           elements: [
                             {
                               elementKey: 'leftPupilSize',
                               fqn: 'neurological.aments.pupils.leftPupilSize',
                               inputType: 'select',
-                              label: 'Left pupil size',
+                              label: 'Left pupil size fffo',
                               tableColumn: '23',
                               fieldset: 'pupils',
                               fsetRow: '1',
                               fsetCol: '1',
+                              formCss: 'is-one-third',
                               pageDataKey: 'neurological',
                               dataParent: 'neurological.aments.pupils',
                               page: 'Assessments: Neurological',
@@ -4929,7 +4896,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '2',
                           formRow: '2',
                           elements: [
                             {
@@ -5486,7 +5452,6 @@ module.exports = function() {
                     formFieldSet: {
                       rows: [
                         {
-                          index: '1',
                           formRow: '1',
                           elements: [
                             {
@@ -5547,7 +5512,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '2',
                           formRow: '2',
                           elements: [
                             {
@@ -5608,7 +5572,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '3',
                           formRow: '3',
                           elements: [
                             {
@@ -5669,7 +5632,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '4',
                           formRow: '4',
                           elements: [
                             {
@@ -5733,7 +5695,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '5',
                           formRow: '5',
                           elements: [
                             {
@@ -5800,7 +5761,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '6',
                           formRow: '6',
                           elements: [
                             {
@@ -5867,7 +5827,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '7',
                           formRow: '7',
                           elements: [
                             {
@@ -5932,7 +5891,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '8',
                           formRow: '8',
                           elements: [
                             {
@@ -5964,7 +5922,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '9',
                           formRow: '9',
                           elements: [
                             {
@@ -6033,6 +5990,7 @@ module.exports = function() {
       tables: [
         {
           tableKey: 'table',
+          addButtonText: 'Add a new respiratory assessment',
           tableCells: [
             {
               elementKey: 'name',
@@ -6308,7 +6266,6 @@ module.exports = function() {
               formFieldSet: {
                 rows: [
                   {
-                    index: '1',
                     formRow: '1',
                     elements: [
                       {
@@ -6328,7 +6285,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '2',
                     formRow: '2',
                     elements: [
                       {
@@ -6348,7 +6304,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '3',
                     formRow: '3',
                     elements: [
                       {
@@ -6368,7 +6323,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '4',
                     formRow: '4',
                     elements: [
                       {
@@ -6388,7 +6342,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '5',
                     formRow: '5',
                     elements: [
                       {
@@ -6408,7 +6361,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '6',
                     formRow: '6',
                     elements: [
                       {
@@ -6428,7 +6380,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '7',
                     formRow: '7',
                     elements: [
                       {
@@ -7046,7 +6997,6 @@ module.exports = function() {
               formFieldSet: {
                 rows: [
                   {
-                    index: '1',
                     formRow: '1',
                     elements: [
                       {
@@ -7114,7 +7064,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '2',
                     formRow: '2',
                     elements: [
                       {
@@ -7164,7 +7113,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '3',
                     formRow: '3',
                     elements: [
                       {
@@ -7232,7 +7180,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '4',
                     formRow: '4',
                     elements: [
                       {
@@ -7288,7 +7235,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '5',
                     formRow: '5',
                     elements: [
                       {
@@ -7359,7 +7305,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '6',
                     formRow: '6',
                     elements: [
                       {
@@ -7603,7 +7548,6 @@ module.exports = function() {
                     formFieldSet: {
                       rows: [
                         {
-                          index: '1',
                           formRow: '1',
                           elements: [
                             {
@@ -7623,7 +7567,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '2',
                           formRow: '2',
                           elements: [
                             {
@@ -7643,7 +7586,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '3',
                           formRow: '3',
                           elements: [
                             {
@@ -7663,7 +7605,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '4',
                           formRow: '4',
                           elements: [
                             {
@@ -7683,7 +7624,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '5',
                           formRow: '5',
                           elements: [
                             {
@@ -7703,7 +7643,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '6',
                           formRow: '6',
                           elements: [
                             {
@@ -7723,7 +7662,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '7',
                           formRow: '7',
                           elements: [
                             {
@@ -8062,7 +8000,6 @@ module.exports = function() {
                     formFieldSet: {
                       rows: [
                         {
-                          index: '1',
                           formRow: '1',
                           elements: [
                             {
@@ -8130,7 +8067,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '2',
                           formRow: '2',
                           elements: [
                             {
@@ -8180,7 +8116,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '3',
                           formRow: '3',
                           elements: [
                             {
@@ -8248,7 +8183,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '4',
                           formRow: '4',
                           elements: [
                             {
@@ -8304,7 +8238,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '5',
                           formRow: '5',
                           elements: [
                             {
@@ -8375,7 +8308,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '6',
                           formRow: '6',
                           elements: [
                             {
@@ -8434,6 +8366,7 @@ module.exports = function() {
       tables: [
         {
           tableKey: 'table',
+          addButtonText: 'Add a new cardiovascular assessment',
           tableCells: [
             {
               elementKey: 'name',
@@ -9760,6 +9693,7 @@ module.exports = function() {
       tables: [
         {
           tableKey: 'table',
+          addButtonText: 'Add a new gastrointestinal assessment',
           tableCells: [
             {
               elementKey: 'name',
@@ -9818,7 +9752,6 @@ module.exports = function() {
               formFieldSet: {
                 rows: [
                   {
-                    index: '1',
                     formRow: '1',
                     elements: [
                       {
@@ -10157,7 +10090,6 @@ module.exports = function() {
               formFieldSet: {
                 rows: [
                   {
-                    index: '1',
                     formRow: '1',
                     elements: [
                       {
@@ -10177,7 +10109,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '2',
                     formRow: '2',
                     elements: [
                       {
@@ -10197,7 +10128,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '3',
                     formRow: '3',
                     elements: [
                       {
@@ -10217,7 +10147,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '4',
                     formRow: '4',
                     elements: [
                       {
@@ -10237,7 +10166,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '5',
                     formRow: '5',
                     elements: [
                       {
@@ -10257,7 +10185,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '6',
                     formRow: '6',
                     elements: [
                       {
@@ -10277,7 +10204,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '7',
                     formRow: '7',
                     elements: [
                       {
@@ -10305,7 +10231,6 @@ module.exports = function() {
                     ]
                   },
                   {
-                    index: '8',
                     formRow: '8',
                     elements: [
                       {
@@ -10590,7 +10515,6 @@ module.exports = function() {
                     formFieldSet: {
                       rows: [
                         {
-                          index: '1',
                           formRow: '1',
                           elements: [
                             {
@@ -10610,7 +10534,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '2',
                           formRow: '2',
                           elements: [
                             {
@@ -10630,7 +10553,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '3',
                           formRow: '3',
                           elements: [
                             {
@@ -10650,7 +10572,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '4',
                           formRow: '4',
                           elements: [
                             {
@@ -10670,7 +10591,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '5',
                           formRow: '5',
                           elements: [
                             {
@@ -10690,7 +10610,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '6',
                           formRow: '6',
                           elements: [
                             {
@@ -10710,7 +10629,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '7',
                           formRow: '7',
                           elements: [
                             {
@@ -10738,7 +10656,6 @@ module.exports = function() {
                           ]
                         },
                         {
-                          index: '8',
                           formRow: '8',
                           elements: [
                             {
@@ -10809,7 +10726,6 @@ module.exports = function() {
                     formFieldSet: {
                       rows: [
                         {
-                          index: '1',
                           formRow: '1',
                           elements: [
                             {

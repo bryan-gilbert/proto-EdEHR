@@ -175,6 +175,7 @@ class RawInputToDef {
 
     container.elements = []
     container.type = entry.inputType
+    container.options = entry.options
     container.containerKey = entry.elementKey
     pg.containers[cntId] = container
     return { pg, container }
@@ -283,6 +284,7 @@ class RawInputToDef {
         uiP.tables = uiP.tables || []
         let tableCells = this._pageTableCells(container)
         let tableForm = this._extractTableForm(container, tableCells)
+        assert.ok(container.options,'Need options property to set up the add button for table ' + key)
         let table = {
           tableKey: container.containerKey,
           addButtonText: container.options,
@@ -377,7 +379,7 @@ class RawInputToDef {
       cell.tableKey = tableKey
       row.elements.push(cell)
       if (element.inputType == FIELDSET) {
-        console.log('fieldset ', element)
+        // console.log('fieldset ', element)
         let formFieldSet = this._extractFieldSet(element, tableCells, tableKey)
         element.formFieldSet = formFieldSet
       }

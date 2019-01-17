@@ -41,3 +41,14 @@ $border4: green;
 $border5: purple;
 $border6: mediumvioletred;
 $border7: springgreen;
+
+$o-colours: (
+  a:   blue,
+  b:  red,
+  c: darkorange,
+  d: green
+);
+
+@mixin debugColor($index: a) {
+  border: 1px solid map-get($o-colours, $index);
+}
