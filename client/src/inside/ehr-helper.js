@@ -20,6 +20,7 @@ export default class EhrHelp {
     this.pageKey = pageKey
     this.cacheAsString = ''
     this.dialogMap = {}
+    this._loadTransposedColumns(pageKey)
 
     const _this = this
     this.windowUnloadHandler = function(eData) {
@@ -44,8 +45,23 @@ export default class EhrHelp {
     }
     EventBus.$on(ACTIVITY_DATA_EVENT, this.activityDataChangeEventHandler)
 
-    if (uiProps.hasTransposedTable) {
-      this.setupColumnData(uiProps)
+    this.refreshEventHandler = function(eData) {
+      console.log('ehrhelper respond to page refresh')
+      _this._loadTransposedColumns(pageKey)
+    }
+    EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+  }
+
+  _loadTransposedColumns(pageKey) {
+    let pageDef = this.getPageDefinition(pageKey)
+    if (pageDef.tables) {
+      pageDef.tables.forEach(table => {
+        if (table.tableCells.length > 8) {
+          console.log('transpose table', table)
+          this.setupColumnData(pageDef, table, pageKey)
+          // console.log('transposed table', table.transposedColumns)
+        }
+      })
     }
   }
 
@@ -148,30 +164,30 @@ export default class EhrHelp {
    Place the result into uiProps.transposedColumns
    * @param uiProps
    */
-  setupColumnData(uiProps) {
-    /*
-     */
-    // TODO get page key and pass to mergerProperty
-    console.log('TODO get page key and pass to mergerProperty')
-    let theData = this.mergedProperty()
-    let assessments = Array.isArray(theData) ? theData : []
+  setupColumnData(pageDef, table, pageKey) {
+    let theData = this.getAsLoadedPageData(pageKey)
+    let dbData = Array.isArray(theData.table) ? theData.table : []
     let columns = []
     let row = []
-    uiProps.tableCells.forEach(cell => {
+    table.tableCells.forEach(cell => {
+      // console.log('the cell ', cell)
+      let hdrCss = 'column_label' + (cell.tableCss ? ' ' + cell.tableCss : '')
       var entry = {
         class: 'column_label',
         title: cell.elementKey,
+        tableCss: hdrCss,
         value: cell.label
       }
       row.push(entry)
     })
     columns.push(row)
-    assessments.forEach(item => {
+    dbData.forEach(item => {
       row = []
-      uiProps.tableCells.forEach(cell => {
+      table.tableCells.forEach(cell => {
+        let valCss = 'column_value' + (cell.tableCss ? ' ' + cell.tableCss : '')
         var v = item[cell.elementKey]
         var entry = {
-          class: 'column_value',
+          tableCss: valCss,
           title: v,
           value: v
         }
@@ -180,7 +196,8 @@ export default class EhrHelp {
       columns.push(row)
     })
     var transpose = columns[0].map((col, i) => columns.map(row => row[i]))
-    uiProps.transposedColumns = transpose
+    table.isTransposed = true
+    table.transposedColumns = transpose
   }
 
   /* ********************* DIALOG  */
@@ -476,7 +493,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
   }
 
   _handleActivityDataChangeEvent(eData) {
-    // debugehr('Activity data changed. Trigger a load and refresh')
+    debugehr('Activity data changed. Trigger a load and refresh')
     let pageKey = eData.pageKey
     this.mergedProperty(pageKey)
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
