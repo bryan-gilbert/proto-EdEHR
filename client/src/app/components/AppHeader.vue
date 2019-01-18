@@ -6,6 +6,8 @@
           span(class="apptitle") Educational Electronic Health Record - {{ username }}
         li(class="navItem push")
           a(:href="lmsUrl", class="navLink") {{lmsName}}
+        li(v-if="isInstructor", class="navItem")
+          router-link(:to="{ name: `instructor` }", class="navLink") Dashboard
         li(class="navItem")
           router-link(:to="{ name: `help` }", class="navLink") Help
 </template>
@@ -24,6 +26,9 @@ export default {
     },
     lmsName() {
       return this.$store.getters['visit/lmsName']
+    },
+    isInstructor() {
+      return this.$store.state.visit.sVisitInfo.isInstructor
     }
   }
 }
