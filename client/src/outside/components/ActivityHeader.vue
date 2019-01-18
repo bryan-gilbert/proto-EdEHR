@@ -1,15 +1,8 @@
 <template lang="pug">
-  div(:class="$options.name")
-    div(class="activities-header")
-      div(class="aName") LMS Activity:
-      div(class="aValue", :title="activity._id") {{ activity.resource_link_title }}
-    div
-      div(class="aName") LMS Description:
-      div(class="aValue") {{ activity.resource_link_description }}
-    div
-      div(class="aName") EHR Assignment:
-      div(class="aValue") {{ assignment.name }}  ( Id for LMS: {{ assignment.externalId }} )
-    router-view
+  div(class="activities-header")
+    div(class="aValue", :title="activity._id") {{ activity.resource_link_title }}
+    div(class="aValue") {{ activity.resource_link_description }}
+    div(class="aValue") {{ assignment.name }}  ( Id for LMS: {{ assignment.externalId }} )
 </template>
 
 <script>
@@ -20,7 +13,7 @@ export default {
   },
   computed: {
     assignment() {
-      console.log('What is in activity', this.activity)
+      // console.log('What is in activity', this.activity)
       let a = this.activity.assignment || {}
       return a
     }
@@ -29,14 +22,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.ActivityHeader {
+.activities-header {
+  margin-left: 15px;
   .aName {
-    display: inline-block;
-    width: 10rem;
-    font-weight: 600;
   }
   .aValue {
-    display: inline;
   }
 }
 </style>

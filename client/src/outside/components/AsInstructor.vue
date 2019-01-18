@@ -6,22 +6,52 @@
       div(class="activities", v-for="activity in course.activities")
         div(class="activities-inner")
           activity-header(:activity="activity")
-          div
-            router-link(v-bind:to="`/activity-list/${activity._id}`") class list
+          accordion(:theme="theme")
+            div(class="classList" )
+            table.table
+              thead
+                tr
+                  th Student name
+                  th User id
+                  th Email
+                  th Date submitted
+                  th Evaluation Notes
+                  th Status
+              tbody
+                tr(v-for="sv in classList")
+                  td {{ sv.user.fullName }}
+                  td {{ sv.user.user_id }}
+                  td {{ sv.user.emailPrimary }}
+                  td some date
+                  td
+                  td unknown
+          //div
+          //  router-link(v-bind:to="`/activity-list/${activity._id}`") class list
     router-view
 </template>
 
 <script>
+import accordion from '../../app/components/accordion'
 import ActivityHeader from './ActivityHeader'
+import StudentAssignmentInfo from '../components/StudentAssignmentInfo'
+
 export default {
   name: 'AsInstructor',
   components: {
-    ActivityHeader
+    accordion,
+    ActivityHeader,
+    StudentAssignmentInfo
   },
   computed: {
     courses() {
       return this.$store.state.instructor.sCourses
-    }
+    },
+    classList() {
+      return this.$store.state.instructor.sClassList || []
+    },
+    theme() {
+      return 'grayTheme'
+    },
   },
   methods: {
     asString: function(obj) {
@@ -37,7 +67,10 @@ export default {
 .AsInstructor {
   margin-left: 1.5rem;
   .courses {
-    margin-left: 0rem;
+    margin-left: 0;
+  }
+  .table {
+    width: 100%;
   }
   .aName {
     display: inline-block;
@@ -52,7 +85,7 @@ export default {
     background-color: $grey03;
     border: 1px solid $grey60;
     .activities-inner {
-      margin-left: 15px;
+      margin-left: 0;
     }
   }
   .students {
