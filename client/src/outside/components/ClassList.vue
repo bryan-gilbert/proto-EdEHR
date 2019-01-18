@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="activity-list")
+  div(id="activityList", class="activity-list")
     div(class="activity-list-header columns", v-on:click="activateActivity")
       div(class="header-column is-10 column")
         div(class="header-item header-title", :title="activity._id") {{ activity.resource_link_title }}
@@ -24,21 +24,25 @@
                 th Status
             tbody
               tr(v-for="sv in classList")
-                td {{ sv.user.fullName }}
+                td
+                  div(:id="`ref-${sv._id}`",  :ref="`ref-${sv._id}`") {{ sv.user.fullName }}
                 td {{ sv.user.user_id }}
                 td {{ sv.user.emailPrimary }}
                 td some date
                 td
+                  ui-button(v-on:buttonClicked="goToEhr(sv)") Evaluate in EHR {{sv.assignment.ehrRouteName}}
                 td unknown
 </template>
 
 <script>
 import AccordionElement from '../../app/components/AccordionElement'
+import UiButton from '../../app/ui/UiButton.vue'
 
 export default {
   name: 'ActivityList',
   components: {
-    AccordionElement
+    AccordionElement,
+    UiButton
   },
   data() {
     return {
@@ -50,9 +54,6 @@ export default {
     activity: { type: Object }
   },
   computed: {
-    // activity() {
-    //   return this.$store.state.instructor.sCurrentActivity
-    // },
     assignment() {
       // console.log('What is in activity', this.activity)
       let a = this.activity.assignment || {}
@@ -66,28 +67,61 @@ export default {
     }
   },
   methods: {
-    toggle: function() {
-      this.show = !this.show
-      this.indicator = this.show ? '-' : '+'
+    setShow: function(value) {
+      this.show = value
+      this.indicator = value ? '-' : '+'
     },
     activateActivity() {
-      const _this = this
       if (this.show) {
-        this.show = false
-        this.indicator = '+'
+        this.setShow(false)
         return
       }
       let activityId = this.activity._id
       localStorage.setItem('activityId', activityId)
-      this.$store
+      this.loadActivity(activityId)
+    },
+    loadActivity(activityId) {
+      const _this = this
+      return this.$store
         .dispatch('instructor/loadActivity', activityId)
         .then(() => {
           return this.$store.dispatch('instructor/loadClassList', activityId)
         })
         .then(() => {
-          _this.show = true
-          _this.indicator = '-'
+          return _this.setShow(true)
         })
+    },
+    goToEhr(studentVisit) {
+      let studentId = studentVisit._id
+      let name = studentVisit.assignment.ehrRoutePath
+      // console.log('Store the pathname for the instructor to return here ', window.location.pathname)
+      this.$store.commit('instructor/setInstructorReturnUrl', window.location.pathname)
+      // console.log('Store the current student id that is being evaluated ', studentId)
+      this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', studentId).then(() => {
+        // console.log('go to ehr with ', name)
+        this.$router.push(name)
+      })
+    }
+  },
+  mounted: function() {
+    let myId = this.activity._id
+    let storeId = localStorage.getItem('activityId')
+    if (storeId === myId) {
+      // TODO  see notes in AsInstructor view regaring scrolling
+      this.loadActivity(storeId).then(() => {
+        let list = this.classList
+        if (list && list.length > 0) {
+          let lastStudent = list[list.length - 1]
+          let id = `ref-${lastStudent._id}`
+          const _this = this
+          this.$nextTick(function() {
+            // console.log('Look for element with id', id)
+            let elem = document.getElementById(id)
+            // console.log('scroll to ', elem)
+            _this.$scrollTo(elem)
+          })
+        }
+      })
     }
   }
 }

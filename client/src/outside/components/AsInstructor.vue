@@ -5,7 +5,8 @@
         div(class="course-header-item course-title") {{ course.name }} (Id: {{ course.id }})
         div(class="course-header-item") {{ course.label }}
       div(class="activities", v-for="activity in course.activities")
-        class-list(:activity="activity")
+        div(:ref="`activity-${activity._id}`") {{activity._id}}
+          class-list(:activity="activity")
     router-view
 </template>
 
@@ -20,6 +21,24 @@ export default {
   computed: {
     courses() {
       return this.$store.state.instructor.sCourses
+    }
+  },
+  mounted: function() {
+    let activityId = localStorage.getItem('activityId')
+    /*
+    TODO get scroll into view working
+    The following is not working. Nor is the attempt to scroll in the class list view.
+    I'm leaving this code here hoping that taking a look again later might help.
+     */
+    if (activityId) {
+      const _this = this
+      let id = `activity-${activityId}`
+      this.$nextTick(function() {
+        // console.log('Look for element with ref', id)
+        let elem = this.$refs[id]
+        // console.log('scroll to ', elem)
+        _this.$scrollTo(elem)
+      })
     }
   }
 }
