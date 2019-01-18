@@ -6,6 +6,7 @@
       div(class="activities", v-for="activity in course.activities")
         div(class="activities-inner")
           activity-header(:activity="activity")
+          button(v-on:click="activateActivity(activity._id)") {{ activity._id }}
           accordion(:theme="theme")
             div(class="classList" )
             table.table
@@ -25,8 +26,6 @@
                   td some date
                   td
                   td unknown
-          //div
-          //  router-link(v-bind:to="`/activity-list/${activity._id}`") class list
     router-view
 </template>
 
@@ -51,11 +50,13 @@ export default {
     },
     theme() {
       return 'grayTheme'
-    },
+    }
   },
   methods: {
-    asString: function(obj) {
-      return JSON.stringify(obj)
+    activateActivity(activityId) {
+      localStorage.setItem('activityId', activityId)
+      this.$store.dispatch('instructor/loadActivity', activityId)
+      this.$store.dispatch('instructor/loadClassList', activityId)
     }
   }
 }
