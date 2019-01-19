@@ -8,7 +8,7 @@
         div
           div(class="input-fieldrow")
             div(class="input-element input-element-full")
-              textarea(v-model="theNotes")
+              textarea(:class="`${$options.name}__textarea`",v-model="theNotes")
 </template>
 
 <script>
@@ -37,7 +37,7 @@ export default {
     showDialog: function() {
       this.resetNotes()
       this.showingDialog = true
-    },    
+    },
     cancelDialog: function() {
       this.resetNotes()
       this.showingDialog = false
@@ -57,11 +57,16 @@ export default {
 .EhrScratchPad {
   margin-top: auto;
   margin-bottom: 30px;
+
   &__bottom {
     padding: 15px;
   }
   &__button {
     width: 100%;
+  }
+  &__textarea {
+    width: 100%;
+    height: 6rem;
   }
 }
 </style>

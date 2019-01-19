@@ -1,42 +1,87 @@
 // Generated VUE file. Before modifying see docs about Vue file generation 
 <template lang="pug">
-  div(:class="$options.name")
-    ehr-panel-header Past Appt
+  div(class="ehr-page")
+    ehr-panel-header {{ uiProps.pageTitle }}
+      div(slot="controls", v-show="showEditControls")
+        ehr-edit-controls(v-bind:ehrHelp="ehrHelp", @controlsCallback="controlsCallback")
     ehr-panel-content
-      div(class="region")
-        p This Past Appt page is a generated placeholder. The actual content will be developed soon. So stay tuned.
-        p Label: Past appointments
-        p Component name: PastAppt
-        p Redirect: 
-        p Route name: past-appt
-        p Full path: /ehr/patient/past-appt
-        p Assignment Data: pastAppt
+      div(class="region ehr-page-content")
+        ehr-page-form(v-if="uiProps.hasForm", v-bind:formDefs="uiProps.page_form", v-bind:theData="theData", v-bind:notEditing="notEditing")
+        div(v-if="uiProps.hasTable")
+          ehr-page-table(v-for="tableDef in uiProps.tables", :tableDef="tableDef", :theData="theData", :ehrHelp="ehrHelp", :showEditControls="showEditControls")
+    div(style="display:none") {{currentData}}
+    div(style="display:none")
+      p This Past Appt page is generated.
+      p Label: Past appointments
+      p Data Key: past-appt
+      p Component name: PastAppt
+      p Redirect: 
+      p Route name: past-appt
+      p Full path: /ehr/patient/past-appt
 </template>
 
 <script>
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
+import EhrEditControls from '../components/EhrEditControls.vue'
+import EhrPageTable from '../components/EhrPageTable'
+import EhrPageForm from '../components/EhrPageForm.vue'
+import EhrHelp from '../ehr-helper'
 
 export default {
   name: 'PastAppt',
   components: {
     EhrPanelHeader,
-    EhrPanelContent
+    EhrPanelContent,
+    EhrPageForm,
+    EhrPageTable,
+    EhrEditControls
+  },
+  data: function() {
+    return {
+      dataKey: 'past-appt',
+      theData: {},
+      ehrHelp: {},
+      hasForm: true,
+      loading: false
+    }
   },
   computed: {
-    isStudent() {
-      return this.$store.getters['visit/isStudent']
+    uiProps() {
+      let defs = require('../defs/patient-profile')()
+      let pageDef = defs[this.dataKey]
+      console.log('pageDef ', this.dataKey, pageDef)
+      return defs[this.dataKey]
     },
-    pastAppt() {
-      let data = this.$store.getters['ehrData/mergedData'] || {}
-      let asStored = data.pastAppt || {}
-      return JSON.parse(JSON.stringify(asStored))
+    showEditControls() {
+      return this.ehrHelp.showEditControls()
+    },
+    notEditing() {
+      return !this.ehrHelp.isEditing()
+    },
+    currentData() {
+      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+      this.theData = this.ehrHelp.mergedProperty()
+      return this.theData
     }
+  },
+  methods: {
+    controlsCallback(callback) {
+      callback(this.theData)
+    },
+    getCurrentData() {
+      return this.theData
+    }
+  },
+  created() {
+    this.ehrHelp = new EhrHelp(this, this.$store, this.dataKey, this.uiProps)
+  },
+  beforeRouteLeave(to, from, next) {
+    this.ehrHelp.beforeRouteLeave(to, from, next)
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.PastAppt {
-}
+@import '../../scss/settings/forms';
 </style>

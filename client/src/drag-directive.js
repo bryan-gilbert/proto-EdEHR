@@ -1,17 +1,16 @@
-
 const POINTER_START_EVENTS = ['mousedown', 'touchstart']
 const POINTER_MOVE_EVENTS = ['mousemove', 'touchmove']
 const POINTER_END_EVENTS = ['mouseup', 'touchend']
 var draggedElem
 
 var u = {
-  addEventListeners (el, events, handler) {
+  addEventListeners(el, events, handler) {
     for (var i = 0, len = events.length; i < len; i++) {
       el.addEventListener(events[i], handler)
     }
   },
 
-  removeEventListeners (el, events, handler) {
+  removeEventListeners(el, events, handler) {
     for (var i = 0, len = events.length; i < len; i++) {
       el.removeEventListener(events[i], handler)
     }
@@ -19,9 +18,9 @@ var u = {
 }
 
 export default {
-  inserted (el, binding, vnode) {
+  inserted(el, binding, vnode) {
     if (!document) return
-    function onPointerStart (evt) {
+    function onPointerStart(evt) {
       evt.preventDefault()
       u.addEventListeners(document.documentElement, POINTER_MOVE_EVENTS, onPointerMove)
       u.addEventListeners(document.documentElement, POINTER_END_EVENTS, onPointerEnd)
@@ -37,7 +36,7 @@ export default {
       })
       draggedElem = el
     }
-    function onPointerEnd (evt) {
+    function onPointerEnd(evt) {
       if (el !== draggedElem) return
       evt.preventDefault()
       el.lastCoords = null
@@ -51,7 +50,7 @@ export default {
       u.removeEventListeners(document.documentElement, POINTER_END_EVENTS)
       u.removeEventListeners(document.documentElement, POINTER_MOVE_EVENTS)
     }
-    function onPointerMove (evt) {
+    function onPointerMove(evt) {
       if (el !== draggedElem) return
       evt.preventDefault()
       if (el.lastCoords) {
@@ -80,7 +79,7 @@ export default {
     u.addEventListeners(el, POINTER_START_EVENTS, onPointerStart)
   },
 
-  unbind (el) {
+  unbind(el) {
     u.removeEventListeners(el, POINTER_START_EVENTS)
     u.removeEventListeners(document.documentElement, POINTER_END_EVENTS)
     u.removeEventListeners(document.documentElement, POINTER_MOVE_EVENTS)

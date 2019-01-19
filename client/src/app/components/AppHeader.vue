@@ -1,40 +1,13 @@
-<template>
-  <header :class="$options.name">
-    <div :class="`${$options.name}__wrapper columns`">
-      <router-link
-        :class="`${$options.name}__navLink ${$options.name}__home column`"
-        :to="{ name: `home` }"
-      >
-        Educational Electronic Health Record System
-      </router-link>
-
-      <nav :class="`${$options.name}__nav column`">
-        <ul :class="`${$options.name}__navList is-pulled-right`">
-          <li :class="`${$options.name}__navItem`">
-            <router-link :to="{ name: `lms` }" :class="`${$options.name}__navLink`"
-              >Moodle</router-link
-            >
-          </li>
-          <li :class="`${$options.name}__navItem`">
-            <router-link :to="{ name: `dashboard` }" :class="`${$options.name}__navLink`"
-              >Dashboard</router-link
-            >
-          </li>
-          <li :class="`${$options.name}__navItem`">
-            <router-link :to="{ name: `demographics` }" :class="`${$options.name}__navLink`"
-              >EHR</router-link
-            >
-          </li>
-          </li>
-          <li :class="`${$options.name}__navItem`">
-            <router-link :to="{ name: `help` }" :class="`${$options.name}__navLink`"
-              >Help</router-link
-            >
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<template lang="pug">
+  header(class="apphdr")
+    div(class="wrapper")
+      ul(class="navList")
+        li(class="navItem")
+          span(class="apptitle") Educational Electronic Health Record - {{ username }}
+        li(class="navItem push")
+          a(:href="lmsUrl", class="navLink") {{lmsName}}
+        li(class="navItem")
+          router-link(:to="{ name: `help` }", class="navLink") Help
 </template>
 
 <script>
@@ -45,6 +18,12 @@ export default {
       let n = this.$store.state.visit.sUserInfo.fullName
       // console.log('AppHeader GET NAME visit store getter for username "' + n + '"')
       return n
+    },
+    lmsUrl() {
+      return this.$store.getters['visit/returnUrl']
+    },
+    lmsName() {
+      return this.$store.getters['visit/lmsName']
     }
   }
 }
@@ -55,42 +34,34 @@ export default {
 @import '../../scss/objects/wrapper.mixin';
 @import '../../scss/styles.scss';
 
-.AppHeader {
+.apphdr {
   background: $toolbar-background-color;
   color: $toolbar-color;
-  /*font-family: $bodyFontFamily;*/
-  @include wrapper('page');
-  padding: 1rem;
+  border: $border-width solid $border1;
 
-  &__wrapper {
+  .wrapper {
+    @include wrapper('content');
+    border: $border-width solid $border2;
+  }
+  .navList {
     display: flex;
-    align-items: center;
+    /* default is flow in row without wrap */
   }
 
-  &__home {
-    text-decoration: none;
-    font-weight: 500;
+  .apptitle {
+    font-weight: bold;
+    font-size: 1.2rem;
   }
 
-  &__nav {
-    padding-right: 2rem;
+  .push {
+    margin-left: auto;
   }
 
-  &__navList {
-    display: flex;
+  .navItem {
+    margin-right: 1em;
   }
 
-  &__navItem {
-    &:not(:first-child) {
-      margin-left: 1.5em;
-
-      &::before {
-        margin-right: 0.5em;
-      }
-    }
-  }
-
-  &__navLink {
+  .navLink {
     text-decoration: none;
     font-weight: bold;
     font-size: 1.2rem;

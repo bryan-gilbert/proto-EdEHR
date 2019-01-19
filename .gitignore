@@ -19,3 +19,7 @@ client/dist/**
 client/selenium-debug\.log
 
 makeEhr/generated/
+
+makeEhr/util/camelcase-output\.txt
+
+makeEhr/util/camelcase-input\.txt

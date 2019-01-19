@@ -32,3 +32,23 @@ $dialog-wrapper-color: $black;
 
 $context-banner-background-color: $grey60;
 $context-banner-color: $white;
+
+$border-width: 5px;
+$border1: blue;
+$border2: red;
+$border3: darkorange;
+$border4: green;
+$border5: purple;
+$border6: mediumvioletred;
+$border7: springgreen;
+
+$o-colours: (
+  a:   blue,
+  b:  red,
+  c: darkorange,
+  d: green
+);
+
+@mixin debugColor($index: a) {
+  border: 1px solid map-get($o-colours, $index);
+}

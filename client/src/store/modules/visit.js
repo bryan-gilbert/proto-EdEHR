@@ -45,7 +45,7 @@ const actions = {
       let url = apiUrl + '/visits/flushed/' + visitId
       // console.log('In load page ', url)
       function invalid(msg) {
-        console.log('ERROR', msg)
+        console.log('INVALID LoadVisit', msg)
         reject(new Error(msg))
       }
       axios
@@ -69,7 +69,11 @@ const actions = {
           context.commit('setUserInfo', visitInfo.user)
           // visitInfo.activityData contains the id of the ActivityData record
           // console.log('dispatch load active data', visitInfo.activityData)
-          context.dispatch('ehrData/loadActivityData', {forStudent: true, id: visitInfo.activityData}, {root: true})
+          context.dispatch(
+            'ehrData/loadActivityData',
+            { forStudent: true, id: visitInfo.activityData },
+            { root: true }
+          )
           // console.log('after dispatch load active data', visitInfo.activityData)
           resolve()
         })
@@ -82,7 +86,7 @@ const actions = {
         })
     })
   },
-  routeEnter ({ commit }) {
+  routeEnter({ commit }) {
     commit('routeEnter')
   }
 }

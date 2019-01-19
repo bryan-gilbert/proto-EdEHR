@@ -15,7 +15,7 @@
           div(class="dialog-footer")
             div(class="dialog-footer-errors")
               div(v-show="errors.length")
-                p {{ errorDirections }} eer
+                p {{ errorDirections }}
                 ul
                   li(v-for="error in errors") {{ error }}
             div(class="dialog-footer-content is-pulled-right")
@@ -27,9 +27,9 @@
 </template>
 
 <script>
-  // div(:class="['dialog-wrapper', { moused: moused }]", v-resized="onResize", v-bind:style="{ top: top + 'px', left: left + 'px', width: width + 'px', height: height + 'px' }")
+// div(:class="['dialog-wrapper', { moused: moused }]", v-resized="onResize", v-bind:style="{ top: top + 'px', left: left + 'px', width: width + 'px', height: height + 'px' }")
 
-  import UiClose from '../ui/UiClose'
+import UiClose from '../ui/UiClose'
 import UiButton from '../ui/UiButton'
 export default {
   name: 'AppDialog',
@@ -63,7 +63,7 @@ export default {
     saveEnabled() {
       return false
     },
-    modalClass: function () {
+    modalClass: function() {
       return {
         'modal-mask': this.isModal
       }
@@ -95,7 +95,7 @@ export default {
       }
       // console.log('resizeDirection', this.resizeDirection)
       const MIN_WIDTH = 200
-      const MIN_HEIGHT = 300
+      // const MIN_HEIGHT = 300
       const vm = this
       function north() {
         // vm.height -= deltaY
@@ -163,7 +163,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../../scss/settings/color';
+@import '../../scss/settings/color';
 .modal-mask {
   position: fixed;
   z-index: 990;

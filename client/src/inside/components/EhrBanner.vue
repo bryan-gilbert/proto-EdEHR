@@ -86,23 +86,16 @@ export default {
 @import '../../scss/settings/color.scss';
 
 .EhrBanner {
-  @include wrapper(s);
-  width: 100%;
-  padding-bottom: 12px;
-  background-color: $grey10;
-  color: $grey60;
-  // Todo fix this force height in a more repsonsive manner
-  //  height: 140px;
-
   &__content {
     margin: 0;
-    padding: 0 1.25rem;
+    padding: 0 1rem;
+    font-size: 0.8rem;
   }
   &__content_row--1 {
-    flex-grow: 1;
+    flex-grow: 0.8;
   }
   &__content_row--2 {
-    flex-grow: 1;
+    flex-grow: 0.9;
   }
   &__content_row--3 {
     flex-grow: 1.5;
