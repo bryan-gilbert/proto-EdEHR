@@ -28,7 +28,6 @@
 </template>
 
 <script>
-// ehr-evaluation-dialog(v-show="showingEvaluationDialog", @canceled="canceled", @saved="saved")
 
 import UiButton from '../../app/ui/UiButton'
 import UiInfo from '../../app/ui/UiInfo'
@@ -40,32 +39,10 @@ export default {
   components: { UiButton, EhrEvaluationDialog, EhrEvaluationInput, UiInfo },
   data: function() {
     return {
-      showingEvaluationDialog: false,
       evalNotes: ''
     }
   },
   computed: {
-    enablePrev() {
-      let { list, indx } = this.findCurrentIndex()
-      // var list = this.$store.state.instructor.sClassList || []
-      // var id = this.$store.state.instructor.sCurrentEvaluationStudentId
-      // var indx = list.findIndex(function(elem) {
-      //   return elem._id === id
-      // })
-      // // console.log('EhrClassListNav enablePrev', id, indx, list)
-      return indx > 0
-    },
-    enableNext() {
-      let { list, indx } = this.findCurrentIndex()
-      //
-      // var list = this.$store.state.instructor.sClassList || []
-      // var id = this.$store.state.instructor.sCurrentEvaluationStudentId
-      // var indx = list.findIndex(function(elem) {
-      //   return elem._id === id
-      // })
-      // console.log('EhrClassListNav enableNext', id, indx, list)
-      return indx < list.length - 1
-    },
     panelInfo() {
       let evalInfo = this.$store.state.ehrData.sCurrentStudentInfo || {}
       let evalData = this.$store.state.ehrData.sCurrentStudentData || {}
@@ -95,15 +72,17 @@ export default {
     hasEvaluationNotes() {
       let edata = this.$store.getters['ehrData/evaluationData']
       return edata && edata.trim().length > 0 ? 'has-evaluation-notes' : ''
+    },
+    enablePrev() {
+      let { list, indx } = this.findCurrentIndex()
+      return indx > 0
+    },
+    enableNext() {
+      let { list, indx } = this.findCurrentIndex()
+      return indx < list.length - 1
     }
   },
   methods: {
-    canceled() {
-      this.showingEvaluationDialog = false
-    },
-    saved() {
-      this.showingEvaluationDialog = false
-    },
     findCurrentIndex() {
       var list = this.$store.state.instructor.sClassList || []
       var id = this.$store.state.instructor.sCurrentEvaluationStudentId
@@ -114,42 +93,28 @@ export default {
     },
     previousStudent() {
       let { list, indx } = this.findCurrentIndex()
-      // console.log('previous pressed')
-      // var list = this.$store.state.instructor.sClassList || []
-      // var id = this.$store.state.instructor.sCurrentEvaluationStudentId
-      // var indx = list.findIndex(function(elem) {
-      //   return elem._id === id
-      // })
-      if (indx > 0) {
-        let s = list[indx - 1]
-        this.changeStudent.call(list, s)
-        let pid = s._id
-        // console.log('EhrClassListNav go to prev', pid)
-        this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', pid)
+      indx--
+      if (indx >= 0) {
+        let sv = list[indx]
+        this.changeStudent(list, sv)
       }
     },
     nextStudent() {
-      // console.log('next pressed')
       let { list, indx } = this.findCurrentIndex()
-      // var list = this.$store.state.instructor.sClassList || []
-      // var id = this.$store.state.instructor.sCurrentEvaluationStudentId
-      // var indx = list.findIndex(function(elem) {
-      //   return elem._id === id
-      // })
-      if (indx < list.length - 1) {
-        let s = list[indx + 1]
-        this.changeStudent.call(list, s)
+      indx++
+      if (indx < list.length) {
+        let sv = list[indx]
+        this.changeStudent(list, sv)
       }
     },
-    changeStudent(list, s) {
-      let pid = s._id
+    changeStudent(list, sv) {
+      let pid = sv._id
       console.log('EhrClassListNav go to ', pid)
       this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', pid).then(() => {
         this.$refs.evaluationNoteComponent.loadDialog()
       })
     },
     showEvaluationNotes() {
-      this.showingEvaluationDialog = true
       /*
       The trick is to add a ref attribute to the dialog component. This lets us invoke
       a method in that component. Here we tell the dialog to load the data from the
