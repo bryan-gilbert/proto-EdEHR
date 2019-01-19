@@ -23,6 +23,7 @@ You will need to create an account with Docker
 # Run in Docker
 docker-compose up
 # use -d flag to run in background
+docker-compose up -d
 
 # Tear down
 docker-compose down
@@ -39,7 +40,6 @@ Add the volumes when deployed on a production server.  It does not work nor is i
 ## Run Server - Dev
 ```
 npm run start-dev
-DEBUG=server npm run start-dev
 ```
 
 ## Run Server - Prod

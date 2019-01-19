@@ -12,34 +12,79 @@ cd /your/development/area
 git clone https://github.com/bryan-gilbert/proto-EdEHR.git
 ```
 
-This project depends on another project that provide LTI support
-Outside of the project directory 
+Next install packages
+```
+npm install
+
+# install packages in both the server and client sub directories
+
+cd client
+npm install
+
+cd ../database
+npm install
+```
+
+This project depends on another project that provides LTI support
+outside of the project directory 
 ```
 cd /your/development/area
 git clone https://github.com/bryan-gilbert/ims-lti.git
 cd ims-lti.git 
 npm install
 cd ../proto-EdEHR
-# WIP - may actually need to do this in the server sub-project
-npm install ../ims-lti --save
+# Do the next step in the server subdirectory
+# Install the local copy of the LTI project
+cd database
+npm install ../../ims-lti --save
 ```
 
+## Run Development
+
+First install packages as described above.
+
+In terminal window 1 start the database and server
+``` bash
+cd database
+# start the mongodb in a docker container
+docker-compse up -d
+# start the API server
+npm run start-dev
+```
+
+In terminal window 2 start the client
+```
+cd client
+npm run start-dev
+```
+
+## Run Production
+
+First install packages as described above.
+
+In terminal window 1 start the database and server
+``` bash
+cd database
+# start the mongodb in a docker container
+docker-compse up -d
+# start the API server
+npm run start
+```
+
+In terminal window 2 start the client
+```
+cd client
+npm run start
+```
+
+
+
+
 ## EHR generation
-The EHR side of the project contains almost 40 seperate screens, each needs to be in the menu and routing tables.  These tasks are automated via a script in the makeEhr subdirectory. 
+The EHR side of the project contains almost 40 separate screens, each needs to be in the menu and routing tables.  These tasks are automated via a script in the makeEhr subdirectory.
+This script only needs to be invoked if the content of the configuration files have been 
+modified.  The source of the configuration files comes from a Google spreadsheet stored in the project GDrive. 
 ```
 cd makeEhr
 ./deploy.sh
-```
-
-## Run ...
-Obsolete. Note that all of the commands in the root package.json file are obsolete.
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
 ```
