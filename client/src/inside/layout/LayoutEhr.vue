@@ -16,7 +16,8 @@
               slot Main EHR content for a component will appear here. The component is selected by the router
       app-footer
       input(class="checkbox", type="checkbox", v-model="showingSpecial")
-      ehr-special(v-show="showingSpecial")
+      div(v-show="showingSpecial")
+        ehr-special
 </template>
 
 <script>
@@ -46,10 +47,6 @@ export default {
     }
   },
   computed: {
-    path() {
-      // console.log('this.$route', this.$route)
-      return this.$route.path
-    },
     isLoading() {
       return this.$store.state.system.isLoading
     }

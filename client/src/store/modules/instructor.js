@@ -100,9 +100,13 @@ const actions = {
     // console.log('In instructor loadCourses ', url)
     return new Promise(resolve => {
       axios.get(url).then(response => {
-        // console.log('load courses', response.data)
         var courses = response.data['courses']
+        console.log('load courses', response.data)
+        console.log('load courses', courses)
         context.commit('setCourses', courses)
+        courses.forEach(course => {
+          console.log('a course ', course)
+        })
         resolve(courses)
       })
     })
@@ -112,9 +116,9 @@ const actions = {
     let apiUrl = visitState.apiUrl
     return new Promise(resolve => {
       let url = `${apiUrl}/activities/class/${activityId}`
-      // console.log('In load instructor activities data ', url)
+      console.log('In load instructor activities data ', url)
       axios.get(url).then(response => {
-        // console.log('load activities', response.data)
+        console.log('load activities', response.data)
         var classList = response.data['classList']
         context.commit('setClassList', classList)
         resolve(classList)

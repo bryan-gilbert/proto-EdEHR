@@ -1,72 +1,51 @@
 <template lang="pug">
-  div(:class="$options.name", v-show="isInstructor")
-    div(:class="`${$options.name}__content columns`")
-      div(class="column rows")
-        div(class="row textField") Course: {{ panelInfo.courseTitle}}
-        div(class="row textField") Activity: {{ panelInfo.activityTitle}}
+  div(class="classlist", v-show="isInstructor")
+    div(class="classlist_content columns")
+      div(class="is-6 column")
+        div(class="textField") Course: {{ panelInfo.courseTitle}}
+        div(class="textField") Activity: {{ panelInfo.activityTitle}}
           ui-info(:text="panelInfo.activityDescription")
-        div(class="row textField") Assignment: {{ panelInfo.assignmentName}}
+        div(class="textField") Assignment: {{ panelInfo.assignmentName}}
           ui-info(:text="panelInfo.assignmentDescription")
-      div(class="column rows")
-        div(class="row textField") Evaluating: {{ panelInfo.studentName }}
-        div(class="row textField") Last visit: {{ panelInfo.lastVisitDate | moment("YYYY-MM-DD h:mm a") }}
-      div(:class="`${$options.name}__controls column`")
-        div(class="row")
-          ui-button(v-on:buttonClicked="previousStudent", :class="`${$options.name}__navItem`", :disabled="!enablePrev || showingEvaluationDialog")
-            fas-icon(icon="arrow-left")
-          ui-button(v-on:buttonClicked="nextStudent", :class="`${$options.name}__navItem`", :disabled="!enableNext || showingEvaluationDialog")
-            fas-icon(icon="arrow-right")
-          ui-button(v-on:buttonClicked="showEvaluationNotes", :class="`${$options.name}__navItem`")
-            fas-icon(icon="notes-medical")
-          ehr-evaluation-dialog(ref="evalDialog", v-show="showingEvaluationDialog", @canceled="canceled", @saved="saved")
-        div(class="row")
-          div(class="indicator")
-            div(class="indicator-label") A:
-            div(class="indicator-shape indicate-assignment-data", :class="hasAssignmentData") &nbsp;
-            div(class="indicator-label") E:
-            div(class="indicator-shape indicate-evaluation-notes", :class="hasEvaluationNotes") &nbsp;
+      div(class="is-4 column")
+        div(class="textField") Evaluating: {{ panelInfo.studentName }}
+        div(class="textField") Last visit: {{ panelInfo.lastVisitDate | moment("YYYY-MM-DD h:mm a") }}
+      div(class="is-3 column")
+        div(class="columns")
+          div(class="classlist_nav_item is-2 column")
+            ui-button(v-on:buttonClicked="previousStudent", class="", :disabled="!enablePrev")
+              span <
+            //fas-icon(icon="arrow-left")
+          // div(class="classlist_counter column")
+          //  span 3/14
+          div(class="classlist_nav_item is-2 column")
+            ui-button(v-on:buttonClicked="nextStudent", class="", :disabled="!enableNext")
+              span >
+            //fas-icon(icon="arrow-right")
+    div(class="evaluation-label")
+      div(class="textField") Evaluation notes
+      ehr-evaluation-input(ref="evaluationNoteComponent", v-on:saveNext="nextStudent")
 </template>
 
 <script>
-// ehr-evaluation-dialog(v-show="showingEvaluationDialog", @canceled="canceled", @saved="saved")
-
 import UiButton from '../../app/ui/UiButton'
 import UiInfo from '../../app/ui/UiInfo'
 import EhrEvaluationDialog from './EhrEvaluationDialog'
+import EhrEvaluationInput from './EhrEvaluationInput'
+
+// TODO add student classlist counter and student list drop down
 
 export default {
   name: 'EhrClassListNav',
-  components: { UiButton, EhrEvaluationDialog, UiInfo },
-  data: function() {
-    return {
-      showingEvaluationDialog: false
-    }
-  },
+  components: { UiButton, EhrEvaluationDialog, EhrEvaluationInput, UiInfo },
   computed: {
-    enablePrev() {
-      var list = this.$store.state.instructor.sClassList || []
-      var id = this.$store.state.instructor.sCurrentEvaluationStudentId
-      var indx = list.findIndex(function(elem) {
-        return elem._id === id
-      })
-      // console.log('EhrClassListNav enablePrev', id, indx, list)
-      return indx > 0
-    },
-    enableNext() {
-      var list = this.$store.state.instructor.sClassList || []
-      var id = this.$store.state.instructor.sCurrentEvaluationStudentId
-      var indx = list.findIndex(function(elem) {
-        return elem._id === id
-      })
-      // console.log('EhrClassListNav enableNext', id, indx, list)
-      return indx < list.length  - 1
-    },
     panelInfo() {
       let evalInfo = this.$store.state.ehrData.sCurrentStudentInfo || {}
       let evalData = this.$store.state.ehrData.sCurrentStudentData || {}
       let activity = this.$store.state.instructor.sCurrentActivity || {}
       let data = {
         studentName: evalInfo.studentName,
+        studentId: evalInfo.studentName,
         courseTitle: activity.context_title,
         activityTitle: activity.resource_link_title,
         activityDescription: activity.resource_link_description,
@@ -89,52 +68,45 @@ export default {
     hasEvaluationNotes() {
       let edata = this.$store.getters['ehrData/evaluationData']
       return edata && edata.trim().length > 0 ? 'has-evaluation-notes' : ''
+    },
+    enablePrev() {
+      let { indx } = this.findCurrentIndex()
+      return indx > 0
+    },
+    enableNext() {
+      let { list, indx } = this.findCurrentIndex()
+      return indx < list.length - 1
     }
-
   },
   methods: {
-    canceled() {
-      this.showingEvaluationDialog = false
-    },
-    saved() {
-      this.showingEvaluationDialog = false
-    },
-    previousStudent() {
-      // console.log('previous pressed')
+    findCurrentIndex() {
       var list = this.$store.state.instructor.sClassList || []
       var id = this.$store.state.instructor.sCurrentEvaluationStudentId
       var indx = list.findIndex(function(elem) {
         return elem._id === id
       })
-      if (indx > 0) {
-        let s = list[indx-1]
-        let pid = s._id
-        // console.log('EhrClassListNav go to prev', pid)
-        this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', pid)
+      return { list, indx }
+    },
+    previousStudent() {
+      let { list, indx } = this.findCurrentIndex()
+      indx--
+      if (indx >= 0) {
+        let sv = list[indx]
+        this.changeStudent(list, sv)
       }
     },
     nextStudent() {
-      // console.log('next pressed')
-      var list = this.$store.state.instructor.sClassList || []
-      var id = this.$store.state.instructor.sCurrentEvaluationStudentId
-      var indx = list.findIndex(function(elem) {
-        return elem._id === id
-      })
-      if (indx < list.length  - 1) {
-        let s = list[indx+1]
-        let pid = s._id
-        // console.log('EhrClassListNav go to next', pid)
-        this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', pid)
+      let { list, indx } = this.findCurrentIndex()
+      indx++
+      if (indx < list.length) {
+        let sv = list[indx]
+        this.changeStudent(list, sv)
       }
     },
-    showEvaluationNotes() {
-      this.showingEvaluationDialog = true
-      /*
-      The trick is to add a ref attribute to the dialog component. This lets us invoke
-      a method in that component. Here we tell the dialog to load the data from the
-      vuex storage.  This lets the component perpare for a possible cancel/restore.
-       */
-      this.$refs.evalDialog.loadDialog()
+    changeStudent(list, sv) {
+      let pid = sv._id
+      console.log('EhrClassListNav go to ', pid)
+      this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', pid).then(() => {})
     }
   }
 }
@@ -144,24 +116,26 @@ export default {
 @import '../../scss/settings/color';
 @import '../../scss/objects/wrapper.mixin';
 
-.EhrClassListNav {
-
-  .textField
-  {
-    width: 400px;
+.classlist {
+  .textField {
+    max-width: 30rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  &__content {
-    display: flex;
-    flex-direction: row;
-    div {
-      flex: 1 0 auto;
+  .classlist_nav_item {
+    overflow: hidden;
+    button {
+      width: 2rem;
+      max-width: 4rem;
     }
   }
-  &__navItem {
+  .classlist_counter {
+    max-width: 5rem;
+  }
+
+  &_classlist &__navItem {
     &:not(:first-child) {
       margin-left: 1.5em;
       &::before {
@@ -198,6 +172,5 @@ export default {
   .has-evaluation-notes {
     background: $indicatorColor;
   }
-
 }
 </style>

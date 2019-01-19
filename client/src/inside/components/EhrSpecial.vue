@@ -1,6 +1,6 @@
 <template lang="pug">
   div(:class="$options.name")
-    p This is the EHR special content panel
+    p This is the EHR special content panel.   Path: {{path}}
     div(:class="`${$options.name}__special`")
     hr
     div(v-show="isInstructor")
@@ -106,6 +106,9 @@ export default {
     return {}
   },
   computed: {
+    path() {
+      return this.$route.path
+    },
     userInfo() {
       return this.$store.state.visit.sUserInfo || {}
     },

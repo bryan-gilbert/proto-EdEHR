@@ -51,7 +51,7 @@ export default {
           if (isInstructor) {
             // console.log('Page load instructor')
             return _this.$store.dispatch('instructor/loadCourses').then(() => {
-              // console.log('Page load instructor restoring?', restoring)
+              console.log('Page load instructor restoring?', restoring)
               if (restoring) {
                 return _this.reloadInstructor()
               }

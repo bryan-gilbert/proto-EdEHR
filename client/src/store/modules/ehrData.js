@@ -52,7 +52,6 @@ const getters = {
     return state.sActivityData.scratchData
   },
   evaluationData: state => {
-    // only return for instructor
     // evaluationData is the instructor's comments on the student's work
     return state.sCurrentStudentData.evaluationData
   },
@@ -70,14 +69,14 @@ const actions = {
   loadActivityData(context, options) {
     // /activity-data
     let activityDataId = options.id
-    // console.log('Get activityData  ', activityDataId)
+    console.log('Get activityData  ', activityDataId)
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
     let url = `${apiUrl}/activity-data/get/${activityDataId}`
     return helper.getRequest(url).then(response => {
       let ad = response.data.activitydata
       context.commit('_setForStudent', options.forStudent)
-      // console.log('Got activity information ', ad.mergedData)
+      console.log('Got activity information ', ad)
       if (options.forStudent) {
         context.commit('_setActivityData', ad)
       } else {

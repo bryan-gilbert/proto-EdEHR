@@ -1,6 +1,7 @@
 <template lang="pug">
-  div(:class="$options.name", v-show="isInstructor")
-    ehr-class-list-nav
+  div(class="EhrContextBanner", v-show="isInstructor")
+    div(class="wrapper")
+      ehr-class-list-nav
 </template>
 
 <script>
@@ -28,32 +29,10 @@ export default {
   background: $context-banner-background-color;
   color: $context-banner-color;
   @include wrapper('page');
-  padding: 10px;
-  &__wrapper {
-    display: flex;
-    align-items: center;
-  }
-
-  &__home {
-    text-decoration: none;
-    font-weight: 500;
-  }
-
-  &__nav {
-  }
-
-  &__navList {
-    display: flex;
-  }
-
-  &__navItem {
-    &:not(:first-child) {
-      margin-left: 1.5em;
-
-      &::before {
-        margin-right: 0.5em;
-      }
-    }
+  padding: 0;
+  .wrapper {
+    @include wrapper('content');
+    padding: 10px;
   }
 }
 </style>

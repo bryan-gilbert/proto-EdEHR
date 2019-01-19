@@ -1,32 +1,45 @@
 <template lang="pug">
-  div(:class="$options.name")
+  div(class="as-instructor section")
     div(class="courses", v-for="course in courses")
-      div Course: {{ course.name }} ( id: {{ course.id }})
-      div Description: {{ course.label }}
+      div(class="course-header")
+        div(class="course-header-item course-title") {{ course.name }} (Id: {{ course.id }})
+        div(class="course-header-item") {{ course.label }}
       div(class="activities", v-for="activity in course.activities")
-        div(class="activities-inner")
-          activity-header(:activity="activity")
-          div
-            router-link(v-bind:to="`/activity-list/${activity._id}`") class list
+        div(:ref="`activity-${activity._id}`")
+          class-list(:activity="activity")
     router-view
 </template>
 
 <script>
-import ActivityHeader from './ActivityHeader'
+import ClassList from './ClassList'
+
 export default {
   name: 'AsInstructor',
   components: {
-    ActivityHeader
+    ClassList
   },
   computed: {
     courses() {
       return this.$store.state.instructor.sCourses
     }
   },
-  methods: {
-    asString: function(obj) {
-      return JSON.stringify(obj)
+  mounted: function() {
+    /*
+    TODO get scroll into view working
+    The following is not working. Nor is the attempt to scroll in the class list view.
+    I'm leaving this code here hoping that taking a look again later might help.
+    let activityId = localStorage.getItem('activityId')
+    if (activityId) {
+      const _this = this
+      let id = `activity-${activityId}`
+      this.$nextTick(function() {
+        // console.log('Look for element with ref', id)
+        let elem = this.$refs[id]
+        // console.log('scroll to ', elem)
+        _this.$scrollTo(elem)
+      })
     }
+     */
   }
 }
 </script>
@@ -34,32 +47,31 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/settings/color.scss';
 
-.AsInstructor {
+.as-instructor {
   margin-left: 1.5rem;
+  margin-right: 1.5rem;
   .courses {
-    margin-left: 0rem;
+    margin-left: 0;
+    border: 1px solid $grey60;
   }
-  .aName {
-    display: inline-block;
-    width: 10rem;
-    font-weight: 600;
+  .course-header {
+    margin-left: 1rem;
+    margin-bottom: 10px;
   }
-  .aValue {
-    display: inline;
+  .course-header-item {
+    font-size: 1.1rem;
   }
+
+  .course-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
   .activities {
-    margin-bottom: 2rem;
+    margin-bottom: 2rem; /* space between activities / class lists */
     background-color: $grey03;
     border: 1px solid $grey60;
-    .activities-inner {
-      margin-left: 15px;
-    }
-  }
-  .students {
-    border-bottom: 1px solid $grey40;
-  }
-  &__main {
-    background-color: $grey03;
+    overflow: hidden;
   }
 }
 </style>
