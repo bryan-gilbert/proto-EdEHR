@@ -4,7 +4,7 @@
       div(class="header-column is-10 column")
         div(class="header-item header-title", :title="activity._id") {{ activity.resource_link_title }}
         div(class="header-item") {{ activity.resource_link_description }}
-        div(class="header-item") {{ assignment.name }}  ( Id for LMS: {{ assignment.externalId }} )
+        div(class="header-item") {{ assignment.name }}  (LMS configuration: assignment={{ assignment.externalId }} )
       div(class="header-column is-2 column")
         div(class="header-item header-icon") {{ indicator }}
     div(class="activity-list-body")
@@ -88,7 +88,9 @@ export default {
           return this.$store.dispatch('instructor/loadClassList', activityId)
         })
         .then(() => {
-          return _this.setShow(true)
+          _this.$nextTick(function() {
+            _this.setShow(true)
+          })
         })
     },
     goToEhr(studentVisit) {

@@ -7,8 +7,9 @@
         slot
     slot(name="outside-footer", class="outside-footer")
       app-footer
-    div {{ path }}
-    ehr-special
+    input(class="checkbox", type="checkbox", v-model="showingSpecial")
+    div(v-show="showingSpecial")
+      ehr-special
   </div>
 </template>
 
@@ -26,9 +27,9 @@ export default {
     AppHeader,
     EhrSpecial
   },
-  computed: {
-    path() {
-      return this.$route.path
+  data: function() {
+    return {
+      showingSpecial: false
     }
   }
 }

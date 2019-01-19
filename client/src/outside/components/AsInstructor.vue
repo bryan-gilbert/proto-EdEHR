@@ -5,7 +5,7 @@
         div(class="course-header-item course-title") {{ course.name }} (Id: {{ course.id }})
         div(class="course-header-item") {{ course.label }}
       div(class="activities", v-for="activity in course.activities")
-        div(:ref="`activity-${activity._id}`") {{activity._id}}
+        div(:ref="`activity-${activity._id}`")
           class-list(:activity="activity")
     router-view
 </template>
