@@ -52,7 +52,6 @@ const getters = {
     return state.sActivityData.scratchData
   },
   evaluationData: state => {
-    // only return for instructor
     // evaluationData is the instructor's comments on the student's work
     return state.sCurrentStudentData.evaluationData
   },

@@ -4,8 +4,8 @@
       textarea(v-model="theNotes")
     div(class="evaluation-controls")
       button(v-on:click="cancelEvaluationNotes") cancel
-      button(v-on:click="saveEvaluationNotes")  save
-
+      button(v-on:click="saveEvaluationNotes('saved')")  save
+      button(v-on:click="saveEvaluationNotes('saveNext')")  save and next
 </template>
 
 <script>
@@ -17,9 +17,14 @@ export default {
     }
   },
   computed: {
-    studentName() {
-      let sInfo = this.$store.state.ehrData.sCurrentStudentInfo || {}
-      return sInfo.studentName
+    asStoredEvaluationNotes() {
+      return this.$store.getters['ehrData/evaluationData']
+    }
+  },
+  watch: {
+    asStoredEvaluationNotes: function(newData) {
+      console.log('watch sees new eval data')
+      this.theNotes = newData
     }
   },
   methods: {
@@ -37,10 +42,9 @@ export default {
       this.loadDialog() // reset the data for next time
       this.$emit('canceled')
     },
-    saveEvaluationNotes: function() {
-      // console.log('Save the evaluation notes', this.theNotes)
+    saveEvaluationNotes: function(event) {
       this.$store.dispatch('ehrData/sendEvaluationNotes', this.theNotes).then(() => {
-        this.$emit('saved')
+        this.$emit(event)
       })
     }
   }

@@ -24,11 +24,10 @@
             //fas-icon(icon="arrow-right")
     div(class="evaluation-label")
       div(class="textField") Evaluation notes
-      ehr-evaluation-input(ref="evaluationNoteComponent")
+      ehr-evaluation-input(ref="evaluationNoteComponent", v-on:saveNext="nextStudent")
 </template>
 
 <script>
-
 import UiButton from '../../app/ui/UiButton'
 import UiInfo from '../../app/ui/UiInfo'
 import EhrEvaluationDialog from './EhrEvaluationDialog'
@@ -37,11 +36,6 @@ import EhrEvaluationInput from './EhrEvaluationInput'
 export default {
   name: 'EhrClassListNav',
   components: { UiButton, EhrEvaluationDialog, EhrEvaluationInput, UiInfo },
-  data: function() {
-    return {
-      evalNotes: ''
-    }
-  },
   computed: {
     panelInfo() {
       let evalInfo = this.$store.state.ehrData.sCurrentStudentInfo || {}
@@ -111,16 +105,7 @@ export default {
       let pid = sv._id
       console.log('EhrClassListNav go to ', pid)
       this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', pid).then(() => {
-        this.$refs.evaluationNoteComponent.loadDialog()
       })
-    },
-    showEvaluationNotes() {
-      /*
-      The trick is to add a ref attribute to the dialog component. This lets us invoke
-      a method in that component. Here we tell the dialog to load the data from the
-      vuex storage.  This lets the component perpare for a possible cancel/restore.
-       */
-      this.$refs.evaluationNoteComponent.loadDialog()
     }
   }
 }
