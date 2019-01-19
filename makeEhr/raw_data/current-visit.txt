@@ -1,4 +1,4 @@
-{TopLevel: CurrentVisit}	{Page: Visit}	eCell	eCell	eCell	{dataParent: visit}	{elementKey: visit}	{FQN: visit}	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: CurrentVisit}	{Page: Visit}	eCell	eCell	{pageDataKey: visit}	{dataParent: visit}	{elementKey: visit}	{FQN: visit}	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Visit}	eCell	eCell	{pageDataKey: visit}	{dataParent: visit}	eCell	{FQN: visit}	{inputType: page_form}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Visit}	{Subsection: Details}	{Label: Admission day}	{pageDataKey: visit}	{dataParent: visit}	{elementKey: admissionDay}	{FQN: visit.admissionDay}	{inputType: day}	eCell	eCell	{formRow: 1}	{formColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: yes}	eCell	{Data_From: case}	"{Data_case_study: Day 0
 Day 1}"	{Assignment: N/A}	eCell	eCell	eCell
@@ -19,7 +19,7 @@ Admitted}"	{Assignment: N/A}	eCell	{Notes_Questions: I left "other" with a text 
 {TopLevel: CurrentVisit}	{Page: Visit}	{Subsection: Location}	{Label: Patient location}	{pageDataKey: visit}	{dataParent: visit.location}	{elementKey: location}	{FQN: visit.location.location}	{inputType: text}	eCell	eCell	{formRow: 1}	{formColumn: 1}	eCell	eCell	eCell	eCell	eCell	{tableColumn: 1}	eCell	{Mandatory: yes}	eCell	{Data_From: case}	{Data_case_study: Emergency room}	{Assignment: N/A}	{Helper_Text: hospital, ward #, room #, home, out patient clinic}	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Visit}	{Subsection: Location}	{Label: Transfer in day}	{pageDataKey: visit}	{dataParent: visit.location}	{elementKey: transferInDay}	{FQN: visit.location.transferInDay}	{inputType: day}	eCell	eCell	{formRow: 1}	{formColumn: 2}	eCell	eCell	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	{Data_From: case}	eCell	eCell	eCell	{Notes_Questions: wireframes also show two more columns admission day and time}	eCell
 {TopLevel: CurrentVisit}	{Page: Visit}	{Subsection: Location}	{Label: Transfer in time}	{pageDataKey: visit}	{dataParent: visit.location}	{elementKey: transferInTime}	{FQN: visit.location.transferInTime}	{inputType: time}	eCell	eCell	{formRow: 1}	{formColumn: 3}	eCell	eCell	eCell	eCell	eCell	{tableColumn: 3}	eCell	eCell	eCell	{Data_From: case}	eCell	eCell	eCell	eCell	eCell
-{TopLevel: CurrentVisit}	{Page: Vital signs}	eCell	eCell	{pageDataKey: vitals}	{dataParent: vitals}	{elementKey: vitals}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{TopLevel: CurrentVisit}	{Page: Vital signs}	eCell	eCell	{pageDataKey: vitals}	{dataParent: vitals}	{elementKey: vitals}	{FQN: vitals}	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Vital signs}	eCell	eCell	{pageDataKey: vitals}	{dataParent: vitals.table}	{elementKey: table}	{FQN: vitals.table}	{inputType: table_row}	eCell	{Options: Add vital sign record}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Assignment: Vital signs}	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Vital signs}	eCell	{Label: Name}	{pageDataKey: visit}	{dataParent: vitals.table}	{elementKey: name}	{FQN: vitals.table.name}	{inputType: text}	eCell	eCell	{formRow: 1}	{formColumn: 1}	eCell	eCell	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: 36.5 C}	{Assignment: Vital signs}	eCell	{Notes_Questions: Admin user would be able to enter multiple records in this table.}	eCell
 {TopLevel: CurrentVisit}	{Page: Vital signs}	eCell	{Label: Profession}	{pageDataKey: visit}	{dataParent: vitals.table}	{elementKey: profession}	{FQN: vitals.table.profession}	{inputType: text}	eCell	eCell	{formRow: 1}	{formColumn: 2}	eCell	eCell	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: 36.5 C}	{Assignment: Vital signs}	eCell	{Notes_Questions: Admin user would be able to enter multiple records in this table.}	eCell
@@ -376,3 +376,190 @@ Dark red}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Da
 As per patient observed
 Not observed}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: As per patient observed}	{Assignment: N/A}	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Gastrointestinal}	eCell	{Label: Comments}	{pageDataKey: gastrointestinal}	{dataParent: gastrointestinal.table.bowel}	{elementKey: comments}	{FQN: gastrointestinal.table.bowel.comments}	{inputType: textarea}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: (nothing entered)}	{Assignment: N/A}	eCell	eCell	eCell
+{TopLevel: CurrentVisit}	{Page: Assessments: Genitourinary}	eCell	{Label: Assessments: Genitourinary}	{pageDataKey: genitourinary}	{dataParent: genitourinary}	{elementKey: genitourinary}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{TopLevel: CurrentVisit}	{Page: Assessments: Musculoskeletal}	eCell	{Label: Assessments: Musculoskeletal}	{pageDataKey: musculoskeletal}	{dataParent: musculoskeletal}	{elementKey: musculoskeletal}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{TopLevel: CurrentVisit}	{Page: Assessments: Pain}	eCell	{Label: Assessments: Pain}	{pageDataKey: pain}	{dataParent: pain}	{elementKey: pain}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{TopLevel: CurrentVisit}	{Page: Assessments: Biopsychosocial}	eCell	{Label: Assessments: Biopsychosocial}	{pageDataKey: biopsychosocial}	{dataParent: biopsychosocial}	{elementKey: biopsychosocial}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{TopLevel: CurrentVisit}	{Page: Non-medication orders: Orders}	eCell	{Label: Orders}	{pageDataKey: nonmedOrders}	{dataParent: nonmedOrders}	{elementKey: nonmedOrders}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+
+
+
+
+
+
+
+
+
+
+
+{TopLevel: CurrentVisit}	{Page: Non-medication orders: Referrals}	eCell	{Label: Referrals to other disciplines}	{pageDataKey: referrals}	{dataParent: referrals}	{elementKey: referrals}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+
+
+
+
+
+
+
+
+
+
+
+{TopLevel: CurrentVisit}	{Page: Non-medication orders: Lab requisitions}	eCell	{Label: Lab requisitions}	{pageDataKey: labRequisitions}	{dataParent: labRequisitions}	{elementKey: labRequisitions}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+
+
+
+
+
+
+{TopLevel: CurrentVisit}	{Page: Medication orders}	eCell	{Label: Medication orders}	{pageDataKey: medicationOrders}	{dataParent: medicationOrders}	{elementKey: medicationOrders}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+
+
+
+
+
+
+
+
+
+
+
+
+{TopLevel: CurrentVisit}	{Page: Medication administration record}	eCell	{Label: MAR}	{pageDataKey: medAdminRec}	{dataParent: medAdminRec}	{elementKey: medAdminRec}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+
+
+
+
+
+
+
+
+
+
+{TopLevel: CurrentVisit}	{Page: Discharge summary}	eCell	{Label: Discharge summary}	{pageDataKey: dischargeSummary}	{dataParent: dischargeSummary}	{elementKey: dischargeSummary}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+
+
+
+
+
+
+
+
+
+
+
+
+
+{TopLevel: CurrentVisit}	{Page: Billing}	eCell	{Label: Billing}	{pageDataKey: billing}	{dataParent: billing}	{elementKey: billing}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+
+
+

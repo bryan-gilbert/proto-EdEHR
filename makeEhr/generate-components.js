@@ -2,11 +2,6 @@ const fs = require('fs')
 const pathUtil = require('path')
 const camelcase = require('camelcase')
 const RawPagesToDefs = require('./generators/raw-pages-to-def')
-
-
-// TODO add this on back into defs
-//   { "p": "ehr/chart", "n": "progress-notes", "l": "Progress notes"},
-
 const destVueFiles = './generated/vue'
 const destRouteFiles = './routes'
 const source = 'source'
@@ -21,6 +16,13 @@ function main () {
   outside()
 }
 
+/**
+ * Inside refers to the EHR side of the application. Outside is the learnnig management side of things.
+ *
+ * In this function we prepare the page definition configurtion and then invoke the main "inside"
+ * generating function.
+ *
+ */
 function generateInsidePageDefs() {
   let fSrc = pathUtil.join(rawDataSource, insidePageRawDefFileName) + '.txt'
   let fDest = pathUtil.join(destEhrDefs, insidePageRawDefFileName)  + '.js'
@@ -35,13 +37,16 @@ function generateInsidePageDefs() {
     var modDef = 'module.exports = function () {\n  return ' + results + '\n}'
     console.log('write file ', fDest)
     fs.writeFileSync(fDest, modDef)
+    /* ****
+    Have definitions ... ready to go ...
+    */
     inside()
   })
 }
 
 
 function outside () {
-  const outsideDefs = require('./outsideDefs')
+  const outsideDefs = require('./raw_data/outsideDefs')
   flushDefs(outsideDefs)
   var outfilename = pathUtil.join(destRouteFiles, 'outsideRoutes.js')
   makeRoutes(outsideDefs, 'outside', './outside/views',  outfilename)
@@ -49,15 +54,18 @@ function outside () {
 
 function inside () {
   const insideDefs = require('./generated/ehrDefs/inside-pages')()
+  // go through the definitions and compute properties as needed.
   flushDefs(insideDefs, true)
+  // prepare a tree structure to produce the nested menu
   var outfilename = pathUtil.join(destRouteFiles, 'treeDef.json')
-
   var tree = makeTree(insideDefs, outfilename)
+  // make the Vue components
   makeVueFiles(insideDefs)
   outfilename = pathUtil.join(destRouteFiles, 'menuList.json')
-
+  // make the menu
   makeMenu(tree, outfilename)
   outfilename = pathUtil.join(destRouteFiles, 'insideRoutes.js')
+  // make the routing
   makeRoutes(insideDefs, 'inside', './inside/views', outfilename)
 }
 
@@ -118,6 +126,7 @@ function findTreeItem (def, tree) {
   })
   return item
 }
+
 function makeTreeItem (def, tree) {
   var item = {}
   item.name = def.routeName
@@ -157,13 +166,21 @@ function makeMenu (tree, outfilename) {
   fs.writeFileSync(outfilename, txtContent, 'utf8')
 }
 
+function getComponent(fName) {
+  let templateFileName = pathUtil.join(__dirname, source, fName)
+  let componentTemplate = fs.readFileSync(templateFileName, 'utf8')
+  return componentTemplate
+}
+
 function makeVueFiles (defs) {
-  const templateFileName = pathUtil.join(__dirname, source, 'newTemplate.txt')
-  const componentTemplate = fs.readFileSync(templateFileName, 'utf8')
+  const componentTemplate = getComponent('newTemplate.txt')
+  const baseTemplate = getComponent('baseTemplate.txt')
   defs.forEach(def => {
     // console.log('def.generateComponent',  def.generateComponent)
     if (def.generateComponent === 'yes') {
       makeVueFile(def, componentTemplate)
+    } else  {
+      makeVueFile(def, baseTemplate)
     }
   })
 }

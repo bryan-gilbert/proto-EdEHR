@@ -54,7 +54,7 @@ export default class EhrHelp {
 
   _loadTransposedColumns(pageKey) {
     let pageDef = this.getPageDefinition(pageKey)
-    if (pageDef.tables) {
+    if (pageDef && pageDef.tables) {
       pageDef.tables.forEach(table => {
         if (table.tableCells.length > 8) {
           console.log('transpose table', table)

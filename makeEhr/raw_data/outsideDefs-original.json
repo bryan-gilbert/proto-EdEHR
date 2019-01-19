@@ -1,5 +1,4 @@
 [
-  { "path": "", "routeName": "account"},
   { "path": "", "routeName": "dashboard"},
   { "path": "", "routeName": "help"},
   { "path": "", "routeName": "student"},

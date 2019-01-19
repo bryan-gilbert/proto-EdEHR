@@ -1,42 +1,79 @@
 // Generated VUE file. Before modifying see docs about Vue file generation 
 <template lang="pug">
-  div(:class="$options.name")
-    ehr-panel-header Lab Reqs
+  div(class="ehr-page")
+    ehr-panel-header {{ uiProps.pageTitle }}
+      div(slot="controls", v-show="showEditControls")
+        ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey", @controlsCallback="controlsCallback")
     ehr-panel-content
-      div(class="region")
-        p This Lab Reqs page is a generated placeholder. The actual content will be developed soon. So stay tuned.
-        p Label: Lab requisitions
-        p Component name: LabReqs
-        p Redirect: 
-        p Route name: lab-reqs
-        p Full path: /ehr/current/no-med/lab-reqs
-        p Assignment Data: labReqs
+      div(class="region ehr-page-content")
+        ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
+        div(v-if="uiProps.hasTable", v-for="tableDef in uiProps.tables", :key="tableDef.tableKey")
+          ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
+    div(style="display:none")
+      p This Lab Requisitions page is generated.
+      p Label: Lab requisitions
+      p Data Key: labRequisitions
+      p Component name: LabRequisitions
+      p Redirect: 
+      p Route name: lab-requisitions
+      p Full path: /ehr/current/no-med/lab-requisitions
 </template>
 
 <script>
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
+import EhrEditControls from '../components/EhrEditControls.vue'
+import EhrPageTable from '../components/EhrPageTable'
+import EhrPageForm from '../components/EhrPageForm.vue'
+import EhrHelp from '../ehr-helper'
 
 export default {
-  name: 'LabReqs',
+  name: 'LabRequisitions',
   components: {
     EhrPanelHeader,
-    EhrPanelContent
+    EhrPanelContent,
+    EhrPageForm,
+    EhrPageTable,
+    EhrEditControls
+  },
+  data: function() {
+    return {
+      pageDataKey: 'labRequisitions',
+      theData: {},
+      ehrHelp: undefined
+    }
   },
   computed: {
-    isStudent() {
-      return this.$store.getters['visit/isStudent']
+    uiProps() {
+      return this.ehrHelp ? this.ehrHelp.getPageDefinition(this.pageDataKey) : {}
     },
-    labReqs() {
-      let data = this.$store.getters['ehrData/mergedData'] || {}
-      let asStored = data.labReqs || {}
-      return JSON.parse(JSON.stringify(asStored))
+    showEditControls() {
+      return this.ehrHelp.showEditControls()
     }
+  },
+  methods: {
+    controlsCallback(callback) {
+      callback(this.theData)
+    },
+    tableData(tableDef) {
+      // console.log('return table data', tableDef.tableKey)
+      let td = this.theData[tableDef.tableKey]
+      return td
+    }
+  },
+  created() {
+    this.ehrHelp = new EhrHelp(this, this.$store, this.pageDataKey, this.uiProps)
+  },
+  beforeRouteLeave(to, from, next) {
+    this.ehrHelp.beforeRouteLeave(to, from, next)
+  },
+  beforeDestroy: function() {
+    this.ehrHelp.beforeDestroy(this.pageDataKey)
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.LabReqs {
-}
+@import '../../scss/settings/forms';
+@import '../../scss/settings/inside';
 </style>
