@@ -16,8 +16,8 @@
             ui-button(v-on:buttonClicked="previousStudent", class="", :disabled="!enablePrev")
               span <
             //fas-icon(icon="arrow-left")
-          div(class="classlist_counter column")
-            span 3/14
+          // div(class="classlist_counter column")
+          //  span 3/14
           div(class="classlist_nav_item is-2 column")
             ui-button(v-on:buttonClicked="nextStudent", class="", :disabled="!enableNext")
               span >
@@ -32,6 +32,8 @@ import UiButton from '../../app/ui/UiButton'
 import UiInfo from '../../app/ui/UiInfo'
 import EhrEvaluationDialog from './EhrEvaluationDialog'
 import EhrEvaluationInput from './EhrEvaluationInput'
+
+// TODO add student classlist counter and student list drop down
 
 export default {
   name: 'EhrClassListNav',
@@ -68,7 +70,7 @@ export default {
       return edata && edata.trim().length > 0 ? 'has-evaluation-notes' : ''
     },
     enablePrev() {
-      let { list, indx } = this.findCurrentIndex()
+      let { indx } = this.findCurrentIndex()
       return indx > 0
     },
     enableNext() {
@@ -104,8 +106,7 @@ export default {
     changeStudent(list, sv) {
       let pid = sv._id
       console.log('EhrClassListNav go to ', pid)
-      this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', pid).then(() => {
-      })
+      this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', pid).then(() => {})
     }
   }
 }
