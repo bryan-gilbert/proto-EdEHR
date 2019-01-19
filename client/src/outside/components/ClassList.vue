@@ -104,6 +104,7 @@ export default {
     }
   },
   mounted: function() {
+    /*
     let myId = this.activity._id
     let storeId = localStorage.getItem('activityId')
     if (storeId === myId) {
@@ -123,6 +124,7 @@ export default {
         }
       })
     }
+    */
   }
 }
 </script>

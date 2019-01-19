@@ -24,12 +24,11 @@ export default {
     }
   },
   mounted: function() {
-    let activityId = localStorage.getItem('activityId')
     /*
     TODO get scroll into view working
     The following is not working. Nor is the attempt to scroll in the class list view.
     I'm leaving this code here hoping that taking a look again later might help.
-     */
+    let activityId = localStorage.getItem('activityId')
     if (activityId) {
       const _this = this
       let id = `activity-${activityId}`
@@ -40,6 +39,7 @@ export default {
         _this.$scrollTo(elem)
       })
     }
+     */
   }
 }
 </script>
