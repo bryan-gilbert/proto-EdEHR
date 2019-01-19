@@ -87,9 +87,10 @@ export default {
 
 .EhrBanner {
   &__content {
+    color: $grey60;
     margin: 0;
     padding: 0 1rem;
-    font-size: 0.8rem;
+    padding-bottom: 12px;
   }
   &__content_row--1 {
     flex-grow: 0.8;
