@@ -17,8 +17,9 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/settings/color.scss';
 @import '../../scss/styles.scss';
+
 .EhrPanelHeader {
-  padding: 0.4rem 1.5rem;
+  padding: 0.6rem 2rem 0.4rem;
   background-color: $grey03;
   color: $grey60;
   height: 60px;
@@ -31,7 +32,6 @@ export default {
 
   .title {
     display: table-cell;
-    float: left;
   }
 
   .controls {
