@@ -9,7 +9,7 @@
         ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
         div(v-if="uiProps.hasTable", v-for="tableDef in uiProps.tables", :key="tableDef.tableKey")
           ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
-    div(style="display:none")
+    div()
       p This No Med Orders page is generated.
       p Label: Orders
       p Data Key: nonmedOrders

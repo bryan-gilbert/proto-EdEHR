@@ -9,7 +9,7 @@
         ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
         div(v-if="uiProps.hasTable", v-for="tableDef in uiProps.tables", :key="tableDef.tableKey")
           ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
-    div(style="display:none")
+    div()
       p This Care Plan page is generated.
       p Label: Interprofessional plan of care
       p Data Key: carePlan

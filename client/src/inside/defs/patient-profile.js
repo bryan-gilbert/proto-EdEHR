@@ -577,7 +577,7 @@ module.exports = function() {
                 pageDataKey: 'allergies',
                 dataParent: 'allergies',
                 page: 'Allergies',
-                defaultValue: true,
+                defaultValue: 'TRUE',
                 validation: 'one of these two need to be filled'
               }
             ]
@@ -700,6 +700,166 @@ module.exports = function() {
                 pageDataKey: 'psychosocial',
                 dataParent: 'psychosocial',
                 page: 'History Psychosocial'
+              }
+            ]
+          },
+          {
+            formRow: '3',
+            elements: [
+              {
+                elementKey: 'behaviours',
+                fqn: 'psychosocial.behaviours',
+                inputType: 'subgroup',
+                formCss: 'check_with_text_group',
+                formColumn: '1',
+                formRow: '3',
+                pageDataKey: 'psychosocial',
+                dataParent: 'psychosocial',
+                page: 'History Psychosocial',
+                elements: [
+                  {
+                    elementKey: 'exercise',
+                    fqn: 'psychosocial.behaviours.exercise',
+                    inputType: 'checkbox',
+                    label: 'Exercise',
+                    formColumn: '1',
+                    formRow: '1',
+                    pageDataKey: 'psychosocial',
+                    dataParent: 'psychosocial.behaviours',
+                    page: 'History Psychosocial'
+                  },
+                  {
+                    elementKey: 'exerciseFrequency',
+                    fqn: 'psychosocial.behaviours.exerciseFrequency',
+                    inputType: 'text',
+                    label: 'Exercise frequency',
+                    formColumn: '2',
+                    formRow: '1',
+                    pageDataKey: 'psychosocial',
+                    dataParent: 'psychosocial.behaviours',
+                    page: 'History Psychosocial'
+                  },
+                  {
+                    elementKey: 'caffeineUse',
+                    fqn: 'psychosocial.behaviours.caffeineUse',
+                    inputType: 'checkbox',
+                    label: 'Caffeine use',
+                    formColumn: '1',
+                    formRow: '2',
+                    pageDataKey: 'psychosocial',
+                    dataParent: 'psychosocial.behaviours',
+                    page: 'History Psychosocial'
+                  },
+                  {
+                    elementKey: 'caffeineUseFrequency',
+                    fqn: 'psychosocial.behaviours.caffeineUseFrequency',
+                    inputType: 'text',
+                    label: 'Caffeine use frequency',
+                    formColumn: '2',
+                    formRow: '2',
+                    pageDataKey: 'psychosocial',
+                    dataParent: 'psychosocial.behaviours',
+                    page: 'History Psychosocial'
+                  },
+                  {
+                    elementKey: 'tobaccoUse',
+                    fqn: 'psychosocial.behaviours.tobaccoUse',
+                    inputType: 'checkbox',
+                    label: 'Tobacco use',
+                    formColumn: '1',
+                    formRow: '3',
+                    pageDataKey: 'psychosocial',
+                    dataParent: 'psychosocial.behaviours',
+                    page: 'History Psychosocial',
+                    helperText:
+                      'Have you used any tobacco products in the last 6 months?-NL-Have you used any tobacco products in the last 7 days?'
+                  },
+                  {
+                    elementKey: 'tobaccoUseFrequency',
+                    fqn: 'psychosocial.behaviours.tobaccoUseFrequency',
+                    inputType: 'text',
+                    label: 'Tobacco use frequency',
+                    formColumn: '2',
+                    formRow: '3',
+                    pageDataKey: 'psychosocial',
+                    dataParent: 'psychosocial.behaviours',
+                    page: 'History Psychosocial'
+                  },
+                  {
+                    elementKey: 'cannabisUse',
+                    fqn: 'psychosocial.behaviours.cannabisUse',
+                    inputType: 'checkbox',
+                    label: 'Cannabis use',
+                    formColumn: '1',
+                    formRow: '4',
+                    pageDataKey: 'psychosocial',
+                    dataParent: 'psychosocial.behaviours',
+                    page: 'History Psychosocial',
+                    helperText:
+                      'Have you used any cannabis products in the last 6 months?-NL-Have you used any cannabis products in the last 7 days?'
+                  },
+                  {
+                    elementKey: 'cannabisUseFrequency',
+                    fqn: 'psychosocial.behaviours.cannabisUseFrequency',
+                    inputType: 'text',
+                    label: 'Cannabis use frequency',
+                    formColumn: '2',
+                    formRow: '4',
+                    pageDataKey: 'psychosocial',
+                    dataParent: 'psychosocial.behaviours',
+                    page: 'History Psychosocial'
+                  },
+                  {
+                    elementKey: 'alcoholUse',
+                    fqn: 'psychosocial.behaviours.alcoholUse',
+                    inputType: 'checkbox',
+                    label: 'Alcohol use',
+                    formColumn: '1',
+                    formRow: '5',
+                    pageDataKey: 'psychosocial',
+                    dataParent: 'psychosocial.behaviours',
+                    page: 'History Psychosocial',
+                    helperText:
+                      'CAGE questionaire-NL-Have you ever felt that you should cut down on your drinking?-NL-Have you ever become annoyed by criticisms of your drinking?-NL-Have you ever felt guilty about your drinking?-NL-Have you ever had a morning eye opener to get rid of a hangover?'
+                  },
+                  {
+                    elementKey: 'alcoholUseFrequency',
+                    fqn: 'psychosocial.behaviours.alcoholUseFrequency',
+                    inputType: 'text',
+                    label: 'Alcohol use frequency',
+                    formColumn: '2',
+                    formRow: '5',
+                    pageDataKey: 'psychosocial',
+                    dataParent: 'psychosocial.behaviours',
+                    page: 'History Psychosocial'
+                  },
+                  {
+                    elementKey: 'substanceUse',
+                    fqn: 'psychosocial.behaviours.substanceUse',
+                    inputType: 'checkbox',
+                    label: 'Substance use',
+                    formColumn: '1',
+                    formRow: '6',
+                    pageDataKey: 'psychosocial',
+                    dataParent: 'psychosocial.behaviours',
+                    page: 'History Psychosocial',
+                    helperText:
+                      'Have you used any substances in the last 6 months?-NL-Have you used any substances in the last 7 days?'
+                  },
+                  {
+                    elementKey: 'substanceUseFrequency',
+                    fqn: 'psychosocial.behaviours.substanceUseFrequency',
+                    inputType: 'text',
+                    label: 'Substance use frequency',
+                    formColumn: '2',
+                    formRow: '6',
+                    pageDataKey: 'psychosocial',
+                    dataParent: 'psychosocial.behaviours',
+                    page: 'History Psychosocial'
+                  }
+                ],
+                type: 'subgroup',
+                containerKey: 'behaviours'
               }
             ]
           }

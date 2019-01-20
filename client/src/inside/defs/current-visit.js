@@ -1,6 +1,7 @@
 module.exports = function() {
   return {
     visit: {
+      pageTitle: 'Visit',
       pageDataKey: 'visit',
       hasForm: true,
       page_form: {
@@ -206,6 +207,7 @@ module.exports = function() {
       }
     },
     vitals: {
+      pageTitle: 'Vital signs',
       pageDataKey: 'vitals',
       hasTable: true,
       tables: [
