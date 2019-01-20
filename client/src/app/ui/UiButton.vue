@@ -1,7 +1,5 @@
 <template>
-  <button v-on:click="buttonClicked" v-bind:class="classObject">
-    <slot />
-  </button>
+  <button v-on:click="buttonClicked" v-bind:class="classObject"><slot /></button>
 </template>
 
 <script>
@@ -37,17 +35,21 @@ export default {
 @import '../../scss/settings/color.scss';
 @import '../../scss/styles.scss';
 
-button, .button, .button.is-primary {
+button,
+.button,
+.button.is-primary {
   background-color: $brand-primary;
-  font-family: $bodyFontFamily; 
-  font-size: $bodyFontSize; 
+  font-family: $bodyFontFamily;
+  font-size: $bodyFontSize;
   margin-bottom: 2em;
-  padding: .3rem 1rem;
+  padding: 0.3rem 1rem;
 }
 
-button:hover, .button:hover, .button.is-primary:hover {
+button:hover,
+.button:hover,
+.button.is-primary:hover {
   background-color: $brand-primary-hover;
-  transition-duration:0.3s;
+  transition-duration: 0.3s;
   transition-property: background-color;
 }
 
@@ -56,18 +58,17 @@ button:hover, .button:hover, .button.is-primary:hover {
   border: 1px solid $brand-primary;
   box-sizing: border-box;
   color: $brand-primary;
-  font-family: $bodyFontFamily; 
-  font-size: $bodyFontSize; 
+  font-family: $bodyFontFamily;
+  font-size: $bodyFontSize;
   margin-bottom: 2em;
-  padding: .3rem 1rem;
+  padding: 0.3rem 1rem;
 }
 
 .button.is-light:hover {
   background-color: $white;
   border: 1px solid $brand-primary-hover;
   color: $brand-primary-hover;
-  transition-duration:0.3s;
+  transition-duration: 0.3s;
   transition-property: color, background-color;
 }
-
 </style>
