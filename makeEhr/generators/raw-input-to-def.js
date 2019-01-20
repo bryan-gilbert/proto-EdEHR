@@ -249,6 +249,9 @@ class RawInputToDef {
     let lines = content.split('\n')
     let entries = []
     lines.forEach(aLine => {
+      if (aLine.trim().length === 0) {
+        return
+      }
       let entry = {}
       let regexp = /\{[^}]*\}/g
       let found = aLine.match(regexp)

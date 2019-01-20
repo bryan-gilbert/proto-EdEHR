@@ -483,6 +483,7 @@
                 "def": {
                   "path": "/ehr/current/no-med",
                   "routeName": "no-med-orders",
+                  "pageDataKey": "nonmedOrders",
                   "label": "Orders",
                   "redirect": "",
                   "componentName": "NoMedOrders",
@@ -501,6 +502,7 @@
                 "def": {
                   "path": "/ehr/current/no-med",
                   "routeName": "referrals",
+                  "pageDataKey": "referrals",
                   "label": "Referrals to other disciplines",
                   "redirect": "",
                   "componentName": "Referrals",
@@ -540,6 +542,7 @@
             "def": {
               "path": "/ehr/current",
               "routeName": "meds",
+              "pageDataKey": "medicationOrders",
               "label": "Medication orders",
               "redirect": "",
               "componentName": "Meds",
@@ -558,6 +561,7 @@
             "def": {
               "path": "/ehr/current",
               "routeName": "mar",
+              "pageDataKey": "medAdminRec",
               "label": "MAR",
               "redirect": "",
               "componentName": "Mar",
@@ -576,6 +580,7 @@
             "def": {
               "path": "/ehr/current",
               "routeName": "discharge",
+              "pageDataKey": "dischargeSummary",
               "label": "Discharge summary",
               "redirect": "",
               "componentName": "Discharge",
@@ -594,6 +599,7 @@
             "def": {
               "path": "/ehr/current",
               "routeName": "billing",
+              "pageDataKey": "billing",
               "label": "Billing",
               "redirect": "",
               "componentName": "Billing",
@@ -632,6 +638,7 @@
             "def": {
               "path": "/ehr/chart",
               "routeName": "progress-notes",
+              "pageDataKey": "progressNotes",
               "label": "Progress notes",
               "redirect": "",
               "componentName": "ProgressNotes",
@@ -650,6 +657,7 @@
             "def": {
               "path": "/ehr/chart",
               "routeName": "care-plan",
+              "pageDataKey": "carePlan",
               "label": "Interprofessional plan of care",
               "redirect": "",
               "componentName": "CarePlan",
@@ -686,6 +694,7 @@
                 "def": {
                   "path": "/ehr/chart/reports",
                   "routeName": "consults",
+                  "pageDataKey": "consultants",
                   "label": "Consults",
                   "redirect": "",
                   "componentName": "Consults",
@@ -704,6 +713,7 @@
                 "def": {
                   "path": "/ehr/chart/reports",
                   "routeName": "lab-reports",
+                  "pageDataKey": "labResults",
                   "label": "Lab Reports",
                   "redirect": "",
                   "componentName": "LabReports",
@@ -722,6 +732,7 @@
                 "def": {
                   "path": "/ehr/chart/reports",
                   "routeName": "diagnostic-reports",
+                  "pageDataKey": "medicalImaging",
                   "label": "Diagnostic reports",
                   "redirect": "",
                   "componentName": "DiagnosticReports",
@@ -740,6 +751,7 @@
                 "def": {
                   "path": "/ehr/chart/reports",
                   "routeName": "operative-anaesthesia",
+                  "pageDataKey": "operationReports",
                   "label": "Operative reports and anaesthesia record",
                   "redirect": "",
                   "componentName": "OperativeAnaesthesia",

@@ -1,6 +1,7 @@
 module.exports = function() {
   return {
     visit: {
+      pageTitle: 'Visit',
       pageDataKey: 'visit',
       hasForm: true,
       page_form: {
@@ -206,6 +207,7 @@ module.exports = function() {
       }
     },
     vitals: {
+      pageTitle: 'Vital signs',
       pageDataKey: 'vitals',
       hasTable: true,
       tables: [
@@ -12378,6 +12380,61 @@ module.exports = function() {
       pageData: {
         table: []
       }
+    },
+    genitourinary: {
+      pageTitle: 'Assessments: Genitourinary',
+      pageDataKey: 'genitourinary',
+      pageData: {}
+    },
+    musculoskeletal: {
+      pageTitle: 'Assessments: Musculoskeletal',
+      pageDataKey: 'musculoskeletal',
+      pageData: {}
+    },
+    pain: {
+      pageTitle: 'Assessments: Pain',
+      pageDataKey: 'pain',
+      pageData: {}
+    },
+    biopsychosocial: {
+      pageTitle: 'Assessments: Biopsychosocial',
+      pageDataKey: 'biopsychosocial',
+      pageData: {}
+    },
+    nonmedOrders: {
+      pageTitle: 'Orders',
+      pageDataKey: 'nonmedOrders',
+      pageData: {}
+    },
+    referrals: {
+      pageTitle: 'Referrals to other disciplines',
+      pageDataKey: 'referrals',
+      pageData: {}
+    },
+    labRequisitions: {
+      pageTitle: 'Lab requisitions',
+      pageDataKey: 'labRequisitions',
+      pageData: {}
+    },
+    medicationOrders: {
+      pageTitle: 'Medication orders',
+      pageDataKey: 'medicationOrders',
+      pageData: {}
+    },
+    medAdminRec: {
+      pageTitle: 'MAR',
+      pageDataKey: 'medAdminRec',
+      pageData: {}
+    },
+    dischargeSummary: {
+      pageTitle: 'Discharge summary',
+      pageDataKey: 'dischargeSummary',
+      pageData: {}
+    },
+    billing: {
+      pageTitle: 'Billing',
+      pageDataKey: 'billing',
+      pageData: {}
     }
   }
 }

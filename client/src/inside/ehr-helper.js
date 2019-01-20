@@ -7,7 +7,8 @@ import { PAGE_DATA_REFRESH_EVENT } from '../event-bus'
 
 const pageDefsPP = require('../inside/defs/patient-profile')()
 const pageDefsCV = require('../inside/defs/current-visit')()
-const pageDefs = Object.assign(pageDefsPP, pageDefsCV)
+const pageDefsPC = require('../inside/defs/patient-chart')()
+const pageDefs = Object.assign(pageDefsPP, pageDefsCV, pageDefsPC)
 
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
@@ -54,7 +55,7 @@ export default class EhrHelp {
 
   _loadTransposedColumns(pageKey) {
     let pageDef = this.getPageDefinition(pageKey)
-    if (pageDef.tables) {
+    if (pageDef && pageDef.tables) {
       pageDef.tables.forEach(table => {
         if (table.tableCells.length > 8) {
           console.log('transpose table', table)

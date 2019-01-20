@@ -1,42 +1,79 @@
 // Generated VUE file. Before modifying see docs about Vue file generation 
 <template lang="pug">
-  div(:class="$options.name")
-    ehr-panel-header Biopsychosocial
+  div(class="ehr-page")
+    ehr-panel-header {{ uiProps.pageTitle }}
+      div(slot="controls", v-show="showEditControls")
+        ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey", @controlsCallback="controlsCallback")
     ehr-panel-content
-      div(class="region")
-        p This Biopsychosocial page is a generated placeholder. The actual content will be developed soon. So stay tuned.
-        p Label: Biopsychosocial
-        p Component name: Biopsychosocial
-        p Redirect: 
-        p Route name: biopsychosocial
-        p Full path: /ehr/current/assessments/biopsychosocial
-        p Assignment Data: biopsychosocial
+      div(class="region ehr-page-content")
+        ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
+        div(v-if="uiProps.hasTable", v-for="tableDef in uiProps.tables", :key="tableDef.tableKey")
+          ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
+    div()
+      p This Biopsychosocial page is generated.
+      p Label: Biopsychosocial
+      p Data Key: biopsychosocial
+      p Component name: Biopsychosocial
+      p Redirect: 
+      p Route name: biopsychosocial
+      p Full path: /ehr/current/assessments/biopsychosocial
 </template>
 
 <script>
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
+import EhrEditControls from '../components/EhrEditControls.vue'
+import EhrPageTable from '../components/EhrPageTable'
+import EhrPageForm from '../components/EhrPageForm.vue'
+import EhrHelp from '../ehr-helper'
 
 export default {
   name: 'Biopsychosocial',
   components: {
     EhrPanelHeader,
-    EhrPanelContent
+    EhrPanelContent,
+    EhrPageForm,
+    EhrPageTable,
+    EhrEditControls
+  },
+  data: function() {
+    return {
+      pageDataKey: 'biopsychosocial',
+      theData: {},
+      ehrHelp: undefined
+    }
   },
   computed: {
-    isStudent() {
-      return this.$store.getters['visit/isStudent']
+    uiProps() {
+      return this.ehrHelp ? this.ehrHelp.getPageDefinition(this.pageDataKey) : {}
     },
-    biopsychosocial() {
-      let data = this.$store.getters['ehrData/mergedData'] || {}
-      let asStored = data.biopsychosocial || {}
-      return JSON.parse(JSON.stringify(asStored))
+    showEditControls() {
+      return this.ehrHelp.showEditControls()
     }
+  },
+  methods: {
+    controlsCallback(callback) {
+      callback(this.theData)
+    },
+    tableData(tableDef) {
+      // console.log('return table data', tableDef.tableKey)
+      let td = this.theData[tableDef.tableKey]
+      return td
+    }
+  },
+  created() {
+    this.ehrHelp = new EhrHelp(this, this.$store, this.pageDataKey, this.uiProps)
+  },
+  beforeRouteLeave(to, from, next) {
+    this.ehrHelp.beforeRouteLeave(to, from, next)
+  },
+  beforeDestroy: function() {
+    this.ehrHelp.beforeDestroy(this.pageDataKey)
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.Biopsychosocial {
-}
+@import '../../scss/settings/forms';
+@import '../../scss/settings/inside';
 </style>

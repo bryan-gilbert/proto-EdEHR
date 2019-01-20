@@ -1,42 +1,79 @@
 // Generated VUE file. Before modifying see docs about Vue file generation 
 <template lang="pug">
-  div(:class="$options.name")
-    ehr-panel-header Non-medication orders: Orders
+  div(class="ehr-page")
+    ehr-panel-header {{ uiProps.pageTitle }}
+      div(slot="controls", v-show="showEditControls")
+        ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey", @controlsCallback="controlsCallback")
     ehr-panel-content
-      div(class="region")
-        p This Non-medication orders: Orders page is a generated placeholder. The actual content will be developed soon. So stay tuned.
-        p Label: Orders
-        p Component name: NoMedOrders
-        p Redirect: 
-        p Route name: no-med-orders
-        p Full path: /ehr/current/no-med/no-med-orders
-        p Assignment Data: noMedOrders
+      div(class="region ehr-page-content")
+        ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
+        div(v-if="uiProps.hasTable", v-for="tableDef in uiProps.tables", :key="tableDef.tableKey")
+          ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
+    div()
+      p This No Med Orders page is generated.
+      p Label: Orders
+      p Data Key: nonmedOrders
+      p Component name: NoMedOrders
+      p Redirect: 
+      p Route name: no-med-orders
+      p Full path: /ehr/current/no-med/no-med-orders
 </template>
 
 <script>
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
+import EhrEditControls from '../components/EhrEditControls.vue'
+import EhrPageTable from '../components/EhrPageTable'
+import EhrPageForm from '../components/EhrPageForm.vue'
+import EhrHelp from '../ehr-helper'
 
 export default {
   name: 'NoMedOrders',
   components: {
     EhrPanelHeader,
-    EhrPanelContent
+    EhrPanelContent,
+    EhrPageForm,
+    EhrPageTable,
+    EhrEditControls
+  },
+  data: function() {
+    return {
+      pageDataKey: 'nonmedOrders',
+      theData: {},
+      ehrHelp: undefined
+    }
   },
   computed: {
-    isStudent() {
-      return this.$store.getters['visit/isStudent']
+    uiProps() {
+      return this.ehrHelp ? this.ehrHelp.getPageDefinition(this.pageDataKey) : {}
     },
-    noMedOrders() {
-      let data = this.$store.getters['ehrData/mergedData'] || {}
-      let asStored = data.noMedOrders || {}
-      return JSON.parse(JSON.stringify(asStored))
+    showEditControls() {
+      return this.ehrHelp.showEditControls()
     }
+  },
+  methods: {
+    controlsCallback(callback) {
+      callback(this.theData)
+    },
+    tableData(tableDef) {
+      // console.log('return table data', tableDef.tableKey)
+      let td = this.theData[tableDef.tableKey]
+      return td
+    }
+  },
+  created() {
+    this.ehrHelp = new EhrHelp(this, this.$store, this.pageDataKey, this.uiProps)
+  },
+  beforeRouteLeave(to, from, next) {
+    this.ehrHelp.beforeRouteLeave(to, from, next)
+  },
+  beforeDestroy: function() {
+    this.ehrHelp.beforeDestroy(this.pageDataKey)
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.NoMedOrders {
-}
+@import '../../scss/settings/forms';
+@import '../../scss/settings/inside';
 </style>
