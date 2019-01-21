@@ -108,6 +108,24 @@ export default {
 
 <style lang="scss">
 @import '../../scss/settings/forms';
-.EhrPageTable {
+@import '../../scss/settings/color.scss';
+@import '../../scss/styles.scss';
+
+table, .table{
+  margin-bottom: 2em;
+
+  thead th {
+    border-bottom: 2px solid $grey40;
+    color: $grey70;
+    font-size: 1em;
+    padding: 0.2em 2em 0.2em 0;
+  }
+  thead tr{
+    border-bottom: 2px solid $grey20;
+    font-size: $bodyFontFamily;
+  }
 }
+
+.EhrPageTable {
+}  
 </style>
