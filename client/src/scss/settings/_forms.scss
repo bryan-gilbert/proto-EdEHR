@@ -8,6 +8,7 @@
    *
    */
 @import '../../scss/settings/color.scss';
+@import '../../scss/styles.scss';
 
 .ehr-page {
   .fieldset-wrapper {
@@ -65,16 +66,13 @@
     display: inline;
     margin-right: 5px;
   }
-  input,
+  input, .input,
   textarea {
-    height: 2rem;
     padding: 5px;
     border: 1px solid $grey20;
     border-radius: 3px;
     box-shadow: inset 0 1px 0 0 rgba(21, 26, 36, 0.5);
-  }
-  input {
-    height: 2rem;
+    font-size: $bodyFontSize;
   }
   textarea {
     height: 6rem;
@@ -101,18 +99,10 @@
     flex: 2 0 15rem;
   }
 
-  .select select {
+  .select, select {
     background: linear-gradient(180deg, rgba(203, 206, 209, 0.6) 0%, rgba(133, 139, 148, 0.6) 100%);
     box-shadow: inset 0 1px 0 0 $white, 0 1px 2px 0 rgba(21, 26, 36, 0.2);
-  }
-
-  .select-element {
-  }
-  .select {
-    //display: block;
-  }
-  .select select{
-    width: 15rem;
+    width: 100%;
   }
   .checklistWithOther {
     label {

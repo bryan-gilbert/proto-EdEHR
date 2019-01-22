@@ -4,16 +4,15 @@
       ui-spinner(:loading="isLoading")
       app-header
       ehr-context-banner
-      main(class="ehr_layout__main")
-        div(class="ehr_layout__main_content columns")
-          div(class="ehr_layout__nav column")
-            ehr-nav-panel
-          div(class="ehr_layout__content column")
-            div(class="ehr_layout__content_banner")
-              div(class="ehr_layout__content_banner_content")
-                ehr-banner
-            div(class="ehr_layout__content_page")
-              slot Main EHR content for a component will appear here. The component is selected by the router
+      main(class="ehr_layout__main columns")
+        div(class="ehr_layout__nav column")
+          ehr-nav-panel
+        div(class="ehr_layout__content column")
+          div(class="ehr_layout__content_banner")
+            div(class="ehr_layout__content_banner_content")
+              ehr-banner
+          div(class="ehr_layout__content_page")
+            slot Main EHR content for a component will appear here. The component is selected by the router
       app-footer
       input(class="checkbox", type="checkbox", v-model="showingSpecial")
       div(v-show="showingSpecial")
@@ -125,7 +124,7 @@ $pageWidth: 1024px;
     border: $border-width solid $border6;
     margin: 1px;
     padding: 0;
-    max-width: 80%;
+    width: 100%;
   }
 }
 </style>
