@@ -58,14 +58,6 @@ export default {
   font-family: $bodyFontFamily;
 }
 
-.modal-header h3 {
-  margin-top: 0;
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 28px;
-  color: $grey70;
-}
-
 .modal-body {
   margin: 20px 0;
   width: 100%;

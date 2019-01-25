@@ -62,9 +62,6 @@ $pageWidth: 1024px;
 
 .LayoutDefault {
   background-color: $grey60;
-  h1 {
-    font-size: 3rem;
-  }
   &__main {
     color: $grey60;
     background-color: $white;

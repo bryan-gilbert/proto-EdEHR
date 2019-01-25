@@ -105,9 +105,6 @@ export default {
 @import '../../scss/settings/color.scss';
 
 .AssignmentsListing {
-  h1 {
-    font-size: 30px;
-  }
 }
 .seedDataPop {
   background: $grey10;

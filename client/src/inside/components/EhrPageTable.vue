@@ -123,7 +123,7 @@ table, .table{
   }
   thead tr{
     border-bottom: 2px solid $grey20;
-    font-size: $bodyFontFamily;
+    font-size: $bodyFontSize;
   }
 }
 

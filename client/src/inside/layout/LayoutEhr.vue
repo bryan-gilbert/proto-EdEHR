@@ -71,9 +71,6 @@ $pageWidth: 1024px;
     border: $border-width solid $border1;
     margin: 2px;
   }
-  h1 {
-    font-size: 3rem;
-  }
   &__main {
     color: $grey60;
     background-color: $white;
