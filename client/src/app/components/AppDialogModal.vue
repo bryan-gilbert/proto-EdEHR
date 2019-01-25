@@ -39,6 +39,7 @@ export default {
 
 <style lang="scss">
 @import '../../scss/settings/color.scss';
+@import '../../scss/settings/typography.scss';
 @import '../../scss/styles.scss';
 
 .modal-mask {

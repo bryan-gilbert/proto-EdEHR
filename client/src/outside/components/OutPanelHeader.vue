@@ -15,6 +15,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/settings/color.scss';
+@import '../../scss/settings/forms';
 @import '../../scss/styles.scss';
 
 .OutPanelHeader {

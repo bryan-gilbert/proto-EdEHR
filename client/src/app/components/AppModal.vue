@@ -24,8 +24,10 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../scss/styles.scss';
 @import '../../scss/settings/color.scss';
+@import '../../scss/settings/typography.scss';
+@import '../../scss/styles.scss';
+
 
 .modal-mask {
   position: fixed;

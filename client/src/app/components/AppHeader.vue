@@ -38,6 +38,7 @@ export default {
 @import '../../scss/settings/color';
 @import '../../scss/objects/wrapper.mixin';
 @import '../../scss/styles.scss';
+@import '../../scss/settings/typography.scss';
 
 .apphdr {
   background: $toolbar-background-color;

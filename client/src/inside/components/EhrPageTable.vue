@@ -107,8 +107,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../scss/settings/forms';
 @import '../../scss/settings/color.scss';
+@import '../../scss/settings/forms';
+@import '../../scss/settings/typography.scss';
 @import '../../scss/styles.scss';
 
 table, .table{
