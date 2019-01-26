@@ -24,8 +24,10 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../scss/styles.scss';
 @import '../../scss/settings/color.scss';
+@import '../../scss/settings/typography.scss';
+@import '../../scss/styles.scss';
+
 
 .modal-mask {
   position: fixed;
@@ -54,14 +56,6 @@ export default {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
   font-family: $bodyFontFamily;
-}
-
-.modal-header h3 {
-  margin-top: 0;
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 28px;
-  color: $grey70;
 }
 
 .modal-body {

@@ -39,6 +39,7 @@ export default {
 
 <style lang="scss">
 @import '../../scss/settings/color.scss';
+@import '../../scss/settings/typography.scss';
 @import '../../scss/styles.scss';
 
 .modal-mask {
@@ -72,10 +73,6 @@ export default {
 
 .modal-header h3 {
   margin-top: 0;
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 28px;
-  color: $grey70;
 }
 
 .modal-body {

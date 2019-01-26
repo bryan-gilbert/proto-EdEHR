@@ -15,6 +15,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/settings/color.scss';
+@import '../../scss/settings/forms';
 @import '../../scss/styles.scss';
 
 .OutPanelHeader {
@@ -22,11 +23,5 @@ export default {
   background-color: $grey03;
   color: $grey60;
   height: 60px;
-
-  h1 {
-    font-size: 30px;
-    font-family: $bodyFontFamily;
-    font-weight: 600;
-  }
 }
 </style>

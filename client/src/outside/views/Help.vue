@@ -13,10 +13,5 @@
 .outside-view {
   height: 30rem;
   margin: 2rem;
-
-  h1 {
-    font-weight: bold;
-    font-size: 1.5rem;
-  }
 }
 </style>

@@ -197,9 +197,6 @@ export default {
   padding: 5rem 2rem;
   z-index: 10;
 
-  h3 {
-    font-size: 1.5rem;
-  }
   &__data {
     li {
       margin-left: 2rem;
