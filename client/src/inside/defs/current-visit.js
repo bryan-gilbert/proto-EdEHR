@@ -1905,6 +1905,7 @@ module.exports = function() {
               tableCss: 'trans-table-cell',
               tableColumn: '22',
               fieldset: 'pupils',
+              formCss: 'fieldset_rowbased',
               formColumn: '1',
               formRow: '3',
               pageDataKey: 'neurological',
@@ -4782,11 +4783,12 @@ module.exports = function() {
                   {
                     elementKey: 'pupils',
                     fqn: 'neurological.aments.pupils',
-                    inputType: 'fieldset',
+                    inputType: 'fieldset_row',
                     label: 'Pupils',
                     tableCss: 'trans-table-cell',
                     tableColumn: '22',
                     fieldset: 'pupils',
+                    formCss: 'fieldset_rowbased',
                     formColumn: '1',
                     formRow: '3',
                     pageDataKey: 'neurological',
@@ -12384,56 +12386,6 @@ module.exports = function() {
     genitourinary: {
       pageTitle: 'Assessments: Genitourinary',
       pageDataKey: 'genitourinary',
-      pageData: {}
-    },
-    musculoskeletal: {
-      pageTitle: 'Assessments: Musculoskeletal',
-      pageDataKey: 'musculoskeletal',
-      pageData: {}
-    },
-    pain: {
-      pageTitle: 'Assessments: Pain',
-      pageDataKey: 'pain',
-      pageData: {}
-    },
-    biopsychosocial: {
-      pageTitle: 'Assessments: Biopsychosocial',
-      pageDataKey: 'biopsychosocial',
-      pageData: {}
-    },
-    nonmedOrders: {
-      pageTitle: 'Orders',
-      pageDataKey: 'nonmedOrders',
-      pageData: {}
-    },
-    referrals: {
-      pageTitle: 'Referrals to other disciplines',
-      pageDataKey: 'referrals',
-      pageData: {}
-    },
-    labRequisitions: {
-      pageTitle: 'Lab requisitions',
-      pageDataKey: 'labRequisitions',
-      pageData: {}
-    },
-    medicationOrders: {
-      pageTitle: 'Medication orders',
-      pageDataKey: 'medicationOrders',
-      pageData: {}
-    },
-    medAdminRec: {
-      pageTitle: 'MAR',
-      pageDataKey: 'medAdminRec',
-      pageData: {}
-    },
-    dischargeSummary: {
-      pageTitle: 'Discharge summary',
-      pageDataKey: 'dischargeSummary',
-      pageData: {}
-    },
-    billing: {
-      pageTitle: 'Billing',
-      pageDataKey: 'billing',
       pageData: {}
     }
   }

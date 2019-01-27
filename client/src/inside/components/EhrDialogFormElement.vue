@@ -1,16 +1,24 @@
 <template lang="pug">
-  div(class="input-element ehrdfe")
+  div(class="ehrdfe  testClass", :class="formCss(def)")
+    // input-element  :class="fmEl.elementKey",
     div(v-if="def.inputType === 'form-label'")
       div {{def.label}}
       // "TODO split the label on -NL- and make a list of lines")
     div(v-if="def.inputType === 'text' || def.inputType === 'day' || def.inputType === 'time'")
       label {{def.label}}
       input(class="input", type="text", v-model="inputVal")
-    div(v-if="def.inputType === 'fieldset'", class="fieldset-wrapper input-fieldset")
+    div(v-if="def.inputType === 'fieldset_row'", class="fieldset_row_wrapper", :class="def.formCss")
       label(class="fieldset-label") {{def.label}}
       // div {{ def.formFieldSet }}
-      div(v-for="row in def.formFieldSet.rows", :key="row.formRow" class="fieldset-rows columns")
-        div(v-for="fmEl in row.elements", :key="fmEl.elementKey", class="fieldset-col column")
+      div(v-for="row in def.formFieldSet.rows", :key="row.formRow" class="fieldset_row_row" )
+        div(v-for="fmEl in row.elements", :key="fmEl.elementKey", class="fieldset_row_row_element")
+          ehr-dialog-form-element(:inputs="inputs", :def="fmEl", :class="formCss(fmEl)")
+
+    div(v-if="def.inputType === 'fieldset'", class="fieldset_col_wrapper", :class="def.formCss")
+      label(class="fieldset-label") {{def.label}}
+      // div {{ def.formFieldSet }}
+      div(v-for="row in def.formFieldSet.rows", :key="row.formRow" class="fieldset-rows columns-maybe" )
+        div(v-for="fmEl in row.elements", :key="fmEl.elementKey", class="fieldset-col column-maybe")
           ehr-dialog-form-element(:inputs="inputs", :def="fmEl", :class="formCss(fmEl)")
       // div(v-for="fmEl in def.elements", :key="fmEl.elementKey") {{ fmEl }}
       //ehr-dialog-form-element(v-for="fmEl in def.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")

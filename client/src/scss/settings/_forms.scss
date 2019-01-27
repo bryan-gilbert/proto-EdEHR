@@ -10,18 +10,54 @@
 @import '../../scss/settings/color.scss';
 
 .ehr-page {
-  .fieldset-wrapper {
-    display: flex;
-    //@include debugColor(a);
+  .full-width {
+    width: 100%;
   }
-  .input-fieldrow {
-    display: flex;
-  }
-  .input-fieldset {
+
+  .fieldset_row_wrapper {
+    border: 1px solid red;
+    margin: 1px;
     display: flex;
     flex-direction: column;
-    //@include debugColor(b)
+    justify-content: space-between;
+    @include debugColor(c)
   }
+  .fieldset_col_wrapper {
+    display: flex;
+    flex-direction: column;
+    @include debugColor(b)
+  }
+
+
+  //.fieldset_rowbased {
+  //  display: flex;
+  //  flex-direction: row;
+  //}
+
+  .input-fieldrow-element {
+    width: 100%;
+    padding-right: 20px;
+  }
+
+  .fieldset_row_row {
+    border: 2px solid green;
+    margin: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .fieldset_row_row_element {
+    border: 1px solid purple;
+    margin: 1px;
+
+  }
+
+  .input-fieldrow {
+    display: flex;
+    justify-content: space-between;
+  }
+
 
   .fieldset-label {
     display: block;
