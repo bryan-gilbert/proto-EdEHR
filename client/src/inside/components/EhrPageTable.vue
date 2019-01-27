@@ -6,7 +6,7 @@
       table.table
         tbody
           tr(v-for="column in transposedColumns")
-            td(v-for="cell in column", :class="cell.tableCss") {{ cell.value }}
+            td(v-for="cell in column", :class="tableCss(cell)") {{ cell.value }}
 
     div(v-if="!tableDef.isTransposed", class="row_table")
       table.table
@@ -67,6 +67,9 @@ export default {
     }
   },
   methods: {
+    tableCss: function(element) {
+      return element.tableCss ? element.tableCss : 'noClass'
+    },
     showDialog: function() {
       this.ehrHelp.showDialog(this.tableDef, this.inputs)
     },
@@ -106,7 +109,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../../scss/definitions';
 
 table,
@@ -125,6 +128,10 @@ table,
   }
 }
 
+.hide-table-element {
+  border: 1px solid blue;
+  display:none;
+}
 .EhrPageTable {
 }
 </style>

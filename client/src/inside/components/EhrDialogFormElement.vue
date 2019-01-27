@@ -104,8 +104,6 @@ export default {
   },
   methods: {
     formCss: function(element) {
-      if (element.elementKey === 'leftPupilSize')
-        console.log('get css from element', element.label, element.classList, element.formCss)
       return element.formCss ? element.formCss : 'noClass'
     },
     emitGlobalClickEvent() {

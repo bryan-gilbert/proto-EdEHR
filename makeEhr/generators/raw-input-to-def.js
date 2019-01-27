@@ -10,9 +10,11 @@ const TABLE_COL = 'table_column'
 const SUBGROUP = 'subgroup'
 const FIELDSET = 'fieldset'
 const FIELDSET_ROW = 'fieldRowSet'
+const FORM_LABEL = 'form-label'
 const PAGE_INPUT_TYPE = 'page'
 const CONTAINER_INPUT_TYPES = [PAGE_FORM, TABLE_ROW, TABLE_COL]
 const SUBCONTAINER_INPUT_TYPES = [SUBGROUP, FIELDSET, FIELDSET_ROW]
+const NO_SHOW_IN_TABLE_ELEMENTS = [FORM_LABEL, FIELDSET_ROW, FIELDSET]
 
 const containerElementProperties = [
   'elementKey',
@@ -364,6 +366,14 @@ class RawInputToDef {
     })
     // sort by tableColumn
     tableCells.sort((a, b) => a.tableColumn - b.tableColumn)
+    tableCells.forEach( (cell) => {
+      let cI = cell.inputType
+      if (NO_SHOW_IN_TABLE_ELEMENTS.indexOf(cI) >= 0) {
+        let tableCss = cell.tableCss
+        tableCss += (tableCss ? ' ' : '') + 'hide-table-element'
+        cell.tableCss = tableCss
+      }
+    })
     return tableCells
   }
 

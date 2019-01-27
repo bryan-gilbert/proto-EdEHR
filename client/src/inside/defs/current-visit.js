@@ -940,7 +940,7 @@ module.exports = function() {
               fqn: 'neurological.aments.status',
               inputType: 'fieldset',
               label: 'Status',
-              tableCss: 'trans-table-cell',
+              tableCss: 'trans-table-cell hide-table-element',
               tableColumn: '6',
               fieldset: 'status',
               formColumn: '1',
@@ -1335,7 +1335,7 @@ module.exports = function() {
               fqn: 'neurological.aments.concious',
               inputType: 'fieldset',
               label: 'Loss of conciousness',
-              tableCss: 'trans-table-cell',
+              tableCss: 'trans-table-cell hide-table-element',
               tableColumn: '14',
               fieldset: 'concious',
               formColumn: '2',
@@ -1495,7 +1495,7 @@ module.exports = function() {
               fqn: 'neurological.aments.glasgowComaScale',
               inputType: 'fieldset',
               label: 'Glasgow Coma Scale',
-              tableCss: 'trans-table-cell',
+              tableCss: 'trans-table-cell hide-table-element',
               tableColumn: '17',
               fieldset: 'glasgowComaScale',
               formColumn: '3',
@@ -1902,7 +1902,7 @@ module.exports = function() {
               fqn: 'neurological.aments.pupils',
               inputType: 'fieldRowSet',
               label: 'Pupils',
-              tableCss: 'trans-table-cell',
+              tableCss: 'trans-table-cell hide-table-element',
               tableColumn: '22',
               fieldset: 'pupils',
               formCss: 'fieldset_row',
@@ -2441,7 +2441,7 @@ module.exports = function() {
               fqn: 'neurological.aments.stroke',
               inputType: 'fieldRowSet',
               label: 'Stroke Assessment',
-              tableCss: 'trans-table-cell',
+              tableCss: 'trans-table-cell hide-table-element',
               tableColumn: '28',
               fieldset: 'stroke',
               formCss: 'fieldset_row',
@@ -2932,7 +2932,7 @@ module.exports = function() {
                   inputType: 'form-label',
                   label:
                     'Resources-NL-Morse Fall Score (url)-NL-Mini-mental state examination (MMSE) (url)',
-                  tableCss: 'trans-table-cell',
+                  tableCss: 'trans-table-cell hide-table-element',
                   tableColumn: '45',
                   fieldset: 'stroke',
                   fsetRow: '9',
@@ -3475,7 +3475,7 @@ module.exports = function() {
                         inputType: 'form-label',
                         label:
                           'Resources-NL-Morse Fall Score (url)-NL-Mini-mental state examination (MMSE) (url)',
-                        tableCss: 'trans-table-cell',
+                        tableCss: 'trans-table-cell hide-table-element',
                         tableColumn: '45',
                         fieldset: 'stroke',
                         fsetRow: '9',
@@ -3975,7 +3975,7 @@ module.exports = function() {
               inputType: 'form-label',
               label:
                 'Resources-NL-Morse Fall Score (url)-NL-Mini-mental state examination (MMSE) (url)',
-              tableCss: 'trans-table-cell',
+              tableCss: 'trans-table-cell hide-table-element',
               tableColumn: '45',
               fieldset: 'stroke',
               fsetRow: '9',
@@ -4079,7 +4079,7 @@ module.exports = function() {
                     fqn: 'neurological.aments.status',
                     inputType: 'fieldset',
                     label: 'Status',
-                    tableCss: 'trans-table-cell',
+                    tableCss: 'trans-table-cell hide-table-element',
                     tableColumn: '6',
                     fieldset: 'status',
                     formColumn: '1',
@@ -4362,7 +4362,7 @@ module.exports = function() {
                     fqn: 'neurological.aments.concious',
                     inputType: 'fieldset',
                     label: 'Loss of conciousness',
-                    tableCss: 'trans-table-cell',
+                    tableCss: 'trans-table-cell hide-table-element',
                     tableColumn: '14',
                     fieldset: 'concious',
                     formColumn: '2',
@@ -4480,7 +4480,7 @@ module.exports = function() {
                     fqn: 'neurological.aments.glasgowComaScale',
                     inputType: 'fieldset',
                     label: 'Glasgow Coma Scale',
-                    tableCss: 'trans-table-cell',
+                    tableCss: 'trans-table-cell hide-table-element',
                     tableColumn: '17',
                     fieldset: 'glasgowComaScale',
                     formColumn: '3',
@@ -4771,7 +4771,7 @@ module.exports = function() {
                     fqn: 'neurological.aments.pupils',
                     inputType: 'fieldRowSet',
                     label: 'Pupils',
-                    tableCss: 'trans-table-cell',
+                    tableCss: 'trans-table-cell hide-table-element',
                     tableColumn: '22',
                     fieldset: 'pupils',
                     formCss: 'fieldset_row',
@@ -5147,7 +5147,7 @@ module.exports = function() {
                     fqn: 'neurological.aments.stroke',
                     inputType: 'fieldRowSet',
                     label: 'Stroke Assessment',
-                    tableCss: 'trans-table-cell',
+                    tableCss: 'trans-table-cell hide-table-element',
                     tableColumn: '28',
                     fieldset: 'stroke',
                     formCss: 'fieldset_row',
@@ -5638,7 +5638,7 @@ module.exports = function() {
                         inputType: 'form-label',
                         label:
                           'Resources-NL-Morse Fall Score (url)-NL-Mini-mental state examination (MMSE) (url)',
-                        tableCss: 'trans-table-cell',
+                        tableCss: 'trans-table-cell hide-table-element',
                         tableColumn: '45',
                         fieldset: 'stroke',
                         fsetRow: '9',
@@ -6182,7 +6182,7 @@ module.exports = function() {
                               inputType: 'form-label',
                               label:
                                 'Resources-NL-Morse Fall Score (url)-NL-Mini-mental state examination (MMSE) (url)',
-                              tableCss: 'trans-table-cell',
+                              tableCss: 'trans-table-cell hide-table-element',
                               tableColumn: '45',
                               fieldset: 'stroke',
                               fsetRow: '9',
@@ -6529,6 +6529,7 @@ module.exports = function() {
               ],
               containerType: 'fieldset',
               containerKey: 'airway',
+              tableCss: 'undefinedhide-table-element',
               tableKey: 'table',
               formFieldSet: {
                 rows: [
@@ -6796,7 +6797,7 @@ module.exports = function() {
                 },
                 {
                   inputType: 'form-label',
-                  tableCss: 'trans-table-cell',
+                  tableCss: 'trans-table-cell hide-table-element',
                   tableColumn: '14',
                   fieldset: 'breath',
                   fsetRow: '2',
@@ -7048,6 +7049,7 @@ module.exports = function() {
               ],
               containerType: 'fieldset',
               containerKey: 'breath',
+              tableCss: 'undefinedhide-table-element',
               tableKey: 'table',
               formFieldSet: {
                 rows: [
@@ -7127,7 +7129,7 @@ module.exports = function() {
                     elements: [
                       {
                         inputType: 'form-label',
-                        tableCss: 'trans-table-cell',
+                        tableCss: 'trans-table-cell hide-table-element',
                         tableColumn: '14',
                         fieldset: 'breath',
                         fsetRow: '2',
@@ -7404,7 +7406,7 @@ module.exports = function() {
             },
             {
               inputType: 'form-label',
-              tableCss: 'trans-table-cell',
+              tableCss: 'trans-table-cell hide-table-element',
               tableColumn: '14',
               fieldset: 'breath',
               fsetRow: '2',
@@ -7911,6 +7913,7 @@ module.exports = function() {
                     ],
                     containerType: 'fieldset',
                     containerKey: 'airway',
+                    tableCss: 'undefinedhide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -8145,7 +8148,7 @@ module.exports = function() {
                       },
                       {
                         inputType: 'form-label',
-                        tableCss: 'trans-table-cell',
+                        tableCss: 'trans-table-cell hide-table-element',
                         tableColumn: '14',
                         fieldset: 'breath',
                         fsetRow: '2',
@@ -8397,6 +8400,7 @@ module.exports = function() {
                     ],
                     containerType: 'fieldset',
                     containerKey: 'breath',
+                    tableCss: 'undefinedhide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -8476,7 +8480,7 @@ module.exports = function() {
                           elements: [
                             {
                               inputType: 'form-label',
-                              tableCss: 'trans-table-cell',
+                              tableCss: 'trans-table-cell hide-table-element',
                               tableColumn: '14',
                               fieldset: 'breath',
                               fsetRow: '2',
@@ -8934,7 +8938,7 @@ module.exports = function() {
             {
               elementKey: 'spacer1',
               inputType: 'form-label',
-              tableCss: 'trans-table-cell',
+              tableCss: 'trans-table-cell hide-table-element',
               tableColumn: '8',
               formColumn: '1',
               formRow: '3',
@@ -8948,7 +8952,7 @@ module.exports = function() {
               elementKey: 'labelCapRefill',
               inputType: 'form-label',
               label: 'Cap refill',
-              tableCss: 'trans-table-cell',
+              tableCss: 'trans-table-cell hide-table-element',
               tableColumn: '9',
               formColumn: '2',
               formRow: '3',
@@ -8961,7 +8965,7 @@ module.exports = function() {
               elementKey: 'labelTemperature',
               inputType: 'form-label',
               label: 'Temperature',
-              tableCss: 'trans-table-cell',
+              tableCss: 'trans-table-cell hide-table-element',
               tableColumn: '10',
               formColumn: '3',
               formRow: '3',
@@ -8974,7 +8978,7 @@ module.exports = function() {
               elementKey: 'labelPeripheral',
               inputType: 'form-label',
               label: 'Peripheral edema',
-              tableCss: 'trans-table-cell',
+              tableCss: 'trans-table-cell hide-table-element',
               tableColumn: '11',
               formColumn: '4',
               formRow: '3',
@@ -8987,7 +8991,7 @@ module.exports = function() {
               elementKey: 'labelNailBed',
               inputType: 'form-label',
               label: 'Nail bed colour',
-              tableCss: 'trans-table-cell',
+              tableCss: 'trans-table-cell hide-table-element',
               tableColumn: '12',
               formColumn: '5',
               formRow: '3',
@@ -9000,7 +9004,7 @@ module.exports = function() {
               elementKey: 'lableRight',
               inputType: 'form-label',
               label: 'Right hand',
-              tableCss: 'trans-table-cell',
+              tableCss: 'trans-table-cell hide-table-element',
               tableColumn: '13',
               formColumn: '1',
               formRow: '4',
@@ -9013,7 +9017,7 @@ module.exports = function() {
               elementKey: 'lableLeftHand',
               inputType: 'form-label',
               label: 'Left hand',
-              tableCss: 'trans-table-cell',
+              tableCss: 'trans-table-cell hide-table-element',
               tableColumn: '14',
               formColumn: '1',
               formRow: '5',
@@ -9026,7 +9030,7 @@ module.exports = function() {
               elementKey: 'labelRightFoot',
               inputType: 'form-label',
               label: 'Right foot',
-              tableCss: 'trans-table-cell',
+              tableCss: 'trans-table-cell hide-table-element',
               tableColumn: '15',
               formColumn: '1',
               formRow: '6',
@@ -9039,7 +9043,7 @@ module.exports = function() {
               elementKey: 'labelLeftFoot',
               inputType: 'form-label',
               label: 'Left foot',
-              tableCss: 'trans-table-cell',
+              tableCss: 'trans-table-cell hide-table-element',
               tableColumn: '16',
               formColumn: '1',
               formRow: '7',
@@ -9637,7 +9641,7 @@ module.exports = function() {
                   {
                     elementKey: 'spacer1',
                     inputType: 'form-label',
-                    tableCss: 'trans-table-cell',
+                    tableCss: 'trans-table-cell hide-table-element',
                     tableColumn: '8',
                     formColumn: '1',
                     formRow: '3',
@@ -9651,7 +9655,7 @@ module.exports = function() {
                     elementKey: 'labelCapRefill',
                     inputType: 'form-label',
                     label: 'Cap refill',
-                    tableCss: 'trans-table-cell',
+                    tableCss: 'trans-table-cell hide-table-element',
                     tableColumn: '9',
                     formColumn: '2',
                     formRow: '3',
@@ -9664,7 +9668,7 @@ module.exports = function() {
                     elementKey: 'labelTemperature',
                     inputType: 'form-label',
                     label: 'Temperature',
-                    tableCss: 'trans-table-cell',
+                    tableCss: 'trans-table-cell hide-table-element',
                     tableColumn: '10',
                     formColumn: '3',
                     formRow: '3',
@@ -9677,7 +9681,7 @@ module.exports = function() {
                     elementKey: 'labelPeripheral',
                     inputType: 'form-label',
                     label: 'Peripheral edema',
-                    tableCss: 'trans-table-cell',
+                    tableCss: 'trans-table-cell hide-table-element',
                     tableColumn: '11',
                     formColumn: '4',
                     formRow: '3',
@@ -9690,7 +9694,7 @@ module.exports = function() {
                     elementKey: 'labelNailBed',
                     inputType: 'form-label',
                     label: 'Nail bed colour',
-                    tableCss: 'trans-table-cell',
+                    tableCss: 'trans-table-cell hide-table-element',
                     tableColumn: '12',
                     formColumn: '5',
                     formRow: '3',
@@ -9708,7 +9712,7 @@ module.exports = function() {
                     elementKey: 'lableRight',
                     inputType: 'form-label',
                     label: 'Right hand',
-                    tableCss: 'trans-table-cell',
+                    tableCss: 'trans-table-cell hide-table-element',
                     tableColumn: '13',
                     formColumn: '1',
                     formRow: '4',
@@ -9830,7 +9834,7 @@ module.exports = function() {
                     elementKey: 'lableLeftHand',
                     inputType: 'form-label',
                     label: 'Left hand',
-                    tableCss: 'trans-table-cell',
+                    tableCss: 'trans-table-cell hide-table-element',
                     tableColumn: '14',
                     formColumn: '1',
                     formRow: '5',
@@ -9952,7 +9956,7 @@ module.exports = function() {
                     elementKey: 'labelRightFoot',
                     inputType: 'form-label',
                     label: 'Right foot',
-                    tableCss: 'trans-table-cell',
+                    tableCss: 'trans-table-cell hide-table-element',
                     tableColumn: '15',
                     formColumn: '1',
                     formRow: '6',
@@ -10074,7 +10078,7 @@ module.exports = function() {
                     elementKey: 'labelLeftFoot',
                     inputType: 'form-label',
                     label: 'Left foot',
-                    tableCss: 'trans-table-cell',
+                    tableCss: 'trans-table-cell hide-table-element',
                     tableColumn: '16',
                     formColumn: '1',
                     formRow: '7',
@@ -10399,6 +10403,7 @@ module.exports = function() {
               ],
               containerType: 'fieldset',
               containerKey: 'bowel',
+              tableCss: 'undefinedhide-table-element',
               tableKey: 'table',
               formFieldSet: {
                 rows: [],
@@ -10561,6 +10566,7 @@ module.exports = function() {
               pageDataKey: 'gastrointestinal',
               dataParent: 'gastrointestinal.table.abdomen',
               page: 'Assessments: Gastrointestinal',
+              tableCss: 'undefinedhide-table-element',
               tableKey: 'table',
               formColumn: '1'
             },
@@ -10693,12 +10699,14 @@ module.exports = function() {
                   pageDataKey: 'gastrointestinal',
                   dataParent: 'gastrointestinal.table.abdomen',
                   page: 'Assessments: Gastrointestinal',
+                  tableCss: 'undefinedhide-table-element',
                   tableKey: 'table',
                   formColumn: '1'
                 }
               ],
               containerType: 'fieldset',
               containerKey: 'abdomen',
+              tableCss: 'undefinedhide-table-element',
               tableKey: 'table',
               formFieldSet: {
                 rows: [
@@ -10857,6 +10865,7 @@ module.exports = function() {
                         pageDataKey: 'gastrointestinal',
                         dataParent: 'gastrointestinal.table.abdomen',
                         page: 'Assessments: Gastrointestinal',
+                        tableCss: 'undefinedhide-table-element',
                         tableKey: 'table',
                         formColumn: '1'
                       }
@@ -11103,6 +11112,7 @@ module.exports = function() {
               ],
               containerType: 'fieldset',
               containerKey: 'emesis',
+              tableCss: 'undefinedhide-table-element',
               tableKey: 'table',
               formFieldSet: {
                 rows: [
@@ -11268,6 +11278,7 @@ module.exports = function() {
               page: 'Assessments: Gastrointestinal',
               elements: [],
               containerType: 'fieldset',
+              tableCss: 'undefinedhide-table-element',
               formFieldSet: {
                 rows: [],
                 columnsCount: 0
@@ -11710,12 +11721,14 @@ module.exports = function() {
                         pageDataKey: 'gastrointestinal',
                         dataParent: 'gastrointestinal.table.abdomen',
                         page: 'Assessments: Gastrointestinal',
+                        tableCss: 'undefinedhide-table-element',
                         tableKey: 'table',
                         formColumn: '1'
                       }
                     ],
                     containerType: 'fieldset',
                     containerKey: 'abdomen',
+                    tableCss: 'undefinedhide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -11874,6 +11887,7 @@ module.exports = function() {
                               pageDataKey: 'gastrointestinal',
                               dataParent: 'gastrointestinal.table.abdomen',
                               page: 'Assessments: Gastrointestinal',
+                              tableCss: 'undefinedhide-table-element',
                               tableKey: 'table',
                               formColumn: '1'
                             }
@@ -12015,6 +12029,7 @@ module.exports = function() {
                     ],
                     containerType: 'fieldset',
                     containerKey: 'emesis',
+                    tableCss: 'undefinedhide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -12180,6 +12195,7 @@ module.exports = function() {
                     pageDataKey: 'gastrointestinal',
                     dataParent: 'gastrointestinal.table.abdomen',
                     page: 'Assessments: Gastrointestinal',
+                    tableCss: 'undefinedhide-table-element',
                     tableKey: 'table',
                     formColumn: '1'
                   },
@@ -12343,6 +12359,7 @@ module.exports = function() {
                     ],
                     containerType: 'fieldset',
                     containerKey: 'bowel',
+                    tableCss: 'undefinedhide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [],

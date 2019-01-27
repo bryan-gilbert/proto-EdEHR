@@ -22,31 +22,34 @@ export default class EhrHelp {
     this.cacheAsString = ''
     this.dialogMap = {}
     this._loadTransposedColumns(pageKey)
+    this._setupEventHandlers(pageKey)
+  }
 
+  _setupEventHandlers (pageKey) {
     const _this = this
-    this.windowUnloadHandler = function(eData) {
+    this.windowUnloadHandler = function (eData) {
       _this.beforeUnloadListener(eData)
     }
     window.addEventListener('beforeunload', this.windowUnloadHandler)
 
-    this.dialogInputChangeEventHandler = function(eData) {
+    this.dialogInputChangeEventHandler = function (eData) {
       _this._handleDialogInputChangeEvent(eData)
     }
     EventBus.$on(DIALOG_INPUT_EVENT, this.dialogInputChangeEventHandler)
-    this.pageFormInputChangeEventHandler = function(eData) {
+    this.pageFormInputChangeEventHandler = function (eData) {
       _this._handlePageFormInputChangeEvent(eData)
     }
     let pfuEventChannel = PAGE_FORM_INPUT_EVENT + pageKey
     EventBus.$on(pfuEventChannel, this.pageFormInputChangeEventHandler)
 
-    this.activityDataChangeEventHandler = function(eData) {
+    this.activityDataChangeEventHandler = function (eData) {
       eData = eData || {}
       eData.pageKey = pageKey
       _this._handleActivityDataChangeEvent(eData)
     }
     EventBus.$on(ACTIVITY_DATA_EVENT, this.activityDataChangeEventHandler)
 
-    this.refreshEventHandler = function(eData) {
+    this.refreshEventHandler = function (eData) {
       console.log('ehrhelper respond to page refresh')
       _this._loadTransposedColumns(pageKey)
     }
@@ -78,7 +81,7 @@ export default class EhrHelp {
 
   getPageDefinition(pageKey) {
     let pageDef = pageDefs[pageKey]
-    debugehr('getPageDefinition ' + pageKey, pageDef)
+    // debugehr('getPageDefinition ' + pageKey, pageDef)
     return pageDef
   }
 
@@ -174,6 +177,7 @@ export default class EhrHelp {
       let hdrCss = 'column_label' + (cell.tableCss ? ' ' + cell.tableCss : '')
       var entry = {
         class: 'column_label',
+        inputType: cell.inputType,
         title: cell.elementKey,
         tableCss: hdrCss,
         value: cell.label
