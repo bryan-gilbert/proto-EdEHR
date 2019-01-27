@@ -1,19 +1,13 @@
 <template lang="pug">
   footer(class="appFtr")
     div(class="wrapper" v-if="showNav")
-      ui-link(class="footer_link", :to="{ name: home }") Home
+      ui-link(class="footer_link", :to="{ name: `demographics` }") Demographics
       span(class="spacer") |
-      ui-link(class="footer_link", :to="{ name: dashboard }") Dashboard
-      span(class="spacer") |
-      ui-link(class="footer_link", :to="{ name: account }") Account
-      span(class="spacer") |
-      ui-link(class="footer_link", :to="{ name: student }") Student
+      ui-link(class="footer_link", :to="{ name: `dashboard` }") Dashboard
       span(class="spacer") |
       ui-link(class="footer_link", :to="{ name: 'instructor' }") Instructor
       span(class="spacer") |
-      ui-link(class="footer_link", :to="{ name: help }") Help
-      span(class="spacer") |
-      ui-link(class="footer_link", :to="{ name: ehr }") EHR
+      ui-link(class="footer_link", :to="{ name: `help` }") Help
 </template>
 
 <script>
@@ -26,7 +20,7 @@ export default {
   },
   data: function() {
     return {
-      showNav: false
+      showNav: true
     }
   }
 }
@@ -37,11 +31,10 @@ export default {
 .appFtr {
   background: $toolbar-background-color;
   color: $toolbar-color;
-  border: $border-width solid $border1;
+  padding: 10px 0 20px 20px;
 
   .wrapper {
     @include wrapper('content');
-    border: $border-width solid $border2;
   }
   text-align: center;
 
