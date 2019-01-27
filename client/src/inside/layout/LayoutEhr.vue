@@ -60,7 +60,7 @@ $navMinWidth: 235px;
 /* for dev on my small box only ... */
 $navMaxWidth: 280px;
 $pageWidth: 1024px;
-@import '../../scss/styles.scss';
+@import '../../scss/styles';
 
 .ehr_layout {
   margin: 1px;

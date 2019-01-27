@@ -52,7 +52,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/styles';
 
 .EhrScratchPad {
   margin-top: auto;

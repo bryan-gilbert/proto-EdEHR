@@ -34,7 +34,6 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/styles.scss';
 
-
 button,
 .button,
 .button.is-primary {
