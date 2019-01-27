@@ -15,17 +15,15 @@
   }
 
   .fieldset_row_wrapper {
-    border: 1px solid red;
-    margin: 1px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    @include debugColor(c)
+    // @include debugColor(c)
   }
   .fieldset_col_wrapper {
     display: flex;
     flex-direction: column;
-    @include debugColor(b)
+    // @include debugColor(b)
   }
 
 
@@ -40,16 +38,12 @@
   }
 
   .fieldset_row_row {
-    border: 2px solid green;
-    margin: 4px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
 
   .fieldset_row_row_element {
-    border: 1px solid purple;
-    margin: 1px;
 
   }
 
@@ -67,7 +61,7 @@
   }
 
   .testClass {
-    @include debugColor(a)
+    // @include debugColor(a)
   }
   .fieldset-rows {
     //@include debugColor(a)
@@ -148,6 +142,7 @@
     //display: block;
   }
   .select select{
+    min-width: 15rem;
     width: 15rem;
   }
   .checklistWithOther {
@@ -168,4 +163,19 @@
   .column_value {
     width: 5rem;
   }
+}
+
+.is-half {
+  width: 50%;
+  min-width: 50%
+}
+
+.is-two-thirds {
+  width: 66%;
+  min-width: 66%
+}
+
+.is-one-thirds {
+  width: 33%;
+  min-width: 33%
 }

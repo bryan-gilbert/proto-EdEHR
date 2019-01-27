@@ -7,12 +7,11 @@
     div(v-if="def.inputType === 'text' || def.inputType === 'day' || def.inputType === 'time'")
       label {{def.label}}
       input(class="input", type="text", v-model="inputVal")
-    div(v-if="def.inputType === 'fieldset_row'", class="fieldset_row_wrapper", :class="def.formCss")
+    div(v-if="def.inputType === 'fieldRowSet'", class="fieldset_row_wrapper", :class="def.formCss")
       label(class="fieldset-label") {{def.label}}
       // div {{ def.formFieldSet }}
       div(v-for="row in def.formFieldSet.rows", :key="row.formRow" class="fieldset_row_row" )
-        div(v-for="fmEl in row.elements", :key="fmEl.elementKey", class="fieldset_row_row_element")
-          ehr-dialog-form-element(:inputs="inputs", :def="fmEl", :class="formCss(fmEl)")
+        ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl", :class="formCss(fmEl)")
 
     div(v-if="def.inputType === 'fieldset'", class="fieldset_col_wrapper", :class="def.formCss")
       label(class="fieldset-label") {{def.label}}
