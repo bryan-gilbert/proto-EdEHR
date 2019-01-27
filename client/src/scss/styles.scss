@@ -1,25 +1,39 @@
 /*
-	Base UI on Bulma CSS framework
+Base UI on Bulma CSS framework
 https://bulma.io/
 https://bulma.io/alternative-to-bootstrap/
 https://github.com/jgthms/bulma
 Bulma is released under the MIT license.
+
+Setup bulma through this import
 @import '../../node_modules/bulma/sass/utilities/initial-variables';
-@import '../../node_modules/bulma/sass/utilities/functions';
 */
 
 @import '../../node_modules/bulma/sass/utilities/initial-variables';
 @charset "utf-8";
 @import '../../node_modules/bulma/bulma';
 
-
-@import '../scss/definitions';
-
-@import '../scss/styles/typography';
-@import '../scss/styles/forms';
-
-#content .shared {
-  width: 1024px;
-  margin: 50px auto 0;
+/*
+Bulma is good yet it adds negative margin to columns and
+negative padding to column.  The following over rides this.
+ */
+.columns {
+  margin-left: 0;
 }
 
+.column {
+  padding-left: 0;
+}
+
+/*
+Import the SCSS definitions.  Theses definitions are imported into
+other components, as needed.  Because the definitions are just variables
+and mixins there is no CSS code bloat.
+ */
+@import '../scss/definitions';
+
+/* *****
+Import styles
+ */
+@import '../scss/styles/typography';
+@import '../scss/styles/forms';

@@ -52,7 +52,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .EhrScratchPad {
   margin-top: auto;
   margin-bottom: 30px;

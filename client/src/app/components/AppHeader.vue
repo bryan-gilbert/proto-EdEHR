@@ -39,11 +39,10 @@ export default {
 .apphdr {
   background: $toolbar-background-color;
   color: $toolbar-color;
-  border: $border-width solid $border1;
+  padding: 10px 0 20px 20px;
 
   .wrapper {
     @include wrapper('content');
-    border: $border-width solid $border2;
   }
   .navList {
     display: flex;
