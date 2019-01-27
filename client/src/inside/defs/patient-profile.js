@@ -858,7 +858,7 @@ module.exports = function() {
                     page: 'History Psychosocial'
                   }
                 ],
-                type: 'subgroup',
+                containerType: 'subgroup',
                 containerKey: 'behaviours'
               }
             ]

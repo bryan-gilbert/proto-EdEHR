@@ -35,19 +35,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/settings/color';
-@import '../../scss/objects/wrapper.mixin';
-@import '../../scss/styles.scss';
-@import '../../scss/settings/typography.scss';
-
+@import '../../scss/definitions';
 .apphdr {
   background: $toolbar-background-color;
   color: $toolbar-color;
-  border: $border-width solid $border1;
+  padding: 10px 0 20px 20px;
 
   .wrapper {
     @include wrapper('content');
-    border: $border-width solid $border2;
   }
   .navList {
     display: flex;

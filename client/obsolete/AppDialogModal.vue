@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../scss/settings/color.scss';
+@import '../../scss/definitions';
 
 .modal-mask {
   position: fixed;
@@ -67,6 +67,10 @@ export default {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
   font-family: $bodyFontFamily;
+}
+
+.modal-header h3 {
+  margin-top: 0;
 }
 
 .modal-body {
@@ -103,7 +107,7 @@ export default {
   border: none;
   background: $white;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 1em;
   color: $black;
 }
 

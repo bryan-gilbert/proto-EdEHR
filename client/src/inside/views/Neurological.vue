@@ -74,6 +74,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/settings/forms';
-@import '../../scss/settings/inside';
 </style>

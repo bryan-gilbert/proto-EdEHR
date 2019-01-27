@@ -1,15 +1,14 @@
 <template lang="pug">
   app-dialog(:class="$options.name", v-if="showDialog", :isModal="false", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
     h3(slot="header") {{ tableDef.addButtonText }}
-    div(slot="body", class="ehr-page-content")
+    div(slot="body", class="region ehr-page-content")
       div(class="input-fieldrow")
-        ehr-dialog-form-element(v-for="fmEl in topRow.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")
+        ehr-dialog-form-element(v-for="fmEl in topRow.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl", class="input-fieldrow-element")
       hr
       div(v-for="row in middleRange", class="input-fieldrow")
-        div(v-for="fmEl in row.elements", :key="fmEl.elementKey", class="input-fieldrow input-element column")
-          ehr-dialog-form-element(:inputs="inputs", :def="fmEl")
+        ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl", class="input-fieldrow-element")
       div(class="input-fieldrow")
-        ehr-dialog-form-element(v-for="fmEl in lastRow.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")
+        ehr-dialog-form-element(v-for="fmEl in lastRow.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl", class="input-fieldrow-element")
     span(slot="save-button") Create and close
 </template>
 
@@ -70,6 +69,10 @@ export default {
     }
   },
   methods: {
+    formCss: function(element) {
+      // return element.formCss ? element.formCss : 'noClass'
+      return element.inputType + ' ' + element.elementKey
+    },
     cancelDialog: function() {
       this.ehrHelp.cancelDialog(this.tableKey)
     },
@@ -102,7 +105,4 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../scss/settings/forms';
-.EhrDialogForm {
-}
 </style>

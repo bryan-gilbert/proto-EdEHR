@@ -29,7 +29,7 @@ export default {
       let sInfo = this.$store.state.ehrData.sCurrentStudentInfo || {}
       return sInfo.studentName
     }
-    },
+  },
   methods: {
     loadDialog: function() {
       /*
@@ -56,8 +56,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/settings/forms';
-@import '../../scss/settings/color.scss';
+@import '../../scss/definitions';
 
 .EhrEvaluationDialog {
   color: $black;

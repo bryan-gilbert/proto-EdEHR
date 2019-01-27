@@ -54,35 +54,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/objects/wrapper.mixin';
 $contentMinHeight: 700px;
 $navMinWidth: 235px;
 /* $navMaxWidth: 360px; */
 /* for dev on my small box only ... */
 $navMaxWidth: 280px;
 $pageWidth: 1024px;
-@import '../../scss/settings/color.scss';
-
+@import '../../scss/definitions';
 .ehr_layout {
   margin: 1px;
   background-color: $grey60;
   &__wrapper {
     width: 100%;
-    border: $border-width solid $border1;
-    margin: 2px;
   }
   &__main {
     color: $grey60;
     background-color: $white;
     /*padding-left: 0;*/
     overflow: hidden;
-    border: $border-width solid $border2;
-    margin: 2px;
   }
   &__main_content {
-    /*margin: 0;*/
-    border: $border-width solid $border3;
-    margin: 2px;
   }
   &__nav {
     /* max-width: $navWidth; */
@@ -90,14 +81,9 @@ $pageWidth: 1024px;
     max-width: $navMaxWidth;
     width: 20%; /* of page width */
     padding: 0;
-    /*margin: 0;*/
-    border: $border-width solid $border4;
-    margin: 2px;
   }
   &__content {
     padding: 0;
-    border: $border-width solid $border4;
-    margin: 1px;
     /*
     height: $contentMinHeight;
     margin: 0;
@@ -107,19 +93,13 @@ $pageWidth: 1024px;
   &__content_banner {
     background-color: $grey10;
     color: $grey60;
-    border: $border-width solid $border6;
-    margin: 1px;
     padding: 0;
   }
   &__content_banner_content {
-    border: $border-width solid $border7;
-    margin: 1px;
     padding: 0;
     max-width: 80%;
   }
   &__content_page {
-    border: $border-width solid $border6;
-    margin: 1px;
     padding: 0;
     width: 100%;
   }

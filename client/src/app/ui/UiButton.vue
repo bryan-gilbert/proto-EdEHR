@@ -32,10 +32,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/settings/color.scss';
-@import '../../scss/settings/typography.scss';
-@import '../../scss/styles.scss';
-
+@import '../../scss/definitions';
 
 button,
 .button,

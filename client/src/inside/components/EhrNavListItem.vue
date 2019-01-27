@@ -39,9 +39,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/settings/color';
+@import '../../scss/definitions';
 
-  .EhrNavListItem {
+.EhrNavListItem {
   margin-top: 1px;
   &__level1,
   &__level2,

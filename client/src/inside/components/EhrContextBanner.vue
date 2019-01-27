@@ -10,8 +10,7 @@ export default {
   name: 'EhrContextBanner',
   components: { EhrClassListNav },
   data: function() {
-    return {
-    }
+    return {}
   },
   computed: {
     isInstructor() {
@@ -22,8 +21,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/settings/color';
-@import '../../scss/objects/wrapper.mixin';
+@import '../../scss/definitions';
 
 .EhrContextBanner {
   background: $context-banner-background-color;

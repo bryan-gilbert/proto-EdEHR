@@ -52,8 +52,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/settings/forms';
-
 .EhrScratchPad {
   margin-top: auto;
   margin-bottom: 30px;

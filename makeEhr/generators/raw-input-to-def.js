@@ -9,9 +9,10 @@ const TABLE_ROW = 'table_row'
 const TABLE_COL = 'table_column'
 const SUBGROUP = 'subgroup'
 const FIELDSET = 'fieldset'
+const FIELDSET_ROW = 'fieldRowSet'
 const PAGE_INPUT_TYPE = 'page'
 const CONTAINER_INPUT_TYPES = [PAGE_FORM, TABLE_ROW, TABLE_COL]
-const SUBCONTAINER_INPUT_TYPES = [SUBGROUP, FIELDSET]
+const SUBCONTAINER_INPUT_TYPES = [SUBGROUP, FIELDSET, FIELDSET_ROW]
 
 const containerElementProperties = [
   'elementKey',
@@ -176,7 +177,7 @@ class RawInputToDef {
     })
 
     container.elements = []
-    container.type = entry.inputType
+    container.containerType = entry.inputType
     container.options = entry.options
     container.containerKey = entry.elementKey
     pg.containers[cntId] = container
@@ -280,11 +281,11 @@ class RawInputToDef {
     console.log('Build form for page', page.label)
     Object.keys(page.containers).forEach(key => {
       let container = page.containers[key]
-      if (container.type === PAGE_FORM) {
+      if (container.containerType === PAGE_FORM) {
         uiP.hasForm = true
         // TODO change to pageForm
         uiP.page_form = this._extractPageForm(container)
-      } else if (container.type === TABLE_ROW) {
+      } else if (container.containerType === TABLE_ROW) {
         uiP.hasTable = true
         uiP.tables = uiP.tables || []
         let tableCells = this._pageTableCells(container)
@@ -297,14 +298,14 @@ class RawInputToDef {
           tableForm: tableForm
         }
         uiP.tables.push(table)
-      } else if (container.type === TABLE_COL) {
+      } else if (container.containerType === TABLE_COL) {
         // TODO
         console.log('TODO !!!!! column tables', container.containerKey)
-      } else if (container.type === SUBGROUP) {
+      } else if (container.containerType === SUBGROUP) {
         // TODO
         console.log('TODO !!!!! sub groups ', container.containerKey)
-      } else if (container.type === FIELDSET) {
-        console.log('FIELDSET ', container.containerKey)
+      } else if (container.containerType === FIELDSET || container.containerType === FIELDSET_ROW) {
+        console.log(container.containerType, container.containerKey)
       }
     })
   }
@@ -352,7 +353,7 @@ class RawInputToDef {
   _pageTableCells(container) {
     let tableCells = []
     container.elements.forEach(element => {
-      if (element.inputType == FIELDSET) {
+      if (element.inputType === FIELDSET || element.inputType === FIELDSET_ROW) {
         element.elements.forEach(child => {
           tableCells.push(child)
         })
@@ -383,8 +384,8 @@ class RawInputToDef {
       }
       cell.tableKey = tableKey
       row.elements.push(cell)
-      if (element.inputType == FIELDSET) {
-        // console.log('fieldset ', element)
+      if (element.inputType === FIELDSET || element.inputType === FIELDSET_ROW) {
+        // console.log('fieldset ', element.inputType)
         let formFieldSet = this._extractFieldSet(element, tableCells, tableKey)
         element.formFieldSet = formFieldSet
       }

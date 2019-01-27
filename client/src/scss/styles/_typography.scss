@@ -1,7 +1,5 @@
 @import url("//fonts.googleapis.com/css?family=Source+Sans+Pro");
-
-$bodyFontFamily: 'Source Sans Pro', sans-serif;
-$bodyFontSize: 14px;
+@import "../definitions";
 
 body {
 	color: $grey60;

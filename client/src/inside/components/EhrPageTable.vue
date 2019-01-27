@@ -107,12 +107,10 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../scss/settings/color.scss';
-@import '../../scss/settings/forms';
-@import '../../scss/settings/typography.scss';
-@import '../../scss/styles.scss';
+@import '../../scss/definitions';
 
-table, .table{
+table,
+.table {
   margin-bottom: 2em;
 
   thead th {
@@ -121,12 +119,12 @@ table, .table{
     font-size: 1em;
     padding: 0.2em 2em 0.2em 0;
   }
-  thead tr{
+  thead tr {
     border-bottom: 2px solid $grey20;
     font-size: $bodyFontSize;
   }
 }
 
 .EhrPageTable {
-}  
+}
 </style>
