@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    div(v-show="showEditControls")
+    div(v-show="showTableAddButton")
       ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
     div(v-if="tableDef.isTransposed", class="column_table")
       table.table
@@ -46,8 +46,8 @@ export default {
     tableDef: { type: Object }
   },
   computed: {
-    showEditControls() {
-      return this.ehrHelp.showEditControls()
+    showTableAddButton() {
+      return this.ehrHelp.showTableAddButton()
     },
     currentData() {
       // Note this property is invoked in a div above. Then hidden from view.

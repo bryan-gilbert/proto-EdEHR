@@ -2,7 +2,7 @@
 <template lang="pug">
   div(class="ehr-page")
     ehr-panel-header {{ uiProps.pageTitle }}
-      div(slot="controls", v-show="showEditControls")
+      div(slot="controls", v-show="showPageFormControls")
         ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey", @controlsCallback="controlsCallback")
     ehr-panel-content
       div(class="region ehr-page-content")
@@ -47,8 +47,8 @@ export default {
     uiProps() {
       return this.ehrHelp ? this.ehrHelp.getPageDefinition(this.pageDataKey) : {}
     },
-    showEditControls() {
-      return this.ehrHelp.showEditControls()
+    showPageFormControls() {
+      return this.ehrHelp.showPageFormControls()
     }
   },
   methods: {

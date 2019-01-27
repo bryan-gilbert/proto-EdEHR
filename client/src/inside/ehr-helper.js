@@ -76,7 +76,6 @@ export default class EhrHelp {
   }
   /* ********************* DATA  */
 
-  // TODO there are four calls to this method for each page load. Streamline.
   getPageDefinition(pageKey) {
     let pageDef = pageDefs[pageKey]
     debugehr('getPageDefinition ' + pageKey, pageDef)
@@ -332,10 +331,23 @@ export default class EhrHelp {
    * if we want to let the application be the place to edit seed data.
    * @return {*}
    */
-  showEditControls() {
-    return this.$store.getters['visit/isStudent']
+  showTableAddButton() {
+    return this._showControl('hasTable')
   }
 
+  showPageFormControls() {
+    return this._showControl('hasForm')
+  }
+
+  _showControl(prop) {
+    let show = false
+    let isStudent = this.$store.getters['visit/isStudent']
+    if (isStudent) {
+      let pd = this.getPageDefinition(this.pageKey)
+      show = pd[prop]
+    }
+    return show
+  }
   /**
    * Return true if a page form is open for edit.
    * @return {(function())|default.computed.isEditing|boolean|*}

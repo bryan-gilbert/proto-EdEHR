@@ -22,20 +22,16 @@ export default {
   background-color: $grey03;
   color: $grey60;
   height: 60px;
-
-  h1 {
-    font-size: 30px;
-    font-family: $bodyFontFamily;
-    font-weight: 600;
-  }
+  display: flex;
 
   .title {
-    display: table-cell;
+    flex: 1 0 auto;
   }
 
   .controls {
-    display: table-cell;
-    float: right;
+    flex: 0 1 auto;
+    /*display: table-cell;*/
+    /*float: right;*/
   }
 }
 </style>
