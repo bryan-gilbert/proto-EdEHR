@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../scss/styles.scss';
+@import '../../scss/definitions';
 
 
 .modal-mask {

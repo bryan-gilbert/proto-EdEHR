@@ -41,7 +41,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '../../scss/styles';
+@import '../../scss/definitions';
 .accordion {
   background-color: $grey10;
   .header {

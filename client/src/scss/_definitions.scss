@@ -1,3 +1,6 @@
+/* ******************
+colours
+ */
 $brand-primary: #3396FF;
 $brand-primary-hover: darken( $brand-primary, 20% );
 $brand-primary-dark: #051F54;
@@ -51,4 +54,30 @@ $o-colours: (
 
 @mixin debugColor($index: a) {
   border: 1px solid map-get($o-colours, $index);
+}
+
+
+/* ******************
+_typography.scss
+ */
+$bodyFontFamily: 'Source Sans Pro', sans-serif;
+$bodyFontSize: 14px;
+
+
+/* ******************
+wrapper
+ */
+$o-wrapper-sizes: (
+  page:   1300px,
+  content:  1024px,
+  wide:   682px,
+  narrow: 342px,
+);
+
+@mixin wrapper($size: page) {
+  //margin-right: auto;
+  //margin-left: auto;
+  padding-right: 0;
+  padding-left: 0;
+  max-width: map-get($o-wrapper-sizes, $size);
 }

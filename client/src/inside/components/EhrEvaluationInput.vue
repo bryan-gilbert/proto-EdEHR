@@ -52,7 +52,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/styles.scss';
+@import '../../scss/definitions';
 
 .ehr-eval-input {
   color: $white;

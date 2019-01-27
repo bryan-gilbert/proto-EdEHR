@@ -62,7 +62,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/styles.scss';
+@import '../../scss/definitions';
 
 .aName {
   display: inline-block;

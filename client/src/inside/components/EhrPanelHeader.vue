@@ -15,8 +15,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/styles.scss';
-
+@import '../../scss/definitions';
 
 .EhrPanelHeader {
   padding: 0.6rem 2rem 0.4rem;

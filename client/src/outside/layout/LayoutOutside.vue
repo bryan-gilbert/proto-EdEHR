@@ -36,7 +36,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/styles.scss';
+@import '../../scss/definitions';
 
 body {
   background: $grey10;

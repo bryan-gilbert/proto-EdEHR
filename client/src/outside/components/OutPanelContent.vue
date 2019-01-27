@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/styles.scss';
+@import '../../scss/definitions';
 
 .OutPanelContent {
   padding: 20px 1.5rem;

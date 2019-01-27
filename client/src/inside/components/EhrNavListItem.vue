@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/styles.scss';
+@import '../../scss/definitions';
 
 .EhrNavListItem {
   margin-top: 1px;

@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/styles';
+@import '../../scss/definitions';
 .apphdr {
   background: $toolbar-background-color;
   color: $toolbar-color;

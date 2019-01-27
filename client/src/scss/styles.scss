@@ -12,12 +12,11 @@ Bulma is released under the MIT license.
 @charset "utf-8";
 @import '../../node_modules/bulma/bulma';
 
-@import '../scss/settings/color.scss';
-@import '../scss/settings/typography.scss';
-@import '../scss/objects/wrapper.mixin';
 
-// typography and colors before forms
-@import '../scss/settings/forms.scss';
+@import '../scss/definitions';
+
+@import '../scss/styles/typography';
+@import '../scss/styles/forms';
 
 #content .shared {
   width: 1024px;

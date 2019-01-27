@@ -1,8 +1,4 @@
-/* **********
-
- */
-.ehr-page {
-}
+@import "../definitions";
 
 /* **********
    *
@@ -17,7 +13,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    // @include debugColor(c)
+    @include debugColor(c)
   }
   .fieldset_col_wrapper {
     display: flex;

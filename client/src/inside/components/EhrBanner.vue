@@ -4,31 +4,46 @@
       <div class="columns" :class="`${$options.name}__content`">
         <div class="column" :class="`${$options.name}__content_row--1`">
           <ul>
-            <li><b>{{lastFirstMiddle}}</b></li>
-            <li>Date of Birth: <b> {{ demographics.dateOfBirth }} </b></li>
-            <li>Age: <b>{{ demographics.personAge }}</b></li>
-            <li>Gender: <b>{{ demographics.gender }}</b></li>
+            <li>
+              <b>{{ lastFirstMiddle }}</b>
+            </li>
+            <li>
+              Date of Birth: <b> {{ demographics.dateOfBirth }} </b>
+            </li>
+            <li>
+              Age: <b>{{ demographics.personAge }}</b>
+            </li>
+            <li>
+              Gender: <b>{{ demographics.gender }}</b>
+            </li>
             <li>Weight: <b> ??? </b></li>
           </ul>
         </div>
         <div class="column" :class="`${$options.name}__content_row--2`">
           <ul>
-            <li>Code Status: <b>{{ demographics.codeStatus }}</b></li>
-            <li>PHN: <b>{{ demographics.phn }}</b></li>
-            <li>MRN: <b>{{ demographics.mrn }}</b></li>
+            <li>
+              Code Status: <b>{{ demographics.codeStatus }}</b>
+            </li>
+            <li>
+              PHN: <b>{{ demographics.phn }}</b>
+            </li>
+            <li>
+              MRN: <b>{{ demographics.mrn }}</b>
+            </li>
             <li>MRP: <b> ?? </b></li>
             <li>MRP Phone: <b> ?? </b></li>
           </ul>
         </div>
         <div class="column" :class="`${$options.name}__content_row--3`">
           <ul>
-            <li>Admitting Diagnosis: <b> {{ visitDetails.admittingDiagnosis }} </b></li>
-            <li>Allergies: <b> </b></li>
-            <li>Location: <b> {{ location }} </b></li>
             <li>
-              Isolation Precautions:
-              <b>None</b>
+              Admitting Diagnosis: <b> {{ visitDetails.admittingDiagnosis }} </b>
             </li>
+            <li>Allergies: <b> </b></li>
+            <li>
+              Location: <b> {{ location }} </b>
+            </li>
+            <li>Isolation Precautions: <b>None</b></li>
           </ul>
         </div>
       </div>
@@ -82,7 +97,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/styles.scss';
+@import '../../scss/definitions';
 
 .EhrBanner {
   &__content {

@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../scss/styles';
+@import '../../scss/definitions';
 .modal-mask {
   position: fixed;
   z-index: 9998;

@@ -189,7 +189,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/styles';
+@import '../../scss/definitions';
 .EhrSpecial {
   @include wrapper('page');
   background-color: lavender;

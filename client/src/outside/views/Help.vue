@@ -7,7 +7,7 @@
 </template>
 
 <style lang="scss" scoped>
-@import '../../scss/styles.scss';
+@import '../../scss/definitions';
 
 .outside-view {
   height: 30rem;

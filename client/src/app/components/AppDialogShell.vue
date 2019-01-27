@@ -163,7 +163,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/styles';
+@import '../../scss/definitions';
 .modal-mask {
   position: fixed;
   z-index: 990;
