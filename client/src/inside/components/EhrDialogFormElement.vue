@@ -1,45 +1,49 @@
 <template lang="pug">
-  div(class="ehrdfe  testClass", :class="formCss(def)")
+  div(class="ehrdfe", :class="formCss(def)")
     // input-element  :class="fmEl.elementKey",
     div(v-if="def.inputType === 'form-label'")
-      div {{def.label}}
-      // "TODO split the label on -NL- and make a list of lines")
+      div(v-html="def.label")
+
     div(v-if="def.inputType === 'text' || def.inputType === 'day' || def.inputType === 'time'")
       label {{def.label}}
       input(class="input", type="text", v-model="inputVal")
+
     div(v-if="def.inputType === 'fieldRowSet'", class="fieldset_row_wrapper", :class="def.formCss")
       label(class="fieldset-label") {{def.label}}
-      // div {{ def.formFieldSet }}
       div(v-for="row in def.formFieldSet.rows", :key="row.formRow" class="fieldset_row_row" )
-        ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl", :class="formCss(fmEl)")
+        ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")
 
     div(v-if="def.inputType === 'fieldset'", class="fieldset_col_wrapper", :class="def.formCss")
       label(class="fieldset-label") {{def.label}}
       // div {{ def.formFieldSet }}
       div(v-for="row in def.formFieldSet.rows", :key="row.formRow" class="fieldset-rows columns-maybe" )
         div(v-for="fmEl in row.elements", :key="fmEl.elementKey", class="fieldset-col column-maybe")
-          ehr-dialog-form-element(:inputs="inputs", :def="fmEl", :class="formCss(fmEl)")
-      // div(v-for="fmEl in def.elements", :key="fmEl.elementKey") {{ fmEl }}
-      //ehr-dialog-form-element(v-for="fmEl in def.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")
+          ehr-dialog-form-element(:inputs="inputs", :def="fmEl")
+
     div(v-if="def.inputType === 'checkbox'")
       input(class="checkbox", type="checkbox", v-bind:name="def.elementKey", v-model="inputVal")
       label(class="label-checkbox", v-bind:for="def.elementKey") {{def.label}}
+
     div(v-if="def.inputType === 'select'", class="select-element")
       label(v-if="!(def.formOption === 'noLabel')", class="select-label") {{def.label}}
       div(class="select")
         select(v-bind:name="def.elementKey", v-model="inputVal")
           option(disabled,value="") Please select one
           option(v-for="option in def.options", v-bind:value="option.text") {{ option.text}}
+
     div(v-if="def.inputType === 'date'")
       label {{def.label}}
       datepicker(v-model="inputVal")
+
     div(v-if="def.inputType === 'textarea'")
       label {{def.label}}
       textarea(v-model="inputVal")
+
     div(v-if="def.inputType === 'checklistWithOther'", class="checklistWithOther")
       li(v-for="opt in def.options")
         input(class="radio", type="radio", :id="opt.text" @click="emitGlobalClickEvent()", :name="def.key", :value="opt.text", v-model="inputVal")
         label(class="label-radio", :for="opt.text") {{ opt.text }}
+
     div(v-if="def.inputType === 'dependant'",  class="otherForChecklist", v-show="gotHit")
       input(class="input", type="text", v-model="inputVal")
 </template>
