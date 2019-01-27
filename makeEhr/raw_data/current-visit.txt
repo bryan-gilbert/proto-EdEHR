@@ -89,7 +89,7 @@ Extension
 None
 Non testable}"	eCell	eCell	{fieldset: glasgowComaScale}	{fsetRow: 3}	{fsetCol: 1}	eCell	eCell	{tableColumn: 20}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Obeys commands}	{Assignment: N/A}	eCell	{Notes_Questions: Obeys commands (6 pt) Localized pain (5) Withdrawal (4) Flexion (3pts) Extension (2 pts) None (1 pt)}	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Total}	{pageDataKey: neurological}	{dataParent: neurological.aments.glasgowComaScale}	{elementKey: totalGlasgow}	{FQN: neurological.aments.glasgowComaScale.totalGlasgow}	{inputType: calculated}	eCell	eCell	eCell	eCell	{fieldset: glasgowComaScale}	{fsetRow: 4}	{fsetCol: 1}	eCell	eCell	{tableColumn: 21}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: (15 - calculated by system)}	{Assignment: N/A}	eCell	{Notes_Questions: sum the points of the above three selections}	eCell
-{TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Pupils}	{pageDataKey: neurological}	{dataParent: neurological.aments}	{elementKey: pupils}	{FQN: neurological.aments.pupils}	{inputType: fieldset}	eCell	eCell	{formRow: 3}	{formColumn: 1}	{fieldset: pupils}	eCell	eCell	eCell	eCell	{tableColumn: 22}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	{Assignment: N/A}	eCell	eCell	eCell
+{TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Pupils}	{pageDataKey: neurological}	{dataParent: neurological.aments}	{elementKey: pupils}	{FQN: neurological.aments.pupils}	{inputType: fieldRowSet}	eCell	eCell	{formRow: 3}	{formColumn: 1}	{fieldset: pupils}	eCell	eCell	{formCss: fieldset_row}	eCell	{tableColumn: 22}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	{Assignment: N/A}	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Left pupil size}	{pageDataKey: neurological}	{dataParent: neurological.aments.pupils}	{elementKey: leftPupilSize}	{FQN: neurological.aments.pupils.leftPupilSize}	{inputType: select}	eCell	"{Options: 1
 2
 3
@@ -98,10 +98,10 @@ Non testable}"	eCell	eCell	{fieldset: glasgowComaScale}	{fsetRow: 3}	{fsetCol: 1
 6
 7
 8
-9}"	eCell	eCell	{fieldset: pupils}	{fsetRow: 1}	{fsetCol: 1}	{formCss: is-one-third}	eCell	{tableColumn: 23}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: 2}	{Assignment: N/A}	eCell	eCell	eCell
+9}"	eCell	eCell	{fieldset: pupils}	{fsetRow: 1}	{fsetCol: 1}	eCell	eCell	{tableColumn: 23}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: 2}	{Assignment: N/A}	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Left pupil response to light}	{pageDataKey: neurological}	{dataParent: neurological.aments.pupils}	{elementKey: leftPupilResponseToLight}	{FQN: neurological.aments.pupils.leftPupilResponseToLight}	{inputType: select}	eCell	"{Options: Brisk
 Sluggish
-Fixed}"	eCell	eCell	{fieldset: pupils}	{fsetRow: 2}	{fsetCol: 1}	{formCss: is-one-third}	eCell	{tableColumn: 24}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Brisk}	{Assignment: N/A}	eCell	eCell	eCell
+Fixed}"	eCell	eCell	{fieldset: pupils}	{fsetRow: 2}	{fsetCol: 1}	eCell	eCell	{tableColumn: 24}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Brisk}	{Assignment: N/A}	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Right pupil size}	{pageDataKey: neurological}	{dataParent: neurological.aments.pupils}	{elementKey: rightPupilSize}	{FQN: neurological.aments.pupils.rightPupilSize}	{inputType: select}	eCell	"{Options: 1
 2
 3
@@ -110,71 +110,71 @@ Fixed}"	eCell	eCell	{fieldset: pupils}	{fsetRow: 2}	{fsetCol: 1}	{formCss: is-on
 6
 7
 8
-9}"	eCell	eCell	{fieldset: pupils}	{fsetRow: 1}	{fsetCol: 2}	{formCss: is-one-third}	eCell	{tableColumn: 25}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: 2}	{Assignment: N/A}	eCell	eCell	eCell
+9}"	eCell	eCell	{fieldset: pupils}	{fsetRow: 1}	{fsetCol: 2}	eCell	eCell	{tableColumn: 25}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: 2}	{Assignment: N/A}	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Right pupil response to light}	{pageDataKey: neurological}	{dataParent: neurological.aments.pupils}	{elementKey: rightPupilResponseToLight}	{FQN: neurological.aments.pupils.rightPupilResponseToLight}	{inputType: select}	eCell	"{Options: Brisk
 Sluggish
-Fixed}"	eCell	eCell	{fieldset: pupils}	{fsetRow: 2}	{fsetCol: 2}	{formCss: is-one-third}	eCell	{tableColumn: 26}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Brisk}	{Assignment: N/A}	eCell	eCell	eCell
+Fixed}"	eCell	eCell	{fieldset: pupils}	{fsetRow: 2}	{fsetCol: 2}	eCell	eCell	{tableColumn: 26}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Brisk}	{Assignment: N/A}	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Both pupils}	{pageDataKey: neurological}	{dataParent: neurological.aments.pupils}	{elementKey: bothPupils}	{FQN: neurological.aments.pupils.bothPupils}	{inputType: select}	eCell	"{Options: Equal
-Unequal}"	eCell	eCell	{fieldset: pupils}	{fsetRow: 1}	{fsetCol: 3}	{formCss: is-one-third}	eCell	{tableColumn: 27}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Equal}	{Assignment: N/A}	eCell	eCell	eCell
-{TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Stroke Assessment}	{pageDataKey: neurological}	{dataParent: neurological.aments}	{elementKey: stroke}	{FQN: neurological.aments.stroke}	{inputType: fieldset}	eCell	eCell	{formRow: 4}	{formColumn: 1}	{fieldset: stroke}	eCell	eCell	eCell	eCell	{tableColumn: 28}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	{Assignment: N/A}	eCell	eCell	eCell
+Unequal}"	eCell	eCell	{fieldset: pupils}	{fsetRow: 1}	{fsetCol: 3}	eCell	eCell	{tableColumn: 27}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Equal}	{Assignment: N/A}	eCell	eCell	eCell
+{TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Stroke Assessment}	{pageDataKey: neurological}	{dataParent: neurological.aments}	{elementKey: stroke}	{FQN: neurological.aments.stroke}	{inputType: fieldRowSet}	eCell	eCell	{formRow: 4}	{formColumn: 1}	{fieldset: stroke}	eCell	eCell	{formCss: fieldset_row}	eCell	{tableColumn: 28}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	{Assignment: N/A}	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Level of conciousness}	{pageDataKey: neurological}	{dataParent: neurological.aments.stroke}	{elementKey: levelOfConciousness}	{FQN: neurological.aments.stroke.levelOfConciousness}	{inputType: select}	eCell	"{Options: 0 = Alert; keenly responsive
 1 = Not alert; but arousable by minor stimulation
 2 = Not alert; requires repeated stimulation
-3 = Unresponsive or responds only with reflex}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 1}	{fsetCol: 1}	{formCss: ehr-one-of-two}	eCell	{tableColumn: 29}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+3 = Unresponsive or responds only with reflex}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 1}	{fsetCol: 1}	{formCss: is-half}	eCell	{tableColumn: 29}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Best gaze}	{pageDataKey: neurological}	{dataParent: neurological.aments.stroke}	{elementKey: bestGaze}	{FQN: neurological.aments.stroke.bestGaze}	{inputType: select}	eCell	"{Options: 0 = Normal
 1 = Partial gaze palsy
-2 = Forced deviation}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 1}	{fsetCol: 2}	{formCss: ehr-one-of-two}	eCell	{tableColumn: 30}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+2 = Forced deviation}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 1}	{fsetCol: 2}	{formCss: is-half}	eCell	{tableColumn: 30}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Level of conciousness questions}	{pageDataKey: neurological}	{dataParent: neurological.aments.stroke}	{elementKey: levelOfConciousnessQuestions}	{FQN: neurological.aments.stroke.levelOfConciousnessQuestions}	{inputType: select}	eCell	"{Options: 0 = answers two questions correctly
 1 = Answers one question correctly
-2 = Answers neither question correctly}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 2}	{fsetCol: 1}	{formCss: ehr-one-of-two}	eCell	{tableColumn: 31}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+2 = Answers neither question correctly}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 2}	{fsetCol: 1}	{formCss: is-half}	eCell	{tableColumn: 31}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Visual}	{pageDataKey: neurological}	{dataParent: neurological.aments.stroke}	{elementKey: visual}	{FQN: neurological.aments.stroke.visual}	{inputType: select}	eCell	"{Options: 0 = No visual loss
 1 = Partial hemianopia
 2 = Partial paralysis
-3 = Complete paralysis of one or both sides}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 2}	{fsetCol: 2}	{formCss: ehr-one-of-two}	eCell	{tableColumn: 32}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+3 = Complete paralysis of one or both sides}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 2}	{fsetCol: 2}	{formCss: is-half}	eCell	{tableColumn: 32}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Level of conciousness commands}	{pageDataKey: neurological}	{dataParent: neurological.aments.stroke}	{elementKey: levelOfConciousnessCommands}	{FQN: neurological.aments.stroke.levelOfConciousnessCommands}	{inputType: select}	eCell	"{Options: 0 = Performs both tasks correctly
 1 = Performs one task correctly
-2 = Performs neither task correctly}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 3}	{fsetCol: 1}	{formCss: ehr-one-of-two}	eCell	{tableColumn: 33}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+2 = Performs neither task correctly}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 3}	{fsetCol: 1}	{formCss: is-half}	eCell	{tableColumn: 33}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Facial palsy}	{pageDataKey: neurological}	{dataParent: neurological.aments.stroke}	{elementKey: facialPalsy}	{FQN: neurological.aments.stroke.facialPalsy}	{inputType: select}	eCell	"{Options: 0 = Normal symmetric movements
 1 = Minor paralysis
 2 = Partial paralysis
-3 = Complete paralysis of one or both sides}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 3}	{fsetCol: 2}	{formCss: ehr-one-of-two}	eCell	{tableColumn: 34}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+3 = Complete paralysis of one or both sides}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 3}	{fsetCol: 2}	{formCss: is-half}	eCell	{tableColumn: 34}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Motor - left arm}	{pageDataKey: neurological}	{dataParent: neurological.aments.stroke}	{elementKey: motorLeftArm}	{FQN: neurological.aments.stroke.motorLeftArm}	{inputType: select}	eCell	"{Options: 0 = No drift
 1 = Drift
 2 = Some effort against gravity
 3 = No effort against gravity; limb falls
-4 = No movement}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 4}	{fsetCol: 1}	{formCss: ehr-one-of-two}	eCell	{tableColumn: 35}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+4 = No movement}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 4}	{fsetCol: 1}	{formCss: is-half}	eCell	{tableColumn: 35}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Sensory}	{pageDataKey: neurological}	{dataParent: neurological.aments.stroke}	{elementKey: sensory}	{FQN: neurological.aments.stroke.sensory}	{inputType: select}	eCell	"{Options: 0 = Normal; no sensory loss
 1 = Mild-to-moderate sensory loss
-2 = Severe to total sensory loss}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 4}	{fsetCol: 2}	{formCss: ehr-one-of-two}	eCell	{tableColumn: 36}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+2 = Severe to total sensory loss}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 4}	{fsetCol: 2}	{formCss: is-half}	eCell	{tableColumn: 36}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Motor - right arm}	{pageDataKey: neurological}	{dataParent: neurological.aments.stroke}	{elementKey: motorRightArm}	{FQN: neurological.aments.stroke.motorRightArm}	{inputType: select}	eCell	"{Options: 0 = No drift
 1 = Drift
 2 = Some effort against gravity
 3 = No effort against gravity; limb falls
-4 = No movement}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 5}	{fsetCol: 1}	{formCss: ehr-one-of-two}	eCell	{tableColumn: 37}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+4 = No movement}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 5}	{fsetCol: 1}	{formCss: is-half}	eCell	{tableColumn: 37}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Best language}	{pageDataKey: neurological}	{dataParent: neurological.aments.stroke}	{elementKey: bestLanguage}	{FQN: neurological.aments.stroke.bestLanguage}	{inputType: select}	eCell	"{Options: 0 = No aphasia; normal
 1 = Mild to moderate aphasia
 2 = Severe aphasia
-3 = Mute, global aphasia}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 5}	{fsetCol: 2}	{formCss: ehr-one-of-two}	eCell	{tableColumn: 38}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+3 = Mute, global aphasia}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 5}	{fsetCol: 2}	{formCss: is-half}	eCell	{tableColumn: 38}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Motor - left leg}	{pageDataKey: neurological}	{dataParent: neurological.aments.stroke}	{elementKey: motorLeftLeg}	{FQN: neurological.aments.stroke.motorLeftLeg}	{inputType: select}	eCell	"{Options: 0 = No drift
 1 = Drift
 2 = Some effort against gravity
 3 = No effort against gravity
-4 = No movement}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 6}	{fsetCol: 1}	{formCss: ehr-one-of-two}	eCell	{tableColumn: 39}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+4 = No movement}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 6}	{fsetCol: 1}	{formCss: is-half}	eCell	{tableColumn: 39}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Dysarthria}	{pageDataKey: neurological}	{dataParent: neurological.aments.stroke}	{elementKey: dysarthria}	{FQN: neurological.aments.stroke.dysarthria}	{inputType: select}	eCell	"{Options: 0 = Normal
 1 = Mild to moderate aphasia
 2 = Severe aphasia
-3 = Mute, global aphasia}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 6}	{fsetCol: 2}	{formCss: ehr-one-of-two}	eCell	{tableColumn: 40}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+3 = Mute, global aphasia}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 6}	{fsetCol: 2}	{formCss: is-half}	eCell	{tableColumn: 40}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Motor - right leg}	{pageDataKey: neurological}	{dataParent: neurological.aments.stroke}	{elementKey: motorRightLeg}	{FQN: neurological.aments.stroke.motorRightLeg}	{inputType: select}	eCell	"{Options: 0 = No drift
 1 = Drift
 2 = Some effort against gravity
 3 = No effort against gravity
-4 = No movement}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 7}	{fsetCol: 1}	{formCss: ehr-one-of-two}	eCell	{tableColumn: 41}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+4 = No movement}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 7}	{fsetCol: 1}	{formCss: is-half}	eCell	{tableColumn: 41}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Extinction and inattention}	{pageDataKey: neurological}	{dataParent: neurological.aments.stroke}	{elementKey: extinctionAndInattention}	{FQN: neurological.aments.stroke.extinctionAndInattention}	{inputType: select}	eCell	"{Options: 0 = No abnormality
 1 = visual, tactile, auditory, spatial, or personal inattention
-2 = Profound hemi-inattention or extinction}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 7}	{fsetCol: 2}	{formCss: ehr-one-of-two}	eCell	{tableColumn: 42}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+2 = Profound hemi-inattention or extinction}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 7}	{fsetCol: 2}	{formCss: is-half}	eCell	{tableColumn: 42}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Limb ataxia}	{pageDataKey: neurological}	{dataParent: neurological.aments.stroke}	{elementKey: limbAtaxia}	{FQN: neurological.aments.stroke.limbAtaxia}	{inputType: select}	eCell	"{Options: 0 = Absent
 1 = Present in one limb
-2 = Present in two limbs}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 8}	{fsetCol: 1}	{formCss: ehr-one-of-two}	eCell	{tableColumn: 43}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+2 = Present in two limbs}"	eCell	eCell	{fieldset: stroke}	{fsetRow: 8}	{fsetCol: 1}	{formCss: is-half}	eCell	{tableColumn: 43}	{tableCss: trans-table-cell}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	{Label: Comments}	{pageDataKey: neurological}	{dataParent: neurological.aments.stroke}	{elementKey: comments}	{FQN: neurological.aments.stroke.comments}	{inputType: text}	eCell	eCell	eCell	eCell	{fieldset: stroke}	{fsetRow: 9}	{fsetCol: 1}	{formCss: is-two-thirds}	eCell	{tableColumn: 44}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: (no comments)}	{Assignment: N/A}	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Neurological}	eCell	"{Label: Resources
 Morse Fall Score (url)
@@ -377,189 +377,3 @@ As per patient observed
 Not observed}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: As per patient observed}	{Assignment: N/A}	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Gastrointestinal}	eCell	{Label: Comments}	{pageDataKey: gastrointestinal}	{dataParent: gastrointestinal.table.bowel}	{elementKey: comments}	{FQN: gastrointestinal.table.bowel.comments}	{inputType: textarea}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: (nothing entered)}	{Assignment: N/A}	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Genitourinary}	eCell	{Label: Assessments: Genitourinary}	{pageDataKey: genitourinary}	{dataParent: genitourinary}	{elementKey: genitourinary}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{TopLevel: CurrentVisit}	{Page: Assessments: Musculoskeletal}	eCell	{Label: Assessments: Musculoskeletal}	{pageDataKey: musculoskeletal}	{dataParent: musculoskeletal}	{elementKey: musculoskeletal}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{TopLevel: CurrentVisit}	{Page: Assessments: Pain}	eCell	{Label: Assessments: Pain}	{pageDataKey: pain}	{dataParent: pain}	{elementKey: pain}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{TopLevel: CurrentVisit}	{Page: Assessments: Biopsychosocial}	eCell	{Label: Assessments: Biopsychosocial}	{pageDataKey: biopsychosocial}	{dataParent: biopsychosocial}	{elementKey: biopsychosocial}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{TopLevel: CurrentVisit}	{Page: Non-medication orders: Orders}	eCell	{Label: Orders}	{pageDataKey: nonmedOrders}	{dataParent: nonmedOrders}	{elementKey: nonmedOrders}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-
-
-
-
-
-
-
-
-
-
-
-{TopLevel: CurrentVisit}	{Page: Non-medication orders: Referrals}	eCell	{Label: Referrals to other disciplines}	{pageDataKey: referrals}	{dataParent: referrals}	{elementKey: referrals}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-
-
-
-
-
-
-
-
-
-
-
-{TopLevel: CurrentVisit}	{Page: Non-medication orders: Lab requisitions}	eCell	{Label: Lab requisitions}	{pageDataKey: labRequisitions}	{dataParent: labRequisitions}	{elementKey: labRequisitions}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-
-
-
-
-
-
-{TopLevel: CurrentVisit}	{Page: Medication orders}	eCell	{Label: Medication orders}	{pageDataKey: medicationOrders}	{dataParent: medicationOrders}	{elementKey: medicationOrders}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-
-
-
-
-
-
-
-
-
-
-
-
-{TopLevel: CurrentVisit}	{Page: Medication administration record}	eCell	{Label: MAR}	{pageDataKey: medAdminRec}	{dataParent: medAdminRec}	{elementKey: medAdminRec}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-
-
-
-
-
-
-
-
-
-
-{TopLevel: CurrentVisit}	{Page: Discharge summary}	eCell	{Label: Discharge summary}	{pageDataKey: dischargeSummary}	{dataParent: dischargeSummary}	{elementKey: dischargeSummary}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-
-
-
-
-
-
-
-
-
-
-
-
-
-{TopLevel: CurrentVisit}	{Page: Billing}	eCell	{Label: Billing}	{pageDataKey: billing}	{dataParent: billing}	{elementKey: billing}	{FQN: }	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-
-
-

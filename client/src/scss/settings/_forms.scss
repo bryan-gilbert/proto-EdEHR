@@ -9,18 +9,48 @@
    */
 
 .ehr-page {
-  .fieldset-wrapper {
-    display: flex;
-    //@include debugColor(a);
+  .full-width {
+    width: 100%;
   }
-  .input-fieldrow {
-    display: flex;
-  }
-  .input-fieldset {
+
+  .fieldset_row_wrapper {
     display: flex;
     flex-direction: column;
-    //@include debugColor(b)
+    justify-content: space-between;
+    // @include debugColor(c)
   }
+  .fieldset_col_wrapper {
+    display: flex;
+    flex-direction: column;
+    // @include debugColor(b)
+  }
+
+
+  //.fieldset_rowbased {
+  //  display: flex;
+  //  flex-direction: row;
+  //}
+
+  .input-fieldrow-element {
+    width: 100%;
+    padding-right: 20px;
+  }
+
+  .fieldset_row_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .fieldset_row_row_element {
+
+  }
+
+  .input-fieldrow {
+    display: flex;
+    justify-content: space-between;
+  }
+
 
   .fieldset-label {
     display: block;
@@ -30,7 +60,7 @@
   }
 
   .testClass {
-    //@include debugColor(a)
+    // @include debugColor(a)
   }
   .fieldset-rows {
     //@include debugColor(a)
@@ -102,6 +132,16 @@
     box-shadow: inset 0 1px 0 0 $white, 0 1px 2px 0 rgba(21, 26, 36, 0.2);
     width: 100%;
   }
+
+  .select-element {
+  }
+  .select {
+    //display: block;
+  }
+  .select select{
+    min-width: 15rem;
+    width: 15rem;
+  }
   .checklistWithOther {
     label {
       display: inline;
@@ -120,4 +160,19 @@
   .column_value {
     width: 5rem;
   }
+}
+
+.is-half {
+  width: 50%;
+  min-width: 50%
+}
+
+.is-two-thirds {
+  width: 66%;
+  min-width: 66%
+}
+
+.is-one-thirds {
+  width: 33%;
+  min-width: 33%
 }
