@@ -38,8 +38,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../scss/settings/color.scss';
-
+@import '../../scss/styles';
 .modal-mask {
   position: fixed;
   z-index: 9998;

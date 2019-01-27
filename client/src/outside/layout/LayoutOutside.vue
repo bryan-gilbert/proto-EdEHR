@@ -36,8 +36,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/objects/wrapper.mixin';
-@import '../../scss/settings/color.scss';
+@import '../../scss/styles.scss';
 
 body {
   background: $grey10;

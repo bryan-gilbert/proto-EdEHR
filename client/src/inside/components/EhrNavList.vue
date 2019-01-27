@@ -50,7 +50,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/settings/color.scss';
+@import '../../scss/styles.scss';
 
 .EhrNavList {
   padding: 0;

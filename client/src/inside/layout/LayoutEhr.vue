@@ -54,14 +54,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/objects/wrapper.mixin';
 $contentMinHeight: 700px;
 $navMinWidth: 235px;
 /* $navMaxWidth: 360px; */
 /* for dev on my small box only ... */
 $navMaxWidth: 280px;
 $pageWidth: 1024px;
-@import '../../scss/settings/color.scss';
+@import '../../scss/styles.scss';
 
 .ehr_layout {
   margin: 1px;

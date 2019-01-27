@@ -22,8 +22,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/settings/color';
-@import '../../scss/objects/wrapper.mixin';
+@import '../../scss/styles.scss';
 
 .EhrContextBanner {
   background: $context-banner-background-color;

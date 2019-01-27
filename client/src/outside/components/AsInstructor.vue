@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/settings/color.scss';
+@import '../../scss/styles.scss';
 
 .as-instructor {
   margin-left: 1.5rem;

@@ -102,7 +102,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../scss/settings/forms';
-.EhrDialogForm {
-}
+@import '../../scss/styles';
 </style>

@@ -32,7 +32,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '../../scss/settings/color.scss';
+@import '../../scss/styles';
 
 .accordion {
   background-color: $grey10;

@@ -189,8 +189,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/objects/wrapper.mixin';
-
+@import '../../scss/styles';
 .EhrSpecial {
   @include wrapper('page');
   background-color: lavender;

@@ -7,8 +7,7 @@
 </template>
 
 <style lang="scss" scoped>
-@import '../../scss/objects/wrapper.mixin';
-@import '../../scss/settings/color.scss';
+@import '../../scss/styles.scss';
 
 .outside-view {
   height: 30rem;

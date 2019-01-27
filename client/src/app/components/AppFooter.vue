@@ -33,9 +33,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/settings/color';
-@import '../../scss/objects/wrapper.mixin';
-
+@import '../../scss/styles';
 .appFtr {
   background: $toolbar-background-color;
   color: $toolbar-color;

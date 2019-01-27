@@ -7,10 +7,6 @@
 /* **********
    *
    */
-@import '../../scss/settings/color.scss';
-@import '../../scss/settings/typography.scss';
-@import '../../scss/styles.scss';
-
 
 .ehr-page {
   .fieldset-wrapper {
@@ -34,7 +30,7 @@
   }
 
   .testClass {
-    @include debugColor(a)
+    //@include debugColor(a)
   }
   .fieldset-rows {
     //@include debugColor(a)

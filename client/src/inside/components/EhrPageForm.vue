@@ -84,11 +84,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../scss/settings/_forms.scss';
-
+@import '../../scss/styles';
 .ehr-page {
   max-width: 1300px;
   width: 80%;
-
 }
 </style>

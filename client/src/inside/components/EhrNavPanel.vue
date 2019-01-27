@@ -65,8 +65,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/settings/color';
-@import '../../scss/objects/wrapper.mixin';
+@import '../../scss/styles.scss';
 
 .EhrNavPanel {
   background-color: $nav-background-medium;

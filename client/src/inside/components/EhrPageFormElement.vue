@@ -112,5 +112,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../scss/settings/_forms.scss';
+@import '../../scss/styles';
 </style>
