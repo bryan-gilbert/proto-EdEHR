@@ -78,6 +78,10 @@
     margin-right: 5px;
   }
 
+  .label-checkbox {
+    display: inline-block;
+  }
+
   input,
   .input,
   textarea {
@@ -118,7 +122,7 @@
 
   .select {
     min-width: 15rem;
-    width: 80%;
+    width: 100%;
   }
 
   select {
