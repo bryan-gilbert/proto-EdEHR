@@ -1,10 +1,13 @@
 <template lang="pug">
   div(class="ehrdfe", :class="formCss(def)")
-    // input-element  :class="fmEl.elementKey",
-    div(v-if="def.inputType === 'form-label'")
+
+    div(v-if="def.inputType === 'form-label'", class="label_wrapper")
       div(v-html="def.label")
 
-    div(v-if="def.inputType === 'text' || def.inputType === 'day' || def.inputType === 'time'")
+    div(v-if="def.inputType === 'spacer'", class="label_wrapper spacer")
+      div &nbsp;
+
+    div(v-if="def.inputType === 'text'", class="text_input_wrapper")
       label {{def.label}}
       input(class="input", type="text", v-model="inputVal")
 
@@ -18,22 +21,31 @@
       div(v-for="row in def.formFieldSet.rows", :key="row.formRow" class="fieldset_row_row" )
         ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")
 
-    div(v-if="def.inputType === 'checkbox'")
+    div(v-if="def.inputType === 'checkbox'", class="checkbox_wrapper")
       input(class="checkbox", type="checkbox", v-bind:name="def.elementKey", v-model="inputVal")
-      label(class="label_checkbox", v-bind:for="def.elementKey") {{def.label}}
+      label(class="checkbox_label", v-bind:for="def.elementKey") {{def.label}}
 
-    div(v-if="def.inputType === 'select'", class="select-element")
-      label(v-if="!(def.formOption === 'noLabel')", class="select-label") {{def.label}}
+    div(v-if="def.inputType === 'select'", class="select_wrapper")
+      label(v-if="!(def.formOption === 'noLabel')", class="select_label") {{def.label}}
       div(class="select")
         select(v-bind:name="def.elementKey", v-model="inputVal")
           option(disabled,value="") Please select one
           option(v-for="option in def.options", v-bind:value="option.text") {{ option.text}}
 
-    div(v-if="def.inputType === 'date'")
+    div(v-if="def.inputType === 'date'", class="date_wrapper")
       label {{def.label}}
       datepicker(v-model="inputVal")
 
-    div(v-if="def.inputType === 'textarea'")
+    div(v-if="def.inputType === 'day'", class="day_wrapper")
+      label {{def.label}}
+      input(class="input", type="text", v-model="inputVal")
+
+    div(v-if="def.inputType === 'time'", class="time_wrapper")
+      label {{def.label}}
+      input(class="input", type="text", v-model="inputVal")
+
+
+    div(v-if="def.inputType === 'textarea'", class="textarea_wrapper")
       label {{def.label}}
       textarea(v-model="inputVal")
 

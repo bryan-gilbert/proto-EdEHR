@@ -5,8 +5,10 @@
    */
 
 .ehr-page {
-  .full-width {
-    width: 100%;
+
+  .input-fieldrow { /* used in dialog as containers, c */
+    display: flex;
+    justify-content: space-between;
   }
 
   .fieldset_row_wrapper {
@@ -35,10 +37,6 @@
   .fieldset_row_row_element {
   }
 
-  .input-fieldrow {
-    display: flex;
-    justify-content: space-between;
-  }
 
   .fieldset_label {
     display: block;
@@ -52,12 +50,13 @@
     //@include debugColor(b)
   }
 
-  .ehr-one-of-two {
-    //width: 50%;
-  }
-
   li {
     list-style-type: none;
+  }
+
+  .ehrdfe {
+    width: 100%;
+    padding-right: 5px;
   }
 
   label,
@@ -65,8 +64,9 @@
   textarea {
     display: block;
   }
-  .label_checkbox,
-  .label_radio {
+
+  .checkbox_label,
+  .radio_label {
     display: inline;
     vertical-align: top;
     margin-left: 5px;
@@ -76,6 +76,7 @@
     display: inline;
     margin-right: 5px;
   }
+
   input,
   .input,
   textarea {
@@ -91,7 +92,7 @@
   }
 
   .input {
-    width: 90%;
+    //width: 90%;
   }
 
   .input-element {
@@ -141,6 +142,10 @@
     width: 10%;
   }
 
+  .full-width {
+    width: 100%;
+  }
+
   .is-half {
     width: 50%;
     min-width: 50%;
@@ -156,9 +161,6 @@
     min-width: 33%;
   }
 
-  .ehrdfe {
-    padding-right: 5px;
-  }
 }
 
 .column_table {
