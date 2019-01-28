@@ -961,159 +961,7 @@ module.exports = function() {
               page: 'Assessments: Neurological',
               containerType: 'fieldset',
               containerKey: 'status',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'alert',
-                        fqn: 'neurological.table.status.alert',
-                        inputType: 'checkbox',
-                        label: 'Alert',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '7',
-                        fieldset: 'status',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.status',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'oriented',
-                        fqn: 'neurological.table.status.oriented',
-                        inputType: 'checkbox',
-                        label: 'Oriented',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '8',
-                        fieldset: 'status',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.status',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'confused',
-                        fqn: 'neurological.table.status.confused',
-                        inputType: 'checkbox',
-                        label: 'Confused',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '9',
-                        fieldset: 'status',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.status',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '4',
-                    elements: [
-                      {
-                        elementKey: 'drowsy',
-                        fqn: 'neurological.table.status.drowsy',
-                        inputType: 'checkbox',
-                        label: 'Drowsy',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '10',
-                        fieldset: 'status',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.status',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '5',
-                    elements: [
-                      {
-                        elementKey: 'unresponsive',
-                        fqn: 'neurological.table.status.unresponsive',
-                        inputType: 'checkbox',
-                        label: 'Unresponsive',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '11',
-                        fieldset: 'status',
-                        fsetRow: '5',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.status',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '6',
-                    elements: [
-                      {
-                        elementKey: 'dizziness',
-                        fqn: 'neurological.table.status.dizziness',
-                        inputType: 'checkbox',
-                        label: 'Dizziness',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '12',
-                        fieldset: 'status',
-                        fsetRow: '6',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.status',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '7',
-                    elements: [
-                      {
-                        elementKey: 'blurredVision',
-                        fqn: 'neurological.table.status.blurredVision',
-                        inputType: 'checkbox',
-                        label: 'Blurred vision',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '13',
-                        fieldset: 'status',
-                        fsetRow: '7',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.status',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableKey: 'table'
             },
             {
               elementKey: 'alert',
@@ -1242,64 +1090,7 @@ module.exports = function() {
               page: 'Assessments: Neurological',
               containerType: 'fieldset',
               containerKey: 'concious',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'loss',
-                        fqn: 'neurological.table.concious.loss',
-                        inputType: 'select',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '15',
-                        fieldset: 'concious',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.concious',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: 'No'
-                          },
-                          {
-                            text: 'Yes'
-                          },
-                          {
-                            text: 'Unknown'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'duration',
-                        fqn: 'neurological.table.concious.duration',
-                        inputType: 'text',
-                        label: 'Duration',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '16',
-                        fieldset: 'concious',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.concious',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableKey: 'table'
             },
             {
               elementKey: 'loss',
@@ -1358,153 +1149,7 @@ module.exports = function() {
               page: 'Assessments: Neurological',
               containerType: 'fieldset',
               containerKey: 'glasgowComaScale',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'eyeOpening',
-                        fqn: 'neurological.table.glasgowComaScale.eyeOpening',
-                        inputType: 'select',
-                        label: 'Eye opening',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '18',
-                        fieldset: 'glasgowComaScale',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.glasgowComaScale',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: 'Spontaneous'
-                          },
-                          {
-                            text: 'To sound'
-                          },
-                          {
-                            text: 'To pressure'
-                          },
-                          {
-                            text: 'None'
-                          },
-                          {
-                            text: 'Non testable'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'verbalResponse',
-                        fqn: 'neurological.table.glasgowComaScale.verbalResponse',
-                        inputType: 'select',
-                        label: 'Verbal response',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '19',
-                        fieldset: 'glasgowComaScale',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.glasgowComaScale',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: 'Oriented'
-                          },
-                          {
-                            text: 'Confused'
-                          },
-                          {
-                            text: 'Words'
-                          },
-                          {
-                            text: 'Sounds'
-                          },
-                          {
-                            text: 'None'
-                          },
-                          {
-                            text: 'Non testable'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'bestMotorResponse',
-                        fqn: 'neurological.table.glasgowComaScale.bestMotorResponse',
-                        inputType: 'select',
-                        label: 'Best motor response',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '20',
-                        fieldset: 'glasgowComaScale',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.glasgowComaScale',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: 'Obeys commands'
-                          },
-                          {
-                            text: 'Localising'
-                          },
-                          {
-                            text: 'Normal flexion'
-                          },
-                          {
-                            text: 'Extension'
-                          },
-                          {
-                            text: 'None'
-                          },
-                          {
-                            text: 'Non testable'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '4',
-                    elements: [
-                      {
-                        elementKey: 'totalGlasgow',
-                        fqn: 'neurological.table.glasgowComaScale.totalGlasgow',
-                        inputType: 'calculated',
-                        label: 'Total',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '21',
-                        fieldset: 'glasgowComaScale',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.glasgowComaScale',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableKey: 'table'
             },
             {
               elementKey: 'eyeOpening',
@@ -1643,204 +1288,7 @@ module.exports = function() {
               page: 'Assessments: Neurological',
               containerType: 'fieldRowSet',
               containerKey: 'pupils',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'leftPupilSize',
-                        fqn: 'neurological.table.pupils.leftPupilSize',
-                        inputType: 'select',
-                        label: 'Left pupil size',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '23',
-                        fieldset: 'pupils',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.pupils',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '1'
-                          },
-                          {
-                            text: '2'
-                          },
-                          {
-                            text: '3'
-                          },
-                          {
-                            text: '4'
-                          },
-                          {
-                            text: '5'
-                          },
-                          {
-                            text: '6'
-                          },
-                          {
-                            text: '7'
-                          },
-                          {
-                            text: '8'
-                          },
-                          {
-                            text: '9'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'rightPupilSize',
-                        fqn: 'neurological.table.pupils.rightPupilSize',
-                        inputType: 'select',
-                        label: 'Right pupil size',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '25',
-                        fieldset: 'pupils',
-                        fsetRow: '1',
-                        fsetCol: '2',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.pupils',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '1'
-                          },
-                          {
-                            text: '2'
-                          },
-                          {
-                            text: '3'
-                          },
-                          {
-                            text: '4'
-                          },
-                          {
-                            text: '5'
-                          },
-                          {
-                            text: '6'
-                          },
-                          {
-                            text: '7'
-                          },
-                          {
-                            text: '8'
-                          },
-                          {
-                            text: '9'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '2'
-                      },
-                      {
-                        elementKey: 'bothPupils',
-                        fqn: 'neurological.table.pupils.bothPupils',
-                        inputType: 'select',
-                        label: 'Both pupils',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '27',
-                        fieldset: 'pupils',
-                        fsetRow: '1',
-                        fsetCol: '3',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.pupils',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: 'Equal'
-                          },
-                          {
-                            text: 'Unequal'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '3'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'leftPupilResponseToLight',
-                        fqn: 'neurological.table.pupils.leftPupilResponseToLight',
-                        inputType: 'select',
-                        label: 'Left pupil response to light',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '24',
-                        fieldset: 'pupils',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.pupils',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: 'Brisk'
-                          },
-                          {
-                            text: 'Sluggish'
-                          },
-                          {
-                            text: 'Fixed'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        fqn: 'neurological.table.pupils.',
-                        inputType: 'spacer',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '28',
-                        fieldset: 'pupils',
-                        fsetRow: '2',
-                        fsetCol: '2',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.pupils',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'table',
-                        formColumn: '2'
-                      },
-                      {
-                        elementKey: 'rightPupilResponseToLight',
-                        fqn: 'neurological.table.pupils.rightPupilResponseToLight',
-                        inputType: 'select',
-                        label: 'Right pupil response to light',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '26',
-                        fieldset: 'pupils',
-                        fsetRow: '2',
-                        fsetCol: '3',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.pupils',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: 'Brisk'
-                          },
-                          {
-                            text: 'Sluggish'
-                          },
-                          {
-                            text: 'Fixed'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '3'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 3
-              }
+              tableKey: 'table'
             },
             {
               elementKey: 'leftPupilSize',
@@ -2026,551 +1474,7 @@ module.exports = function() {
               page: 'Assessments: Neurological',
               containerType: 'fieldRowSet',
               containerKey: 'stroke',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'levelOfConciousness',
-                        fqn: 'neurological.table.stroke.levelOfConciousness',
-                        inputType: 'select',
-                        label: 'Level of conciousness',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '29',
-                        fieldset: 'stroke',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = Alert; keenly responsive'
-                          },
-                          {
-                            text: '1 = Not alert; but arousable by minor stimulation'
-                          },
-                          {
-                            text: '2 = Not alert; requires repeated stimulation'
-                          },
-                          {
-                            text: '3 = Unresponsive or responds only with reflex'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'bestGaze',
-                        fqn: 'neurological.table.stroke.bestGaze',
-                        inputType: 'select',
-                        label: 'Best gaze',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '30',
-                        fieldset: 'stroke',
-                        fsetRow: '1',
-                        fsetCol: '2',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = Normal'
-                          },
-                          {
-                            text: '1 = Partial gaze palsy'
-                          },
-                          {
-                            text: '2 = Forced deviation'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '2'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'levelOfConciousnessQuestions',
-                        fqn: 'neurological.table.stroke.levelOfConciousnessQuestions',
-                        inputType: 'select',
-                        label: 'Level of conciousness questions',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '31',
-                        fieldset: 'stroke',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = answers two questions correctly'
-                          },
-                          {
-                            text: '1 = Answers one question correctly'
-                          },
-                          {
-                            text: '2 = Answers neither question correctly'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'visual',
-                        fqn: 'neurological.table.stroke.visual',
-                        inputType: 'select',
-                        label: 'Visual',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '32',
-                        fieldset: 'stroke',
-                        fsetRow: '2',
-                        fsetCol: '2',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = No visual loss'
-                          },
-                          {
-                            text: '1 = Partial hemianopia'
-                          },
-                          {
-                            text: '2 = Partial paralysis'
-                          },
-                          {
-                            text: '3 = Complete paralysis of one or both sides'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '2'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'levelOfConciousnessCommands',
-                        fqn: 'neurological.table.stroke.levelOfConciousnessCommands',
-                        inputType: 'select',
-                        label: 'Level of conciousness commands',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '33',
-                        fieldset: 'stroke',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = Performs both tasks correctly'
-                          },
-                          {
-                            text: '1 = Performs one task correctly'
-                          },
-                          {
-                            text: '2 = Performs neither task correctly'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'facialPalsy',
-                        fqn: 'neurological.table.stroke.facialPalsy',
-                        inputType: 'select',
-                        label: 'Facial palsy',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '34',
-                        fieldset: 'stroke',
-                        fsetRow: '3',
-                        fsetCol: '2',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = Normal symmetric movements'
-                          },
-                          {
-                            text: '1 = Minor paralysis'
-                          },
-                          {
-                            text: '2 = Partial paralysis'
-                          },
-                          {
-                            text: '3 = Complete paralysis of one or both sides'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '2'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '4',
-                    elements: [
-                      {
-                        elementKey: 'motorLeftArm',
-                        fqn: 'neurological.table.stroke.motorLeftArm',
-                        inputType: 'select',
-                        label: 'Motor - left arm',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '35',
-                        fieldset: 'stroke',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = No drift'
-                          },
-                          {
-                            text: '1 = Drift'
-                          },
-                          {
-                            text: '2 = Some effort against gravity'
-                          },
-                          {
-                            text: '3 = No effort against gravity; limb falls'
-                          },
-                          {
-                            text: '4 = No movement'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'sensory',
-                        fqn: 'neurological.table.stroke.sensory',
-                        inputType: 'select',
-                        label: 'Sensory',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '36',
-                        fieldset: 'stroke',
-                        fsetRow: '4',
-                        fsetCol: '2',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = Normal; no sensory loss'
-                          },
-                          {
-                            text: '1 = Mild-to-moderate sensory loss'
-                          },
-                          {
-                            text: '2 = Severe to total sensory loss'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '2'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '5',
-                    elements: [
-                      {
-                        elementKey: 'motorRightArm',
-                        fqn: 'neurological.table.stroke.motorRightArm',
-                        inputType: 'select',
-                        label: 'Motor - right arm',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '37',
-                        fieldset: 'stroke',
-                        fsetRow: '5',
-                        fsetCol: '1',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = No drift'
-                          },
-                          {
-                            text: '1 = Drift'
-                          },
-                          {
-                            text: '2 = Some effort against gravity'
-                          },
-                          {
-                            text: '3 = No effort against gravity; limb falls'
-                          },
-                          {
-                            text: '4 = No movement'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'bestLanguage',
-                        fqn: 'neurological.table.stroke.bestLanguage',
-                        inputType: 'select',
-                        label: 'Best language',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '38',
-                        fieldset: 'stroke',
-                        fsetRow: '5',
-                        fsetCol: '2',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = No aphasia; normal'
-                          },
-                          {
-                            text: '1 = Mild to moderate aphasia'
-                          },
-                          {
-                            text: '2 = Severe aphasia'
-                          },
-                          {
-                            text: '3 = Mute, global aphasia'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '2'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '6',
-                    elements: [
-                      {
-                        elementKey: 'motorLeftLeg',
-                        fqn: 'neurological.table.stroke.motorLeftLeg',
-                        inputType: 'select',
-                        label: 'Motor - left leg',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '39',
-                        fieldset: 'stroke',
-                        fsetRow: '6',
-                        fsetCol: '1',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = No drift'
-                          },
-                          {
-                            text: '1 = Drift'
-                          },
-                          {
-                            text: '2 = Some effort against gravity'
-                          },
-                          {
-                            text: '3 = No effort against gravity'
-                          },
-                          {
-                            text: '4 = No movement'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'dysarthria',
-                        fqn: 'neurological.table.stroke.dysarthria',
-                        inputType: 'select',
-                        label: 'Dysarthria',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '40',
-                        fieldset: 'stroke',
-                        fsetRow: '6',
-                        fsetCol: '2',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = Normal'
-                          },
-                          {
-                            text: '1 = Mild to moderate aphasia'
-                          },
-                          {
-                            text: '2 = Severe aphasia'
-                          },
-                          {
-                            text: '3 = Mute, global aphasia'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '2'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '7',
-                    elements: [
-                      {
-                        elementKey: 'motorRightLeg',
-                        fqn: 'neurological.table.stroke.motorRightLeg',
-                        inputType: 'select',
-                        label: 'Motor - right leg',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '41',
-                        fieldset: 'stroke',
-                        fsetRow: '7',
-                        fsetCol: '1',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = No drift'
-                          },
-                          {
-                            text: '1 = Drift'
-                          },
-                          {
-                            text: '2 = Some effort against gravity'
-                          },
-                          {
-                            text: '3 = No effort against gravity'
-                          },
-                          {
-                            text: '4 = No movement'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'extinctionAndInattention',
-                        fqn: 'neurological.table.stroke.extinctionAndInattention',
-                        inputType: 'select',
-                        label: 'Extinction and inattention',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '42',
-                        fieldset: 'stroke',
-                        fsetRow: '7',
-                        fsetCol: '2',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = No abnormality'
-                          },
-                          {
-                            text: '1 = visual, tactile, auditory, spatial, or personal inattention'
-                          },
-                          {
-                            text: '2 = Profound hemi-inattention or extinction'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '2'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '8',
-                    elements: [
-                      {
-                        elementKey: 'limbAtaxia',
-                        fqn: 'neurological.table.stroke.limbAtaxia',
-                        inputType: 'select',
-                        label: 'Limb ataxia',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '43',
-                        fieldset: 'stroke',
-                        fsetRow: '8',
-                        fsetCol: '1',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = Absent'
-                          },
-                          {
-                            text: '1 = Present in one limb'
-                          },
-                          {
-                            text: '2 = Present in two limbs'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '9',
-                    elements: [
-                      {
-                        elementKey: 'comments',
-                        fqn: 'neurological.table.stroke.comments',
-                        inputType: 'textarea',
-                        label: 'Comments',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '44',
-                        fieldset: 'stroke',
-                        fsetRow: '9',
-                        fsetCol: '1',
-                        formCss: 'is-two-thirds',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.stroke',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'resources',
-                        inputType: 'form-label',
-                        label:
-                          "<b>Resources</b><p>Morse Fall Score <a target='_blank' href='https://google.ca'>external link</a></p><p>Mini-mental state examination (MMSE) <a target='_blank' href='https://google.ca'>external link</a></p>",
-                        tableCss: 'trans-table-cell hide-table-element',
-                        tableColumn: '45',
-                        fieldset: 'stroke',
-                        fsetRow: '9',
-                        fsetCol: '2',
-                        formCss: 'is-one-third',
-                        formOption: 'withExternalUrls',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.table.stroke',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'table',
-                        formColumn: '2'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 2
-              }
+              tableKey: 'table'
             },
             {
               fqn: 'neurological.table.pupils.',
@@ -4577,160 +3481,8 @@ module.exports = function() {
               page: 'Assessments: Respiratory',
               containerType: 'fieldset',
               containerKey: 'airway',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'patent',
-                        fqn: 'respiratory.table.airway.patent',
-                        inputType: 'checkbox',
-                        label: 'Patent',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '6',
-                        fieldset: 'airway',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.airway',
-                        page: 'Assessments: Respiratory',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'obstructed',
-                        fqn: 'respiratory.table.airway.obstructed',
-                        inputType: 'checkbox',
-                        label: 'Obstructed',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '7',
-                        fieldset: 'airway',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.airway',
-                        page: 'Assessments: Respiratory',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'oett',
-                        fqn: 'respiratory.table.airway.oett',
-                        inputType: 'checkbox',
-                        label: 'OETT',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '8',
-                        fieldset: 'airway',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.airway',
-                        page: 'Assessments: Respiratory',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '4',
-                    elements: [
-                      {
-                        elementKey: 'otherValue',
-                        fqn: 'respiratory.table.airway.otherValue',
-                        inputType: 'checkbox',
-                        label: 'Other',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '9',
-                        fieldset: 'airway',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.airway',
-                        page: 'Assessments: Respiratory',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '5',
-                    elements: [
-                      {
-                        elementKey: 'otherValue',
-                        fqn: 'respiratory.table.airway.otherValue',
-                        inputType: 'checkbox',
-                        label: 'Other',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '9',
-                        fieldset: 'airway',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.airway',
-                        page: 'Assessments: Respiratory',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '6',
-                    elements: [
-                      {
-                        elementKey: 'oxygenTherapy',
-                        fqn: 'respiratory.table.airway.oxygenTherapy',
-                        inputType: 'text',
-                        label: 'Oxygen therapy',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '11',
-                        fieldset: 'airway',
-                        fsetRow: '6',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.airway',
-                        page: 'Assessments: Respiratory',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '7',
-                    elements: [
-                      {
-                        elementKey: 'oxygenFlow',
-                        fqn: 'respiratory.table.airway.oxygenFlow',
-                        inputType: 'text',
-                        label: 'Oxygen flow',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '12',
-                        fieldset: 'airway',
-                        fsetRow: '7',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.airway',
-                        page: 'Assessments: Respiratory',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'lul',
@@ -4778,373 +3530,8 @@ module.exports = function() {
               page: 'Assessments: Respiratory',
               containerType: 'fieldset',
               containerKey: 'breath',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'lul',
-                        fqn: 'respiratory.table.breath.lul',
-                        inputType: 'select',
-                        label: 'LUL',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '13',
-                        fieldset: 'breath',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        options: [
-                          {
-                            text: 'Normal'
-                          },
-                          {
-                            text: 'Wheeze'
-                          },
-                          {
-                            text: 'Crackles'
-                          },
-                          {
-                            text: 'Absent'
-                          },
-                          {
-                            text: 'Deceased'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'rul',
-                        fqn: 'respiratory.table.breath.rul',
-                        inputType: 'select',
-                        label: 'RUL',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '14',
-                        fieldset: 'breath',
-                        fsetRow: '1',
-                        fsetCol: '2',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        options: [
-                          {
-                            text: 'Normal'
-                          },
-                          {
-                            text: 'Wheeze'
-                          },
-                          {
-                            text: 'Crackles'
-                          },
-                          {
-                            text: 'Absent'
-                          },
-                          {
-                            text: 'Deceased'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '2'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        inputType: 'spacer',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '15',
-                        fieldset: 'breath',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'rml',
-                        fqn: 'respiratory.table.breath.rml',
-                        inputType: 'select',
-                        label: 'RML',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '16',
-                        fieldset: 'breath',
-                        fsetRow: '2',
-                        fsetCol: '2',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        options: [
-                          {
-                            text: 'Normal'
-                          },
-                          {
-                            text: 'Wheeze'
-                          },
-                          {
-                            text: 'Crackles'
-                          },
-                          {
-                            text: 'Absent'
-                          },
-                          {
-                            text: 'Deceased'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '2'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'lll',
-                        fqn: 'respiratory.table.breath.lll',
-                        inputType: 'select',
-                        label: 'LLL',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '17',
-                        fieldset: 'breath',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        options: [
-                          {
-                            text: 'Normal'
-                          },
-                          {
-                            text: 'Wheeze'
-                          },
-                          {
-                            text: 'Crackles'
-                          },
-                          {
-                            text: 'Absent'
-                          },
-                          {
-                            text: 'Deceased'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'rll',
-                        fqn: 'respiratory.table.breath.rll',
-                        inputType: 'select',
-                        label: 'RLL',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '18',
-                        fieldset: 'breath',
-                        fsetRow: '3',
-                        fsetCol: '2',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        options: [
-                          {
-                            text: 'Normal'
-                          },
-                          {
-                            text: 'Wheeze'
-                          },
-                          {
-                            text: 'Crackles'
-                          },
-                          {
-                            text: 'Absent'
-                          },
-                          {
-                            text: 'Deceased'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '2'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '4',
-                    elements: [
-                      {
-                        elementKey: 'respiratoryRhythm',
-                        fqn: 'respiratory.table.breath.respiratoryRhythm',
-                        inputType: 'select',
-                        label: 'Respiratory rhythm',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '19',
-                        fieldset: 'breath',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        options: [
-                          {
-                            text: 'Regular'
-                          },
-                          {
-                            text: 'Irregular'
-                          },
-                          {
-                            text: 'Paradoxical'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'cough',
-                        fqn: 'respiratory.table.breath.cough',
-                        inputType: 'select',
-                        label: 'Cough',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '21',
-                        fieldset: 'breath',
-                        fsetRow: '4',
-                        fsetCol: '2',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        options: [
-                          {
-                            text: 'No'
-                          },
-                          {
-                            text: 'Nonreproductive'
-                          },
-                          {
-                            text: 'Productive'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '2'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '5',
-                    elements: [
-                      {
-                        elementKey: 'respiratoryDepth',
-                        fqn: 'respiratory.table.breath.respiratoryDepth',
-                        inputType: 'select',
-                        label: 'Respiratory depth',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '20',
-                        fieldset: 'breath',
-                        fsetRow: '5',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        options: [
-                          {
-                            text: 'Normal'
-                          },
-                          {
-                            text: 'Shallow'
-                          },
-                          {
-                            text: 'Deep'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'sputumColour',
-                        fqn: 'respiratory.table.breath.sputumColour',
-                        inputType: 'select',
-                        label: 'Sputum colour',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '22',
-                        fieldset: 'breath',
-                        fsetRow: '5',
-                        fsetCol: '2',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        options: [
-                          {
-                            text: 'Mucoid'
-                          },
-                          {
-                            text: 'Purulent'
-                          },
-                          {
-                            text: 'Yellow-green'
-                          },
-                          {
-                            text: 'Rust-coloured'
-                          },
-                          {
-                            text: 'Pink, blood tinged'
-                          },
-                          {
-                            text: 'Pink, frothy'
-                          },
-                          {
-                            text: 'Profuse, colourless'
-                          },
-                          {
-                            text: 'Bloody'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '2'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '6',
-                    elements: [
-                      {
-                        inputType: 'spacer',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '15',
-                        fieldset: 'breath',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'sputumComments',
-                        fqn: 'respiratory.table.breath.sputumComments',
-                        inputType: 'text',
-                        label: 'Sputum comments',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '24',
-                        fieldset: 'breath',
-                        fsetRow: '6',
-                        fsetCol: '2',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        tableKey: 'table',
-                        formColumn: '2'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 2
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'rul',
@@ -5555,7 +3942,7 @@ module.exports = function() {
                     page: 'Assessments: Respiratory',
                     containerType: 'fieldset',
                     containerKey: 'airway',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -5723,7 +4110,7 @@ module.exports = function() {
                     page: 'Assessments: Respiratory',
                     containerType: 'fieldset',
                     containerKey: 'breath',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -7650,182 +6037,8 @@ module.exports = function() {
               page: 'Assessments: Gastrointestinal',
               containerType: 'fieldset',
               containerKey: 'abdomen',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'soft',
-                        fqn: 'gastrointestinal.table.abdomen.soft',
-                        inputType: 'checkbox',
-                        label: 'Soft',
-                        tableColumn: '7',
-                        fieldset: 'abdomen',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.abdomen',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'tender',
-                        fqn: 'gastrointestinal.table.abdomen.tender',
-                        inputType: 'checkbox',
-                        label: 'Tender',
-                        tableColumn: '8',
-                        fieldset: 'abdomen',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.abdomen',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'rigid',
-                        fqn: 'gastrointestinal.table.abdomen.rigid',
-                        inputType: 'checkbox',
-                        label: 'Rigid',
-                        tableColumn: '9',
-                        fieldset: 'abdomen',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.abdomen',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '4',
-                    elements: [
-                      {
-                        elementKey: 'guarding',
-                        fqn: 'gastrointestinal.table.abdomen.guarding',
-                        inputType: 'checkbox',
-                        label: 'Guarding',
-                        tableColumn: '10',
-                        fieldset: 'abdomen',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.abdomen',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '5',
-                    elements: [
-                      {
-                        elementKey: 'distended',
-                        fqn: 'gastrointestinal.table.abdomen.distended',
-                        inputType: 'checkbox',
-                        label: 'Distended',
-                        tableColumn: '11',
-                        fieldset: 'abdomen',
-                        fsetRow: '5',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.abdomen',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '6',
-                    elements: [
-                      {
-                        elementKey: 'scars',
-                        fqn: 'gastrointestinal.table.abdomen.scars',
-                        inputType: 'checkbox',
-                        label: 'Scars',
-                        tableColumn: '12',
-                        fieldset: 'abdomen',
-                        fsetRow: '6',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.abdomen',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '7',
-                    elements: [
-                      {
-                        elementKey: 'pain',
-                        fqn: 'gastrointestinal.table.abdomen.pain',
-                        inputType: 'select',
-                        label: 'Abdominal pain',
-                        tableColumn: '13',
-                        fieldset: 'abdomen',
-                        fsetRow: '7',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.abdomen',
-                        page: 'Assessments: Gastrointestinal',
-                        options: [
-                          {
-                            text: 'Yes'
-                          },
-                          {
-                            text: 'No'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '8',
-                    elements: [
-                      {
-                        fqn: 'gastrointestinal.table.abdomen.',
-                        inputType: 'form-label',
-                        label: 'If answered yes, please complete the pain assessent',
-                        tableColumn: '14',
-                        fieldset: 'abdomen',
-                        fsetRow: '8',
-                        fsetCol: '1',
-                        formOption: 'labelWithPageRef',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.abdomen',
-                        page: 'Assessments: Gastrointestinal',
-                        tableCss: 'undefinedhide-table-element',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'soft',
@@ -7952,7 +6165,7 @@ module.exports = function() {
               pageDataKey: 'gastrointestinal',
               dataParent: 'gastrointestinal.table.abdomen',
               page: 'Assessments: Gastrointestinal',
-              tableCss: 'undefinedhide-table-element',
+              tableCss: 'hide-table-element',
               tableKey: 'table',
               formColumn: '1'
             },
@@ -7970,166 +6183,8 @@ module.exports = function() {
               page: 'Assessments: Gastrointestinal',
               containerType: 'fieldset',
               containerKey: 'emesis',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'none',
-                        fqn: 'gastrointestinal.table.emesis.none',
-                        inputType: 'select',
-                        label: 'None',
-                        tableColumn: '16',
-                        fieldset: 'emesis',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.emesis',
-                        page: 'Assessments: Gastrointestinal',
-                        options: [
-                          {
-                            text: 'Need'
-                          },
-                          {
-                            text: 'Data'
-                          },
-                          {
-                            text: 'Here'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'nausea',
-                        fqn: 'gastrointestinal.table.emesis.nausea',
-                        inputType: 'text',
-                        label: 'Nausea',
-                        tableColumn: '17',
-                        fieldset: 'emesis',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.emesis',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'vomiting',
-                        fqn: 'gastrointestinal.table.emesis.vomiting',
-                        inputType: 'text',
-                        label: 'Vomiting',
-                        tableColumn: '18',
-                        fieldset: 'emesis',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.emesis',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '4',
-                    elements: [
-                      {
-                        elementKey: 'colour',
-                        fqn: 'gastrointestinal.table.emesis.colour',
-                        inputType: 'select',
-                        label: 'Emesis colour',
-                        tableColumn: '19',
-                        fieldset: 'emesis',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.emesis',
-                        page: 'Assessments: Gastrointestinal',
-                        options: [
-                          {
-                            text: 'Need'
-                          },
-                          {
-                            text: 'Data'
-                          },
-                          {
-                            text: 'Here'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '5',
-                    elements: [
-                      {
-                        elementKey: 'description',
-                        fqn: 'gastrointestinal.table.emesis.description',
-                        inputType: 'text',
-                        label: 'Description',
-                        tableColumn: '20',
-                        fieldset: 'emesis',
-                        fsetRow: '5',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.emesis',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '6',
-                    elements: [
-                      {
-                        elementKey: 'amount',
-                        fqn: 'gastrointestinal.table.emesis.amount',
-                        inputType: 'select',
-                        label: 'Amount',
-                        tableColumn: '21',
-                        fieldset: 'emesis',
-                        fsetRow: '6',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.emesis',
-                        page: 'Assessments: Gastrointestinal',
-                        options: [
-                          {
-                            text: 'Small'
-                          },
-                          {
-                            text: 'Moderate'
-                          },
-                          {
-                            text: 'Large'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'none',
@@ -8269,102 +6324,8 @@ module.exports = function() {
               page: 'Assessments: Gastrointestinal',
               containerType: 'fieldset',
               containerKey: 'eatingGroup',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'eating',
-                        fqn: 'gastrointestinal.table.eatingGroup.eating',
-                        inputType: 'select',
-                        tableColumn: '23',
-                        fieldset: 'eatingGroup',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        formOption: 'boldLabel',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.eatingGroup',
-                        page: 'Assessments: Gastrointestinal',
-                        options: [
-                          {
-                            text: 'Regular'
-                          },
-                          {
-                            text: 'Difficult'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'reason',
-                        fqn: 'gastrointestinal.table.eatingGroup.reason',
-                        inputType: 'text',
-                        label: 'Reason',
-                        tableColumn: '24',
-                        fieldset: 'eatingGroup',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.eatingGroup',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'npoSinceDate',
-                        fqn: 'gastrointestinal.table.eatingGroup.npoSinceDate',
-                        inputType: 'day',
-                        label: 'NPO since',
-                        tableColumn: '25',
-                        fieldset: 'eatingGroup',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        formOption: 'boldLabel',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.eatingGroup',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '4',
-                    elements: [
-                      {
-                        elementKey: 'npoSinceTime',
-                        fqn: 'gastrointestinal.table.eatingGroup.npoSinceTime',
-                        inputType: 'time',
-                        label: 'Time',
-                        tableColumn: '26',
-                        fieldset: 'eatingGroup',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.eatingGroup',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'eating',
@@ -8449,113 +6410,8 @@ module.exports = function() {
               page: 'Assessments: Gastrointestinal',
               containerType: 'fieldset',
               containerKey: 'bowel',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'constipation',
-                        fqn: 'gastrointestinal.table.bowel.constipation',
-                        inputType: 'checkbox',
-                        label: 'Constipation',
-                        tableColumn: '28',
-                        fieldset: 'bowel',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.bowel',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'diarrhea',
-                        fqn: 'gastrointestinal.table.bowel.diarrhea',
-                        inputType: 'checkbox',
-                        label: 'Diarrhea',
-                        tableColumn: '29',
-                        fieldset: 'bowel',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.bowel',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'melena',
-                        fqn: 'gastrointestinal.table.bowel.melena',
-                        inputType: 'checkbox',
-                        label: 'Melena',
-                        tableColumn: '30',
-                        fieldset: 'bowel',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.bowel',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '4',
-                    elements: [
-                      {
-                        elementKey: 'incontinent',
-                        fqn: 'gastrointestinal.table.bowel.incontinent',
-                        inputType: 'checkbox',
-                        label: 'Incontinent',
-                        tableColumn: '31',
-                        fieldset: 'bowel',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.bowel',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '5',
-                    elements: [
-                      {
-                        elementKey: 'lastBm',
-                        fqn: 'gastrointestinal.table.bowel.lastBm',
-                        inputType: 'text',
-                        label: 'Last BM',
-                        tableColumn: '32',
-                        fieldset: 'bowel',
-                        fsetRow: '5',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.bowel',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'constipation',
@@ -8646,113 +6502,8 @@ module.exports = function() {
               page: 'Assessments: Gastrointestinal',
               containerType: 'fieldset',
               containerKey: 'bSounds',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'bsNone',
-                        fqn: 'gastrointestinal.table.bSounds.bsNone',
-                        inputType: 'checkbox',
-                        label: 'None',
-                        tableColumn: '34',
-                        fieldset: 'bSounds',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.bSounds',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'bsLUQ',
-                        fqn: 'gastrointestinal.table.bSounds.bsLUQ',
-                        inputType: 'checkbox',
-                        label: 'LUQ',
-                        tableColumn: '35',
-                        fieldset: 'bSounds',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.bSounds',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'bsRUQ',
-                        fqn: 'gastrointestinal.table.bSounds.bsRUQ',
-                        inputType: 'checkbox',
-                        label: 'RUQ',
-                        tableColumn: '36',
-                        fieldset: 'bSounds',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.bSounds',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '4',
-                    elements: [
-                      {
-                        elementKey: 'bsLLQ',
-                        fqn: 'gastrointestinal.table.bSounds.bsLLQ',
-                        inputType: 'checkbox',
-                        label: 'LLQ',
-                        tableColumn: '37',
-                        fieldset: 'bSounds',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.bSounds',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '5',
-                    elements: [
-                      {
-                        elementKey: 'bsRLQ',
-                        fqn: 'gastrointestinal.table.bSounds.bsRLQ',
-                        inputType: 'checkbox',
-                        label: 'RLQ',
-                        tableColumn: '38',
-                        fieldset: 'bSounds',
-                        fsetRow: '5',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.bSounds',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'bsNone',
@@ -8843,127 +6594,8 @@ module.exports = function() {
               page: 'Assessments: Gastrointestinal',
               containerType: 'fieldset',
               containerKey: 'stool',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'stoolColour',
-                        fqn: 'gastrointestinal.table.stool.stoolColour',
-                        inputType: 'select',
-                        label: 'Stool colour',
-                        tableColumn: '40',
-                        fieldset: 'stool',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.stool',
-                        page: 'Assessments: Gastrointestinal',
-                        options: [
-                          {
-                            text: 'Brown'
-                          },
-                          {
-                            text: 'Green'
-                          },
-                          {
-                            text: 'Clay coloured'
-                          },
-                          {
-                            text: 'Yellow'
-                          },
-                          {
-                            text: 'Black'
-                          },
-                          {
-                            text: 'Bright red'
-                          },
-                          {
-                            text: 'Dark red'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'stoolDescription',
-                        fqn: 'gastrointestinal.table.stool.stoolDescription',
-                        inputType: 'text',
-                        label: 'Description',
-                        tableColumn: '41',
-                        fieldset: 'stool',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.stool',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'stoolAmount',
-                        fqn: 'gastrointestinal.table.stool.stoolAmount',
-                        inputType: 'text',
-                        label: 'Amount',
-                        tableColumn: '42',
-                        fieldset: 'stool',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.stool',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '4',
-                    elements: [
-                      {
-                        elementKey: 'stoolSource',
-                        fqn: 'gastrointestinal.table.stool.stoolSource',
-                        inputType: 'select',
-                        label: 'Source',
-                        tableColumn: '43',
-                        fieldset: 'stool',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.stool',
-                        page: 'Assessments: Gastrointestinal',
-                        options: [
-                          {
-                            text: 'Observed'
-                          },
-                          {
-                            text: 'As per patient observed'
-                          },
-                          {
-                            text: 'Not observed'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'stoolColour',
@@ -9167,7 +6799,7 @@ module.exports = function() {
                     page: 'Assessments: Gastrointestinal',
                     containerType: 'fieldset',
                     containerKey: 'abdomen',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -9334,7 +6966,7 @@ module.exports = function() {
                               pageDataKey: 'gastrointestinal',
                               dataParent: 'gastrointestinal.table.abdomen',
                               page: 'Assessments: Gastrointestinal',
-                              tableCss: 'undefinedhide-table-element',
+                              tableCss: 'hide-table-element',
                               tableKey: 'table',
                               formColumn: '1'
                             }
@@ -9358,7 +6990,7 @@ module.exports = function() {
                     page: 'Assessments: Gastrointestinal',
                     containerType: 'fieldset',
                     containerKey: 'emesis',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -9534,7 +7166,7 @@ module.exports = function() {
                     page: 'Assessments: Gastrointestinal',
                     containerType: 'fieldset',
                     containerKey: 'eatingGroup',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -9650,7 +7282,7 @@ module.exports = function() {
                     page: 'Assessments: Gastrointestinal',
                     containerType: 'fieldset',
                     containerKey: 'bowel',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -9772,7 +7404,7 @@ module.exports = function() {
                     page: 'Assessments: Gastrointestinal',
                     containerType: 'fieldset',
                     containerKey: 'bSounds',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -9894,7 +7526,7 @@ module.exports = function() {
                     page: 'Assessments: Gastrointestinal',
                     containerType: 'fieldset',
                     containerKey: 'stool',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -10257,184 +7889,8 @@ module.exports = function() {
               page: 'Assessments: Genitourinary',
               containerType: 'fieldset',
               containerKey: 'urinaryGroup1',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'none',
-                        fqn: 'genitourinary.table.urinaryGroup1.none',
-                        inputType: 'checkbox',
-                        label: 'None',
-                        fieldset: 'urinaryGroup1',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.urinaryGroup1',
-                        page: 'Assessments: Genitourinary',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'increasedFrequency',
-                        fqn: 'genitourinary.table.urinaryGroup1.increasedFrequency',
-                        inputType: 'checkbox',
-                        label: 'Increased frequency',
-                        fieldset: 'urinaryGroup1',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.urinaryGroup1',
-                        page: 'Assessments: Genitourinary',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'dysuria',
-                        fqn: 'genitourinary.table.urinaryGroup1.dysuria',
-                        inputType: 'checkbox',
-                        label: 'Dysuria',
-                        fieldset: 'urinaryGroup1',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.urinaryGroup1',
-                        page: 'Assessments: Genitourinary',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '4',
-                    elements: [
-                      {
-                        elementKey: 'hernaturia',
-                        fqn: 'genitourinary.table.urinaryGroup1.hernaturia',
-                        inputType: 'checkbox',
-                        label: 'Hernaturia',
-                        fieldset: 'urinaryGroup1',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.urinaryGroup1',
-                        page: 'Assessments: Genitourinary',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '5',
-                    elements: [
-                      {
-                        elementKey: 'oliguria',
-                        fqn: 'genitourinary.table.urinaryGroup1.oliguria',
-                        inputType: 'checkbox',
-                        label: 'Oliguria',
-                        fieldset: 'urinaryGroup1',
-                        fsetRow: '5',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.urinaryGroup1',
-                        page: 'Assessments: Genitourinary',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '6',
-                    elements: [
-                      {
-                        elementKey: 'indwelling',
-                        fqn: 'genitourinary.table.urinaryGroup1.indwelling',
-                        inputType: 'checkbox',
-                        label: 'Indwelling',
-                        fieldset: 'urinaryGroup1',
-                        fsetRow: '6',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.urinaryGroup1',
-                        page: 'Assessments: Genitourinary',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '7',
-                    elements: [
-                      {
-                        elementKey: 'incontinence',
-                        fqn: 'genitourinary.table.urinaryGroup1.incontinence',
-                        inputType: 'checkbox',
-                        label: 'Incontinence',
-                        fieldset: 'urinaryGroup1',
-                        fsetRow: '7',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.urinaryGroup1',
-                        page: 'Assessments: Genitourinary',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '8',
-                    elements: [
-                      {
-                        elementKey: 'retention',
-                        fqn: 'genitourinary.table.urinaryGroup1.retention',
-                        inputType: 'checkbox',
-                        label: 'Retention',
-                        fieldset: 'urinaryGroup1',
-                        fsetRow: '8',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.urinaryGroup1',
-                        page: 'Assessments: Genitourinary',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '9',
-                    elements: [
-                      {
-                        elementKey: 'distention',
-                        fqn: 'genitourinary.table.urinaryGroup1.distention',
-                        inputType: 'checkbox',
-                        label: 'Distention',
-                        fieldset: 'urinaryGroup1',
-                        fsetRow: '9',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.urinaryGroup1',
-                        page: 'Assessments: Genitourinary',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'lastVoidedDay',
@@ -10621,78 +8077,8 @@ module.exports = function() {
               page: 'Assessments: Genitourinary',
               containerType: 'fieldset',
               containerKey: 'foleyGroup',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'foley',
-                        fqn: 'genitourinary.table.foleyGroup.foley',
-                        inputType: 'select',
-                        label: 'Foley',
-                        fieldset: 'foleyGroup',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.foleyGroup',
-                        page: 'Assessments: Genitourinary',
-                        options: [
-                          {
-                            text: 'Yes'
-                          },
-                          {
-                            text: 'No'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'foleyType',
-                        fqn: 'genitourinary.table.foleyGroup.foleyType',
-                        inputType: 'text',
-                        label: 'Foley type',
-                        fieldset: 'foleyGroup',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.foleyGroup',
-                        page: 'Assessments: Genitourinary',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'foleySize',
-                        fqn: 'genitourinary.table.foleyGroup.foleySize',
-                        inputType: 'text',
-                        label: 'Foley size',
-                        fieldset: 'foleyGroup',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.foleyGroup',
-                        page: 'Assessments: Genitourinary',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'pelvicPain',
@@ -10739,7 +8125,7 @@ module.exports = function() {
               pageDataKey: 'genitourinary',
               dataParent: 'genitourinary.table.pelvicGroup',
               page: 'Assessments: Genitourinary',
-              tableCss: 'undefinedhide-table-element',
+              tableCss: 'hide-table-element',
               tableKey: 'table',
               formColumn: '1'
             },
@@ -10781,107 +8167,8 @@ module.exports = function() {
               page: 'Assessments: Genitourinary',
               containerType: 'fieldset',
               containerKey: 'pelvicGroup',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'pelvicPain',
-                        fqn: 'genitourinary.table.pelvicGroup.pelvicPain',
-                        inputType: 'select',
-                        label: 'Pelvic pain',
-                        fieldset: 'pelvicGroup',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.pelvicGroup',
-                        page: 'Assessments: Genitourinary',
-                        options: [
-                          {
-                            text: 'Yes'
-                          },
-                          {
-                            text: 'No'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'location',
-                        fqn: 'genitourinary.table.pelvicGroup.location',
-                        inputType: 'text',
-                        label: 'Location',
-                        fieldset: 'pelvicGroup',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.pelvicGroup',
-                        page: 'Assessments: Genitourinary',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        inputType: 'form-label',
-                        label: 'If answered please complete the pain assessment',
-                        fieldset: 'pelvicGroup',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.pelvicGroup',
-                        page: 'Assessments: Genitourinary',
-                        tableCss: 'undefinedhide-table-element',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '4',
-                    elements: [
-                      {
-                        elementKey: 'pelvicPainSource',
-                        fqn: 'genitourinary.table.pelvicGroup.pelvicPainSource',
-                        inputType: 'select',
-                        label: 'Pelvic pain source',
-                        fieldset: 'pelvicGroup',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.pelvicGroup',
-                        page: 'Assessments: Genitourinary',
-                        options: [
-                          {
-                            text: 'Observed'
-                          },
-                          {
-                            text: 'As per patient observed'
-                          },
-                          {
-                            text: 'Not observed'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'discharge',
@@ -10952,89 +8239,8 @@ module.exports = function() {
               page: 'Assessments: Genitourinary',
               containerType: 'fieldset',
               containerKey: 'vaginal',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'discharge',
-                        fqn: 'genitourinary.table.vaginal.discharge',
-                        inputType: 'checkbox',
-                        label: 'Discharge',
-                        fieldset: 'vaginal',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.vaginal',
-                        page: 'Assessments: Genitourinary',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'bleeing',
-                        fqn: 'genitourinary.table.vaginal.bleeing',
-                        inputType: 'checkbox',
-                        label: 'Bleeing',
-                        fieldset: 'vaginal',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.vaginal',
-                        page: 'Assessments: Genitourinary',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'description',
-                        fqn: 'genitourinary.table.vaginal.description',
-                        inputType: 'text',
-                        label: 'Description',
-                        fieldset: 'vaginal',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.vaginal',
-                        page: 'Assessments: Genitourinary',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '4',
-                    elements: [
-                      {
-                        elementKey: 'lastMenstrualPeriodDate',
-                        fqn: 'genitourinary.table.vaginal.lastMenstrualPeriodDate',
-                        inputType: 'date',
-                        label: 'Last menstrual period date',
-                        fieldset: 'vaginal',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.vaginal',
-                        page: 'Assessments: Genitourinary',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'pregnant',
@@ -11113,97 +8319,8 @@ module.exports = function() {
               page: 'Assessments: Genitourinary',
               containerType: 'fieldset',
               containerKey: 'pregnantGroup',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'pregnant',
-                        fqn: 'genitourinary.table.pregnantGroup.pregnant',
-                        inputType: 'select',
-                        label: 'Pregnant',
-                        fieldset: 'pregnantGroup',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.pregnantGroup',
-                        page: 'Assessments: Genitourinary',
-                        options: [
-                          {
-                            text: 'Yes'
-                          },
-                          {
-                            text: 'No'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'gravida',
-                        fqn: 'genitourinary.table.pregnantGroup.gravida',
-                        inputType: 'text',
-                        label: 'Gravida (number of pregnancies)',
-                        fieldset: 'pregnantGroup',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.pregnantGroup',
-                        page: 'Assessments: Genitourinary',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'para',
-                        fqn: 'genitourinary.table.pregnantGroup.para',
-                        inputType: 'text',
-                        label: 'Para (number of children)',
-                        fieldset: 'pregnantGroup',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.pregnantGroup',
-                        page: 'Assessments: Genitourinary',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '4',
-                    elements: [
-                      {
-                        elementKey: 'livingChildren',
-                        fqn: 'genitourinary.table.pregnantGroup.livingChildren',
-                        inputType: 'text',
-                        label: 'Living children',
-                        fieldset: 'pregnantGroup',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.pregnantGroup',
-                        page: 'Assessments: Genitourinary',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'urinaryGroup2',
@@ -11217,147 +8334,8 @@ module.exports = function() {
               page: 'Assessments: Genitourinary',
               containerType: 'fieldset',
               containerKey: 'urinaryGroup2',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'lastVoidedDay',
-                        fqn: 'genitourinary.table.urinaryGroup2.lastVoidedDay',
-                        inputType: 'date',
-                        label: 'Last voided day',
-                        fieldset: 'urinaryGroup2',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.urinaryGroup2',
-                        page: 'Assessments: Genitourinary',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'lastVoidedTime',
-                        fqn: 'genitourinary.table.urinaryGroup2.lastVoidedTime',
-                        inputType: 'time',
-                        label: 'Last voided time',
-                        fieldset: 'urinaryGroup2',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.urinaryGroup2',
-                        page: 'Assessments: Genitourinary',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'colour',
-                        fqn: 'genitourinary.table.urinaryGroup2.colour',
-                        inputType: 'select',
-                        label: 'Urine colour',
-                        fieldset: 'urinaryGroup2',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.urinaryGroup2',
-                        page: 'Assessments: Genitourinary',
-                        options: [
-                          {
-                            text: 'Pale yellow'
-                          },
-                          {
-                            text: 'Dark yellow'
-                          },
-                          {
-                            text: 'Amber'
-                          },
-                          {
-                            text: 'Red/blood'
-                          },
-                          {
-                            text: 'Other'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '4',
-                    elements: [
-                      {
-                        elementKey: 'consistency',
-                        fqn: 'genitourinary.table.urinaryGroup2.consistency',
-                        inputType: 'select',
-                        label: 'Urine consistency',
-                        fieldset: 'urinaryGroup2',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.urinaryGroup2',
-                        page: 'Assessments: Genitourinary',
-                        options: [
-                          {
-                            text: 'Clear'
-                          },
-                          {
-                            text: 'Cloudy'
-                          },
-                          {
-                            text: 'Foamy'
-                          },
-                          {
-                            text: 'Other'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '5',
-                    elements: [
-                      {
-                        elementKey: 'diaper',
-                        fqn: 'genitourinary.table.urinaryGroup2.diaper',
-                        inputType: 'select',
-                        label: 'Diaper/Brief',
-                        fieldset: 'urinaryGroup2',
-                        fsetRow: '5',
-                        fsetCol: '1',
-                        pageDataKey: 'genitourinary',
-                        dataParent: 'genitourinary.table.urinaryGroup2',
-                        page: 'Assessments: Genitourinary',
-                        options: [
-                          {
-                            text: 'Yes'
-                          },
-                          {
-                            text: 'No'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             }
           ],
           tableForm: {
@@ -11448,7 +8426,7 @@ module.exports = function() {
                     page: 'Assessments: Genitourinary',
                     containerType: 'fieldset',
                     containerKey: 'urinaryGroup1',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -11639,7 +8617,7 @@ module.exports = function() {
                     page: 'Assessments: Genitourinary',
                     containerType: 'fieldset',
                     containerKey: 'urinaryGroup2',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -11794,7 +8772,7 @@ module.exports = function() {
                     page: 'Assessments: Genitourinary',
                     containerType: 'fieldset',
                     containerKey: 'foleyGroup',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -11885,7 +8863,7 @@ module.exports = function() {
                     page: 'Assessments: Genitourinary',
                     containerType: 'fieldset',
                     containerKey: 'pelvicGroup',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -11947,7 +8925,7 @@ module.exports = function() {
                               pageDataKey: 'genitourinary',
                               dataParent: 'genitourinary.table.pelvicGroup',
                               page: 'Assessments: Genitourinary',
-                              tableCss: 'undefinedhide-table-element',
+                              tableCss: 'hide-table-element',
                               tableKey: 'table',
                               formColumn: '1'
                             }
@@ -12000,7 +8978,7 @@ module.exports = function() {
                     page: 'Assessments: Genitourinary',
                     containerType: 'fieldset',
                     containerKey: 'vaginal',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -12097,7 +9075,7 @@ module.exports = function() {
                     page: 'Assessments: Genitourinary',
                     containerType: 'fieldset',
                     containerKey: 'pregnantGroup',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -12631,172 +9609,8 @@ module.exports = function() {
               page: 'Assessments: Pain',
               containerType: 'fieldset',
               containerKey: 'secondarySite',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'painScale',
-                        fqn: 'pain.table.primarySite.painScale',
-                        inputType: 'text',
-                        label: 'Pain scale (0-10)',
-                        fieldset: 'primarySite',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'pain',
-                        dataParent: 'pain.table.primarySite',
-                        page: 'Assessments: Pain',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'respiratoryRate',
-                        fqn: 'pain.table.primarySite.respiratoryRate',
-                        inputType: 'text',
-                        label: 'Respiratory rate (br/min)',
-                        fieldset: 'primarySite',
-                        fsetRow: '1',
-                        fsetCol: '2',
-                        pageDataKey: 'pain',
-                        dataParent: 'pain.table.primarySite',
-                        page: 'Assessments: Pain',
-                        tableKey: 'table',
-                        formColumn: '2'
-                      },
-                      {
-                        elementKey: 'location',
-                        fqn: 'pain.table.primarySite.location',
-                        inputType: 'text',
-                        label: 'Location',
-                        fieldset: 'primarySite',
-                        fsetRow: '1',
-                        fsetCol: '3',
-                        pageDataKey: 'pain',
-                        dataParent: 'pain.table.primarySite',
-                        page: 'Assessments: Pain',
-                        tableKey: 'table',
-                        formColumn: '3'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'onset',
-                        fqn: 'pain.table.primarySite.onset',
-                        inputType: 'text',
-                        label: 'Onset',
-                        fieldset: 'primarySite',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'pain',
-                        dataParent: 'pain.table.primarySite',
-                        page: 'Assessments: Pain',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'type',
-                        fqn: 'pain.table.primarySite.type',
-                        inputType: 'text',
-                        label: 'Type',
-                        fieldset: 'primarySite',
-                        fsetRow: '2',
-                        fsetCol: '2',
-                        pageDataKey: 'pain',
-                        dataParent: 'pain.table.primarySite',
-                        page: 'Assessments: Pain',
-                        tableKey: 'table',
-                        formColumn: '2'
-                      },
-                      {
-                        elementKey: 'alleviationAssociatedSymptoms',
-                        fqn: 'pain.table.primarySite.alleviationAssociatedSymptoms',
-                        inputType: 'text',
-                        label: 'Alleviation & associated symptoms',
-                        fieldset: 'primarySite',
-                        fsetRow: '2',
-                        fsetCol: '3',
-                        pageDataKey: 'pain',
-                        dataParent: 'pain.table.primarySite',
-                        page: 'Assessments: Pain',
-                        tableKey: 'table',
-                        formColumn: '3'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'radiation',
-                        fqn: 'pain.table.primarySite.radiation',
-                        inputType: 'text',
-                        label: 'Radiation',
-                        fieldset: 'primarySite',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'pain',
-                        dataParent: 'pain.table.primarySite',
-                        page: 'Assessments: Pain',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'precipitatingEvents',
-                        fqn: 'pain.table.primarySite.precipitatingEvents',
-                        inputType: 'text',
-                        label: 'Precipitating events',
-                        fieldset: 'primarySite',
-                        fsetRow: '3',
-                        fsetCol: '2',
-                        pageDataKey: 'pain',
-                        dataParent: 'pain.table.primarySite',
-                        page: 'Assessments: Pain',
-                        tableKey: 'table',
-                        formColumn: '2'
-                      },
-                      {
-                        fqn: 'pain.table.secondarySite.',
-                        inputType: 'form-label',
-                        fieldset: 'secondarySite',
-                        fsetRow: '3',
-                        fsetCol: '3',
-                        pageDataKey: 'pain',
-                        dataParent: 'pain.table.secondarySite',
-                        page: 'Assessments: Pain',
-                        tableCss: 'undefinedhide-table-element',
-                        tableKey: 'table',
-                        formColumn: '3'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '4',
-                    elements: [
-                      {
-                        elementKey: 'comments',
-                        fqn: 'pain.table.primarySite.comments',
-                        inputType: 'textarea',
-                        label: 'Comments',
-                        fieldset: 'primarySite',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'pain',
-                        dataParent: 'pain.table.primarySite',
-                        page: 'Assessments: Pain',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 3
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'unit',
@@ -12989,172 +9803,8 @@ module.exports = function() {
               page: 'Assessments: Pain',
               containerType: 'fieldset',
               containerKey: 'primarySite',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'painScale',
-                        fqn: 'pain.table.primarySite.painScale',
-                        inputType: 'text',
-                        label: 'Pain scale (0-10)',
-                        fieldset: 'primarySite',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'pain',
-                        dataParent: 'pain.table.primarySite',
-                        page: 'Assessments: Pain',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'respiratoryRate',
-                        fqn: 'pain.table.primarySite.respiratoryRate',
-                        inputType: 'text',
-                        label: 'Respiratory rate (br/min)',
-                        fieldset: 'primarySite',
-                        fsetRow: '1',
-                        fsetCol: '2',
-                        pageDataKey: 'pain',
-                        dataParent: 'pain.table.primarySite',
-                        page: 'Assessments: Pain',
-                        tableKey: 'table',
-                        formColumn: '2'
-                      },
-                      {
-                        elementKey: 'location',
-                        fqn: 'pain.table.primarySite.location',
-                        inputType: 'text',
-                        label: 'Location',
-                        fieldset: 'primarySite',
-                        fsetRow: '1',
-                        fsetCol: '3',
-                        pageDataKey: 'pain',
-                        dataParent: 'pain.table.primarySite',
-                        page: 'Assessments: Pain',
-                        tableKey: 'table',
-                        formColumn: '3'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'onset',
-                        fqn: 'pain.table.primarySite.onset',
-                        inputType: 'text',
-                        label: 'Onset',
-                        fieldset: 'primarySite',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'pain',
-                        dataParent: 'pain.table.primarySite',
-                        page: 'Assessments: Pain',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'type',
-                        fqn: 'pain.table.primarySite.type',
-                        inputType: 'text',
-                        label: 'Type',
-                        fieldset: 'primarySite',
-                        fsetRow: '2',
-                        fsetCol: '2',
-                        pageDataKey: 'pain',
-                        dataParent: 'pain.table.primarySite',
-                        page: 'Assessments: Pain',
-                        tableKey: 'table',
-                        formColumn: '2'
-                      },
-                      {
-                        elementKey: 'alleviationAssociatedSymptoms',
-                        fqn: 'pain.table.primarySite.alleviationAssociatedSymptoms',
-                        inputType: 'text',
-                        label: 'Alleviation & associated symptoms',
-                        fieldset: 'primarySite',
-                        fsetRow: '2',
-                        fsetCol: '3',
-                        pageDataKey: 'pain',
-                        dataParent: 'pain.table.primarySite',
-                        page: 'Assessments: Pain',
-                        tableKey: 'table',
-                        formColumn: '3'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'radiation',
-                        fqn: 'pain.table.primarySite.radiation',
-                        inputType: 'text',
-                        label: 'Radiation',
-                        fieldset: 'primarySite',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'pain',
-                        dataParent: 'pain.table.primarySite',
-                        page: 'Assessments: Pain',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'precipitatingEvents',
-                        fqn: 'pain.table.primarySite.precipitatingEvents',
-                        inputType: 'text',
-                        label: 'Precipitating events',
-                        fieldset: 'primarySite',
-                        fsetRow: '3',
-                        fsetCol: '2',
-                        pageDataKey: 'pain',
-                        dataParent: 'pain.table.primarySite',
-                        page: 'Assessments: Pain',
-                        tableKey: 'table',
-                        formColumn: '2'
-                      },
-                      {
-                        fqn: 'pain.table.secondarySite.',
-                        inputType: 'form-label',
-                        fieldset: 'secondarySite',
-                        fsetRow: '3',
-                        fsetCol: '3',
-                        pageDataKey: 'pain',
-                        dataParent: 'pain.table.secondarySite',
-                        page: 'Assessments: Pain',
-                        tableCss: 'undefinedhide-table-element',
-                        tableKey: 'table',
-                        formColumn: '3'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '4',
-                    elements: [
-                      {
-                        elementKey: 'comments',
-                        fqn: 'pain.table.primarySite.comments',
-                        inputType: 'textarea',
-                        label: 'Comments',
-                        fieldset: 'primarySite',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'pain',
-                        dataParent: 'pain.table.primarySite',
-                        page: 'Assessments: Pain',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 3
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'painScale',
@@ -13261,7 +9911,7 @@ module.exports = function() {
               pageDataKey: 'pain',
               dataParent: 'pain.table.secondarySite',
               page: 'Assessments: Pain',
-              tableCss: 'undefinedhide-table-element',
+              tableCss: 'hide-table-element',
               tableKey: 'table',
               formColumn: '3'
             },
@@ -13286,7 +9936,7 @@ module.exports = function() {
               pageDataKey: 'pain',
               dataParent: 'pain.table.primarySite',
               page: 'Assessments: Pain',
-              tableCss: 'undefinedhide-table-element'
+              tableCss: 'hide-table-element'
             }
           ],
           tableForm: {
@@ -13377,7 +10027,7 @@ module.exports = function() {
                     page: 'Assessments: Pain',
                     containerType: 'fieldset',
                     containerKey: 'primarySite',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -13515,7 +10165,7 @@ module.exports = function() {
                               pageDataKey: 'pain',
                               dataParent: 'pain.table.secondarySite',
                               page: 'Assessments: Pain',
-                              tableCss: 'undefinedhide-table-element',
+                              tableCss: 'hide-table-element',
                               tableKey: 'table',
                               formColumn: '3'
                             }
@@ -13562,7 +10212,7 @@ module.exports = function() {
                     page: 'Assessments: Pain',
                     containerType: 'fieldset',
                     containerKey: 'secondarySite',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -13700,7 +10350,7 @@ module.exports = function() {
                               pageDataKey: 'pain',
                               dataParent: 'pain.table.secondarySite',
                               page: 'Assessments: Pain',
-                              tableCss: 'undefinedhide-table-element',
+                              tableCss: 'hide-table-element',
                               tableKey: 'table',
                               formColumn: '3'
                             }
@@ -13823,7 +10473,7 @@ module.exports = function() {
               pageDataKey: 'biopsychosocial',
               dataParent: 'biopsychosocial.table',
               page: 'Assessments: Biopsychosocial',
-              tableCss: 'undefinedhide-table-element',
+              tableCss: 'hide-table-element',
               tableKey: 'table'
             },
             {
@@ -13858,7 +10508,7 @@ module.exports = function() {
               pageDataKey: 'biopsychosocial',
               dataParent: 'biopsychosocial.table',
               page: 'Assessments: Biopsychosocial',
-              tableCss: 'undefinedhide-table-element'
+              tableCss: 'hide-table-element'
             },
             {
               elementKey: 'requestContact',
@@ -13994,146 +10644,8 @@ module.exports = function() {
               page: 'Assessments: Biopsychosocial',
               containerType: 'fieldset',
               containerKey: 'behaviour',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'calm',
-                        fqn: 'biopsychosocial.table.behaviour.calm',
-                        inputType: 'checkbox',
-                        label: 'Calm',
-                        fieldset: 'behaviour',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.behaviour',
-                        page: 'Assessments: Biopsychosocial',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'cooperative',
-                        fqn: 'biopsychosocial.table.behaviour.cooperative',
-                        inputType: 'checkbox',
-                        label: 'Cooperative',
-                        fieldset: 'behaviour',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.behaviour',
-                        page: 'Assessments: Biopsychosocial',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'agitated',
-                        fqn: 'biopsychosocial.table.behaviour.agitated',
-                        inputType: 'checkbox',
-                        label: 'Agitated',
-                        fieldset: 'behaviour',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.behaviour',
-                        page: 'Assessments: Biopsychosocial',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '4',
-                    elements: [
-                      {
-                        elementKey: 'flat',
-                        fqn: 'biopsychosocial.table.behaviour.flat',
-                        inputType: 'checkbox',
-                        label: 'Flat affect',
-                        fieldset: 'behaviour',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.behaviour',
-                        page: 'Assessments: Biopsychosocial',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '5',
-                    elements: [
-                      {
-                        elementKey: 'threatening',
-                        fqn: 'biopsychosocial.table.behaviour.threatening',
-                        inputType: 'checkbox',
-                        label: 'Threatening',
-                        fieldset: 'behaviour',
-                        fsetRow: '5',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.behaviour',
-                        page: 'Assessments: Biopsychosocial',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '6',
-                    elements: [
-                      {
-                        elementKey: 'agressive',
-                        fqn: 'biopsychosocial.table.behaviour.agressive',
-                        inputType: 'checkbox',
-                        label: 'Physically agressive',
-                        fieldset: 'behaviour',
-                        fsetRow: '6',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.behaviour',
-                        page: 'Assessments: Biopsychosocial',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '7',
-                    elements: [
-                      {
-                        elementKey: 'uncommunicative',
-                        fqn: 'biopsychosocial.table.behaviour.uncommunicative',
-                        inputType: 'checkbox',
-                        label: 'Uncommunicative',
-                        fieldset: 'behaviour',
-                        fsetRow: '7',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.behaviour',
-                        page: 'Assessments: Biopsychosocial',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'none',
@@ -14203,89 +10715,8 @@ module.exports = function() {
               page: 'Assessments: Biopsychosocial',
               containerType: 'fieldset',
               containerKey: 'hallucinations',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'none',
-                        fqn: 'biopsychosocial.table.hallucinations.none',
-                        inputType: 'checkbox',
-                        label: 'None',
-                        fieldset: 'hallucinations',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.hallucinations',
-                        page: 'Assessments: Biopsychosocial',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'visual',
-                        fqn: 'biopsychosocial.table.hallucinations.visual',
-                        inputType: 'checkbox',
-                        label: 'Visual',
-                        fieldset: 'hallucinations',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.hallucinations',
-                        page: 'Assessments: Biopsychosocial',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'auditory',
-                        fqn: 'biopsychosocial.table.hallucinations.auditory',
-                        inputType: 'checkbox',
-                        label: 'Auditory',
-                        fieldset: 'hallucinations',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.hallucinations',
-                        page: 'Assessments: Biopsychosocial',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '4',
-                    elements: [
-                      {
-                        elementKey: 'olafactory',
-                        fqn: 'biopsychosocial.table.hallucinations.olafactory',
-                        inputType: 'checkbox',
-                        label: 'Olafactory',
-                        fieldset: 'hallucinations',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.hallucinations',
-                        page: 'Assessments: Biopsychosocial',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'suicidal',
@@ -14368,97 +10799,8 @@ module.exports = function() {
               page: 'Assessments: Biopsychosocial',
               containerType: 'fieldset',
               containerKey: 'state',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'suicidal',
-                        fqn: 'biopsychosocial.table.state.suicidal',
-                        inputType: 'select',
-                        label: 'Suicidal',
-                        fieldset: 'state',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.state',
-                        page: 'Assessments: Biopsychosocial',
-                        options: [
-                          {
-                            text: 'None'
-                          },
-                          {
-                            text: 'Ideation'
-                          },
-                          {
-                            text: 'Attempt'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'homicidal',
-                        fqn: 'biopsychosocial.table.state.homicidal',
-                        inputType: 'select',
-                        label: 'Homicidal',
-                        fieldset: 'state',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.state',
-                        page: 'Assessments: Biopsychosocial',
-                        options: [
-                          {
-                            text: 'None'
-                          },
-                          {
-                            text: 'Ideation'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'speech',
-                        fqn: 'biopsychosocial.table.state.speech',
-                        inputType: 'select',
-                        label: 'Speech',
-                        fieldset: 'state',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.state',
-                        page: 'Assessments: Biopsychosocial',
-                        options: [
-                          {
-                            text: 'Clear and coherent'
-                          },
-                          {
-                            text: 'Other'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'hygieneGrooming',
@@ -14509,58 +10851,8 @@ module.exports = function() {
               page: 'Assessments: Biopsychosocial',
               containerType: 'fieldset',
               containerKey: 'hygiene',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'hygieneGrooming',
-                        fqn: 'biopsychosocial.table.hygiene.hygieneGrooming',
-                        inputType: 'select',
-                        fieldset: 'hygiene',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.hygiene',
-                        page: 'Assessments: Biopsychosocial',
-                        options: [
-                          {
-                            text: 'Good'
-                          },
-                          {
-                            text: 'Requires attention'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'hygieneComments',
-                        fqn: 'biopsychosocial.table.hygiene.hygieneComments',
-                        inputType: 'text',
-                        label: 'Comments',
-                        fieldset: 'hygiene',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.hygiene',
-                        page: 'Assessments: Biopsychosocial',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'supportPerson',
@@ -14603,51 +10895,8 @@ module.exports = function() {
               page: 'Assessments: Biopsychosocial',
               containerType: 'fieldset',
               containerKey: 'support',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'supportPerson',
-                        fqn: 'biopsychosocial.table.support.supportPerson',
-                        inputType: 'text',
-                        label: 'Support person',
-                        fieldset: 'support',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.support',
-                        page: 'Assessments: Biopsychosocial',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'supportComments',
-                        fqn: 'biopsychosocial.table.support.supportComments',
-                        inputType: 'textarea',
-                        label: 'Comments',
-                        fieldset: 'support',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.support',
-                        page: 'Assessments: Biopsychosocial',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'securityPolicePresent',
@@ -14689,51 +10938,8 @@ module.exports = function() {
               page: 'Assessments: Biopsychosocial',
               containerType: 'fieldset',
               containerKey: 'security',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'securityPolicePresent',
-                        fqn: 'biopsychosocial.table.security.securityPolicePresent',
-                        inputType: 'text',
-                        label: 'Security/police present',
-                        fieldset: 'security',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.security',
-                        page: 'Assessments: Biopsychosocial',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'securityComments',
-                        fqn: 'biopsychosocial.table.security.securityComments',
-                        inputType: 'textarea',
-                        label: 'Comments',
-                        fieldset: 'security',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.security',
-                        page: 'Assessments: Biopsychosocial',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'patientRestrained',
@@ -14811,97 +11017,8 @@ module.exports = function() {
               page: 'Assessments: Biopsychosocial',
               containerType: 'fieldset',
               containerKey: 'restraint',
-              tableCss: 'undefinedhide-table-element',
-              tableKey: 'table',
-              formFieldSet: {
-                rows: [
-                  {
-                    formRow: '1',
-                    elements: [
-                      {
-                        elementKey: 'patientRestrained',
-                        fqn: 'biopsychosocial.table.restraint.patientRestrained',
-                        inputType: 'select',
-                        label: 'Patient restrained',
-                        fieldset: 'restraint',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.restraint',
-                        page: 'Assessments: Biopsychosocial',
-                        options: [
-                          {
-                            text: 'yes'
-                          },
-                          {
-                            text: 'no'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '2',
-                    elements: [
-                      {
-                        elementKey: 'restraintDay',
-                        fqn: 'biopsychosocial.table.restraint.restraintDay',
-                        inputType: 'day',
-                        label: 'Day',
-                        fieldset: 'restraint',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.restraint',
-                        page: 'Assessments: Biopsychosocial',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '3',
-                    elements: [
-                      {
-                        elementKey: 'restraintTime',
-                        fqn: 'biopsychosocial.table.restraint.restraintTime',
-                        inputType: 'time',
-                        label: 'Time',
-                        fieldset: 'restraint',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.restraint',
-                        page: 'Assessments: Biopsychosocial',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  },
-                  {
-                    formRow: '4',
-                    elements: [
-                      {
-                        elementKey: 'restraintComments',
-                        fqn: 'biopsychosocial.table.restraint.restraintComments',
-                        inputType: 'textarea',
-                        label: 'Comments',
-                        fieldset: 'restraint',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'biopsychosocial',
-                        dataParent: 'biopsychosocial.table.restraint',
-                        page: 'Assessments: Biopsychosocial',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ]
-                  }
-                ],
-                columnsCount: 1
-              }
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
             },
             {
               elementKey: 'olafactory',
@@ -15003,7 +11120,7 @@ module.exports = function() {
                     pageDataKey: 'biopsychosocial',
                     dataParent: 'biopsychosocial.table',
                     page: 'Assessments: Biopsychosocial',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table'
                   },
                   {
@@ -15016,7 +11133,7 @@ module.exports = function() {
                     pageDataKey: 'biopsychosocial',
                     dataParent: 'biopsychosocial.table',
                     page: 'Assessments: Biopsychosocial',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table'
                   }
                 ]
@@ -15088,7 +11205,7 @@ module.exports = function() {
                     page: 'Assessments: Biopsychosocial',
                     containerType: 'fieldset',
                     containerKey: 'behaviour',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -15242,7 +11359,7 @@ module.exports = function() {
                     page: 'Assessments: Biopsychosocial',
                     containerType: 'fieldset',
                     containerKey: 'hallucinations',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -15338,7 +11455,7 @@ module.exports = function() {
                     page: 'Assessments: Biopsychosocial',
                     containerType: 'fieldset',
                     containerKey: 'state',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -15449,7 +11566,7 @@ module.exports = function() {
                     page: 'Assessments: Biopsychosocial',
                     containerType: 'fieldset',
                     containerKey: 'hygiene',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -15520,7 +11637,7 @@ module.exports = function() {
                     page: 'Assessments: Biopsychosocial',
                     containerType: 'fieldset',
                     containerKey: 'support',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -15578,7 +11695,7 @@ module.exports = function() {
                     page: 'Assessments: Biopsychosocial',
                     containerType: 'fieldset',
                     containerKey: 'security',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -15636,7 +11753,7 @@ module.exports = function() {
                     page: 'Assessments: Biopsychosocial',
                     containerType: 'fieldset',
                     containerKey: 'restraint',
-                    tableCss: 'undefinedhide-table-element',
+                    tableCss: 'hide-table-element',
                     tableKey: 'table',
                     formFieldSet: {
                       rows: [
@@ -15759,6 +11876,2256 @@ module.exports = function() {
     nonmedOrders: {
       pageTitle: 'Orders',
       pageDataKey: 'nonmedOrders',
+      hasTable: true,
+      tables: [
+        {
+          tableKey: 'table',
+          addButtonText: 'Add a new order',
+          tableCells: [
+            {
+              elementKey: 'name',
+              fqn: 'nonmedOrders.table.name',
+              inputType: 'text',
+              label: 'Name',
+              tableColumn: '1',
+              formCss: 'user_name',
+              formColumn: '1',
+              formRow: '1',
+              pageDataKey: 'nonmedOrders',
+              dataParent: 'nonmedOrders.table',
+              page: 'nonmedOrders',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'profession',
+              fqn: 'nonmedOrders.table.profession',
+              inputType: 'text',
+              label: 'Profession',
+              tableColumn: '2',
+              formCss: 'user_pro',
+              formColumn: '2',
+              formRow: '1',
+              pageDataKey: 'nonmedOrders',
+              dataParent: 'nonmedOrders.table',
+              page: 'nonmedOrders',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'unit',
+              fqn: 'nonmedOrders.table.unit',
+              inputType: 'text',
+              label: 'Unit',
+              tableColumn: '3',
+              formCss: 'user_unit',
+              formColumn: '3',
+              formRow: '1',
+              pageDataKey: 'nonmedOrders',
+              dataParent: 'nonmedOrders.table',
+              page: 'nonmedOrders',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'day',
+              fqn: 'nonmedOrders.table.day',
+              inputType: 'day',
+              label: 'Day',
+              tableColumn: '4',
+              formCss: 'user_day',
+              formColumn: '4',
+              formRow: '1',
+              pageDataKey: 'nonmedOrders',
+              dataParent: 'nonmedOrders.table',
+              page: 'nonmedOrders',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'time',
+              fqn: 'nonmedOrders.table.time',
+              inputType: 'time',
+              label: 'Time',
+              tableColumn: '5',
+              formCss: 'user_time',
+              formColumn: '5',
+              formRow: '1',
+              pageDataKey: 'nonmedOrders',
+              dataParent: 'nonmedOrders.table',
+              page: 'nonmedOrders',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'order',
+              fqn: 'nonmedOrders.table.order',
+              inputType: 'text',
+              label: 'Order',
+              tableColumn: '6',
+              formColumn: '1',
+              formRow: '2',
+              pageDataKey: 'nonmedOrders',
+              dataParent: 'nonmedOrders.table',
+              page: 'nonmedOrders',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'orderedBy',
+              fqn: 'nonmedOrders.table.orderedBy',
+              inputType: 'text',
+              label: 'Ordered by',
+              tableColumn: '7',
+              formColumn: '2',
+              formRow: '2',
+              pageDataKey: 'nonmedOrders',
+              dataParent: 'nonmedOrders.table',
+              page: 'nonmedOrders',
+              mandatory: 'If order is filled, this is mandatory',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'startDay',
+              fqn: 'nonmedOrders.table.startDay',
+              inputType: 'day',
+              label: 'Start day',
+              tableColumn: '8',
+              formColumn: '3',
+              formRow: '2',
+              pageDataKey: 'nonmedOrders',
+              dataParent: 'nonmedOrders.table',
+              page: 'nonmedOrders',
+              mandatory: 'If order is filled, this is mandatory',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'startTime',
+              fqn: 'nonmedOrders.table.startTime',
+              inputType: 'time',
+              label: 'Start time',
+              tableColumn: '9',
+              formColumn: '1',
+              formRow: '3',
+              pageDataKey: 'nonmedOrders',
+              dataParent: 'nonmedOrders.table',
+              page: 'nonmedOrders',
+              mandatory: '?',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'details',
+              fqn: 'nonmedOrders.table.details',
+              inputType: 'textarea',
+              label: 'Details',
+              tableColumn: '10',
+              formColumn: '2',
+              formRow: '3',
+              pageDataKey: 'nonmedOrders',
+              dataParent: 'nonmedOrders.table',
+              page: 'nonmedOrders',
+              mandatory: '?',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'status',
+              fqn: 'nonmedOrders.table.status',
+              inputType: 'select',
+              label: 'Status',
+              tableColumn: '11',
+              formColumn: '3',
+              formRow: '3',
+              pageDataKey: 'nonmedOrders',
+              dataParent: 'nonmedOrders.table',
+              page: 'nonmedOrders',
+              mandatory: '?',
+              options: [
+                {
+                  text: 'Ordered'
+                },
+                {
+                  text: 'In process'
+                },
+                {
+                  text: 'Cancelled'
+                },
+                {
+                  text: 'Completed'
+                }
+              ],
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'dayOfReferral',
+              fqn: 'nonmedOrders.table.dayOfReferral',
+              inputType: 'day',
+              label: 'Day of referral',
+              tableColumn: '12',
+              formColumn: '1',
+              formRow: '4',
+              pageDataKey: 'nonmedOrders',
+              dataParent: 'nonmedOrders.table',
+              page: 'nonmedOrders',
+              mandatory: '?',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'startTime',
+              fqn: 'nonmedOrders.table.startTime',
+              inputType: 'time',
+              label: 'Start time',
+              tableColumn: '13',
+              formColumn: '2',
+              formRow: '4',
+              pageDataKey: 'nonmedOrders',
+              dataParent: 'nonmedOrders.table',
+              page: 'nonmedOrders',
+              mandatory: '?'
+            },
+            {
+              elementKey: 'endTime',
+              fqn: 'nonmedOrders.table.endTime',
+              inputType: 'time',
+              label: 'End time',
+              tableColumn: '14',
+              formColumn: '3',
+              formRow: '4',
+              pageDataKey: 'nonmedOrders',
+              dataParent: 'nonmedOrders.table',
+              page: 'nonmedOrders',
+              mandatory: '?',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'reconciliationComplete',
+              fqn: 'nonmedOrders.table.reconciliationComplete',
+              inputType: 'checkbox',
+              label: 'Reconciliation complete',
+              tableColumn: '15',
+              formColumn: '2',
+              formRow: '5',
+              pageDataKey: 'nonmedOrders',
+              dataParent: 'nonmedOrders.table',
+              page: 'nonmedOrders',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'comment',
+              fqn: 'nonmedOrders.table.comment',
+              inputType: 'textarea',
+              label: 'Comment',
+              tableColumn: '16',
+              formColumn: '1',
+              formRow: '5',
+              pageDataKey: 'nonmedOrders',
+              dataParent: 'nonmedOrders.table',
+              page: 'nonmedOrders',
+              tableKey: 'table'
+            }
+          ],
+          tableForm: {
+            rows: [
+              {
+                formRow: '1',
+                elements: [
+                  {
+                    elementKey: 'name',
+                    fqn: 'nonmedOrders.table.name',
+                    inputType: 'text',
+                    label: 'Name',
+                    tableColumn: '1',
+                    formCss: 'user_name',
+                    formColumn: '1',
+                    formRow: '1',
+                    pageDataKey: 'nonmedOrders',
+                    dataParent: 'nonmedOrders.table',
+                    page: 'nonmedOrders',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'profession',
+                    fqn: 'nonmedOrders.table.profession',
+                    inputType: 'text',
+                    label: 'Profession',
+                    tableColumn: '2',
+                    formCss: 'user_pro',
+                    formColumn: '2',
+                    formRow: '1',
+                    pageDataKey: 'nonmedOrders',
+                    dataParent: 'nonmedOrders.table',
+                    page: 'nonmedOrders',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'unit',
+                    fqn: 'nonmedOrders.table.unit',
+                    inputType: 'text',
+                    label: 'Unit',
+                    tableColumn: '3',
+                    formCss: 'user_unit',
+                    formColumn: '3',
+                    formRow: '1',
+                    pageDataKey: 'nonmedOrders',
+                    dataParent: 'nonmedOrders.table',
+                    page: 'nonmedOrders',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'day',
+                    fqn: 'nonmedOrders.table.day',
+                    inputType: 'day',
+                    label: 'Day',
+                    tableColumn: '4',
+                    formCss: 'user_day',
+                    formColumn: '4',
+                    formRow: '1',
+                    pageDataKey: 'nonmedOrders',
+                    dataParent: 'nonmedOrders.table',
+                    page: 'nonmedOrders',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'time',
+                    fqn: 'nonmedOrders.table.time',
+                    inputType: 'time',
+                    label: 'Time',
+                    tableColumn: '5',
+                    formCss: 'user_time',
+                    formColumn: '5',
+                    formRow: '1',
+                    pageDataKey: 'nonmedOrders',
+                    dataParent: 'nonmedOrders.table',
+                    page: 'nonmedOrders',
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '2',
+                elements: [
+                  {
+                    elementKey: 'order',
+                    fqn: 'nonmedOrders.table.order',
+                    inputType: 'text',
+                    label: 'Order',
+                    tableColumn: '6',
+                    formColumn: '1',
+                    formRow: '2',
+                    pageDataKey: 'nonmedOrders',
+                    dataParent: 'nonmedOrders.table',
+                    page: 'nonmedOrders',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'orderedBy',
+                    fqn: 'nonmedOrders.table.orderedBy',
+                    inputType: 'text',
+                    label: 'Ordered by',
+                    tableColumn: '7',
+                    formColumn: '2',
+                    formRow: '2',
+                    pageDataKey: 'nonmedOrders',
+                    dataParent: 'nonmedOrders.table',
+                    page: 'nonmedOrders',
+                    mandatory: 'If order is filled, this is mandatory',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'startDay',
+                    fqn: 'nonmedOrders.table.startDay',
+                    inputType: 'day',
+                    label: 'Start day',
+                    tableColumn: '8',
+                    formColumn: '3',
+                    formRow: '2',
+                    pageDataKey: 'nonmedOrders',
+                    dataParent: 'nonmedOrders.table',
+                    page: 'nonmedOrders',
+                    mandatory: 'If order is filled, this is mandatory',
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '3',
+                elements: [
+                  {
+                    elementKey: 'startTime',
+                    fqn: 'nonmedOrders.table.startTime',
+                    inputType: 'time',
+                    label: 'Start time',
+                    tableColumn: '9',
+                    formColumn: '1',
+                    formRow: '3',
+                    pageDataKey: 'nonmedOrders',
+                    dataParent: 'nonmedOrders.table',
+                    page: 'nonmedOrders',
+                    mandatory: '?',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'details',
+                    fqn: 'nonmedOrders.table.details',
+                    inputType: 'textarea',
+                    label: 'Details',
+                    tableColumn: '10',
+                    formColumn: '2',
+                    formRow: '3',
+                    pageDataKey: 'nonmedOrders',
+                    dataParent: 'nonmedOrders.table',
+                    page: 'nonmedOrders',
+                    mandatory: '?',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'status',
+                    fqn: 'nonmedOrders.table.status',
+                    inputType: 'select',
+                    label: 'Status',
+                    tableColumn: '11',
+                    formColumn: '3',
+                    formRow: '3',
+                    pageDataKey: 'nonmedOrders',
+                    dataParent: 'nonmedOrders.table',
+                    page: 'nonmedOrders',
+                    mandatory: '?',
+                    options: [
+                      {
+                        text: 'Ordered'
+                      },
+                      {
+                        text: 'In process'
+                      },
+                      {
+                        text: 'Cancelled'
+                      },
+                      {
+                        text: 'Completed'
+                      }
+                    ],
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '4',
+                elements: [
+                  {
+                    elementKey: 'dayOfReferral',
+                    fqn: 'nonmedOrders.table.dayOfReferral',
+                    inputType: 'day',
+                    label: 'Day of referral',
+                    tableColumn: '12',
+                    formColumn: '1',
+                    formRow: '4',
+                    pageDataKey: 'nonmedOrders',
+                    dataParent: 'nonmedOrders.table',
+                    page: 'nonmedOrders',
+                    mandatory: '?',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'startTime',
+                    fqn: 'nonmedOrders.table.startTime',
+                    inputType: 'time',
+                    label: 'Start time',
+                    tableColumn: '9',
+                    formColumn: '1',
+                    formRow: '3',
+                    pageDataKey: 'nonmedOrders',
+                    dataParent: 'nonmedOrders.table',
+                    page: 'nonmedOrders',
+                    mandatory: '?',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'endTime',
+                    fqn: 'nonmedOrders.table.endTime',
+                    inputType: 'time',
+                    label: 'End time',
+                    tableColumn: '14',
+                    formColumn: '3',
+                    formRow: '4',
+                    pageDataKey: 'nonmedOrders',
+                    dataParent: 'nonmedOrders.table',
+                    page: 'nonmedOrders',
+                    mandatory: '?',
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '5',
+                elements: [
+                  {
+                    elementKey: 'comment',
+                    fqn: 'nonmedOrders.table.comment',
+                    inputType: 'textarea',
+                    label: 'Comment',
+                    tableColumn: '16',
+                    formColumn: '1',
+                    formRow: '5',
+                    pageDataKey: 'nonmedOrders',
+                    dataParent: 'nonmedOrders.table',
+                    page: 'nonmedOrders',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'reconciliationComplete',
+                    fqn: 'nonmedOrders.table.reconciliationComplete',
+                    inputType: 'checkbox',
+                    label: 'Reconciliation complete',
+                    tableColumn: '15',
+                    formColumn: '2',
+                    formRow: '5',
+                    pageDataKey: 'nonmedOrders',
+                    dataParent: 'nonmedOrders.table',
+                    page: 'nonmedOrders',
+                    tableKey: 'table'
+                  }
+                ]
+              }
+            ],
+            columnsCount: 5
+          }
+        }
+      ],
+      pageData: {
+        table: []
+      }
+    },
+    referrals: {
+      pageTitle: 'Referrals to other disciplines',
+      pageDataKey: 'referrals',
+      hasTable: true,
+      tables: [
+        {
+          tableKey: 'table',
+          addButtonText: 'Add a new referral',
+          tableCells: [
+            {
+              elementKey: 'name',
+              fqn: 'referrals.table.name',
+              inputType: 'text',
+              label: 'Name',
+              tableColumn: '1',
+              formCss: 'user_name',
+              formColumn: '1',
+              formRow: '1',
+              pageDataKey: 'referrals',
+              dataParent: 'referrals.table',
+              page: 'Referrals',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'profession',
+              fqn: 'referrals.table.profession',
+              inputType: 'text',
+              label: 'Profession',
+              tableColumn: '2',
+              formCss: 'user_pro',
+              formColumn: '2',
+              formRow: '1',
+              pageDataKey: 'referrals',
+              dataParent: 'referrals.table',
+              page: 'Referrals',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'unit',
+              fqn: 'referrals.table.unit',
+              inputType: 'text',
+              label: 'Unit',
+              tableColumn: '3',
+              formCss: 'user_unit',
+              formColumn: '3',
+              formRow: '1',
+              pageDataKey: 'referrals',
+              dataParent: 'referrals.table',
+              page: 'Referrals',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'day',
+              fqn: 'referrals.table.day',
+              inputType: 'day',
+              label: 'Day',
+              tableColumn: '4',
+              formCss: 'user_day',
+              formColumn: '4',
+              formRow: '1',
+              pageDataKey: 'referrals',
+              dataParent: 'referrals.table',
+              page: 'Referrals',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'time',
+              fqn: 'referrals.table.time',
+              inputType: 'time',
+              label: 'Time',
+              tableColumn: '5',
+              formCss: 'user_time',
+              formColumn: '5',
+              formRow: '1',
+              pageDataKey: 'referrals',
+              dataParent: 'referrals.table',
+              page: 'Referrals',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'referralName',
+              fqn: 'referrals.table.referralName',
+              inputType: 'text',
+              label: 'Referral name',
+              tableColumn: '6',
+              formColumn: '1',
+              formRow: '2',
+              pageDataKey: 'referrals',
+              dataParent: 'referrals.table',
+              page: 'Referrals',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'referralProfession',
+              fqn: 'referrals.table.referralProfession',
+              inputType: 'text',
+              label: 'Referral profession',
+              tableColumn: '7',
+              formColumn: '2',
+              formRow: '2',
+              pageDataKey: 'referrals',
+              dataParent: 'referrals.table',
+              page: 'Referrals',
+              tableKey: 'table'
+            },
+            {
+              fqn: 'referrals.table.',
+              inputType: 'spacer',
+              tableColumn: '8',
+              formColumn: '3',
+              formRow: '2',
+              pageDataKey: 'referrals',
+              dataParent: 'referrals.table',
+              page: 'Referrals',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'appointmentDate',
+              fqn: 'referrals.table.appointmentDate',
+              inputType: 'date',
+              label: 'Appointment date',
+              tableColumn: '9',
+              formColumn: '1',
+              formRow: '3',
+              pageDataKey: 'referrals',
+              dataParent: 'referrals.table',
+              page: 'Referrals',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'appointmentTime',
+              fqn: 'referrals.table.appointmentTime',
+              inputType: 'time',
+              label: 'Appointment time',
+              tableColumn: '10',
+              formColumn: '2',
+              formRow: '3',
+              pageDataKey: 'referrals',
+              dataParent: 'referrals.table',
+              page: 'Referrals',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'status',
+              fqn: 'referrals.table.status',
+              inputType: 'select',
+              label: 'Status',
+              tableColumn: '11',
+              formColumn: '3',
+              formRow: '3',
+              pageDataKey: 'referrals',
+              dataParent: 'referrals.table',
+              page: 'Referrals',
+              options: [
+                {
+                  text: 'Active'
+                },
+                {
+                  text: 'Discharged'
+                }
+              ],
+              tableKey: 'table'
+            }
+          ],
+          tableForm: {
+            rows: [
+              {
+                formRow: '1',
+                elements: [
+                  {
+                    elementKey: 'name',
+                    fqn: 'referrals.table.name',
+                    inputType: 'text',
+                    label: 'Name',
+                    tableColumn: '1',
+                    formCss: 'user_name',
+                    formColumn: '1',
+                    formRow: '1',
+                    pageDataKey: 'referrals',
+                    dataParent: 'referrals.table',
+                    page: 'Referrals',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'profession',
+                    fqn: 'referrals.table.profession',
+                    inputType: 'text',
+                    label: 'Profession',
+                    tableColumn: '2',
+                    formCss: 'user_pro',
+                    formColumn: '2',
+                    formRow: '1',
+                    pageDataKey: 'referrals',
+                    dataParent: 'referrals.table',
+                    page: 'Referrals',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'unit',
+                    fqn: 'referrals.table.unit',
+                    inputType: 'text',
+                    label: 'Unit',
+                    tableColumn: '3',
+                    formCss: 'user_unit',
+                    formColumn: '3',
+                    formRow: '1',
+                    pageDataKey: 'referrals',
+                    dataParent: 'referrals.table',
+                    page: 'Referrals',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'day',
+                    fqn: 'referrals.table.day',
+                    inputType: 'day',
+                    label: 'Day',
+                    tableColumn: '4',
+                    formCss: 'user_day',
+                    formColumn: '4',
+                    formRow: '1',
+                    pageDataKey: 'referrals',
+                    dataParent: 'referrals.table',
+                    page: 'Referrals',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'time',
+                    fqn: 'referrals.table.time',
+                    inputType: 'time',
+                    label: 'Time',
+                    tableColumn: '5',
+                    formCss: 'user_time',
+                    formColumn: '5',
+                    formRow: '1',
+                    pageDataKey: 'referrals',
+                    dataParent: 'referrals.table',
+                    page: 'Referrals',
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '2',
+                elements: [
+                  {
+                    elementKey: 'referralName',
+                    fqn: 'referrals.table.referralName',
+                    inputType: 'text',
+                    label: 'Referral name',
+                    tableColumn: '6',
+                    formColumn: '1',
+                    formRow: '2',
+                    pageDataKey: 'referrals',
+                    dataParent: 'referrals.table',
+                    page: 'Referrals',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'referralProfession',
+                    fqn: 'referrals.table.referralProfession',
+                    inputType: 'text',
+                    label: 'Referral profession',
+                    tableColumn: '7',
+                    formColumn: '2',
+                    formRow: '2',
+                    pageDataKey: 'referrals',
+                    dataParent: 'referrals.table',
+                    page: 'Referrals',
+                    tableKey: 'table'
+                  },
+                  {
+                    fqn: 'referrals.table.',
+                    inputType: 'spacer',
+                    tableColumn: '8',
+                    formColumn: '3',
+                    formRow: '2',
+                    pageDataKey: 'referrals',
+                    dataParent: 'referrals.table',
+                    page: 'Referrals',
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '3',
+                elements: [
+                  {
+                    elementKey: 'appointmentDate',
+                    fqn: 'referrals.table.appointmentDate',
+                    inputType: 'date',
+                    label: 'Appointment date',
+                    tableColumn: '9',
+                    formColumn: '1',
+                    formRow: '3',
+                    pageDataKey: 'referrals',
+                    dataParent: 'referrals.table',
+                    page: 'Referrals',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'appointmentTime',
+                    fqn: 'referrals.table.appointmentTime',
+                    inputType: 'time',
+                    label: 'Appointment time',
+                    tableColumn: '10',
+                    formColumn: '2',
+                    formRow: '3',
+                    pageDataKey: 'referrals',
+                    dataParent: 'referrals.table',
+                    page: 'Referrals',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'status',
+                    fqn: 'referrals.table.status',
+                    inputType: 'select',
+                    label: 'Status',
+                    tableColumn: '11',
+                    formColumn: '3',
+                    formRow: '3',
+                    pageDataKey: 'referrals',
+                    dataParent: 'referrals.table',
+                    page: 'Referrals',
+                    options: [
+                      {
+                        text: 'Active'
+                      },
+                      {
+                        text: 'Discharged'
+                      }
+                    ],
+                    tableKey: 'table'
+                  }
+                ]
+              }
+            ],
+            columnsCount: 5
+          }
+        }
+      ],
+      pageData: {
+        table: []
+      }
+    },
+    labRequisitions: {
+      pageTitle: 'Lab requisitions',
+      pageDataKey: 'labRequisitions',
+      hasTable: true,
+      tables: [
+        {
+          tableKey: 'table',
+          addButtonText: 'Add a new requisition',
+          tableCells: [
+            {
+              elementKey: 'name',
+              fqn: 'labRequisitions.table.name',
+              inputType: 'text',
+              label: 'Name',
+              tableColumn: '1',
+              formCss: 'user_name',
+              formColumn: '1',
+              formRow: '1',
+              pageDataKey: 'labRequisitions',
+              dataParent: 'labRequisitions.table',
+              page: 'LabRequisitions',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'profession',
+              fqn: 'labRequisitions.table.profession',
+              inputType: 'text',
+              label: 'Profession',
+              tableColumn: '2',
+              formCss: 'user_pro',
+              formColumn: '2',
+              formRow: '1',
+              pageDataKey: 'labRequisitions',
+              dataParent: 'labRequisitions.table',
+              page: 'LabRequisitions',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'unit',
+              fqn: 'labRequisitions.table.unit',
+              inputType: 'text',
+              label: 'Unit',
+              tableColumn: '3',
+              formCss: 'user_unit',
+              formColumn: '3',
+              formRow: '1',
+              pageDataKey: 'labRequisitions',
+              dataParent: 'labRequisitions.table',
+              page: 'LabRequisitions',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'day',
+              fqn: 'labRequisitions.table.day',
+              inputType: 'day',
+              label: 'Day',
+              tableColumn: '4',
+              formCss: 'user_day',
+              formColumn: '4',
+              formRow: '1',
+              pageDataKey: 'labRequisitions',
+              dataParent: 'labRequisitions.table',
+              page: 'LabRequisitions',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'time',
+              fqn: 'labRequisitions.table.time',
+              inputType: 'time',
+              label: 'Time',
+              tableColumn: '5',
+              formCss: 'user_time',
+              formColumn: '5',
+              formRow: '1',
+              pageDataKey: 'labRequisitions',
+              dataParent: 'labRequisitions.table',
+              page: 'LabRequisitions',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'requisition',
+              fqn: 'labRequisitions.table.requisition',
+              inputType: 'text',
+              label: 'Requisition',
+              formColumn: '1',
+              formRow: '2',
+              pageDataKey: 'labRequisitions',
+              dataParent: 'labRequisitions.table',
+              page: 'LabRequisitions',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'ordered',
+              fqn: 'labRequisitions.table.ordered',
+              inputType: 'text',
+              label: 'Ordered',
+              formColumn: '2',
+              formRow: '2',
+              pageDataKey: 'labRequisitions',
+              dataParent: 'labRequisitions.table',
+              page: 'LabRequisitions',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'collected',
+              fqn: 'labRequisitions.table.collected',
+              inputType: 'text',
+              label: 'Collected',
+              formColumn: '3',
+              formRow: '2',
+              pageDataKey: 'labRequisitions',
+              dataParent: 'labRequisitions.table',
+              page: 'LabRequisitions',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'report',
+              fqn: 'labRequisitions.table.report',
+              inputType: 'text',
+              label: 'Report',
+              formColumn: '1',
+              formRow: '3',
+              pageDataKey: 'labRequisitions',
+              dataParent: 'labRequisitions.table',
+              page: 'LabRequisitions',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'status',
+              fqn: 'labRequisitions.table.status',
+              inputType: 'select',
+              label: 'Status',
+              formColumn: '2',
+              formRow: '3',
+              pageDataKey: 'labRequisitions',
+              dataParent: 'labRequisitions.table',
+              page: 'LabRequisitions',
+              options: [
+                {
+                  text: 'Ordered'
+                },
+                {
+                  text: 'In progress'
+                },
+                {
+                  text: 'Pending'
+                },
+                {
+                  text: 'Complete'
+                }
+              ],
+              tableKey: 'table'
+            }
+          ],
+          tableForm: {
+            rows: [
+              {
+                formRow: '1',
+                elements: [
+                  {
+                    elementKey: 'name',
+                    fqn: 'labRequisitions.table.name',
+                    inputType: 'text',
+                    label: 'Name',
+                    tableColumn: '1',
+                    formCss: 'user_name',
+                    formColumn: '1',
+                    formRow: '1',
+                    pageDataKey: 'labRequisitions',
+                    dataParent: 'labRequisitions.table',
+                    page: 'LabRequisitions',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'profession',
+                    fqn: 'labRequisitions.table.profession',
+                    inputType: 'text',
+                    label: 'Profession',
+                    tableColumn: '2',
+                    formCss: 'user_pro',
+                    formColumn: '2',
+                    formRow: '1',
+                    pageDataKey: 'labRequisitions',
+                    dataParent: 'labRequisitions.table',
+                    page: 'LabRequisitions',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'unit',
+                    fqn: 'labRequisitions.table.unit',
+                    inputType: 'text',
+                    label: 'Unit',
+                    tableColumn: '3',
+                    formCss: 'user_unit',
+                    formColumn: '3',
+                    formRow: '1',
+                    pageDataKey: 'labRequisitions',
+                    dataParent: 'labRequisitions.table',
+                    page: 'LabRequisitions',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'day',
+                    fqn: 'labRequisitions.table.day',
+                    inputType: 'day',
+                    label: 'Day',
+                    tableColumn: '4',
+                    formCss: 'user_day',
+                    formColumn: '4',
+                    formRow: '1',
+                    pageDataKey: 'labRequisitions',
+                    dataParent: 'labRequisitions.table',
+                    page: 'LabRequisitions',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'time',
+                    fqn: 'labRequisitions.table.time',
+                    inputType: 'time',
+                    label: 'Time',
+                    tableColumn: '5',
+                    formCss: 'user_time',
+                    formColumn: '5',
+                    formRow: '1',
+                    pageDataKey: 'labRequisitions',
+                    dataParent: 'labRequisitions.table',
+                    page: 'LabRequisitions',
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '2',
+                elements: [
+                  {
+                    elementKey: 'requisition',
+                    fqn: 'labRequisitions.table.requisition',
+                    inputType: 'text',
+                    label: 'Requisition',
+                    formColumn: '1',
+                    formRow: '2',
+                    pageDataKey: 'labRequisitions',
+                    dataParent: 'labRequisitions.table',
+                    page: 'LabRequisitions',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'ordered',
+                    fqn: 'labRequisitions.table.ordered',
+                    inputType: 'text',
+                    label: 'Ordered',
+                    formColumn: '2',
+                    formRow: '2',
+                    pageDataKey: 'labRequisitions',
+                    dataParent: 'labRequisitions.table',
+                    page: 'LabRequisitions',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'collected',
+                    fqn: 'labRequisitions.table.collected',
+                    inputType: 'text',
+                    label: 'Collected',
+                    formColumn: '3',
+                    formRow: '2',
+                    pageDataKey: 'labRequisitions',
+                    dataParent: 'labRequisitions.table',
+                    page: 'LabRequisitions',
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '3',
+                elements: [
+                  {
+                    elementKey: 'report',
+                    fqn: 'labRequisitions.table.report',
+                    inputType: 'text',
+                    label: 'Report',
+                    formColumn: '1',
+                    formRow: '3',
+                    pageDataKey: 'labRequisitions',
+                    dataParent: 'labRequisitions.table',
+                    page: 'LabRequisitions',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'status',
+                    fqn: 'labRequisitions.table.status',
+                    inputType: 'select',
+                    label: 'Status',
+                    formColumn: '2',
+                    formRow: '3',
+                    pageDataKey: 'labRequisitions',
+                    dataParent: 'labRequisitions.table',
+                    page: 'LabRequisitions',
+                    options: [
+                      {
+                        text: 'Ordered'
+                      },
+                      {
+                        text: 'In progress'
+                      },
+                      {
+                        text: 'Pending'
+                      },
+                      {
+                        text: 'Complete'
+                      }
+                    ],
+                    tableKey: 'table'
+                  }
+                ]
+              }
+            ],
+            columnsCount: 5
+          }
+        }
+      ],
+      pageData: {
+        table: []
+      }
+    },
+    medicationOrders: {
+      pageTitle: 'Medication orders',
+      pageDataKey: 'medicationOrders',
+      hasTable: true,
+      tables: [
+        {
+          tableKey: 'table',
+          addButtonText: 'Add a new medication order',
+          tableCells: [
+            {
+              elementKey: 'name',
+              fqn: 'medicationOrders.table.name',
+              inputType: 'text',
+              label: 'Name',
+              tableColumn: '1',
+              formCss: 'user_name',
+              formColumn: '1',
+              formRow: '1',
+              pageDataKey: 'medicationOrders',
+              dataParent: 'medicationOrders.table',
+              page: 'Medication orders',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'profession',
+              fqn: 'medicationOrders.table.profession',
+              inputType: 'text',
+              label: 'Profession',
+              tableColumn: '2',
+              formCss: 'user_pro',
+              formColumn: '2',
+              formRow: '1',
+              pageDataKey: 'medicationOrders',
+              dataParent: 'medicationOrders.table',
+              page: 'Medication orders',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'unit',
+              fqn: 'medicationOrders.table.unit',
+              inputType: 'text',
+              label: 'Unit',
+              tableColumn: '3',
+              formCss: 'user_unit',
+              formColumn: '3',
+              formRow: '1',
+              pageDataKey: 'medicationOrders',
+              dataParent: 'medicationOrders.table',
+              page: 'Medication orders',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'day',
+              fqn: 'medicationOrders.table.day',
+              inputType: 'day',
+              label: 'Day',
+              tableColumn: '4',
+              formCss: 'user_day',
+              formColumn: '4',
+              formRow: '1',
+              pageDataKey: 'medicationOrders',
+              dataParent: 'medicationOrders.table',
+              page: 'Medication orders',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'time',
+              fqn: 'medicationOrders.table.time',
+              inputType: 'time',
+              label: 'Time',
+              tableColumn: '5',
+              formCss: 'user_time',
+              formColumn: '5',
+              formRow: '1',
+              pageDataKey: 'medicationOrders',
+              dataParent: 'medicationOrders.table',
+              page: 'Medication orders',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'medication',
+              fqn: 'medicationOrders.table.medication',
+              inputType: 'text',
+              label: 'Medication',
+              tableColumn: '6',
+              formColumn: '1',
+              formRow: '2',
+              pageDataKey: 'medicationOrders',
+              dataParent: 'medicationOrders.table',
+              page: 'Medication orders',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'dose',
+              fqn: 'medicationOrders.table.dose',
+              inputType: 'text',
+              label: 'Dose',
+              tableColumn: '7',
+              formColumn: '3',
+              formRow: '2',
+              pageDataKey: 'medicationOrders',
+              dataParent: 'medicationOrders.table',
+              page: 'Medication orders',
+              mandatory: 'If medication is filled, this is mandatory',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'route',
+              fqn: 'medicationOrders.table.route',
+              inputType: 'text',
+              label: 'Route',
+              tableColumn: '8',
+              formColumn: '1',
+              formRow: '3',
+              pageDataKey: 'medicationOrders',
+              dataParent: 'medicationOrders.table',
+              page: 'Medication orders',
+              mandatory: 'If medication is filled, this is mandatory',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'frequency',
+              fqn: 'medicationOrders.table.frequency',
+              inputType: 'text',
+              label: 'Frequency',
+              tableColumn: '9',
+              formColumn: '2',
+              formRow: '3',
+              pageDataKey: 'medicationOrders',
+              dataParent: 'medicationOrders.table',
+              page: 'Medication orders',
+              mandatory: 'If medication is filled, this is mandatory',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'quantity',
+              fqn: 'medicationOrders.table.quantity',
+              inputType: 'text',
+              label: 'Quantity',
+              tableColumn: '10',
+              formColumn: '3',
+              formRow: '3',
+              pageDataKey: 'medicationOrders',
+              dataParent: 'medicationOrders.table',
+              page: 'Medication orders',
+              mandatory: 'If medication is filled, this is mandatory',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'refills',
+              fqn: 'medicationOrders.table.refills',
+              inputType: 'number',
+              label: 'Refills',
+              tableColumn: '11',
+              formColumn: '4',
+              formRow: '3',
+              pageDataKey: 'medicationOrders',
+              dataParent: 'medicationOrders.table',
+              page: 'Medication orders',
+              mandatory: 'If medication is filled, this is mandatory',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'notes',
+              fqn: 'medicationOrders.table.notes',
+              inputType: 'textarea',
+              label: 'Notes',
+              tableColumn: '12',
+              formColumn: '1',
+              formRow: '4',
+              pageDataKey: 'medicationOrders',
+              dataParent: 'medicationOrders.table',
+              page: 'Medication orders',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'reason',
+              fqn: 'medicationOrders.table.reason',
+              inputType: 'text',
+              label: 'Reason',
+              tableColumn: '13',
+              formColumn: '2',
+              formRow: '4',
+              pageDataKey: 'medicationOrders',
+              dataParent: 'medicationOrders.table',
+              page: 'Medication orders',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'orderedBy',
+              fqn: 'medicationOrders.table.orderedBy',
+              inputType: 'text',
+              label: 'Ordered by',
+              tableColumn: '14',
+              formColumn: '1',
+              formRow: '5',
+              pageDataKey: 'medicationOrders',
+              dataParent: 'medicationOrders.table',
+              page: 'Medication orders',
+              mandatory: 'If medication is filled, this is mandatory',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'orderDay',
+              fqn: 'medicationOrders.table.orderDay',
+              inputType: 'text',
+              label: 'Order day',
+              tableColumn: '15',
+              formColumn: '2',
+              formRow: '5',
+              pageDataKey: 'medicationOrders',
+              dataParent: 'medicationOrders.table',
+              page: 'Medication orders',
+              mandatory: 'If medication is filled, this is mandatory',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'orderTime',
+              fqn: 'medicationOrders.table.orderTime',
+              inputType: 'text',
+              label: 'Order time',
+              tableColumn: '16',
+              formColumn: '3',
+              formRow: '5',
+              pageDataKey: 'medicationOrders',
+              dataParent: 'medicationOrders.table',
+              page: 'Medication orders',
+              mandatory: 'If medication is filled, this is mandatory',
+              tableKey: 'table'
+            }
+          ],
+          tableForm: {
+            rows: [
+              {
+                formRow: '1',
+                elements: [
+                  {
+                    elementKey: 'name',
+                    fqn: 'medicationOrders.table.name',
+                    inputType: 'text',
+                    label: 'Name',
+                    tableColumn: '1',
+                    formCss: 'user_name',
+                    formColumn: '1',
+                    formRow: '1',
+                    pageDataKey: 'medicationOrders',
+                    dataParent: 'medicationOrders.table',
+                    page: 'Medication orders',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'profession',
+                    fqn: 'medicationOrders.table.profession',
+                    inputType: 'text',
+                    label: 'Profession',
+                    tableColumn: '2',
+                    formCss: 'user_pro',
+                    formColumn: '2',
+                    formRow: '1',
+                    pageDataKey: 'medicationOrders',
+                    dataParent: 'medicationOrders.table',
+                    page: 'Medication orders',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'unit',
+                    fqn: 'medicationOrders.table.unit',
+                    inputType: 'text',
+                    label: 'Unit',
+                    tableColumn: '3',
+                    formCss: 'user_unit',
+                    formColumn: '3',
+                    formRow: '1',
+                    pageDataKey: 'medicationOrders',
+                    dataParent: 'medicationOrders.table',
+                    page: 'Medication orders',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'day',
+                    fqn: 'medicationOrders.table.day',
+                    inputType: 'day',
+                    label: 'Day',
+                    tableColumn: '4',
+                    formCss: 'user_day',
+                    formColumn: '4',
+                    formRow: '1',
+                    pageDataKey: 'medicationOrders',
+                    dataParent: 'medicationOrders.table',
+                    page: 'Medication orders',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'time',
+                    fqn: 'medicationOrders.table.time',
+                    inputType: 'time',
+                    label: 'Time',
+                    tableColumn: '5',
+                    formCss: 'user_time',
+                    formColumn: '5',
+                    formRow: '1',
+                    pageDataKey: 'medicationOrders',
+                    dataParent: 'medicationOrders.table',
+                    page: 'Medication orders',
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '2',
+                elements: [
+                  {
+                    elementKey: 'medication',
+                    fqn: 'medicationOrders.table.medication',
+                    inputType: 'text',
+                    label: 'Medication',
+                    tableColumn: '6',
+                    formColumn: '1',
+                    formRow: '2',
+                    pageDataKey: 'medicationOrders',
+                    dataParent: 'medicationOrders.table',
+                    page: 'Medication orders',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'dose',
+                    fqn: 'medicationOrders.table.dose',
+                    inputType: 'text',
+                    label: 'Dose',
+                    tableColumn: '7',
+                    formColumn: '3',
+                    formRow: '2',
+                    pageDataKey: 'medicationOrders',
+                    dataParent: 'medicationOrders.table',
+                    page: 'Medication orders',
+                    mandatory: 'If medication is filled, this is mandatory',
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '3',
+                elements: [
+                  {
+                    elementKey: 'route',
+                    fqn: 'medicationOrders.table.route',
+                    inputType: 'text',
+                    label: 'Route',
+                    tableColumn: '8',
+                    formColumn: '1',
+                    formRow: '3',
+                    pageDataKey: 'medicationOrders',
+                    dataParent: 'medicationOrders.table',
+                    page: 'Medication orders',
+                    mandatory: 'If medication is filled, this is mandatory',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'frequency',
+                    fqn: 'medicationOrders.table.frequency',
+                    inputType: 'text',
+                    label: 'Frequency',
+                    tableColumn: '9',
+                    formColumn: '2',
+                    formRow: '3',
+                    pageDataKey: 'medicationOrders',
+                    dataParent: 'medicationOrders.table',
+                    page: 'Medication orders',
+                    mandatory: 'If medication is filled, this is mandatory',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'quantity',
+                    fqn: 'medicationOrders.table.quantity',
+                    inputType: 'text',
+                    label: 'Quantity',
+                    tableColumn: '10',
+                    formColumn: '3',
+                    formRow: '3',
+                    pageDataKey: 'medicationOrders',
+                    dataParent: 'medicationOrders.table',
+                    page: 'Medication orders',
+                    mandatory: 'If medication is filled, this is mandatory',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'refills',
+                    fqn: 'medicationOrders.table.refills',
+                    inputType: 'number',
+                    label: 'Refills',
+                    tableColumn: '11',
+                    formColumn: '4',
+                    formRow: '3',
+                    pageDataKey: 'medicationOrders',
+                    dataParent: 'medicationOrders.table',
+                    page: 'Medication orders',
+                    mandatory: 'If medication is filled, this is mandatory',
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '4',
+                elements: [
+                  {
+                    elementKey: 'notes',
+                    fqn: 'medicationOrders.table.notes',
+                    inputType: 'textarea',
+                    label: 'Notes',
+                    tableColumn: '12',
+                    formColumn: '1',
+                    formRow: '4',
+                    pageDataKey: 'medicationOrders',
+                    dataParent: 'medicationOrders.table',
+                    page: 'Medication orders',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'reason',
+                    fqn: 'medicationOrders.table.reason',
+                    inputType: 'text',
+                    label: 'Reason',
+                    tableColumn: '13',
+                    formColumn: '2',
+                    formRow: '4',
+                    pageDataKey: 'medicationOrders',
+                    dataParent: 'medicationOrders.table',
+                    page: 'Medication orders',
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '5',
+                elements: [
+                  {
+                    elementKey: 'orderedBy',
+                    fqn: 'medicationOrders.table.orderedBy',
+                    inputType: 'text',
+                    label: 'Ordered by',
+                    tableColumn: '14',
+                    formColumn: '1',
+                    formRow: '5',
+                    pageDataKey: 'medicationOrders',
+                    dataParent: 'medicationOrders.table',
+                    page: 'Medication orders',
+                    mandatory: 'If medication is filled, this is mandatory',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'orderDay',
+                    fqn: 'medicationOrders.table.orderDay',
+                    inputType: 'text',
+                    label: 'Order day',
+                    tableColumn: '15',
+                    formColumn: '2',
+                    formRow: '5',
+                    pageDataKey: 'medicationOrders',
+                    dataParent: 'medicationOrders.table',
+                    page: 'Medication orders',
+                    mandatory: 'If medication is filled, this is mandatory',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'orderTime',
+                    fqn: 'medicationOrders.table.orderTime',
+                    inputType: 'text',
+                    label: 'Order time',
+                    tableColumn: '16',
+                    formColumn: '3',
+                    formRow: '5',
+                    pageDataKey: 'medicationOrders',
+                    dataParent: 'medicationOrders.table',
+                    page: 'Medication orders',
+                    mandatory: 'If medication is filled, this is mandatory',
+                    tableKey: 'table'
+                  }
+                ]
+              }
+            ],
+            columnsCount: 5
+          }
+        }
+      ],
+      pageData: {
+        table: []
+      }
+    },
+    medAdminRec: {
+      pageTitle: 'MAR',
+      pageDataKey: 'medAdminRec',
+      hasTable: true,
+      tables: [
+        {
+          tableKey: 'table',
+          addButtonText: 'Add a new MAR',
+          tableCells: [
+            {
+              elementKey: 'status',
+              fqn: 'medAdminRec.table.status',
+              inputType: 'select',
+              label: 'Status',
+              tableColumn: '1',
+              formColumn: '1',
+              formRow: '1',
+              pageDataKey: 'medAdminRec',
+              dataParent: 'medAdminRec.table',
+              page: 'Medication administration record',
+              options: [
+                {
+                  text: 'discontinued'
+                },
+                {
+                  text: 'as needed'
+                }
+              ],
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'medication',
+              fqn: 'medAdminRec.table.medication',
+              inputType: 'text',
+              label: 'Medication',
+              tableColumn: '2',
+              formColumn: '2',
+              formRow: '1',
+              pageDataKey: 'medAdminRec',
+              dataParent: 'medAdminRec.table',
+              page: 'Medication administration record',
+              helperText:
+                'Medication-NL-(Medication name-NL-Dose-NL-Route-NL-Frequency-NL-Notes-NL-Prescriber)',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'orderedBy',
+              fqn: 'medAdminRec.table.orderedBy',
+              inputType: 'text',
+              label: 'Ordered by',
+              tableColumn: '3',
+              formColumn: '3',
+              formRow: '1',
+              pageDataKey: 'medAdminRec',
+              dataParent: 'medAdminRec.table',
+              page: 'Medication administration record',
+              mandatory: 'yes',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'yesterday',
+              fqn: 'medAdminRec.table.yesterday',
+              inputType: 'calculated',
+              label: 'Yesterday',
+              tableColumn: '4',
+              formColumn: '1',
+              formRow: '2',
+              pageDataKey: 'medAdminRec',
+              dataParent: 'medAdminRec.table',
+              page: 'Medication administration record',
+              options: [
+                {
+                  text: "[Yesterday's day]"
+                },
+                {
+                  text: '(Previous times)'
+                }
+              ],
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'todayPlan',
+              fqn: 'medAdminRec.table.todayPlan',
+              inputType: 'text',
+              label: 'Today plan',
+              tableColumn: '5',
+              formColumn: '2',
+              formRow: '2',
+              pageDataKey: 'medAdminRec',
+              dataParent: 'medAdminRec.table',
+              page: 'Medication administration record',
+              options: [
+                {
+                  text: "[Today's day] plan"
+                }
+              ],
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'todayGiven',
+              fqn: 'medAdminRec.table.todayGiven',
+              inputType: 'text',
+              label: 'Today given',
+              tableColumn: '6',
+              formColumn: '3',
+              formRow: '2',
+              pageDataKey: 'medAdminRec',
+              dataParent: 'medAdminRec.table',
+              page: 'Medication administration record',
+              options: [
+                {
+                  text: "[Today's day] given"
+                }
+              ],
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'administeredBy',
+              fqn: 'medAdminRec.table.administeredBy',
+              inputType: 'text',
+              label: 'Administered by',
+              tableColumn: '7',
+              formColumn: '1',
+              formRow: '3',
+              pageDataKey: 'medAdminRec',
+              dataParent: 'medAdminRec.table',
+              page: 'Medication administration record',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'actualTime',
+              fqn: 'medAdminRec.table.actualTime',
+              inputType: 'text',
+              label: 'Actual time',
+              tableColumn: '8',
+              formColumn: '2',
+              formRow: '3',
+              pageDataKey: 'medAdminRec',
+              dataParent: 'medAdminRec.table',
+              page: 'Medication administration record',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'reconcile',
+              fqn: 'medAdminRec.table.reconcile',
+              inputType: 'text',
+              label: 'Reconcile',
+              tableColumn: '9',
+              formColumn: '3',
+              formRow: '3',
+              pageDataKey: 'medAdminRec',
+              dataParent: 'medAdminRec.table',
+              page: 'Medication administration record',
+              tableKey: 'table'
+            }
+          ],
+          tableForm: {
+            rows: [
+              {
+                formRow: '1',
+                elements: [
+                  {
+                    elementKey: 'status',
+                    fqn: 'medAdminRec.table.status',
+                    inputType: 'select',
+                    label: 'Status',
+                    tableColumn: '1',
+                    formColumn: '1',
+                    formRow: '1',
+                    pageDataKey: 'medAdminRec',
+                    dataParent: 'medAdminRec.table',
+                    page: 'Medication administration record',
+                    options: [
+                      {
+                        text: 'discontinued'
+                      },
+                      {
+                        text: 'as needed'
+                      }
+                    ],
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'medication',
+                    fqn: 'medAdminRec.table.medication',
+                    inputType: 'text',
+                    label: 'Medication',
+                    tableColumn: '2',
+                    formColumn: '2',
+                    formRow: '1',
+                    pageDataKey: 'medAdminRec',
+                    dataParent: 'medAdminRec.table',
+                    page: 'Medication administration record',
+                    helperText:
+                      'Medication-NL-(Medication name-NL-Dose-NL-Route-NL-Frequency-NL-Notes-NL-Prescriber)',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'orderedBy',
+                    fqn: 'medAdminRec.table.orderedBy',
+                    inputType: 'text',
+                    label: 'Ordered by',
+                    tableColumn: '3',
+                    formColumn: '3',
+                    formRow: '1',
+                    pageDataKey: 'medAdminRec',
+                    dataParent: 'medAdminRec.table',
+                    page: 'Medication administration record',
+                    mandatory: 'yes',
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '2',
+                elements: [
+                  {
+                    elementKey: 'yesterday',
+                    fqn: 'medAdminRec.table.yesterday',
+                    inputType: 'calculated',
+                    label: 'Yesterday',
+                    tableColumn: '4',
+                    formColumn: '1',
+                    formRow: '2',
+                    pageDataKey: 'medAdminRec',
+                    dataParent: 'medAdminRec.table',
+                    page: 'Medication administration record',
+                    options: [
+                      {
+                        text: "[Yesterday's day]"
+                      },
+                      {
+                        text: '(Previous times)'
+                      }
+                    ],
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'todayPlan',
+                    fqn: 'medAdminRec.table.todayPlan',
+                    inputType: 'text',
+                    label: 'Today plan',
+                    tableColumn: '5',
+                    formColumn: '2',
+                    formRow: '2',
+                    pageDataKey: 'medAdminRec',
+                    dataParent: 'medAdminRec.table',
+                    page: 'Medication administration record',
+                    options: [
+                      {
+                        text: "[Today's day] plan"
+                      }
+                    ],
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'todayGiven',
+                    fqn: 'medAdminRec.table.todayGiven',
+                    inputType: 'text',
+                    label: 'Today given',
+                    tableColumn: '6',
+                    formColumn: '3',
+                    formRow: '2',
+                    pageDataKey: 'medAdminRec',
+                    dataParent: 'medAdminRec.table',
+                    page: 'Medication administration record',
+                    options: [
+                      {
+                        text: "[Today's day] given"
+                      }
+                    ],
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '3',
+                elements: [
+                  {
+                    elementKey: 'administeredBy',
+                    fqn: 'medAdminRec.table.administeredBy',
+                    inputType: 'text',
+                    label: 'Administered by',
+                    tableColumn: '7',
+                    formColumn: '1',
+                    formRow: '3',
+                    pageDataKey: 'medAdminRec',
+                    dataParent: 'medAdminRec.table',
+                    page: 'Medication administration record',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'actualTime',
+                    fqn: 'medAdminRec.table.actualTime',
+                    inputType: 'text',
+                    label: 'Actual time',
+                    tableColumn: '8',
+                    formColumn: '2',
+                    formRow: '3',
+                    pageDataKey: 'medAdminRec',
+                    dataParent: 'medAdminRec.table',
+                    page: 'Medication administration record',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'reconcile',
+                    fqn: 'medAdminRec.table.reconcile',
+                    inputType: 'text',
+                    label: 'Reconcile',
+                    tableColumn: '9',
+                    formColumn: '3',
+                    formRow: '3',
+                    pageDataKey: 'medAdminRec',
+                    dataParent: 'medAdminRec.table',
+                    page: 'Medication administration record',
+                    tableKey: 'table'
+                  }
+                ]
+              }
+            ],
+            columnsCount: 3
+          }
+        }
+      ],
+      pageData: {
+        table: []
+      }
+    },
+    dischargeSummary: {
+      pageTitle: 'Discharge summary',
+      pageDataKey: 'dischargeSummary',
+      hasForm: true,
+      page_form: {
+        rows: [
+          {
+            formRow: '1',
+            elements: [
+              {
+                elementKey: 'admissionDay',
+                fqn: 'dischargeSummary.admissionDay',
+                inputType: 'text',
+                label: 'Admission day',
+                formColumn: '1',
+                formRow: '1',
+                pageDataKey: 'dischargeSummary',
+                dataParent: 'dischargeSummary',
+                page: 'Discharge summary'
+              },
+              {
+                elementKey: 'dischargingPhysician/np',
+                fqn: 'dischargeSummary.dischargingPhysician/np',
+                inputType: 'select',
+                label: 'Discharging physician/NP',
+                formColumn: '2',
+                formRow: '1',
+                pageDataKey: 'dischargeSummary',
+                dataParent: 'dischargeSummary',
+                page: 'Discharge summary',
+                options: [
+                  {
+                    text: 'Dr. Notley'
+                  },
+                  {
+                    text: 'Dr. Hunicutt'
+                  },
+                  {
+                    text: 'Dr. Lee'
+                  },
+                  {
+                    text: 'Dr. Malik'
+                  },
+                  {
+                    text: 'Dr. Ng'
+                  },
+                  {
+                    text: 'Dr. Walker'
+                  },
+                  {
+                    text: 'Dr. Brooks'
+                  }
+                ]
+              },
+              {
+                elementKey: 'clinicalSummary',
+                fqn: 'dischargeSummary.clinicalSummary',
+                inputType: 'text',
+                label: 'Clinical summary',
+                formColumn: '3',
+                formRow: '1',
+                pageDataKey: 'dischargeSummary',
+                dataParent: 'dischargeSummary',
+                page: 'Discharge summary'
+              }
+            ]
+          },
+          {
+            formRow: '2',
+            elements: [
+              {
+                elementKey: 'procedures',
+                fqn: 'dischargeSummary.procedures',
+                inputType: 'text',
+                label: 'Procedures',
+                formColumn: '1',
+                formRow: '2',
+                pageDataKey: 'dischargeSummary',
+                dataParent: 'dischargeSummary',
+                page: 'Discharge summary'
+              },
+              {
+                elementKey: 'dischargeRx',
+                fqn: 'dischargeSummary.dischargeRx',
+                inputType: 'text',
+                label: 'Discharge Rx',
+                formColumn: '2',
+                formRow: '2',
+                pageDataKey: 'dischargeSummary',
+                dataParent: 'dischargeSummary',
+                page: 'Discharge summary'
+              },
+              {
+                elementKey: 'referredTo',
+                fqn: 'dischargeSummary.referredTo',
+                inputType: 'text',
+                label: 'Referred to',
+                formColumn: '3',
+                formRow: '2',
+                pageDataKey: 'dischargeSummary',
+                dataParent: 'dischargeSummary',
+                page: 'Discharge summary'
+              }
+            ]
+          },
+          {
+            formRow: '3',
+            elements: [
+              {
+                elementKey: 'dischargeNotes',
+                fqn: 'dischargeSummary.dischargeNotes',
+                inputType: 'textarea',
+                label: 'Discharge notes',
+                formColumn: '1',
+                formRow: '3',
+                pageDataKey: 'dischargeSummary',
+                dataParent: 'dischargeSummary',
+                page: 'Discharge summary'
+              },
+              {
+                elementKey: 'dischargedTo',
+                fqn: 'dischargeSummary.dischargedTo',
+                inputType: 'select',
+                label: 'Discharged to',
+                formColumn: '2',
+                formRow: '3',
+                pageDataKey: 'dischargeSummary',
+                dataParent: 'dischargeSummary',
+                page: 'Discharge summary',
+                options: [
+                  {
+                    text: 'home'
+                  },
+                  {
+                    text: 'deceased'
+                  },
+                  {
+                    text: 'transferred'
+                  }
+                ]
+              },
+              {
+                elementKey: 'dischargedBy',
+                fqn: 'dischargeSummary.dischargedBy',
+                inputType: 'text',
+                label: 'Discharged by',
+                formColumn: '3',
+                formRow: '3',
+                pageDataKey: 'dischargeSummary',
+                dataParent: 'dischargeSummary',
+                page: 'Discharge summary'
+              }
+            ]
+          },
+          {
+            formRow: '4',
+            elements: [
+              {
+                elementKey: 'role',
+                fqn: 'dischargeSummary.role',
+                inputType: 'text',
+                label: 'Role',
+                formColumn: '1',
+                formRow: '4',
+                pageDataKey: 'dischargeSummary',
+                dataParent: 'dischargeSummary',
+                page: 'Discharge summary'
+              },
+              {
+                elementKey: 'dischargeDay',
+                fqn: 'dischargeSummary.dischargeDay',
+                inputType: 'day',
+                label: 'Discharge day',
+                formColumn: '2',
+                formRow: '4',
+                pageDataKey: 'dischargeSummary',
+                dataParent: 'dischargeSummary',
+                page: 'Discharge summary'
+              },
+              {
+                elementKey: 'dischargeTime',
+                fqn: 'dischargeSummary.dischargeTime',
+                inputType: 'time',
+                label: 'Discharge time',
+                formColumn: '3',
+                formRow: '4',
+                pageDataKey: 'dischargeSummary',
+                dataParent: 'dischargeSummary',
+                page: 'Discharge summary'
+              }
+            ]
+          }
+        ],
+        columnsCount: 3
+      },
+      pageData: {}
+    },
+    billing: {
+      pageTitle: 'Billing',
+      pageDataKey: 'billing',
+      hasForm: true,
+      page_form: {
+        rows: [
+          {
+            formRow: '1',
+            elements: [
+              {
+                elementKey: 'msp',
+                fqn: 'billing.msp',
+                inputType: 'checkbox',
+                label: 'MSP',
+                formColumn: '1',
+                formRow: '1',
+                pageDataKey: 'billing',
+                dataParent: 'billing',
+                page: 'Billing'
+              }
+            ]
+          },
+          {
+            formRow: '2',
+            elements: [
+              {
+                elementKey: 'thirdParty',
+                fqn: 'billing.thirdParty',
+                inputType: 'checkbox',
+                label: 'Third party',
+                formColumn: '1',
+                formRow: '2',
+                pageDataKey: 'billing',
+                dataParent: 'billing',
+                page: 'Billing'
+              }
+            ]
+          },
+          {
+            formRow: '3',
+            elements: [
+              {
+                elementKey: 'federal',
+                fqn: 'billing.federal',
+                inputType: 'checkbox',
+                label: 'Federal',
+                formColumn: '1',
+                formRow: '3',
+                pageDataKey: 'billing',
+                dataParent: 'billing',
+                page: 'Billing'
+              }
+            ]
+          }
+        ],
+        columnsCount: 1
+      },
       pageData: {}
     }
   }

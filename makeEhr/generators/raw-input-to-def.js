@@ -293,12 +293,15 @@ class RawInputToDef {
         let tableCells = this._pageTableCells(container)
         let tableForm = this._extractTableForm(container, tableCells)
         assert.ok(container.options,'Need options property to set up the add button for table ' + key)
-        let table = {
-          tableKey: container.containerKey,
-          addButtonText: container.options,
-          tableCells: tableCells,
-          tableForm: tableForm
-        }
+        let reducedCells = tableCells.map(cell => {
+          let nCell = Object.assign({},cell)
+          if (nCell.formFieldSet) {
+            delete nCell.formFieldSet
+          }
+          return nCell
+        })
+
+        let table = { tableKey: container.containerKey, addButtonText: container.options, tableCells: reducedCells, tableForm: tableForm }
         uiP.tables.push(table)
       } else if (container.containerType === TABLE_COL) {
         // TODO
@@ -360,17 +363,14 @@ class RawInputToDef {
           tableCells.push(child)
         })
       }
-      // else {
       tableCells.push(element)
-      // }
     })
     // sort by tableColumn
     tableCells.sort((a, b) => a.tableColumn - b.tableColumn)
     tableCells.forEach( (cell) => {
       let cI = cell.inputType
       if (NO_SHOW_IN_TABLE_ELEMENTS.indexOf(cI) >= 0) {
-        let tableCss = cell.tableCss
-        tableCss += (tableCss ? ' ' : '') + 'hide-table-element'
+        let tableCss = (cell.tableCss ? cell.tableCss + ' ' : '') + 'hide-table-element'
         cell.tableCss = tableCss
       }
     })
@@ -399,7 +399,6 @@ class RawInputToDef {
         let formFieldSet = this._extractFieldSet(element, tableCells, tableKey)
         element.formFieldSet = formFieldSet
         delete element.elements
-
       }
     })
     this._sortFormElements(rows)

@@ -17,23 +17,23 @@
 {path: /ehr/current/assessments}	{routeName: respiratory}	{pageDataKey: respiratory}	{label: Respiratory}	{redirect: }	{generateComponent: yes}
 {path: /ehr/current/assessments}	{routeName: cardiovascular}	{pageDataKey: cardiovascular}	{label: Cardiovascular}	{redirect: }	{generateComponent: yes}
 {path: /ehr/current/assessments}	{routeName: gastrointestinal}	{pageDataKey: gastrointestinal}	{label: Gastrointestinal}	{redirect: }	{generateComponent: yes}
-{path: /ehr/current/assessments}	{routeName: genitourinary}	{pageDataKey: genitourinary}	{label: Genitourinary}	{redirect: }	eCell
-{path: /ehr/current/assessments}	{routeName: musculoskeletal}	{pageDataKey: musculoskeletal}	{label: Musculoskeletal}	{redirect: }	eCell
-{path: /ehr/current/assessments}	{routeName: pain}	{pageDataKey: pain}	{label: Pain}	{redirect: }	eCell
-{path: /ehr/current/assessments}	{routeName: biopsychosocial}	{pageDataKey: biopsychosocial}	{label: Biopsychosocial}	{redirect: }	eCell
+{path: /ehr/current/assessments}	{routeName: genitourinary}	{pageDataKey: genitourinary}	{label: Genitourinary}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current/assessments}	{routeName: musculoskeletal}	{pageDataKey: musculoskeletal}	{label: Musculoskeletal}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current/assessments}	{routeName: pain}	{pageDataKey: pain}	{label: Pain}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current/assessments}	{routeName: biopsychosocial}	{pageDataKey: biopsychosocial}	{label: Biopsychosocial}	{redirect: }	{generateComponent: yes}
 {path: /ehr/current}	{routeName: no-med}	eCell	{label: Non-medication orders}	{redirect: no-med-orders}	eCell
-{path: /ehr/current/no-med}	{routeName: no-med-orders}	{pageDataKey: nonmedOrders}	{label: Orders}	{redirect: }	eCell
-{path: /ehr/current/no-med}	{routeName: referrals}	{pageDataKey: referrals}	{label: Referrals to other disciplines}	{redirect: }	eCell
-{path: /ehr/current/no-med}	{routeName: lab-requisitions}	{pageDataKey: labRequisitions}	{label: Lab requisitions}	{redirect: }	eCell
-{path: /ehr/current}	{routeName: meds}	{pageDataKey: medicationOrders}	{label: Medication orders}	{redirect: }	eCell
-{path: /ehr/current}	{routeName: mar}	{pageDataKey: medAdminRec}	{label: MAR}	{redirect: }	eCell
-{path: /ehr/current}	{routeName: discharge}	{pageDataKey: dischargeSummary}	{label: Discharge summary}	{redirect: }	eCell
-{path: /ehr/current}	{routeName: billing}	{pageDataKey: billing}	{label: Billing}	{redirect: }	eCell
+{path: /ehr/current/no-med}	{routeName: no-med-orders}	{pageDataKey: nonmedOrders}	{label: Orders}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current/no-med}	{routeName: referrals}	{pageDataKey: referrals}	{label: Referrals to other disciplines}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current/no-med}	{routeName: lab-requisitions}	{pageDataKey: labRequisitions}	{label: Lab requisitions}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current}	{routeName: meds}	{pageDataKey: medicationOrders}	{label: Medication orders}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current}	{routeName: mar}	{pageDataKey: medAdminRec}	{label: MAR}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current}	{routeName: discharge}	{pageDataKey: dischargeSummary}	{label: Discharge summary}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current}	{routeName: billing}	{pageDataKey: billing}	{label: Billing}	{redirect: }	{generateComponent: yes}
 {path: /ehr}	{routeName: chart}	eCell	{label: Patient chart}	{redirect: progress-notes}	eCell
-{path: /ehr/chart}	{routeName: progress-notes}	{pageDataKey: progressNotes}	{label: Progress notes}	{redirect: }	eCell
-{path: /ehr/chart}	{routeName: care-plan}	{pageDataKey: carePlan}	{label: Interprofessional plan of care}	{redirect: }	eCell
+{path: /ehr/chart}	{routeName: progress-notes}	{pageDataKey: progressNotes}	{label: Progress notes}	{redirect: }	{generateComponent: yes}
+{path: /ehr/chart}	{routeName: care-plan}	{pageDataKey: carePlan}	{label: Interprofessional plan of care}	{redirect: }	{generateComponent: yes}
 {path: /ehr/chart}	{routeName: reports}	eCell	{label: Reports and documents}	{redirect: consults}	eCell
-{path: /ehr/chart/reports}	{routeName: consults}	{pageDataKey: consultants}	{label: Consults}	{redirect: }	eCell
-{path: /ehr/chart/reports}	{routeName: lab-reports}	{pageDataKey: labResults}	{label: Lab Reports}	{redirect: }	eCell
-{path: /ehr/chart/reports}	{routeName: diagnostic-reports}	{pageDataKey: medicalImaging}	{label: Diagnostic reports}	{redirect: }	eCell
-{path: /ehr/chart/reports}	{routeName: operative-anaesthesia}	{pageDataKey: operationReports}	{label: Operative reports and anaesthesia record}	{redirect: }	eCell
+{path: /ehr/chart/reports}	{routeName: consults}	{pageDataKey: consultants}	{label: Consults}	{redirect: }	{generateComponent: yes}
+{path: /ehr/chart/reports}	{routeName: lab-reports}	{pageDataKey: labResults}	{label: Lab Reports}	{redirect: }	{generateComponent: yes}
+{path: /ehr/chart/reports}	{routeName: diagnostic-reports}	{pageDataKey: medicalImaging}	{label: Diagnostic reports}	{redirect: }	{generateComponent: yes}
+{path: /ehr/chart/reports}	{routeName: operative-anaesthesia}	{pageDataKey: operationReports}	{label: Operative reports and anaesthesia record}	{redirect: }	{generateComponent: yes}

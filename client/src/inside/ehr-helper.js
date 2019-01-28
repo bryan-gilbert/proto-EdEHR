@@ -14,7 +14,7 @@ const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
 export default class EhrHelp {
   constructor(component, store, pageKey, uiProps) {
-    // the commponent reference is needed to save page form data
+    // TODO see if the commponent reference is needed to save page form data
     debugehr('Construct helper', pageKey)
     this.component = component
     this.$store = store
@@ -61,7 +61,7 @@ export default class EhrHelp {
     if (pageDef && pageDef.tables) {
       pageDef.tables.forEach(table => {
         if (table.tableCells.length > 8) {
-          console.log('transpose table', table)
+          // console.log('transpose table', table)
           this.setupColumnData(pageDef, table, pageKey)
           // console.log('transposed table', table.transposedColumns)
         }
@@ -91,10 +91,6 @@ export default class EhrHelp {
       pageDef = this.prepareAsLoadedData(pageKey)
     }
     return pageDef.asLoadedData
-  }
-
-  getTableData() {
-    // TODO move tableData code from compoent here
   }
 
   /**

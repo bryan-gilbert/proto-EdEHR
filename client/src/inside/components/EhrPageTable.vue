@@ -5,8 +5,8 @@
     div(v-if="tableDef.isTransposed", class="column_table")
       table.table
         tbody
-          tr(v-for="column in transposedColumns")
-            td(v-for="cell in column", :class="tableCss(cell)") {{ cell.value }}
+          tr(v-for="column in transposedColumns", :class="tableColumnCss(column)")
+            td(v-for="cell in column", :class="tableElementCss(cell)") {{ cell.value }}
 
     div(v-if="!tableDef.isTransposed", class="row_table")
       table.table
@@ -67,7 +67,18 @@ export default {
     }
   },
   methods: {
-    tableCss: function(element) {
+    tableColumnCss: function(column) {
+      let hide = 'hide-table-element'
+      let css = hide
+      column.forEach((cell) => {
+        if (! cell.tableCss.includes(hide)) {
+          console.log('cell css ', cell.tableCss)
+          css = ''
+        }
+      })
+      return css
+    },
+    tableElementCss: function(element) {
       return element.tableCss ? element.tableCss : 'noClass'
     },
     showDialog: function() {
@@ -128,10 +139,6 @@ table,
   }
 }
 
-.hide-table-element {
-  border: 1px solid blue;
-  display:none;
-}
 .EhrPageTable {
 }
 </style>
