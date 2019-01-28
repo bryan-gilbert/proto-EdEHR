@@ -72,6 +72,9 @@ $pageWidth: 1024px;
     background-color: $white;
     /*padding-left: 0;*/
     overflow: hidden;
+    &.columns {
+      margin-bottom: 0;
+    }
   }
   &__main_content {
   }
