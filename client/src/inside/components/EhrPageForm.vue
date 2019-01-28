@@ -59,7 +59,7 @@ export default {
     formColClass: function(element) {
       // TODO determine correct css class based on form's column count
       console.log('EhrPageForm need to get correct css class here based on form column count')
-      return element.formCss ? element.formCss : 'is-one-thirds'
+      return element.formCss ? element.formCss : 'is-one-third'
     },
     refresh() {
       console.log('EhrPageForm rehresh for page key', this.pageDataKey)
