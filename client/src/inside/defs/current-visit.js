@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 module.exports = function() {
   return {
     visit: {
@@ -221,6 +222,7 @@ module.exports = function() {
               inputType: 'text',
               label: 'Name',
               tableColumn: '1',
+              formCss: 'user_name',
               formColumn: '1',
               formRow: '1',
               pageDataKey: 'visit',
@@ -234,6 +236,7 @@ module.exports = function() {
               inputType: 'text',
               label: 'Unit',
               tableColumn: '1',
+              formCss: 'user_unit',
               formColumn: '3',
               formRow: '1',
               pageDataKey: 'visit',
@@ -247,6 +250,7 @@ module.exports = function() {
               inputType: 'text',
               label: 'Day',
               tableColumn: '1',
+              formCss: 'user_day',
               formColumn: '4',
               formRow: '1',
               pageDataKey: 'visit',
@@ -260,6 +264,7 @@ module.exports = function() {
               inputType: 'text',
               label: 'Time',
               tableColumn: '1',
+              formCss: 'user_time',
               formColumn: '5',
               formRow: '1',
               pageDataKey: 'vitals',
@@ -286,6 +291,7 @@ module.exports = function() {
               inputType: 'text',
               label: 'Profession',
               tableColumn: '1',
+              formCss: 'user_pro',
               formColumn: '2',
               formRow: '1',
               pageDataKey: 'visit',
@@ -524,6 +530,7 @@ module.exports = function() {
                     inputType: 'text',
                     label: 'Name',
                     tableColumn: '1',
+                    formCss: 'user_name',
                     formColumn: '1',
                     formRow: '1',
                     pageDataKey: 'visit',
@@ -537,6 +544,7 @@ module.exports = function() {
                     inputType: 'text',
                     label: 'Profession',
                     tableColumn: '1',
+                    formCss: 'user_pro',
                     formColumn: '2',
                     formRow: '1',
                     pageDataKey: 'visit',
@@ -550,6 +558,7 @@ module.exports = function() {
                     inputType: 'text',
                     label: 'Unit',
                     tableColumn: '1',
+                    formCss: 'user_unit',
                     formColumn: '3',
                     formRow: '1',
                     pageDataKey: 'visit',
@@ -563,6 +572,7 @@ module.exports = function() {
                     inputType: 'text',
                     label: 'Day',
                     tableColumn: '1',
+                    formCss: 'user_day',
                     formColumn: '4',
                     formRow: '1',
                     pageDataKey: 'visit',
@@ -576,6 +586,7 @@ module.exports = function() {
                     inputType: 'text',
                     label: 'Time',
                     tableColumn: '1',
+                    formCss: 'user_time',
                     formColumn: '5',
                     formRow: '1',
                     pageDataKey: 'vitals',
@@ -857,87 +868,87 @@ module.exports = function() {
       hasTable: true,
       tables: [
         {
-          tableKey: 'aments',
+          tableKey: 'table',
           addButtonText: 'Add new neurological assessment',
           tableCells: [
             {
               elementKey: 'name',
-              fqn: 'neurological.aments.name',
+              fqn: 'neurological.table.name',
               inputType: 'text',
               label: 'Name',
               tableCss: 'trans-table-cell',
               tableColumn: '1',
-              formCss: 'is-3',
+              formCss: 'user_name',
               formColumn: '1',
               formRow: '1',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments',
+              dataParent: 'neurological.table',
               page: 'Assessments: Neurological',
-              tableKey: 'aments'
+              tableKey: 'table'
             },
             {
               elementKey: 'profession',
-              fqn: 'neurological.aments.profession',
+              fqn: 'neurological.table.profession',
               inputType: 'text',
               label: 'Profession',
               tableCss: 'trans-table-cell',
               tableColumn: '2',
-              formCss: 'is-3',
+              formCss: 'user_pro',
               formColumn: '2',
               formRow: '1',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments',
+              dataParent: 'neurological.table',
               page: 'Assessments: Neurological',
-              tableKey: 'aments'
+              tableKey: 'table'
             },
             {
               elementKey: 'unit',
-              fqn: 'neurological.aments.unit',
+              fqn: 'neurological.table.unit',
               inputType: 'text',
               label: 'Unit',
               tableCss: 'trans-table-cell',
               tableColumn: '3',
-              formCss: 'is-2',
+              formCss: 'user_unit',
               formColumn: '3',
               formRow: '1',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments',
+              dataParent: 'neurological.table',
               page: 'Assessments: Neurological',
-              tableKey: 'aments'
+              tableKey: 'table'
             },
             {
               elementKey: 'day',
-              fqn: 'neurological.aments.day',
+              fqn: 'neurological.table.day',
               inputType: 'day',
               label: 'Day',
               tableCss: 'trans-table-cell',
               tableColumn: '4',
-              formCss: 'is-2',
+              formCss: 'user_day',
               formColumn: '4',
               formRow: '1',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments',
+              dataParent: 'neurological.table',
               page: 'Assessments: Neurological',
-              tableKey: 'aments'
+              tableKey: 'table'
             },
             {
               elementKey: 'time',
-              fqn: 'neurological.aments.time',
+              fqn: 'neurological.table.time',
               inputType: 'time',
               label: 'Time',
               tableCss: 'trans-table-cell',
               tableColumn: '5',
-              formCss: 'is-2',
+              formCss: 'user_time',
               formColumn: '5',
               formRow: '1',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments',
+              dataParent: 'neurological.table',
               page: 'Assessments: Neurological',
-              tableKey: 'aments'
+              tableKey: 'table'
             },
             {
               elementKey: 'status',
-              fqn: 'neurological.aments.status',
+              fqn: 'neurological.table.status',
               inputType: 'fieldset',
               label: 'Status',
               tableCss: 'trans-table-cell hide-table-element',
@@ -946,125 +957,11 @@ module.exports = function() {
               formColumn: '1',
               formRow: '2',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments',
+              dataParent: 'neurological.table',
               page: 'Assessments: Neurological',
-              elements: [
-                {
-                  elementKey: 'alert',
-                  fqn: 'neurological.aments.status.alert',
-                  inputType: 'checkbox',
-                  label: 'Alert',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '7',
-                  fieldset: 'status',
-                  fsetRow: '1',
-                  fsetCol: '1',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.status',
-                  page: 'Assessments: Neurological',
-                  tableKey: 'aments',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'oriented',
-                  fqn: 'neurological.aments.status.oriented',
-                  inputType: 'checkbox',
-                  label: 'Oriented',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '8',
-                  fieldset: 'status',
-                  fsetRow: '2',
-                  fsetCol: '1',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.status',
-                  page: 'Assessments: Neurological',
-                  tableKey: 'aments',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'confused',
-                  fqn: 'neurological.aments.status.confused',
-                  inputType: 'checkbox',
-                  label: 'Confused',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '9',
-                  fieldset: 'status',
-                  fsetRow: '3',
-                  fsetCol: '1',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.status',
-                  page: 'Assessments: Neurological',
-                  tableKey: 'aments',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'drowsy',
-                  fqn: 'neurological.aments.status.drowsy',
-                  inputType: 'checkbox',
-                  label: 'Drowsy',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '10',
-                  fieldset: 'status',
-                  fsetRow: '4',
-                  fsetCol: '1',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.status',
-                  page: 'Assessments: Neurological',
-                  tableKey: 'aments',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'unresponsive',
-                  fqn: 'neurological.aments.status.unresponsive',
-                  inputType: 'checkbox',
-                  label: 'Unresponsive',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '11',
-                  fieldset: 'status',
-                  fsetRow: '5',
-                  fsetCol: '1',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.status',
-                  page: 'Assessments: Neurological',
-                  tableKey: 'aments',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'dizziness',
-                  fqn: 'neurological.aments.status.dizziness',
-                  inputType: 'checkbox',
-                  label: 'Dizziness',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '12',
-                  fieldset: 'status',
-                  fsetRow: '6',
-                  fsetCol: '1',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.status',
-                  page: 'Assessments: Neurological',
-                  tableKey: 'aments',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'blurredVision',
-                  fqn: 'neurological.aments.status.blurredVision',
-                  inputType: 'checkbox',
-                  label: 'Blurred vision',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '13',
-                  fieldset: 'status',
-                  fsetRow: '7',
-                  fsetCol: '1',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.status',
-                  page: 'Assessments: Neurological',
-                  tableKey: 'aments',
-                  formColumn: '1'
-                }
-              ],
               containerType: 'fieldset',
               containerKey: 'status',
-              tableKey: 'aments',
+              tableKey: 'table',
               formFieldSet: {
                 rows: [
                   {
@@ -1072,7 +969,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'alert',
-                        fqn: 'neurological.aments.status.alert',
+                        fqn: 'neurological.table.status.alert',
                         inputType: 'checkbox',
                         label: 'Alert',
                         tableCss: 'trans-table-cell',
@@ -1081,9 +978,9 @@ module.exports = function() {
                         fsetRow: '1',
                         fsetCol: '1',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.status',
+                        dataParent: 'neurological.table.status',
                         page: 'Assessments: Neurological',
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       }
                     ]
@@ -1093,7 +990,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'oriented',
-                        fqn: 'neurological.aments.status.oriented',
+                        fqn: 'neurological.table.status.oriented',
                         inputType: 'checkbox',
                         label: 'Oriented',
                         tableCss: 'trans-table-cell',
@@ -1102,9 +999,9 @@ module.exports = function() {
                         fsetRow: '2',
                         fsetCol: '1',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.status',
+                        dataParent: 'neurological.table.status',
                         page: 'Assessments: Neurological',
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       }
                     ]
@@ -1114,7 +1011,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'confused',
-                        fqn: 'neurological.aments.status.confused',
+                        fqn: 'neurological.table.status.confused',
                         inputType: 'checkbox',
                         label: 'Confused',
                         tableCss: 'trans-table-cell',
@@ -1123,9 +1020,9 @@ module.exports = function() {
                         fsetRow: '3',
                         fsetCol: '1',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.status',
+                        dataParent: 'neurological.table.status',
                         page: 'Assessments: Neurological',
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       }
                     ]
@@ -1135,7 +1032,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'drowsy',
-                        fqn: 'neurological.aments.status.drowsy',
+                        fqn: 'neurological.table.status.drowsy',
                         inputType: 'checkbox',
                         label: 'Drowsy',
                         tableCss: 'trans-table-cell',
@@ -1144,9 +1041,9 @@ module.exports = function() {
                         fsetRow: '4',
                         fsetCol: '1',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.status',
+                        dataParent: 'neurological.table.status',
                         page: 'Assessments: Neurological',
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       }
                     ]
@@ -1156,7 +1053,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'unresponsive',
-                        fqn: 'neurological.aments.status.unresponsive',
+                        fqn: 'neurological.table.status.unresponsive',
                         inputType: 'checkbox',
                         label: 'Unresponsive',
                         tableCss: 'trans-table-cell',
@@ -1165,9 +1062,9 @@ module.exports = function() {
                         fsetRow: '5',
                         fsetCol: '1',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.status',
+                        dataParent: 'neurological.table.status',
                         page: 'Assessments: Neurological',
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       }
                     ]
@@ -1177,7 +1074,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'dizziness',
-                        fqn: 'neurological.aments.status.dizziness',
+                        fqn: 'neurological.table.status.dizziness',
                         inputType: 'checkbox',
                         label: 'Dizziness',
                         tableCss: 'trans-table-cell',
@@ -1186,9 +1083,9 @@ module.exports = function() {
                         fsetRow: '6',
                         fsetCol: '1',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.status',
+                        dataParent: 'neurological.table.status',
                         page: 'Assessments: Neurological',
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       }
                     ]
@@ -1198,7 +1095,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'blurredVision',
-                        fqn: 'neurological.aments.status.blurredVision',
+                        fqn: 'neurological.table.status.blurredVision',
                         inputType: 'checkbox',
                         label: 'Blurred vision',
                         tableCss: 'trans-table-cell',
@@ -1207,9 +1104,9 @@ module.exports = function() {
                         fsetRow: '7',
                         fsetCol: '1',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.status',
+                        dataParent: 'neurological.table.status',
                         page: 'Assessments: Neurological',
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       }
                     ]
@@ -1220,7 +1117,7 @@ module.exports = function() {
             },
             {
               elementKey: 'alert',
-              fqn: 'neurological.aments.status.alert',
+              fqn: 'neurological.table.status.alert',
               inputType: 'checkbox',
               label: 'Alert',
               tableCss: 'trans-table-cell',
@@ -1229,14 +1126,14 @@ module.exports = function() {
               fsetRow: '1',
               fsetCol: '1',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.status',
+              dataParent: 'neurological.table.status',
               page: 'Assessments: Neurological',
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'oriented',
-              fqn: 'neurological.aments.status.oriented',
+              fqn: 'neurological.table.status.oriented',
               inputType: 'checkbox',
               label: 'Oriented',
               tableCss: 'trans-table-cell',
@@ -1245,14 +1142,14 @@ module.exports = function() {
               fsetRow: '2',
               fsetCol: '1',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.status',
+              dataParent: 'neurological.table.status',
               page: 'Assessments: Neurological',
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'confused',
-              fqn: 'neurological.aments.status.confused',
+              fqn: 'neurological.table.status.confused',
               inputType: 'checkbox',
               label: 'Confused',
               tableCss: 'trans-table-cell',
@@ -1261,14 +1158,14 @@ module.exports = function() {
               fsetRow: '3',
               fsetCol: '1',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.status',
+              dataParent: 'neurological.table.status',
               page: 'Assessments: Neurological',
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'drowsy',
-              fqn: 'neurological.aments.status.drowsy',
+              fqn: 'neurological.table.status.drowsy',
               inputType: 'checkbox',
               label: 'Drowsy',
               tableCss: 'trans-table-cell',
@@ -1277,14 +1174,14 @@ module.exports = function() {
               fsetRow: '4',
               fsetCol: '1',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.status',
+              dataParent: 'neurological.table.status',
               page: 'Assessments: Neurological',
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'unresponsive',
-              fqn: 'neurological.aments.status.unresponsive',
+              fqn: 'neurological.table.status.unresponsive',
               inputType: 'checkbox',
               label: 'Unresponsive',
               tableCss: 'trans-table-cell',
@@ -1293,14 +1190,14 @@ module.exports = function() {
               fsetRow: '5',
               fsetCol: '1',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.status',
+              dataParent: 'neurological.table.status',
               page: 'Assessments: Neurological',
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'dizziness',
-              fqn: 'neurological.aments.status.dizziness',
+              fqn: 'neurological.table.status.dizziness',
               inputType: 'checkbox',
               label: 'Dizziness',
               tableCss: 'trans-table-cell',
@@ -1309,14 +1206,14 @@ module.exports = function() {
               fsetRow: '6',
               fsetCol: '1',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.status',
+              dataParent: 'neurological.table.status',
               page: 'Assessments: Neurological',
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'blurredVision',
-              fqn: 'neurological.aments.status.blurredVision',
+              fqn: 'neurological.table.status.blurredVision',
               inputType: 'checkbox',
               label: 'Blurred vision',
               tableCss: 'trans-table-cell',
@@ -1325,14 +1222,14 @@ module.exports = function() {
               fsetRow: '7',
               fsetCol: '1',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.status',
+              dataParent: 'neurological.table.status',
               page: 'Assessments: Neurological',
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'concious',
-              fqn: 'neurological.aments.concious',
+              fqn: 'neurological.table.concious',
               inputType: 'fieldset',
               label: 'Loss of conciousness',
               tableCss: 'trans-table-cell hide-table-element',
@@ -1341,55 +1238,11 @@ module.exports = function() {
               formColumn: '2',
               formRow: '2',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments',
+              dataParent: 'neurological.table',
               page: 'Assessments: Neurological',
-              elements: [
-                {
-                  elementKey: 'loss',
-                  fqn: 'neurological.aments.concious.loss',
-                  inputType: 'select',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '15',
-                  fieldset: 'concious',
-                  fsetRow: '1',
-                  fsetCol: '1',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.concious',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: 'No'
-                    },
-                    {
-                      text: 'Yes'
-                    },
-                    {
-                      text: 'Unknown'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'duration',
-                  fqn: 'neurological.aments.concious.duration',
-                  inputType: 'text',
-                  label: 'Duration',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '16',
-                  fieldset: 'concious',
-                  fsetRow: '2',
-                  fsetCol: '1',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.concious',
-                  page: 'Assessments: Neurological',
-                  tableKey: 'aments',
-                  formColumn: '1'
-                }
-              ],
               containerType: 'fieldset',
               containerKey: 'concious',
-              tableKey: 'aments',
+              tableKey: 'table',
               formFieldSet: {
                 rows: [
                   {
@@ -1397,7 +1250,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'loss',
-                        fqn: 'neurological.aments.concious.loss',
+                        fqn: 'neurological.table.concious.loss',
                         inputType: 'select',
                         tableCss: 'trans-table-cell',
                         tableColumn: '15',
@@ -1405,7 +1258,7 @@ module.exports = function() {
                         fsetRow: '1',
                         fsetCol: '1',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.concious',
+                        dataParent: 'neurological.table.concious',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -1418,7 +1271,7 @@ module.exports = function() {
                             text: 'Unknown'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       }
                     ]
@@ -1428,7 +1281,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'duration',
-                        fqn: 'neurological.aments.concious.duration',
+                        fqn: 'neurological.table.concious.duration',
                         inputType: 'text',
                         label: 'Duration',
                         tableCss: 'trans-table-cell',
@@ -1437,9 +1290,9 @@ module.exports = function() {
                         fsetRow: '2',
                         fsetCol: '1',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.concious',
+                        dataParent: 'neurological.table.concious',
                         page: 'Assessments: Neurological',
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       }
                     ]
@@ -1450,7 +1303,7 @@ module.exports = function() {
             },
             {
               elementKey: 'loss',
-              fqn: 'neurological.aments.concious.loss',
+              fqn: 'neurological.table.concious.loss',
               inputType: 'select',
               tableCss: 'trans-table-cell',
               tableColumn: '15',
@@ -1458,7 +1311,7 @@ module.exports = function() {
               fsetRow: '1',
               fsetCol: '1',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.concious',
+              dataParent: 'neurological.table.concious',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -1471,12 +1324,12 @@ module.exports = function() {
                   text: 'Unknown'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'duration',
-              fqn: 'neurological.aments.concious.duration',
+              fqn: 'neurological.table.concious.duration',
               inputType: 'text',
               label: 'Duration',
               tableCss: 'trans-table-cell',
@@ -1485,14 +1338,14 @@ module.exports = function() {
               fsetRow: '2',
               fsetCol: '1',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.concious',
+              dataParent: 'neurological.table.concious',
               page: 'Assessments: Neurological',
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'glasgowComaScale',
-              fqn: 'neurological.aments.glasgowComaScale',
+              fqn: 'neurological.table.glasgowComaScale',
               inputType: 'fieldset',
               label: 'Glasgow Coma Scale',
               tableCss: 'trans-table-cell hide-table-element',
@@ -1501,134 +1354,11 @@ module.exports = function() {
               formColumn: '3',
               formRow: '2',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments',
+              dataParent: 'neurological.table',
               page: 'Assessments: Neurological',
-              elements: [
-                {
-                  elementKey: 'eyeOpening',
-                  fqn: 'neurological.aments.glasgowComaScale.eyeOpening',
-                  inputType: 'select',
-                  label: 'Eye opening',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '18',
-                  fieldset: 'glasgowComaScale',
-                  fsetRow: '1',
-                  fsetCol: '1',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.glasgowComaScale',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: 'Spontaneous'
-                    },
-                    {
-                      text: 'To sound'
-                    },
-                    {
-                      text: 'To pressure'
-                    },
-                    {
-                      text: 'None'
-                    },
-                    {
-                      text: 'Non testable'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'verbalResponse',
-                  fqn: 'neurological.aments.glasgowComaScale.verbalResponse',
-                  inputType: 'select',
-                  label: 'Verbal response',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '19',
-                  fieldset: 'glasgowComaScale',
-                  fsetRow: '2',
-                  fsetCol: '1',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.glasgowComaScale',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: 'Oriented'
-                    },
-                    {
-                      text: 'Confused'
-                    },
-                    {
-                      text: 'Words'
-                    },
-                    {
-                      text: 'Sounds'
-                    },
-                    {
-                      text: 'None'
-                    },
-                    {
-                      text: 'Non testable'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'bestMotorResponse',
-                  fqn: 'neurological.aments.glasgowComaScale.bestMotorResponse',
-                  inputType: 'select',
-                  label: 'Best motor response',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '20',
-                  fieldset: 'glasgowComaScale',
-                  fsetRow: '3',
-                  fsetCol: '1',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.glasgowComaScale',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: 'Obeys commands'
-                    },
-                    {
-                      text: 'Localising'
-                    },
-                    {
-                      text: 'Normal flexion'
-                    },
-                    {
-                      text: 'Extension'
-                    },
-                    {
-                      text: 'None'
-                    },
-                    {
-                      text: 'Non testable'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'totalGlasgow',
-                  fqn: 'neurological.aments.glasgowComaScale.totalGlasgow',
-                  inputType: 'calculated',
-                  label: 'Total',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '21',
-                  fieldset: 'glasgowComaScale',
-                  fsetRow: '4',
-                  fsetCol: '1',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.glasgowComaScale',
-                  page: 'Assessments: Neurological',
-                  tableKey: 'aments',
-                  formColumn: '1'
-                }
-              ],
               containerType: 'fieldset',
               containerKey: 'glasgowComaScale',
-              tableKey: 'aments',
+              tableKey: 'table',
               formFieldSet: {
                 rows: [
                   {
@@ -1636,7 +1366,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'eyeOpening',
-                        fqn: 'neurological.aments.glasgowComaScale.eyeOpening',
+                        fqn: 'neurological.table.glasgowComaScale.eyeOpening',
                         inputType: 'select',
                         label: 'Eye opening',
                         tableCss: 'trans-table-cell',
@@ -1645,7 +1375,7 @@ module.exports = function() {
                         fsetRow: '1',
                         fsetCol: '1',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.glasgowComaScale',
+                        dataParent: 'neurological.table.glasgowComaScale',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -1664,7 +1394,7 @@ module.exports = function() {
                             text: 'Non testable'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       }
                     ]
@@ -1674,7 +1404,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'verbalResponse',
-                        fqn: 'neurological.aments.glasgowComaScale.verbalResponse',
+                        fqn: 'neurological.table.glasgowComaScale.verbalResponse',
                         inputType: 'select',
                         label: 'Verbal response',
                         tableCss: 'trans-table-cell',
@@ -1683,7 +1413,7 @@ module.exports = function() {
                         fsetRow: '2',
                         fsetCol: '1',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.glasgowComaScale',
+                        dataParent: 'neurological.table.glasgowComaScale',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -1705,7 +1435,7 @@ module.exports = function() {
                             text: 'Non testable'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       }
                     ]
@@ -1715,7 +1445,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'bestMotorResponse',
-                        fqn: 'neurological.aments.glasgowComaScale.bestMotorResponse',
+                        fqn: 'neurological.table.glasgowComaScale.bestMotorResponse',
                         inputType: 'select',
                         label: 'Best motor response',
                         tableCss: 'trans-table-cell',
@@ -1724,7 +1454,7 @@ module.exports = function() {
                         fsetRow: '3',
                         fsetCol: '1',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.glasgowComaScale',
+                        dataParent: 'neurological.table.glasgowComaScale',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -1746,7 +1476,7 @@ module.exports = function() {
                             text: 'Non testable'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       }
                     ]
@@ -1756,7 +1486,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'totalGlasgow',
-                        fqn: 'neurological.aments.glasgowComaScale.totalGlasgow',
+                        fqn: 'neurological.table.glasgowComaScale.totalGlasgow',
                         inputType: 'calculated',
                         label: 'Total',
                         tableCss: 'trans-table-cell',
@@ -1765,9 +1495,9 @@ module.exports = function() {
                         fsetRow: '4',
                         fsetCol: '1',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.glasgowComaScale',
+                        dataParent: 'neurological.table.glasgowComaScale',
                         page: 'Assessments: Neurological',
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       }
                     ]
@@ -1778,7 +1508,7 @@ module.exports = function() {
             },
             {
               elementKey: 'eyeOpening',
-              fqn: 'neurological.aments.glasgowComaScale.eyeOpening',
+              fqn: 'neurological.table.glasgowComaScale.eyeOpening',
               inputType: 'select',
               label: 'Eye opening',
               tableCss: 'trans-table-cell',
@@ -1787,7 +1517,7 @@ module.exports = function() {
               fsetRow: '1',
               fsetCol: '1',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.glasgowComaScale',
+              dataParent: 'neurological.table.glasgowComaScale',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -1806,12 +1536,12 @@ module.exports = function() {
                   text: 'Non testable'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'verbalResponse',
-              fqn: 'neurological.aments.glasgowComaScale.verbalResponse',
+              fqn: 'neurological.table.glasgowComaScale.verbalResponse',
               inputType: 'select',
               label: 'Verbal response',
               tableCss: 'trans-table-cell',
@@ -1820,7 +1550,7 @@ module.exports = function() {
               fsetRow: '2',
               fsetCol: '1',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.glasgowComaScale',
+              dataParent: 'neurological.table.glasgowComaScale',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -1842,12 +1572,12 @@ module.exports = function() {
                   text: 'Non testable'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'bestMotorResponse',
-              fqn: 'neurological.aments.glasgowComaScale.bestMotorResponse',
+              fqn: 'neurological.table.glasgowComaScale.bestMotorResponse',
               inputType: 'select',
               label: 'Best motor response',
               tableCss: 'trans-table-cell',
@@ -1856,7 +1586,7 @@ module.exports = function() {
               fsetRow: '3',
               fsetCol: '1',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.glasgowComaScale',
+              dataParent: 'neurological.table.glasgowComaScale',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -1878,12 +1608,12 @@ module.exports = function() {
                   text: 'Non testable'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'totalGlasgow',
-              fqn: 'neurological.aments.glasgowComaScale.totalGlasgow',
+              fqn: 'neurological.table.glasgowComaScale.totalGlasgow',
               inputType: 'calculated',
               label: 'Total',
               tableCss: 'trans-table-cell',
@@ -1892,14 +1622,14 @@ module.exports = function() {
               fsetRow: '4',
               fsetCol: '1',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.glasgowComaScale',
+              dataParent: 'neurological.table.glasgowComaScale',
               page: 'Assessments: Neurological',
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'pupils',
-              fqn: 'neurological.aments.pupils',
+              fqn: 'neurological.table.pupils',
               inputType: 'fieldRowSet',
               label: 'Pupils',
               tableCss: 'trans-table-cell hide-table-element',
@@ -1909,181 +1639,11 @@ module.exports = function() {
               formColumn: '1',
               formRow: '3',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments',
+              dataParent: 'neurological.table',
               page: 'Assessments: Neurological',
-              elements: [
-                {
-                  elementKey: 'leftPupilSize',
-                  fqn: 'neurological.aments.pupils.leftPupilSize',
-                  inputType: 'select',
-                  label: 'Left pupil size',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '23',
-                  fieldset: 'pupils',
-                  fsetRow: '1',
-                  fsetCol: '1',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.pupils',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: '1'
-                    },
-                    {
-                      text: '2'
-                    },
-                    {
-                      text: '3'
-                    },
-                    {
-                      text: '4'
-                    },
-                    {
-                      text: '5'
-                    },
-                    {
-                      text: '6'
-                    },
-                    {
-                      text: '7'
-                    },
-                    {
-                      text: '8'
-                    },
-                    {
-                      text: '9'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'leftPupilResponseToLight',
-                  fqn: 'neurological.aments.pupils.leftPupilResponseToLight',
-                  inputType: 'select',
-                  label: 'Left pupil response to light',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '24',
-                  fieldset: 'pupils',
-                  fsetRow: '2',
-                  fsetCol: '1',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.pupils',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: 'Brisk'
-                    },
-                    {
-                      text: 'Sluggish'
-                    },
-                    {
-                      text: 'Fixed'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'rightPupilSize',
-                  fqn: 'neurological.aments.pupils.rightPupilSize',
-                  inputType: 'select',
-                  label: 'Right pupil size',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '25',
-                  fieldset: 'pupils',
-                  fsetRow: '1',
-                  fsetCol: '2',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.pupils',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: '1'
-                    },
-                    {
-                      text: '2'
-                    },
-                    {
-                      text: '3'
-                    },
-                    {
-                      text: '4'
-                    },
-                    {
-                      text: '5'
-                    },
-                    {
-                      text: '6'
-                    },
-                    {
-                      text: '7'
-                    },
-                    {
-                      text: '8'
-                    },
-                    {
-                      text: '9'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '2'
-                },
-                {
-                  elementKey: 'rightPupilResponseToLight',
-                  fqn: 'neurological.aments.pupils.rightPupilResponseToLight',
-                  inputType: 'select',
-                  label: 'Right pupil response to light',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '26',
-                  fieldset: 'pupils',
-                  fsetRow: '2',
-                  fsetCol: '2',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.pupils',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: 'Brisk'
-                    },
-                    {
-                      text: 'Sluggish'
-                    },
-                    {
-                      text: 'Fixed'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '2'
-                },
-                {
-                  elementKey: 'bothPupils',
-                  fqn: 'neurological.aments.pupils.bothPupils',
-                  inputType: 'select',
-                  label: 'Both pupils',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '27',
-                  fieldset: 'pupils',
-                  fsetRow: '1',
-                  fsetCol: '3',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.pupils',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: 'Equal'
-                    },
-                    {
-                      text: 'Unequal'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '3'
-                }
-              ],
               containerType: 'fieldRowSet',
               containerKey: 'pupils',
-              tableKey: 'aments',
+              tableKey: 'table',
               formFieldSet: {
                 rows: [
                   {
@@ -2091,7 +1651,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'leftPupilSize',
-                        fqn: 'neurological.aments.pupils.leftPupilSize',
+                        fqn: 'neurological.table.pupils.leftPupilSize',
                         inputType: 'select',
                         label: 'Left pupil size',
                         tableCss: 'trans-table-cell',
@@ -2100,7 +1660,7 @@ module.exports = function() {
                         fsetRow: '1',
                         fsetCol: '1',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.pupils',
+                        dataParent: 'neurological.table.pupils',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -2131,12 +1691,12 @@ module.exports = function() {
                             text: '9'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       },
                       {
                         elementKey: 'rightPupilSize',
-                        fqn: 'neurological.aments.pupils.rightPupilSize',
+                        fqn: 'neurological.table.pupils.rightPupilSize',
                         inputType: 'select',
                         label: 'Right pupil size',
                         tableCss: 'trans-table-cell',
@@ -2145,7 +1705,7 @@ module.exports = function() {
                         fsetRow: '1',
                         fsetCol: '2',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.pupils',
+                        dataParent: 'neurological.table.pupils',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -2176,12 +1736,12 @@ module.exports = function() {
                             text: '9'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '2'
                       },
                       {
                         elementKey: 'bothPupils',
-                        fqn: 'neurological.aments.pupils.bothPupils',
+                        fqn: 'neurological.table.pupils.bothPupils',
                         inputType: 'select',
                         label: 'Both pupils',
                         tableCss: 'trans-table-cell',
@@ -2190,7 +1750,7 @@ module.exports = function() {
                         fsetRow: '1',
                         fsetCol: '3',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.pupils',
+                        dataParent: 'neurological.table.pupils',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -2200,7 +1760,7 @@ module.exports = function() {
                             text: 'Unequal'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '3'
                       }
                     ]
@@ -2210,7 +1770,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'leftPupilResponseToLight',
-                        fqn: 'neurological.aments.pupils.leftPupilResponseToLight',
+                        fqn: 'neurological.table.pupils.leftPupilResponseToLight',
                         inputType: 'select',
                         label: 'Left pupil response to light',
                         tableCss: 'trans-table-cell',
@@ -2219,7 +1779,7 @@ module.exports = function() {
                         fsetRow: '2',
                         fsetCol: '1',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.pupils',
+                        dataParent: 'neurological.table.pupils',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -2232,12 +1792,12 @@ module.exports = function() {
                             text: 'Fixed'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       },
                       {
                         elementKey: 'rightPupilResponseToLight',
-                        fqn: 'neurological.aments.pupils.rightPupilResponseToLight',
+                        fqn: 'neurological.table.pupils.rightPupilResponseToLight',
                         inputType: 'select',
                         label: 'Right pupil response to light',
                         tableCss: 'trans-table-cell',
@@ -2246,7 +1806,7 @@ module.exports = function() {
                         fsetRow: '2',
                         fsetCol: '2',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.pupils',
+                        dataParent: 'neurological.table.pupils',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -2259,7 +1819,7 @@ module.exports = function() {
                             text: 'Fixed'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '2'
                       }
                     ]
@@ -2270,7 +1830,7 @@ module.exports = function() {
             },
             {
               elementKey: 'leftPupilSize',
-              fqn: 'neurological.aments.pupils.leftPupilSize',
+              fqn: 'neurological.table.pupils.leftPupilSize',
               inputType: 'select',
               label: 'Left pupil size',
               tableCss: 'trans-table-cell',
@@ -2279,7 +1839,7 @@ module.exports = function() {
               fsetRow: '1',
               fsetCol: '1',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.pupils',
+              dataParent: 'neurological.table.pupils',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -2310,12 +1870,12 @@ module.exports = function() {
                   text: '9'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'leftPupilResponseToLight',
-              fqn: 'neurological.aments.pupils.leftPupilResponseToLight',
+              fqn: 'neurological.table.pupils.leftPupilResponseToLight',
               inputType: 'select',
               label: 'Left pupil response to light',
               tableCss: 'trans-table-cell',
@@ -2324,7 +1884,7 @@ module.exports = function() {
               fsetRow: '2',
               fsetCol: '1',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.pupils',
+              dataParent: 'neurological.table.pupils',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -2337,12 +1897,12 @@ module.exports = function() {
                   text: 'Fixed'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'rightPupilSize',
-              fqn: 'neurological.aments.pupils.rightPupilSize',
+              fqn: 'neurological.table.pupils.rightPupilSize',
               inputType: 'select',
               label: 'Right pupil size',
               tableCss: 'trans-table-cell',
@@ -2351,7 +1911,7 @@ module.exports = function() {
               fsetRow: '1',
               fsetCol: '2',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.pupils',
+              dataParent: 'neurological.table.pupils',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -2382,12 +1942,12 @@ module.exports = function() {
                   text: '9'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '2'
             },
             {
               elementKey: 'rightPupilResponseToLight',
-              fqn: 'neurological.aments.pupils.rightPupilResponseToLight',
+              fqn: 'neurological.table.pupils.rightPupilResponseToLight',
               inputType: 'select',
               label: 'Right pupil response to light',
               tableCss: 'trans-table-cell',
@@ -2396,7 +1956,7 @@ module.exports = function() {
               fsetRow: '2',
               fsetCol: '2',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.pupils',
+              dataParent: 'neurological.table.pupils',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -2409,12 +1969,12 @@ module.exports = function() {
                   text: 'Fixed'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '2'
             },
             {
               elementKey: 'bothPupils',
-              fqn: 'neurological.aments.pupils.bothPupils',
+              fqn: 'neurological.table.pupils.bothPupils',
               inputType: 'select',
               label: 'Both pupils',
               tableCss: 'trans-table-cell',
@@ -2423,7 +1983,7 @@ module.exports = function() {
               fsetRow: '1',
               fsetCol: '3',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.pupils',
+              dataParent: 'neurological.table.pupils',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -2433,12 +1993,12 @@ module.exports = function() {
                   text: 'Unequal'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '3'
             },
             {
               elementKey: 'stroke',
-              fqn: 'neurological.aments.stroke',
+              fqn: 'neurological.table.stroke',
               inputType: 'fieldRowSet',
               label: 'Stroke Assessment',
               tableCss: 'trans-table-cell hide-table-element',
@@ -2448,507 +2008,11 @@ module.exports = function() {
               formColumn: '1',
               formRow: '4',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments',
+              dataParent: 'neurological.table',
               page: 'Assessments: Neurological',
-              elements: [
-                {
-                  elementKey: 'levelOfConciousness',
-                  fqn: 'neurological.aments.stroke.levelOfConciousness',
-                  inputType: 'select',
-                  label: 'Level of conciousness',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '29',
-                  fieldset: 'stroke',
-                  fsetRow: '1',
-                  fsetCol: '1',
-                  formCss: 'is-half',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.stroke',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: '0 = Alert; keenly responsive'
-                    },
-                    {
-                      text: '1 = Not alert; but arousable by minor stimulation'
-                    },
-                    {
-                      text: '2 = Not alert; requires repeated stimulation'
-                    },
-                    {
-                      text: '3 = Unresponsive or responds only with reflex'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'bestGaze',
-                  fqn: 'neurological.aments.stroke.bestGaze',
-                  inputType: 'select',
-                  label: 'Best gaze',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '30',
-                  fieldset: 'stroke',
-                  fsetRow: '1',
-                  fsetCol: '2',
-                  formCss: 'is-half',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.stroke',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: '0 = Normal'
-                    },
-                    {
-                      text: '1 = Partial gaze palsy'
-                    },
-                    {
-                      text: '2 = Forced deviation'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '2'
-                },
-                {
-                  elementKey: 'levelOfConciousnessQuestions',
-                  fqn: 'neurological.aments.stroke.levelOfConciousnessQuestions',
-                  inputType: 'select',
-                  label: 'Level of conciousness questions',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '31',
-                  fieldset: 'stroke',
-                  fsetRow: '2',
-                  fsetCol: '1',
-                  formCss: 'is-half',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.stroke',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: '0 = answers two questions correctly'
-                    },
-                    {
-                      text: '1 = Answers one question correctly'
-                    },
-                    {
-                      text: '2 = Answers neither question correctly'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'visual',
-                  fqn: 'neurological.aments.stroke.visual',
-                  inputType: 'select',
-                  label: 'Visual',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '32',
-                  fieldset: 'stroke',
-                  fsetRow: '2',
-                  fsetCol: '2',
-                  formCss: 'is-half',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.stroke',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: '0 = No visual loss'
-                    },
-                    {
-                      text: '1 = Partial hemianopia'
-                    },
-                    {
-                      text: '2 = Partial paralysis'
-                    },
-                    {
-                      text: '3 = Complete paralysis of one or both sides'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '2'
-                },
-                {
-                  elementKey: 'levelOfConciousnessCommands',
-                  fqn: 'neurological.aments.stroke.levelOfConciousnessCommands',
-                  inputType: 'select',
-                  label: 'Level of conciousness commands',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '33',
-                  fieldset: 'stroke',
-                  fsetRow: '3',
-                  fsetCol: '1',
-                  formCss: 'is-half',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.stroke',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: '0 = Performs both tasks correctly'
-                    },
-                    {
-                      text: '1 = Performs one task correctly'
-                    },
-                    {
-                      text: '2 = Performs neither task correctly'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'facialPalsy',
-                  fqn: 'neurological.aments.stroke.facialPalsy',
-                  inputType: 'select',
-                  label: 'Facial palsy',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '34',
-                  fieldset: 'stroke',
-                  fsetRow: '3',
-                  fsetCol: '2',
-                  formCss: 'is-half',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.stroke',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: '0 = Normal symmetric movements'
-                    },
-                    {
-                      text: '1 = Minor paralysis'
-                    },
-                    {
-                      text: '2 = Partial paralysis'
-                    },
-                    {
-                      text: '3 = Complete paralysis of one or both sides'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '2'
-                },
-                {
-                  elementKey: 'motorLeftArm',
-                  fqn: 'neurological.aments.stroke.motorLeftArm',
-                  inputType: 'select',
-                  label: 'Motor - left arm',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '35',
-                  fieldset: 'stroke',
-                  fsetRow: '4',
-                  fsetCol: '1',
-                  formCss: 'is-half',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.stroke',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: '0 = No drift'
-                    },
-                    {
-                      text: '1 = Drift'
-                    },
-                    {
-                      text: '2 = Some effort against gravity'
-                    },
-                    {
-                      text: '3 = No effort against gravity; limb falls'
-                    },
-                    {
-                      text: '4 = No movement'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'sensory',
-                  fqn: 'neurological.aments.stroke.sensory',
-                  inputType: 'select',
-                  label: 'Sensory',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '36',
-                  fieldset: 'stroke',
-                  fsetRow: '4',
-                  fsetCol: '2',
-                  formCss: 'is-half',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.stroke',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: '0 = Normal; no sensory loss'
-                    },
-                    {
-                      text: '1 = Mild-to-moderate sensory loss'
-                    },
-                    {
-                      text: '2 = Severe to total sensory loss'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '2'
-                },
-                {
-                  elementKey: 'motorRightArm',
-                  fqn: 'neurological.aments.stroke.motorRightArm',
-                  inputType: 'select',
-                  label: 'Motor - right arm',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '37',
-                  fieldset: 'stroke',
-                  fsetRow: '5',
-                  fsetCol: '1',
-                  formCss: 'is-half',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.stroke',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: '0 = No drift'
-                    },
-                    {
-                      text: '1 = Drift'
-                    },
-                    {
-                      text: '2 = Some effort against gravity'
-                    },
-                    {
-                      text: '3 = No effort against gravity; limb falls'
-                    },
-                    {
-                      text: '4 = No movement'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'bestLanguage',
-                  fqn: 'neurological.aments.stroke.bestLanguage',
-                  inputType: 'select',
-                  label: 'Best language',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '38',
-                  fieldset: 'stroke',
-                  fsetRow: '5',
-                  fsetCol: '2',
-                  formCss: 'is-half',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.stroke',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: '0 = No aphasia; normal'
-                    },
-                    {
-                      text: '1 = Mild to moderate aphasia'
-                    },
-                    {
-                      text: '2 = Severe aphasia'
-                    },
-                    {
-                      text: '3 = Mute, global aphasia'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '2'
-                },
-                {
-                  elementKey: 'motorLeftLeg',
-                  fqn: 'neurological.aments.stroke.motorLeftLeg',
-                  inputType: 'select',
-                  label: 'Motor - left leg',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '39',
-                  fieldset: 'stroke',
-                  fsetRow: '6',
-                  fsetCol: '1',
-                  formCss: 'is-half',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.stroke',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: '0 = No drift'
-                    },
-                    {
-                      text: '1 = Drift'
-                    },
-                    {
-                      text: '2 = Some effort against gravity'
-                    },
-                    {
-                      text: '3 = No effort against gravity'
-                    },
-                    {
-                      text: '4 = No movement'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'dysarthria',
-                  fqn: 'neurological.aments.stroke.dysarthria',
-                  inputType: 'select',
-                  label: 'Dysarthria',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '40',
-                  fieldset: 'stroke',
-                  fsetRow: '6',
-                  fsetCol: '2',
-                  formCss: 'is-half',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.stroke',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: '0 = Normal'
-                    },
-                    {
-                      text: '1 = Mild to moderate aphasia'
-                    },
-                    {
-                      text: '2 = Severe aphasia'
-                    },
-                    {
-                      text: '3 = Mute, global aphasia'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '2'
-                },
-                {
-                  elementKey: 'motorRightLeg',
-                  fqn: 'neurological.aments.stroke.motorRightLeg',
-                  inputType: 'select',
-                  label: 'Motor - right leg',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '41',
-                  fieldset: 'stroke',
-                  fsetRow: '7',
-                  fsetCol: '1',
-                  formCss: 'is-half',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.stroke',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: '0 = No drift'
-                    },
-                    {
-                      text: '1 = Drift'
-                    },
-                    {
-                      text: '2 = Some effort against gravity'
-                    },
-                    {
-                      text: '3 = No effort against gravity'
-                    },
-                    {
-                      text: '4 = No movement'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'extinctionAndInattention',
-                  fqn: 'neurological.aments.stroke.extinctionAndInattention',
-                  inputType: 'select',
-                  label: 'Extinction and inattention',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '42',
-                  fieldset: 'stroke',
-                  fsetRow: '7',
-                  fsetCol: '2',
-                  formCss: 'is-half',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.stroke',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: '0 = No abnormality'
-                    },
-                    {
-                      text: '1 = visual, tactile, auditory, spatial, or personal inattention'
-                    },
-                    {
-                      text: '2 = Profound hemi-inattention or extinction'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '2'
-                },
-                {
-                  elementKey: 'limbAtaxia',
-                  fqn: 'neurological.aments.stroke.limbAtaxia',
-                  inputType: 'select',
-                  label: 'Limb ataxia',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '43',
-                  fieldset: 'stroke',
-                  fsetRow: '8',
-                  fsetCol: '1',
-                  formCss: 'is-half',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.stroke',
-                  page: 'Assessments: Neurological',
-                  options: [
-                    {
-                      text: '0 = Absent'
-                    },
-                    {
-                      text: '1 = Present in one limb'
-                    },
-                    {
-                      text: '2 = Present in two limbs'
-                    }
-                  ],
-                  tableKey: 'aments',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'comments',
-                  fqn: 'neurological.aments.stroke.comments',
-                  inputType: 'text',
-                  label: 'Comments',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '44',
-                  fieldset: 'stroke',
-                  fsetRow: '9',
-                  fsetCol: '1',
-                  formCss: 'is-two-thirds',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.stroke',
-                  page: 'Assessments: Neurological',
-                  tableKey: 'aments',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'resources',
-                  inputType: 'form-label',
-                  label:
-                    'Resources-NL-Morse Fall Score (url)-NL-Mini-mental state examination (MMSE) (url)',
-                  tableCss: 'trans-table-cell hide-table-element',
-                  tableColumn: '45',
-                  fieldset: 'stroke',
-                  fsetRow: '9',
-                  fsetCol: '2',
-                  formCss: 'is-one-third',
-                  formOption: 'withExternalUrls',
-                  pageDataKey: 'neurological',
-                  dataParent: 'neurological.aments.stroke',
-                  page: 'Assessments: Neurological',
-                  tableKey: 'aments',
-                  formColumn: '2'
-                }
-              ],
               containerType: 'fieldRowSet',
               containerKey: 'stroke',
-              tableKey: 'aments',
+              tableKey: 'table',
               formFieldSet: {
                 rows: [
                   {
@@ -2956,7 +2020,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'levelOfConciousness',
-                        fqn: 'neurological.aments.stroke.levelOfConciousness',
+                        fqn: 'neurological.table.stroke.levelOfConciousness',
                         inputType: 'select',
                         label: 'Level of conciousness',
                         tableCss: 'trans-table-cell',
@@ -2966,7 +2030,7 @@ module.exports = function() {
                         fsetCol: '1',
                         formCss: 'is-half',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
+                        dataParent: 'neurological.table.stroke',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -2982,12 +2046,12 @@ module.exports = function() {
                             text: '3 = Unresponsive or responds only with reflex'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       },
                       {
                         elementKey: 'bestGaze',
-                        fqn: 'neurological.aments.stroke.bestGaze',
+                        fqn: 'neurological.table.stroke.bestGaze',
                         inputType: 'select',
                         label: 'Best gaze',
                         tableCss: 'trans-table-cell',
@@ -2997,7 +2061,7 @@ module.exports = function() {
                         fsetCol: '2',
                         formCss: 'is-half',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
+                        dataParent: 'neurological.table.stroke',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -3010,7 +2074,7 @@ module.exports = function() {
                             text: '2 = Forced deviation'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '2'
                       }
                     ]
@@ -3020,7 +2084,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'levelOfConciousnessQuestions',
-                        fqn: 'neurological.aments.stroke.levelOfConciousnessQuestions',
+                        fqn: 'neurological.table.stroke.levelOfConciousnessQuestions',
                         inputType: 'select',
                         label: 'Level of conciousness questions',
                         tableCss: 'trans-table-cell',
@@ -3030,7 +2094,7 @@ module.exports = function() {
                         fsetCol: '1',
                         formCss: 'is-half',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
+                        dataParent: 'neurological.table.stroke',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -3043,12 +2107,12 @@ module.exports = function() {
                             text: '2 = Answers neither question correctly'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       },
                       {
                         elementKey: 'visual',
-                        fqn: 'neurological.aments.stroke.visual',
+                        fqn: 'neurological.table.stroke.visual',
                         inputType: 'select',
                         label: 'Visual',
                         tableCss: 'trans-table-cell',
@@ -3058,7 +2122,7 @@ module.exports = function() {
                         fsetCol: '2',
                         formCss: 'is-half',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
+                        dataParent: 'neurological.table.stroke',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -3074,7 +2138,7 @@ module.exports = function() {
                             text: '3 = Complete paralysis of one or both sides'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '2'
                       }
                     ]
@@ -3084,7 +2148,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'levelOfConciousnessCommands',
-                        fqn: 'neurological.aments.stroke.levelOfConciousnessCommands',
+                        fqn: 'neurological.table.stroke.levelOfConciousnessCommands',
                         inputType: 'select',
                         label: 'Level of conciousness commands',
                         tableCss: 'trans-table-cell',
@@ -3094,7 +2158,7 @@ module.exports = function() {
                         fsetCol: '1',
                         formCss: 'is-half',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
+                        dataParent: 'neurological.table.stroke',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -3107,12 +2171,12 @@ module.exports = function() {
                             text: '2 = Performs neither task correctly'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       },
                       {
                         elementKey: 'facialPalsy',
-                        fqn: 'neurological.aments.stroke.facialPalsy',
+                        fqn: 'neurological.table.stroke.facialPalsy',
                         inputType: 'select',
                         label: 'Facial palsy',
                         tableCss: 'trans-table-cell',
@@ -3122,7 +2186,7 @@ module.exports = function() {
                         fsetCol: '2',
                         formCss: 'is-half',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
+                        dataParent: 'neurological.table.stroke',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -3138,7 +2202,7 @@ module.exports = function() {
                             text: '3 = Complete paralysis of one or both sides'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '2'
                       }
                     ]
@@ -3148,7 +2212,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'motorLeftArm',
-                        fqn: 'neurological.aments.stroke.motorLeftArm',
+                        fqn: 'neurological.table.stroke.motorLeftArm',
                         inputType: 'select',
                         label: 'Motor - left arm',
                         tableCss: 'trans-table-cell',
@@ -3158,7 +2222,7 @@ module.exports = function() {
                         fsetCol: '1',
                         formCss: 'is-half',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
+                        dataParent: 'neurological.table.stroke',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -3177,12 +2241,12 @@ module.exports = function() {
                             text: '4 = No movement'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       },
                       {
                         elementKey: 'sensory',
-                        fqn: 'neurological.aments.stroke.sensory',
+                        fqn: 'neurological.table.stroke.sensory',
                         inputType: 'select',
                         label: 'Sensory',
                         tableCss: 'trans-table-cell',
@@ -3192,7 +2256,7 @@ module.exports = function() {
                         fsetCol: '2',
                         formCss: 'is-half',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
+                        dataParent: 'neurological.table.stroke',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -3205,7 +2269,7 @@ module.exports = function() {
                             text: '2 = Severe to total sensory loss'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '2'
                       }
                     ]
@@ -3215,7 +2279,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'motorRightArm',
-                        fqn: 'neurological.aments.stroke.motorRightArm',
+                        fqn: 'neurological.table.stroke.motorRightArm',
                         inputType: 'select',
                         label: 'Motor - right arm',
                         tableCss: 'trans-table-cell',
@@ -3225,7 +2289,7 @@ module.exports = function() {
                         fsetCol: '1',
                         formCss: 'is-half',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
+                        dataParent: 'neurological.table.stroke',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -3244,12 +2308,12 @@ module.exports = function() {
                             text: '4 = No movement'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       },
                       {
                         elementKey: 'bestLanguage',
-                        fqn: 'neurological.aments.stroke.bestLanguage',
+                        fqn: 'neurological.table.stroke.bestLanguage',
                         inputType: 'select',
                         label: 'Best language',
                         tableCss: 'trans-table-cell',
@@ -3259,7 +2323,7 @@ module.exports = function() {
                         fsetCol: '2',
                         formCss: 'is-half',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
+                        dataParent: 'neurological.table.stroke',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -3275,7 +2339,7 @@ module.exports = function() {
                             text: '3 = Mute, global aphasia'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '2'
                       }
                     ]
@@ -3285,7 +2349,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'motorLeftLeg',
-                        fqn: 'neurological.aments.stroke.motorLeftLeg',
+                        fqn: 'neurological.table.stroke.motorLeftLeg',
                         inputType: 'select',
                         label: 'Motor - left leg',
                         tableCss: 'trans-table-cell',
@@ -3295,7 +2359,7 @@ module.exports = function() {
                         fsetCol: '1',
                         formCss: 'is-half',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
+                        dataParent: 'neurological.table.stroke',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -3314,12 +2378,12 @@ module.exports = function() {
                             text: '4 = No movement'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       },
                       {
                         elementKey: 'dysarthria',
-                        fqn: 'neurological.aments.stroke.dysarthria',
+                        fqn: 'neurological.table.stroke.dysarthria',
                         inputType: 'select',
                         label: 'Dysarthria',
                         tableCss: 'trans-table-cell',
@@ -3329,7 +2393,7 @@ module.exports = function() {
                         fsetCol: '2',
                         formCss: 'is-half',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
+                        dataParent: 'neurological.table.stroke',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -3345,7 +2409,7 @@ module.exports = function() {
                             text: '3 = Mute, global aphasia'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '2'
                       }
                     ]
@@ -3355,7 +2419,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'motorRightLeg',
-                        fqn: 'neurological.aments.stroke.motorRightLeg',
+                        fqn: 'neurological.table.stroke.motorRightLeg',
                         inputType: 'select',
                         label: 'Motor - right leg',
                         tableCss: 'trans-table-cell',
@@ -3365,7 +2429,7 @@ module.exports = function() {
                         fsetCol: '1',
                         formCss: 'is-half',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
+                        dataParent: 'neurological.table.stroke',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -3384,12 +2448,12 @@ module.exports = function() {
                             text: '4 = No movement'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       },
                       {
                         elementKey: 'extinctionAndInattention',
-                        fqn: 'neurological.aments.stroke.extinctionAndInattention',
+                        fqn: 'neurological.table.stroke.extinctionAndInattention',
                         inputType: 'select',
                         label: 'Extinction and inattention',
                         tableCss: 'trans-table-cell',
@@ -3399,7 +2463,7 @@ module.exports = function() {
                         fsetCol: '2',
                         formCss: 'is-half',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
+                        dataParent: 'neurological.table.stroke',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -3412,7 +2476,7 @@ module.exports = function() {
                             text: '2 = Profound hemi-inattention or extinction'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '2'
                       }
                     ]
@@ -3422,7 +2486,7 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'limbAtaxia',
-                        fqn: 'neurological.aments.stroke.limbAtaxia',
+                        fqn: 'neurological.table.stroke.limbAtaxia',
                         inputType: 'select',
                         label: 'Limb ataxia',
                         tableCss: 'trans-table-cell',
@@ -3432,7 +2496,7 @@ module.exports = function() {
                         fsetCol: '1',
                         formCss: 'is-half',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
+                        dataParent: 'neurological.table.stroke',
                         page: 'Assessments: Neurological',
                         options: [
                           {
@@ -3445,7 +2509,7 @@ module.exports = function() {
                             text: '2 = Present in two limbs'
                           }
                         ],
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       }
                     ]
@@ -3455,8 +2519,8 @@ module.exports = function() {
                     elements: [
                       {
                         elementKey: 'comments',
-                        fqn: 'neurological.aments.stroke.comments',
-                        inputType: 'text',
+                        fqn: 'neurological.table.stroke.comments',
+                        inputType: 'textarea',
                         label: 'Comments',
                         tableCss: 'trans-table-cell',
                         tableColumn: '44',
@@ -3465,16 +2529,16 @@ module.exports = function() {
                         fsetCol: '1',
                         formCss: 'is-two-thirds',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
+                        dataParent: 'neurological.table.stroke',
                         page: 'Assessments: Neurological',
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '1'
                       },
                       {
                         elementKey: 'resources',
                         inputType: 'form-label',
                         label:
-                          'Resources-NL-Morse Fall Score (url)-NL-Mini-mental state examination (MMSE) (url)',
+                          "<b>Resources</b><p>Morse Fall Score <a target='_blank' href='https://google.ca'>external link</a></p><p>Mini-mental state examination (MMSE) <a target='_blank' href='https://google.ca'>external link</a></p>",
                         tableCss: 'trans-table-cell hide-table-element',
                         tableColumn: '45',
                         fieldset: 'stroke',
@@ -3483,9 +2547,9 @@ module.exports = function() {
                         formCss: 'is-one-third',
                         formOption: 'withExternalUrls',
                         pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
+                        dataParent: 'neurological.table.stroke',
                         page: 'Assessments: Neurological',
-                        tableKey: 'aments',
+                        tableKey: 'table',
                         formColumn: '2'
                       }
                     ]
@@ -3496,7 +2560,7 @@ module.exports = function() {
             },
             {
               elementKey: 'levelOfConciousness',
-              fqn: 'neurological.aments.stroke.levelOfConciousness',
+              fqn: 'neurological.table.stroke.levelOfConciousness',
               inputType: 'select',
               label: 'Level of conciousness',
               tableCss: 'trans-table-cell',
@@ -3506,7 +2570,7 @@ module.exports = function() {
               fsetCol: '1',
               formCss: 'is-half',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.stroke',
+              dataParent: 'neurological.table.stroke',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -3522,12 +2586,12 @@ module.exports = function() {
                   text: '3 = Unresponsive or responds only with reflex'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'bestGaze',
-              fqn: 'neurological.aments.stroke.bestGaze',
+              fqn: 'neurological.table.stroke.bestGaze',
               inputType: 'select',
               label: 'Best gaze',
               tableCss: 'trans-table-cell',
@@ -3537,7 +2601,7 @@ module.exports = function() {
               fsetCol: '2',
               formCss: 'is-half',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.stroke',
+              dataParent: 'neurological.table.stroke',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -3550,12 +2614,12 @@ module.exports = function() {
                   text: '2 = Forced deviation'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '2'
             },
             {
               elementKey: 'levelOfConciousnessQuestions',
-              fqn: 'neurological.aments.stroke.levelOfConciousnessQuestions',
+              fqn: 'neurological.table.stroke.levelOfConciousnessQuestions',
               inputType: 'select',
               label: 'Level of conciousness questions',
               tableCss: 'trans-table-cell',
@@ -3565,7 +2629,7 @@ module.exports = function() {
               fsetCol: '1',
               formCss: 'is-half',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.stroke',
+              dataParent: 'neurological.table.stroke',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -3578,12 +2642,12 @@ module.exports = function() {
                   text: '2 = Answers neither question correctly'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'visual',
-              fqn: 'neurological.aments.stroke.visual',
+              fqn: 'neurological.table.stroke.visual',
               inputType: 'select',
               label: 'Visual',
               tableCss: 'trans-table-cell',
@@ -3593,7 +2657,7 @@ module.exports = function() {
               fsetCol: '2',
               formCss: 'is-half',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.stroke',
+              dataParent: 'neurological.table.stroke',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -3609,12 +2673,12 @@ module.exports = function() {
                   text: '3 = Complete paralysis of one or both sides'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '2'
             },
             {
               elementKey: 'levelOfConciousnessCommands',
-              fqn: 'neurological.aments.stroke.levelOfConciousnessCommands',
+              fqn: 'neurological.table.stroke.levelOfConciousnessCommands',
               inputType: 'select',
               label: 'Level of conciousness commands',
               tableCss: 'trans-table-cell',
@@ -3624,7 +2688,7 @@ module.exports = function() {
               fsetCol: '1',
               formCss: 'is-half',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.stroke',
+              dataParent: 'neurological.table.stroke',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -3637,12 +2701,12 @@ module.exports = function() {
                   text: '2 = Performs neither task correctly'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'facialPalsy',
-              fqn: 'neurological.aments.stroke.facialPalsy',
+              fqn: 'neurological.table.stroke.facialPalsy',
               inputType: 'select',
               label: 'Facial palsy',
               tableCss: 'trans-table-cell',
@@ -3652,7 +2716,7 @@ module.exports = function() {
               fsetCol: '2',
               formCss: 'is-half',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.stroke',
+              dataParent: 'neurological.table.stroke',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -3668,12 +2732,12 @@ module.exports = function() {
                   text: '3 = Complete paralysis of one or both sides'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '2'
             },
             {
               elementKey: 'motorLeftArm',
-              fqn: 'neurological.aments.stroke.motorLeftArm',
+              fqn: 'neurological.table.stroke.motorLeftArm',
               inputType: 'select',
               label: 'Motor - left arm',
               tableCss: 'trans-table-cell',
@@ -3683,7 +2747,7 @@ module.exports = function() {
               fsetCol: '1',
               formCss: 'is-half',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.stroke',
+              dataParent: 'neurological.table.stroke',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -3702,12 +2766,12 @@ module.exports = function() {
                   text: '4 = No movement'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'sensory',
-              fqn: 'neurological.aments.stroke.sensory',
+              fqn: 'neurological.table.stroke.sensory',
               inputType: 'select',
               label: 'Sensory',
               tableCss: 'trans-table-cell',
@@ -3717,7 +2781,7 @@ module.exports = function() {
               fsetCol: '2',
               formCss: 'is-half',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.stroke',
+              dataParent: 'neurological.table.stroke',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -3730,12 +2794,12 @@ module.exports = function() {
                   text: '2 = Severe to total sensory loss'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '2'
             },
             {
               elementKey: 'motorRightArm',
-              fqn: 'neurological.aments.stroke.motorRightArm',
+              fqn: 'neurological.table.stroke.motorRightArm',
               inputType: 'select',
               label: 'Motor - right arm',
               tableCss: 'trans-table-cell',
@@ -3745,7 +2809,7 @@ module.exports = function() {
               fsetCol: '1',
               formCss: 'is-half',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.stroke',
+              dataParent: 'neurological.table.stroke',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -3764,12 +2828,12 @@ module.exports = function() {
                   text: '4 = No movement'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'bestLanguage',
-              fqn: 'neurological.aments.stroke.bestLanguage',
+              fqn: 'neurological.table.stroke.bestLanguage',
               inputType: 'select',
               label: 'Best language',
               tableCss: 'trans-table-cell',
@@ -3779,7 +2843,7 @@ module.exports = function() {
               fsetCol: '2',
               formCss: 'is-half',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.stroke',
+              dataParent: 'neurological.table.stroke',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -3795,12 +2859,12 @@ module.exports = function() {
                   text: '3 = Mute, global aphasia'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '2'
             },
             {
               elementKey: 'motorLeftLeg',
-              fqn: 'neurological.aments.stroke.motorLeftLeg',
+              fqn: 'neurological.table.stroke.motorLeftLeg',
               inputType: 'select',
               label: 'Motor - left leg',
               tableCss: 'trans-table-cell',
@@ -3810,7 +2874,7 @@ module.exports = function() {
               fsetCol: '1',
               formCss: 'is-half',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.stroke',
+              dataParent: 'neurological.table.stroke',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -3829,12 +2893,12 @@ module.exports = function() {
                   text: '4 = No movement'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'dysarthria',
-              fqn: 'neurological.aments.stroke.dysarthria',
+              fqn: 'neurological.table.stroke.dysarthria',
               inputType: 'select',
               label: 'Dysarthria',
               tableCss: 'trans-table-cell',
@@ -3844,7 +2908,7 @@ module.exports = function() {
               fsetCol: '2',
               formCss: 'is-half',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.stroke',
+              dataParent: 'neurological.table.stroke',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -3860,12 +2924,12 @@ module.exports = function() {
                   text: '3 = Mute, global aphasia'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '2'
             },
             {
               elementKey: 'motorRightLeg',
-              fqn: 'neurological.aments.stroke.motorRightLeg',
+              fqn: 'neurological.table.stroke.motorRightLeg',
               inputType: 'select',
               label: 'Motor - right leg',
               tableCss: 'trans-table-cell',
@@ -3875,7 +2939,7 @@ module.exports = function() {
               fsetCol: '1',
               formCss: 'is-half',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.stroke',
+              dataParent: 'neurological.table.stroke',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -3894,12 +2958,12 @@ module.exports = function() {
                   text: '4 = No movement'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'extinctionAndInattention',
-              fqn: 'neurological.aments.stroke.extinctionAndInattention',
+              fqn: 'neurological.table.stroke.extinctionAndInattention',
               inputType: 'select',
               label: 'Extinction and inattention',
               tableCss: 'trans-table-cell',
@@ -3909,7 +2973,7 @@ module.exports = function() {
               fsetCol: '2',
               formCss: 'is-half',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.stroke',
+              dataParent: 'neurological.table.stroke',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -3922,12 +2986,12 @@ module.exports = function() {
                   text: '2 = Profound hemi-inattention or extinction'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '2'
             },
             {
               elementKey: 'limbAtaxia',
-              fqn: 'neurological.aments.stroke.limbAtaxia',
+              fqn: 'neurological.table.stroke.limbAtaxia',
               inputType: 'select',
               label: 'Limb ataxia',
               tableCss: 'trans-table-cell',
@@ -3937,7 +3001,7 @@ module.exports = function() {
               fsetCol: '1',
               formCss: 'is-half',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.stroke',
+              dataParent: 'neurological.table.stroke',
               page: 'Assessments: Neurological',
               options: [
                 {
@@ -3950,13 +3014,13 @@ module.exports = function() {
                   text: '2 = Present in two limbs'
                 }
               ],
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'comments',
-              fqn: 'neurological.aments.stroke.comments',
-              inputType: 'text',
+              fqn: 'neurological.table.stroke.comments',
+              inputType: 'textarea',
               label: 'Comments',
               tableCss: 'trans-table-cell',
               tableColumn: '44',
@@ -3965,16 +3029,16 @@ module.exports = function() {
               fsetCol: '1',
               formCss: 'is-two-thirds',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.stroke',
+              dataParent: 'neurological.table.stroke',
               page: 'Assessments: Neurological',
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '1'
             },
             {
               elementKey: 'resources',
               inputType: 'form-label',
               label:
-                'Resources-NL-Morse Fall Score (url)-NL-Mini-mental state examination (MMSE) (url)',
+                "<b>Resources</b><p>Morse Fall Score <a target='_blank' href='https://google.ca'>external link</a></p><p>Mini-mental state examination (MMSE) <a target='_blank' href='https://google.ca'>external link</a></p>",
               tableCss: 'trans-table-cell hide-table-element',
               tableColumn: '45',
               fieldset: 'stroke',
@@ -3983,9 +3047,9 @@ module.exports = function() {
               formCss: 'is-one-third',
               formOption: 'withExternalUrls',
               pageDataKey: 'neurological',
-              dataParent: 'neurological.aments.stroke',
+              dataParent: 'neurological.table.stroke',
               page: 'Assessments: Neurological',
-              tableKey: 'aments',
+              tableKey: 'table',
               formColumn: '2'
             }
           ],
@@ -3996,78 +3060,78 @@ module.exports = function() {
                 elements: [
                   {
                     elementKey: 'name',
-                    fqn: 'neurological.aments.name',
+                    fqn: 'neurological.table.name',
                     inputType: 'text',
                     label: 'Name',
                     tableCss: 'trans-table-cell',
                     tableColumn: '1',
-                    formCss: 'is-3',
+                    formCss: 'user_name',
                     formColumn: '1',
                     formRow: '1',
                     pageDataKey: 'neurological',
-                    dataParent: 'neurological.aments',
+                    dataParent: 'neurological.table',
                     page: 'Assessments: Neurological',
-                    tableKey: 'aments'
+                    tableKey: 'table'
                   },
                   {
                     elementKey: 'profession',
-                    fqn: 'neurological.aments.profession',
+                    fqn: 'neurological.table.profession',
                     inputType: 'text',
                     label: 'Profession',
                     tableCss: 'trans-table-cell',
                     tableColumn: '2',
-                    formCss: 'is-3',
+                    formCss: 'user_pro',
                     formColumn: '2',
                     formRow: '1',
                     pageDataKey: 'neurological',
-                    dataParent: 'neurological.aments',
+                    dataParent: 'neurological.table',
                     page: 'Assessments: Neurological',
-                    tableKey: 'aments'
+                    tableKey: 'table'
                   },
                   {
                     elementKey: 'unit',
-                    fqn: 'neurological.aments.unit',
+                    fqn: 'neurological.table.unit',
                     inputType: 'text',
                     label: 'Unit',
                     tableCss: 'trans-table-cell',
                     tableColumn: '3',
-                    formCss: 'is-2',
+                    formCss: 'user_unit',
                     formColumn: '3',
                     formRow: '1',
                     pageDataKey: 'neurological',
-                    dataParent: 'neurological.aments',
+                    dataParent: 'neurological.table',
                     page: 'Assessments: Neurological',
-                    tableKey: 'aments'
+                    tableKey: 'table'
                   },
                   {
                     elementKey: 'day',
-                    fqn: 'neurological.aments.day',
+                    fqn: 'neurological.table.day',
                     inputType: 'day',
                     label: 'Day',
                     tableCss: 'trans-table-cell',
                     tableColumn: '4',
-                    formCss: 'is-2',
+                    formCss: 'user_day',
                     formColumn: '4',
                     formRow: '1',
                     pageDataKey: 'neurological',
-                    dataParent: 'neurological.aments',
+                    dataParent: 'neurological.table',
                     page: 'Assessments: Neurological',
-                    tableKey: 'aments'
+                    tableKey: 'table'
                   },
                   {
                     elementKey: 'time',
-                    fqn: 'neurological.aments.time',
+                    fqn: 'neurological.table.time',
                     inputType: 'time',
                     label: 'Time',
                     tableCss: 'trans-table-cell',
                     tableColumn: '5',
-                    formCss: 'is-2',
+                    formCss: 'user_time',
                     formColumn: '5',
                     formRow: '1',
                     pageDataKey: 'neurological',
-                    dataParent: 'neurological.aments',
+                    dataParent: 'neurological.table',
                     page: 'Assessments: Neurological',
-                    tableKey: 'aments'
+                    tableKey: 'table'
                   }
                 ]
               },
@@ -4076,7 +3140,7 @@ module.exports = function() {
                 elements: [
                   {
                     elementKey: 'status',
-                    fqn: 'neurological.aments.status',
+                    fqn: 'neurological.table.status',
                     inputType: 'fieldset',
                     label: 'Status',
                     tableCss: 'trans-table-cell hide-table-element',
@@ -4085,125 +3149,11 @@ module.exports = function() {
                     formColumn: '1',
                     formRow: '2',
                     pageDataKey: 'neurological',
-                    dataParent: 'neurological.aments',
+                    dataParent: 'neurological.table',
                     page: 'Assessments: Neurological',
-                    elements: [
-                      {
-                        elementKey: 'alert',
-                        fqn: 'neurological.aments.status.alert',
-                        inputType: 'checkbox',
-                        label: 'Alert',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '7',
-                        fieldset: 'status',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.status',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'oriented',
-                        fqn: 'neurological.aments.status.oriented',
-                        inputType: 'checkbox',
-                        label: 'Oriented',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '8',
-                        fieldset: 'status',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.status',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'confused',
-                        fqn: 'neurological.aments.status.confused',
-                        inputType: 'checkbox',
-                        label: 'Confused',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '9',
-                        fieldset: 'status',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.status',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'drowsy',
-                        fqn: 'neurological.aments.status.drowsy',
-                        inputType: 'checkbox',
-                        label: 'Drowsy',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '10',
-                        fieldset: 'status',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.status',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'unresponsive',
-                        fqn: 'neurological.aments.status.unresponsive',
-                        inputType: 'checkbox',
-                        label: 'Unresponsive',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '11',
-                        fieldset: 'status',
-                        fsetRow: '5',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.status',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'dizziness',
-                        fqn: 'neurological.aments.status.dizziness',
-                        inputType: 'checkbox',
-                        label: 'Dizziness',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '12',
-                        fieldset: 'status',
-                        fsetRow: '6',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.status',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'blurredVision',
-                        fqn: 'neurological.aments.status.blurredVision',
-                        inputType: 'checkbox',
-                        label: 'Blurred vision',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '13',
-                        fieldset: 'status',
-                        fsetRow: '7',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.status',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      }
-                    ],
                     containerType: 'fieldset',
                     containerKey: 'status',
-                    tableKey: 'aments',
+                    tableKey: 'table',
                     formFieldSet: {
                       rows: [
                         {
@@ -4211,7 +3161,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'alert',
-                              fqn: 'neurological.aments.status.alert',
+                              fqn: 'neurological.table.status.alert',
                               inputType: 'checkbox',
                               label: 'Alert',
                               tableCss: 'trans-table-cell',
@@ -4220,9 +3170,9 @@ module.exports = function() {
                               fsetRow: '1',
                               fsetCol: '1',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.status',
+                              dataParent: 'neurological.table.status',
                               page: 'Assessments: Neurological',
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             }
                           ]
@@ -4232,7 +3182,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'oriented',
-                              fqn: 'neurological.aments.status.oriented',
+                              fqn: 'neurological.table.status.oriented',
                               inputType: 'checkbox',
                               label: 'Oriented',
                               tableCss: 'trans-table-cell',
@@ -4241,9 +3191,9 @@ module.exports = function() {
                               fsetRow: '2',
                               fsetCol: '1',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.status',
+                              dataParent: 'neurological.table.status',
                               page: 'Assessments: Neurological',
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             }
                           ]
@@ -4253,7 +3203,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'confused',
-                              fqn: 'neurological.aments.status.confused',
+                              fqn: 'neurological.table.status.confused',
                               inputType: 'checkbox',
                               label: 'Confused',
                               tableCss: 'trans-table-cell',
@@ -4262,9 +3212,9 @@ module.exports = function() {
                               fsetRow: '3',
                               fsetCol: '1',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.status',
+                              dataParent: 'neurological.table.status',
                               page: 'Assessments: Neurological',
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             }
                           ]
@@ -4274,7 +3224,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'drowsy',
-                              fqn: 'neurological.aments.status.drowsy',
+                              fqn: 'neurological.table.status.drowsy',
                               inputType: 'checkbox',
                               label: 'Drowsy',
                               tableCss: 'trans-table-cell',
@@ -4283,9 +3233,9 @@ module.exports = function() {
                               fsetRow: '4',
                               fsetCol: '1',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.status',
+                              dataParent: 'neurological.table.status',
                               page: 'Assessments: Neurological',
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             }
                           ]
@@ -4295,7 +3245,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'unresponsive',
-                              fqn: 'neurological.aments.status.unresponsive',
+                              fqn: 'neurological.table.status.unresponsive',
                               inputType: 'checkbox',
                               label: 'Unresponsive',
                               tableCss: 'trans-table-cell',
@@ -4304,9 +3254,9 @@ module.exports = function() {
                               fsetRow: '5',
                               fsetCol: '1',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.status',
+                              dataParent: 'neurological.table.status',
                               page: 'Assessments: Neurological',
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             }
                           ]
@@ -4316,7 +3266,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'dizziness',
-                              fqn: 'neurological.aments.status.dizziness',
+                              fqn: 'neurological.table.status.dizziness',
                               inputType: 'checkbox',
                               label: 'Dizziness',
                               tableCss: 'trans-table-cell',
@@ -4325,9 +3275,9 @@ module.exports = function() {
                               fsetRow: '6',
                               fsetCol: '1',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.status',
+                              dataParent: 'neurological.table.status',
                               page: 'Assessments: Neurological',
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             }
                           ]
@@ -4337,7 +3287,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'blurredVision',
-                              fqn: 'neurological.aments.status.blurredVision',
+                              fqn: 'neurological.table.status.blurredVision',
                               inputType: 'checkbox',
                               label: 'Blurred vision',
                               tableCss: 'trans-table-cell',
@@ -4346,9 +3296,9 @@ module.exports = function() {
                               fsetRow: '7',
                               fsetCol: '1',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.status',
+                              dataParent: 'neurological.table.status',
                               page: 'Assessments: Neurological',
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             }
                           ]
@@ -4359,7 +3309,7 @@ module.exports = function() {
                   },
                   {
                     elementKey: 'concious',
-                    fqn: 'neurological.aments.concious',
+                    fqn: 'neurological.table.concious',
                     inputType: 'fieldset',
                     label: 'Loss of conciousness',
                     tableCss: 'trans-table-cell hide-table-element',
@@ -4368,55 +3318,11 @@ module.exports = function() {
                     formColumn: '2',
                     formRow: '2',
                     pageDataKey: 'neurological',
-                    dataParent: 'neurological.aments',
+                    dataParent: 'neurological.table',
                     page: 'Assessments: Neurological',
-                    elements: [
-                      {
-                        elementKey: 'loss',
-                        fqn: 'neurological.aments.concious.loss',
-                        inputType: 'select',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '15',
-                        fieldset: 'concious',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.concious',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: 'No'
-                          },
-                          {
-                            text: 'Yes'
-                          },
-                          {
-                            text: 'Unknown'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'duration',
-                        fqn: 'neurological.aments.concious.duration',
-                        inputType: 'text',
-                        label: 'Duration',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '16',
-                        fieldset: 'concious',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.concious',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      }
-                    ],
                     containerType: 'fieldset',
                     containerKey: 'concious',
-                    tableKey: 'aments',
+                    tableKey: 'table',
                     formFieldSet: {
                       rows: [
                         {
@@ -4424,7 +3330,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'loss',
-                              fqn: 'neurological.aments.concious.loss',
+                              fqn: 'neurological.table.concious.loss',
                               inputType: 'select',
                               tableCss: 'trans-table-cell',
                               tableColumn: '15',
@@ -4432,7 +3338,7 @@ module.exports = function() {
                               fsetRow: '1',
                               fsetCol: '1',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.concious',
+                              dataParent: 'neurological.table.concious',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -4445,7 +3351,7 @@ module.exports = function() {
                                   text: 'Unknown'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             }
                           ]
@@ -4455,7 +3361,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'duration',
-                              fqn: 'neurological.aments.concious.duration',
+                              fqn: 'neurological.table.concious.duration',
                               inputType: 'text',
                               label: 'Duration',
                               tableCss: 'trans-table-cell',
@@ -4464,9 +3370,9 @@ module.exports = function() {
                               fsetRow: '2',
                               fsetCol: '1',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.concious',
+                              dataParent: 'neurological.table.concious',
                               page: 'Assessments: Neurological',
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             }
                           ]
@@ -4477,7 +3383,7 @@ module.exports = function() {
                   },
                   {
                     elementKey: 'glasgowComaScale',
-                    fqn: 'neurological.aments.glasgowComaScale',
+                    fqn: 'neurological.table.glasgowComaScale',
                     inputType: 'fieldset',
                     label: 'Glasgow Coma Scale',
                     tableCss: 'trans-table-cell hide-table-element',
@@ -4486,134 +3392,11 @@ module.exports = function() {
                     formColumn: '3',
                     formRow: '2',
                     pageDataKey: 'neurological',
-                    dataParent: 'neurological.aments',
+                    dataParent: 'neurological.table',
                     page: 'Assessments: Neurological',
-                    elements: [
-                      {
-                        elementKey: 'eyeOpening',
-                        fqn: 'neurological.aments.glasgowComaScale.eyeOpening',
-                        inputType: 'select',
-                        label: 'Eye opening',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '18',
-                        fieldset: 'glasgowComaScale',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.glasgowComaScale',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: 'Spontaneous'
-                          },
-                          {
-                            text: 'To sound'
-                          },
-                          {
-                            text: 'To pressure'
-                          },
-                          {
-                            text: 'None'
-                          },
-                          {
-                            text: 'Non testable'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'verbalResponse',
-                        fqn: 'neurological.aments.glasgowComaScale.verbalResponse',
-                        inputType: 'select',
-                        label: 'Verbal response',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '19',
-                        fieldset: 'glasgowComaScale',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.glasgowComaScale',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: 'Oriented'
-                          },
-                          {
-                            text: 'Confused'
-                          },
-                          {
-                            text: 'Words'
-                          },
-                          {
-                            text: 'Sounds'
-                          },
-                          {
-                            text: 'None'
-                          },
-                          {
-                            text: 'Non testable'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'bestMotorResponse',
-                        fqn: 'neurological.aments.glasgowComaScale.bestMotorResponse',
-                        inputType: 'select',
-                        label: 'Best motor response',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '20',
-                        fieldset: 'glasgowComaScale',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.glasgowComaScale',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: 'Obeys commands'
-                          },
-                          {
-                            text: 'Localising'
-                          },
-                          {
-                            text: 'Normal flexion'
-                          },
-                          {
-                            text: 'Extension'
-                          },
-                          {
-                            text: 'None'
-                          },
-                          {
-                            text: 'Non testable'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'totalGlasgow',
-                        fqn: 'neurological.aments.glasgowComaScale.totalGlasgow',
-                        inputType: 'calculated',
-                        label: 'Total',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '21',
-                        fieldset: 'glasgowComaScale',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.glasgowComaScale',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      }
-                    ],
                     containerType: 'fieldset',
                     containerKey: 'glasgowComaScale',
-                    tableKey: 'aments',
+                    tableKey: 'table',
                     formFieldSet: {
                       rows: [
                         {
@@ -4621,7 +3404,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'eyeOpening',
-                              fqn: 'neurological.aments.glasgowComaScale.eyeOpening',
+                              fqn: 'neurological.table.glasgowComaScale.eyeOpening',
                               inputType: 'select',
                               label: 'Eye opening',
                               tableCss: 'trans-table-cell',
@@ -4630,7 +3413,7 @@ module.exports = function() {
                               fsetRow: '1',
                               fsetCol: '1',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.glasgowComaScale',
+                              dataParent: 'neurological.table.glasgowComaScale',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -4649,7 +3432,7 @@ module.exports = function() {
                                   text: 'Non testable'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             }
                           ]
@@ -4659,7 +3442,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'verbalResponse',
-                              fqn: 'neurological.aments.glasgowComaScale.verbalResponse',
+                              fqn: 'neurological.table.glasgowComaScale.verbalResponse',
                               inputType: 'select',
                               label: 'Verbal response',
                               tableCss: 'trans-table-cell',
@@ -4668,7 +3451,7 @@ module.exports = function() {
                               fsetRow: '2',
                               fsetCol: '1',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.glasgowComaScale',
+                              dataParent: 'neurological.table.glasgowComaScale',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -4690,7 +3473,7 @@ module.exports = function() {
                                   text: 'Non testable'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             }
                           ]
@@ -4700,7 +3483,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'bestMotorResponse',
-                              fqn: 'neurological.aments.glasgowComaScale.bestMotorResponse',
+                              fqn: 'neurological.table.glasgowComaScale.bestMotorResponse',
                               inputType: 'select',
                               label: 'Best motor response',
                               tableCss: 'trans-table-cell',
@@ -4709,7 +3492,7 @@ module.exports = function() {
                               fsetRow: '3',
                               fsetCol: '1',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.glasgowComaScale',
+                              dataParent: 'neurological.table.glasgowComaScale',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -4731,7 +3514,7 @@ module.exports = function() {
                                   text: 'Non testable'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             }
                           ]
@@ -4741,7 +3524,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'totalGlasgow',
-                              fqn: 'neurological.aments.glasgowComaScale.totalGlasgow',
+                              fqn: 'neurological.table.glasgowComaScale.totalGlasgow',
                               inputType: 'calculated',
                               label: 'Total',
                               tableCss: 'trans-table-cell',
@@ -4750,9 +3533,9 @@ module.exports = function() {
                               fsetRow: '4',
                               fsetCol: '1',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.glasgowComaScale',
+                              dataParent: 'neurological.table.glasgowComaScale',
                               page: 'Assessments: Neurological',
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             }
                           ]
@@ -4768,7 +3551,7 @@ module.exports = function() {
                 elements: [
                   {
                     elementKey: 'pupils',
-                    fqn: 'neurological.aments.pupils',
+                    fqn: 'neurological.table.pupils',
                     inputType: 'fieldRowSet',
                     label: 'Pupils',
                     tableCss: 'trans-table-cell hide-table-element',
@@ -4778,181 +3561,11 @@ module.exports = function() {
                     formColumn: '1',
                     formRow: '3',
                     pageDataKey: 'neurological',
-                    dataParent: 'neurological.aments',
+                    dataParent: 'neurological.table',
                     page: 'Assessments: Neurological',
-                    elements: [
-                      {
-                        elementKey: 'leftPupilSize',
-                        fqn: 'neurological.aments.pupils.leftPupilSize',
-                        inputType: 'select',
-                        label: 'Left pupil size',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '23',
-                        fieldset: 'pupils',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.pupils',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '1'
-                          },
-                          {
-                            text: '2'
-                          },
-                          {
-                            text: '3'
-                          },
-                          {
-                            text: '4'
-                          },
-                          {
-                            text: '5'
-                          },
-                          {
-                            text: '6'
-                          },
-                          {
-                            text: '7'
-                          },
-                          {
-                            text: '8'
-                          },
-                          {
-                            text: '9'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'leftPupilResponseToLight',
-                        fqn: 'neurological.aments.pupils.leftPupilResponseToLight',
-                        inputType: 'select',
-                        label: 'Left pupil response to light',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '24',
-                        fieldset: 'pupils',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.pupils',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: 'Brisk'
-                          },
-                          {
-                            text: 'Sluggish'
-                          },
-                          {
-                            text: 'Fixed'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'rightPupilSize',
-                        fqn: 'neurological.aments.pupils.rightPupilSize',
-                        inputType: 'select',
-                        label: 'Right pupil size',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '25',
-                        fieldset: 'pupils',
-                        fsetRow: '1',
-                        fsetCol: '2',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.pupils',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '1'
-                          },
-                          {
-                            text: '2'
-                          },
-                          {
-                            text: '3'
-                          },
-                          {
-                            text: '4'
-                          },
-                          {
-                            text: '5'
-                          },
-                          {
-                            text: '6'
-                          },
-                          {
-                            text: '7'
-                          },
-                          {
-                            text: '8'
-                          },
-                          {
-                            text: '9'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '2'
-                      },
-                      {
-                        elementKey: 'rightPupilResponseToLight',
-                        fqn: 'neurological.aments.pupils.rightPupilResponseToLight',
-                        inputType: 'select',
-                        label: 'Right pupil response to light',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '26',
-                        fieldset: 'pupils',
-                        fsetRow: '2',
-                        fsetCol: '2',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.pupils',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: 'Brisk'
-                          },
-                          {
-                            text: 'Sluggish'
-                          },
-                          {
-                            text: 'Fixed'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '2'
-                      },
-                      {
-                        elementKey: 'bothPupils',
-                        fqn: 'neurological.aments.pupils.bothPupils',
-                        inputType: 'select',
-                        label: 'Both pupils',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '27',
-                        fieldset: 'pupils',
-                        fsetRow: '1',
-                        fsetCol: '3',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.pupils',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: 'Equal'
-                          },
-                          {
-                            text: 'Unequal'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '3'
-                      }
-                    ],
                     containerType: 'fieldRowSet',
                     containerKey: 'pupils',
-                    tableKey: 'aments',
+                    tableKey: 'table',
                     formFieldSet: {
                       rows: [
                         {
@@ -4960,7 +3573,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'leftPupilSize',
-                              fqn: 'neurological.aments.pupils.leftPupilSize',
+                              fqn: 'neurological.table.pupils.leftPupilSize',
                               inputType: 'select',
                               label: 'Left pupil size',
                               tableCss: 'trans-table-cell',
@@ -4969,7 +3582,7 @@ module.exports = function() {
                               fsetRow: '1',
                               fsetCol: '1',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.pupils',
+                              dataParent: 'neurological.table.pupils',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -5000,12 +3613,12 @@ module.exports = function() {
                                   text: '9'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             },
                             {
                               elementKey: 'rightPupilSize',
-                              fqn: 'neurological.aments.pupils.rightPupilSize',
+                              fqn: 'neurological.table.pupils.rightPupilSize',
                               inputType: 'select',
                               label: 'Right pupil size',
                               tableCss: 'trans-table-cell',
@@ -5014,7 +3627,7 @@ module.exports = function() {
                               fsetRow: '1',
                               fsetCol: '2',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.pupils',
+                              dataParent: 'neurological.table.pupils',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -5045,12 +3658,12 @@ module.exports = function() {
                                   text: '9'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '2'
                             },
                             {
                               elementKey: 'bothPupils',
-                              fqn: 'neurological.aments.pupils.bothPupils',
+                              fqn: 'neurological.table.pupils.bothPupils',
                               inputType: 'select',
                               label: 'Both pupils',
                               tableCss: 'trans-table-cell',
@@ -5059,7 +3672,7 @@ module.exports = function() {
                               fsetRow: '1',
                               fsetCol: '3',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.pupils',
+                              dataParent: 'neurological.table.pupils',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -5069,7 +3682,7 @@ module.exports = function() {
                                   text: 'Unequal'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '3'
                             }
                           ]
@@ -5079,7 +3692,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'leftPupilResponseToLight',
-                              fqn: 'neurological.aments.pupils.leftPupilResponseToLight',
+                              fqn: 'neurological.table.pupils.leftPupilResponseToLight',
                               inputType: 'select',
                               label: 'Left pupil response to light',
                               tableCss: 'trans-table-cell',
@@ -5088,7 +3701,7 @@ module.exports = function() {
                               fsetRow: '2',
                               fsetCol: '1',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.pupils',
+                              dataParent: 'neurological.table.pupils',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -5101,12 +3714,12 @@ module.exports = function() {
                                   text: 'Fixed'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             },
                             {
                               elementKey: 'rightPupilResponseToLight',
-                              fqn: 'neurological.aments.pupils.rightPupilResponseToLight',
+                              fqn: 'neurological.table.pupils.rightPupilResponseToLight',
                               inputType: 'select',
                               label: 'Right pupil response to light',
                               tableCss: 'trans-table-cell',
@@ -5115,7 +3728,7 @@ module.exports = function() {
                               fsetRow: '2',
                               fsetCol: '2',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.pupils',
+                              dataParent: 'neurological.table.pupils',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -5128,7 +3741,7 @@ module.exports = function() {
                                   text: 'Fixed'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '2'
                             }
                           ]
@@ -5144,7 +3757,7 @@ module.exports = function() {
                 elements: [
                   {
                     elementKey: 'stroke',
-                    fqn: 'neurological.aments.stroke',
+                    fqn: 'neurological.table.stroke',
                     inputType: 'fieldRowSet',
                     label: 'Stroke Assessment',
                     tableCss: 'trans-table-cell hide-table-element',
@@ -5154,507 +3767,11 @@ module.exports = function() {
                     formColumn: '1',
                     formRow: '4',
                     pageDataKey: 'neurological',
-                    dataParent: 'neurological.aments',
+                    dataParent: 'neurological.table',
                     page: 'Assessments: Neurological',
-                    elements: [
-                      {
-                        elementKey: 'levelOfConciousness',
-                        fqn: 'neurological.aments.stroke.levelOfConciousness',
-                        inputType: 'select',
-                        label: 'Level of conciousness',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '29',
-                        fieldset: 'stroke',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = Alert; keenly responsive'
-                          },
-                          {
-                            text: '1 = Not alert; but arousable by minor stimulation'
-                          },
-                          {
-                            text: '2 = Not alert; requires repeated stimulation'
-                          },
-                          {
-                            text: '3 = Unresponsive or responds only with reflex'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'bestGaze',
-                        fqn: 'neurological.aments.stroke.bestGaze',
-                        inputType: 'select',
-                        label: 'Best gaze',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '30',
-                        fieldset: 'stroke',
-                        fsetRow: '1',
-                        fsetCol: '2',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = Normal'
-                          },
-                          {
-                            text: '1 = Partial gaze palsy'
-                          },
-                          {
-                            text: '2 = Forced deviation'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '2'
-                      },
-                      {
-                        elementKey: 'levelOfConciousnessQuestions',
-                        fqn: 'neurological.aments.stroke.levelOfConciousnessQuestions',
-                        inputType: 'select',
-                        label: 'Level of conciousness questions',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '31',
-                        fieldset: 'stroke',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = answers two questions correctly'
-                          },
-                          {
-                            text: '1 = Answers one question correctly'
-                          },
-                          {
-                            text: '2 = Answers neither question correctly'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'visual',
-                        fqn: 'neurological.aments.stroke.visual',
-                        inputType: 'select',
-                        label: 'Visual',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '32',
-                        fieldset: 'stroke',
-                        fsetRow: '2',
-                        fsetCol: '2',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = No visual loss'
-                          },
-                          {
-                            text: '1 = Partial hemianopia'
-                          },
-                          {
-                            text: '2 = Partial paralysis'
-                          },
-                          {
-                            text: '3 = Complete paralysis of one or both sides'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '2'
-                      },
-                      {
-                        elementKey: 'levelOfConciousnessCommands',
-                        fqn: 'neurological.aments.stroke.levelOfConciousnessCommands',
-                        inputType: 'select',
-                        label: 'Level of conciousness commands',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '33',
-                        fieldset: 'stroke',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = Performs both tasks correctly'
-                          },
-                          {
-                            text: '1 = Performs one task correctly'
-                          },
-                          {
-                            text: '2 = Performs neither task correctly'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'facialPalsy',
-                        fqn: 'neurological.aments.stroke.facialPalsy',
-                        inputType: 'select',
-                        label: 'Facial palsy',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '34',
-                        fieldset: 'stroke',
-                        fsetRow: '3',
-                        fsetCol: '2',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = Normal symmetric movements'
-                          },
-                          {
-                            text: '1 = Minor paralysis'
-                          },
-                          {
-                            text: '2 = Partial paralysis'
-                          },
-                          {
-                            text: '3 = Complete paralysis of one or both sides'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '2'
-                      },
-                      {
-                        elementKey: 'motorLeftArm',
-                        fqn: 'neurological.aments.stroke.motorLeftArm',
-                        inputType: 'select',
-                        label: 'Motor - left arm',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '35',
-                        fieldset: 'stroke',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = No drift'
-                          },
-                          {
-                            text: '1 = Drift'
-                          },
-                          {
-                            text: '2 = Some effort against gravity'
-                          },
-                          {
-                            text: '3 = No effort against gravity; limb falls'
-                          },
-                          {
-                            text: '4 = No movement'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'sensory',
-                        fqn: 'neurological.aments.stroke.sensory',
-                        inputType: 'select',
-                        label: 'Sensory',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '36',
-                        fieldset: 'stroke',
-                        fsetRow: '4',
-                        fsetCol: '2',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = Normal; no sensory loss'
-                          },
-                          {
-                            text: '1 = Mild-to-moderate sensory loss'
-                          },
-                          {
-                            text: '2 = Severe to total sensory loss'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '2'
-                      },
-                      {
-                        elementKey: 'motorRightArm',
-                        fqn: 'neurological.aments.stroke.motorRightArm',
-                        inputType: 'select',
-                        label: 'Motor - right arm',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '37',
-                        fieldset: 'stroke',
-                        fsetRow: '5',
-                        fsetCol: '1',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = No drift'
-                          },
-                          {
-                            text: '1 = Drift'
-                          },
-                          {
-                            text: '2 = Some effort against gravity'
-                          },
-                          {
-                            text: '3 = No effort against gravity; limb falls'
-                          },
-                          {
-                            text: '4 = No movement'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'bestLanguage',
-                        fqn: 'neurological.aments.stroke.bestLanguage',
-                        inputType: 'select',
-                        label: 'Best language',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '38',
-                        fieldset: 'stroke',
-                        fsetRow: '5',
-                        fsetCol: '2',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = No aphasia; normal'
-                          },
-                          {
-                            text: '1 = Mild to moderate aphasia'
-                          },
-                          {
-                            text: '2 = Severe aphasia'
-                          },
-                          {
-                            text: '3 = Mute, global aphasia'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '2'
-                      },
-                      {
-                        elementKey: 'motorLeftLeg',
-                        fqn: 'neurological.aments.stroke.motorLeftLeg',
-                        inputType: 'select',
-                        label: 'Motor - left leg',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '39',
-                        fieldset: 'stroke',
-                        fsetRow: '6',
-                        fsetCol: '1',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = No drift'
-                          },
-                          {
-                            text: '1 = Drift'
-                          },
-                          {
-                            text: '2 = Some effort against gravity'
-                          },
-                          {
-                            text: '3 = No effort against gravity'
-                          },
-                          {
-                            text: '4 = No movement'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'dysarthria',
-                        fqn: 'neurological.aments.stroke.dysarthria',
-                        inputType: 'select',
-                        label: 'Dysarthria',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '40',
-                        fieldset: 'stroke',
-                        fsetRow: '6',
-                        fsetCol: '2',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = Normal'
-                          },
-                          {
-                            text: '1 = Mild to moderate aphasia'
-                          },
-                          {
-                            text: '2 = Severe aphasia'
-                          },
-                          {
-                            text: '3 = Mute, global aphasia'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '2'
-                      },
-                      {
-                        elementKey: 'motorRightLeg',
-                        fqn: 'neurological.aments.stroke.motorRightLeg',
-                        inputType: 'select',
-                        label: 'Motor - right leg',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '41',
-                        fieldset: 'stroke',
-                        fsetRow: '7',
-                        fsetCol: '1',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = No drift'
-                          },
-                          {
-                            text: '1 = Drift'
-                          },
-                          {
-                            text: '2 = Some effort against gravity'
-                          },
-                          {
-                            text: '3 = No effort against gravity'
-                          },
-                          {
-                            text: '4 = No movement'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'extinctionAndInattention',
-                        fqn: 'neurological.aments.stroke.extinctionAndInattention',
-                        inputType: 'select',
-                        label: 'Extinction and inattention',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '42',
-                        fieldset: 'stroke',
-                        fsetRow: '7',
-                        fsetCol: '2',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = No abnormality'
-                          },
-                          {
-                            text: '1 = visual, tactile, auditory, spatial, or personal inattention'
-                          },
-                          {
-                            text: '2 = Profound hemi-inattention or extinction'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '2'
-                      },
-                      {
-                        elementKey: 'limbAtaxia',
-                        fqn: 'neurological.aments.stroke.limbAtaxia',
-                        inputType: 'select',
-                        label: 'Limb ataxia',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '43',
-                        fieldset: 'stroke',
-                        fsetRow: '8',
-                        fsetCol: '1',
-                        formCss: 'is-half',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
-                        page: 'Assessments: Neurological',
-                        options: [
-                          {
-                            text: '0 = Absent'
-                          },
-                          {
-                            text: '1 = Present in one limb'
-                          },
-                          {
-                            text: '2 = Present in two limbs'
-                          }
-                        ],
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'comments',
-                        fqn: 'neurological.aments.stroke.comments',
-                        inputType: 'text',
-                        label: 'Comments',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '44',
-                        fieldset: 'stroke',
-                        fsetRow: '9',
-                        fsetCol: '1',
-                        formCss: 'is-two-thirds',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'aments',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'resources',
-                        inputType: 'form-label',
-                        label:
-                          'Resources-NL-Morse Fall Score (url)-NL-Mini-mental state examination (MMSE) (url)',
-                        tableCss: 'trans-table-cell hide-table-element',
-                        tableColumn: '45',
-                        fieldset: 'stroke',
-                        fsetRow: '9',
-                        fsetCol: '2',
-                        formCss: 'is-one-third',
-                        formOption: 'withExternalUrls',
-                        pageDataKey: 'neurological',
-                        dataParent: 'neurological.aments.stroke',
-                        page: 'Assessments: Neurological',
-                        tableKey: 'aments',
-                        formColumn: '2'
-                      }
-                    ],
                     containerType: 'fieldRowSet',
                     containerKey: 'stroke',
-                    tableKey: 'aments',
+                    tableKey: 'table',
                     formFieldSet: {
                       rows: [
                         {
@@ -5662,7 +3779,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'levelOfConciousness',
-                              fqn: 'neurological.aments.stroke.levelOfConciousness',
+                              fqn: 'neurological.table.stroke.levelOfConciousness',
                               inputType: 'select',
                               label: 'Level of conciousness',
                               tableCss: 'trans-table-cell',
@@ -5672,7 +3789,7 @@ module.exports = function() {
                               fsetCol: '1',
                               formCss: 'is-half',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.stroke',
+                              dataParent: 'neurological.table.stroke',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -5688,12 +3805,12 @@ module.exports = function() {
                                   text: '3 = Unresponsive or responds only with reflex'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             },
                             {
                               elementKey: 'bestGaze',
-                              fqn: 'neurological.aments.stroke.bestGaze',
+                              fqn: 'neurological.table.stroke.bestGaze',
                               inputType: 'select',
                               label: 'Best gaze',
                               tableCss: 'trans-table-cell',
@@ -5703,7 +3820,7 @@ module.exports = function() {
                               fsetCol: '2',
                               formCss: 'is-half',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.stroke',
+                              dataParent: 'neurological.table.stroke',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -5716,7 +3833,7 @@ module.exports = function() {
                                   text: '2 = Forced deviation'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '2'
                             }
                           ]
@@ -5726,7 +3843,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'levelOfConciousnessQuestions',
-                              fqn: 'neurological.aments.stroke.levelOfConciousnessQuestions',
+                              fqn: 'neurological.table.stroke.levelOfConciousnessQuestions',
                               inputType: 'select',
                               label: 'Level of conciousness questions',
                               tableCss: 'trans-table-cell',
@@ -5736,7 +3853,7 @@ module.exports = function() {
                               fsetCol: '1',
                               formCss: 'is-half',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.stroke',
+                              dataParent: 'neurological.table.stroke',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -5749,12 +3866,12 @@ module.exports = function() {
                                   text: '2 = Answers neither question correctly'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             },
                             {
                               elementKey: 'visual',
-                              fqn: 'neurological.aments.stroke.visual',
+                              fqn: 'neurological.table.stroke.visual',
                               inputType: 'select',
                               label: 'Visual',
                               tableCss: 'trans-table-cell',
@@ -5764,7 +3881,7 @@ module.exports = function() {
                               fsetCol: '2',
                               formCss: 'is-half',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.stroke',
+                              dataParent: 'neurological.table.stroke',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -5780,7 +3897,7 @@ module.exports = function() {
                                   text: '3 = Complete paralysis of one or both sides'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '2'
                             }
                           ]
@@ -5790,7 +3907,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'levelOfConciousnessCommands',
-                              fqn: 'neurological.aments.stroke.levelOfConciousnessCommands',
+                              fqn: 'neurological.table.stroke.levelOfConciousnessCommands',
                               inputType: 'select',
                               label: 'Level of conciousness commands',
                               tableCss: 'trans-table-cell',
@@ -5800,7 +3917,7 @@ module.exports = function() {
                               fsetCol: '1',
                               formCss: 'is-half',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.stroke',
+                              dataParent: 'neurological.table.stroke',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -5813,12 +3930,12 @@ module.exports = function() {
                                   text: '2 = Performs neither task correctly'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             },
                             {
                               elementKey: 'facialPalsy',
-                              fqn: 'neurological.aments.stroke.facialPalsy',
+                              fqn: 'neurological.table.stroke.facialPalsy',
                               inputType: 'select',
                               label: 'Facial palsy',
                               tableCss: 'trans-table-cell',
@@ -5828,7 +3945,7 @@ module.exports = function() {
                               fsetCol: '2',
                               formCss: 'is-half',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.stroke',
+                              dataParent: 'neurological.table.stroke',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -5844,7 +3961,7 @@ module.exports = function() {
                                   text: '3 = Complete paralysis of one or both sides'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '2'
                             }
                           ]
@@ -5854,7 +3971,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'motorLeftArm',
-                              fqn: 'neurological.aments.stroke.motorLeftArm',
+                              fqn: 'neurological.table.stroke.motorLeftArm',
                               inputType: 'select',
                               label: 'Motor - left arm',
                               tableCss: 'trans-table-cell',
@@ -5864,7 +3981,7 @@ module.exports = function() {
                               fsetCol: '1',
                               formCss: 'is-half',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.stroke',
+                              dataParent: 'neurological.table.stroke',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -5883,12 +4000,12 @@ module.exports = function() {
                                   text: '4 = No movement'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             },
                             {
                               elementKey: 'sensory',
-                              fqn: 'neurological.aments.stroke.sensory',
+                              fqn: 'neurological.table.stroke.sensory',
                               inputType: 'select',
                               label: 'Sensory',
                               tableCss: 'trans-table-cell',
@@ -5898,7 +4015,7 @@ module.exports = function() {
                               fsetCol: '2',
                               formCss: 'is-half',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.stroke',
+                              dataParent: 'neurological.table.stroke',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -5911,7 +4028,7 @@ module.exports = function() {
                                   text: '2 = Severe to total sensory loss'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '2'
                             }
                           ]
@@ -5921,7 +4038,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'motorRightArm',
-                              fqn: 'neurological.aments.stroke.motorRightArm',
+                              fqn: 'neurological.table.stroke.motorRightArm',
                               inputType: 'select',
                               label: 'Motor - right arm',
                               tableCss: 'trans-table-cell',
@@ -5931,7 +4048,7 @@ module.exports = function() {
                               fsetCol: '1',
                               formCss: 'is-half',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.stroke',
+                              dataParent: 'neurological.table.stroke',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -5950,12 +4067,12 @@ module.exports = function() {
                                   text: '4 = No movement'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             },
                             {
                               elementKey: 'bestLanguage',
-                              fqn: 'neurological.aments.stroke.bestLanguage',
+                              fqn: 'neurological.table.stroke.bestLanguage',
                               inputType: 'select',
                               label: 'Best language',
                               tableCss: 'trans-table-cell',
@@ -5965,7 +4082,7 @@ module.exports = function() {
                               fsetCol: '2',
                               formCss: 'is-half',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.stroke',
+                              dataParent: 'neurological.table.stroke',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -5981,7 +4098,7 @@ module.exports = function() {
                                   text: '3 = Mute, global aphasia'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '2'
                             }
                           ]
@@ -5991,7 +4108,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'motorLeftLeg',
-                              fqn: 'neurological.aments.stroke.motorLeftLeg',
+                              fqn: 'neurological.table.stroke.motorLeftLeg',
                               inputType: 'select',
                               label: 'Motor - left leg',
                               tableCss: 'trans-table-cell',
@@ -6001,7 +4118,7 @@ module.exports = function() {
                               fsetCol: '1',
                               formCss: 'is-half',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.stroke',
+                              dataParent: 'neurological.table.stroke',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -6020,12 +4137,12 @@ module.exports = function() {
                                   text: '4 = No movement'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             },
                             {
                               elementKey: 'dysarthria',
-                              fqn: 'neurological.aments.stroke.dysarthria',
+                              fqn: 'neurological.table.stroke.dysarthria',
                               inputType: 'select',
                               label: 'Dysarthria',
                               tableCss: 'trans-table-cell',
@@ -6035,7 +4152,7 @@ module.exports = function() {
                               fsetCol: '2',
                               formCss: 'is-half',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.stroke',
+                              dataParent: 'neurological.table.stroke',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -6051,7 +4168,7 @@ module.exports = function() {
                                   text: '3 = Mute, global aphasia'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '2'
                             }
                           ]
@@ -6061,7 +4178,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'motorRightLeg',
-                              fqn: 'neurological.aments.stroke.motorRightLeg',
+                              fqn: 'neurological.table.stroke.motorRightLeg',
                               inputType: 'select',
                               label: 'Motor - right leg',
                               tableCss: 'trans-table-cell',
@@ -6071,7 +4188,7 @@ module.exports = function() {
                               fsetCol: '1',
                               formCss: 'is-half',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.stroke',
+                              dataParent: 'neurological.table.stroke',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -6090,12 +4207,12 @@ module.exports = function() {
                                   text: '4 = No movement'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             },
                             {
                               elementKey: 'extinctionAndInattention',
-                              fqn: 'neurological.aments.stroke.extinctionAndInattention',
+                              fqn: 'neurological.table.stroke.extinctionAndInattention',
                               inputType: 'select',
                               label: 'Extinction and inattention',
                               tableCss: 'trans-table-cell',
@@ -6105,7 +4222,7 @@ module.exports = function() {
                               fsetCol: '2',
                               formCss: 'is-half',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.stroke',
+                              dataParent: 'neurological.table.stroke',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -6119,7 +4236,7 @@ module.exports = function() {
                                   text: '2 = Profound hemi-inattention or extinction'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '2'
                             }
                           ]
@@ -6129,7 +4246,7 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'limbAtaxia',
-                              fqn: 'neurological.aments.stroke.limbAtaxia',
+                              fqn: 'neurological.table.stroke.limbAtaxia',
                               inputType: 'select',
                               label: 'Limb ataxia',
                               tableCss: 'trans-table-cell',
@@ -6139,7 +4256,7 @@ module.exports = function() {
                               fsetCol: '1',
                               formCss: 'is-half',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.stroke',
+                              dataParent: 'neurological.table.stroke',
                               page: 'Assessments: Neurological',
                               options: [
                                 {
@@ -6152,7 +4269,7 @@ module.exports = function() {
                                   text: '2 = Present in two limbs'
                                 }
                               ],
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             }
                           ]
@@ -6162,8 +4279,8 @@ module.exports = function() {
                           elements: [
                             {
                               elementKey: 'comments',
-                              fqn: 'neurological.aments.stroke.comments',
-                              inputType: 'text',
+                              fqn: 'neurological.table.stroke.comments',
+                              inputType: 'textarea',
                               label: 'Comments',
                               tableCss: 'trans-table-cell',
                               tableColumn: '44',
@@ -6172,16 +4289,16 @@ module.exports = function() {
                               fsetCol: '1',
                               formCss: 'is-two-thirds',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.stroke',
+                              dataParent: 'neurological.table.stroke',
                               page: 'Assessments: Neurological',
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '1'
                             },
                             {
                               elementKey: 'resources',
                               inputType: 'form-label',
                               label:
-                                'Resources-NL-Morse Fall Score (url)-NL-Mini-mental state examination (MMSE) (url)',
+                                "<b>Resources</b><p>Morse Fall Score <a target='_blank' href='https://google.ca'>external link</a></p><p>Mini-mental state examination (MMSE) <a target='_blank' href='https://google.ca'>external link</a></p>",
                               tableCss: 'trans-table-cell hide-table-element',
                               tableColumn: '45',
                               fieldset: 'stroke',
@@ -6190,9 +4307,9 @@ module.exports = function() {
                               formCss: 'is-one-third',
                               formOption: 'withExternalUrls',
                               pageDataKey: 'neurological',
-                              dataParent: 'neurological.aments.stroke',
+                              dataParent: 'neurological.table.stroke',
                               page: 'Assessments: Neurological',
-                              tableKey: 'aments',
+                              tableKey: 'table',
                               formColumn: '2'
                             }
                           ]
@@ -6209,7 +4326,7 @@ module.exports = function() {
         }
       ],
       pageData: {
-        aments: []
+        table: []
       }
     },
     respiratory: {
@@ -6228,7 +4345,7 @@ module.exports = function() {
               label: 'Name',
               tableCss: 'trans-table-cell',
               tableColumn: '1',
-              formCss: 'is-3',
+              formCss: 'user_name',
               formColumn: '1',
               formRow: '1',
               pageDataKey: 'respiratory',
@@ -6243,7 +4360,7 @@ module.exports = function() {
               label: 'Profession',
               tableCss: 'trans-table-cell',
               tableColumn: '2',
-              formCss: 'is-3',
+              formCss: 'user_pro',
               formColumn: '2',
               formRow: '1',
               pageDataKey: 'respiratory',
@@ -6258,7 +4375,7 @@ module.exports = function() {
               label: 'Unit',
               tableCss: 'trans-table-cell',
               tableColumn: '3',
-              formCss: 'is-2',
+              formCss: 'user_unit',
               formColumn: '3',
               formRow: '1',
               pageDataKey: 'respiratory',
@@ -6273,7 +4390,7 @@ module.exports = function() {
               label: 'Day',
               tableCss: 'trans-table-cell',
               tableColumn: '4',
-              formCss: 'is-2',
+              formCss: 'user_day',
               formColumn: '4',
               formRow: '1',
               pageDataKey: 'respiratory',
@@ -6288,7 +4405,7 @@ module.exports = function() {
               label: 'Time',
               tableCss: 'trans-table-cell',
               tableColumn: '5',
-              formCss: 'is-2',
+              formCss: 'user_time',
               formColumn: '5',
               formRow: '1',
               pageDataKey: 'respiratory',
@@ -6416,117 +4533,6 @@ module.exports = function() {
               pageDataKey: 'respiratory',
               dataParent: 'respiratory.table',
               page: 'Assessments: Respiratory',
-              elements: [
-                {
-                  elementKey: 'patent',
-                  fqn: 'respiratory.table.airway.patent',
-                  inputType: 'checkbox',
-                  label: 'Patent',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '6',
-                  fieldset: 'airway',
-                  fsetRow: '1',
-                  fsetCol: '1',
-                  pageDataKey: 'respiratory',
-                  dataParent: 'respiratory.table.airway',
-                  page: 'Assessments: Respiratory',
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'obstructed',
-                  fqn: 'respiratory.table.airway.obstructed',
-                  inputType: 'checkbox',
-                  label: 'Obstructed',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '7',
-                  fieldset: 'airway',
-                  fsetRow: '2',
-                  fsetCol: '1',
-                  pageDataKey: 'respiratory',
-                  dataParent: 'respiratory.table.airway',
-                  page: 'Assessments: Respiratory',
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'oett',
-                  fqn: 'respiratory.table.airway.oett',
-                  inputType: 'checkbox',
-                  label: 'OETT',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '8',
-                  fieldset: 'airway',
-                  fsetRow: '3',
-                  fsetCol: '1',
-                  pageDataKey: 'respiratory',
-                  dataParent: 'respiratory.table.airway',
-                  page: 'Assessments: Respiratory',
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'otherValue',
-                  fqn: 'respiratory.table.airway.otherValue',
-                  inputType: 'checkbox',
-                  label: 'Other',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '9',
-                  fieldset: 'airway',
-                  fsetRow: '4',
-                  fsetCol: '1',
-                  pageDataKey: 'respiratory',
-                  dataParent: 'respiratory.table.airway',
-                  page: 'Assessments: Respiratory',
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'otherValue',
-                  fqn: 'respiratory.table.airway.otherValue',
-                  inputType: 'text',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '10',
-                  fieldset: 'airway',
-                  fsetRow: '5',
-                  fsetCol: '1',
-                  pageDataKey: 'respiratory',
-                  dataParent: 'respiratory.table.airway',
-                  page: 'Assessments: Respiratory'
-                },
-                {
-                  elementKey: 'oxygenTherapy',
-                  fqn: 'respiratory.table.airway.oxygenTherapy',
-                  inputType: 'text',
-                  label: 'Oxygen therapy',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '11',
-                  fieldset: 'airway',
-                  fsetRow: '6',
-                  fsetCol: '1',
-                  pageDataKey: 'respiratory',
-                  dataParent: 'respiratory.table.airway',
-                  page: 'Assessments: Respiratory',
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'oxygenFlow',
-                  fqn: 'respiratory.table.airway.oxygenFlow',
-                  inputType: 'textarea',
-                  label: 'Oxygen flow',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '12',
-                  fieldset: 'airway',
-                  fsetRow: '7',
-                  fsetCol: '1',
-                  pageDataKey: 'respiratory',
-                  dataParent: 'respiratory.table.airway',
-                  page: 'Assessments: Respiratory',
-                  tableKey: 'table',
-                  formColumn: '1'
-                }
-              ],
               containerType: 'fieldset',
               containerKey: 'airway',
               tableCss: 'undefinedhide-table-element',
@@ -6728,325 +4734,6 @@ module.exports = function() {
               pageDataKey: 'respiratory',
               dataParent: 'respiratory.table',
               page: 'Assessments: Respiratory',
-              elements: [
-                {
-                  elementKey: 'lul',
-                  fqn: 'respiratory.table.breath.lul',
-                  inputType: 'select',
-                  label: 'LUL',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '13',
-                  fieldset: 'breath',
-                  fsetRow: '1',
-                  fsetCol: '1',
-                  pageDataKey: 'respiratory',
-                  dataParent: 'respiratory.table.breath',
-                  page: 'Assessments: Respiratory',
-                  options: [
-                    {
-                      text: 'Normal'
-                    },
-                    {
-                      text: 'Wheeze'
-                    },
-                    {
-                      text: 'Crackles'
-                    },
-                    {
-                      text: 'Absent'
-                    },
-                    {
-                      text: 'Deceased'
-                    }
-                  ],
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'rul',
-                  fqn: 'respiratory.table.breath.rul',
-                  inputType: 'select',
-                  label: 'RUL',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '14',
-                  fieldset: 'breath',
-                  fsetRow: '1',
-                  fsetCol: '2',
-                  pageDataKey: 'respiratory',
-                  dataParent: 'respiratory.table.breath',
-                  page: 'Assessments: Respiratory',
-                  options: [
-                    {
-                      text: 'Normal'
-                    },
-                    {
-                      text: 'Wheeze'
-                    },
-                    {
-                      text: 'Crackles'
-                    },
-                    {
-                      text: 'Absent'
-                    },
-                    {
-                      text: 'Deceased'
-                    }
-                  ],
-                  tableKey: 'table',
-                  formColumn: '2'
-                },
-                {
-                  inputType: 'form-label',
-                  tableCss: 'trans-table-cell hide-table-element',
-                  tableColumn: '14',
-                  fieldset: 'breath',
-                  fsetRow: '2',
-                  fsetCol: '1',
-                  pageDataKey: 'respiratory',
-                  dataParent: 'respiratory.table.breath',
-                  page: 'Assessments: Respiratory',
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'rml',
-                  fqn: 'respiratory.table.breath.rml',
-                  inputType: 'select',
-                  label: 'RML',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '15',
-                  fieldset: 'breath',
-                  fsetRow: '2',
-                  fsetCol: '2',
-                  pageDataKey: 'respiratory',
-                  dataParent: 'respiratory.table.breath',
-                  page: 'Assessments: Respiratory',
-                  options: [
-                    {
-                      text: 'Normal'
-                    },
-                    {
-                      text: 'Wheeze'
-                    },
-                    {
-                      text: 'Crackles'
-                    },
-                    {
-                      text: 'Absent'
-                    },
-                    {
-                      text: 'Deceased'
-                    }
-                  ],
-                  tableKey: 'table',
-                  formColumn: '2'
-                },
-                {
-                  elementKey: 'lll',
-                  fqn: 'respiratory.table.breath.lll',
-                  inputType: 'select',
-                  label: 'LLL',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '15',
-                  fieldset: 'breath',
-                  fsetRow: '3',
-                  fsetCol: '1',
-                  pageDataKey: 'respiratory',
-                  dataParent: 'respiratory.table.breath',
-                  page: 'Assessments: Respiratory',
-                  options: [
-                    {
-                      text: 'Normal'
-                    },
-                    {
-                      text: 'Wheeze'
-                    },
-                    {
-                      text: 'Crackles'
-                    },
-                    {
-                      text: 'Absent'
-                    },
-                    {
-                      text: 'Deceased'
-                    }
-                  ],
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'rll',
-                  fqn: 'respiratory.table.breath.rll',
-                  inputType: 'select',
-                  label: 'RLL',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '16',
-                  fieldset: 'breath',
-                  fsetRow: '3',
-                  fsetCol: '2',
-                  pageDataKey: 'respiratory',
-                  dataParent: 'respiratory.table.breath',
-                  page: 'Assessments: Respiratory',
-                  options: [
-                    {
-                      text: 'Normal'
-                    },
-                    {
-                      text: 'Wheeze'
-                    },
-                    {
-                      text: 'Crackles'
-                    },
-                    {
-                      text: 'Absent'
-                    },
-                    {
-                      text: 'Deceased'
-                    }
-                  ],
-                  tableKey: 'table',
-                  formColumn: '2'
-                },
-                {
-                  elementKey: 'respiratoryRhythm',
-                  fqn: 'respiratory.table.breath.respiratoryRhythm',
-                  inputType: 'select',
-                  label: 'Respiratory rhythm',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '16',
-                  fieldset: 'breath',
-                  fsetRow: '4',
-                  fsetCol: '1',
-                  pageDataKey: 'respiratory',
-                  dataParent: 'respiratory.table.breath',
-                  page: 'Assessments: Respiratory',
-                  options: [
-                    {
-                      text: 'Regular'
-                    },
-                    {
-                      text: 'Irregular'
-                    },
-                    {
-                      text: 'Paradoxical'
-                    }
-                  ],
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'respiratoryDepth',
-                  fqn: 'respiratory.table.breath.respiratoryDepth',
-                  inputType: 'select',
-                  label: 'Respiratory depth',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '17',
-                  fieldset: 'breath',
-                  fsetRow: '5',
-                  fsetCol: '1',
-                  pageDataKey: 'respiratory',
-                  dataParent: 'respiratory.table.breath',
-                  page: 'Assessments: Respiratory',
-                  options: [
-                    {
-                      text: 'Normal'
-                    },
-                    {
-                      text: 'Shallow'
-                    },
-                    {
-                      text: 'Deep'
-                    }
-                  ],
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'cough',
-                  fqn: 'respiratory.table.breath.cough',
-                  inputType: 'select',
-                  label: 'Cough',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '17',
-                  fieldset: 'breath',
-                  fsetRow: '4',
-                  fsetCol: '2',
-                  pageDataKey: 'respiratory',
-                  dataParent: 'respiratory.table.breath',
-                  page: 'Assessments: Respiratory',
-                  options: [
-                    {
-                      text: 'No'
-                    },
-                    {
-                      text: 'Nonreproductive'
-                    },
-                    {
-                      text: 'Productive'
-                    }
-                  ],
-                  tableKey: 'table',
-                  formColumn: '2'
-                },
-                {
-                  elementKey: 'sputumColour',
-                  fqn: 'respiratory.table.breath.sputumColour',
-                  inputType: 'select',
-                  label: 'Sputum colour',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '18',
-                  fieldset: 'breath',
-                  fsetRow: '5',
-                  fsetCol: '2',
-                  pageDataKey: 'respiratory',
-                  dataParent: 'respiratory.table.breath',
-                  page: 'Assessments: Respiratory',
-                  options: [
-                    {
-                      text: 'Mucoid'
-                    },
-                    {
-                      text: 'Purulent'
-                    },
-                    {
-                      text: 'Yellow-green'
-                    },
-                    {
-                      text: 'Rust-coloured'
-                    },
-                    {
-                      text: 'Pink, blood tinged'
-                    },
-                    {
-                      text: 'Pink, frothy'
-                    },
-                    {
-                      text: 'Profuse, colourless'
-                    },
-                    {
-                      text: 'Bloody'
-                    }
-                  ],
-                  tableKey: 'table',
-                  formColumn: '2'
-                },
-                {
-                  elementKey: 'sputumComments',
-                  fqn: 'respiratory.table.breath.sputumComments',
-                  inputType: 'text',
-                  label: 'Sputum comments',
-                  tableCss: 'trans-table-cell',
-                  tableColumn: '18',
-                  fieldset: 'breath',
-                  fsetRow: '6',
-                  fsetCol: '2',
-                  pageDataKey: 'respiratory',
-                  dataParent: 'respiratory.table.breath',
-                  page: 'Assessments: Respiratory',
-                  tableKey: 'table',
-                  formColumn: '2'
-                }
-              ],
               containerType: 'fieldset',
               containerKey: 'breath',
               tableCss: 'undefinedhide-table-element',
@@ -7129,8 +4816,9 @@ module.exports = function() {
                     elements: [
                       {
                         inputType: 'form-label',
+                        label: 'empty',
                         tableCss: 'trans-table-cell hide-table-element',
-                        tableColumn: '14',
+                        tableColumn: '15',
                         fieldset: 'breath',
                         fsetRow: '2',
                         fsetCol: '1',
@@ -7146,7 +4834,7 @@ module.exports = function() {
                         inputType: 'select',
                         label: 'RML',
                         tableCss: 'trans-table-cell',
-                        tableColumn: '15',
+                        tableColumn: '16',
                         fieldset: 'breath',
                         fsetRow: '2',
                         fsetCol: '2',
@@ -7184,7 +4872,7 @@ module.exports = function() {
                         inputType: 'select',
                         label: 'LLL',
                         tableCss: 'trans-table-cell',
-                        tableColumn: '15',
+                        tableColumn: '17',
                         fieldset: 'breath',
                         fsetRow: '3',
                         fsetCol: '1',
@@ -7217,7 +4905,7 @@ module.exports = function() {
                         inputType: 'select',
                         label: 'RLL',
                         tableCss: 'trans-table-cell',
-                        tableColumn: '16',
+                        tableColumn: '18',
                         fieldset: 'breath',
                         fsetRow: '3',
                         fsetCol: '2',
@@ -7255,7 +4943,7 @@ module.exports = function() {
                         inputType: 'select',
                         label: 'Respiratory rhythm',
                         tableCss: 'trans-table-cell',
-                        tableColumn: '16',
+                        tableColumn: '19',
                         fieldset: 'breath',
                         fsetRow: '4',
                         fsetCol: '1',
@@ -7282,7 +4970,7 @@ module.exports = function() {
                         inputType: 'select',
                         label: 'Cough',
                         tableCss: 'trans-table-cell',
-                        tableColumn: '17',
+                        tableColumn: '21',
                         fieldset: 'breath',
                         fsetRow: '4',
                         fsetCol: '2',
@@ -7314,7 +5002,7 @@ module.exports = function() {
                         inputType: 'select',
                         label: 'Respiratory depth',
                         tableCss: 'trans-table-cell',
-                        tableColumn: '17',
+                        tableColumn: '20',
                         fieldset: 'breath',
                         fsetRow: '5',
                         fsetCol: '1',
@@ -7341,7 +5029,7 @@ module.exports = function() {
                         inputType: 'select',
                         label: 'Sputum colour',
                         tableCss: 'trans-table-cell',
-                        tableColumn: '18',
+                        tableColumn: '22',
                         fieldset: 'breath',
                         fsetRow: '5',
                         fsetCol: '2',
@@ -7383,12 +5071,26 @@ module.exports = function() {
                     formRow: '6',
                     elements: [
                       {
+                        inputType: 'form-label',
+                        label: 'empty',
+                        tableCss: 'trans-table-cell hide-table-element',
+                        tableColumn: '15',
+                        fieldset: 'breath',
+                        fsetRow: '2',
+                        fsetCol: '1',
+                        pageDataKey: 'respiratory',
+                        dataParent: 'respiratory.table.breath',
+                        page: 'Assessments: Respiratory',
+                        tableKey: 'table',
+                        formColumn: '1'
+                      },
+                      {
                         elementKey: 'sputumComments',
                         fqn: 'respiratory.table.breath.sputumComments',
                         inputType: 'text',
                         label: 'Sputum comments',
                         tableCss: 'trans-table-cell',
-                        tableColumn: '18',
+                        tableColumn: '24',
                         fieldset: 'breath',
                         fsetRow: '6',
                         fsetCol: '2',
@@ -7403,19 +5105,6 @@ module.exports = function() {
                 ],
                 columnsCount: 2
               }
-            },
-            {
-              inputType: 'form-label',
-              tableCss: 'trans-table-cell hide-table-element',
-              tableColumn: '14',
-              fieldset: 'breath',
-              fsetRow: '2',
-              fsetCol: '1',
-              pageDataKey: 'respiratory',
-              dataParent: 'respiratory.table.breath',
-              page: 'Assessments: Respiratory',
-              tableKey: 'table',
-              formColumn: '1'
             },
             {
               elementKey: 'rul',
@@ -7451,35 +5140,16 @@ module.exports = function() {
               formColumn: '2'
             },
             {
-              elementKey: 'lll',
-              fqn: 'respiratory.table.breath.lll',
-              inputType: 'select',
-              label: 'LLL',
-              tableCss: 'trans-table-cell',
+              inputType: 'form-label',
+              label: 'empty',
+              tableCss: 'trans-table-cell hide-table-element',
               tableColumn: '15',
               fieldset: 'breath',
-              fsetRow: '3',
+              fsetRow: '2',
               fsetCol: '1',
               pageDataKey: 'respiratory',
               dataParent: 'respiratory.table.breath',
               page: 'Assessments: Respiratory',
-              options: [
-                {
-                  text: 'Normal'
-                },
-                {
-                  text: 'Wheeze'
-                },
-                {
-                  text: 'Crackles'
-                },
-                {
-                  text: 'Absent'
-                },
-                {
-                  text: 'Deceased'
-                }
-              ],
               tableKey: 'table',
               formColumn: '1'
             },
@@ -7489,7 +5159,7 @@ module.exports = function() {
               inputType: 'select',
               label: 'RML',
               tableCss: 'trans-table-cell',
-              tableColumn: '15',
+              tableColumn: '16',
               fieldset: 'breath',
               fsetRow: '2',
               fsetCol: '2',
@@ -7517,12 +5187,45 @@ module.exports = function() {
               formColumn: '2'
             },
             {
+              elementKey: 'lll',
+              fqn: 'respiratory.table.breath.lll',
+              inputType: 'select',
+              label: 'LLL',
+              tableCss: 'trans-table-cell',
+              tableColumn: '17',
+              fieldset: 'breath',
+              fsetRow: '3',
+              fsetCol: '1',
+              pageDataKey: 'respiratory',
+              dataParent: 'respiratory.table.breath',
+              page: 'Assessments: Respiratory',
+              options: [
+                {
+                  text: 'Normal'
+                },
+                {
+                  text: 'Wheeze'
+                },
+                {
+                  text: 'Crackles'
+                },
+                {
+                  text: 'Absent'
+                },
+                {
+                  text: 'Deceased'
+                }
+              ],
+              tableKey: 'table',
+              formColumn: '1'
+            },
+            {
               elementKey: 'rll',
               fqn: 'respiratory.table.breath.rll',
               inputType: 'select',
               label: 'RLL',
               tableCss: 'trans-table-cell',
-              tableColumn: '16',
+              tableColumn: '18',
               fieldset: 'breath',
               fsetRow: '3',
               fsetCol: '2',
@@ -7555,7 +5258,7 @@ module.exports = function() {
               inputType: 'select',
               label: 'Respiratory rhythm',
               tableCss: 'trans-table-cell',
-              tableColumn: '16',
+              tableColumn: '19',
               fieldset: 'breath',
               fsetRow: '4',
               fsetCol: '1',
@@ -7577,39 +5280,12 @@ module.exports = function() {
               formColumn: '1'
             },
             {
-              elementKey: 'cough',
-              fqn: 'respiratory.table.breath.cough',
-              inputType: 'select',
-              label: 'Cough',
-              tableCss: 'trans-table-cell',
-              tableColumn: '17',
-              fieldset: 'breath',
-              fsetRow: '4',
-              fsetCol: '2',
-              pageDataKey: 'respiratory',
-              dataParent: 'respiratory.table.breath',
-              page: 'Assessments: Respiratory',
-              options: [
-                {
-                  text: 'No'
-                },
-                {
-                  text: 'Nonreproductive'
-                },
-                {
-                  text: 'Productive'
-                }
-              ],
-              tableKey: 'table',
-              formColumn: '2'
-            },
-            {
               elementKey: 'respiratoryDepth',
               fqn: 'respiratory.table.breath.respiratoryDepth',
               inputType: 'select',
               label: 'Respiratory depth',
               tableCss: 'trans-table-cell',
-              tableColumn: '17',
+              tableColumn: '20',
               fieldset: 'breath',
               fsetRow: '5',
               fsetCol: '1',
@@ -7631,18 +5307,29 @@ module.exports = function() {
               formColumn: '1'
             },
             {
-              elementKey: 'sputumComments',
-              fqn: 'respiratory.table.breath.sputumComments',
-              inputType: 'text',
-              label: 'Sputum comments',
+              elementKey: 'cough',
+              fqn: 'respiratory.table.breath.cough',
+              inputType: 'select',
+              label: 'Cough',
               tableCss: 'trans-table-cell',
-              tableColumn: '18',
+              tableColumn: '21',
               fieldset: 'breath',
-              fsetRow: '6',
+              fsetRow: '4',
               fsetCol: '2',
               pageDataKey: 'respiratory',
               dataParent: 'respiratory.table.breath',
               page: 'Assessments: Respiratory',
+              options: [
+                {
+                  text: 'No'
+                },
+                {
+                  text: 'Nonreproductive'
+                },
+                {
+                  text: 'Productive'
+                }
+              ],
               tableKey: 'table',
               formColumn: '2'
             },
@@ -7652,7 +5339,7 @@ module.exports = function() {
               inputType: 'select',
               label: 'Sputum colour',
               tableCss: 'trans-table-cell',
-              tableColumn: '18',
+              tableColumn: '22',
               fieldset: 'breath',
               fsetRow: '5',
               fsetCol: '2',
@@ -7689,12 +5376,40 @@ module.exports = function() {
               formColumn: '2'
             },
             {
+              inputType: 'form-label',
+              label: 'empty',
+              tableCss: 'trans-table-cell hide-table-element',
+              tableColumn: '23',
+              fieldset: 'breath',
+              fsetRow: '6',
+              fsetCol: '1',
+              pageDataKey: 'respiratory',
+              dataParent: 'respiratory.table.breath',
+              page: 'Assessments: Respiratory'
+            },
+            {
+              elementKey: 'sputumComments',
+              fqn: 'respiratory.table.breath.sputumComments',
+              inputType: 'text',
+              label: 'Sputum comments',
+              tableCss: 'trans-table-cell',
+              tableColumn: '24',
+              fieldset: 'breath',
+              fsetRow: '6',
+              fsetCol: '2',
+              pageDataKey: 'respiratory',
+              dataParent: 'respiratory.table.breath',
+              page: 'Assessments: Respiratory',
+              tableKey: 'table',
+              formColumn: '2'
+            },
+            {
               elementKey: 'generalComments',
               fqn: 'respiratory.table.generalComments',
               inputType: 'text',
               label: 'General comments',
               tableCss: 'trans-table-cell',
-              tableColumn: '19',
+              tableColumn: '25',
               formCss: 'fullWidth',
               formColumn: '1',
               formRow: '3',
@@ -7716,7 +5431,7 @@ module.exports = function() {
                     label: 'Name',
                     tableCss: 'trans-table-cell',
                     tableColumn: '1',
-                    formCss: 'is-3',
+                    formCss: 'user_name',
                     formColumn: '1',
                     formRow: '1',
                     pageDataKey: 'respiratory',
@@ -7731,7 +5446,7 @@ module.exports = function() {
                     label: 'Profession',
                     tableCss: 'trans-table-cell',
                     tableColumn: '2',
-                    formCss: 'is-3',
+                    formCss: 'user_pro',
                     formColumn: '2',
                     formRow: '1',
                     pageDataKey: 'respiratory',
@@ -7746,7 +5461,7 @@ module.exports = function() {
                     label: 'Unit',
                     tableCss: 'trans-table-cell',
                     tableColumn: '3',
-                    formCss: 'is-2',
+                    formCss: 'user_unit',
                     formColumn: '3',
                     formRow: '1',
                     pageDataKey: 'respiratory',
@@ -7761,7 +5476,7 @@ module.exports = function() {
                     label: 'Day',
                     tableCss: 'trans-table-cell',
                     tableColumn: '4',
-                    formCss: 'is-2',
+                    formCss: 'user_day',
                     formColumn: '4',
                     formRow: '1',
                     pageDataKey: 'respiratory',
@@ -7776,7 +5491,7 @@ module.exports = function() {
                     label: 'Time',
                     tableCss: 'trans-table-cell',
                     tableColumn: '5',
-                    formCss: 'is-2',
+                    formCss: 'user_time',
                     formColumn: '5',
                     formRow: '1',
                     pageDataKey: 'respiratory',
@@ -7800,117 +5515,6 @@ module.exports = function() {
                     pageDataKey: 'respiratory',
                     dataParent: 'respiratory.table',
                     page: 'Assessments: Respiratory',
-                    elements: [
-                      {
-                        elementKey: 'patent',
-                        fqn: 'respiratory.table.airway.patent',
-                        inputType: 'checkbox',
-                        label: 'Patent',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '6',
-                        fieldset: 'airway',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.airway',
-                        page: 'Assessments: Respiratory',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'obstructed',
-                        fqn: 'respiratory.table.airway.obstructed',
-                        inputType: 'checkbox',
-                        label: 'Obstructed',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '7',
-                        fieldset: 'airway',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.airway',
-                        page: 'Assessments: Respiratory',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'oett',
-                        fqn: 'respiratory.table.airway.oett',
-                        inputType: 'checkbox',
-                        label: 'OETT',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '8',
-                        fieldset: 'airway',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.airway',
-                        page: 'Assessments: Respiratory',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'otherValue',
-                        fqn: 'respiratory.table.airway.otherValue',
-                        inputType: 'checkbox',
-                        label: 'Other',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '9',
-                        fieldset: 'airway',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.airway',
-                        page: 'Assessments: Respiratory',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'otherValue',
-                        fqn: 'respiratory.table.airway.otherValue',
-                        inputType: 'text',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '10',
-                        fieldset: 'airway',
-                        fsetRow: '5',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.airway',
-                        page: 'Assessments: Respiratory'
-                      },
-                      {
-                        elementKey: 'oxygenTherapy',
-                        fqn: 'respiratory.table.airway.oxygenTherapy',
-                        inputType: 'text',
-                        label: 'Oxygen therapy',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '11',
-                        fieldset: 'airway',
-                        fsetRow: '6',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.airway',
-                        page: 'Assessments: Respiratory',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'oxygenFlow',
-                        fqn: 'respiratory.table.airway.oxygenFlow',
-                        inputType: 'textarea',
-                        label: 'Oxygen flow',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '12',
-                        fieldset: 'airway',
-                        fsetRow: '7',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.airway',
-                        page: 'Assessments: Respiratory',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ],
                     containerType: 'fieldset',
                     containerKey: 'airway',
                     tableCss: 'undefinedhide-table-element',
@@ -8079,325 +5683,6 @@ module.exports = function() {
                     pageDataKey: 'respiratory',
                     dataParent: 'respiratory.table',
                     page: 'Assessments: Respiratory',
-                    elements: [
-                      {
-                        elementKey: 'lul',
-                        fqn: 'respiratory.table.breath.lul',
-                        inputType: 'select',
-                        label: 'LUL',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '13',
-                        fieldset: 'breath',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        options: [
-                          {
-                            text: 'Normal'
-                          },
-                          {
-                            text: 'Wheeze'
-                          },
-                          {
-                            text: 'Crackles'
-                          },
-                          {
-                            text: 'Absent'
-                          },
-                          {
-                            text: 'Deceased'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'rul',
-                        fqn: 'respiratory.table.breath.rul',
-                        inputType: 'select',
-                        label: 'RUL',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '14',
-                        fieldset: 'breath',
-                        fsetRow: '1',
-                        fsetCol: '2',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        options: [
-                          {
-                            text: 'Normal'
-                          },
-                          {
-                            text: 'Wheeze'
-                          },
-                          {
-                            text: 'Crackles'
-                          },
-                          {
-                            text: 'Absent'
-                          },
-                          {
-                            text: 'Deceased'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '2'
-                      },
-                      {
-                        inputType: 'form-label',
-                        tableCss: 'trans-table-cell hide-table-element',
-                        tableColumn: '14',
-                        fieldset: 'breath',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'rml',
-                        fqn: 'respiratory.table.breath.rml',
-                        inputType: 'select',
-                        label: 'RML',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '15',
-                        fieldset: 'breath',
-                        fsetRow: '2',
-                        fsetCol: '2',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        options: [
-                          {
-                            text: 'Normal'
-                          },
-                          {
-                            text: 'Wheeze'
-                          },
-                          {
-                            text: 'Crackles'
-                          },
-                          {
-                            text: 'Absent'
-                          },
-                          {
-                            text: 'Deceased'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '2'
-                      },
-                      {
-                        elementKey: 'lll',
-                        fqn: 'respiratory.table.breath.lll',
-                        inputType: 'select',
-                        label: 'LLL',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '15',
-                        fieldset: 'breath',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        options: [
-                          {
-                            text: 'Normal'
-                          },
-                          {
-                            text: 'Wheeze'
-                          },
-                          {
-                            text: 'Crackles'
-                          },
-                          {
-                            text: 'Absent'
-                          },
-                          {
-                            text: 'Deceased'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'rll',
-                        fqn: 'respiratory.table.breath.rll',
-                        inputType: 'select',
-                        label: 'RLL',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '16',
-                        fieldset: 'breath',
-                        fsetRow: '3',
-                        fsetCol: '2',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        options: [
-                          {
-                            text: 'Normal'
-                          },
-                          {
-                            text: 'Wheeze'
-                          },
-                          {
-                            text: 'Crackles'
-                          },
-                          {
-                            text: 'Absent'
-                          },
-                          {
-                            text: 'Deceased'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '2'
-                      },
-                      {
-                        elementKey: 'respiratoryRhythm',
-                        fqn: 'respiratory.table.breath.respiratoryRhythm',
-                        inputType: 'select',
-                        label: 'Respiratory rhythm',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '16',
-                        fieldset: 'breath',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        options: [
-                          {
-                            text: 'Regular'
-                          },
-                          {
-                            text: 'Irregular'
-                          },
-                          {
-                            text: 'Paradoxical'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'respiratoryDepth',
-                        fqn: 'respiratory.table.breath.respiratoryDepth',
-                        inputType: 'select',
-                        label: 'Respiratory depth',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '17',
-                        fieldset: 'breath',
-                        fsetRow: '5',
-                        fsetCol: '1',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        options: [
-                          {
-                            text: 'Normal'
-                          },
-                          {
-                            text: 'Shallow'
-                          },
-                          {
-                            text: 'Deep'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'cough',
-                        fqn: 'respiratory.table.breath.cough',
-                        inputType: 'select',
-                        label: 'Cough',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '17',
-                        fieldset: 'breath',
-                        fsetRow: '4',
-                        fsetCol: '2',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        options: [
-                          {
-                            text: 'No'
-                          },
-                          {
-                            text: 'Nonreproductive'
-                          },
-                          {
-                            text: 'Productive'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '2'
-                      },
-                      {
-                        elementKey: 'sputumColour',
-                        fqn: 'respiratory.table.breath.sputumColour',
-                        inputType: 'select',
-                        label: 'Sputum colour',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '18',
-                        fieldset: 'breath',
-                        fsetRow: '5',
-                        fsetCol: '2',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        options: [
-                          {
-                            text: 'Mucoid'
-                          },
-                          {
-                            text: 'Purulent'
-                          },
-                          {
-                            text: 'Yellow-green'
-                          },
-                          {
-                            text: 'Rust-coloured'
-                          },
-                          {
-                            text: 'Pink, blood tinged'
-                          },
-                          {
-                            text: 'Pink, frothy'
-                          },
-                          {
-                            text: 'Profuse, colourless'
-                          },
-                          {
-                            text: 'Bloody'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '2'
-                      },
-                      {
-                        elementKey: 'sputumComments',
-                        fqn: 'respiratory.table.breath.sputumComments',
-                        inputType: 'text',
-                        label: 'Sputum comments',
-                        tableCss: 'trans-table-cell',
-                        tableColumn: '18',
-                        fieldset: 'breath',
-                        fsetRow: '6',
-                        fsetCol: '2',
-                        pageDataKey: 'respiratory',
-                        dataParent: 'respiratory.table.breath',
-                        page: 'Assessments: Respiratory',
-                        tableKey: 'table',
-                        formColumn: '2'
-                      }
-                    ],
                     containerType: 'fieldset',
                     containerKey: 'breath',
                     tableCss: 'undefinedhide-table-element',
@@ -8480,8 +5765,9 @@ module.exports = function() {
                           elements: [
                             {
                               inputType: 'form-label',
+                              label: 'empty',
                               tableCss: 'trans-table-cell hide-table-element',
-                              tableColumn: '14',
+                              tableColumn: '15',
                               fieldset: 'breath',
                               fsetRow: '2',
                               fsetCol: '1',
@@ -8497,7 +5783,7 @@ module.exports = function() {
                               inputType: 'select',
                               label: 'RML',
                               tableCss: 'trans-table-cell',
-                              tableColumn: '15',
+                              tableColumn: '16',
                               fieldset: 'breath',
                               fsetRow: '2',
                               fsetCol: '2',
@@ -8535,7 +5821,7 @@ module.exports = function() {
                               inputType: 'select',
                               label: 'LLL',
                               tableCss: 'trans-table-cell',
-                              tableColumn: '15',
+                              tableColumn: '17',
                               fieldset: 'breath',
                               fsetRow: '3',
                               fsetCol: '1',
@@ -8568,7 +5854,7 @@ module.exports = function() {
                               inputType: 'select',
                               label: 'RLL',
                               tableCss: 'trans-table-cell',
-                              tableColumn: '16',
+                              tableColumn: '18',
                               fieldset: 'breath',
                               fsetRow: '3',
                               fsetCol: '2',
@@ -8606,7 +5892,7 @@ module.exports = function() {
                               inputType: 'select',
                               label: 'Respiratory rhythm',
                               tableCss: 'trans-table-cell',
-                              tableColumn: '16',
+                              tableColumn: '19',
                               fieldset: 'breath',
                               fsetRow: '4',
                               fsetCol: '1',
@@ -8633,7 +5919,7 @@ module.exports = function() {
                               inputType: 'select',
                               label: 'Cough',
                               tableCss: 'trans-table-cell',
-                              tableColumn: '17',
+                              tableColumn: '21',
                               fieldset: 'breath',
                               fsetRow: '4',
                               fsetCol: '2',
@@ -8665,7 +5951,7 @@ module.exports = function() {
                               inputType: 'select',
                               label: 'Respiratory depth',
                               tableCss: 'trans-table-cell',
-                              tableColumn: '17',
+                              tableColumn: '20',
                               fieldset: 'breath',
                               fsetRow: '5',
                               fsetCol: '1',
@@ -8692,7 +5978,7 @@ module.exports = function() {
                               inputType: 'select',
                               label: 'Sputum colour',
                               tableCss: 'trans-table-cell',
-                              tableColumn: '18',
+                              tableColumn: '22',
                               fieldset: 'breath',
                               fsetRow: '5',
                               fsetCol: '2',
@@ -8734,12 +6020,26 @@ module.exports = function() {
                           formRow: '6',
                           elements: [
                             {
+                              inputType: 'form-label',
+                              label: 'empty',
+                              tableCss: 'trans-table-cell hide-table-element',
+                              tableColumn: '15',
+                              fieldset: 'breath',
+                              fsetRow: '2',
+                              fsetCol: '1',
+                              pageDataKey: 'respiratory',
+                              dataParent: 'respiratory.table.breath',
+                              page: 'Assessments: Respiratory',
+                              tableKey: 'table',
+                              formColumn: '1'
+                            },
+                            {
                               elementKey: 'sputumComments',
                               fqn: 'respiratory.table.breath.sputumComments',
                               inputType: 'text',
                               label: 'Sputum comments',
                               tableCss: 'trans-table-cell',
-                              tableColumn: '18',
+                              tableColumn: '24',
                               fieldset: 'breath',
                               fsetRow: '6',
                               fsetCol: '2',
@@ -8766,7 +6066,7 @@ module.exports = function() {
                     inputType: 'text',
                     label: 'General comments',
                     tableCss: 'trans-table-cell',
-                    tableColumn: '19',
+                    tableColumn: '25',
                     formCss: 'fullWidth',
                     formColumn: '1',
                     formRow: '3',
@@ -8802,7 +6102,7 @@ module.exports = function() {
               label: 'Name',
               tableCss: 'trans-table-cell',
               tableColumn: '1',
-              formCss: 'is-3',
+              formCss: 'user_name',
               formColumn: '1',
               formRow: '1',
               pageDataKey: 'cardiovascular',
@@ -8817,7 +6117,7 @@ module.exports = function() {
               label: 'Profession',
               tableCss: 'trans-table-cell',
               tableColumn: '2',
-              formCss: 'is-3',
+              formCss: 'user_pro',
               formColumn: '2',
               formRow: '1',
               pageDataKey: 'cardiovascular',
@@ -8832,7 +6132,7 @@ module.exports = function() {
               label: 'Unit',
               tableCss: 'trans-table-cell',
               tableColumn: '3',
-              formCss: 'is-2',
+              formCss: 'user_unit',
               formColumn: '3',
               formRow: '1',
               pageDataKey: 'cardiovascular',
@@ -8847,7 +6147,7 @@ module.exports = function() {
               label: 'Day',
               tableCss: 'trans-table-cell',
               tableColumn: '4',
-              formCss: 'is-2',
+              formCss: 'user_day',
               formColumn: '4',
               formRow: '1',
               pageDataKey: 'cardiovascular',
@@ -8862,7 +6162,7 @@ module.exports = function() {
               label: 'Time',
               tableCss: 'trans-table-cell',
               tableColumn: '5',
-              formCss: 'is-2',
+              formCss: 'user_time',
               formColumn: '5',
               formRow: '1',
               pageDataKey: 'cardiovascular',
@@ -9495,7 +6795,7 @@ module.exports = function() {
                     label: 'Name',
                     tableCss: 'trans-table-cell',
                     tableColumn: '1',
-                    formCss: 'is-3',
+                    formCss: 'user_name',
                     formColumn: '1',
                     formRow: '1',
                     pageDataKey: 'cardiovascular',
@@ -9510,7 +6810,7 @@ module.exports = function() {
                     label: 'Profession',
                     tableCss: 'trans-table-cell',
                     tableColumn: '2',
-                    formCss: 'is-3',
+                    formCss: 'user_pro',
                     formColumn: '2',
                     formRow: '1',
                     pageDataKey: 'cardiovascular',
@@ -9525,7 +6825,7 @@ module.exports = function() {
                     label: 'Unit',
                     tableCss: 'trans-table-cell',
                     tableColumn: '3',
-                    formCss: 'is-2',
+                    formCss: 'user_unit',
                     formColumn: '3',
                     formRow: '1',
                     pageDataKey: 'cardiovascular',
@@ -9540,7 +6840,7 @@ module.exports = function() {
                     label: 'Day',
                     tableCss: 'trans-table-cell',
                     tableColumn: '4',
-                    formCss: 'is-2',
+                    formCss: 'user_day',
                     formColumn: '4',
                     formRow: '1',
                     pageDataKey: 'cardiovascular',
@@ -9555,7 +6855,7 @@ module.exports = function() {
                     label: 'Time',
                     tableCss: 'trans-table-cell',
                     tableColumn: '5',
-                    formCss: 'is-2',
+                    formCss: 'user_time',
                     formColumn: '5',
                     formRow: '1',
                     pageDataKey: 'cardiovascular',
@@ -10235,7 +7535,7 @@ module.exports = function() {
               fqn: 'gastrointestinal.table.name',
               inputType: 'text',
               label: 'Name',
-              formCss: 'is-3',
+              formCss: 'user_name',
               formColumn: '1',
               formRow: '1',
               pageDataKey: 'gastrointestinal',
@@ -10254,153 +7554,6 @@ module.exports = function() {
               pageDataKey: 'gastrointestinal',
               dataParent: 'gastrointestinal.table',
               page: 'Assessments: Gastrointestinal',
-              elements: [
-                {
-                  elementKey: 'bowelMovement',
-                  fqn: 'gastrointestinal.table.bowel.bowelMovement',
-                  inputType: 'select',
-                  label: 'Bowel',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.bowel',
-                  page: 'Assessments: Gastrointestinal',
-                  options: [
-                    {
-                      text: 'Constipation'
-                    },
-                    {
-                      text: 'Diarrhea'
-                    },
-                    {
-                      text: 'Melena'
-                    },
-                    {
-                      text: 'Incontinent'
-                    }
-                  ],
-                  tableKey: 'table'
-                },
-                {
-                  elementKey: 'lastBm',
-                  fqn: 'gastrointestinal.table.bowel.lastBm',
-                  inputType: 'text',
-                  label: 'Last BM',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.bowel',
-                  page: 'Assessments: Gastrointestinal',
-                  tableKey: 'table'
-                },
-                {
-                  elementKey: 'bowelSounds',
-                  fqn: 'gastrointestinal.table.bowel.bowelSounds',
-                  inputType: 'select',
-                  label: 'Bowel sounds',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.bowel',
-                  page: 'Assessments: Gastrointestinal',
-                  options: [
-                    {
-                      text: 'None'
-                    },
-                    {
-                      text: 'LUQ'
-                    },
-                    {
-                      text: 'RUQ'
-                    },
-                    {
-                      text: 'LLQ'
-                    },
-                    {
-                      text: 'RLQ'
-                    }
-                  ],
-                  tableKey: 'table'
-                },
-                {
-                  elementKey: 'stoolColour',
-                  fqn: 'gastrointestinal.table.bowel.stoolColour',
-                  inputType: 'select',
-                  label: 'Stool colour',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.bowel',
-                  page: 'Assessments: Gastrointestinal',
-                  options: [
-                    {
-                      text: 'Brown'
-                    },
-                    {
-                      text: 'Green'
-                    },
-                    {
-                      text: 'Clay coloured'
-                    },
-                    {
-                      text: 'Yellow'
-                    },
-                    {
-                      text: 'Black'
-                    },
-                    {
-                      text: 'Bright red'
-                    },
-                    {
-                      text: 'Dark red'
-                    }
-                  ],
-                  tableKey: 'table'
-                },
-                {
-                  elementKey: 'stoolDescription',
-                  fqn: 'gastrointestinal.table.bowel.stoolDescription',
-                  inputType: 'text',
-                  label: 'Description',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.bowel',
-                  page: 'Assessments: Gastrointestinal',
-                  tableKey: 'table'
-                },
-                {
-                  elementKey: 'stoolAmount',
-                  fqn: 'gastrointestinal.table.bowel.stoolAmount',
-                  inputType: 'text',
-                  label: 'Amount',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.bowel',
-                  page: 'Assessments: Gastrointestinal',
-                  tableKey: 'table'
-                },
-                {
-                  elementKey: 'stoolSource',
-                  fqn: 'gastrointestinal.table.bowel.stoolSource',
-                  inputType: 'select',
-                  label: 'Source',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.bowel',
-                  page: 'Assessments: Gastrointestinal',
-                  options: [
-                    {
-                      text: 'Observed'
-                    },
-                    {
-                      text: 'As per patient observed'
-                    },
-                    {
-                      text: 'Not observed'
-                    }
-                  ],
-                  tableKey: 'table'
-                },
-                {
-                  elementKey: 'comments',
-                  fqn: 'gastrointestinal.table.bowel.comments',
-                  inputType: 'textarea',
-                  label: 'Comments',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.bowel',
-                  page: 'Assessments: Gastrointestinal',
-                  tableKey: 'table'
-                }
-              ],
               containerType: 'fieldset',
               containerKey: 'bowel',
               tableCss: 'undefinedhide-table-element',
@@ -10415,7 +7568,7 @@ module.exports = function() {
               fqn: 'gastrointestinal.table.unit',
               inputType: 'text',
               label: 'Unit',
-              formCss: 'is-2',
+              formCss: 'user_unit',
               formColumn: '3',
               formRow: '1',
               pageDataKey: 'gastrointestinal',
@@ -10428,7 +7581,7 @@ module.exports = function() {
               fqn: 'gastrointestinal.table.day',
               inputType: 'day',
               label: 'Day',
-              formCss: 'is-2',
+              formCss: 'user_day',
               formColumn: '4',
               formRow: '1',
               pageDataKey: 'gastrointestinal',
@@ -10441,7 +7594,7 @@ module.exports = function() {
               fqn: 'gastrointestinal.table.time',
               inputType: 'time',
               label: 'Time',
-              formCss: 'is-2',
+              formCss: 'user_time',
               formColumn: '5',
               formRow: '1',
               pageDataKey: 'gastrointestinal',
@@ -10581,129 +7734,6 @@ module.exports = function() {
               pageDataKey: 'gastrointestinal',
               dataParent: 'gastrointestinal.table',
               page: 'Assessments: Gastrointestinal',
-              elements: [
-                {
-                  elementKey: 'soft',
-                  fqn: 'gastrointestinal.table.abdomen.soft',
-                  inputType: 'checkbox',
-                  label: 'Soft',
-                  fieldset: 'abdomen',
-                  fsetRow: '1',
-                  fsetCol: '1',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.abdomen',
-                  page: 'Assessments: Gastrointestinal',
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'tender',
-                  fqn: 'gastrointestinal.table.abdomen.tender',
-                  inputType: 'checkbox',
-                  label: 'Tender',
-                  fieldset: 'abdomen',
-                  fsetRow: '2',
-                  fsetCol: '1',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.abdomen',
-                  page: 'Assessments: Gastrointestinal',
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'rigid',
-                  fqn: 'gastrointestinal.table.abdomen.rigid',
-                  inputType: 'checkbox',
-                  label: 'Rigid',
-                  fieldset: 'abdomen',
-                  fsetRow: '3',
-                  fsetCol: '1',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.abdomen',
-                  page: 'Assessments: Gastrointestinal',
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'guarding',
-                  fqn: 'gastrointestinal.table.abdomen.guarding',
-                  inputType: 'checkbox',
-                  label: 'Guarding',
-                  fieldset: 'abdomen',
-                  fsetRow: '4',
-                  fsetCol: '1',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.abdomen',
-                  page: 'Assessments: Gastrointestinal',
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'distended',
-                  fqn: 'gastrointestinal.table.abdomen.distended',
-                  inputType: 'checkbox',
-                  label: 'Distended',
-                  fieldset: 'abdomen',
-                  fsetRow: '5',
-                  fsetCol: '1',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.abdomen',
-                  page: 'Assessments: Gastrointestinal',
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'scars',
-                  fqn: 'gastrointestinal.table.abdomen.scars',
-                  inputType: 'checkbox',
-                  label: 'Scars',
-                  fieldset: 'abdomen',
-                  fsetRow: '6',
-                  fsetCol: '1',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.abdomen',
-                  page: 'Assessments: Gastrointestinal',
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'pain',
-                  fqn: 'gastrointestinal.table.abdomen.pain',
-                  inputType: 'select',
-                  label: 'Abdominal pain',
-                  fieldset: 'abdomen',
-                  fsetRow: '7',
-                  fsetCol: '1',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.abdomen',
-                  page: 'Assessments: Gastrointestinal',
-                  options: [
-                    {
-                      text: 'Yes'
-                    },
-                    {
-                      text: 'No'
-                    }
-                  ],
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  fqn: 'gastrointestinal.table.abdomen.',
-                  inputType: 'form-label',
-                  label: 'If answered yes, please complete the pain assessent',
-                  fieldset: 'abdomen',
-                  fsetRow: '8',
-                  fsetCol: '1',
-                  formOption: 'labelWithPageRef',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.abdomen',
-                  page: 'Assessments: Gastrointestinal',
-                  tableCss: 'undefinedhide-table-element',
-                  tableKey: 'table',
-                  formColumn: '1'
-                }
-              ],
               containerType: 'fieldset',
               containerKey: 'abdomen',
               tableCss: 'undefinedhide-table-element',
@@ -10933,7 +7963,7 @@ module.exports = function() {
               fqn: 'gastrointestinal.table.profession',
               inputType: 'text',
               label: 'Profession',
-              formCss: 'is-3',
+              formCss: 'user_pro',
               formColumn: '2',
               formRow: '1',
               pageDataKey: 'gastrointestinal',
@@ -10991,125 +8021,6 @@ module.exports = function() {
               pageDataKey: 'gastrointestinal',
               dataParent: 'gastrointestinal.table',
               page: 'Assessments: Gastrointestinal',
-              elements: [
-                {
-                  elementKey: 'none',
-                  fqn: 'gastrointestinal.table.emesis.none',
-                  inputType: 'select',
-                  label: 'None',
-                  fieldset: 'emesis',
-                  fsetRow: '1',
-                  fsetCol: '1',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.emesis',
-                  page: 'Assessments: Gastrointestinal',
-                  options: [
-                    {
-                      text: 'Need'
-                    },
-                    {
-                      text: 'Data'
-                    },
-                    {
-                      text: 'Here'
-                    }
-                  ],
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'nausea',
-                  fqn: 'gastrointestinal.table.emesis.nausea',
-                  inputType: 'text',
-                  label: 'Nausea',
-                  fieldset: 'emesis',
-                  fsetRow: '2',
-                  fsetCol: '1',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.emesis',
-                  page: 'Assessments: Gastrointestinal',
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'vomiting',
-                  fqn: 'gastrointestinal.table.emesis.vomiting',
-                  inputType: 'text',
-                  label: 'Vomiting',
-                  fieldset: 'emesis',
-                  fsetRow: '3',
-                  fsetCol: '1',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.emesis',
-                  page: 'Assessments: Gastrointestinal',
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'colour',
-                  fqn: 'gastrointestinal.table.emesis.colour',
-                  inputType: 'select',
-                  label: 'Emesis colour',
-                  fieldset: 'emesis',
-                  fsetRow: '4',
-                  fsetCol: '1',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.emesis',
-                  page: 'Assessments: Gastrointestinal',
-                  options: [
-                    {
-                      text: 'Need'
-                    },
-                    {
-                      text: 'Data'
-                    },
-                    {
-                      text: 'Here'
-                    }
-                  ],
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'description',
-                  fqn: 'gastrointestinal.table.emesis.description',
-                  inputType: 'text',
-                  label: 'Description',
-                  fieldset: 'emesis',
-                  fsetRow: '5',
-                  fsetCol: '1',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.emesis',
-                  page: 'Assessments: Gastrointestinal',
-                  tableKey: 'table',
-                  formColumn: '1'
-                },
-                {
-                  elementKey: 'amount',
-                  fqn: 'gastrointestinal.table.emesis.amount',
-                  inputType: 'select',
-                  label: 'Amount',
-                  fieldset: 'emesis',
-                  fsetRow: '6',
-                  fsetCol: '1',
-                  pageDataKey: 'gastrointestinal',
-                  dataParent: 'gastrointestinal.table.emesis',
-                  page: 'Assessments: Gastrointestinal',
-                  options: [
-                    {
-                      text: 'Small'
-                    },
-                    {
-                      text: 'Moderate'
-                    },
-                    {
-                      text: 'Large'
-                    }
-                  ],
-                  tableKey: 'table',
-                  formColumn: '1'
-                }
-              ],
               containerType: 'fieldset',
               containerKey: 'emesis',
               tableCss: 'undefinedhide-table-element',
@@ -11276,7 +8187,6 @@ module.exports = function() {
               pageDataKey: 'gastrointestinal',
               dataParent: 'gastrointestinal.table',
               page: 'Assessments: Gastrointestinal',
-              elements: [],
               containerType: 'fieldset',
               tableCss: 'undefinedhide-table-element',
               formFieldSet: {
@@ -11527,7 +8437,7 @@ module.exports = function() {
                     fqn: 'gastrointestinal.table.name',
                     inputType: 'text',
                     label: 'Name',
-                    formCss: 'is-3',
+                    formCss: 'user_name',
                     formColumn: '1',
                     formRow: '1',
                     pageDataKey: 'gastrointestinal',
@@ -11540,7 +8450,7 @@ module.exports = function() {
                     fqn: 'gastrointestinal.table.profession',
                     inputType: 'text',
                     label: 'Profession',
-                    formCss: 'is-3',
+                    formCss: 'user_pro',
                     formColumn: '2',
                     formRow: '1',
                     pageDataKey: 'gastrointestinal',
@@ -11553,7 +8463,7 @@ module.exports = function() {
                     fqn: 'gastrointestinal.table.unit',
                     inputType: 'text',
                     label: 'Unit',
-                    formCss: 'is-2',
+                    formCss: 'user_unit',
                     formColumn: '3',
                     formRow: '1',
                     pageDataKey: 'gastrointestinal',
@@ -11566,7 +8476,7 @@ module.exports = function() {
                     fqn: 'gastrointestinal.table.day',
                     inputType: 'day',
                     label: 'Day',
-                    formCss: 'is-2',
+                    formCss: 'user_day',
                     formColumn: '4',
                     formRow: '1',
                     pageDataKey: 'gastrointestinal',
@@ -11579,7 +8489,7 @@ module.exports = function() {
                     fqn: 'gastrointestinal.table.time',
                     inputType: 'time',
                     label: 'Time',
-                    formCss: 'is-2',
+                    formCss: 'user_time',
                     formColumn: '5',
                     formRow: '1',
                     pageDataKey: 'gastrointestinal',
@@ -11603,129 +8513,6 @@ module.exports = function() {
                     pageDataKey: 'gastrointestinal',
                     dataParent: 'gastrointestinal.table',
                     page: 'Assessments: Gastrointestinal',
-                    elements: [
-                      {
-                        elementKey: 'soft',
-                        fqn: 'gastrointestinal.table.abdomen.soft',
-                        inputType: 'checkbox',
-                        label: 'Soft',
-                        fieldset: 'abdomen',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.abdomen',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'tender',
-                        fqn: 'gastrointestinal.table.abdomen.tender',
-                        inputType: 'checkbox',
-                        label: 'Tender',
-                        fieldset: 'abdomen',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.abdomen',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'rigid',
-                        fqn: 'gastrointestinal.table.abdomen.rigid',
-                        inputType: 'checkbox',
-                        label: 'Rigid',
-                        fieldset: 'abdomen',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.abdomen',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'guarding',
-                        fqn: 'gastrointestinal.table.abdomen.guarding',
-                        inputType: 'checkbox',
-                        label: 'Guarding',
-                        fieldset: 'abdomen',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.abdomen',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'distended',
-                        fqn: 'gastrointestinal.table.abdomen.distended',
-                        inputType: 'checkbox',
-                        label: 'Distended',
-                        fieldset: 'abdomen',
-                        fsetRow: '5',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.abdomen',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'scars',
-                        fqn: 'gastrointestinal.table.abdomen.scars',
-                        inputType: 'checkbox',
-                        label: 'Scars',
-                        fieldset: 'abdomen',
-                        fsetRow: '6',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.abdomen',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'pain',
-                        fqn: 'gastrointestinal.table.abdomen.pain',
-                        inputType: 'select',
-                        label: 'Abdominal pain',
-                        fieldset: 'abdomen',
-                        fsetRow: '7',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.abdomen',
-                        page: 'Assessments: Gastrointestinal',
-                        options: [
-                          {
-                            text: 'Yes'
-                          },
-                          {
-                            text: 'No'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        fqn: 'gastrointestinal.table.abdomen.',
-                        inputType: 'form-label',
-                        label: 'If answered yes, please complete the pain assessent',
-                        fieldset: 'abdomen',
-                        fsetRow: '8',
-                        fsetCol: '1',
-                        formOption: 'labelWithPageRef',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.abdomen',
-                        page: 'Assessments: Gastrointestinal',
-                        tableCss: 'undefinedhide-table-element',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ],
                     containerType: 'fieldset',
                     containerKey: 'abdomen',
                     tableCss: 'undefinedhide-table-element',
@@ -11908,125 +8695,6 @@ module.exports = function() {
                     pageDataKey: 'gastrointestinal',
                     dataParent: 'gastrointestinal.table',
                     page: 'Assessments: Gastrointestinal',
-                    elements: [
-                      {
-                        elementKey: 'none',
-                        fqn: 'gastrointestinal.table.emesis.none',
-                        inputType: 'select',
-                        label: 'None',
-                        fieldset: 'emesis',
-                        fsetRow: '1',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.emesis',
-                        page: 'Assessments: Gastrointestinal',
-                        options: [
-                          {
-                            text: 'Need'
-                          },
-                          {
-                            text: 'Data'
-                          },
-                          {
-                            text: 'Here'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'nausea',
-                        fqn: 'gastrointestinal.table.emesis.nausea',
-                        inputType: 'text',
-                        label: 'Nausea',
-                        fieldset: 'emesis',
-                        fsetRow: '2',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.emesis',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'vomiting',
-                        fqn: 'gastrointestinal.table.emesis.vomiting',
-                        inputType: 'text',
-                        label: 'Vomiting',
-                        fieldset: 'emesis',
-                        fsetRow: '3',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.emesis',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'colour',
-                        fqn: 'gastrointestinal.table.emesis.colour',
-                        inputType: 'select',
-                        label: 'Emesis colour',
-                        fieldset: 'emesis',
-                        fsetRow: '4',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.emesis',
-                        page: 'Assessments: Gastrointestinal',
-                        options: [
-                          {
-                            text: 'Need'
-                          },
-                          {
-                            text: 'Data'
-                          },
-                          {
-                            text: 'Here'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'description',
-                        fqn: 'gastrointestinal.table.emesis.description',
-                        inputType: 'text',
-                        label: 'Description',
-                        fieldset: 'emesis',
-                        fsetRow: '5',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.emesis',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table',
-                        formColumn: '1'
-                      },
-                      {
-                        elementKey: 'amount',
-                        fqn: 'gastrointestinal.table.emesis.amount',
-                        inputType: 'select',
-                        label: 'Amount',
-                        fieldset: 'emesis',
-                        fsetRow: '6',
-                        fsetCol: '1',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.emesis',
-                        page: 'Assessments: Gastrointestinal',
-                        options: [
-                          {
-                            text: 'Small'
-                          },
-                          {
-                            text: 'Moderate'
-                          },
-                          {
-                            text: 'Large'
-                          }
-                        ],
-                        tableKey: 'table',
-                        formColumn: '1'
-                      }
-                    ],
                     containerType: 'fieldset',
                     containerKey: 'emesis',
                     tableCss: 'undefinedhide-table-element',
@@ -12210,153 +8878,6 @@ module.exports = function() {
                     pageDataKey: 'gastrointestinal',
                     dataParent: 'gastrointestinal.table',
                     page: 'Assessments: Gastrointestinal',
-                    elements: [
-                      {
-                        elementKey: 'bowelMovement',
-                        fqn: 'gastrointestinal.table.bowel.bowelMovement',
-                        inputType: 'select',
-                        label: 'Bowel',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.bowel',
-                        page: 'Assessments: Gastrointestinal',
-                        options: [
-                          {
-                            text: 'Constipation'
-                          },
-                          {
-                            text: 'Diarrhea'
-                          },
-                          {
-                            text: 'Melena'
-                          },
-                          {
-                            text: 'Incontinent'
-                          }
-                        ],
-                        tableKey: 'table'
-                      },
-                      {
-                        elementKey: 'lastBm',
-                        fqn: 'gastrointestinal.table.bowel.lastBm',
-                        inputType: 'text',
-                        label: 'Last BM',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.bowel',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table'
-                      },
-                      {
-                        elementKey: 'bowelSounds',
-                        fqn: 'gastrointestinal.table.bowel.bowelSounds',
-                        inputType: 'select',
-                        label: 'Bowel sounds',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.bowel',
-                        page: 'Assessments: Gastrointestinal',
-                        options: [
-                          {
-                            text: 'None'
-                          },
-                          {
-                            text: 'LUQ'
-                          },
-                          {
-                            text: 'RUQ'
-                          },
-                          {
-                            text: 'LLQ'
-                          },
-                          {
-                            text: 'RLQ'
-                          }
-                        ],
-                        tableKey: 'table'
-                      },
-                      {
-                        elementKey: 'stoolColour',
-                        fqn: 'gastrointestinal.table.bowel.stoolColour',
-                        inputType: 'select',
-                        label: 'Stool colour',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.bowel',
-                        page: 'Assessments: Gastrointestinal',
-                        options: [
-                          {
-                            text: 'Brown'
-                          },
-                          {
-                            text: 'Green'
-                          },
-                          {
-                            text: 'Clay coloured'
-                          },
-                          {
-                            text: 'Yellow'
-                          },
-                          {
-                            text: 'Black'
-                          },
-                          {
-                            text: 'Bright red'
-                          },
-                          {
-                            text: 'Dark red'
-                          }
-                        ],
-                        tableKey: 'table'
-                      },
-                      {
-                        elementKey: 'stoolDescription',
-                        fqn: 'gastrointestinal.table.bowel.stoolDescription',
-                        inputType: 'text',
-                        label: 'Description',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.bowel',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table'
-                      },
-                      {
-                        elementKey: 'stoolAmount',
-                        fqn: 'gastrointestinal.table.bowel.stoolAmount',
-                        inputType: 'text',
-                        label: 'Amount',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.bowel',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table'
-                      },
-                      {
-                        elementKey: 'stoolSource',
-                        fqn: 'gastrointestinal.table.bowel.stoolSource',
-                        inputType: 'select',
-                        label: 'Source',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.bowel',
-                        page: 'Assessments: Gastrointestinal',
-                        options: [
-                          {
-                            text: 'Observed'
-                          },
-                          {
-                            text: 'As per patient observed'
-                          },
-                          {
-                            text: 'Not observed'
-                          }
-                        ],
-                        tableKey: 'table'
-                      },
-                      {
-                        elementKey: 'comments',
-                        fqn: 'gastrointestinal.table.bowel.comments',
-                        inputType: 'textarea',
-                        label: 'Comments',
-                        pageDataKey: 'gastrointestinal',
-                        dataParent: 'gastrointestinal.table.bowel',
-                        page: 'Assessments: Gastrointestinal',
-                        tableKey: 'table'
-                      }
-                    ],
                     containerType: 'fieldset',
                     containerKey: 'bowel',
                     tableCss: 'undefinedhide-table-element',

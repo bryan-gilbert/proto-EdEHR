@@ -24,9 +24,13 @@ function convertFile(fName) {
     results = results.replace(/'/g, "\\'")
     // results = results.replace(/"/g, "'")
     results = _fixBooleans(results)
-    var modDef = 'module.exports = function () {\n  return ' + results + '\n}'
+    var modDef = [];
+    modDef.push('/* eslint-disable quotes */')
+    modDef.push('module.exports = function () {')
+    modDef.push('  return ' + results)
+    modDef.push('}')
     console.log('write file ', fDest)
-    fs.writeFileSync(fDest, modDef)
+    fs.writeFileSync(fDest, modDef.join('\n'))
   })
 }
 
