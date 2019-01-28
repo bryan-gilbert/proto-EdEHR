@@ -40,16 +40,13 @@
     justify-content: space-between;
   }
 
-  .fieldset-label {
+  .fieldset_label {
     display: block;
     font-weight: bold;
     font-size: 1.1rem;
     margin-bottom: 1rem;
   }
 
-  .fieldset-rows {
-    //@include debugColor(a)
-  }
   .fieldset-col {
     padding: 0;
     //@include debugColor(b)
@@ -68,8 +65,8 @@
   textarea {
     display: block;
   }
-  .label-checkbox,
-  .label-radio {
+  .label_checkbox,
+  .label_radio {
     display: inline;
     vertical-align: top;
     margin-left: 5px;
@@ -128,20 +125,11 @@
     width: 100%;
   }
 
-  .checklistWithOther {
-    label {
-      display: inline;
-    }
-    .radio {
-      height: 1rem;
-    }
-  }
-
   .user_name {
-    width: 20%;
+    width: 30%;
   }
   .user_pro {
-    width: 20%;
+    width: 30%;
   }
   .user_unit {
     width: 20%;

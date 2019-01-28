@@ -398,6 +398,8 @@ class RawInputToDef {
         // console.log('fieldset ', element.inputType)
         let formFieldSet = this._extractFieldSet(element, tableCells, tableKey)
         element.formFieldSet = formFieldSet
+        delete element.elements
+
       }
     })
     this._sortFormElements(rows)

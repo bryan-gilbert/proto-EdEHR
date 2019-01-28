@@ -203,31 +203,31 @@ Wheeze
 Crackles
 Absent
 Deceased}"	eCell	eCell	{fieldset: breath}	{fsetRow: 1}	{fsetCol: 2}	eCell	eCell	{tableColumn: 14}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Normal}	{Assignment: N/A}	eCell	eCell	eCell
-{TopLevel: CurrentVisit}	{Page: Assessments: Respiratory}	eCell	eCell	{pageDataKey: respiratory}	{dataParent: respiratory.table.breath}	eCell	eCell	{inputType: form-label}	eCell	eCell	eCell	eCell	{fieldset: breath}	{fsetRow: 2}	{fsetCol: 1}	eCell	eCell	{tableColumn: 14}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Normal}	{Assignment: N/A}	eCell	eCell	eCell
+{TopLevel: CurrentVisit}	{Page: Assessments: Respiratory}	eCell	{Label: empty}	{pageDataKey: respiratory}	{dataParent: respiratory.table.breath}	eCell	eCell	{inputType: form-label}	eCell	eCell	eCell	eCell	{fieldset: breath}	{fsetRow: 2}	{fsetCol: 1}	eCell	eCell	{tableColumn: 15}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Normal}	{Assignment: N/A}	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Respiratory}	eCell	{Label: RML}	{pageDataKey: respiratory}	{dataParent: respiratory.table.breath}	{elementKey: rml}	{FQN: respiratory.table.breath.rml}	{inputType: select}	eCell	"{Options: Normal
 Wheeze
 Crackles
 Absent
-Deceased}"	eCell	eCell	{fieldset: breath}	{fsetRow: 2}	{fsetCol: 2}	eCell	eCell	{tableColumn: 15}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Decreased}	{Assignment: N/A}	eCell	eCell	eCell
+Deceased}"	eCell	eCell	{fieldset: breath}	{fsetRow: 2}	{fsetCol: 2}	eCell	eCell	{tableColumn: 16}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Decreased}	{Assignment: N/A}	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Respiratory}	eCell	{Label: LLL}	{pageDataKey: respiratory}	{dataParent: respiratory.table.breath}	{elementKey: lll}	{FQN: respiratory.table.breath.lll}	{inputType: select}	eCell	"{Options: Normal
 Wheeze
 Crackles
 Absent
-Deceased}"	eCell	eCell	{fieldset: breath}	{fsetRow: 3}	{fsetCol: 1}	eCell	eCell	{tableColumn: 15}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Decreased}	{Assignment: N/A}	eCell	eCell	eCell
+Deceased}"	eCell	eCell	{fieldset: breath}	{fsetRow: 3}	{fsetCol: 1}	eCell	eCell	{tableColumn: 17}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Decreased}	{Assignment: N/A}	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Respiratory}	eCell	{Label: RLL}	{pageDataKey: respiratory}	{dataParent: respiratory.table.breath}	{elementKey: rll}	{FQN: respiratory.table.breath.rll}	{inputType: select}	eCell	"{Options: Normal
 Wheeze
 Crackles
 Absent
-Deceased}"	eCell	eCell	{fieldset: breath}	{fsetRow: 3}	{fsetCol: 2}	eCell	eCell	{tableColumn: 16}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Decreased}	{Assignment: N/A}	eCell	eCell	eCell
+Deceased}"	eCell	eCell	{fieldset: breath}	{fsetRow: 3}	{fsetCol: 2}	eCell	eCell	{tableColumn: 18}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Decreased}	{Assignment: N/A}	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Respiratory}	eCell	{Label: Respiratory rhythm}	{pageDataKey: respiratory}	{dataParent: respiratory.table.breath}	{elementKey: respiratoryRhythm}	{FQN: respiratory.table.breath.respiratoryRhythm}	{inputType: select}	eCell	"{Options: Regular
 Irregular
-Paradoxical}"	eCell	eCell	{fieldset: breath}	{fsetRow: 4}	{fsetCol: 1}	eCell	eCell	{tableColumn: 16}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Regular}	{Assignment: N/A}	eCell	eCell	eCell
+Paradoxical}"	eCell	eCell	{fieldset: breath}	{fsetRow: 4}	{fsetCol: 1}	eCell	eCell	{tableColumn: 19}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Regular}	{Assignment: N/A}	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Respiratory}	eCell	{Label: Respiratory depth}	{pageDataKey: respiratory}	{dataParent: respiratory.table.breath}	{elementKey: respiratoryDepth}	{FQN: respiratory.table.breath.respiratoryDepth}	{inputType: select}	eCell	"{Options: Normal
 Shallow
-Deep}"	eCell	eCell	{fieldset: breath}	{fsetRow: 5}	{fsetCol: 1}	eCell	eCell	{tableColumn: 17}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Shallow}	{Assignment: N/A}	eCell	eCell	eCell
+Deep}"	eCell	eCell	{fieldset: breath}	{fsetRow: 5}	{fsetCol: 1}	eCell	eCell	{tableColumn: 20}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Shallow}	{Assignment: N/A}	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Respiratory}	eCell	{Label: Cough}	{pageDataKey: respiratory}	{dataParent: respiratory.table.breath}	{elementKey: cough}	{FQN: respiratory.table.breath.cough}	{inputType: select}	eCell	"{Options: No
 Nonreproductive
-Productive}"	eCell	eCell	{fieldset: breath}	{fsetRow: 4}	{fsetCol: 2}	eCell	eCell	{tableColumn: 17}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: No}	{Assignment: N/A}	eCell	eCell	eCell
+Productive}"	eCell	eCell	{fieldset: breath}	{fsetRow: 4}	{fsetCol: 2}	eCell	eCell	{tableColumn: 21}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: No}	{Assignment: N/A}	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Respiratory}	eCell	{Label: Sputum colour}	{pageDataKey: respiratory}	{dataParent: respiratory.table.breath}	{elementKey: sputumColour}	{FQN: respiratory.table.breath.sputumColour}	{inputType: select}	eCell	"{Options: Mucoid
 Purulent
 Yellow-green
@@ -235,9 +235,10 @@ Rust-coloured
 Pink, blood tinged
 Pink, frothy
 Profuse, colourless
-Bloody}"	eCell	eCell	{fieldset: breath}	{fsetRow: 5}	{fsetCol: 2}	eCell	eCell	{tableColumn: 18}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: (nothing selected)}	{Assignment: N/A}	eCell	eCell	eCell
-{TopLevel: CurrentVisit}	{Page: Assessments: Respiratory}	eCell	{Label: Sputum comments}	{pageDataKey: respiratory}	{dataParent: respiratory.table.breath}	{elementKey: sputumComments}	{FQN: respiratory.table.breath.sputumComments}	{inputType: text}	eCell	eCell	eCell	eCell	{fieldset: breath}	{fsetRow: 6}	{fsetCol: 2}	eCell	eCell	{tableColumn: 18}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: (no notes)}	{Assignment: N/A}	eCell	eCell	eCell
-{TopLevel: CurrentVisit}	{Page: Assessments: Respiratory}	eCell	{Label: General comments}	{pageDataKey: respiratory}	{dataParent: respiratory.table}	{elementKey: generalComments}	{FQN: respiratory.table.generalComments}	{inputType: text}	eCell	eCell	{formRow: 3}	{formColumn: 1}	eCell	eCell	eCell	{formCss: fullWidth}	eCell	{tableColumn: 19}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: (no notes)}	{Assignment: N/A}	eCell	eCell	eCell
+Bloody}"	eCell	eCell	{fieldset: breath}	{fsetRow: 5}	{fsetCol: 2}	eCell	eCell	{tableColumn: 22}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: (nothing selected)}	{Assignment: N/A}	eCell	eCell	eCell
+{TopLevel: CurrentVisit}	{Page: Assessments: Respiratory}	eCell	{Label: empty}	{pageDataKey: respiratory}	{dataParent: respiratory.table.breath}	eCell	eCell	{inputType: form-label}	eCell	eCell	eCell	eCell	{fieldset: breath}	{fsetRow: 6}	{fsetCol: 1}	eCell	eCell	{tableColumn: 23}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Normal}	{Assignment: N/A}	eCell	eCell	eCell
+{TopLevel: CurrentVisit}	{Page: Assessments: Respiratory}	eCell	{Label: Sputum comments}	{pageDataKey: respiratory}	{dataParent: respiratory.table.breath}	{elementKey: sputumComments}	{FQN: respiratory.table.breath.sputumComments}	{inputType: text}	eCell	eCell	eCell	eCell	{fieldset: breath}	{fsetRow: 6}	{fsetCol: 2}	eCell	eCell	{tableColumn: 24}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: (no notes)}	{Assignment: N/A}	eCell	eCell	eCell
+{TopLevel: CurrentVisit}	{Page: Assessments: Respiratory}	eCell	{Label: General comments}	{pageDataKey: respiratory}	{dataParent: respiratory.table}	{elementKey: generalComments}	{FQN: respiratory.table.generalComments}	{inputType: text}	eCell	eCell	{formRow: 3}	{formColumn: 1}	eCell	eCell	eCell	{formCss: fullWidth}	eCell	{tableColumn: 25}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: (no notes)}	{Assignment: N/A}	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Cardiovascular}	eCell	{Label: Assessments: Cardiovascular}	{pageDataKey: cardiovascular}	{dataParent: cardiovascular}	{elementKey: cardiovascular}	{FQN: cardiovascular}	{inputType: page}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Cardiovascular}	eCell	eCell	{pageDataKey: cardiovascular}	{dataParent: cardiovascular.table}	{elementKey: table}	{FQN: cardiovascular.table}	{inputType: table_row}	eCell	{Options: Add a new cardiovascular assessment}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Assignment: N/A}	eCell	eCell	eCell
 {TopLevel: CurrentVisit}	{Page: Assessments: Cardiovascular}	eCell	{Label: Name}	{pageDataKey: cardiovascular}	{dataParent: cardiovascular.table}	{elementKey: name}	{FQN: cardiovascular.table.name}	{inputType: text}	eCell	eCell	{formRow: 1}	{formColumn: 1}	eCell	eCell	eCell	{formCss: user_name}	eCell	{tableColumn: 1}	{tableCss: trans-table-cell}	eCell	eCell	{Data_From: case}	{Data_case_study: Jason}	{Assignment: N/A}	eCell	{Notes_Questions: Field label should link to the Glasglow Coma Scale}	eCell

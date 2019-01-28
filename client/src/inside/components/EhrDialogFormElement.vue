@@ -9,20 +9,18 @@
       input(class="input", type="text", v-model="inputVal")
 
     div(v-if="def.inputType === 'fieldRowSet'", class="fieldset_row_wrapper", :class="def.formCss")
-      label(class="fieldset-label") {{def.label}}
+      label(class="fieldset_label") {{def.label}}
       div(v-for="row in def.formFieldSet.rows", :key="row.formRow" class="fieldset_row_row" )
         ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")
 
     div(v-if="def.inputType === 'fieldset'", class="fieldset_col_wrapper", :class="def.formCss")
-      label(class="fieldset-label") {{def.label}}
-      // div {{ def.formFieldSet }}
-      div(v-for="row in def.formFieldSet.rows", :key="row.formRow" class="fieldset-rows columns-maybe" )
-        div(v-for="fmEl in row.elements", :key="fmEl.elementKey", class="fieldset-col column-maybe")
-          ehr-dialog-form-element(:inputs="inputs", :def="fmEl")
+      label(class="fieldset_label") {{def.label}}
+      div(v-for="row in def.formFieldSet.rows", :key="row.formRow" class="fieldset_row_row" )
+        ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")
 
     div(v-if="def.inputType === 'checkbox'")
       input(class="checkbox", type="checkbox", v-bind:name="def.elementKey", v-model="inputVal")
-      label(class="label-checkbox", v-bind:for="def.elementKey") {{def.label}}
+      label(class="label_checkbox", v-bind:for="def.elementKey") {{def.label}}
 
     div(v-if="def.inputType === 'select'", class="select-element")
       label(v-if="!(def.formOption === 'noLabel')", class="select-label") {{def.label}}
@@ -39,13 +37,6 @@
       label {{def.label}}
       textarea(v-model="inputVal")
 
-    div(v-if="def.inputType === 'checklistWithOther'", class="checklistWithOther")
-      li(v-for="opt in def.options")
-        input(class="radio", type="radio", :id="opt.text" @click="emitGlobalClickEvent()", :name="def.key", :value="opt.text", v-model="inputVal")
-        label(class="label-radio", :for="opt.text") {{ opt.text }}
-
-    div(v-if="def.inputType === 'dependant'",  class="otherForChecklist", v-show="gotHit")
-      input(class="input", type="text", v-model="inputVal")
 </template>
 
 <script>
