@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    label(v-if="element.inputType !== 'checkbox' && element.formOption !== 'hideLabel'", v-bind:for="element.elementKey") {{element.label}}
+    label(v-if="showLabel()", v-bind:for="element.elementKey") {{element.label}}
     input(v-if="element.inputType === 'text'", class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
     input(v-if="element.inputType === 'day'", class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
     input(v-if="element.inputType === 'time'", class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
@@ -12,10 +12,18 @@
         option(v-for="option in element.options", v-bind:value="option.text") {{ option.text}}
     input(v-if="element.inputType === 'checkbox'", class="checkbox", type="checkbox", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
     label(v-if="element.inputType === 'checkbox'", class="label-checkbox", v-bind:for="element.elementKey") {{element.label}}
+    div(v-if="element.inputType === 'assetLink'", class="assetLink")
+      a(href="/assets/ehr.png") {{element.label}} {{element.options[0].text}}
+    div(v-if="element.inputType === 'fieldset'", class="fieldset")
+      // fieldsets on page forms only support read only properties, at this time. Missing method to share theData.
+      // fieldsets on page forms lack multi-column support. Missing collection of fieldset in the generator code.
+      ehr-page-form-element(v-for="child in element.elements", v-bind:key="child.elementKey", :element="child", :ehrHelp="ehrHelp" )
+
     div(style="display:none") {{computedValue}} {{inputVal}}
 </template>
 
 <script>
+import EhrPageFormElement from '../components/EhrPageFormElement.vue'
 import Datepicker from 'vuejs-datepicker'
 import EventBus from '../../event-bus'
 import { PAGE_FORM_INPUT_EVENT } from '../../event-bus'
@@ -37,7 +45,8 @@ that I've done in the EhrDialogFormElement
 export default {
   name: 'EhrPageFormElement',
   components: {
-    Datepicker
+    Datepicker,
+    EhrPageFormElement
   },
   data: function() {
     return {
@@ -67,6 +76,13 @@ export default {
     }
   },
   methods: {
+    showLabel() {
+      console.log('showlabel', this.element.inputType, this.element.label)
+      let hide = this.element.formOption === 'hideLabel'
+      hide = hide || this.element.inputType === 'checkbox'
+      hide = hide || this.element.inputType === 'assetLink'
+      return !hide
+    },
     refresh() {
       let pageDataKey = this.element.pageDataKey
       let pageData = this.ehrHelp.getAsLoadedPageData(pageDataKey)

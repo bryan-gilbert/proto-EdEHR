@@ -70,8 +70,8 @@ export default {
     tableColumnCss: function(column) {
       let hide = 'hide-table-element'
       let css = hide
-      column.forEach((cell) => {
-        if (! cell.tableCss.includes(hide)) {
+      column.forEach(cell => {
+        if (!cell.tableCss.includes(hide)) {
           console.log('cell css ', cell.tableCss)
           css = ''
         }
