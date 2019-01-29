@@ -276,6 +276,34 @@ export function inside() {
         label: 'Operative reports and anaesthesia record',
         topLevel: 'chart'
       }
+    },
+    {
+      path: '/ehr/external',
+      name: 'external',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/External.vue'),
+      meta: { layout: 'inside', label: 'External resources', topLevel: 'external' }
+    },
+    {
+      path: '/ehr/external/assessment-tools',
+      name: 'assessment-tools',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/AssessmentTools.vue'),
+      meta: { layout: 'inside', label: 'Standardized assessment tools', topLevel: 'external' }
+    },
+    {
+      path: '/ehr/external/lookup-codes',
+      name: 'lookup-codes',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/LookupCodes.vue'),
+      meta: { layout: 'inside', label: 'Code lookup', topLevel: 'external' }
+    },
+    {
+      path: '/ehr/external/diagnostic-codes',
+      name: 'diagnostic-codes',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/DiagnosticCodes.vue'),
+      meta: { layout: 'inside', label: 'Standardized assessment tools', topLevel: 'external' }
     }
   ]
 }

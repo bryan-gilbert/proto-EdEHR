@@ -2,8 +2,8 @@
   footer(class="appFtr")
     div(class="wrapper" v-if="showNav")
       ui-link(class="footer_link", :to="{ name: `demographics` }") Demographics
-      span(class="spacer") |
-      ui-link(class="footer_link", :to="{ name: `dashboard` }") Dashboard
+      //span(class="spacer") |
+      //ui-link(class="footer_link", :to="{ name: `dashboard` }") Dashboard
       span(class="spacer") |
       ui-link(class="footer_link", :to="{ name: 'instructor' }") Instructor
       span(class="spacer") |

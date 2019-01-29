@@ -778,5 +778,84 @@
       ]
     }
   ]
+},{
+  "name": "external",
+  "redirect": "assessment-tools",
+  "label": "External resources",
+  "routeName": "external",
+  "topLevel": "external",
+  "def": {
+    "path": "/ehr",
+    "routeName": "external",
+    "label": "External resources",
+    "redirect": "assessment-tools",
+    "componentName": "External",
+    "dataName": "external",
+    "fullPath": "/ehr/external",
+    "title": "External",
+    "topLevel": "external"
+  },
+  "children": [
+    {
+      "name": "assessment-tools",
+      "label": "Standardized assessment tools",
+      "routeName": "assessment-tools",
+      "topLevel": "external",
+      "def": {
+        "path": "/ehr/external",
+        "routeName": "assessment-tools",
+        "pageDataKey": "assessmentTools",
+        "label": "Standardized assessment tools",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "AssessmentTools",
+        "dataName": "assessmentTools",
+        "fullPath": "/ehr/external/assessment-tools",
+        "title": "Assessment Tools",
+        "topLevel": "external"
+      },
+      "children": []
+    },
+    {
+      "name": "lookup-codes",
+      "label": "Code lookup",
+      "routeName": "lookup-codes",
+      "topLevel": "external",
+      "def": {
+        "path": "/ehr/external",
+        "routeName": "lookup-codes",
+        "pageDataKey": "lookupCodes",
+        "label": "Code lookup",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "LookupCodes",
+        "dataName": "lookupCodes",
+        "fullPath": "/ehr/external/lookup-codes",
+        "title": "Lookup Codes",
+        "topLevel": "external"
+      },
+      "children": []
+    },
+    {
+      "name": "diagnostic-codes",
+      "label": "Standardized assessment tools",
+      "routeName": "diagnostic-codes",
+      "topLevel": "external",
+      "def": {
+        "path": "/ehr/external",
+        "routeName": "diagnostic-codes",
+        "pageDataKey": "diagnosticCodes",
+        "label": "Standardized assessment tools",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "DiagnosticCodes",
+        "dataName": "diagnosticCodes",
+        "fullPath": "/ehr/external/diagnostic-codes",
+        "title": "Diagnostic Codes",
+        "topLevel": "external"
+      },
+      "children": []
+    }
+  ]
 }
 ]
