@@ -37,7 +37,9 @@ const containerElementProperties = [
   'defaultValue',
   'mandatory',
   'validation',
-  'helperText'
+  'helperText',
+  'assetBase',
+  'assetName'
 ]
 // Fields may have data that spans multiple lines.
 // Replace linefeeds with a marker we can use to mark the end of each line.

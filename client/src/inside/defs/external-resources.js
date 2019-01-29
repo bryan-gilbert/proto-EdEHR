@@ -32,11 +32,7 @@ module.exports = function() {
                     pageDataKey: 'assessmentTools',
                     dataParent: 'assessmentTools.admissions',
                     page: 'Standardized assessment tools',
-                    options: [
-                      {
-                        text: 'triage_scale.pdf'
-                      }
-                    ]
+                    assetName: 'triage_scale.pdf'
                   },
                   {
                     fqn: 'assessmentTools.admissions.',
@@ -48,11 +44,7 @@ module.exports = function() {
                     pageDataKey: 'assessmentTools',
                     dataParent: 'assessmentTools.admissions',
                     page: 'Standardized assessment tools',
-                    options: [
-                      {
-                        text: 'patient_health_questionaire.pdf'
-                      }
-                    ]
+                    assetName: 'patient_health_questionaire.pdf'
                   },
                   {
                     fqn: 'assessmentTools.admissions.',
@@ -64,11 +56,7 @@ module.exports = function() {
                     pageDataKey: 'assessmentTools',
                     dataParent: 'assessmentTools.admissions',
                     page: 'Standardized assessment tools',
-                    options: [
-                      {
-                        text: 'alcohol_consumption.pdf'
-                      }
-                    ]
+                    assetName: 'alcohol_consumption.pdf'
                   }
                 ],
                 containerType: 'fieldset',
@@ -96,11 +84,7 @@ module.exports = function() {
                     pageDataKey: 'assessmentTools',
                     dataParent: 'assessmentTools.painAssessment',
                     page: 'Standardized assessment tools',
-                    options: [
-                      {
-                        text: 'OPQRSTUV.pdf'
-                      }
-                    ]
+                    assetName: 'OPQRSTUV.pdf'
                   },
                   {
                     fqn: 'assessmentTools.painAssessment.',
@@ -112,17 +96,14 @@ module.exports = function() {
                     pageDataKey: 'assessmentTools',
                     dataParent: 'assessmentTools.painAssessment',
                     page: 'Standardized assessment tools',
-                    options: [
-                      {
-                        text: '0-10_numeric_rating_scale.pdf'
-                      }
-                    ]
+                    assetName: '0-10_numeric_rating_scale.pdf'
                   },
                   {
-                    fqn: 'assessmentTools.painAssessment.',
+                    elementKey: 'neurological',
+                    fqn: 'assessmentTools.painAssessment.neurological',
                     inputType: 'assetLink',
                     label: 'Neurological assessment',
-                    fieldset: 'painAssessment',
+                    fieldset: 'neurological',
                     fsetRow: '3',
                     fsetCol: '1',
                     pageDataKey: 'assessmentTools',
@@ -132,50 +113,39 @@ module.exports = function() {
                   {
                     fqn: 'assessmentTools.painAssessment.',
                     inputType: 'assetLink',
-                    label: 'glasgow_coma_scale.pdf',
-                    fieldset: 'painAssessment',
+                    label: 'glasgow scale',
+                    fieldset: 'neurological',
                     fsetRow: '4',
                     fsetCol: '1',
                     pageDataKey: 'assessmentTools',
                     dataParent: 'assessmentTools.painAssessment',
                     page: 'Standardized assessment tools',
-                    options: [
-                      {
-                        text: 'glasgow_coma_scale.pdf'
-                      }
-                    ]
+                    assetBase: 'Standardized assessment tools',
+                    assetName: 'Glasgow Coma Scale.pdf'
                   },
                   {
                     fqn: 'assessmentTools.painAssessment.',
                     inputType: 'assetLink',
                     label: 'mini_mental_state_examination.pdf',
-                    fieldset: 'painAssessment',
+                    fieldset: 'neurological',
                     fsetRow: '5',
                     fsetCol: '1',
                     pageDataKey: 'assessmentTools',
                     dataParent: 'assessmentTools.painAssessment',
                     page: 'Standardized assessment tools',
-                    options: [
-                      {
-                        text: 'mini_mental_state_examination.pdf'
-                      }
-                    ]
+                    assetName: 'mini_mental_state_examination.pdf'
                   },
                   {
                     fqn: 'assessmentTools.painAssessment.',
                     inputType: 'assetLink',
                     label: 'richmond_agitation_scale.pdf',
-                    fieldset: 'painAssessment',
+                    fieldset: 'neurological',
                     fsetRow: '6',
                     fsetCol: '1',
                     pageDataKey: 'assessmentTools',
                     dataParent: 'assessmentTools.painAssessment',
                     page: 'Standardized assessment tools',
-                    options: [
-                      {
-                        text: 'richmond_agitation_scale.pdf'
-                      }
-                    ]
+                    assetName: 'richmond_agitation_scale.pdf'
                   }
                 ],
                 containerType: 'fieldset',
@@ -203,27 +173,20 @@ module.exports = function() {
                     pageDataKey: 'assessmentTools',
                     dataParent: 'assessmentTools.fallRisk',
                     page: 'Standardized assessment tools',
-                    options: [
-                      {
-                        text: 'fall_and_injury_reduction.pdf'
-                      }
-                    ]
+                    assetName: 'fall_and_injury_reduction.pdf'
                   },
                   {
                     fqn: 'assessmentTools.fallRisk.',
                     inputType: 'assetLink',
-                    label: 'fall_assessment.pdf  (need this one)',
+                    label: 'fall assessment',
                     fieldset: 'fallRisk',
                     fsetRow: '2',
                     fsetCol: '1',
                     pageDataKey: 'assessmentTools',
                     dataParent: 'assessmentTools.fallRisk',
                     page: 'Standardized assessment tools',
-                    options: [
-                      {
-                        text: 'fall_assessment.pdf'
-                      }
-                    ]
+                    assetBase: 'Standardized assessment tools',
+                    assetName: 'Fall Risk Assessment Tool.pdf'
                   },
                   {
                     fqn: 'assessmentTools.fallRisk.',
@@ -235,11 +198,7 @@ module.exports = function() {
                     pageDataKey: 'assessmentTools',
                     dataParent: 'assessmentTools.fallRisk',
                     page: 'Standardized assessment tools',
-                    options: [
-                      {
-                        text: 'risk_for_falls.pdf'
-                      }
-                    ]
+                    assetName: 'risk_for_falls.pdf'
                   }
                 ],
                 containerType: 'fieldset',
@@ -272,11 +231,7 @@ module.exports = function() {
                     pageDataKey: 'assessmentTools',
                     dataParent: 'assessmentTools.notes',
                     page: 'Standardized assessment tools',
-                    options: [
-                      {
-                        text: 'consult_note_template.pdf'
-                      }
-                    ]
+                    assetName: 'consult_note_template.pdf'
                   },
                   {
                     fqn: 'assessmentTools.notes.',
@@ -288,11 +243,7 @@ module.exports = function() {
                     pageDataKey: 'assessmentTools',
                     dataParent: 'assessmentTools.notes',
                     page: 'Standardized assessment tools',
-                    options: [
-                      {
-                        text: 'referral_note_template.pdf'
-                      }
-                    ]
+                    assetName: 'referral_note_template.pdf'
                   }
                 ],
                 containerType: 'fieldset',
@@ -313,18 +264,15 @@ module.exports = function() {
                   {
                     fqn: 'assessmentTools.educational.',
                     inputType: 'assetLink',
-                    label: 'COPD.pdf  (need this one)',
+                    label: 'COP assessment',
                     fieldset: 'educational',
                     fsetRow: '1',
                     fsetCol: '1',
                     pageDataKey: 'assessmentTools',
                     dataParent: 'assessmentTools.educational',
                     page: 'Standardized assessment tools',
-                    options: [
-                      {
-                        text: 'COPD.pdf'
-                      }
-                    ]
+                    assetBase: 'Standardized assessment tools',
+                    assetName: 'COPD assessment test.pdf'
                   },
                   {
                     fqn: 'assessmentTools.educational.',
@@ -336,11 +284,7 @@ module.exports = function() {
                     pageDataKey: 'assessmentTools',
                     dataParent: 'assessmentTools.educational',
                     page: 'Standardized assessment tools',
-                    options: [
-                      {
-                        text: 'bristol_stool_chart.pdf'
-                      }
-                    ]
+                    assetName: 'bristol_stool_chart.pdf'
                   }
                 ],
                 containerType: 'fieldset',
@@ -368,11 +312,7 @@ module.exports = function() {
                     pageDataKey: 'assessmentTools',
                     dataParent: 'assessmentTools.wound',
                     page: 'Standardized assessment tools',
-                    options: [
-                      {
-                        text: 'braden_scale.pdf'
-                      }
-                    ]
+                    assetName: 'braden_scale.pdf'
                   }
                 ],
                 containerType: 'fieldset',
@@ -407,11 +347,7 @@ module.exports = function() {
                     pageDataKey: 'assessmentTools',
                     dataParent: 'assessmentTools.medication',
                     page: 'Standardized assessment tools',
-                    options: [
-                      {
-                        text: 'best_possible_medication_history.pdf'
-                      }
-                    ]
+                    assetName: 'best_possible_medication_history.pdf'
                   }
                 ],
                 containerType: 'fieldset',
