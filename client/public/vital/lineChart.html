@@ -30,23 +30,79 @@
       var imageData = {
         labels: ['Day 0', 'two', 'three', 'four'],
         datasets: [{
-          label: 'Label1',
-          pointRadius: [10, 0, 10, 10],
+          label: 'dates',
+          // set point sizes, doesn't work on images
+          pointRadius: [10, 0, 10, 5],
           pointHoverRadius: 20,
           pointHitRadius: 20,
           pointStyle: ['rect', upTick, 'triangle', 'circle'],
+          // demonstrates that non-image points can be rotated
           pointRotation: [30,34,55,0],
+          // color of the points that are not from images
           pointBackgroundColor: "rgba(0,191,255)",
+          // set a background color so data labels have area that obscures the grid lines
+          backgroundColor: "rgba(255,255,255)",
           data: [
-            {x:1, y:1.5, label: 'foo'},
-            {x:2, y:3.3, label: 'bar'},
-            {x:3, y:2.5, label: 'barfoo'},
-            {x:4, y:1.5, label: 'foobar'}
+            {x:1, y:1, label: 'Day 0\n18:00'},
+            {x:2, y:1, label: 'Day 0\n20:00'},
+            {x:3, y:1, label: 'Day 1\n02:00'},
+            {x:4, y:1, label: 'Day 1\n18:00'},
             ]
         }]
       }
-      var options = {
+
+      var commonData = {
+        labels: ['Day 0', 'two', 'three', 'four'],
+        datasets: [{
+          label: 'dates',
+          // set point sizes, doesn't work on images
+          pointRadius: [10, 0, 10, 5],
+          pointHoverRadius: 20,
+          pointHitRadius: 20,
+          pointStyle: ['rect', upTick, 'triangle', 'circle'],
+          // demonstrates that non-image points can be rotated
+          pointRotation: [30,34,55,0],
+          // color of the points that are not from images
+          pointBackgroundColor: "rgba(0,191,255)",
+          // set a background color so data labels have area that obscures the grid lines
+          backgroundColor: "rgba(255,255,255)",
+          data: [
+            {x:1, y:1, label: 'Day 0\n18:00'},
+            {x:2, y:1, label: 'Day 0\n20:00'},
+            {x:3, y:1, label: 'Day 1\n02:00'},
+            {x:4, y:1, label: 'Day 1\n18:00'},
+          ]
+        }]
+      }
+      var dateData = {
+        datasets: [{
+          label: 'dates',
+          // set point sizes, doesn't work on images
+          pointRadius: 0,
+          pointHoverRadius: 0,
+          pointHitRadius: 0,
+          // pointStyle: ['rect', upTick, 'triangle', 'circle'],
+          // demonstrates that non-image points can be rotated
+          // pointRotation: [30,34,55,0],
+          // color of the points that are not from images
+          pointBackgroundColor: "rgba(0,191,255)",
+          // set a background color so data labels have area that obscures the grid lines
+          backgroundColor: "rgba(255,255,255)",
+          data: [
+            {x:1, y:1, label: 'Day 0\n18:00'},
+            {x:2, y:1, label: 'Day 0\n20:00'},
+            {x:3, y:1, label: 'Day 1\n02:00'},
+            {x:4, y:1, label: 'Day 1\n18:00'},
+          ]
+        }]
+      }
+
+      var commonOptions = {
+        // TODO do we need responsive and maintainAspectRatio?
+        responsive: true,
+        maintainAspectRatio: true,
         legend: {
+          // do not display legend at top of canvas
           display:false
         },
         scales: {
@@ -54,13 +110,77 @@
             gridLines: {
               color: "rgba(0,0,0, 0.5)"
             },
+          }],
+          xAxes: [{
+            gridLines: {
+              color: "rgba(0,0,100, 0.5)"
+            },
+          }]
+        },
+        tooltips: { // copied this from someplace ... need to explore what tool tips options are good to have
+          mode: 'index',
+          intersect: false
+        }
+      };
+      var datesOptions = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              // can customize the y-axis tick label font
+              fontColor: "#291F3e",
+              min: 1, // minimum will be 1, unless there is a lower value.
+              max: 1,
+              callback: function(value, index, values) {
+                return null
+              }
+            }
+          }],
+          xAxes: [{
             scaleLabel: {
               display: true,
               labelString: '1k = 1000'
             },
             ticks: {
-              suggestedMin: 1, // minimum will be 1, unless there is a lower value.
+              min: 0,
               suggestedMax: 5,
+              callback: function(value, index, values) {
+                if (value % 1 === 0 )
+                  return null; // don't show these grid lines
+                return ''; // hide the x axis label
+              }
+            }
+          }]
+        },
+        plugins: {
+          datalabels: {
+            align: 'end',
+            anchor: 'end',
+            // use the dataset background color in case it has been customized
+            backgroundColor: function(context) {
+              return context.dataset.backgroundColor;
+            },
+            //
+            borderRadius: 4,
+            color: 'black',
+            formatter: function(value){
+              console.log('formatter', value)
+              return value.label;
+            }
+          }
+        }
+      };
+      var tempuratureOptions = {
+        scales: {
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: '1k = 1000'
+            },
+            ticks: {
+              // can customize the y-axis tick label font
+              fontColor: "#291F3e",
+              suggestedMin: 1, // minimum will be 1, unless there is a lower value.
+              suggestedMax: 1,
               callback: function(value, index, values) {
                 return value + '*'; // can modify the label
               }
@@ -86,9 +206,11 @@
           datalabels: {
             align: 'end',
             anchor: 'end',
+            // use the dataset background color in case it has been customized
             backgroundColor: function(context) {
               return context.dataset.backgroundColor;
             },
+            //
             borderRadius: 4,
             color: 'black',
             formatter: function(value){
@@ -98,76 +220,14 @@
           }
         }
       };
+
       window.onload = function() {
         var lineID = document.getElementById('canvas').getContext('2d');
         var lineChart = new Chart(lineID, {
           type: 'scatter',
-          data: imageData,
-          options: options
+          data: dateData,
+          options: Object.assign(commonOptions, datesOptions)
         });
-
-/*
-      var linedata = {
-        datasets: [{
-          label: 'Simple Line',
-          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-          fill: true,
-          data: [
-            {x: 1, y: 2},
-            {x: 2, y: 4},
-            {x: 3, y: 6},
-            {x: 4, y: 8},
-            {x: 5, y: 10},
-            {x: 6, y: 12}
-          ],
-          pointBorderColor: "rgba(0,191,255)",
-          pointBackgroundColor: "rgba(0,191,255)",
-          pointBorderWidth: 5,
-          pointBorderRadius: 5,
-          pointHoverBackgroundColor: "rgba(75,192,192,1)",
-          pointHoverBorderColor: "rgba(220,220,220,1)",
-          pointHoverBorderWidth: 2,
-          pointRadius: 4,
-          pointStyle: 'rectRot',
-          pointHitRadius: 10,
-        }]
-      };
-
-      var chartOptions = {
-        responsive: true,
-        maintainAspectRatio: true,
-        scales: {
-          xAxes: [{
-            ticks: {
-              fontColor: "#091F3e",
-              beginAtZero: true,
-              max: 8
-            },
-            type: 'linear',
-            position: 'bottom'
-          }],
-          yAxes: [{
-            ticks: {
-              beginAtZero: true,
-              max: 16
-            }
-          }]
-        }
-      };
-
-*/
-        /*
-        var ctx = document.getElementById('canvas').getContext('2d')
-        window.myScatter = Chart.Scatter(ctx, {
-          data: scatterChartData,
-          options: {
-            title: {
-              display: true,
-              text: 'Chart.js Scatter Chart'
-            }
-          }
-        })
-        */
       }
 
     </script>
