@@ -55,7 +55,7 @@ export default {
       color: $grey20;
     }
   }
-  active {
+  .router-link-active {
     background-color: $nav-active;
   }
   &__level1 {
