@@ -24,6 +24,20 @@
     </div>
     <script>
 
+      let rawData = [
+        {index:1, temperature:35.5, label: 'Day 0\n18:00'},
+        {index:2, temperature:36, label: 'Day 0\n20:00'},
+        {index:3, temperature:36.4, label: 'Day 1\n02:00'},
+        {index:4, temperature:36.9, label: 'Day 1\n18:00'},
+        {index:5, temperature:37.1, label: 'Day 2\n07:30'},
+        {index:6, temperature:38, label: 'Day 2\n07:45'},
+        {index:7, temperature:39.4, label: 'Day 2\n08:05'},
+      ]
+      function createDateData() {
+        return rawData.map( r => {
+          return {x: r.index, y:1, label: r.label}
+        })
+      }
       var upTick = new Image(20,20)
       // yourImage.src ='http://your.site.com/your_image.png';
       upTick.src ='http://localhost:28000/vital/upTick.png';
@@ -88,12 +102,7 @@
           pointBackgroundColor: "rgba(0,191,255)",
           // set a background color so data labels have area that obscures the grid lines
           backgroundColor: "rgba(255,255,255)",
-          data: [
-            {x:1, y:1, label: 'Day 0\n18:00'},
-            {x:2, y:1, label: 'Day 0\n20:00'},
-            {x:3, y:1, label: 'Day 1\n02:00'},
-            {x:4, y:1, label: 'Day 1\n18:00'},
-          ]
+          data: createDateData()
         }]
       }
 
@@ -162,6 +171,9 @@
             //
             borderRadius: 4,
             color: 'black',
+            font: {
+              size: "20"
+            },
             formatter: function(value){
               console.log('formatter', value)
               return value.label;
