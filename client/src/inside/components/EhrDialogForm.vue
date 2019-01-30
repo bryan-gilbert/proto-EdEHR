@@ -105,4 +105,11 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../scss/definitions';
+.EhrDialogForm {
+  .dialog-wrapper {
+    border: 1px solid $grey40;
+    padding: 2em;
+  }
+}
 </style>

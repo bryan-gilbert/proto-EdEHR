@@ -5,7 +5,7 @@
 
       div(:class="['dialog-wrapper', { moused: moused }]", v-resized="onResize", v-bind:style="{ top: top + 'px', left: left + 'px', width: width + 'px' }")
         div(class="dialog-header columns", v-dragged="onDragged")
-          div(class="dialog-header-content column is-10")
+          div(class="dialog-header-content column is-11")
             slot(name="header") default header
           div(class="dialog-header-menu  column is-1")
             ui-close(v-on:close="$emit('cancel')")
@@ -71,10 +71,6 @@ export default {
   },
   data() {
     return {
-      top: 100,
-      left: 200,
-      width: 900,
-      // height: 500,
       resizeDirection: '',
       moused: false
     }
@@ -171,47 +167,38 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.8);
   display: table;
   transition: opacity 0.3s ease;
 }
 
 .dialog-wrapper {
-  position: absolute;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  max-width: 95%;
+  max-height: 80%;
   overflow: auto;
   z-index: 999;
   background-color: $dialog-wrapper-background-color;
-  color: $dialog-wrapper-color;
-  border: solid 10px;
+  border: solid 1px;
   border-radius: 5px;
   box-sizing: border-box;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  padding: 30px;
 }
 
 .dialog-wrapper.moused {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 .dialog-container {
-  padding: 20px 30px;
   overflow: hidden;
 }
 
 .dialog-header {
   cursor: pointer;
-  background-color: $dialog-header-background;
-
-  .dialog-header-content {
-    margin-top: 15px;
-    margin-left: 15px;
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 28px;
-    color: $dialog-header-content-color;
-  }
-  .dialog-header-menu {
-    margin-top: 15px;
-    margin-right: 15px;
-  }
 }
 
 .dialog-body {
@@ -224,6 +211,9 @@ export default {
   align-items: flex-end;
   .dialog-footer-content {
     flex-grow: 1;
+    button,.button {
+      margin-bottom: 0;
+    }
   }
   .dialog-footer-errors li {
     /*margin-left: 5px;*/
