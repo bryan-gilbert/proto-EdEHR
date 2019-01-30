@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>My Line Chart</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+    <script src="https://chartjs-plugin-datalabels.netlify.com/chartjs-plugin-datalabels.js"></script>
+    <style>
+      canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        display: block; height: 534px; width: 1068px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div style="width:75%">
+      <h1> prototyping chart </h1>
+      <canvas id="canvas" width="1024" height="300"></canvas>
+      <img src="wireframe.jpg" alt="wireframe" width="1024">
+    </div>
+    <script>
+
+      var upTick = new Image(20,20)
+      // yourImage.src ='http://your.site.com/your_image.png';
+      upTick.src ='http://localhost:28000/vital/upTick.png';
+      var imageData = {
+        labels: ['Day 0', 'two', 'three', 'four'],
+        datasets: [{
+          label: 'Label1',
+          pointRadius: [10, 0, 10, 10],
+          pointHoverRadius: 20,
+          pointHitRadius: 20,
+          pointStyle: ['rect', upTick, 'triangle', 'circle'],
+          pointRotation: [30,34,55,0],
+          pointBackgroundColor: "rgba(0,191,255)",
+          data: [
+            {x:1, y:1.5, label: 'foo'},
+            {x:2, y:3.3, label: 'bar'},
+            {x:3, y:2.5, label: 'barfoo'},
+            {x:4, y:1.5, label: 'foobar'}
+            ]
+        }]
+      }
+      var options = {
+        legend: {
+          display:false
+        },
+        scales: {
+          yAxes: [{
+            gridLines: {
+              color: "rgba(0,0,0, 0.5)"
+            },
+            scaleLabel: {
+              display: true,
+              labelString: '1k = 1000'
+            },
+            ticks: {
+              suggestedMin: 1, // minimum will be 1, unless there is a lower value.
+              suggestedMax: 5,
+              callback: function(value, index, values) {
+                return value + '*'; // can modify the label
+              }
+            }
+          }],
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: '1k = 1000'
+            },
+            ticks: {
+              min: 0,
+              suggestedMax: 5,
+              callback: function(value, index, values) {
+                if (value % 1 === 0 )
+                  return null; // don't show these grid lines
+                return ''; // hide the x axis label
+              }
+            }
+          }]
+        },
+        plugins: {
+          datalabels: {
+            align: 'end',
+            anchor: 'end',
+            backgroundColor: function(context) {
+              return context.dataset.backgroundColor;
+            },
+            borderRadius: 4,
+            color: 'black',
+            formatter: function(value){
+              console.log('formatter', value)
+              return value.label;
+            }
+          }
+        }
+      };
+      window.onload = function() {
+        var lineID = document.getElementById('canvas').getContext('2d');
+        var lineChart = new Chart(lineID, {
+          type: 'scatter',
+          data: imageData,
+          options: options
+        });
+
+/*
+      var linedata = {
+        datasets: [{
+          label: 'Simple Line',
+          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          fill: true,
+          data: [
+            {x: 1, y: 2},
+            {x: 2, y: 4},
+            {x: 3, y: 6},
+            {x: 4, y: 8},
+            {x: 5, y: 10},
+            {x: 6, y: 12}
+          ],
+          pointBorderColor: "rgba(0,191,255)",
+          pointBackgroundColor: "rgba(0,191,255)",
+          pointBorderWidth: 5,
+          pointBorderRadius: 5,
+          pointHoverBackgroundColor: "rgba(75,192,192,1)",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointHoverBorderWidth: 2,
+          pointRadius: 4,
+          pointStyle: 'rectRot',
+          pointHitRadius: 10,
+        }]
+      };
+
+      var chartOptions = {
+        responsive: true,
+        maintainAspectRatio: true,
+        scales: {
+          xAxes: [{
+            ticks: {
+              fontColor: "#091F3e",
+              beginAtZero: true,
+              max: 8
+            },
+            type: 'linear',
+            position: 'bottom'
+          }],
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              max: 16
+            }
+          }]
+        }
+      };
+
+*/
+        /*
+        var ctx = document.getElementById('canvas').getContext('2d')
+        window.myScatter = Chart.Scatter(ctx, {
+          data: scatterChartData,
+          options: {
+            title: {
+              display: true,
+              text: 'Chart.js Scatter Chart'
+            }
+          }
+        })
+        */
+      }
+
+    </script>
+  </body>
+</html>
