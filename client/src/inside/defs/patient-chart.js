@@ -4,79 +4,188 @@ module.exports = function() {
     progressNotes: {
       pageTitle: 'Progres notes',
       pageDataKey: 'progressNotes',
-      hasForm: true,
-      page_form: {
-        rows: [
-          {
-            formRow: '1',
-            elements: [
+      hasTable: true,
+      tables: [
+        {
+          addButtonText: 'Add progress note',
+          tableCells: [
+            {
+              elementKey: 'name',
+              fqn: 'progressNotes.name',
+              inputType: 'text',
+              label: 'Name',
+              tableColumn: '1',
+              formCss: 'user_name',
+              formColumn: '1',
+              formRow: '1',
+              pageDataKey: 'progressNotes',
+              dataParent: 'progressNotes',
+              page: 'Progress notes'
+            },
+            {
+              elementKey: 'profession',
+              fqn: 'progressNotes.profession',
+              inputType: 'text',
+              label: 'Profession',
+              tableColumn: '2',
+              formCss: 'user_pro',
+              formColumn: '2',
+              formRow: '1',
+              pageDataKey: 'progressNotes',
+              dataParent: 'progressNotes',
+              page: 'Progress notes'
+            },
+            {
+              elementKey: 'unit',
+              fqn: 'progressNotes.unit',
+              inputType: 'text',
+              label: 'Unit',
+              tableColumn: '3',
+              formCss: 'user_unit',
+              formColumn: '3',
+              formRow: '1',
+              pageDataKey: 'progressNotes',
+              dataParent: 'progressNotes',
+              page: 'Progress notes'
+            },
+            {
+              elementKey: 'day',
+              fqn: 'progressNotes.day',
+              inputType: 'day',
+              label: 'Day',
+              tableColumn: '4',
+              formCss: 'user_day',
+              formColumn: '4',
+              formRow: '1',
+              pageDataKey: 'progressNotes',
+              dataParent: 'progressNotes',
+              page: 'Progress notes'
+            },
+            {
+              elementKey: 'time',
+              fqn: 'progressNotes.time',
+              inputType: 'time',
+              label: 'Time',
+              tableColumn: '5',
+              formCss: 'user_time',
+              formColumn: '5',
+              formRow: '1',
+              pageDataKey: 'progressNotes',
+              dataParent: 'progressNotes',
+              page: 'Progress notes'
+            },
+            {
+              elementKey: 'notes',
+              fqn: 'progressNotes.notes',
+              inputType: 'textarea',
+              label: 'Progress notes',
+              tableColumn: '6',
+              formCss: 'fullWidth',
+              formColumn: '1',
+              formRow: '2',
+              pageDataKey: 'progressNotes',
+              dataParent: 'progressNotes',
+              page: 'Progress notes'
+            }
+          ],
+          tableForm: {
+            rows: [
               {
-                elementKey: 'name',
-                fqn: 'progressNotes.name',
-                inputType: 'text',
-                label: 'Name',
-                formColumn: '1',
                 formRow: '1',
-                pageDataKey: 'progressNotes',
-                dataParent: 'progressNotes',
-                page: 'Progress notes'
+                elements: [
+                  {
+                    elementKey: 'name',
+                    fqn: 'progressNotes.name',
+                    inputType: 'text',
+                    label: 'Name',
+                    tableColumn: '1',
+                    formCss: 'user_name',
+                    formColumn: '1',
+                    formRow: '1',
+                    pageDataKey: 'progressNotes',
+                    dataParent: 'progressNotes',
+                    page: 'Progress notes'
+                  },
+                  {
+                    elementKey: 'profession',
+                    fqn: 'progressNotes.profession',
+                    inputType: 'text',
+                    label: 'Profession',
+                    tableColumn: '2',
+                    formCss: 'user_pro',
+                    formColumn: '2',
+                    formRow: '1',
+                    pageDataKey: 'progressNotes',
+                    dataParent: 'progressNotes',
+                    page: 'Progress notes'
+                  },
+                  {
+                    elementKey: 'unit',
+                    fqn: 'progressNotes.unit',
+                    inputType: 'text',
+                    label: 'Unit',
+                    tableColumn: '3',
+                    formCss: 'user_unit',
+                    formColumn: '3',
+                    formRow: '1',
+                    pageDataKey: 'progressNotes',
+                    dataParent: 'progressNotes',
+                    page: 'Progress notes'
+                  },
+                  {
+                    elementKey: 'day',
+                    fqn: 'progressNotes.day',
+                    inputType: 'day',
+                    label: 'Day',
+                    tableColumn: '4',
+                    formCss: 'user_day',
+                    formColumn: '4',
+                    formRow: '1',
+                    pageDataKey: 'progressNotes',
+                    dataParent: 'progressNotes',
+                    page: 'Progress notes'
+                  },
+                  {
+                    elementKey: 'time',
+                    fqn: 'progressNotes.time',
+                    inputType: 'time',
+                    label: 'Time',
+                    tableColumn: '5',
+                    formCss: 'user_time',
+                    formColumn: '5',
+                    formRow: '1',
+                    pageDataKey: 'progressNotes',
+                    dataParent: 'progressNotes',
+                    page: 'Progress notes'
+                  }
+                ]
               },
               {
-                elementKey: 'profession',
-                fqn: 'progressNotes.profession',
-                inputType: 'text',
-                label: 'Profession',
-                formColumn: '2',
-                formRow: '1',
-                pageDataKey: 'progressNotes',
-                dataParent: 'progressNotes',
-                page: 'Progress notes'
-              },
-              {
-                elementKey: 'day',
-                fqn: 'progressNotes.day',
-                inputType: 'day',
-                label: 'Day',
-                formColumn: '3',
-                formRow: '1',
-                pageDataKey: 'progressNotes',
-                dataParent: 'progressNotes',
-                page: 'Progress notes'
-              },
-              {
-                elementKey: 'time',
-                fqn: 'progressNotes.time',
-                inputType: 'time',
-                label: 'Time',
-                formColumn: '4',
-                formRow: '1',
-                pageDataKey: 'progressNotes',
-                dataParent: 'progressNotes',
-                page: 'Progress notes'
-              }
-            ]
-          },
-          {
-            formRow: '2',
-            elements: [
-              {
-                elementKey: 'notes',
-                fqn: 'progressNotes.notes',
-                inputType: 'texarea',
-                label: 'Progress notes',
-                formCss: 'fullWidth',
-                formColumn: '1',
                 formRow: '2',
-                pageDataKey: 'progressNotes',
-                dataParent: 'progressNotes',
-                page: 'Progress notes'
+                elements: [
+                  {
+                    elementKey: 'notes',
+                    fqn: 'progressNotes.notes',
+                    inputType: 'textarea',
+                    label: 'Progress notes',
+                    tableColumn: '6',
+                    formCss: 'fullWidth',
+                    formColumn: '1',
+                    formRow: '2',
+                    pageDataKey: 'progressNotes',
+                    dataParent: 'progressNotes',
+                    page: 'Progress notes'
+                  }
+                ]
               }
-            ]
+            ],
+            columnsCount: 5
           }
-        ],
-        columnsCount: 4
-      },
-      pageData: {}
+        }
+      ],
+      pageData: {
+        undefined: []
+      }
     },
     carePlan: {
       pageTitle: 'Care Plan',
