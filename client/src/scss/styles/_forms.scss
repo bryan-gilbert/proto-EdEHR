@@ -9,6 +9,7 @@
   .input-fieldrow { /* used in dialog as containers, c */
     display: flex;
     justify-content: space-between;
+    margin-bottom: 3em;
   }
 
   .fieldset_row_wrapper {
@@ -33,11 +34,11 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 1.25em;
   }
 
   .fieldset_row_row_element {
   }
-
 
   .fieldset_label {
     display: block;
@@ -57,7 +58,10 @@
 
   .ehrdfe {
     width: 100%;
-    padding-right: 5px;
+    padding-right: 20px;
+    &:last-child {
+      padding-right: 0;
+    }
   }
 
   .hide-table-element {
@@ -67,7 +71,7 @@
   label,
   input,
   textarea {
-    display: block;
+    display: inline-block;
   }
 
   .checkbox_label,
@@ -100,10 +104,6 @@
     width: 100%;
   }
 
-  .input {
-    //width: 90%;
-  }
-
   .input-element {
     margin-right: 20px;
     //@include debugColor(c)
@@ -125,7 +125,6 @@
   }
 
   .select {
-    min-width: 15rem;
     width: 100%;
   }
 
@@ -135,6 +134,9 @@
     width: 100%;
   }
 
+  .select:not(.is-multiple):not(.is-loading)::after {
+    border-color: $grey40;
+  }
   .user_name {
     width: 30%;
   }

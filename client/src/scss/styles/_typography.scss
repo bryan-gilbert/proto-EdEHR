@@ -10,13 +10,12 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	color: $grey70;
 	font-family: $bodyFontFamily;
-	font-weight: semi-bold;
+	font-weight: bold;
 	line-height: 1.2;
 }
 
 h1 {
 	font-size: 30px;
-	font-weight: bold;
 	margin-bottom: 1em;
 }
 
@@ -25,7 +24,7 @@ h2 {
 	margin-bottom: .625em;
 }
 
-h3 {
+h3, .fieldset_label {
 	font-size: 20px;
 	margin-bottom: .5em
 }
