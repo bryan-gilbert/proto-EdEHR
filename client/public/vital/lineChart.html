@@ -18,11 +18,13 @@
       <div id="scrollChartWrapper" class="chartWrapper">
         <div id="scrollChartAreaWrapper" class="chartAreaWrapper">
           <div id="scrollChartAreaWrapper2" class="chartAreaWrapper2">
-            <canvas id="chart-Test" height="300" width="3257"></canvas>
+            <canvas id="chart-Test" height="150" width="1200"></canvas>
           </div>
         </div>
-        <canvas id="axis-Test" height="300" width="0"></canvas>
+        <canvas id="axis-Test" height="0" width="0"></canvas>
       </div>
+
+      <button id="doSomething">Do Something</button>
 
       <!--
       <div class="content">
@@ -41,6 +43,10 @@
       window.onload = function() {
         vitalChartLoad(Chart)
       }
+      document.getElementById('doSomething').addEventListener('click', function() {
+        doSomething()
+      })
+
     </script>
   </body>
 </html>

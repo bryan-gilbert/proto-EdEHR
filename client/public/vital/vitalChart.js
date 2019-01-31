@@ -1,31 +1,49 @@
+var chartTest
+const INIT = 5
+
+function doSomething() {
+  function addData(numData, chart) {
+    console.log('addData')
+    var scrollChartAreaWrapper2 = document.getElementById('scrollChartAreaWrapper2')
+    var scrollWidth = scrollChartAreaWrapper2.offsetWidth
+    var newWidth = 0
+
+    for (var i = 0; i < numData; i++) {
+      let newLabel = 'Label' + i
+      // console.log('add ', newLabel)
+      let cd = chart.data
+      let d = cd.datasets[0].data
+      d.push(Math.random() * 100)
+      // console.log('data', d)
+      cd.labels.push(newLabel)
+      newWidth +=60
+      //var sourceCanvas = chartTest.chart.canvas
+      //newwidth = sourceCanvas.offsetWidth + 60
+      //sourceCanvas.style.width = newwidth + 'px'
+    }
+    scrollChartAreaWrapper2.style.width = (scrollWidth + newWidth) + 'px'
+    chart.update()
+  }
+  addData(5, chartTest)
+}
+
 function vitalChartLoad(Chart) {
   function generateLabels() {
-    console.log("generateLabels")
+    console.log('generateLabels')
     var chartLabels = []
-    for (let x = 0; x < 100; x++) {
+    for (let x = 0; x < INIT; x++) {
       chartLabels.push('Label' + x)
     }
     return chartLabels
   }
 
   function generateData() {
-    console.log("generateData")
+    console.log('generateData')
     var chartData = []
-    for (let x = 0; x < 100; x++) {
+    for (let x = 0; x < INIT; x++) {
       chartData.push(Math.floor(Math.random() * 100 + 1))
     }
     return chartData
-  }
-
-  function addData(numData, chart) {
-    console.log("addData")
-    for (var i = 0; i < numData; i++) {
-      chart.data.datasets[0].data.push(Math.random() * 100)
-      chart.data.labels.push('Label' + i)
-      var scrollChartAreaWrapper2 = document.getElementById('scrollChartAreaWrapper2')
-      var newwidth = scrollChartAreaWrapper2.offsetWidth + 60
-      scrollChartAreaWrapper2.style.width = newwidth + 'px'
-    }
   }
 
   var chartData = {
@@ -37,14 +55,14 @@ function vitalChartLoad(Chart) {
       }
     ]
   }
-  console.log("chart data ready")
+  console.log('chart data ready')
 
   function go() {
-    console.log("create chart")
+    console.log('create chart')
     var rectangleSet = false
     var canvasTest = document.getElementById('chart-Test').getContext('2d')
     var targetCtx = document.getElementById('axis-Test').getContext('2d')
-    var chartTest = new Chart(canvasTest, {
+    chartTest = new Chart(canvasTest, {
       type: 'bar',
       data: chartData,
       maintainAspectRatio: false,
@@ -61,9 +79,15 @@ function vitalChartLoad(Chart) {
         scales: {
           xAxes: [
             {
+              // ticks: {
+              //   fontSize: 12,
+              //   display: false
+              // }
               ticks: {
-                fontSize: 12,
-                display: false
+                min: 0,
+                max: 8,
+                stepSize: 1,
+                fixedStepSize: 1
               }
             }
           ],
@@ -78,8 +102,8 @@ function vitalChartLoad(Chart) {
         },
         animation: {
           onComplete: function() {
-            console.log("on complete")
             if (!rectangleSet) {
+              console.log('on complete update the depend y axis chart')
               var scale = window.devicePixelRatio
               var sourceCanvas = chartTest.chart.canvas
               var sourceCtx = sourceCanvas.getContext('2d')
@@ -101,18 +125,19 @@ function vitalChartLoad(Chart) {
           },
           onProgress: function() {
             if (rectangleSet === true) {
+              console.log('on progress clear the source canvas y-axis')
               var yscale = chartTest.scales['y-axis-0']
               var copyWidth = yscale.width
               var copyHeight = yscale.height + yscale.top + 10
               var sourceCanvas = chartTest.chart.canvas
               var sourceCtx = sourceCanvas.getContext('2d')
+              // console.log('clear width and hieght', copyWidth, copyHeight)
               sourceCtx.clearRect(0, 0, copyWidth, copyHeight)
             }
           }
         }
       }
     })
-    addData(5, chartTest)
   }
   go()
 }
