@@ -147,10 +147,11 @@ var datesOptions = {
     ],
     xAxes: [
       {
-        // scaleLabel: {
-        //   display: true,
-        //   labelString: '1k = 1000'
-        // },
+        scaleLabel: {
+          display: true,
+          labelString: 'date chart'
+        },
+        // TODO look at using offsetscale
         ticks: {
           min: 0,
           stepSize: 0.5,
@@ -186,6 +187,8 @@ var datesOptions = {
   }
 }
 var tempuratureOptions = {
+  // https://designs-n-graphics.info/wp-content/uploads/2018/07/vital-signs-normal-ranges-chart-normal-vital-sign-ranges-chart-138554.jpg
+
   scales: {
     yAxes: [
       {
@@ -207,17 +210,27 @@ var tempuratureOptions = {
     xAxes: [
       {
         scaleLabel: {
-          display: true,
-          labelString: '1k = 1000'
+          display: false,
+          labelString: 'dates'
         },
         ticks: {
-          min: 0,
-          suggestedMax: 5,
           callback: function(value, index, values) {
-            if (value % 1 === 0) return null // don't show these grid lines
-            return '' // hide the x axis label
-          }
+            console.log('ticks callback', value)
+            return parseFloat(value).toFixed(2);
+          },
+          autoSkip: true,
+          maxTicksLimit: 10,
+          stepSize: .2
         }
+        // ticks: {
+        //   min: 0,
+        //   max: 5,
+        //   suggestedMax: 5,
+        //   callback: function(value, index, values) {
+        //     if (value % 1 === 0) return null // don't show these grid lines
+        //     return '' // hide the x axis label
+        //   }
+        // }
       }
     ]
   },
@@ -239,7 +252,7 @@ var tempuratureOptions = {
     }
   }
 }
-window.onload = function() {
+function vitalChartLoad(Chart) {
   var dateTop = document.getElementById('dateTop').getContext('2d')
   new Chart(dateTop, {
     type: 'scatter',
