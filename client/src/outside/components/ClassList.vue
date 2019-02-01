@@ -95,6 +95,7 @@ export default {
     },
     goToEhr(studentVisit) {
       let studentId = studentVisit._id
+      // Go to the first screen related to the assignent
       let name = studentVisit.assignment.ehrRoutePath
       // console.log('Store the pathname for the instructor to return here ', window.location.pathname)
       this.$store.commit('instructor/setInstructorReturnUrl', window.location.pathname)

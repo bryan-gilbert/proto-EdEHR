@@ -257,6 +257,9 @@ export default class LTIController {
         var port = req.get('port') ? ':' + req.get('port') : ''
         var apiUrl = encodeURIComponent(req.protocol + '://' + req.get('host') + port + '/api')
         var route = req.assignment.ehrRoutePath
+        // Override the route to always go to demographichs See https://github.com/BCcampus/edehr/issues/36
+        route = '/ehr/patient/demographics'
+
         if (visit.isInstructor) {
           debug('Route to instructor page ' + JSON.stringify(req.ltiData, null, 2))
           route = '/instructor'
