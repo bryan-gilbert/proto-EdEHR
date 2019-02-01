@@ -35,8 +35,8 @@ module.exports = function() {
                 mandatory: 'yes'
               },
               {
-                elementKey: 'consent',
-                fqn: 'visit.consent',
+                elementKey: 'consentForTreatment',
+                fqn: 'visit.consentForTreatment',
                 inputType: 'checkbox',
                 label: 'Consent for treatment',
                 formColumn: '3',
@@ -46,8 +46,8 @@ module.exports = function() {
                 page: 'Visit details'
               },
               {
-                elementKey: 'consent',
-                fqn: 'visit.consent',
+                elementKey: 'consentForBlood',
+                fqn: 'visit.consentForBlood',
                 inputType: 'checkbox',
                 label: 'Consent for blood products',
                 formColumn: '3',
