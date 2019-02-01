@@ -1,5 +1,5 @@
 /* eslint-disable quotes */
-module.exports = function() {
+export default function() {
   return {
     demographics: {
       pageTitle: 'Demographics',
@@ -154,42 +154,6 @@ module.exports = function() {
                     text: 'Widowed'
                   }
                 ]
-              },
-              {
-                elementKey: 'codeStatus',
-                fqn: 'demographics.codeStatus',
-                inputType: 'select',
-                label: 'Code status',
-                formColumn: '3',
-                formRow: '3',
-                pageDataKey: 'demographics',
-                dataParent: 'demographics',
-                page: 'Demographics',
-                helperText:
-                  'Do Not Attempt Cardiopulmonary Resuscitation (DNACPR: No chest compressions-NL-or other direct means of restarting the heart), and:-NL-Option 1 (M1)* No CPR. Supportive care, symptom management, and comfort-NL-measures. Allow natural death.-NL-Option 2 (M2) No CPR. Option 1 (M1) plus therapeutic measures and medications-NL-to manage acute conditions within the current setting. If in residential-NL-care or hospice, transfer to acute care will not occur except in special-NL-circumstances (eg fracture).-NL-Option 3 (M3) No CPR. Option 2 (M2) plus admission to an acute care hospital (if-NL-not already admitted) for medical/surgical treatment as indicated. No-NL-referral to Critical Care.-NL-Option 4 (C1) No CPR. Maximum therapeutic effort as in Option 3 (M3) including-NL-referral to Critical Care but not including intubation and ventilation.-NL-Option 5 (C2) No CPR. Maximum therapeutic effort as in Option 4 (C1) including-NL-referral to Critical Care and including intubation and ventilation',
-                options: [
-                  {
-                    text: 'N/A'
-                  },
-                  {
-                    text: 'CPR'
-                  },
-                  {
-                    text: 'DNR M1'
-                  },
-                  {
-                    text: 'DNR M2'
-                  },
-                  {
-                    text: 'DNR M3'
-                  },
-                  {
-                    text: 'DNR C1'
-                  },
-                  {
-                    text: 'DNR C2'
-                  }
-                ]
               }
             ]
           },
@@ -330,7 +294,7 @@ module.exports = function() {
                 elementKey: 'phoneNumber',
                 fqn: 'demographics.phoneNumber',
                 inputType: 'text',
-                label: 'Phone number',
+                label: 'Primary phone number',
                 formColumn: '1',
                 formRow: '7',
                 pageDataKey: 'demographics',
@@ -845,7 +809,7 @@ module.exports = function() {
                     dataParent: 'psychosocial.behaviours',
                     page: 'History Psychosocial',
                     helperText:
-                      'Have you used any substances in the last 6 months?-NL-Have you used any substances in the last 7 days?'
+                      'Have you used any substances in the last 6 months?-NL-Have you used any substances in the last 7 days?-NL-If so, make notes about which ones.'
                   },
                   {
                     elementKey: 'substanceUseFrequency',
@@ -894,8 +858,8 @@ module.exports = function() {
             {
               elementKey: 'date',
               fqn: 'surgical.surgery.date',
-              inputType: 'date',
-              label: 'Date',
+              inputType: 'text',
+              label: 'How long since surgery',
               tableColumn: '2',
               formColumn: '2',
               formRow: '1',
@@ -926,8 +890,8 @@ module.exports = function() {
                   {
                     elementKey: 'date',
                     fqn: 'surgical.surgery.date',
-                    inputType: 'date',
-                    label: 'Date',
+                    inputType: 'text',
+                    label: 'How long since surgery',
                     tableColumn: '2',
                     formColumn: '2',
                     formRow: '1',
@@ -1325,7 +1289,7 @@ module.exports = function() {
                 formRow: '1',
                 pageDataKey: 'familyHistory',
                 dataParent: 'familyHistory',
-                page: 'History Family'
+                page: 'History Family medical history'
               }
             ]
           }

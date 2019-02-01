@@ -4,11 +4,16 @@ import { ACTIVITY_DATA_EVENT } from '../event-bus'
 import { DIALOG_INPUT_EVENT } from '../event-bus'
 import { PAGE_FORM_INPUT_EVENT } from '../event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from '../event-bus'
+import CV from '../inside/defs/current-visit'
+import PC from '../inside/defs/patient-chart'
+import PP from '../inside/defs/patient-profile'
+import ER from '../inside/defs/external-resources'
 
-const pageDefsPP = require('../inside/defs/patient-profile')()
-const pageDefsCV = require('../inside/defs/current-visit')()
-const pageDefsPC = require('../inside/defs/patient-chart')()
-const pageDefsExt = require('../inside/defs/external-resources')()
+
+const pageDefsPP = PP()
+const pageDefsCV = CV()
+const pageDefsPC = PC()
+const pageDefsExt = ER()
 const pageDefs = Object.assign(pageDefsPP, pageDefsCV, pageDefsPC, pageDefsExt)
 
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'

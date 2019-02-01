@@ -3,13 +3,13 @@
     div(v-show="showTableAddButton")
       ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
     div(v-if="tableDef.isTransposed", class="column_table")
-      table.table
+      table.table_vertical
         tbody
           tr(v-for="column in transposedColumns", :class="tableColumnCss(column)")
             td(v-for="cell in column", :class="tableElementCss(cell)") {{ cell.value }}
 
     div(v-if="!tableDef.isTransposed", class="row_table")
-      table.table
+      table.table_horizontal
         thead
           tr
             th(v-for="cell in tableDef.tableCells", :class="cell.propertyKey", :title="cell.propertyKey") {{ cell.label }}
@@ -123,19 +123,27 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/definitions';
 
-table,
-.table {
+table {
   margin-bottom: 2em;
-
-  thead th {
+  th, td {
+    padding: 0.5em 0.5em 0.5em 0;
+  }
+  th {
     border-bottom: 2px solid $grey40;
+  }
+  th, .column_label {
     color: $grey70;
     font-size: 1em;
-    padding: 0.2em 2em 0.2em 0;
   }
-  thead tr {
-    border-bottom: 2px solid $grey20;
+  tr {
+    border-bottom: 1px solid $grey20;
     font-size: $bodyFontSize;
+  }
+  &.table_horizontal {
+    width: 100%;
+  }
+  .table_vertical {
+
   }
 }
 

@@ -47,7 +47,7 @@ In terminal window 1 start the database and server
 ``` bash
 cd database
 # start the mongodb in a docker container
-docker-compse up -d
+docker-compose up -d
 # start the API server
 npm run start-dev
 ```

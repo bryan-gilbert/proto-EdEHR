@@ -1,5 +1,5 @@
 /* eslint-disable quotes */
-module.exports = function() {
+export default function() {
   return {
     progressNotes: {
       pageTitle: 'Progres notes',
@@ -36,26 +36,13 @@ module.exports = function() {
               page: 'Progress notes'
             },
             {
-              elementKey: 'unit',
-              fqn: 'progressNotes.unit',
-              inputType: 'text',
-              label: 'Unit',
-              tableColumn: '3',
-              formCss: 'user_unit',
-              formColumn: '3',
-              formRow: '1',
-              pageDataKey: 'progressNotes',
-              dataParent: 'progressNotes',
-              page: 'Progress notes'
-            },
-            {
               elementKey: 'day',
               fqn: 'progressNotes.day',
               inputType: 'day',
               label: 'Day',
-              tableColumn: '4',
+              tableColumn: '3',
               formCss: 'user_day',
-              formColumn: '4',
+              formColumn: '3',
               formRow: '1',
               pageDataKey: 'progressNotes',
               dataParent: 'progressNotes',
@@ -66,9 +53,9 @@ module.exports = function() {
               fqn: 'progressNotes.time',
               inputType: 'time',
               label: 'Time',
-              tableColumn: '5',
+              tableColumn: '4',
               formCss: 'user_time',
-              formColumn: '5',
+              formColumn: '4',
               formRow: '1',
               pageDataKey: 'progressNotes',
               dataParent: 'progressNotes',
@@ -120,26 +107,13 @@ module.exports = function() {
                     page: 'Progress notes'
                   },
                   {
-                    elementKey: 'unit',
-                    fqn: 'progressNotes.unit',
-                    inputType: 'text',
-                    label: 'Unit',
-                    tableColumn: '3',
-                    formCss: 'user_unit',
-                    formColumn: '3',
-                    formRow: '1',
-                    pageDataKey: 'progressNotes',
-                    dataParent: 'progressNotes',
-                    page: 'Progress notes'
-                  },
-                  {
                     elementKey: 'day',
                     fqn: 'progressNotes.day',
                     inputType: 'day',
                     label: 'Day',
-                    tableColumn: '4',
+                    tableColumn: '3',
                     formCss: 'user_day',
-                    formColumn: '4',
+                    formColumn: '3',
                     formRow: '1',
                     pageDataKey: 'progressNotes',
                     dataParent: 'progressNotes',
@@ -150,9 +124,9 @@ module.exports = function() {
                     fqn: 'progressNotes.time',
                     inputType: 'time',
                     label: 'Time',
-                    tableColumn: '5',
+                    tableColumn: '4',
                     formCss: 'user_time',
-                    formColumn: '5',
+                    formColumn: '4',
                     formRow: '1',
                     pageDataKey: 'progressNotes',
                     dataParent: 'progressNotes',
@@ -179,7 +153,7 @@ module.exports = function() {
                 ]
               }
             ],
-            columnsCount: 5
+            columnsCount: 4
           }
         }
       ],
@@ -248,7 +222,7 @@ module.exports = function() {
               {
                 elementKey: 'goal',
                 fqn: 'carePlan.goal',
-                inputType: 'text',
+                inputType: 'texarea',
                 label: 'Goal of care',
                 formColumn: '1',
                 formRow: '2',
@@ -260,7 +234,7 @@ module.exports = function() {
                 elementKey: 'clinical',
                 fqn: 'carePlan.clinical',
                 inputType: 'text',
-                label: 'Clinical issue',
+                label: 'Problem',
                 formColumn: '2',
                 formRow: '2',
                 pageDataKey: 'carePlan',
@@ -268,10 +242,10 @@ module.exports = function() {
                 page: 'Interprofessional plan of care'
               },
               {
-                elementKey: 'details',
-                fqn: 'carePlan.details',
+                elementKey: 'interventions',
+                fqn: 'carePlan.interventions',
                 inputType: 'text',
-                label: 'Details of clinical issue',
+                label: 'Interventions',
                 formColumn: '3',
                 formRow: '2',
                 pageDataKey: 'carePlan',
@@ -284,10 +258,10 @@ module.exports = function() {
             formRow: '3',
             elements: [
               {
-                elementKey: 'interventions',
-                fqn: 'carePlan.interventions',
+                elementKey: 'details',
+                fqn: 'carePlan.details',
                 inputType: 'text',
-                label: 'Interventions',
+                label: 'Details of clinical issue',
                 formColumn: '1',
                 formRow: '3',
                 pageDataKey: 'carePlan',
@@ -306,6 +280,17 @@ module.exports = function() {
                 page: 'Interprofessional plan of care'
               },
               {
+                elementKey: 'evaluation',
+                fqn: 'carePlan.evaluation',
+                inputType: 'text',
+                label: 'Outcome',
+                formColumn: '3',
+                formRow: '3',
+                pageDataKey: 'carePlan',
+                dataParent: 'carePlan',
+                page: 'Interprofessional plan of care'
+              },
+              {
                 elementKey: 'status',
                 fqn: 'carePlan.status',
                 inputType: 'select',
@@ -318,6 +303,9 @@ module.exports = function() {
                 options: [
                   {
                     text: 'Active'
+                  },
+                  {
+                    text: 'In progress'
                   },
                   {
                     text: 'Complete'

@@ -1,5 +1,5 @@
 <template lang="pug">
-  footer(class="appFtr")
+  footer
     div(class="wrapper" v-if="showNav")
       ui-link(class="footer_link", :to="{ name: `demographics` }") Demographics
       //span(class="spacer") |
@@ -8,6 +8,7 @@
       ui-link(class="footer_link", :to="{ name: 'instructor' }") Instructor
       span(class="spacer") |
       ui-link(class="footer_link", :to="{ name: `help` }") Help
+      p Except where otherwise noted, content on this site is licensed under a Creative Commons Attribution 4.0 International License.
 </template>
 
 <script>
@@ -28,10 +29,10 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-.appFtr {
+footer {
   background: $toolbar-background-color;
   color: $toolbar-color;
-  padding: 10px 0 20px 20px;
+  padding: 20px;
 
   .wrapper {
     @include wrapper('content');
@@ -42,8 +43,13 @@ export default {
     margin-left: 0.5em;
     margin-right: 0.5em;
   }
-  .footer_link {
-    color: white;
+  a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: underline;
+    &:hover {
+      color: rgba(255, 255, 255, 1);
+      transition: 350ms ease-out;
+    };
   }
 }
 </style>
