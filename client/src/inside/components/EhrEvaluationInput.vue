@@ -3,14 +3,16 @@
     div(class="evaluation-notes")
       textarea(v-model="theNotes")
     div(class="evaluation-controls")
-      button(v-on:click="cancelEvaluationNotes") cancel
-      button(v-on:click="saveEvaluationNotes('saved')")  save
-      button(v-on:click="saveEvaluationNotes('saveNext')")  save and next
+      ui-button(v-on:buttonClicked="cancelEvaluationNotes") cancel
+      ui-button(v-on:buttonClicked="saveEvaluationNotes('saved')")  save
+      ui-button(v-on:buttonClicked="saveEvaluationNotes('saveNext')")  save and next
 </template>
 
 <script>
+import UiButton from '../../app/ui/UiButton'
 export default {
   name: 'EhrEvaluationInput',
+  components: { UiButton},
   data: function() {
     return {
       theNotes: ''
