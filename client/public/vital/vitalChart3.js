@@ -22,7 +22,9 @@ function vitalChartLoad() {
   var chartCanvas = document.getElementById('chartCanvas').getContext('2d')
   var axisCanvas = document.getElementById('axisCanvas').getContext('2d')
 
-  let min = 29, max = 40, ht = 150
+  let min = 29,
+    max = 40,
+    ht = 150
   let vScale = ht / (max - min)
   let values = [34.8, 37.3, 39, 35, 40.5, 29.9, 30]
   let chartData = {
@@ -129,12 +131,14 @@ function drawXGrid(context, data) {
   context.stroke()
 }
 
+const labelOffset = 20 // offset from left edge of canvas
+
 function yAxisLabel(context, data) {
   let originY = data.originY
   let height = data.height
   let label = data.label
   let labelOffsetFromBottom = data.labelOffsetFromBottom
-  let newx = 20 // offset from left edge of canvas
+  let newx = labelOffset
   let newy = originY + height // bottom of chart
   let labelXposition = labelOffsetFromBottom // vertical adjust relative to chart
   context.save()
