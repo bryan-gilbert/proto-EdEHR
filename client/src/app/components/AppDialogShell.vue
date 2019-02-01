@@ -3,7 +3,7 @@
     div
       div(:class="modalClass")
 
-      div(:class="['dialog-wrapper', { moused: moused }]", v-resized="onResize", v-bind:style="{ top: top + 'px', left: left + 'px', width: width + 'px' }")
+      div(:class="['dialog-wrapper', { moused: moused }]", ref="wrapper", v-resized="onResize", v-bind:style="{ top: top + 'px', left: left + 'px', width: width + 'px', height: height + 'px' }")
         div(class="dialog-header columns", v-dragged="onDragged")
           div(class="dialog-header-content column is-11")
             slot(name="header") default header
@@ -27,8 +27,6 @@
 </template>
 
 <script>
-// div(:class="['dialog-wrapper', { moused: moused }]", v-resized="onResize", v-bind:style="{ top: top + 'px', left: left + 'px', width: width + 'px', height: height + 'px' }")
-
 import UiClose from '../ui/UiClose'
 import UiButton from '../ui/UiButton'
 export default {
@@ -71,14 +69,18 @@ export default {
   },
   data() {
     return {
+      top: 70, // offset from top (to center need to compute dialog ht on mount)
+      left: (window.innerWidth - 800) / 2, // center on open
+      width: 800, // width match CSS on .dialog-wrapper
+      height: window.innerHeight * 0.8, // 80% of visible area
       resizeDirection: '',
       moused: false
     }
   },
   methods: {
     onResize({ el, deltaX, deltaY, start, end, resizeDirection }) {
+      // console.log('onResize', deltaX, deltaY, start, end, resizeDirection)
       if (start) {
-        // console.log('start resize')
         this.moused = true
         this.resizeDirection = resizeDirection
         return
@@ -91,18 +93,18 @@ export default {
       }
       // console.log('resizeDirection', this.resizeDirection)
       const MIN_WIDTH = 200
-      // const MIN_HEIGHT = 300
+      const MIN_HEIGHT = 300
       const vm = this
       function north() {
-        // vm.height -= deltaY
-        // vm.height = Math.max(MIN_HEIGHT, vm.height)
-        // if (vm.height > MIN_HEIGHT) {
-        //   vm.top += deltaY
-        // }
+        vm.height -= deltaY
+        vm.height = Math.max(MIN_HEIGHT, vm.height)
+        if (vm.height > MIN_HEIGHT) {
+          vm.top += deltaY
+        }
       }
       function south() {
-        // vm.height += deltaY
-        // vm.height = Math.max(MIN_HEIGHT, vm.height)
+        vm.height += deltaY
+        vm.height = Math.max(MIN_HEIGHT, vm.height)
       }
       function east() {
         vm.width += deltaX
@@ -147,6 +149,7 @@ export default {
       }
     },
     onDragged({ el, deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last }) {
+      // console.log('on drag', deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last )
       if (first || last) {
         this.moused = first
         return
@@ -154,6 +157,14 @@ export default {
       this.left += deltaX
       this.top += deltaY
     }
+  },
+  mounted: function() {
+    // console.log("When app dialog is mounted freeze the body to prevent background scrolling")
+    document.body.style.position = 'fixed'
+  },
+  beforeDestroy: function() {
+    // console.log("When app dialog is destroyed restore background scrolling")
+    document.body.style.position = ''
   }
 }
 </script>
@@ -174,12 +185,13 @@ export default {
 
 .dialog-wrapper {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  // See the data properties
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
   width: 800px;
   max-width: 95%;
-  max-height: 80%;
+  max-height: 95%;
   overflow: auto;
   z-index: 999;
   background-color: $dialog-wrapper-background-color;
@@ -211,7 +223,8 @@ export default {
   align-items: flex-end;
   .dialog-footer-content {
     flex-grow: 1;
-    button,.button {
+    button,
+    .button {
       margin-bottom: 0;
     }
   }

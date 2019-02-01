@@ -1,5 +1,5 @@
 <template lang="pug">
-  app-dialog(:class="$options.name", v-if="showDialog", :isModal="false", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
+  app-dialog(:class="$options.name", v-if="showDialog", :isModal="true", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
     h3(slot="header") {{ tableDef.addButtonText }}
     div(slot="body", class="region ehr-page-content")
       div(class="input-fieldrow")
