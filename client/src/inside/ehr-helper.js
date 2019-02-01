@@ -4,9 +4,9 @@ import { ACTIVITY_DATA_EVENT } from '../event-bus'
 import { DIALOG_INPUT_EVENT } from '../event-bus'
 import { PAGE_FORM_INPUT_EVENT } from '../event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from '../event-bus'
-
+import CV from '../inside/defs/current-visit'
 const pageDefsPP = require('../inside/defs/patient-profile')()
-const pageDefsCV = require('../inside/defs/current-visit')()
+const pageDefsCV = CV()
 const pageDefsPC = require('../inside/defs/patient-chart')()
 const pageDefsExt = require('../inside/defs/external-resources')()
 const pageDefs = Object.assign(pageDefsPP, pageDefsCV, pageDefsPC, pageDefsExt)
