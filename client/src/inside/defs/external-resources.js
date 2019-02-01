@@ -1,5 +1,5 @@
 /* eslint-disable quotes */
-module.exports = function() {
+export default function() {
   return {
     assessmentTools: {
       pageTitle: 'Standardized assessment tools',
