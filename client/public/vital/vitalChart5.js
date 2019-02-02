@@ -18,12 +18,26 @@ var gridY = {
 
 function doSomething() {}
 
+let options = {
+  pointColour: '#222',
+  pointRadius: 5,
+  pointLabelFont: '16px Helvetica',
+  pointFillColour: '#222',
+  outOfBoundPointFontColour: '#F00',
+  defaultAxisLineWidth: 0.2,
+  defaultAxisLineColour: '#333',
+  labelOffset: 20, // offset from left edge of canvas
+  yLabelOffset: 30, // offset from left edge of canvas
+  yAxisLabelColour: '#222',
+  yAxisLabelFont: '16px Helvetica'
+}
+
 function createTemperature() {
   let min = 28
   let max = 42
   let ht = 150
   let vScale = ht / (max - min)
-  let values = [34, 36, 40, 28, 41, 27, 35]
+  let values = [34, 36, 40, 28, 42.1, 27.9, 55]
   let chartData = {
     originY: 100,
     height: ht,
@@ -33,8 +47,6 @@ function createTemperature() {
     max: max,
     vScale: vScale,
     gridY: {
-      steps: max - min,
-      stepSize: vScale,
       scales: [
         { v: max, clr: 'red' },
         { v: 40, clr: 'rgb(200,100,100)' },
@@ -60,11 +72,11 @@ function createTemperature() {
 }
 
 function createRespiratory() {
-  let min = 6
+  let min = 5
   let max = 40
   let ht = 150
   let vScale = ht / (max - min)
-  let values = [40, 36, 32, 13, 21, 31, 30]
+  let values = [40, 36, 42, 13, 21, 31, 30]
   let sf = 4
   let chartData = {
     originY: 100,
@@ -75,9 +87,6 @@ function createRespiratory() {
     max: max,
     vScale: vScale,
     gridY: {
-      stepFactor: sf,
-      steps: (max - min) / 4,
-      stepSize: vScale * 4,
       scales: [
         { v: max, clr: 'red' },
         { v: 40, clr: 'rgb(200,100,100)' },
@@ -133,85 +142,72 @@ function _drawData(context, data) {
   let height = data.height
   let gridX = data.gridX
   let labelOffsetX = 10
-  let pointRadius = 5
-  context.fillStyle = '#999'
+  let pointRadius = options.pointRadius
   let values = data.dataSet.values
-  for (var i = 0; i < values.length; i++) {
+  context.save()
+  for (let i = 0; i < values.length; i++) {
     let x = (i + 1) * gridX.stepSize - gridX.stepSize / 2
     let t = values[i]
     if (min <= t && t <= max) {
       let y = originY + height - (t - min) * vScale
       context.beginPath()
-      context.fillStyle = '#200'
+      context.fillStyle = options.pointColour
       context.arc(x, y, pointRadius, 0, 2 * Math.PI)
       context.fill()
-      context.font = '16px Helvetica'
-      context.fillStyle = '#222'
+      context.font = options.pointLabelFont
+      context.fillStyle = options.pointFillColour
       context.fillText(t, x + labelOffsetX, y)
     } else {
-      let y = originY + height - (mid - min - 1) * vScale
-      context.fillStyle = '#F00'
+      let yMin = originY + height - (0) * vScale
+      let yMax = originY + height - (max - min) * vScale
+      let y = t < min ? yMin : yMax
+      console.log('out of bounds', t, y, min, max)
+      context.fillStyle = options.outOfBoundPointFontColour
       context.fillText(t, x, y)
     }
   }
+  context.restore()
 }
 
 function _drawYLabels(context, data) {
   let originY = data.originY
   let gridY = data.gridY
-  let max = data.max
-  let sf = data.stepFactor || 1
-  context.beginPath()
-  for (var i = 0; i <= gridY.steps; i++) {
-    let y = originY + i * gridY.stepSize
-    let w = 30
-    let t = max - i * sf
-    // uncomment to show the index
-    // t += ' ' + i
-    context.fillText(t, w, y)
+  let min = data.min
+  let vScale = data.vScale
+  let height = data.height
+  context.save()
+  for (let i = 0; i < gridY.scales.length; i++) {
+    let scale = gridY.scales[i]
+    let v = scale.v
+    let y = originY + height - (v - min) * vScale
+    context.beginPath()
+    let x = options.yLabelOffset
+    context.fillStyle = scale.clr || doptions.efaultAxisLineColour
+    context.fillText(v, x, y)
+    context.stroke()
   }
-  context.stroke()
+  context.restore()
 }
 
 function _drawYGrid(context, data) {
   let originY = data.originY
   let min = data.min
-  let max = data.max
-  let mid = (max - min) / 2 + min
   let gridY = data.gridY
   let vScale = data.vScale
   let height = data.height
   let x = 0
   let width = context.canvas.width
   context.save()
-  if (gridY.scales) {
-    console.log(gridY.scales)
-    for (var i = 0; i < gridY.scales.length; i++) {
-      let scale = gridY.scales[i]
-      let v = scale.v
-      let y = originY + height - (v - min) * vScale
-      let thk = i % 5 === 0 ? 0.8 : 0
-      context.beginPath()
-      context.lineWidth = scale.lw || 0.2
-      context.strokeStyle = scale.clr || '#333'
-      context.moveTo(x, y)
-      context.lineTo(width, y)
-      context.stroke()
-    }
-  } else {
+  for (let i = 0; i < gridY.scales.length; i++) {
+    let scale = gridY.scales[i]
+    let v = scale.v
+    let y = originY + height - (v - min) * vScale
     context.beginPath()
-    context.moveTo(x, originY)
-    context.lineTo(width, originY)
+    context.lineWidth = scale.lw || options.defaultAxisLineWidth
+    context.strokeStyle = scale.clr || options.defaultAxisLineColour
+    context.moveTo(x, y)
+    context.lineTo(width, y)
     context.stroke()
-    for (var i = 0; i < gridY.steps; i++) {
-      let y = originY + (i + 1) * gridY.stepSize
-      let thk = i % 5 === 0 ? 0.8 : 0
-      context.beginPath()
-      context.lineWidth = 0.2 + thk
-      context.moveTo(x, y)
-      context.lineTo(width, y)
-      context.stroke()
-    }
   }
   context.restore()
 }
@@ -220,34 +216,33 @@ function _drawXGrid(context, data) {
   let originY = data.originY
   let height = data.height
   let gridX = data.gridX
+  context.save()
   context.beginPath()
+  context.lineWidth = options.defaultAxisLineWidth
   for (var i = 0; i < gridX.steps; i++) {
     let x = (i + 1) * gridX.stepSize
     let y1 = originY
     let y2 = originY + height
     context.moveTo(x, y1)
-    context.lineWidth = 0.2
     context.lineTo(x, y2)
   }
   context.stroke()
+  context.restore()
 }
-
-const labelOffset = 20 // offset from left edge of canvas
 
 function _yAxisLabel(context, data) {
   let originY = data.originY
   let height = data.height
   let label = data.label
-  let labelOffsetFromBottom = data.labelOffsetFromBottom
-  let newx = labelOffset
-  let newy = originY + height // bottom of chart
-  let labelXposition = labelOffsetFromBottom // vertical adjust relative to chart
+  let labelX = data.labelOffsetFromBottom
+  let x = options.labelOffset
+  let y = originY + height // bottom of chart
   context.save()
-  context.translate(newx, newy)
+  context.translate(x, y)
   context.rotate(-Math.PI / 2)
   context.textAlign = 'left'
-  context.font = '16px Helvetica'
-  context.fillStyle = '#222'
-  context.fillText(label, labelXposition, 0)
+  context.font = options.yAxisLabelFont
+  context.fillStyle = options.yAxisLabelColour
+  context.fillText(label, labelX, 0)
   context.restore()
 }
