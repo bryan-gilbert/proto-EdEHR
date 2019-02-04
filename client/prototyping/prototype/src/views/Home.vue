@@ -1,13 +1,6 @@
 <template lang="pug">
   div(class="home")
-      tabs
-        tab(name="Table")
-          h1 This tab will show a table
-        tab(name="Chart",:selected="true")
-          h1 Protoype vital signs chart
-          vitals-chart
-        tab(name="Trend")
-          h1 This tab will show something else
+    h1 This Vue app is for prototyping
 </template>
 
 <script>

@@ -5,6 +5,29 @@ const POINT_TYPES = {
   TEXT: 'text'
 }
 
+function round_number(num, dec) {
+  return Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec);
+}
+
+function random(min, max, decimals) {
+  // min and max included
+  decimals = decimals || 0
+  let val = Math.random() * (max - min + 1) + min
+  val = decimals > 0 ? round_number(val, decimals) : Math.floor(val)
+  return val
+}
+
+const vitalRanges = {
+  bloodPressure: { min: 40, max: 190 },
+  oxygenSaturation: { min: 50, max: 100 },
+  pulseRate: { min: 30, max: 140 },
+  respiratory: { min: 5, max: 40 },
+  temperature: { min: 28, max: 42 }
+}
+
+let lastDay = 0
+let lastTime = 8
+
 let options = {
   pointColour: '#222',
   pointMediumColour: 'orange',
@@ -12,6 +35,7 @@ let options = {
   pointLowColour: 'blue',
   pointRadius: 5,
   pointLabelFont: '16px Helvetica',
+  labelOffsetX: 10,
   pointFillColour: '#222',
   outOfBoundPointFontColour: '#F00',
   defaultAxisLineWidth: 0.2,
@@ -23,7 +47,34 @@ let options = {
 }
 
 export default class VitalChart {
-  doSomething() {}
+  addData(table) {
+    lastTime += 4
+    if (lastTime > 24) {
+      lastTime -= 24
+      lastDay++
+    }
+    let diastolic = random(vitalRanges.bloodPressure.min, 100)
+    let systolic = random(diastolic, vitalRanges.bloodPressure.max)
+    table.push({
+      name: 'Test',
+      day: lastDay,
+      time: lastTime,
+      temperature: random(vitalRanges.temperature.min, vitalRanges.temperature.max, 1),
+      profession: 'nurse',
+      source: 'axilla',
+      rate: random(vitalRanges.pulseRate.min, vitalRanges.pulseRate.max),
+      rhythm: 'regular',
+      strength: 'strong',
+      systolic: systolic,
+      diastolic: diastolic,
+      patientPosition: 'lying',
+      respirationRate: random(vitalRanges.respiratory.min, vitalRanges.respiratory.max),
+      respirationEffort: 'easy',
+      oxygenSaturation: random(vitalRanges.oxygenSaturation.min, vitalRanges.oxygenSaturation.max),
+      oxygenMode: 'nasal prongs',
+      flowRate: '3'
+    })
+  }
 
   createDates() {
     let ht = 100
@@ -292,7 +343,7 @@ export default class VitalChart {
     let vScale = data.vScale
     let height = data.height
     let gridX = data.gridX
-    let labelOffsetX = 10
+    let labelOffsetX = dataSet.labelOffsetX || options.labelOffsetX
     let pointLabelFont = dataSet.pointLabelFont
     let pointColour = dataSet.pointColour
     let pointFillColour = dataSet.pointFillColour
