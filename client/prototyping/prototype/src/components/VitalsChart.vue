@@ -9,31 +9,30 @@
 </template>
 
 <script>
-
 import VitalChart from './vitalChart5'
 
 export default {
   name: 'VitalsChart',
   mounted: function() {
     let vitalChart = new VitalChart()
-      var chartCanvas = document.getElementById('chartCanvas').getContext('2d')
-      var axisCanvas = document.getElementById('axisCanvas').getContext('2d')
+    var chartCanvas = document.getElementById('chartCanvas').getContext('2d')
+    var axisCanvas = document.getElementById('axisCanvas').getContext('2d')
 
-      let chartData
-      chartData = vitalChart.createDates()
-      chartData.originY = 0
+    let chartData
+    chartData = vitalChart.createDates()
+    chartData.originY = 0
     vitalChart._drawChart(chartCanvas, axisCanvas, chartData)
 
-      chartData = vitalChart.createTemperature()
-      chartData.originY = 150
+    chartData = vitalChart.createTemperature()
+    chartData.originY = 150
     vitalChart._drawChart(chartCanvas, axisCanvas, chartData)
 
-      chartData = vitalChart.createBloodPressure()
-      chartData.originY = 300
+    chartData = vitalChart.createBloodPressure()
+    chartData.originY = 300
     vitalChart._drawChart(chartCanvas, axisCanvas, chartData)
 
-      chartData = vitalChart.createRespiratory()
-      chartData.originY = 700
+    chartData = vitalChart.createRespiratory()
+    chartData.originY = 700
     vitalChart._drawChart(chartCanvas, axisCanvas, chartData)
   }
 }

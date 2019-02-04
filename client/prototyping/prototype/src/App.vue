@@ -15,7 +15,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
   color: #2c3e50;
-  padding-left:3rem;
+  padding-left: 3rem;
 
   h1 {
     text-align: center;

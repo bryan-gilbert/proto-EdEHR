@@ -1,4 +1,9 @@
-const POINT_TYPES = {POINT: 'point', DOWN_CHEVRON: 'downChevron', UP_CHEVRON: 'upChevron', TEXT: 'text'}
+const POINT_TYPES = {
+  POINT: 'point',
+  DOWN_CHEVRON: 'downChevron',
+  UP_CHEVRON: 'upChevron',
+  TEXT: 'text'
+}
 
 let options = {
   pointColour: '#222',
@@ -18,9 +23,9 @@ let options = {
 }
 
 export default class VitalChart {
-  doSomething () {}
+  doSomething() {}
 
-  createDates () {
+  createDates() {
     let ht = 100
     let chartData = {
       chartType: POINT_TYPES.TEXT,
@@ -43,16 +48,16 @@ export default class VitalChart {
     return chartData
   }
 
-  createBloodPressure () {
+  createBloodPressure() {
     let values = [
-      {systolic: 120, diastolic: 80, pulse: 70}, //normal
-      {systolic: 90, diastolic: 80, pulse: 60}, // low
-      {systolic: 130, diastolic: 80, pulse: 70}, // per-high
-      {systolic: 150, diastolic: 85, pulse: 70}, // high
-      {systolic: 130, diastolic: 91, pulse: 70} // high
+      { systolic: 120, diastolic: 80, pulse: 70 }, //normal
+      { systolic: 90, diastolic: 80, pulse: 60 }, // low
+      { systolic: 130, diastolic: 80, pulse: 70 }, // per-high
+      { systolic: 150, diastolic: 85, pulse: 70 }, // high
+      { systolic: 130, diastolic: 91, pulse: 70 } // high
     ]
 
-    function loadData (chartData) {
+    function loadData(chartData) {
       let v1 = [],
         v2 = [],
         v3 = []
@@ -67,9 +72,9 @@ export default class VitalChart {
         if (v.systolic >= 140 || v.diastolic >= 90) {
           pointColor = options.pointHighColour
         }
-        v1.push({value: v.systolic, pointColor: pointColor})
-        v2.push({value: v.diastolic, pointColor: pointColor})
-        v3.push({value: v.pulse, pointColor: pointColor})
+        v1.push({ value: v.systolic, pointColor: pointColor })
+        v2.push({ value: v.diastolic, pointColor: pointColor })
+        v3.push({ value: v.pulse, pointColor: pointColor })
       })
       chartData.dataSet[0].values = v1
       chartData.dataSet[1].values = v2
@@ -94,10 +99,10 @@ export default class VitalChart {
       dMax: max,
       vScale: vScale,
       gridY: {
-        scalePoints: (function () {
+        scalePoints: (function() {
           let pts = []
           for (let i = max; i >= min; i -= 10) {
-            pts.push({spv: i})
+            pts.push({ spv: i })
           }
           return pts
         })()
@@ -141,7 +146,7 @@ export default class VitalChart {
     return chartData
   }
 
-  createTemperature () {
+  createTemperature() {
     let min = 28
     let max = 42
     let ht = 150
@@ -157,16 +162,16 @@ export default class VitalChart {
       vScale: vScale,
       gridY: {
         scalePoints: [
-          {spv: max, clr: 'red'},
-          {spv: 40, clr: 'rgb(200,100,100)'},
-          {spv: 38, lw: 0.5, clr: 'rgb(200,100,100)'},
-          {spv: 37, clr: 'rgb(100,100,100)'},
-          {spv: 36, clr: 'rgb(100,100,100)'},
-          {spv: 35, clr: 'rgb(100,100,100)'},
-          {spv: 34, clr: 'rgb(100,100,100)'},
-          {spv: 32.5, lw: 0.5, clr: 'rgb(100,100,200)'},
-          {spv: 30, clr: 'blue'},
-          {spv: min, clr: 'blue'}
+          { spv: max, clr: 'red' },
+          { spv: 40, clr: 'rgb(200,100,100)' },
+          { spv: 38, lw: 0.5, clr: 'rgb(200,100,100)' },
+          { spv: 37, clr: 'rgb(100,100,100)' },
+          { spv: 36, clr: 'rgb(100,100,100)' },
+          { spv: 35, clr: 'rgb(100,100,100)' },
+          { spv: 34, clr: 'rgb(100,100,100)' },
+          { spv: 32.5, lw: 0.5, clr: 'rgb(100,100,200)' },
+          { spv: 30, clr: 'blue' },
+          { spv: min, clr: 'blue' }
         ]
       },
       gridX: {
@@ -188,7 +193,7 @@ export default class VitalChart {
     return chartData
   }
 
-  createRespiratory () {
+  createRespiratory() {
     let min = 5
     let max = 40
     let ht = 150
@@ -204,15 +209,15 @@ export default class VitalChart {
       vScale: vScale,
       gridY: {
         scalePoints: [
-          {spv: max, clr: 'red'},
-          {spv: 40, clr: 'rgb(200,100,100)'},
-          {spv: 35, clr: 'rgb(200,100,100)'},
-          {spv: 30, clr: 'rgb(100,100,100)'},
-          {spv: 25, clr: 'rgb(100,100,100)'},
-          {spv: 20, clr: 'rgb(100,100,100)'},
-          {spv: 15, clr: 'rgb(100,100,100)'},
-          {spv: 10, clr: 'rgb(100,100,200)'},
-          {spv: min, clr: 'blue'}
+          { spv: max, clr: 'red' },
+          { spv: 40, clr: 'rgb(200,100,100)' },
+          { spv: 35, clr: 'rgb(200,100,100)' },
+          { spv: 30, clr: 'rgb(100,100,100)' },
+          { spv: 25, clr: 'rgb(100,100,100)' },
+          { spv: 20, clr: 'rgb(100,100,100)' },
+          { spv: 15, clr: 'rgb(100,100,100)' },
+          { spv: 10, clr: 'rgb(100,100,200)' },
+          { spv: min, clr: 'blue' }
         ]
       },
       gridX: {
@@ -261,7 +266,7 @@ export default class VitalChart {
   }
   */
 
-  _drawChart (chartCanvas, axisCanvas, chartData) {
+  _drawChart(chartCanvas, axisCanvas, chartData) {
     if (chartData.chartType !== POINT_TYPES.TEXT) {
       this._drawYGrid(chartCanvas, chartData)
       this._yAxisLabel(axisCanvas, chartData)
@@ -274,7 +279,7 @@ export default class VitalChart {
     }
   }
 
-  _drawData (context, data, dataSetIndex) {
+  _drawData(context, data, dataSetIndex) {
     let dataSet = data.dataSet[dataSetIndex]
     let pointRadius = dataSet.pointRadius
     let pointStyle = dataSet.pointStyle
@@ -338,7 +343,7 @@ export default class VitalChart {
     context.restore()
   }
 
-  _drawYLabels (context, data) {
+  _drawYLabels(context, data) {
     let originY = data.originY
     let gridY = data.gridY
     let min = data.dMin
@@ -358,7 +363,7 @@ export default class VitalChart {
     context.restore()
   }
 
-  _drawYGrid (context, data) {
+  _drawYGrid(context, data) {
     let originY = data.originY
     let min = data.dMin
     let gridY = data.gridY
@@ -381,7 +386,7 @@ export default class VitalChart {
     context.restore()
   }
 
-  _drawXGrid (context, data) {
+  _drawXGrid(context, data) {
     let originY = data.originY
     let height = data.height
     let gridX = data.gridX
@@ -399,7 +404,7 @@ export default class VitalChart {
     context.restore()
   }
 
-  _yAxisLabel (context, data) {
+  _yAxisLabel(context, data) {
     let originY = data.originY
     let height = data.height
     let label = data.label
@@ -416,7 +421,7 @@ export default class VitalChart {
     context.restore()
   }
 
-  drawChevron (ctx, pointX, pointY, direction, colour) {
+  drawChevron(ctx, pointX, pointY, direction, colour) {
     const chevronLength = 10
     const lineWidth = 2
     // draw a V rotated as per angle
@@ -456,5 +461,4 @@ export default class VitalChart {
     ctx.stroke()
     ctx.restore()
   }
-
 }
