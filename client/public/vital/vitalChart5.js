@@ -18,7 +18,7 @@ var gridY = {
 
 function doSomething() {}
 
-const POINT_TYPES = { POINT: 'point', DOWN_CHEVRON: 'downChevron', UP_CHEVRON: 'upChevron' }
+const POINT_TYPES = { POINT: 'point', DOWN_CHEVRON: 'downChevron', UP_CHEVRON: 'upChevron', TEXT: 'text' }
 
 let options = {
   pointColour: '#222',
@@ -35,6 +35,29 @@ let options = {
   yLabelOffset: 30, // offset from left edge of canvas
   yAxisLabelColour: '#222',
   yAxisLabelFont: '16px Helvetica'
+}
+
+function createDates() {
+  let ht = 100
+  let chartData = {
+    chartType: POINT_TYPES.TEXT,
+    originY: 0,
+    height: ht,
+    noLabel: true,
+    gridX: {
+      steps: 10, // need to compute this based on values === values.length
+      stepSize: 75
+    },
+    dataSet: [
+      {
+        label: 'Systolic',
+        pointStyle: POINT_TYPES.TEXT,
+        pointLabelFont: options.pointLabelFont,
+        values:['A','B']
+      }
+    ]
+  }
+  return chartData
 }
 
 function createBloodPressure() {
@@ -89,7 +112,7 @@ From https://en.wikipedia.org/wiki/Pulse  pulse rate ranges from 39 to 149
       scalePoints: (function() {
         let pts = []
         for(let i=max; i >= min; i -= 10) {
-          pts.push({v:i})
+          pts.push({spv:i})
         }
         return pts
       })()
@@ -149,16 +172,16 @@ function createTemperature() {
     vScale: vScale,
     gridY: {
       scalePoints: [
-        { v: max, clr: 'red' },
-        { v: 40, clr: 'rgb(200,100,100)' },
-        { v: 38, lw: 0.5, clr: 'rgb(200,100,100)' },
-        { v: 37, clr: 'rgb(100,100,100)' },
-        { v: 36, clr: 'rgb(100,100,100)' },
-        { v: 35, clr: 'rgb(100,100,100)' },
-        { v: 34, clr: 'rgb(100,100,100)' },
-        { v: 32.5, lw: 0.5, clr: 'rgb(100,100,200)' },
-        { v: 30, clr: 'blue' },
-        { v: min, clr: 'blue' }
+        { spv: max, clr: 'red' },
+        { spv: 40, clr: 'rgb(200,100,100)' },
+        { spv: 38, lw: 0.5, clr: 'rgb(200,100,100)' },
+        { spv: 37, clr: 'rgb(100,100,100)' },
+        { spv: 36, clr: 'rgb(100,100,100)' },
+        { spv: 35, clr: 'rgb(100,100,100)' },
+        { spv: 34, clr: 'rgb(100,100,100)' },
+        { spv: 32.5, lw: 0.5, clr: 'rgb(100,100,200)' },
+        { spv: 30, clr: 'blue' },
+        { spv: min, clr: 'blue' }
       ]
     },
     gridX: {
@@ -196,15 +219,15 @@ function createRespiratory() {
     vScale: vScale,
     gridY: {
       scalePoints: [
-        { v: max, clr: 'red' },
-        { v: 40, clr: 'rgb(200,100,100)' },
-        { v: 35, clr: 'rgb(200,100,100)' },
-        { v: 30, clr: 'rgb(100,100,100)' },
-        { v: 25, clr: 'rgb(100,100,100)' },
-        { v: 20, clr: 'rgb(100,100,100)' },
-        { v: 15, clr: 'rgb(100,100,100)' },
-        { v: 10, clr: 'rgb(100,100,200)' },
-        { v: min, clr: 'blue' }
+        { spv: max, clr: 'red' },
+        { spv: 40, clr: 'rgb(200,100,100)' },
+        { spv: 35, clr: 'rgb(200,100,100)' },
+        { spv: 30, clr: 'rgb(100,100,100)' },
+        { spv: 25, clr: 'rgb(100,100,100)' },
+        { spv: 20, clr: 'rgb(100,100,100)' },
+        { spv: 15, clr: 'rgb(100,100,100)' },
+        { spv: 10, clr: 'rgb(100,100,200)' },
+        { spv: min, clr: 'blue' }
       ]
     },
     gridX: {
@@ -233,8 +256,13 @@ function vitalChartLoad() {
   var chartCanvas = document.getElementById('chartCanvas').getContext('2d')
   var axisCanvas = document.getElementById('axisCanvas').getContext('2d')
 
-  let chartData = createTemperature()
-  chartData.originY = 100
+  let chartData
+  chartData = createDates()
+  chartData.originY = 0
+  _drawChart(chartCanvas, axisCanvas, chartData)
+
+  chartData = createTemperature()
+  chartData.originY = 150
   _drawChart(chartCanvas, axisCanvas, chartData)
 
   chartData = createBloodPressure()
@@ -247,19 +275,23 @@ function vitalChartLoad() {
 }
 
 function _drawChart(chartCanvas, axisCanvas, chartData) {
-  _drawYGrid(chartCanvas, chartData)
+  if (chartData.chartType !== POINT_TYPES.TEXT) {
+    _drawYGrid(chartCanvas, chartData)
+    _yAxisLabel(axisCanvas, chartData)
+    _drawYLabels(axisCanvas, chartData)
+  }
+
   _drawXGrid(chartCanvas, chartData)
   for (let i = 0; i < chartData.dataSet.length; i++) {
     _drawData(chartCanvas, chartData, i)
   }
-  _yAxisLabel(axisCanvas, chartData)
-  _drawYLabels(axisCanvas, chartData)
 }
 
 function _drawData(context, data, dataSetIndex) {
   let dataSet = data.dataSet[dataSetIndex]
   let pointRadius = dataSet.pointRadius
   let pointStyle = dataSet.pointStyle
+  let textOnly = data.chartType === POINT_TYPES.TEXT
   let chevron = POINT_TYPES.DOWN_CHEVRON === pointStyle || POINT_TYPES.UP_CHEVRON === pointStyle
   let values = dataSet.values
   let originY = data.originY
@@ -269,43 +301,51 @@ function _drawData(context, data, dataSetIndex) {
   let height = data.height
   let gridX = data.gridX
   let labelOffsetX = 10
+  let pointLabelFont = dataSet.pointLabelFont
+  let pointColour = dataSet.pointColour
+  let pointFillColour = dataSet.pointFillColour
+  let outOfBoundPointFontColour = dataSet.outOfBoundPointFontColour
   context.save()
   for (let i = 0; i < values.length; i++) {
     let x = (i + 1) * gridX.stepSize - gridX.stepSize / 2
     let value = values[i]
-    let pointColour = dataSet.pointColour
-    let pointLabelFont = dataSet.pointLabelFont
-    let pointFillColour = dataSet.pointFillColour
-    let outOfBoundPointFontColour = dataSet.outOfBoundPointFontColour
-    if (typeof value === 'object') {
-      pointColour = value.pointColor || dataSet.pointColour
-      pointLabelFont = value.pointLabelFont || dataSet.pointLabelFont
-      pointFillColour = value.pointFillColour || dataSet.pointFillColour
-      outOfBoundPointFontColour =
-        value.outOfBoundPointFontColour || dataSet.outOfBoundPointFontColour
-      value = value.value
-    }
-    if (min <= value && value <= max) {
-      let y = originY + height - (value - min) * vScale
-      if (chevron) {
-        drawChevron(context, x, y, pointStyle, pointColour)
-      } else {
-        // default to POINT_TYPES.POINT
-        context.beginPath()
-        context.fillStyle = pointColour
-        context.arc(x, y, pointRadius, 0, 2 * Math.PI)
-        context.fill()
-      }
+    if(textOnly) {
+      let y = originY + height
+      console.log('text', value, x, y)
       context.font = pointLabelFont
       context.fillStyle = pointFillColour
-      context.fillText(value, x + labelOffsetX, y)
-    } else {
-      let yMin = originY + height
-      let yMax = originY + height - (max - min) * vScale
-      let y = value < min ? yMin : yMax
-      // console.log('out of bounds', t, y, min, max)
-      context.fillStyle = outOfBoundPointFontColour
       context.fillText(value, x, y)
+    } else {
+      if (typeof value === 'object') {
+        pointColour = value.pointColor || dataSet.pointColour
+        pointLabelFont = value.pointLabelFont || dataSet.pointLabelFont
+        pointFillColour = value.pointFillColour || dataSet.pointFillColour
+        outOfBoundPointFontColour =
+          value.outOfBoundPointFontColour || dataSet.outOfBoundPointFontColour
+        value = value.value
+      }
+      if (min <= value && value <= max) {
+        let y = originY + height - (value - min) * vScale
+        if (chevron) {
+          drawChevron(context, x, y, pointStyle, pointColour)
+        } else {
+          // default to POINT_TYPES.POINT
+          context.beginPath()
+          context.fillStyle = pointColour
+          context.arc(x, y, pointRadius, 0, 2 * Math.PI)
+          context.fill()
+        }
+        context.font = pointLabelFont
+        context.fillStyle = pointFillColour
+        context.fillText(value, x + labelOffsetX, y)
+      } else {
+        let yMin = originY + height
+        let yMax = originY + height - (max - min) * vScale
+        let y = value < min ? yMin : yMax
+        // console.log('out of bounds', t, y, min, max)
+        context.fillStyle = outOfBoundPointFontColour
+        context.fillText(value, x, y)
+      }
     }
   }
   context.restore()
@@ -320,7 +360,7 @@ function _drawYLabels(context, data) {
   context.save()
   for (let i = 0; i < gridY.scalePoints.length; i++) {
     let scale = gridY.scalePoints[i]
-    let v = scale.v
+    let v = scale.spv
     let y = originY + height - (v - min) * vScale
     context.beginPath()
     let x = options.yLabelOffset
@@ -342,7 +382,7 @@ function _drawYGrid(context, data) {
   context.save()
   for (let i = 0; i < gridY.scalePoints.length; i++) {
     let scale = gridY.scalePoints[i]
-    let v = scale.v
+    let v = scale.spv
     let y = originY + height - (v - min) * vScale
     context.beginPath()
     context.lineWidth = scale.lw || options.defaultAxisLineWidth
