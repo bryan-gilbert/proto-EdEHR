@@ -1,23 +1,35 @@
 <template lang="pug">
   div(class="content")
-    // div temperatures {{temperatures}}
     div(class="chart-wrapper")
       div(class="axis-wrapper")
-        canvas(id="axisCanvas", width="55", height="1200")
+        canvas(id="axisCanvas", :width="axisCanvasWidth", :height="axisCanvasHeight")
       div(class="canvas-wrapper")
-        canvas(id="chartCanvas", width="1200", height="1200")
+        canvas(id="chartCanvas", :width="chartCanvasWidth", :height="chartCanvasHeight")
 </template>
 
 <script>
-import VitalChart from './vitalChart5'
+import VitalChart from '../helpers/vitalChart'
+
+const yAxisWidth = 55
+const canvasHeight = 1000
+const canvasWidth = 1200
 
 export default {
   name: 'VitalsChart',
+  data: function() {
+    return {
+      axisCanvasWidth: yAxisWidth,
+      axisCanvasHeight: canvasHeight,
+      chartCanvasWidth: canvasWidth,
+      chartCanvasHeight: canvasHeight
+    }
+  },
   props: {
-    vitals: {type: Array},
-    vitalsModel: {type: Object}
+    vitals: { type: Array },
+    vitalsModel: { type: Object }
   },
   computed: {
+    // these arrays are magically updated by Vue when the vitals are changed
     temperatures() {
       return this.vitalsModel.getTemperature(this.vitals)
     },
@@ -32,43 +44,33 @@ export default {
     }
   },
   watch: {
+    // when the vitals are changed trigger a redraw
     vitals: function() {
-      console.log('watch sees new vitals')
       this.redraw()
     }
   },
   methods: {
+    // Prototype only ....
+    // add another row to the data table.
     addData() {
       this.vitalChart.addData(this.vitals.table)
     },
     redraw() {
-      var chartCanvas = document.getElementById('chartCanvas').getContext('2d')
-      var axisCanvas = document.getElementById('axisCanvas').getContext('2d')
       let vitalChart = this.vitalChart
-
-      let chartData
-      chartData = this.dates
-      chartData.originY = 0
-      vitalChart._drawChart(chartCanvas, axisCanvas, chartData)
-
-      chartData = this.temperatures
-      chartData.originY = 150
-      vitalChart._drawChart(chartCanvas, axisCanvas, chartData)
-
-      chartData = this.bloodPressure
-      chartData.originY = 350
-      vitalChart._drawChart(chartCanvas, axisCanvas, chartData)
-
-    chartData = this.respiratory
-    chartData.originY = 700
-    vitalChart._drawChart(chartCanvas, axisCanvas, chartData)
-
+      vitalChart.clear()
+      // The first number is the origin of the chart relative to the top left
+      // The second number is the height of the chart
+      vitalChart.drawChart(this.dates, 0, 100)
+      vitalChart.drawChart(this.temperatures, 120, 200)
+      vitalChart.drawChart(this.bloodPressure, 350, 300)
+      vitalChart.drawChart(this.respiratory, 680, 150)
     }
   },
-  created: function() {
-    this.vitalChart = new VitalChart()
-  },
   mounted: function() {
+    let chartCanvas = document.getElementById('chartCanvas')
+    let axisCanvas = document.getElementById('axisCanvas')
+    this.vitalChart = new VitalChart(chartCanvas, axisCanvas)
+    // draw to get empty chart
     this.redraw()
   }
 }

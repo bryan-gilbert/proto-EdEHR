@@ -38,7 +38,7 @@ export default {
       this.vitalsModel.addData(this.vitals.table)
     }
   },
-  created : function() {
+  created: function() {
     this.vitalsModel = new VitalModel()
   }
 }

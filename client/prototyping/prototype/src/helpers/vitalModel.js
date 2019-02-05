@@ -1,20 +1,10 @@
+import { options } from './vitalChart'
+
 const POINT_TYPES = {
   POINT: 'point',
   DOWN_CHEVRON: 'downChevron',
   UP_CHEVRON: 'upChevron',
   TEXT: 'text'
-}
-
-function round_number(num, dec) {
-  return Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec)
-}
-
-function random(min, max, decimals) {
-  // min and max included
-  decimals = decimals || 0
-  let val = Math.random() * (max - min + 1) + min
-  val = decimals > 0 ? round_number(val, decimals) : Math.floor(val)
-  return val
 }
 
 const vitalRanges = {
@@ -29,24 +19,48 @@ let lastDay = 0
 let lastTime = 8
 let cnt = 0
 
-let options = {
-  pointColour: '#222',
-  pointMediumColour: 'orange',
-  pointHighColour: 'red',
-  pointLowColour: 'blue',
-  pointRadius: 5,
-  pointLabelFont: '16px Helvetica',
-  pointFillColour: '#222',
-  outOfBoundPointFontColour: '#F00',
-  defaultAxisLineWidth: 0.2,
-  defaultAxisLineColour: '#333',
-  labelOffset: 20, // offset from left edge of canvas
-  yLabelOffset: 30, // offset from left edge of canvas
-  yAxisLabelColour: '#222',
-  yAxisLabelFont: '16px Helvetica'
-}
-
 export default class VitalChart {
+  addData(table) {
+    cnt++
+    lastTime += 4
+    if (lastTime > 24) {
+      lastTime -= 24
+      lastDay++
+    }
+    let diastolic, systolic, pulseRate
+    if (cnt <= 3) {
+      let normal = vitalRanges.bloodPressure.normal
+      diastolic = helper.random(normal.diastolic[0], normal.diastolic[1])
+      systolic = helper.random(normal.systolic[0], normal.systolic[1])
+      let normalPulse = vitalRanges.pulseRate.normal.adult
+      pulseRate = helper.random(normalPulse[0], normalPulse[1])
+    } else {
+      diastolic = helper.random(vitalRanges.bloodPressure.min, 100)
+      systolic = helper.random(diastolic, vitalRanges.bloodPressure.max)
+      pulseRate = helper.random(vitalRanges.pulseRate.min, vitalRanges.pulseRate.max)
+    }
+    // random(diastolic, vitalRanges.bloodPressure.max)
+    table.push({
+      name: 'Test',
+      day: lastDay,
+      time: lastTime,
+      temperature: helper.random(vitalRanges.temperature.min, vitalRanges.temperature.max, 1),
+      profession: 'nurse',
+      source: 'axilla',
+      rate: pulseRate,
+      rhythm: 'regular',
+      strength: 'strong',
+      systolic: systolic,
+      diastolic: diastolic,
+      patientPosition: 'lying',
+      respirationRate: helper.random(vitalRanges.respiratory.min, vitalRanges.respiratory.max),
+      respirationEffort: 'easy',
+      oxygenSaturation: helper.random(vitalRanges.oxygenSaturation.min, vitalRanges.oxygenSaturation.max),
+      oxygenMode: 'nasal prongs',
+      flowRate: '3'
+    })
+  }
+
   getTemperature(table) {
     let values = table.map(element => {
       return element.temperature
@@ -55,7 +69,6 @@ export default class VitalChart {
     let max = vitalRanges.temperature.max
     let ht = 150
     let vScale = ht / (max - min)
-    // let values = [34, 36, 40, 28, 42.1, 27.9, 55]
     let chartData = {
       originY: 100,
       height: ht,
@@ -85,56 +98,11 @@ export default class VitalChart {
       dataSet: [
         {
           pointStyle: POINT_TYPES.POINT,
-          pointRadius: options.pointRadius,
-          pointColor: options.pointColour,
-          pointLabelFont: options.pointLabelFont,
-          pointFillColour: options.pointFillColour,
-          outOfBoundPointFontColour: options.outOfBoundPointFontColour,
           values: values
         }
       ]
     }
     return chartData
-  }
-  addData(table) {
-    cnt++
-    lastTime += 4
-    if (lastTime > 24) {
-      lastTime -= 24
-      lastDay++
-    }
-    let diastolic, systolic, pulseRate
-    if (cnt <= 3) {
-      let normal = vitalRanges.bloodPressure.normal
-      diastolic = random(normal.diastolic[0], normal.diastolic[1])
-      systolic = random(normal.systolic[0], normal.systolic[1])
-      let normalPulse = vitalRanges.pulseRate.normal.adult
-      pulseRate = random(normalPulse[0], normalPulse[1])
-    } else {
-      diastolic = random(vitalRanges.bloodPressure.min, 100)
-      systolic = random(diastolic, vitalRanges.bloodPressure.max)
-      pulseRate = random(vitalRanges.pulseRate.min, vitalRanges.pulseRate.max)
-    }
-    // random(diastolic, vitalRanges.bloodPressure.max)
-    table.push({
-      name: 'Test',
-      day: lastDay,
-      time: lastTime,
-      temperature: random(vitalRanges.temperature.min, vitalRanges.temperature.max, 1),
-      profession: 'nurse',
-      source: 'axilla',
-      rate: pulseRate,
-      rhythm: 'regular',
-      strength: 'strong',
-      systolic: systolic,
-      diastolic: diastolic,
-      patientPosition: 'lying',
-      respirationRate: random(vitalRanges.respiratory.min, vitalRanges.respiratory.max),
-      respirationEffort: 'easy',
-      oxygenSaturation: random(vitalRanges.oxygenSaturation.min, vitalRanges.oxygenSaturation.max),
-      oxygenMode: 'nasal prongs',
-      flowRate: '3'
-    })
   }
 
   getDates(table) {
@@ -142,7 +110,7 @@ export default class VitalChart {
       return element.day + ' ' + element.time
       // return 'Day ' + element.day + '\n' + element.time + ':00';
     })
-
+    // ht and vScale are also changed later when the caller draws the chart
     let ht = 100
     let chartData = {
       chartType: POINT_TYPES.TEXT,
@@ -169,29 +137,29 @@ export default class VitalChart {
       v2 = [],
       v3 = []
     table.forEach(element => {
-      let pointColor = options.pointColour
+      let pointFillColour = options.pointFillColour
       let v = element
       if (v.systolic < 90 || v.diastolic < 60) {
-        pointColor = options.pointLowColour
+        pointFillColour = options.pointLowColour
       }
       if (v.systolic > 130 || v.diastolic > 85) {
-        pointColor = options.pointMediumColour
+        pointFillColour = options.pointMediumColour
       }
       if (v.systolic >= 140 || v.diastolic >= 90) {
-        pointColor = options.pointHighColour
+        pointFillColour = options.pointHighColour
       }
-      v1.push({ value: v.systolic, pointColor: pointColor })
-      v2.push({ value: v.diastolic, pointColor: pointColor })
-      v3.push({ value: v.rate, pointColor: pointColor })
+      v1.push({ value: v.systolic, pointFillColour: pointFillColour })
+      v2.push({ value: v.diastolic, pointFillColour: pointFillColour })
+      v3.push({ value: v.rate, pointFillColour: pointFillColour })
     })
 
     /*
-  https://en.wikipedia.org/wiki/Blood_pressure
-
-  From https://en.wikipedia.org/wiki/Pulse  pulse rate ranges from 39 to 149
-     */
+    https://en.wikipedia.org/wiki/Blood_pressure
+    From https://en.wikipedia.org/wiki/Pulse  pulse rate ranges from 39 to 149
+    */
     let min = vitalRanges.bloodPressure.min
     let max = vitalRanges.bloodPressure.max
+    // ht and vScale are also changed later when the caller draws the chart
     let ht = 300
     let vScale = ht / (max - min)
     let chartData = {
@@ -204,6 +172,7 @@ export default class VitalChart {
       vScale: vScale,
       gridY: {
         scalePoints: (function() {
+          // step by 10's
           let pts = []
           for (let i = max; i >= min; i -= 10) {
             pts.push({ spv: i })
@@ -219,32 +188,17 @@ export default class VitalChart {
         {
           label: 'Systolic',
           pointStyle: POINT_TYPES.DOWN_CHEVRON,
-          pointRadius: options.pointRadius,
-          pointColor: options.pointColour,
-          pointLabelFont: options.pointLabelFont,
-          pointFillColour: options.pointFillColour,
-          outOfBoundPointFontColour: options.outOfBoundPointFontColour,
           values: v1
         },
         {
           label: 'Diastolic',
           pointStyle: POINT_TYPES.UP_CHEVRON,
-          pointRadius: options.pointRadius,
-          pointColor: options.pointColour,
-          pointLabelFont: options.pointLabelFont,
-          pointFillColour: options.pointFillColour,
-          outOfBoundPointFontColour: options.outOfBoundPointFontColour,
           values: v2
         },
         {
           label: 'Pulse rate',
           pointStyle: POINT_TYPES.POINT,
           labelOffsetX: -30,
-          pointRadius: options.pointRadius,
-          pointColor: options.pointColour,
-          pointLabelFont: options.pointLabelFont,
-          pointFillColour: options.pointFillColour,
-          outOfBoundPointFontColour: options.outOfBoundPointFontColour,
           values: v3
         }
       ]
@@ -255,6 +209,7 @@ export default class VitalChart {
   getRespiratory(table) {
     let min = vitalRanges.respiratory.min
     let max = vitalRanges.respiratory.max
+    // originY, ht and vScale are also changed later when the caller draws the chart
     let ht = 150
     let vScale = ht / (max - min)
     let values = table.map(element => {
@@ -288,15 +243,23 @@ export default class VitalChart {
       dataSet: [
         {
           pointStyle: POINT_TYPES.POINT,
-          pointRadius: options.pointRadius,
-          pointColor: options.pointColour,
-          pointLabelFont: options.pointLabelFont,
-          pointFillColour: options.pointFillColour,
-          outOfBoundPointFontColour: options.outOfBoundPointFontColour,
           values: values
         }
       ]
     }
     return chartData
+  }
+}
+
+const helper = {
+  round_number: function(num, dec) {
+    return Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec)
+  },
+  random: function(min, max, decimals) {
+    // min and max included
+    decimals = decimals || 0
+    let val = Math.random() * (max - min + 1) + min
+    val = decimals > 0 ? helper.round_number(val, decimals) : Math.floor(val)
+    return val
   }
 }
