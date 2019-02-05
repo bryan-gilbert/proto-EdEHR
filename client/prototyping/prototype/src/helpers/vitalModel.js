@@ -44,7 +44,7 @@ export default class VitalChart {
       name: 'Test',
       day: lastDay,
       time: lastTime,
-      temperature: helper.random(vitalRanges.temperature.min, vitalRanges.temperature.max, 1),
+      temperature: helper.random(vitalRanges.temperature.min -1, vitalRanges.temperature.max + 1, 1),
       profession: 'nurse',
       source: 'axilla',
       rate: pulseRate,
@@ -57,7 +57,7 @@ export default class VitalChart {
       respirationEffort: 'easy',
       oxygenSaturation: helper.random(vitalRanges.oxygenSaturation.min, vitalRanges.oxygenSaturation.max),
       oxygenMode: 'nasal prongs',
-      flowRate: '3'
+      flowRate: helper.random(0,5)
     })
   }
 
@@ -67,16 +67,11 @@ export default class VitalChart {
     })
     let min = vitalRanges.temperature.min
     let max = vitalRanges.temperature.max
-    let ht = 150
-    let vScale = ht / (max - min)
     let chartData = {
-      originY: 100,
-      height: ht,
       label: 'Temperature',
       labelOffsetFromBottom: 20, // vertical adjust label relative to chart bottom
       dMin: min,
       dMax: max,
-      vScale: vScale,
       gridY: {
         scalePoints: [
           { spv: max, clr: 'red' },
@@ -92,8 +87,7 @@ export default class VitalChart {
         ]
       },
       gridX: {
-        steps: values.length,
-        stepSize: 75
+        steps: values.length
       },
       dataSet: [
         {
@@ -109,16 +103,12 @@ export default class VitalChart {
     let values = table.map(element => {
       return `Day ${element.day}\n${element.time}:00`;
     })
-    // ht and vScale are also changed later when the caller draws the chart
-    let ht = 100
     let chartData = {
       chartType: POINT_TYPES.TEXT,
-      originY: 0,
-      height: ht,
-      noLabel: true,
+      noYAxisGrid: true,
+      noYAxisLabel: true,
       gridX: {
-        steps: values.length,
-        stepSize: 75
+        steps: values.length
       },
       dataSet: [
         {
@@ -158,17 +148,11 @@ export default class VitalChart {
     */
     let min = vitalRanges.bloodPressure.min
     let max = vitalRanges.bloodPressure.max
-    // ht and vScale are also changed later when the caller draws the chart
-    let ht = 300
-    let vScale = ht / (max - min)
     let chartData = {
-      originY: 100,
-      height: ht,
       label: 'Blood pressure and rate',
       labelOffsetFromBottom: 20, // vertical adjust label relative to chart bottom
       dMin: min,
       dMax: max,
-      vScale: vScale,
       gridY: {
         scalePoints: (function() {
           // step by 10's
@@ -180,8 +164,7 @@ export default class VitalChart {
         })()
       },
       gridX: {
-        steps: v1.length, // need to compute this based on values === values.length
-        stepSize: 75
+        steps: v1.length
       },
       dataSet: [
         {
@@ -208,20 +191,14 @@ export default class VitalChart {
   getRespiratory(table) {
     let min = vitalRanges.respiratory.min
     let max = vitalRanges.respiratory.max
-    // originY, ht and vScale are also changed later when the caller draws the chart
-    let ht = 150
-    let vScale = ht / (max - min)
     let values = table.map(element => {
       return element.respirationRate
     })
     let chartData = {
-      originY: 100,
-      height: ht,
       label: 'Respiratory rate',
       labelOffsetFromBottom: 20, // vertical adjust label relative to chart bottom
       dMin: min,
       dMax: max,
-      vScale: vScale,
       gridY: {
         scalePoints: [
           { spv: max, clr: 'red' },
@@ -236,12 +213,32 @@ export default class VitalChart {
         ]
       },
       gridX: {
-        steps: values.length,
-        stepSize: 75
+        steps: values.length
       },
       dataSet: [
         {
           pointStyle: POINT_TYPES.POINT,
+          values: values
+        }
+      ]
+    }
+    return chartData
+  }
+
+  getOxygen(table) {
+    let values = table.map(element => {
+      return `${element.oxygenSaturation}\nRA\n${element.flowRate}LPM`
+    })
+    let chartData = {
+      label: 'Oxygen saturation',
+      chartType: POINT_TYPES.TEXT,
+      noYAxisGrid: true,
+      // noYAxisLabel: false,
+      gridX: {
+        steps: values.length
+      },
+      dataSet: [
+        {
           values: values
         }
       ]

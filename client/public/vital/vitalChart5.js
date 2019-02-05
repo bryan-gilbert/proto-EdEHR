@@ -28,9 +28,9 @@ let options = {
   pointRadius: 5,
   pointLabelFont: '16px Helvetica',
   pointFillColour: '#222',
-  outOfBoundPointFontColour: '#F00',
-  defaultAxisLineWidth: 0.2,
-  defaultAxisLineColour: '#333',
+  invalidMaxFontColour: '#F00',
+  axisLineWidth: 0.2,
+  axisLineColour: '#333',
   labelOffset: 20, // offset from left edge of canvas
   yLabelOffset: 30, // offset from left edge of canvas
   yAxisLabelColour: '#222',
@@ -129,7 +129,7 @@ From https://en.wikipedia.org/wiki/Pulse  pulse rate ranges from 39 to 149
         pointColor: options.pointColour,
         pointLabelFont: options.pointLabelFont,
         pointFillColour: options.pointFillColour,
-        outOfBoundPointFontColour: options.outOfBoundPointFontColour
+        invalidMaxFontColour: options.outOfBoundPointFontColour
       },
       {
         label: 'Diastolic',
@@ -138,7 +138,7 @@ From https://en.wikipedia.org/wiki/Pulse  pulse rate ranges from 39 to 149
         pointColor: options.pointColour,
         pointLabelFont: options.pointLabelFont,
         pointFillColour: options.pointFillColour,
-        outOfBoundPointFontColour: options.outOfBoundPointFontColour
+        invalidMaxFontColour: options.outOfBoundPointFontColour
       },
       {
         label: 'Pulse rate',
@@ -147,7 +147,7 @@ From https://en.wikipedia.org/wiki/Pulse  pulse rate ranges from 39 to 149
         pointColor: options.pointColour,
         pointLabelFont: options.pointLabelFont,
         pointFillColour: options.pointFillColour,
-        outOfBoundPointFontColour: options.outOfBoundPointFontColour
+        invalidMaxFontColour: options.outOfBoundPointFontColour
       }
     ]
   }
@@ -195,7 +195,7 @@ function createTemperature() {
         pointColor: options.pointColour,
         pointLabelFont: options.pointLabelFont,
         pointFillColour: options.pointFillColour,
-        outOfBoundPointFontColour: options.outOfBoundPointFontColour,
+        invalidMaxFontColour: options.outOfBoundPointFontColour,
         values: values
       }
     ]
@@ -241,7 +241,7 @@ function createRespiratory() {
         pointColor: options.pointColour,
         pointLabelFont: options.pointLabelFont,
         pointFillColour: options.pointFillColour,
-        outOfBoundPointFontColour: options.outOfBoundPointFontColour,
+        invalidMaxFontColour: options.outOfBoundPointFontColour,
         values: values
       }
     ]
@@ -304,7 +304,7 @@ function _drawData(context, data, dataSetIndex) {
   let pointLabelFont = dataSet.pointLabelFont
   let pointColour = dataSet.pointColour
   let pointFillColour = dataSet.pointFillColour
-  let outOfBoundPointFontColour = dataSet.outOfBoundPointFontColour
+  let outOfBoundPointFontColour = dataSet.invalidMaxFontColour
   context.save()
   for (let i = 0; i < values.length; i++) {
     let x = (i + 1) * gridX.stepSize - gridX.stepSize / 2
@@ -321,7 +321,7 @@ function _drawData(context, data, dataSetIndex) {
         pointLabelFont = value.pointLabelFont || dataSet.pointLabelFont
         pointFillColour = value.pointFillColour || dataSet.pointFillColour
         outOfBoundPointFontColour =
-          value.outOfBoundPointFontColour || dataSet.outOfBoundPointFontColour
+          value.invalidMaxFontColour || dataSet.invalidMaxFontColour
         value = value.value
       }
       if (min <= value && value <= max) {

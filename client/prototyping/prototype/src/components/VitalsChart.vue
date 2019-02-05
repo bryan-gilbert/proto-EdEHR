@@ -39,6 +39,9 @@ export default {
     bloodPressure() {
       return this.vitalsModel.getBloodPressure(this.vitals)
     },
+    oxygen() {
+      return this.vitalsModel.getOxygen(this.vitals)
+    },
     respiratory() {
       return this.vitalsModel.getRespiratory(this.vitals)
     }
@@ -60,10 +63,27 @@ export default {
       vitalChart.clear()
       // The first number is the origin of the chart relative to the top left
       // The second number is the height of the chart
-      vitalChart.drawChart(this.dates, 0, 80)
-      vitalChart.drawChart(this.temperatures, 120, 200)
-      vitalChart.drawChart(this.bloodPressure, 350, 300)
-      vitalChart.drawChart(this.respiratory, 680, 150)
+      let y = 0
+      let ht = 60
+      let space = 20
+      vitalChart.drawChart(this.dates, y, ht)
+      y += ht + space
+      space = 35
+      ht = 150
+      vitalChart.drawChart(this.temperatures, y, ht)
+      y += ht + space
+      ht = 200
+      vitalChart.drawChart(this.bloodPressure, y, ht)
+      y += ht + space
+      ht = 100
+      vitalChart.drawChart(this.respiratory, y, ht)
+      y += ht + space
+      ht = 80
+      vitalChart.drawChart(this.oxygen, y, ht)
+      space = 20
+      y += ht + space
+      ht = 60
+      vitalChart.drawChart(this.dates, y, ht)
     }
   },
   mounted: function() {
