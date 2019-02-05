@@ -99,7 +99,7 @@ export default class VitalChart {
       lnCnt = Math.max(lnCnt, values[i].split('\n').length)
     }
     let linesHt = lnCnt * lineHeight
-    dy += (height > linesHt) ? (height - linesHt) / 2 : 0
+    dy += height > linesHt ? (height - linesHt) / 2 : 0
     context.save()
     context.font = options.textValueFont
     context.fillStyle = options.textValueColor

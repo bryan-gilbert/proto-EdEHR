@@ -44,7 +44,11 @@ export default class VitalChart {
       name: 'Test',
       day: lastDay,
       time: lastTime,
-      temperature: helper.random(vitalRanges.temperature.min -1, vitalRanges.temperature.max + 1, 1),
+      temperature: helper.random(
+        vitalRanges.temperature.min - 1,
+        vitalRanges.temperature.max + 1,
+        1
+      ),
       profession: 'nurse',
       source: 'axilla',
       rate: pulseRate,
@@ -55,9 +59,12 @@ export default class VitalChart {
       patientPosition: 'lying',
       respirationRate: helper.random(vitalRanges.respiratory.min, vitalRanges.respiratory.max),
       respirationEffort: 'easy',
-      oxygenSaturation: helper.random(vitalRanges.oxygenSaturation.min, vitalRanges.oxygenSaturation.max),
+      oxygenSaturation: helper.random(
+        vitalRanges.oxygenSaturation.min,
+        vitalRanges.oxygenSaturation.max
+      ),
       oxygenMode: 'nasal prongs',
-      flowRate: helper.random(0,5)
+      flowRate: helper.random(0, 5)
     })
   }
 
@@ -101,7 +108,7 @@ export default class VitalChart {
 
   getDates(table) {
     let values = table.map(element => {
-      return `Day ${element.day}\n${element.time}:00`;
+      return `Day ${element.day}\n${element.time}:00`
     })
     let chartData = {
       chartType: POINT_TYPES.TEXT,
