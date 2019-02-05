@@ -107,8 +107,7 @@ export default class VitalChart {
 
   getDates(table) {
     let values = table.map(element => {
-      return element.day + ' ' + element.time
-      // return 'Day ' + element.day + '\n' + element.time + ':00';
+      return `Day ${element.day}\n${element.time}:00`;
     })
     // ht and vScale are also changed later when the caller draws the chart
     let ht = 100

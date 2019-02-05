@@ -1,3 +1,6 @@
+const defaultFont = '14px Source Sans Pro'
+const defaultDataFont = '12px Source Sans Pro'
+
 const POINT_TYPES = {
   POINT: 'point',
   DOWN_CHEVRON: 'downChevron',
@@ -6,21 +9,27 @@ const POINT_TYPES = {
 }
 
 export const options = {
-  pointColour: '#222',
   pointFillColour: '#222',
   pointMediumColour: 'orange',
-  pointHighColour: 'red',
-  pointLowColour: 'blue',
-  pointRadius: 5,
-  pointLabelFont: '16px Helvetica',
-  labelOffsetX: 10,
+  pointHighColour: '#F00',
+  pointLowColour: '#00F',
   outOfBoundPointFontColour: '#F00',
-  defaultAxisLineWidth: 0.2,
+  textValueColor: '#222',
   defaultAxisLineColour: '#333',
+  yAxisLabelColour: '#222',
+
+  pointRadius: 5,
+  pointLabelFont: defaultDataFont,
+  textValueFont: defaultFont,
+  yAxisLabelFont: defaultFont,
+
+  defaultAxisLineWidth: 0.2,
+
+  labelOffsetX: 10,
   labelOffset: 20, // offset from left edge of canvas
   yLabelOffset: 30, // offset from left edge of canvas
-  yAxisLabelColour: '#222',
-  yAxisLabelFont: '16px Helvetica'
+  lineHeight: 18, // spaces drawn text
+  textAlign: 'center'
 }
 
 export default class VitalChart {
@@ -48,7 +57,7 @@ export default class VitalChart {
     }
     this._drawXGrid(chartContext, chartData)
     for (let i = 0; i < chartData.dataSet.length; i++) {
-      this._drawData(chartContext, chartData, i)
+      this._drawData(this.chartCanvas, chartContext, chartData, i)
     }
   }
 
@@ -68,7 +77,7 @@ export default class VitalChart {
     return chartData
   }
 
-  _drawData(context, data, dataSetIndex) {
+  _drawData(canvasHtmlElement, context, data, dataSetIndex) {
     let dataSet = data.dataSet[dataSetIndex]
     let pointRadius = dataSet.pointRadius || options.pointRadius
     let pointStyle = dataSet.pointStyle
@@ -98,10 +107,11 @@ export default class VitalChart {
       let x = (i + 1) * gridX.stepSize - gridX.stepSize / 2
       let value = values[i]
       if (textOnly) {
-        let y = originY + height - 20
-        context.font = pointLabelFont
-        context.fillStyle = pointFillColour
-        context.fillText(value, x, y)
+        let y = originY + height/2
+        context.font = options.textValueFont
+        context.fillStyle = options.textValueColor
+        context.textAlign = options.textAlign
+        this._multilineText(context,value,x,y)
       } else {
         if (typeof value === 'object') {
           pointLabelFont = value.pointLabelFont || pointLabelFontDefault
@@ -135,6 +145,16 @@ export default class VitalChart {
       }
     }
     context.restore()
+  }
+
+  _multilineText(context, text, x, y, lineHeight) {
+    let lines = text.split('\n')
+    lineHeight = lineHeight || options.lineHeight
+    for(let n = 0; n < lines.length; n++) {
+      let line = lines[n]
+      context.fillText(line, x, y)
+      y += lineHeight
+    }
   }
 
   _drawYLabels(context, data) {
