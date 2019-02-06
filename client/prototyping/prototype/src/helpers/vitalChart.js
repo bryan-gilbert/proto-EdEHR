@@ -1,3 +1,6 @@
+const DEFAULT_FONT = '12px Source Sans Pro'
+const DEFAULT_DATA_FONT = '11px Source Sans Pro'
+
 const POINT_TYPES = {
   POINT: 'point',
   DOWN_CHEVRON: 'downChevron',
@@ -6,21 +9,30 @@ const POINT_TYPES = {
 }
 
 export const options = {
-  pointColour: '#222',
   pointFillColour: '#222',
   pointMediumColour: 'orange',
-  pointHighColour: 'red',
-  pointLowColour: 'blue',
+  pointHighColour: '#F00',
+  pointLowColour: '#00F',
+  invalidMaxFontColour: '#F00',
+  invalidMinFontColour: '#00F',
+  textValueColor: '#222',
+  axisLineColour: '#333',
+  yAxisLabelColour: '#222',
+
+  gridXStepSize: 70,
+
   pointRadius: 5,
-  pointLabelFont: '16px Helvetica',
+  pointLabelFont: DEFAULT_DATA_FONT,
+  textValueFont: DEFAULT_FONT,
+  yAxisLabelFont: DEFAULT_FONT,
+
+  axisLineWidth: 0.2,
+
   labelOffsetX: 10,
-  outOfBoundPointFontColour: '#F00',
-  defaultAxisLineWidth: 0.2,
-  defaultAxisLineColour: '#333',
   labelOffset: 20, // offset from left edge of canvas
   yLabelOffset: 30, // offset from left edge of canvas
-  yAxisLabelColour: '#222',
-  yAxisLabelFont: '16px Helvetica'
+  lineHeight: 16, // spaces drawn text
+  textAlign: 'center'
 }
 
 export default class VitalChart {
@@ -40,10 +52,11 @@ export default class VitalChart {
     let chartContext = this.chartCanvas.getContext('2d')
     let axisContext = this.axisCanvas.getContext('2d')
     this._locateChart(chartData, originY, height)
-    // TODO fix this. need special way to not draw Y axis
-    if (chartData.chartType !== POINT_TYPES.TEXT) {
-      this._drawYGrid(chartContext, chartData)
+    if (!chartData.noYAxisLabel) {
       this._yAxisLabel(axisContext, chartData)
+    }
+    if (!chartData.noYAxisGrid) {
+      this._drawYGrid(chartContext, chartData)
       this._drawYLabels(axisContext, chartData)
     }
     this._drawXGrid(chartContext, chartData)
@@ -68,6 +81,45 @@ export default class VitalChart {
     return chartData
   }
 
+  /**
+   *
+   * @param context
+   * @param values array of text that may contain newlines
+   * @param originY
+   * @param height
+   * @param gridXStepSize
+   * @private
+   */
+  _drawTextSeries(context, values, originY, height, gridXStepSize) {
+    let dy = originY
+    let lineHeight = lineHeight || options.lineHeight
+    // approximately center text vertically
+    let lnCnt = 0
+    for (let i = 0; i < values.length; i++) {
+      lnCnt = Math.max(lnCnt, values[i].split('\n').length)
+    }
+    let linesHt = lnCnt * lineHeight
+    dy += height > linesHt ? (height - linesHt) / 2 : 0
+    context.save()
+    context.font = options.textValueFont
+    context.fillStyle = options.textValueColor
+    context.textAlign = options.textAlign
+    gridXStepSize = gridXStepSize || options.gridXStepSize
+    for (let i = 0; i < values.length; i++) {
+      // position the point in the middle of two grid steps
+      let x = (i + 1) * gridXStepSize - gridXStepSize / 2
+      let y = dy
+      let value = values[i]
+      let lines = value.split('\n')
+      for (let n = 0; n < lines.length; n++) {
+        let line = lines[n]
+        context.fillText(line, x, y)
+        y += lineHeight
+      }
+    }
+    context.restore()
+  }
+
   _drawData(context, data, dataSetIndex) {
     let dataSet = data.dataSet[dataSetIndex]
     let pointRadius = dataSet.pointRadius || options.pointRadius
@@ -80,58 +132,46 @@ export default class VitalChart {
     let max = data.dMax
     let vScale = data.vScale
     let height = data.height
-    let gridX = data.gridX
+    let gridXStepSize = options.gridXStepSize
+    if (textOnly) {
+      return this._drawTextSeries(context, values, originY, height, gridXStepSize)
+    }
     let labelOffsetX = dataSet.labelOffsetX || options.labelOffsetX
     // properties that individual data points may over ride ....
     let pointLabelFont, pointLabelFontDefault
     let pointFillColour, pointFillColourDefault
-    let outOfBoundPointFontColour, outOfBoundPointFontColourDefault
 
     pointLabelFont = pointLabelFontDefault = dataSet.pointLabelFont || options.pointLabelFont
     pointFillColour = pointFillColourDefault = dataSet.pointFillColour || options.pointFillColour
-    outOfBoundPointFontColour = outOfBoundPointFontColourDefault =
-      dataSet.outOfBoundPointFontColour || options.outOfBoundPointFontColour
     // begin drawing
     context.save()
     for (let i = 0; i < values.length; i++) {
       // position the point in the middle of two grid steps
-      let x = (i + 1) * gridX.stepSize - gridX.stepSize / 2
+      let x = (i + 1) * gridXStepSize - gridXStepSize / 2
       let value = values[i]
-      if (textOnly) {
-        let y = originY + height - 20
-        context.font = pointLabelFont
-        context.fillStyle = pointFillColour
+      if (typeof value === 'object') {
+        // get per value properties
+        pointLabelFont = value.pointLabelFont || pointLabelFontDefault
+        pointFillColour = value.pointFillColour || pointFillColourDefault
+        value = value.value
+      }
+      if (value < min) {
+        let y = originY + height
+        context.fillStyle = options.invalidMinFontColour
+        context.fillText(value, x, y)
+      } else if (value > max) {
+        let y = originY + height - (max - min) * vScale
+        context.fillStyle = options.invalidMaxFontColour
         context.fillText(value, x, y)
       } else {
-        if (typeof value === 'object') {
-          pointLabelFont = value.pointLabelFont || pointLabelFontDefault
-          pointFillColour = value.pointFillColour || pointFillColourDefault
-          outOfBoundPointFontColour =
-            value.outOfBoundPointFontColour || outOfBoundPointFontColourDefault
-          value = value.value
-        }
-        if (min <= value && value <= max) {
-          let y = originY + height - (value - min) * vScale
-          if (chevron) {
-            this._drawChevron(context, x, y, pointStyle, pointFillColour)
-          } else {
-            // default to POINT_TYPES.POINT
-            context.beginPath()
-            context.fillStyle = pointFillColour
-            context.arc(x, y, pointRadius, 0, 2 * Math.PI)
-            context.fill()
-          }
-          context.font = pointLabelFont
-          context.fillStyle = pointFillColour
-          context.fillText(value, x + labelOffsetX, y)
+        let y = originY + height - (value - min) * vScale
+        if (chevron) {
+          this._drawChevron(context, x, y, pointStyle, pointFillColour)
         } else {
-          let yMin = originY + height
-          let yMax = originY + height - (max - min) * vScale
-          let y = value < min ? yMin : yMax
-          // console.log('out of bounds', t, y, min, max)
-          context.fillStyle = outOfBoundPointFontColour
-          context.fillText(value, x, y)
+          // default to POINT_TYPES.POINT
+          this._drawPoint(context, x, y, pointFillColour, pointRadius)
         }
+        this._drawPointLabel(context, value, x, y, labelOffsetX, pointFillColour, pointLabelFont)
       }
     }
     context.restore()
@@ -143,15 +183,15 @@ export default class VitalChart {
     let min = data.dMin
     let vScale = data.vScale
     let height = data.height
+    let dx = options.yLabelOffset
     context.save()
     for (let i = 0; i < gridY.scalePoints.length; i++) {
       let scale = gridY.scalePoints[i]
       let v = scale.spv
       let y = originY + height - (v - min) * vScale
       context.beginPath()
-      let x = options.yLabelOffset
-      context.fillStyle = scale.clr || options.defaultAxisLineColour
-      context.fillText(v, x, y)
+      context.fillStyle = scale.clr || options.axisLineColour
+      context.fillText(v, dx, y)
       context.stroke()
     }
     context.restore()
@@ -171,8 +211,8 @@ export default class VitalChart {
       let v = scale.spv
       let y = originY + height - (v - min) * vScale
       context.beginPath()
-      context.lineWidth = scale.lw || options.defaultAxisLineWidth
-      context.strokeStyle = scale.clr || options.defaultAxisLineColour
+      context.lineWidth = scale.lw || options.axisLineWidth
+      context.strokeStyle = scale.clr || options.axisLineColour
       context.moveTo(x, y)
       context.lineTo(width, y)
       context.stroke()
@@ -184,13 +224,14 @@ export default class VitalChart {
     let originY = data.originY
     let height = data.height
     let gridX = data.gridX
+    let step = options.gridXStepSize
+    let y1 = originY
+    let y2 = originY + height
     context.save()
+    context.lineWidth = options.axisLineWidth
     context.beginPath()
-    context.lineWidth = options.defaultAxisLineWidth
     for (let i = 0; i < gridX.steps; i++) {
-      let x = (i + 1) * gridX.stepSize
-      let y1 = originY
-      let y2 = originY + height
+      let x = (i + 1) * step
       context.moveTo(x, y1)
       context.lineTo(x, y2)
     }
@@ -202,9 +243,10 @@ export default class VitalChart {
     let originY = data.originY
     let height = data.height
     let label = data.label
-    let labelOffset = data.labelOffsetFromBottom
     let x = options.labelOffset
     let y = originY + height // bottom of chart
+    let width = context.measureText(label).width
+    let labelOffset = width < height ? (height - width) / 2 : 0
     context.save()
     context.translate(x, y)
     context.rotate(-Math.PI / 2)
@@ -213,6 +255,19 @@ export default class VitalChart {
     context.fillStyle = options.yAxisLabelColour
     context.fillText(label, labelOffset, 0)
     context.restore()
+  }
+
+  _drawPointLabel(context, value, x, y, labelOffsetX, pointFillColour, pointLabelFont) {
+    context.font = pointLabelFont
+    context.fillStyle = pointFillColour
+    context.fillText(value, x + labelOffsetX, y)
+  }
+
+  _drawPoint(context, x, y, pointFillColour, pointRadius) {
+    context.beginPath()
+    context.fillStyle = pointFillColour
+    context.arc(x, y, pointRadius, 0, 2 * Math.PI)
+    context.fill()
   }
 
   _drawChevron(ctx, pointX, pointY, direction, colour) {

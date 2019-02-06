@@ -1,4 +1,6 @@
-# prototype
+# Prototyping area
+
+This is a Vue project and is used to try out new approaches.  It was used to prototype the Vital Signs Charting and tabs.
 
 ## Project setup
 ```
