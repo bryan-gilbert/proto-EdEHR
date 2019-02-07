@@ -280,8 +280,8 @@ export default function() {
                 page: 'Interprofessional plan of care'
               },
               {
-                elementKey: 'evaluation',
-                fqn: 'carePlan.evaluation',
+                elementKey: 'outcome',
+                fqn: 'carePlan.outcome',
                 inputType: 'text',
                 label: 'Outcome',
                 formColumn: '3',

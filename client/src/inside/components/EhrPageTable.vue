@@ -54,12 +54,12 @@ export default {
       // By invoking this property tableData is set (intentional side-effect)
       // and tableData contains data from the database
       this.refresh()
-      console.log('EhrPageTable current table data', this.tableData)
+      // console.log('EhrPageTable current table data', this.tableData)
       return this.tableData
     },
     tableForm() {
       let form = this.tableDef.tableForm
-      console.log('EhrPageTable get table form', this.tableDef)
+      // console.log('EhrPageTable get table form', this.tableDef)
       return form
     },
     errorList() {

@@ -77,7 +77,7 @@ export default {
   },
   methods: {
     showLabel() {
-      console.log('showlabel', this.element.inputType, this.element.label)
+      // console.log('showlabel', this.element.inputType, this.element.label)
       let hide = this.element.formOption === 'hideLabel'
       hide = hide || this.element.inputType === 'checkbox'
       hide = hide || this.element.inputType === 'assetLink'
@@ -127,7 +127,7 @@ export default {
   mounted: function() {
     const _this = this
     this.refreshEventHandler = function() {
-      console.log('EhrPageFormElement received page refresh event')
+      // console.log('EhrPageFormElement received page refresh event')
       _this.refresh()
     }
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
