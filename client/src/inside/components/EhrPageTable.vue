@@ -125,13 +125,15 @@ export default {
 
 table {
   margin-bottom: 2em;
-  th, td {
+  th,
+  td {
     padding: 0.5em 0.5em 0.5em 0;
   }
   th {
     border-bottom: 2px solid $grey40;
   }
-  th, .column_label {
+  th,
+  .column_label {
     color: $grey70;
     font-size: 1em;
   }
@@ -143,7 +145,6 @@ table {
     width: 100%;
   }
   .table_vertical {
-
   }
 }
 

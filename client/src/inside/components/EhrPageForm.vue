@@ -58,10 +58,17 @@ export default {
   methods: {
     formColClass: function(element) {
       // TODO determine correct css class based on form's column count
-      // 1, 2, 3, 4, default
-      let clses = ['fullWidth', 'is-half', 'is-one-third', 'is-one-quarter', 'fullWidth']
+      // 1, 2, 3, 4, 5, default
+      let clses = [
+        'fullWidth',
+        'is-half',
+        'is-one-third',
+        'is-one-quarter',
+        'is-one-fifth',
+        'tooSmall'
+      ]
       let cols = this.formDefs.columnsCount - 1
-      cols = Math.max(0,cols)
+      cols = Math.max(0, cols)
       cols = Math.min(cols, clses.length)
       let css = clses[cols]
       console.log('EhrPageForm CSS based on col count', css, this.formDefs.columnsCount)
