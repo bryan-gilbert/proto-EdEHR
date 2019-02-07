@@ -222,7 +222,7 @@ export default function() {
               {
                 elementKey: 'goal',
                 fqn: 'carePlan.goal',
-                inputType: 'texarea',
+                inputType: 'textarea',
                 label: 'Goal of care',
                 formColumn: '1',
                 formRow: '2',
@@ -295,7 +295,7 @@ export default function() {
                 fqn: 'carePlan.status',
                 inputType: 'select',
                 label: 'Status',
-                formColumn: '3',
+                formColumn: '4',
                 formRow: '3',
                 pageDataKey: 'carePlan',
                 dataParent: 'carePlan',
