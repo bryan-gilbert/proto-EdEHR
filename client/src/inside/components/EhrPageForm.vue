@@ -58,13 +58,26 @@ export default {
   methods: {
     formColClass: function(element) {
       // TODO determine correct css class based on form's column count
-      console.log('EhrPageForm need to get correct css class here based on form column count')
-      return element.formCss ? element.formCss : 'is-one-third'
+      // 1, 2, 3, 4, 5, default
+      let clses = [
+        'fullWidth',
+        'is-half',
+        'is-one-third',
+        'is-one-quarter',
+        'is-one-fifth',
+        'tooSmall'
+      ]
+      let cols = this.formDefs.columnsCount - 1
+      cols = Math.max(0, cols)
+      cols = Math.min(cols, clses.length)
+      let css = clses[cols]
+      console.log('EhrPageForm CSS based on col count', css, this.formDefs.columnsCount)
+      return element.formCss ? element.formCss : css
     },
     refresh() {
-      console.log('EhrPageForm rehresh for page key', this.pageDataKey)
+      // console.log('EhrPageForm rehresh for page key', this.pageDataKey)
       this.theData = this.ehrHelp.getAsLoadedPageData(this.pageDataKey)
-      console.log('EhrPageForm rehresh found data', this.theData)
+      // console.log('EhrPageForm rehresh found data', this.theData)
     }
   },
   mounted: function() {

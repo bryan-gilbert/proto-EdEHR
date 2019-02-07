@@ -292,10 +292,10 @@ export function inside() {
       meta: { layout: 'inside', label: 'Standardized assessment tools', topLevel: 'external' }
     },
     {
-      path: '/ehr/external/lookup-codes',
-      name: 'lookup-codes',
+      path: '/ehr/external/code-lookup',
+      name: 'code-lookup',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/LookupCodes.vue'),
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/CodeLookup.vue'),
       meta: { layout: 'inside', label: 'Code lookup', topLevel: 'external' }
     },
     {
@@ -303,7 +303,21 @@ export function inside() {
       name: 'diagnostic-codes',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/DiagnosticCodes.vue'),
-      meta: { layout: 'inside', label: 'Standardized assessment tools', topLevel: 'external' }
+      meta: { layout: 'inside', label: 'Diagnostic codes (ICD-10)', topLevel: 'external' }
+    },
+    {
+      path: '/ehr/external/intervention-codes',
+      name: 'intervention-codes',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/InterventionCodes.vue'),
+      meta: { layout: 'inside', label: 'Intervention codes', topLevel: 'external' }
+    },
+    {
+      path: '/ehr/external/care-mix-group',
+      name: 'care-mix-group',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/CareMixGroup.vue'),
+      meta: { layout: 'inside', label: 'Care mix group', topLevel: 'external' }
     }
   ]
 }

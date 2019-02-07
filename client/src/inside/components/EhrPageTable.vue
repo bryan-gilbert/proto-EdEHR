@@ -54,12 +54,12 @@ export default {
       // By invoking this property tableData is set (intentional side-effect)
       // and tableData contains data from the database
       this.refresh()
-      console.log('EhrPageTable current table data', this.tableData)
+      // console.log('EhrPageTable current table data', this.tableData)
       return this.tableData
     },
     tableForm() {
       let form = this.tableDef.tableForm
-      console.log('EhrPageTable get table form', this.tableDef)
+      // console.log('EhrPageTable get table form', this.tableDef)
       return form
     },
     errorList() {
@@ -125,13 +125,15 @@ export default {
 
 table {
   margin-bottom: 2em;
-  th, td {
+  th,
+  td {
     padding: 0.5em 0.5em 0.5em 0;
   }
   th {
     border-bottom: 2px solid $grey40;
   }
-  th, .column_label {
+  th,
+  .column_label {
     color: $grey70;
     font-size: 1em;
   }
@@ -143,7 +145,6 @@ table {
     width: 100%;
   }
   .table_vertical {
-
   }
 }
 

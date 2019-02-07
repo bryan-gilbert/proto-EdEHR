@@ -817,41 +817,81 @@
       "children": []
     },
     {
-      "name": "lookup-codes",
+      "name": "code-lookup",
       "label": "Code lookup",
-      "routeName": "lookup-codes",
+      "routeName": "code-lookup",
       "topLevel": "external",
       "def": {
         "path": "/ehr/external",
-        "routeName": "lookup-codes",
-        "pageDataKey": "lookupCodes",
+        "routeName": "code-lookup",
+        "pageDataKey": "codeLookup",
         "label": "Code lookup",
         "redirect": "",
         "generateComponent": "yes",
-        "componentName": "LookupCodes",
-        "dataName": "lookupCodes",
-        "fullPath": "/ehr/external/lookup-codes",
-        "title": "Lookup Codes",
+        "componentName": "CodeLookup",
+        "dataName": "codeLookup",
+        "fullPath": "/ehr/external/code-lookup",
+        "title": "Code Lookup",
         "topLevel": "external"
       },
       "children": []
     },
     {
       "name": "diagnostic-codes",
-      "label": "Standardized assessment tools",
+      "label": "Diagnostic codes (ICD-10)",
       "routeName": "diagnostic-codes",
       "topLevel": "external",
       "def": {
         "path": "/ehr/external",
         "routeName": "diagnostic-codes",
         "pageDataKey": "diagnosticCodes",
-        "label": "Standardized assessment tools",
+        "label": "Diagnostic codes (ICD-10)",
         "redirect": "",
         "generateComponent": "yes",
         "componentName": "DiagnosticCodes",
         "dataName": "diagnosticCodes",
         "fullPath": "/ehr/external/diagnostic-codes",
         "title": "Diagnostic Codes",
+        "topLevel": "external"
+      },
+      "children": []
+    },
+    {
+      "name": "intervention-codes",
+      "label": "Intervention codes",
+      "routeName": "intervention-codes",
+      "topLevel": "external",
+      "def": {
+        "path": "/ehr/external",
+        "routeName": "intervention-codes",
+        "pageDataKey": "interventionCodes",
+        "label": "Intervention codes",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "InterventionCodes",
+        "dataName": "interventionCodes",
+        "fullPath": "/ehr/external/intervention-codes",
+        "title": "Intervention Codes",
+        "topLevel": "external"
+      },
+      "children": []
+    },
+    {
+      "name": "care-mix-group",
+      "label": "Care mix group",
+      "routeName": "care-mix-group",
+      "topLevel": "external",
+      "def": {
+        "path": "/ehr/external",
+        "routeName": "care-mix-group",
+        "pageDataKey": "careMixGroup",
+        "label": "Care mix group",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "CareMixGroup",
+        "dataName": "careMixGroup",
+        "fullPath": "/ehr/external/care-mix-group",
+        "title": "Care Mix Group",
         "topLevel": "external"
       },
       "children": []

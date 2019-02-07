@@ -2,16 +2,17 @@
 export default function() {
   return {
     progressNotes: {
-      pageTitle: 'Progres notes',
+      pageTitle: 'Progress notes',
       pageDataKey: 'progressNotes',
       hasTable: true,
       tables: [
         {
+          tableKey: 'table',
           addButtonText: 'Add progress note',
           tableCells: [
             {
               elementKey: 'name',
-              fqn: 'progressNotes.name',
+              fqn: 'progressNotes.table.name',
               inputType: 'text',
               label: 'Name',
               tableColumn: '1',
@@ -19,12 +20,13 @@ export default function() {
               formColumn: '1',
               formRow: '1',
               pageDataKey: 'progressNotes',
-              dataParent: 'progressNotes',
-              page: 'Progress notes'
+              dataParent: 'progressNotes.table',
+              page: 'Progress notes',
+              tableKey: 'table'
             },
             {
               elementKey: 'profession',
-              fqn: 'progressNotes.profession',
+              fqn: 'progressNotes.table.profession',
               inputType: 'text',
               label: 'Profession',
               tableColumn: '2',
@@ -32,12 +34,13 @@ export default function() {
               formColumn: '2',
               formRow: '1',
               pageDataKey: 'progressNotes',
-              dataParent: 'progressNotes',
-              page: 'Progress notes'
+              dataParent: 'progressNotes.table',
+              page: 'Progress notes',
+              tableKey: 'table'
             },
             {
               elementKey: 'day',
-              fqn: 'progressNotes.day',
+              fqn: 'progressNotes.table.day',
               inputType: 'day',
               label: 'Day',
               tableColumn: '3',
@@ -45,12 +48,13 @@ export default function() {
               formColumn: '3',
               formRow: '1',
               pageDataKey: 'progressNotes',
-              dataParent: 'progressNotes',
-              page: 'Progress notes'
+              dataParent: 'progressNotes.table',
+              page: 'Progress notes',
+              tableKey: 'table'
             },
             {
               elementKey: 'time',
-              fqn: 'progressNotes.time',
+              fqn: 'progressNotes.table.time',
               inputType: 'time',
               label: 'Time',
               tableColumn: '4',
@@ -58,21 +62,22 @@ export default function() {
               formColumn: '4',
               formRow: '1',
               pageDataKey: 'progressNotes',
-              dataParent: 'progressNotes',
-              page: 'Progress notes'
+              dataParent: 'progressNotes.table',
+              page: 'Progress notes',
+              tableKey: 'table'
             },
             {
               elementKey: 'notes',
-              fqn: 'progressNotes.notes',
+              fqn: 'progressNotes.table.notes',
               inputType: 'textarea',
               label: 'Progress notes',
               tableColumn: '6',
-              formCss: 'fullWidth',
               formColumn: '1',
               formRow: '2',
               pageDataKey: 'progressNotes',
-              dataParent: 'progressNotes',
-              page: 'Progress notes'
+              dataParent: 'progressNotes.table',
+              page: 'Progress notes',
+              tableKey: 'table'
             }
           ],
           tableForm: {
@@ -82,7 +87,7 @@ export default function() {
                 elements: [
                   {
                     elementKey: 'name',
-                    fqn: 'progressNotes.name',
+                    fqn: 'progressNotes.table.name',
                     inputType: 'text',
                     label: 'Name',
                     tableColumn: '1',
@@ -90,12 +95,13 @@ export default function() {
                     formColumn: '1',
                     formRow: '1',
                     pageDataKey: 'progressNotes',
-                    dataParent: 'progressNotes',
-                    page: 'Progress notes'
+                    dataParent: 'progressNotes.table',
+                    page: 'Progress notes',
+                    tableKey: 'table'
                   },
                   {
                     elementKey: 'profession',
-                    fqn: 'progressNotes.profession',
+                    fqn: 'progressNotes.table.profession',
                     inputType: 'text',
                     label: 'Profession',
                     tableColumn: '2',
@@ -103,12 +109,13 @@ export default function() {
                     formColumn: '2',
                     formRow: '1',
                     pageDataKey: 'progressNotes',
-                    dataParent: 'progressNotes',
-                    page: 'Progress notes'
+                    dataParent: 'progressNotes.table',
+                    page: 'Progress notes',
+                    tableKey: 'table'
                   },
                   {
                     elementKey: 'day',
-                    fqn: 'progressNotes.day',
+                    fqn: 'progressNotes.table.day',
                     inputType: 'day',
                     label: 'Day',
                     tableColumn: '3',
@@ -116,12 +123,13 @@ export default function() {
                     formColumn: '3',
                     formRow: '1',
                     pageDataKey: 'progressNotes',
-                    dataParent: 'progressNotes',
-                    page: 'Progress notes'
+                    dataParent: 'progressNotes.table',
+                    page: 'Progress notes',
+                    tableKey: 'table'
                   },
                   {
                     elementKey: 'time',
-                    fqn: 'progressNotes.time',
+                    fqn: 'progressNotes.table.time',
                     inputType: 'time',
                     label: 'Time',
                     tableColumn: '4',
@@ -129,8 +137,9 @@ export default function() {
                     formColumn: '4',
                     formRow: '1',
                     pageDataKey: 'progressNotes',
-                    dataParent: 'progressNotes',
-                    page: 'Progress notes'
+                    dataParent: 'progressNotes.table',
+                    page: 'Progress notes',
+                    tableKey: 'table'
                   }
                 ]
               },
@@ -139,16 +148,16 @@ export default function() {
                 elements: [
                   {
                     elementKey: 'notes',
-                    fqn: 'progressNotes.notes',
+                    fqn: 'progressNotes.table.notes',
                     inputType: 'textarea',
                     label: 'Progress notes',
                     tableColumn: '6',
-                    formCss: 'fullWidth',
                     formColumn: '1',
                     formRow: '2',
                     pageDataKey: 'progressNotes',
-                    dataParent: 'progressNotes',
-                    page: 'Progress notes'
+                    dataParent: 'progressNotes.table',
+                    page: 'Progress notes',
+                    tableKey: 'table'
                   }
                 ]
               }
@@ -158,7 +167,7 @@ export default function() {
         }
       ],
       pageData: {
-        undefined: []
+        table: []
       }
     },
     carePlan: {
@@ -171,121 +180,13 @@ export default function() {
             formRow: '1',
             elements: [
               {
-                elementKey: 'name',
-                fqn: 'carePlan.name',
-                inputType: 'text',
-                label: 'Name',
-                formColumn: '1',
-                formRow: '1',
-                pageDataKey: 'carePlan',
-                dataParent: 'carePlan',
-                page: 'Interprofessional plan of care'
-              },
-              {
-                elementKey: 'profession',
-                fqn: 'carePlan.profession',
-                inputType: 'text',
-                label: 'Profession',
-                formColumn: '2',
-                formRow: '1',
-                pageDataKey: 'carePlan',
-                dataParent: 'carePlan',
-                page: 'Interprofessional plan of care'
-              },
-              {
-                elementKey: 'day',
-                fqn: 'carePlan.day',
-                inputType: 'day',
-                label: 'Day',
-                formColumn: '3',
-                formRow: '1',
-                pageDataKey: 'carePlan',
-                dataParent: 'carePlan',
-                page: 'Interprofessional plan of care'
-              },
-              {
-                elementKey: 'time',
-                fqn: 'carePlan.time',
-                inputType: 'time',
-                label: 'Time',
-                formColumn: '4',
-                formRow: '1',
-                pageDataKey: 'carePlan',
-                dataParent: 'carePlan',
-                page: 'Interprofessional plan of care'
-              }
-            ]
-          },
-          {
-            formRow: '2',
-            elements: [
-              {
                 elementKey: 'goal',
                 fqn: 'carePlan.goal',
-                inputType: 'texarea',
+                inputType: 'text',
                 label: 'Goal of care',
+                formCss: 'width-80',
                 formColumn: '1',
-                formRow: '2',
-                pageDataKey: 'carePlan',
-                dataParent: 'carePlan',
-                page: 'Interprofessional plan of care'
-              },
-              {
-                elementKey: 'clinical',
-                fqn: 'carePlan.clinical',
-                inputType: 'text',
-                label: 'Problem',
-                formColumn: '2',
-                formRow: '2',
-                pageDataKey: 'carePlan',
-                dataParent: 'carePlan',
-                page: 'Interprofessional plan of care'
-              },
-              {
-                elementKey: 'interventions',
-                fqn: 'carePlan.interventions',
-                inputType: 'text',
-                label: 'Interventions',
-                formColumn: '3',
-                formRow: '2',
-                pageDataKey: 'carePlan',
-                dataParent: 'carePlan',
-                page: 'Interprofessional plan of care'
-              }
-            ]
-          },
-          {
-            formRow: '3',
-            elements: [
-              {
-                elementKey: 'details',
-                fqn: 'carePlan.details',
-                inputType: 'text',
-                label: 'Details of clinical issue',
-                formColumn: '1',
-                formRow: '3',
-                pageDataKey: 'carePlan',
-                dataParent: 'carePlan',
-                page: 'Interprofessional plan of care'
-              },
-              {
-                elementKey: 'evaluation',
-                fqn: 'carePlan.evaluation',
-                inputType: 'text',
-                label: 'Evaluation of intervention',
-                formColumn: '2',
-                formRow: '3',
-                pageDataKey: 'carePlan',
-                dataParent: 'carePlan',
-                page: 'Interprofessional plan of care'
-              },
-              {
-                elementKey: 'evaluation',
-                fqn: 'carePlan.evaluation',
-                inputType: 'text',
-                label: 'Outcome',
-                formColumn: '3',
-                formRow: '3',
+                formRow: '1',
                 pageDataKey: 'carePlan',
                 dataParent: 'carePlan',
                 page: 'Interprofessional plan of care'
@@ -295,8 +196,9 @@ export default function() {
                 fqn: 'carePlan.status',
                 inputType: 'select',
                 label: 'Status',
-                formColumn: '3',
-                formRow: '3',
+                formCss: 'width-20',
+                formColumn: '2',
+                formRow: '1',
                 pageDataKey: 'carePlan',
                 dataParent: 'carePlan',
                 page: 'Interprofessional plan of care',
@@ -315,9 +217,248 @@ export default function() {
             ]
           }
         ],
-        columnsCount: 4
+        columnsCount: 2
       },
-      pageData: {}
+      hasTable: true,
+      tables: [
+        {
+          tableKey: 'table',
+          addButtonText: 'Add new care plan',
+          tableCells: [
+            {
+              elementKey: 'name',
+              fqn: 'carePlan.table.name',
+              inputType: 'text',
+              label: 'Name',
+              tableColumn: '1',
+              formColumn: '1',
+              formRow: '1',
+              pageDataKey: 'carePlan',
+              dataParent: 'carePlan.table',
+              page: 'Interprofessional plan of care',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'profession',
+              fqn: 'carePlan.table.profession',
+              inputType: 'text',
+              label: 'Profession',
+              tableColumn: '2',
+              formColumn: '2',
+              formRow: '1',
+              pageDataKey: 'carePlan',
+              dataParent: 'carePlan.table',
+              page: 'Interprofessional plan of care',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'day',
+              fqn: 'carePlan.table.day',
+              inputType: 'day',
+              label: 'Day',
+              tableColumn: '3',
+              formColumn: '3',
+              formRow: '1',
+              pageDataKey: 'carePlan',
+              dataParent: 'carePlan.table',
+              page: 'Interprofessional plan of care',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'time',
+              fqn: 'carePlan.table.time',
+              inputType: 'time',
+              label: 'Time',
+              tableColumn: '4',
+              formColumn: '4',
+              formRow: '1',
+              pageDataKey: 'carePlan',
+              dataParent: 'carePlan.table',
+              page: 'Interprofessional plan of care',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'clinical',
+              fqn: 'carePlan.table.clinical',
+              inputType: 'textarea',
+              label: 'Clinical Issues',
+              tableColumn: '5',
+              formColumn: '1',
+              formRow: '2',
+              pageDataKey: 'carePlan',
+              dataParent: 'carePlan.table',
+              page: 'Interprofessional plan of care',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'details',
+              fqn: 'carePlan.table.details',
+              inputType: 'textarea',
+              label: 'Details of clinical issue',
+              tableColumn: '6',
+              formColumn: '2',
+              formRow: '2',
+              pageDataKey: 'carePlan',
+              dataParent: 'carePlan.table',
+              page: 'Interprofessional plan of care',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'interventions',
+              fqn: 'carePlan.table.interventions',
+              inputType: 'textarea',
+              label: 'Interventions',
+              tableColumn: '7',
+              formColumn: '1',
+              formRow: '3',
+              pageDataKey: 'carePlan',
+              dataParent: 'carePlan.table',
+              page: 'Interprofessional plan of care',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'evaluation',
+              fqn: 'carePlan.table.evaluation',
+              inputType: 'textarea',
+              label: 'Evaluation of intervention',
+              tableColumn: '8',
+              formColumn: '2',
+              formRow: '3',
+              pageDataKey: 'carePlan',
+              dataParent: 'carePlan.table',
+              page: 'Interprofessional plan of care',
+              tableKey: 'table'
+            }
+          ],
+          tableForm: {
+            rows: [
+              {
+                formRow: '1',
+                elements: [
+                  {
+                    elementKey: 'name',
+                    fqn: 'carePlan.table.name',
+                    inputType: 'text',
+                    label: 'Name',
+                    tableColumn: '1',
+                    formColumn: '1',
+                    formRow: '1',
+                    pageDataKey: 'carePlan',
+                    dataParent: 'carePlan.table',
+                    page: 'Interprofessional plan of care',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'profession',
+                    fqn: 'carePlan.table.profession',
+                    inputType: 'text',
+                    label: 'Profession',
+                    tableColumn: '2',
+                    formColumn: '2',
+                    formRow: '1',
+                    pageDataKey: 'carePlan',
+                    dataParent: 'carePlan.table',
+                    page: 'Interprofessional plan of care',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'day',
+                    fqn: 'carePlan.table.day',
+                    inputType: 'day',
+                    label: 'Day',
+                    tableColumn: '3',
+                    formColumn: '3',
+                    formRow: '1',
+                    pageDataKey: 'carePlan',
+                    dataParent: 'carePlan.table',
+                    page: 'Interprofessional plan of care',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'time',
+                    fqn: 'carePlan.table.time',
+                    inputType: 'time',
+                    label: 'Time',
+                    tableColumn: '4',
+                    formColumn: '4',
+                    formRow: '1',
+                    pageDataKey: 'carePlan',
+                    dataParent: 'carePlan.table',
+                    page: 'Interprofessional plan of care',
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '2',
+                elements: [
+                  {
+                    elementKey: 'clinical',
+                    fqn: 'carePlan.table.clinical',
+                    inputType: 'textarea',
+                    label: 'Clinical Issues',
+                    tableColumn: '5',
+                    formColumn: '1',
+                    formRow: '2',
+                    pageDataKey: 'carePlan',
+                    dataParent: 'carePlan.table',
+                    page: 'Interprofessional plan of care',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'details',
+                    fqn: 'carePlan.table.details',
+                    inputType: 'textarea',
+                    label: 'Details of clinical issue',
+                    tableColumn: '6',
+                    formColumn: '2',
+                    formRow: '2',
+                    pageDataKey: 'carePlan',
+                    dataParent: 'carePlan.table',
+                    page: 'Interprofessional plan of care',
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '3',
+                elements: [
+                  {
+                    elementKey: 'interventions',
+                    fqn: 'carePlan.table.interventions',
+                    inputType: 'textarea',
+                    label: 'Interventions',
+                    tableColumn: '7',
+                    formColumn: '1',
+                    formRow: '3',
+                    pageDataKey: 'carePlan',
+                    dataParent: 'carePlan.table',
+                    page: 'Interprofessional plan of care',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'evaluation',
+                    fqn: 'carePlan.table.evaluation',
+                    inputType: 'textarea',
+                    label: 'Evaluation of intervention',
+                    tableColumn: '8',
+                    formColumn: '2',
+                    formRow: '3',
+                    pageDataKey: 'carePlan',
+                    dataParent: 'carePlan.table',
+                    page: 'Interprofessional plan of care',
+                    tableKey: 'table'
+                  }
+                ]
+              }
+            ],
+            columnsCount: 4
+          }
+        }
+      ],
+      pageData: {
+        table: []
+      }
     },
     consultants: {
       pageTitle: 'Consults',

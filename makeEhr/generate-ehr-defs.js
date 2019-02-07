@@ -26,7 +26,7 @@ function convertFile(fName) {
     results = _fixBooleans(results)
     var modDef = [];
     modDef.push('/* eslint-disable quotes */')
-    modDef.push('module.exports = function () {')
+    modDef.push('export default function () {')
     modDef.push('  return ' + results)
     modDef.push('}')
     console.log('write file ', fDest)
