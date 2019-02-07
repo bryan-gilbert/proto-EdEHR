@@ -359,6 +359,938 @@ export default function() {
         columnsCount: 3
       },
       pageData: {}
+    },
+    codeLookup: {
+      pageTitle: 'Code lookup',
+      pageDataKey: 'codeLookup',
+      hasForm: true,
+      page_form: {
+        rows: [],
+        columnsCount: 0
+      },
+      pageData: {}
+    },
+    diagnosticCodes: {
+      pageTitle: 'Diagnostic codes (ICD-10)',
+      pageDataKey: 'diagnosticCodes',
+      hasTable: true,
+      tables: [
+        {
+          tableKey: 'table',
+          addButtonText: 'Add diagnostic code',
+          tableCells: [
+            {
+              elementKey: 'name',
+              fqn: 'diagnosticCodes.table.name',
+              inputType: 'text',
+              label: 'Name',
+              tableColumn: '1',
+              formCss: 'user_name',
+              formColumn: '1',
+              formRow: '1',
+              pageDataKey: 'diagnosticCodes',
+              dataParent: 'diagnosticCodes.table',
+              page: 'Diagnostic codes',
+              assetBase: '?',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'profession',
+              fqn: 'diagnosticCodes.table.profession',
+              inputType: 'text',
+              label: 'Profession',
+              tableColumn: '2',
+              formCss: 'user_pro',
+              formColumn: '2',
+              formRow: '1',
+              pageDataKey: 'diagnosticCodes',
+              dataParent: 'diagnosticCodes.table',
+              page: 'Diagnostic codes',
+              assetBase: '?',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'day',
+              fqn: 'diagnosticCodes.table.day',
+              inputType: 'day',
+              label: 'Day',
+              tableColumn: '3',
+              formCss: 'user_day',
+              formColumn: '3',
+              formRow: '1',
+              pageDataKey: 'diagnosticCodes',
+              dataParent: 'diagnosticCodes.table',
+              page: 'Diagnostic codes',
+              assetBase: '?',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'time',
+              fqn: 'diagnosticCodes.table.time',
+              inputType: 'time',
+              label: 'Time',
+              tableColumn: '4',
+              formCss: 'user_time',
+              formColumn: '4',
+              formRow: '1',
+              pageDataKey: 'diagnosticCodes',
+              dataParent: 'diagnosticCodes.table',
+              page: 'Diagnostic codes',
+              assetBase: '?',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'condition',
+              fqn: 'diagnosticCodes.table.condition',
+              inputType: 'text',
+              label: 'Condition',
+              formColumn: '1',
+              formRow: '2',
+              pageDataKey: 'diagnosticCodes',
+              dataParent: 'diagnosticCodes.table',
+              page: 'Diagnostic codes',
+              mandatory: 'yes',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'code',
+              fqn: 'diagnosticCodes.table.code',
+              inputType: 'text',
+              label: 'Diagnosis code',
+              formColumn: '2',
+              formRow: '2',
+              pageDataKey: 'diagnosticCodes',
+              dataParent: 'diagnosticCodes.table',
+              page: 'Diagnostic codes',
+              mandatory: 'yes',
+              validation: 'Up to 8 characters long',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'type',
+              fqn: 'diagnosticCodes.table.type',
+              inputType: 'select',
+              label: 'Diagnosis type',
+              formColumn: '3',
+              formRow: '2',
+              pageDataKey: 'diagnosticCodes',
+              dataParent: 'diagnosticCodes.table',
+              page: 'Diagnostic codes',
+              mandatory: 'yes',
+              validation: '1 character',
+              options: [
+                {
+                  text: 'M'
+                },
+                {
+                  text: '1'
+                },
+                {
+                  text: '2'
+                },
+                {
+                  text: '3'
+                }
+              ],
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'prefix',
+              fqn: 'diagnosticCodes.table.prefix',
+              inputType: 'text',
+              label: 'Prefix',
+              formColumn: '4',
+              formRow: '2',
+              pageDataKey: 'diagnosticCodes',
+              dataParent: 'diagnosticCodes.table',
+              page: 'Diagnostic codes',
+              mandatory: 'no',
+              validation: '1 character',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'cluster',
+              fqn: 'diagnosticCodes.table.cluster',
+              inputType: 'text',
+              label: 'Diagnosis cluster',
+              formColumn: '5',
+              formRow: '2',
+              pageDataKey: 'diagnosticCodes',
+              dataParent: 'diagnosticCodes.table',
+              page: 'Diagnostic codes',
+              mandatory: 'no',
+              validation: '1 character',
+              tableKey: 'table'
+            }
+          ],
+          tableForm: {
+            rows: [
+              {
+                formRow: '1',
+                elements: [
+                  {
+                    elementKey: 'name',
+                    fqn: 'diagnosticCodes.table.name',
+                    inputType: 'text',
+                    label: 'Name',
+                    tableColumn: '1',
+                    formCss: 'user_name',
+                    formColumn: '1',
+                    formRow: '1',
+                    pageDataKey: 'diagnosticCodes',
+                    dataParent: 'diagnosticCodes.table',
+                    page: 'Diagnostic codes',
+                    assetBase: '?',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'profession',
+                    fqn: 'diagnosticCodes.table.profession',
+                    inputType: 'text',
+                    label: 'Profession',
+                    tableColumn: '2',
+                    formCss: 'user_pro',
+                    formColumn: '2',
+                    formRow: '1',
+                    pageDataKey: 'diagnosticCodes',
+                    dataParent: 'diagnosticCodes.table',
+                    page: 'Diagnostic codes',
+                    assetBase: '?',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'day',
+                    fqn: 'diagnosticCodes.table.day',
+                    inputType: 'day',
+                    label: 'Day',
+                    tableColumn: '3',
+                    formCss: 'user_day',
+                    formColumn: '3',
+                    formRow: '1',
+                    pageDataKey: 'diagnosticCodes',
+                    dataParent: 'diagnosticCodes.table',
+                    page: 'Diagnostic codes',
+                    assetBase: '?',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'time',
+                    fqn: 'diagnosticCodes.table.time',
+                    inputType: 'time',
+                    label: 'Time',
+                    tableColumn: '4',
+                    formCss: 'user_time',
+                    formColumn: '4',
+                    formRow: '1',
+                    pageDataKey: 'diagnosticCodes',
+                    dataParent: 'diagnosticCodes.table',
+                    page: 'Diagnostic codes',
+                    assetBase: '?',
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '2',
+                elements: [
+                  {
+                    elementKey: 'condition',
+                    fqn: 'diagnosticCodes.table.condition',
+                    inputType: 'text',
+                    label: 'Condition',
+                    formColumn: '1',
+                    formRow: '2',
+                    pageDataKey: 'diagnosticCodes',
+                    dataParent: 'diagnosticCodes.table',
+                    page: 'Diagnostic codes',
+                    mandatory: 'yes',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'code',
+                    fqn: 'diagnosticCodes.table.code',
+                    inputType: 'text',
+                    label: 'Diagnosis code',
+                    formColumn: '2',
+                    formRow: '2',
+                    pageDataKey: 'diagnosticCodes',
+                    dataParent: 'diagnosticCodes.table',
+                    page: 'Diagnostic codes',
+                    mandatory: 'yes',
+                    validation: 'Up to 8 characters long',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'type',
+                    fqn: 'diagnosticCodes.table.type',
+                    inputType: 'select',
+                    label: 'Diagnosis type',
+                    formColumn: '3',
+                    formRow: '2',
+                    pageDataKey: 'diagnosticCodes',
+                    dataParent: 'diagnosticCodes.table',
+                    page: 'Diagnostic codes',
+                    mandatory: 'yes',
+                    validation: '1 character',
+                    options: [
+                      {
+                        text: 'M'
+                      },
+                      {
+                        text: '1'
+                      },
+                      {
+                        text: '2'
+                      },
+                      {
+                        text: '3'
+                      }
+                    ],
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'prefix',
+                    fqn: 'diagnosticCodes.table.prefix',
+                    inputType: 'text',
+                    label: 'Prefix',
+                    formColumn: '4',
+                    formRow: '2',
+                    pageDataKey: 'diagnosticCodes',
+                    dataParent: 'diagnosticCodes.table',
+                    page: 'Diagnostic codes',
+                    mandatory: 'no',
+                    validation: '1 character',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'cluster',
+                    fqn: 'diagnosticCodes.table.cluster',
+                    inputType: 'text',
+                    label: 'Diagnosis cluster',
+                    formColumn: '5',
+                    formRow: '2',
+                    pageDataKey: 'diagnosticCodes',
+                    dataParent: 'diagnosticCodes.table',
+                    page: 'Diagnostic codes',
+                    mandatory: 'no',
+                    validation: '1 character',
+                    tableKey: 'table'
+                  }
+                ]
+              }
+            ],
+            columnsCount: 5
+          }
+        }
+      ],
+      pageData: {
+        table: []
+      }
+    },
+    interventionCodes: {
+      pageTitle: 'Intervention codes',
+      pageDataKey: 'interventionCodes',
+      hasTable: true,
+      tables: [
+        {
+          tableKey: 'table',
+          addButtonText: 'Add intervention code',
+          tableCells: [
+            {
+              elementKey: 'name',
+              fqn: 'interventionCodes.table.name',
+              inputType: 'text',
+              label: 'Name',
+              tableColumn: '1',
+              formCss: 'user_name',
+              formColumn: '1',
+              formRow: '1',
+              pageDataKey: 'interventionCodes',
+              dataParent: 'interventionCodes.table',
+              page: 'Intervention codes',
+              assetBase: '?',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'profession',
+              fqn: 'interventionCodes.table.profession',
+              inputType: 'text',
+              label: 'Profession',
+              tableColumn: '2',
+              formCss: 'user_pro',
+              formColumn: '2',
+              formRow: '1',
+              pageDataKey: 'interventionCodes',
+              dataParent: 'interventionCodes.table',
+              page: 'Intervention codes',
+              assetBase: '?',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'day',
+              fqn: 'interventionCodes.table.day',
+              inputType: 'day',
+              label: 'Day',
+              tableColumn: '3',
+              formCss: 'user_day',
+              formColumn: '3',
+              formRow: '1',
+              pageDataKey: 'interventionCodes',
+              dataParent: 'interventionCodes.table',
+              page: 'Intervention codes',
+              assetBase: '?',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'time',
+              fqn: 'interventionCodes.table.time',
+              inputType: 'time',
+              label: 'Time',
+              tableColumn: '4',
+              formCss: 'user_time',
+              formColumn: '4',
+              formRow: '1',
+              pageDataKey: 'interventionCodes',
+              dataParent: 'interventionCodes.table',
+              page: 'Intervention codes',
+              assetBase: '?',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'spacer',
+              fqn: 'interventionCodes.table.spacer',
+              inputType: 'spacer',
+              formCss: 'width-70',
+              formColumn: '1',
+              formRow: '2',
+              pageDataKey: 'interventionCodes',
+              dataParent: 'interventionCodes.table',
+              page: 'Intervention codes',
+              assetBase: '?',
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'label',
+              fqn: 'interventionCodes.table.label',
+              inputType: 'form-label',
+              label: 'Intervention code attributes',
+              formCss: 'width-30 bold-text',
+              formColumn: '2',
+              formRow: '2',
+              pageDataKey: 'interventionCodes',
+              dataParent: 'interventionCodes.table',
+              page: 'Intervention codes',
+              tableCss: 'hide-table-element',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'intervention',
+              fqn: 'interventionCodes.table.intervention',
+              inputType: 'text',
+              label: 'Intervention search',
+              tableColumn: '5',
+              formCss: 'width-70',
+              formColumn: '1',
+              formRow: '3',
+              pageDataKey: 'interventionCodes',
+              dataParent: 'interventionCodes.table',
+              page: 'Intervention codes',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'status',
+              fqn: 'interventionCodes.table.status',
+              inputType: 'text',
+              label: 'Status',
+              tableColumn: '6',
+              formCss: 'width-10',
+              formColumn: '2',
+              formRow: '3',
+              pageDataKey: 'interventionCodes',
+              dataParent: 'interventionCodes.table',
+              page: 'Intervention codes',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'laterally',
+              fqn: 'interventionCodes.table.laterally',
+              inputType: 'text',
+              label: 'Laterally',
+              tableColumn: '7',
+              formCss: 'width-10',
+              formColumn: '3',
+              formRow: '3',
+              pageDataKey: 'interventionCodes',
+              dataParent: 'interventionCodes.table',
+              page: 'Intervention codes',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'extent',
+              fqn: 'interventionCodes.table.extent',
+              inputType: 'text',
+              label: 'Extent',
+              tableColumn: '8',
+              formCss: 'width-10',
+              formColumn: '4',
+              formRow: '3',
+              pageDataKey: 'interventionCodes',
+              dataParent: 'interventionCodes.table',
+              page: 'Intervention codes',
+              tableKey: 'table'
+            }
+          ],
+          tableForm: {
+            rows: [
+              {
+                formRow: '1',
+                elements: [
+                  {
+                    elementKey: 'name',
+                    fqn: 'interventionCodes.table.name',
+                    inputType: 'text',
+                    label: 'Name',
+                    tableColumn: '1',
+                    formCss: 'user_name',
+                    formColumn: '1',
+                    formRow: '1',
+                    pageDataKey: 'interventionCodes',
+                    dataParent: 'interventionCodes.table',
+                    page: 'Intervention codes',
+                    assetBase: '?',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'profession',
+                    fqn: 'interventionCodes.table.profession',
+                    inputType: 'text',
+                    label: 'Profession',
+                    tableColumn: '2',
+                    formCss: 'user_pro',
+                    formColumn: '2',
+                    formRow: '1',
+                    pageDataKey: 'interventionCodes',
+                    dataParent: 'interventionCodes.table',
+                    page: 'Intervention codes',
+                    assetBase: '?',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'day',
+                    fqn: 'interventionCodes.table.day',
+                    inputType: 'day',
+                    label: 'Day',
+                    tableColumn: '3',
+                    formCss: 'user_day',
+                    formColumn: '3',
+                    formRow: '1',
+                    pageDataKey: 'interventionCodes',
+                    dataParent: 'interventionCodes.table',
+                    page: 'Intervention codes',
+                    assetBase: '?',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'time',
+                    fqn: 'interventionCodes.table.time',
+                    inputType: 'time',
+                    label: 'Time',
+                    tableColumn: '4',
+                    formCss: 'user_time',
+                    formColumn: '4',
+                    formRow: '1',
+                    pageDataKey: 'interventionCodes',
+                    dataParent: 'interventionCodes.table',
+                    page: 'Intervention codes',
+                    assetBase: '?',
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '2',
+                elements: [
+                  {
+                    elementKey: 'spacer',
+                    fqn: 'interventionCodes.table.spacer',
+                    inputType: 'spacer',
+                    formCss: 'width-70',
+                    formColumn: '1',
+                    formRow: '2',
+                    pageDataKey: 'interventionCodes',
+                    dataParent: 'interventionCodes.table',
+                    page: 'Intervention codes',
+                    assetBase: '?',
+                    tableCss: 'hide-table-element',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'label',
+                    fqn: 'interventionCodes.table.label',
+                    inputType: 'form-label',
+                    label: 'Intervention code attributes',
+                    formCss: 'width-30 bold-text',
+                    formColumn: '2',
+                    formRow: '2',
+                    pageDataKey: 'interventionCodes',
+                    dataParent: 'interventionCodes.table',
+                    page: 'Intervention codes',
+                    tableCss: 'hide-table-element',
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '3',
+                elements: [
+                  {
+                    elementKey: 'intervention',
+                    fqn: 'interventionCodes.table.intervention',
+                    inputType: 'text',
+                    label: 'Intervention search',
+                    tableColumn: '5',
+                    formCss: 'width-70',
+                    formColumn: '1',
+                    formRow: '3',
+                    pageDataKey: 'interventionCodes',
+                    dataParent: 'interventionCodes.table',
+                    page: 'Intervention codes',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'status',
+                    fqn: 'interventionCodes.table.status',
+                    inputType: 'text',
+                    label: 'Status',
+                    tableColumn: '6',
+                    formCss: 'width-10',
+                    formColumn: '2',
+                    formRow: '3',
+                    pageDataKey: 'interventionCodes',
+                    dataParent: 'interventionCodes.table',
+                    page: 'Intervention codes',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'laterally',
+                    fqn: 'interventionCodes.table.laterally',
+                    inputType: 'text',
+                    label: 'Laterally',
+                    tableColumn: '7',
+                    formCss: 'width-10',
+                    formColumn: '3',
+                    formRow: '3',
+                    pageDataKey: 'interventionCodes',
+                    dataParent: 'interventionCodes.table',
+                    page: 'Intervention codes',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'extent',
+                    fqn: 'interventionCodes.table.extent',
+                    inputType: 'text',
+                    label: 'Extent',
+                    tableColumn: '8',
+                    formCss: 'width-10',
+                    formColumn: '4',
+                    formRow: '3',
+                    pageDataKey: 'interventionCodes',
+                    dataParent: 'interventionCodes.table',
+                    page: 'Intervention codes',
+                    tableKey: 'table'
+                  }
+                ]
+              }
+            ],
+            columnsCount: 4
+          }
+        }
+      ],
+      pageData: {
+        table: []
+      }
+    },
+    careMixGroup: {
+      pageTitle: 'Care mix group',
+      pageDataKey: 'careMixGroup',
+      hasTable: true,
+      tables: [
+        {
+          tableKey: 'table',
+          addButtonText: 'Add care mix group',
+          tableCells: [
+            {
+              elementKey: 'name',
+              fqn: 'careMixGroup.table.name',
+              inputType: 'text',
+              label: 'Name',
+              tableColumn: '1',
+              formCss: 'user_name',
+              formColumn: '1',
+              formRow: '1',
+              pageDataKey: 'careMixGroup',
+              dataParent: 'careMixGroup.table',
+              page: 'Care mix group',
+              assetBase: '?',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'profession',
+              fqn: 'careMixGroup.table.profession',
+              inputType: 'text',
+              label: 'Profession',
+              tableColumn: '2',
+              formCss: 'user_pro',
+              formColumn: '2',
+              formRow: '1',
+              pageDataKey: 'careMixGroup',
+              dataParent: 'careMixGroup.table',
+              page: 'Care mix group',
+              assetBase: '?',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'day',
+              fqn: 'careMixGroup.table.day',
+              inputType: 'day',
+              label: 'Day',
+              tableColumn: '3',
+              formCss: 'user_day',
+              formColumn: '3',
+              formRow: '1',
+              pageDataKey: 'careMixGroup',
+              dataParent: 'careMixGroup.table',
+              page: 'Care mix group',
+              assetBase: '?',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'time',
+              fqn: 'careMixGroup.table.time',
+              inputType: 'time',
+              label: 'Time',
+              tableColumn: '4',
+              formCss: 'user_time',
+              formColumn: '4',
+              formRow: '1',
+              pageDataKey: 'careMixGroup',
+              dataParent: 'careMixGroup.table',
+              page: 'Care mix group',
+              assetBase: '?',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'clinicalCategory',
+              fqn: 'careMixGroup.table.clinicalCategory',
+              inputType: 'text',
+              label: 'Major clinical category',
+              formColumn: '1',
+              formRow: '2',
+              pageDataKey: 'careMixGroup',
+              dataParent: 'careMixGroup.table',
+              page: 'Care mix group',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'caseMixNumber',
+              fqn: 'careMixGroup.table.caseMixNumber',
+              inputType: 'text',
+              label: 'Case mix number',
+              formColumn: '2',
+              formRow: '2',
+              pageDataKey: 'careMixGroup',
+              dataParent: 'careMixGroup.table',
+              page: 'Care mix group',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'resourceIntensity',
+              fqn: 'careMixGroup.table.resourceIntensity',
+              inputType: 'text',
+              label: 'Resource intensity weight',
+              formColumn: '1',
+              formRow: '3',
+              pageDataKey: 'careMixGroup',
+              dataParent: 'careMixGroup.table',
+              page: 'Care mix group',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'expectedStay',
+              fqn: 'careMixGroup.table.expectedStay',
+              inputType: 'text',
+              label: 'Expected length of stay',
+              formColumn: '2',
+              formRow: '3',
+              pageDataKey: 'careMixGroup',
+              dataParent: 'careMixGroup.table',
+              page: 'Care mix group',
+              tableKey: 'table'
+            },
+            {
+              elementKey: 'analysis',
+              fqn: 'careMixGroup.table.analysis',
+              inputType: 'textarea',
+              label: 'Analysis',
+              formColumn: '1',
+              formRow: '4',
+              pageDataKey: 'careMixGroup',
+              dataParent: 'careMixGroup.table',
+              page: 'Care mix group',
+              tableKey: 'table'
+            }
+          ],
+          tableForm: {
+            rows: [
+              {
+                formRow: '1',
+                elements: [
+                  {
+                    elementKey: 'name',
+                    fqn: 'careMixGroup.table.name',
+                    inputType: 'text',
+                    label: 'Name',
+                    tableColumn: '1',
+                    formCss: 'user_name',
+                    formColumn: '1',
+                    formRow: '1',
+                    pageDataKey: 'careMixGroup',
+                    dataParent: 'careMixGroup.table',
+                    page: 'Care mix group',
+                    assetBase: '?',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'profession',
+                    fqn: 'careMixGroup.table.profession',
+                    inputType: 'text',
+                    label: 'Profession',
+                    tableColumn: '2',
+                    formCss: 'user_pro',
+                    formColumn: '2',
+                    formRow: '1',
+                    pageDataKey: 'careMixGroup',
+                    dataParent: 'careMixGroup.table',
+                    page: 'Care mix group',
+                    assetBase: '?',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'day',
+                    fqn: 'careMixGroup.table.day',
+                    inputType: 'day',
+                    label: 'Day',
+                    tableColumn: '3',
+                    formCss: 'user_day',
+                    formColumn: '3',
+                    formRow: '1',
+                    pageDataKey: 'careMixGroup',
+                    dataParent: 'careMixGroup.table',
+                    page: 'Care mix group',
+                    assetBase: '?',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'time',
+                    fqn: 'careMixGroup.table.time',
+                    inputType: 'time',
+                    label: 'Time',
+                    tableColumn: '4',
+                    formCss: 'user_time',
+                    formColumn: '4',
+                    formRow: '1',
+                    pageDataKey: 'careMixGroup',
+                    dataParent: 'careMixGroup.table',
+                    page: 'Care mix group',
+                    assetBase: '?',
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '2',
+                elements: [
+                  {
+                    elementKey: 'clinicalCategory',
+                    fqn: 'careMixGroup.table.clinicalCategory',
+                    inputType: 'text',
+                    label: 'Major clinical category',
+                    formColumn: '1',
+                    formRow: '2',
+                    pageDataKey: 'careMixGroup',
+                    dataParent: 'careMixGroup.table',
+                    page: 'Care mix group',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'caseMixNumber',
+                    fqn: 'careMixGroup.table.caseMixNumber',
+                    inputType: 'text',
+                    label: 'Case mix number',
+                    formColumn: '2',
+                    formRow: '2',
+                    pageDataKey: 'careMixGroup',
+                    dataParent: 'careMixGroup.table',
+                    page: 'Care mix group',
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '3',
+                elements: [
+                  {
+                    elementKey: 'resourceIntensity',
+                    fqn: 'careMixGroup.table.resourceIntensity',
+                    inputType: 'text',
+                    label: 'Resource intensity weight',
+                    formColumn: '1',
+                    formRow: '3',
+                    pageDataKey: 'careMixGroup',
+                    dataParent: 'careMixGroup.table',
+                    page: 'Care mix group',
+                    tableKey: 'table'
+                  },
+                  {
+                    elementKey: 'expectedStay',
+                    fqn: 'careMixGroup.table.expectedStay',
+                    inputType: 'text',
+                    label: 'Expected length of stay',
+                    formColumn: '2',
+                    formRow: '3',
+                    pageDataKey: 'careMixGroup',
+                    dataParent: 'careMixGroup.table',
+                    page: 'Care mix group',
+                    tableKey: 'table'
+                  }
+                ]
+              },
+              {
+                formRow: '4',
+                elements: [
+                  {
+                    elementKey: 'analysis',
+                    fqn: 'careMixGroup.table.analysis',
+                    inputType: 'textarea',
+                    label: 'Analysis',
+                    formColumn: '1',
+                    formRow: '4',
+                    pageDataKey: 'careMixGroup',
+                    dataParent: 'careMixGroup.table',
+                    page: 'Care mix group',
+                    tableKey: 'table'
+                  }
+                ]
+              }
+            ],
+            columnsCount: 4
+          }
+        }
+      ],
+      pageData: {
+        table: []
+      }
     }
   }
 }

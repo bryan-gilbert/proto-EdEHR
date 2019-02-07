@@ -10,13 +10,13 @@
         div(v-if="uiProps.hasTable", v-for="tableDef in uiProps.tables", :key="tableDef.tableKey")
           ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
     div(style="display:none")
-      p This Diagnostic Codes page is generated.
-      p Label: Diagnostic codes (ICD-10)
-      p Data Key: diagnosticCodes
-      p Component name: DiagnosticCodes
+      p This Code Lookup page is generated.
+      p Label: Code lookup
+      p Data Key: codeLookup
+      p Component name: CodeLookup
       p Redirect: 
-      p Route name: diagnostic-codes
-      p Full path: /ehr/external/diagnostic-codes
+      p Route name: code-lookup
+      p Full path: /ehr/external/code-lookup
 </template>
 
 <script>
@@ -28,7 +28,7 @@ import EhrPageForm from '../components/EhrPageForm.vue'
 import EhrHelp from '../ehr-helper'
 
 export default {
-  name: 'DiagnosticCodes',
+  name: 'CodeLookup',
   components: {
     EhrPanelHeader,
     EhrPanelContent,
@@ -38,7 +38,7 @@ export default {
   },
   data: function() {
     return {
-      pageDataKey: 'diagnosticCodes',
+      pageDataKey: 'codeLookup',
       theData: {},
       ehrHelp: undefined
     }
