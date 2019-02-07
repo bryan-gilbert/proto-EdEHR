@@ -63,12 +63,50 @@ _typography.scss
 $bodyFontFamily: 'Source Sans Pro', sans-serif;
 $bodyFontSize: 14px;
 
+/* ******************
+Dimensions
+ */
+
+$mediaQueryIpadLandscape: "only screen and (min-width : 1020px)";
+$mediaQueryIpadPortrait: "only screen and (min-width : 760px)";
+// @media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
+// @media (min-width:1281px) { /* hi-res laptops and desktops */ }
+
+$ehrPanelHeight: 80px;
+$contentMinHeight: 700px;
+
+$navMaxWidth: 280px;
+$navMinWidth: 235px;
+$pageWidth: 2000px;
+$panelContentPadding: 1.5rem;
+$panelHeaderPadding: 0.6rem 2rem 0.4rem;
+$panelMarginLeft: 0;
+$contentWidth: $pageWidth - $navMinWidth;
+$contentWidthInner: 980px;
+
+$navMinWidthSmall: 187px;
+$navMaxWidthSmall: 200px;
+$pageWidthSmall: 1024px;
+$panelContentPaddingSmall: 0.5rem;
+$panelHeaderPaddingSmall: 0.5rem;
+$panelMarginLeftSmall: 3px;
+$contentWidthSmall: $pageWidthSmall - $navMinWidthSmall;
+$contentWidthInnerSmall: $contentWidthSmall - 10;
+
+$navMaxWidthSmallest: 187px;
+$navMinWidthSmallest: 160px;
+$pageWidthSmallest: 768px;
+$panelContentPaddingSmallest: 3px;
+$panelHeaderPaddingSmallest: 0.5rem;
+$panelMarginLeftSmallest: 5px;
+$contentWidthSmallest: $pageWidthSmallest - $navMaxWidthSmallest;
+$contentWidthInnerSmallest: $contentWidthSmallest - 3px;
 
 /* ******************
 wrapper
  */
 $o-wrapper-sizes: (
-  page:   1300px,
+  page:   1400px,
   content:  1024px,
   wide:   682px,
   narrow: 342px,

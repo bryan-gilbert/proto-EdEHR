@@ -1,6 +1,7 @@
 <template lang="pug">
-	div(:class="$options.name")
-		slot
+  div(class="EhrPanelContent")
+    div(class="EhrPanelContent_Inner")
+      slot
 </template>
 
 <script>
@@ -14,8 +15,6 @@ export default {
 @import '../../scss/definitions';
 
 .EhrPanelContent {
-  padding: 1.5rem 2rem 6rem;
-
   &__main {
     .table th {
       border-bottom: 2px solid $grey60;

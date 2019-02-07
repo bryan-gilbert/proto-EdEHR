@@ -84,8 +84,4 @@ export default {
 </script>
 
 <style lang="scss">
-.ehr-page {
-  max-width: 1300px;
-  width: 80%;
-}
 </style>

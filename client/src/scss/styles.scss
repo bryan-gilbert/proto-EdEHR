@@ -18,13 +18,17 @@ Bulma is good yet it adds negative margin to columns and
 negative padding to column.  The following over rides this.
  */
 .columns {
-  margin-left: 0;
+  margin: 0;
+  display: flex;
 }
 
 .column {
   padding-left: 0;
 }
 
+.columns:not(:last-child) {
+  margin-bottom: 0;
+}
 /*
 Import the SCSS definitions.  Theses definitions are imported into
 other components, as needed.  Because the definitions are just variables
@@ -37,3 +41,26 @@ Import styles
  */
 @import '../scss/styles/typography';
 @import '../scss/styles/forms';
+
+/*
+For lack of a better place ...
+Define the styles for the left hand side components in the EHR
+ */
+.EhrPanelContent {
+  padding: $panelContentPadding;
+  @media #{$mediaQueryIpadLandscape} {
+    padding: $panelContentPaddingSmall;
+  }
+  @media #{$mediaQueryIpadPortrait} {
+    padding: $panelContentPaddingSmallest;
+  }
+  .EhrPanelContent_Inner {
+    width: $contentWidthInner;
+    @media #{$mediaQueryIpadLandscape} {
+      width: $contentWidthInnerSmall;
+    }
+    @media #{$mediaQueryIpadPortrait} {
+      width: $contentWidthInnerSmallest;
+    }
+  }
+}

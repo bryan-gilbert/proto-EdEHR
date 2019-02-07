@@ -54,12 +54,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$contentMinHeight: 700px;
-$navMinWidth: 235px;
-/* $navMaxWidth: 360px; */
-/* for dev on my small box only ... */
-$navMaxWidth: 280px;
-$pageWidth: 1024px;
 @import '../../scss/definitions';
 .ehr_layout {
   margin: 1px;
@@ -70,11 +64,8 @@ $pageWidth: 1024px;
   &__main {
     color: $grey60;
     background-color: $white;
-    /*padding-left: 0;*/
+    display: flex;
     overflow: hidden;
-    &.columns {
-      margin-bottom: 0;
-    }
   }
   &__main_content {
   }
@@ -82,21 +73,46 @@ $pageWidth: 1024px;
     /* max-width: $navWidth; */
     min-width: $navMinWidth;
     max-width: $navMaxWidth;
+    @media #{$mediaQueryIpadLandscape} {
+      min-width: $navMinWidthSmall;
+      max-width: $navMaxWidthSmall;
+    }
+    @media #{$mediaQueryIpadPortrait} {
+      min-width: $navMinWidthSmallest;
+      max-width: $navMaxWidthSmallest;
+    }
     width: 20%; /* of page width */
     padding: 0;
-  }
-  &__content {
-    padding: 0;
-    /*
     height: $contentMinHeight;
     margin: 0;
     overflow-y: auto;
-    */
+  }
+  &__content {
+    padding: 0;
+    height: $contentMinHeight;
+    margin: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: lavender;
+    width: $contentWidth;
+    @media #{$mediaQueryIpadLandscape} {
+      width: $contentWidthSmall;
+    }
+    @media #{$mediaQueryIpadPortrait} {
+      width: $contentWidthSmallest;
+    }
   }
   &__content_banner {
     background-color: $grey10;
     color: $grey60;
     padding: 0;
+    margin-left: $panelMarginLeft;
+    @media #{$mediaQueryIpadLandscape} {
+      margin-left: $panelMarginLeftSmall;
+    }
+    @media #{$mediaQueryIpadPortrait} {
+      margin-left: $panelMarginLeftSmallest;
+    }
   }
   &__content_banner_content {
     padding: 0;
@@ -105,6 +121,13 @@ $pageWidth: 1024px;
   &__content_page {
     padding: 0;
     width: 100%;
+    margin-left: $panelMarginLeft;
+    @media #{$mediaQueryIpadLandscape} {
+      margin-left: $panelMarginLeftSmall;
+    }
+    @media #{$mediaQueryIpadPortrait} {
+      margin-left: $panelMarginLeftSmallest;
+    }
   }
 }
 </style>

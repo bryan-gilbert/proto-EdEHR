@@ -1,54 +1,42 @@
-<template>
-  <div :class="$options.name">
-    <ui-intro :class="`${$options.name}__intro`">
-      <div class="columns" :class="`${$options.name}__content`">
-        <div class="column" :class="`${$options.name}__content_row--1`">
-          <ul>
-            <li>
-              <b>{{ lastFirstMiddle }}</b>
-            </li>
-            <li>
-              Date of Birth: <b> {{ demographics.dateOfBirth }} </b>
-            </li>
-            <li>
-              Age: <b>{{ demographics.personAge }}</b>
-            </li>
-            <li>
-              Gender: <b>{{ demographics.gender }}</b>
-            </li>
-            <li>Weight: <b> ??? </b></li>
-          </ul>
-        </div>
-        <div class="column" :class="`${$options.name}__content_row--2`">
-          <ul>
-            <li>
-              Code Status: <b>{{ demographics.codeStatus }}</b>
-            </li>
-            <li>
-              PHN: <b>{{ demographics.phn }}</b>
-            </li>
-            <li>
-              MRN: <b>{{ demographics.mrn }}</b>
-            </li>
-            <li>MRP: <b> ?? </b></li>
-            <li>MRP Phone: <b> ?? </b></li>
-          </ul>
-        </div>
-        <div class="column" :class="`${$options.name}__content_row--3`">
-          <ul>
-            <li>
-              Admitting Diagnosis: <b> {{ visitDetails.admittingDiagnosis }} </b>
-            </li>
-            <li>Allergies: <b> </b></li>
-            <li>
-              Location: <b> {{ location }} </b>
-            </li>
-            <li>Isolation Precautions: <b>None</b></li>
-          </ul>
-        </div>
-      </div>
-    </ui-intro>
-  </div>
+<template lang="pug">
+  div( class="EhrBanner EhrPanelContent")
+    div( class="EhrBanner_Inner EhrPanelContent_Inner")
+      ui-intro(class="EhrBanner__intro")
+      div( class="columns EhrBanner__content")
+        div( class="column EhrBanner__content_row--1")
+          ul
+            li 
+              b {{ lastFirstMiddle }}
+            li Date of Birth:
+              b {{ demographics.dateOfBirth }}
+            li Age:
+              b {{ demographics.personAge }}
+            li Gender:
+              b {{ demographics.gender }}
+            li Weight:
+              b to link in
+        div( class="column EhrBanner__content_row--2")
+          ul
+            li Code Status:
+              b {{ demographics.codeStatus }}
+            li PHN:
+              b {{ demographics.phn }}
+            li  MRN:
+              b {{ demographics.mrn }}
+            li MRP:
+              b to link in
+            li MRP Phone:
+              b to link in
+        div( class="column EhrBanner__content_row--3")
+          ul
+            li Admitting Diagnosis:
+              b {{ visitDetails.admittingDiagnosis }}
+            li Allergies:
+              b to link in
+            li Location:
+              b {{ location }}
+            li Isolation Precautions:
+              b to link in
 </template>
 
 <script>
@@ -101,10 +89,8 @@ export default {
 
 .EhrBanner {
   &__content {
+    display: flex;
     color: $grey60;
-    margin: 0;
-    padding: 0 1rem;
-    padding-bottom: 12px;
   }
   &__content_row--1 {
     flex-grow: 0.8;
