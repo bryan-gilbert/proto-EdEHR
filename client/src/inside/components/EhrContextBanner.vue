@@ -1,6 +1,6 @@
 <template lang="pug">
-  div(class="EhrContextBanner", v-show="isInstructor")
-    div(class="wrapper")
+  div(class="EhrContextBanner EhrPanelContent", v-show="isInstructor")
+    div(class="EhrContextBanner_Inner EhrPanelContent_Inner")
       ehr-class-list-nav
 </template>
 
@@ -24,13 +24,15 @@ export default {
 @import '../../scss/definitions';
 
 .EhrContextBanner {
+  padding: $panelHeaderPadding;
   background: $context-banner-background-color;
   color: $context-banner-color;
-  @include wrapper('page');
   padding: 0;
-  .wrapper {
-    @include wrapper('content');
-    padding: 10px;
+  @media #{$mediaQueryIpadLandscape} {
+    padding: $panelHeaderPaddingSmall;
+  }
+  @media #{$mediaQueryIpadPortrait} {
+    padding: $panelHeaderPaddingSmallest;
   }
 }
 </style>
