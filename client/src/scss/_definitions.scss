@@ -67,10 +67,8 @@ $bodyFontSize: 14px;
 Dimensions
  */
 
-$mediaQueryIpadLandscape: "only screen and (min-width : 1020px)";
-$mediaQueryIpadPortrait: "only screen and (min-width : 760px)";
-// @media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
-// @media (min-width:1281px) { /* hi-res laptops and desktops */ }
+$mediaQueryIpadLandscape: "only screen and (max-width : 1024px)";
+$mediaQueryIpadPortrait: "only screen and (max-width : 768px)";
 
 $ehrPanelHeight: 80px;
 $contentMinHeight: 700px;
