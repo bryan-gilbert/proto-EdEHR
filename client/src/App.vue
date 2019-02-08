@@ -15,35 +15,38 @@ export default {
   components: {},
   methods: {
     loadData: function() {
-      // console.log('window.location', window.location)
-      var url2 = new URL(window.location)
-      var params2 = new URLSearchParams(url2.search)
-      var restoring = false
-      // API return url
+      let search = window.location.search.substring(1)
+      let params2 = {}
+      let parts = search.split('&')
+      parts.forEach(p => {
+        let pair = p.split('=')
+        params2[pair[0]] = decodeURIComponent(pair[1])
+      })
+      console.log('incoming parameters', params2)
+      // API return to url
+      let apiUrl = params2['apiUrl']
+      let visitId = params2['visit']
       // Visit Id
-      function loadVisitId() {
-        return new Promise((resolve, reject) => {
-          var visitId = params2.get('visit')
-          if (!visitId) {
-            // console.log('No visit id on query so check local storage storage?')
-            restoring = true
-            visitId = localStorage.getItem('token')
-          }
-          if (!visitId) {
-            let msg = 'No visit id on query or local storage'
-            reject(msg)
-          }
-          localStorage.setItem('token', visitId)
-          resolve(visitId)
-        })
-      }
+      var restoring = false
       const _this = this
       _this
-        ._loadApiUrl(params2)
+        ._loadApiUrl(apiUrl)
         .then(() => {
-          return loadVisitId()
+          return new Promise((resolve, reject) => {
+            if (!visitId) {
+              console.log('No visit id on query so check local storage storage?')
+              restoring = true
+              visitId = localStorage.getItem('token')
+            }
+            if (!visitId) {
+              let msg = 'No visit id on query or local storage'
+              reject(msg)
+            }
+            resolve(visitId)
+          })
         })
         .then(visitId => {
+          localStorage.setItem('token', visitId)
           return this.$store.dispatch('visit/loadVisitInfo', visitId)
         })
         .then(() => {
@@ -68,13 +71,12 @@ export default {
      * that has to be kept in sync with the server side configuration.  It means
      * this client can be the front end for any backend because there are no connections
      * other than what is provided by this API Url
-     * @param params2
+     * @param apiUrl
      * @return {Promise<void>}
      * @private
      */
-    _loadApiUrl(params2) {
+    _loadApiUrl(apiUrl) {
       return Promise.resolve().then(() => {
-        var apiUrl = params2.get('apiUrl')
         if (apiUrl) {
           // console.log('API url provided in query: ', apiUrl)
         } else {
