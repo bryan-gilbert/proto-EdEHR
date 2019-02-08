@@ -269,7 +269,7 @@
         "pageDataKey": "vitals",
         "label": "Vital signs",
         "redirect": "",
-        "generateComponent": "yes",
+        "generateComponent": "custom",
         "componentName": "VitalSigns",
         "dataName": "vitalSigns",
         "fullPath": "/ehr/current/vital-signs",
