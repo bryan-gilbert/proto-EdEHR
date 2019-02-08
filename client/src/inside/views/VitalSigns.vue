@@ -1,4 +1,4 @@
-// Generated VUE file. Before modifying see docs about Vue file generation 
+// Custom EHR Vue component
 <template lang="pug">
   div(class="ehr-page")
     ehr-panel-header {{ uiProps.pageTitle }}
@@ -6,9 +6,7 @@
         ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey", @controlsCallback="controlsCallback")
     ehr-panel-content
       div(class="region ehr-page-content")
-        ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
-        div(v-if="uiProps.hasTable", v-for="tableDef in uiProps.tables", :key="tableDef.tableKey")
-          ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
+        vitals
     div(style="display:none")
       p This Vital Signs page is generated.
       p Label: Vital signs
@@ -26,6 +24,7 @@ import EhrEditControls from '../components/EhrEditControls.vue'
 import EhrPageTable from '../components/EhrPageTable'
 import EhrPageForm from '../components/EhrPageForm.vue'
 import EhrHelp from '../ehr-helper'
+import Vitals from '../components/Vitals'
 
 export default {
   name: 'VitalSigns',
@@ -34,7 +33,8 @@ export default {
     EhrPanelContent,
     EhrPageForm,
     EhrPageTable,
-    EhrEditControls
+    EhrEditControls,
+    Vitals
   },
   data: function() {
     return {

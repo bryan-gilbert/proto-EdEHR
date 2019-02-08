@@ -11,7 +11,7 @@
 {path: /ehr/patient}	{routeName: past-appointments}	{pageDataKey: pastAppointments}	{label: Past appointments}	{redirect: }	{generateComponent: yes}
 {path: /ehr}	{routeName: current}	eCell	{label: Current visit}	{redirect: visit-details}	eCell
 {path: /ehr/current}	{routeName: visit-details}	{pageDataKey: visit}	{label: Visit details}	{redirect: }	{generateComponent: yes}
-{path: /ehr/current}	{routeName: vital-signs}	{pageDataKey: vitals}	{label: Vital signs}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current}	{routeName: vital-signs}	{pageDataKey: vitals}	{label: Vital signs}	{redirect: }	{generateComponent: custom}
 {path: /ehr/current}	{routeName: assessments}	eCell	{label: Assessments}	{redirect: neurological}	eCell
 {path: /ehr/current/assessments}	{routeName: neurological}	{pageDataKey: neurological}	{label: Neurological}	{redirect: }	{generateComponent: yes}
 {path: /ehr/current/assessments}	{routeName: respiratory}	{pageDataKey: respiratory}	{label: Respiratory}	{redirect: }	{generateComponent: yes}

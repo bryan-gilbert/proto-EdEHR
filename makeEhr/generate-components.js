@@ -174,13 +174,10 @@ function getComponent(fName) {
 
 function makeVueFiles (defs) {
   const componentTemplate = getComponent('newTemplate.txt')
-  const baseTemplate = getComponent('baseTemplate.txt')
   defs.forEach(def => {
     // console.log('def.generateComponent',  def.generateComponent)
-    if (def.generateComponent === 'yes') {
+    if (def.generateComponent !== 'custom') {
       makeVueFile(def, componentTemplate)
-    } else  {
-      makeVueFile(def, baseTemplate)
     }
   })
 }
