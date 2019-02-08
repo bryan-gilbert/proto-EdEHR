@@ -157,14 +157,6 @@ export default {
       this.left += deltaX
       this.top += deltaY
     }
-  },
-  mounted: function() {
-    // console.log("When app dialog is mounted freeze the body to prevent background scrolling")
-    document.body.style.position = 'fixed'
-  },
-  beforeDestroy: function() {
-    // console.log("When app dialog is destroyed restore background scrolling")
-    document.body.style.position = ''
   }
 }
 </script>
