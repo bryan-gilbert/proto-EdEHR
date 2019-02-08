@@ -1,21 +1,42 @@
 <template lang="pug">
-  div(class="EhrContextBanner EhrPanelContent", v-show="isInstructor")
+  div(class="EhrContextBanner EhrPanelContent")
     div(class="EhrContextBanner_Inner EhrPanelContent_Inner")
-      ehr-class-list-nav
+      div(class="prototypingContainer")
+        span These controls are for development only:
+        ul
+          li
+            input(class="checkbox", type="checkbox", v-model="showInstructor")
+            span showInstructor
+          li
+            input(class="checkbox", type="checkbox", v-model="showStudent")
+            span showStudent
+          li
+            input(class="checkbox", type="checkbox", v-model="showSeeding")
+            span showSeeding
+
+      ehr-context-instructor(v-show="showInstructor")
+      ehr-context-student(v-show="showStudent")
 </template>
 
 <script>
-import EhrClassListNav from './EhrClassListNav'
+import EhrContextInstructor from './EhrContextInstructor'
+import EhrContextStudent from './EhrContextStudent'
 export default {
   name: 'EhrContextBanner',
-  components: { EhrClassListNav },
+  components: { EhrContextInstructor, EhrContextStudent },
   data: function() {
-    return {}
+    return {
+      showInstructor: false,
+      showStudent: false,
+      showSeeding: false
+    }
+  },
+  mounted() {
+    this.showInstructor = !!this.$store.getters['visit/isInstructor']
+    this.showStudent = !!this.$store.getters['visit/isStudent']
+    this.showSeeding = !!this.$store.state.system.isSeeding
   },
   computed: {
-    isInstructor() {
-      return this.$store.getters['visit/isInstructor']
-    }
   }
 }
 </script>
@@ -33,6 +54,19 @@ export default {
   }
   @media #{$mediaQueryIpadPortrait} {
     padding: $panelHeaderPaddingSmallest;
+  }
+}
+.prototypingContainer {
+  ul {
+    display: inline;
+  }
+  li {
+    display: inline;
+    margin-left: 1rem;
+  }
+  input {
+    display: inline-block;
+    margin-right: 5px;
   }
 }
 </style>

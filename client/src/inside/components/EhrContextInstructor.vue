@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="classlist", v-show="isInstructor")
+  div(class="classlist", v-show="showClassList")
     div(class="classlist_content columns")
       div(class="is-6 column")
         div(class="textField") Course: {{ panelInfo.courseTitle}}
@@ -58,6 +58,9 @@ export default {
     },
     classList() {
       return this.$store.state.sClassList || []
+    },
+    showClassList() {
+      return true
     },
     isInstructor() {
       return this.$store.getters['visit/isInstructor']
