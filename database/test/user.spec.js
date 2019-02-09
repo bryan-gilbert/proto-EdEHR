@@ -16,7 +16,7 @@ describe("user mongoose schema testing", function() {
     helper.after(done, mongoose, collection)
   });
 
-  it("should be invalid if id is empty", function(done) {
+  it("user should be invalid if id is empty", function(done) {
     var m = new User();
     m.validate(function(err) {
       should.exist(err);
@@ -31,7 +31,6 @@ describe("user mongoose schema testing", function() {
     newUser
       .save()
       .then(() => {
-        console.log("Saved user");
         done();
       })
       .catch(err => {
