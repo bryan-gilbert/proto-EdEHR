@@ -3,39 +3,17 @@ const mongoose = require("mongoose");
 const MongoClient = require("mongodb").MongoClient;
 const ObjectID = require("mongodb").ObjectID;
 import User from "../models/user";
+import Helper from './helper'
+const helper = new Helper()
 
 /* global describe it */
 describe("user mongoose schema testing", function() {
-  before(function(done) {
-    mongoose.connect(
-      "mongodb://localhost:27018/unittest",
-      { useNewUrlParser: true }
-    );
-    const db = mongoose.connection;
-    db.on("error", console.error.bind(console, "connection error"));
-    db.once("open", function() {
-      console.log("We are connected to test database!");
-      done();
-    });
+  before(function (done) {
+    helper.before(done, mongoose)
   });
-
-  after(function(done) {
-    console.log("After");
-    let clear = false;
-    if (clear) {
-      console.log("Clear test database!");
-      mongoose.connection.db.dropDatabase(function() {
-        mongoose.connection.close(function() {
-          console.log("Close test database!");
-          done();
-        });
-      });
-    } else {
-      mongoose.connection.close(function() {
-        console.log("Close test database!");
-        done();
-      });
-    }
+  after(function (done) {
+    let collection = 'users'
+    helper.after(done, mongoose, collection)
   });
 
   it("should be invalid if id is empty", function(done) {

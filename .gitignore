@@ -24,3 +24,4 @@ makeEhr/util/camelcase-output\.txt
 
 makeEhr/util/camelcase-input\.txt
 **/coverage/***
+database/\.nyc_output/
