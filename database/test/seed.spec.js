@@ -7,7 +7,7 @@ const helper = new Helper()
 import Model from '../models/seed';
 
 const typeName = 'Seed'
-const collectionName = 'seeds'
+const collectionName = 'seeddatas'
 
 /* global describe it */
 describe(`${typeName} mongoose schema testing`, function () {

@@ -1,4 +1,10 @@
 export default class Helper {
+  constructor () {
+    this.clear = true
+  }
+  setClear(bool) {
+    this.clear = bool
+  }
 
   before(done, mongoose) {
     mongoose.connect(
@@ -14,14 +20,13 @@ export default class Helper {
   }
 
   after(done, mongoose, collection) {
-    let clear = true;
     function close() {
       mongoose.connection.close(function () {
         // console.log('Close test database!');
         done();
       });
     }
-    if (clear) {
+    if (this.clear) {
       // console.log(`drop collection ${collection}!`);
       mongoose.connection.db.dropCollection(collection, function (err) {
         // console.log(`dropped collection ${collection}!`);
