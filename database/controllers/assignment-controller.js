@@ -2,10 +2,12 @@ import BaseController from './base'
 import Assignment from '../models/assignment'
 const debug = require('debug')('server')
 
+export const DEFAULT_ASSIGNMENT_EXTERNAL_ID = 'defaultNonAssignment'
+
+
 export default class AssignmentController extends BaseController {
   constructor () {
     super(Assignment, '_id')
-    this.defaultNonAssignment = 'defaultNonAssignment'
   }
 
   locateAssignmentByExternalId (externalId) {
@@ -15,7 +17,7 @@ export default class AssignmentController extends BaseController {
     return this.findOne(query)
     .then((result) => {
       if (!result) {
-        query = { externalId: _this.defaultNonAssignment }
+        query = { externalId: DEFAULT_ASSIGNMENT_EXTERNAL_ID }
         console.log('Could not find assignment for ' + externalId + '. Search for ' + _this.defaultNonAssignment)
         return _this.findOne(query)
       }
