@@ -1,12 +1,12 @@
 export default class Helper {
   constructor () {
-    this.clear = true
+    this.clear = true;
   }
-  setClear(bool) {
-    this.clear = bool
+  setClear (bool) {
+    this.clear = bool;
   }
 
-  before(done, mongoose) {
+  before (done, mongoose) {
     mongoose.connect(
       'mongodb://localhost:27018/unittest',
       { useNewUrlParser: true }
@@ -19,8 +19,8 @@ export default class Helper {
     });
   }
 
-  after(done, mongoose, collection) {
-    function close() {
+  after (done, mongoose, collection) {
+    function close () {
       mongoose.connection.close(function () {
         // console.log('Close test database!');
         done();
@@ -30,11 +30,10 @@ export default class Helper {
       // console.log(`drop collection ${collection}!`);
       mongoose.connection.db.dropCollection(collection, function (err) {
         // console.log(`dropped collection ${collection}!`);
-        close()
+        close();
       });
     } else {
-      close()
+      close();
     }
   }
-
 }

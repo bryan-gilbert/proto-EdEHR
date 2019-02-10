@@ -70,43 +70,42 @@ describe(`${typeName} mongoose schema testing`, function () {
 
   it(`${typeName} create, read, then delete model`, function (done) {
     let m = new BaseController(Model, '_id');
-    let key = 'testing2'
+    let key = 'testing2';
     let data = {
       name: key,
       description: 'a test seed',
       seedData: { foo: 'bar' }
     };
-    let id
+    let id;
     m.create(data)
-    .then(doc => {
-      should.exist(doc);
-      should.exist(doc.seedData);
-      doc.seedData.should.have.property('foo');
-      return doc
-    })
-    .then(doc => {
-      should.exist(doc);
-      // console.log('read id ', doc._id)
-      id = doc._id
-      return m.read(id)
-    })
-    .then(doc => {
-      // console.log('results of read doc:', doc)
-      should.exist(doc);
-      should.exist(doc.seeddata);
-      let model = doc.seeddata
-      // console.log('results of read model:', model)
-      should.exist(model.seedData);
-      model.seedData.should.have.property('foo');
-      return m.delete(id)
-    })
-    .then(() => {
-      done();
-    })
-    .catch(err => {
-      console.log(`${typeName} create ${modelName} error: ${err}`);
-      done();
-    });
+      .then(doc => {
+        should.exist(doc);
+        should.exist(doc.seedData);
+        doc.seedData.should.have.property('foo');
+        return doc;
+      })
+      .then(doc => {
+        should.exist(doc);
+        // console.log('read id ', doc._id)
+        id = doc._id;
+        return m.read(id);
+      })
+      .then(doc => {
+        // console.log('results of read doc:', doc)
+        should.exist(doc);
+        should.exist(doc.seeddata);
+        let model = doc.seeddata;
+        // console.log('results of read model:', model)
+        should.exist(model.seedData);
+        model.seedData.should.have.property('foo');
+        return m.delete(id);
+      })
+      .then(() => {
+        done();
+      })
+      .catch(err => {
+        console.log(`${typeName} create ${modelName} error: ${err}`);
+        done();
+      });
   });
-
 });

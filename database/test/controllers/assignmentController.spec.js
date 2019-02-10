@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 import Helper from '../helper';
 const helper = new Helper();
 import AssignmentController from '../../controllers/assignment-controller';
-import {DEFAULT_ASSIGNMENT_EXTERNAL_ID} from '../../controllers/assignment-controller';
+import { DEFAULT_ASSIGNMENT_EXTERNAL_ID } from '../../controllers/assignment-controller';
 import Model from '../../models/seed';
 
 const typeName = 'AssignmentController';
@@ -79,18 +79,16 @@ describe(`${typeName} mongoose schema testing`, function () {
       seedData: { foo: 'bar' }
     };
     m.create(data)
-    .then(doc => {
-      should.exist(doc);
-    })
-    .then( () => {
-      return m.locateAssignmentByExternalId('999')
-    })
-    .then(defaultDoc => {
-      should.exist(defaultDoc);
-      defaultDoc.externalId.should.equal(DEFAULT_ASSIGNMENT_EXTERNAL_ID)
-      done();
-    })
-
+      .then(doc => {
+        should.exist(doc);
+      })
+      .then(() => {
+        return m.locateAssignmentByExternalId('999');
+      })
+      .then(defaultDoc => {
+        should.exist(defaultDoc);
+        defaultDoc.externalId.should.equal(DEFAULT_ASSIGNMENT_EXTERNAL_ID);
+        done();
+      });
   });
-
 });
