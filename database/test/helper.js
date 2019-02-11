@@ -1,5 +1,6 @@
 import Consumer from '../models/consumer'
 import Assignment from '../models/assignment'
+const { ltiVersions, LTI_BASIC } = require('../utils/lti')
 
 export default class Helper {
   constructor() {
@@ -88,6 +89,21 @@ export default class Helper {
       oauth_consumer_secret: '1234',
       lti_version: '1.0'
     }
+  }
+
+  sampleValidLtiData() {
+    let ltiData = {
+      resource_link_id: '1234',
+      user_id: '1',
+      lti_version: ltiVersions()[0],
+      lti_message_type: LTI_BASIC,
+      roles:'student',
+      oauth_consumer_key: 'aKey',
+      oauth_consumer_secret: 'aSecrete',
+      context_id: 'some context id',
+      custom_assignment: '1'
+    }
+    return ltiData
   }
 
   createConsumer() {

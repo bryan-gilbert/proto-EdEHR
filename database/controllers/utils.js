@@ -1,9 +1,4 @@
 
-const LTI_VERSIONS = ['LTI-1p0']
-export function ltiVersions () {
-  return LTI_VERSIONS
-}
-
 /*
 the ok and fail functions are used in route controllers. See for example base.js
 */

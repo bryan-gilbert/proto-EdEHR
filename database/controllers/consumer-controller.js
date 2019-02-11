@@ -1,6 +1,6 @@
 import BaseController from './base'
 import Consumer from '../models/consumer'
-const {ltiVersions} = require('./utils')
+const {ltiVersions} = require('../utils/lti')
 const KEY = 'edehrkey'
 const SECRET = 'edehrsecret'
 
