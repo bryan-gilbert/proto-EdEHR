@@ -14,36 +14,27 @@ const collectionName = 'assignments';
 // helper.setClear(false)
 
 /* global describe it */
-describe(`${typeName} mongoose schema testing`, function () {
+describe(`${typeName} controller testing`, function () {
   before(function (done) {
     helper.before(done, mongoose);
   });
 
   after(function (done) {
-    helper.after(done, mongoose, collectionName);
+    helper.afterTests(done, mongoose, collectionName);
   });
 
   it(`${typeName} be valid with model and key`, function (done) {
     let m = new AssignmentController(Model, 'user_id');
-    // These are tested in baseController.spec.js
-    // m.should.have.property('baseFindOneQuery');
-    // m.should.have.property('read');
-    // m.should.have.property('delete');
-    // m.should.have.property('list');
-    // m.should.have.property('create');
-    // m.should.have.property('route');
     m.should.have.property('locateAssignmentByExternalId');
     done();
   });
 
+  let seedData = {foo: "bar"}
+  let key = '1'
+
   it(`${typeName} create model`, function (done) {
     let m = new AssignmentController(Model, 'name');
-    let data = {
-      externalId: '1',
-      name: '1234',
-      description: 'a test assignment',
-      seedData: { foo: 'bar' }
-    };
+    let data = helper.sampleAssignmentSpec(seedData, key)
     m.create(data)
       .then(doc => {
         should.exist(doc);
@@ -58,7 +49,7 @@ describe(`${typeName} mongoose schema testing`, function () {
 
   it(`${typeName} use locateAssignmentByExternalId`, function (done) {
     let m = new AssignmentController(Model, 'name');
-    m.locateAssignmentByExternalId('1')
+    m.locateAssignmentByExternalId(key)
       .then(doc => {
         // console.log('results', doc)
         should.exist(doc);
@@ -72,12 +63,7 @@ describe(`${typeName} mongoose schema testing`, function () {
 
   it(`${typeName} ask for assignment that doesn't exist`, function (done) {
     let m = new AssignmentController(Model, 'name');
-    let data = {
-      externalId: DEFAULT_ASSIGNMENT_EXTERNAL_ID,
-      name: '1234',
-      description: 'a default ' + DEFAULT_ASSIGNMENT_EXTERNAL_ID,
-      seedData: { foo: 'bar' }
-    };
+    let data = helper.sampleAssignmentSpec(seedData, DEFAULT_ASSIGNMENT_EXTERNAL_ID)
     m.create(data)
       .then(doc => {
         should.exist(doc);

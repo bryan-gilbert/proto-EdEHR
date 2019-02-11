@@ -7,6 +7,7 @@ import Model from '../../models/assignment';
 
 const typeName = 'Assignment';
 const collectionName = 'assignments';
+let       seedData=  { foo: 'bar' }
 
 /* global describe it */
 describe(`${typeName} mongoose schema testing`, function () {
@@ -15,7 +16,7 @@ describe(`${typeName} mongoose schema testing`, function () {
   });
 
   after(function (done) {
-    helper.after(done, mongoose, collectionName);
+    helper.afterTests(done, mongoose, collectionName);
   });
 
   it(`${typeName} be valid params are empty`, function (done) {
@@ -28,14 +29,7 @@ describe(`${typeName} mongoose schema testing`, function () {
   });
 
   it(`${typeName} can save one`, function (done) {
-    const newUser = new Model({
-      externalId: '1234',
-      name: 'test assignment',
-      description: 'an assignment',
-      ehrRoutePath: '/ehr/path',
-      ehrRouteName: 'pathName',
-      seedData: { foo: 'bar' }
-    });
+    const newUser = new Model(helper.sampleAssignmentSpec(seedData));
     newUser
       .save()
       .then(() => {

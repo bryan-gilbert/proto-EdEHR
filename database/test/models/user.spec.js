@@ -12,7 +12,7 @@ describe('user mongoose schema testing', function () {
   });
   after(function (done) {
     let collection = 'users';
-    helper.after(done, mongoose, collection);
+    helper.afterTests(done, mongoose, collection);
   });
 
   it('user should be invalid if id is empty', function (done) {

@@ -15,13 +15,13 @@ const collectionName = 'seeddatas';
 // helper.setClear(false)
 
 /* global describe it */
-describe(`${typeName} mongoose schema testing`, function () {
+describe(`${typeName} controller testing`, function () {
   before(function (done) {
     helper.before(done, mongoose);
   });
 
   after(function (done) {
-    helper.after(done, mongoose, collectionName);
+    helper.afterTests(done, mongoose, collectionName);
   });
 
   it(`${typeName} be valid with model and key`, function (done) {

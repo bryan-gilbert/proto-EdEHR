@@ -15,7 +15,7 @@ describe(`${typeName} mongoose schema testing`, function () {
   });
 
   after(function (done) {
-    helper.after(done, mongoose, collectionName);
+    helper.afterTests(done, mongoose, collectionName);
   });
 
   it(`${typeName} be valid params are empty`, function (done) {

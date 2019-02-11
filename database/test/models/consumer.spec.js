@@ -13,7 +13,7 @@ describe('Consumer mongoose schema testing', function () {
 
   after(function (done) {
     let collection = 'consumers';
-    helper.after(done, mongoose, collection);
+    helper.afterTests(done, mongoose, collection);
   });
 
   it('consumer should be invalid if key and secret Are empty', function (done) {
@@ -25,12 +25,8 @@ describe('Consumer mongoose schema testing', function () {
     });
   });
   it('can save one ', function (done) {
-    const newUser = new Consumer({
-      oauth_consumer_key: '1234',
-      oauth_consumer_secret: '1234',
-      lti_version: '1.0'
-    });
-    newUser
+    const model = new Consumer(helper.sampleConsumerSpec());
+    model
       .save()
       .then(() => {
         done();
