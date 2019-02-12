@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import cors from 'cors'
-import seed from '../config/lib/seed'
+import dbSeeder from '../config/lib/dbSeeder'
 import {AssignmentMismatchError} from '../utils/errors'
 import ActivityController from '../controllers/activity-controller'
 import ActivityDataController from '../controllers/activity-data-controller'
@@ -27,7 +27,7 @@ const debug = require('debug')('server')
 export function apiMiddle (app, config) {
   if (config.seedDB) {
     console.log('seeding')
-    seed()
+    dbSeeder()
   }
 
   const fileStoreOptions = {}

@@ -33,17 +33,15 @@ var FORCE = false
 var checkIntegration = function (name, override) {
   return new Promise(function (resolve /* reject */) {
     if (override) return resolve(true)
-    IntegrationModel.findOne({ module: name })
+    return IntegrationModel.findOne({ module: name })
     .then((row) => {
       if (row) {
         console.log('seeding ' + name + ' is done')
-        return resolve(override)
+        return resolve(false)
       }
+      console.log('create integration record ' + name)
       IntegrationModel.create({ module: name })
         .then((integration) => {
-          var i = integration
-          console.log('seeding ' + name)
-          i.save()
           resolve(true)
         })
     })
@@ -54,17 +52,20 @@ var checkIntegration = function (name, override) {
 }
 
 function doIntegrations () {
-  checkIntegration('consumers', false).then((go) => {
+  return checkIntegration('consumers', false)
+  .then((go) => {
     if (go) {
       require('../seed-data/consumers')(true)
     }
   })
-
-  checkIntegration('assignments13').then((go) => {
-    if (go) {
-      require('../seed-data/assignments')(true)
-    }
+  .then(() => {
+    return checkIntegration('assignments13').then((go) => {
+      if (go) {
+        require('../seed-data/assignments')(true)
+      }
+    })
   })
+
 
   // =========================================================================
   //
@@ -91,7 +92,7 @@ function doIntegrations () {
 export default function () {
   console.log('begin asynchronous seeding...')
 
-  Promise.resolve()
+  return Promise.resolve()
   .then(() => {
     if (FORCE) {
       return IntegrationModel.clearAll()

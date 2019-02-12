@@ -23,7 +23,7 @@ module.exports = function () {
       }
       Consumer.create(def)
       .then((response, reject) => {
-        console.log('save results', response, reject)
+        // console.log('save results', response, reject)
         resolve()
       })
     })

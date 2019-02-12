@@ -33,7 +33,7 @@ describe(`${typeName} controller testing`, function() {
   let key = '1'
 
   it(`${typeName} create model`, function(done) {
-    let m = new AssignmentController(Model, 'name')
+    let m = new AssignmentController()
     let data = Helper.sampleAssignmentSpec(seedData, key)
     m.create(data)
       .then(doc => {

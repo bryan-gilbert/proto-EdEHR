@@ -15,7 +15,7 @@ process.on('uncaughtException', function(error) {
   console.error('UNCAUGHT EXCEPTION', error, error.stack)
 })
 
-
+let DatabaseName = 'unittest'
 let DefaultUserId = '51234'
 let Default = {
   oauth_consumer_key: 'aKey',
@@ -33,16 +33,18 @@ export default class Helper {
   }
 
   before(done, mongoose) {
+    mongoose.set('useCreateIndex', true)
     mongoose.connect(
       'mongodb://localhost:27018/unittest',
       { useNewUrlParser: true }
     )
     const db = mongoose.connection
     db.on('error', console.error.bind(console, 'connection error'))
+    console.log('Begin connection to ' + DatabaseName);
     db.once('open', function() {
-      // console.log('We are connected to test database!');
+      console.log('We are connected to test database!');
       mongoose.connection.db.dropDatabase(function(err) {
-        console.log('dropped dropDatabase')
+        console.log('dropped '+DatabaseName+' dropDatabase')
         done()
       })
     })

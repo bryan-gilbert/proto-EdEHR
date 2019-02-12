@@ -19,7 +19,7 @@
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "ims-lti": "file:../../ims-lti",
-    "mongoose": "^5.2.7",
+    "mongoose": "^5.4.11",
     "mongoose-unique-validator": "^2.0.2",
     "passport": "^0.4.0",
     "passport-custom": "^1.0.5",
