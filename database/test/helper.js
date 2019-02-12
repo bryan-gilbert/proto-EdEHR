@@ -1,13 +1,13 @@
 import Consumer from '../models/consumer'
 import Assignment from '../models/assignment'
 const { ltiVersions, LTI_BASIC } = require('../utils/lti')
-import { DEFAULT_ASSIGNMENT_EXTERNAL_ID } from '../controllers/assignment-controller';
+import { DEFAULT_ASSIGNMENT_EXTERNAL_ID } from '../controllers/assignment-controller'
 
-process.on('unhandledRejection', function (error, promise) {
+process.on('unhandledRejection', function(error, promise) {
   console.error('UNHANDLED REJECTION', error.stack)
 })
 
-process.on('uncaughtException', function (error) {
+process.on('uncaughtException', function(error) {
   console.error('UNCAUGHT EXCEPTION', error, error.stack)
 })
 
@@ -110,7 +110,7 @@ export default class Helper {
       user_id: '1',
       lti_version: ltiVersions()[0],
       lti_message_type: LTI_BASIC,
-      roles:'student',
+      roles: 'student',
       oauth_consumer_key: 'aKey',
       oauth_consumer_secret: 'aSecrete',
       context_id: 'some context id',

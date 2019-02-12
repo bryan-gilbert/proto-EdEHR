@@ -24,17 +24,17 @@ describe(`${typeName} mongoose schema testing`, function() {
   let theConsumer
   let theAssignment
   it('Create a tool consumer for testing ', function(done) {
-    helper.createConsumer()
-    .then(doc => {
-      theConsumer = doc
-      return helper.createAssignment(seedData)
-    })
-    .then(doc => {
-      theAssignment = doc
-      done()
-    })
+    helper
+      .createConsumer()
+      .then(doc => {
+        theConsumer = doc
+        return helper.createAssignment(seedData)
+      })
+      .then(doc => {
+        theAssignment = doc
+        done()
+      })
   })
-
 
   it(`${typeName} be valid params are empty`, function(done) {
     let m = new Model()

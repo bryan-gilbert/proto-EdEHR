@@ -6,10 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "start-dev": "NODE_ENV=development DEBUG=server node index.js",
-    "test-jest": "jest",
-    "test": "nyc mocha --require @babel/register test/**/*.spec.js",
-    "test-babel": "mocha --require @babel/register",
-    "test-nyc": "nyc mocha"
+    "test": "nyc mocha --require @babel/register test/**/*.spec.js"
   },
   "author": "Bryan Gilbert",
   "license": "MIT",

@@ -7,9 +7,9 @@ import LTIController from '../../controllers/lti'
 import Helper from '../helper'
 const helper = new Helper()
 const { ltiVersions, LTI_BASIC } = require('../../utils/lti')
-import Assignment from '../../models/assignment';
+import Assignment from '../../models/assignment'
 
-let seedData=  { foo: 'bar' }
+let seedData = { foo: 'bar' }
 let assignmentKey = '59'
 
 helper.setClear(false)
@@ -27,23 +27,22 @@ describe('LTI controller testing', function() {
   let oauth_consumer_secret
   let theAssignment
   it('Create a tool consumer for testing ', function(done) {
-    const assignment = new Assignment(helper.sampleAssignmentSpec(seedData, assignmentKey));
-    helper.createConsumer()
-    .then(doc => {
+    const assignment = new Assignment(helper.sampleAssignmentSpec(seedData, assignmentKey))
+    helper.createConsumer().then(doc => {
       theConsumer = doc
       oauth_consumer_key = theConsumer.oauth_consumer_key
       oauth_consumer_secret = theConsumer.oauth_consumer_secret
       assignment
-      .save()
-      .then((doc) => {
-        // console.log('created an assignment', doc)
-        theAssignment = doc
-        return helper.createDefaultAssignment()
-      })
-      .then((doc) => {
-        console.log('created default assignment', doc)
-        done();
-      })
+        .save()
+        .then(doc => {
+          // console.log('created an assignment', doc)
+          theAssignment = doc
+          return helper.createDefaultAssignment()
+        })
+        .then(doc => {
+          console.log('created default assignment', doc)
+          done()
+        })
     })
   })
 
@@ -67,7 +66,7 @@ describe('LTI controller testing', function() {
   })
 
   it('validate lti data', function(done) {
-    function expectErrorCallback(error){
+    function expectErrorCallback(error) {
       should.exist(error)
       error.should.have.property('name')
       error.should.have.property('message')
@@ -76,13 +75,13 @@ describe('LTI controller testing', function() {
       done()
     }
     let ltiData = helper.sampleValidLtiData()
-    let result = ltiController.validateLti(ltiData,expectErrorCallback)
+    let result = ltiController.validateLti(ltiData, expectErrorCallback)
     should.ok(result)
     done()
   })
 
   it('validate invalid lti data', function(done) {
-    function expectErrorCallback(error){
+    function expectErrorCallback(error) {
       should.exist(error)
       error.should.have.property('name')
       error.should.have.property('message')
@@ -92,7 +91,7 @@ describe('LTI controller testing', function() {
     }
     let ltiData = helper.sampleValidLtiData()
     delete ltiData.custom_assignment
-    let result = ltiController.validateLti(ltiData,expectErrorCallback)
+    let result = ltiController.validateLti(ltiData, expectErrorCallback)
     should.fail(result)
     done()
   })
@@ -101,48 +100,43 @@ describe('LTI controller testing', function() {
   it('should return true if good headers and oauth', done => {
     let ltiData = helper.sampleValidLtiData()
     ltiData.oauth_consumer_key = oauth_consumer_key
-    ltiData.oauth_consumer_secret = oauth_consumer_secret;
-    ltiData = Object.assign(ltiData,{
+    ltiData.oauth_consumer_secret = oauth_consumer_secret
+    ltiData = Object.assign(ltiData, {
       resource_link_id: 'http://link-to-resource.com/resource',
       oauth_customer_key: 'key',
       oauth_signature_method: 'HMAC-SHA1',
       oauth_timestamp: Math.round(Date.now() / 1000),
-      oauth_nonce: Date.now() + Math.random() * 100,
+      oauth_nonce: Date.now() + Math.random() * 100
     })
     req = {
       url: 'http://example.org/test',
       method: 'POST',
       connection: {
-        encrypted: undefined,
+        encrypted: undefined
       },
       headers: {
-        host: 'localhost',
+        host: 'localhost'
       },
-      body: ltiData,
-    };
-    let signer = new HMAC_SHA1();
+      body: ltiData
+    }
+    let signer = new HMAC_SHA1()
     //sign the fake request
-    const signature = signer.build_signature(
-      req,
-      req.body,
-      oauth_consumer_secret
-    );
-    req.body.oauth_signature = signature;
+    const signature = signer.build_signature(req, req.body, oauth_consumer_secret)
+    req.body.oauth_signature = signature
 
     ltiController.strategyVerify(req, function(err, user) {
-      should.not.exist(err);
+      should.not.exist(err)
       should.exist(user)
-      user.should.have.property('user_id');
+      user.should.have.property('user_id')
       // console.log('inside strategy verify callback', user.user_id)
       user.user_id.should.equal(ltiData.user_id)
       req.user = user
-      done();
-    });
-  });
+      done()
+    })
+  })
 
   it('lti _postLtiChain', function(done) {
-    let result = ltiController._postLtiChain(req)
-    .then(() => {
+    let result = ltiController._postLtiChain(req).then(() => {
       should.exist(req.visit)
       should.exist(req.activity)
       should.exist(req.assignment)
@@ -154,5 +148,4 @@ describe('LTI controller testing', function() {
       done()
     })
   })
-
 })
