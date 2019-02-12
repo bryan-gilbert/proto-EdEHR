@@ -7,7 +7,12 @@ import LTIController from '../../controllers/lti'
 import Helper from '../helper'
 const helper = new Helper()
 const { ltiVersions, LTI_BASIC } = require('../../utils/lti')
+import Assignment from '../../models/assignment';
 
+let seedData=  { foo: 'bar' }
+let assignmentKey = '59'
+
+helper.setClear(false)
 /* global describe it */
 describe('LTI controller testing', function() {
   before(function(done) {
@@ -20,13 +25,25 @@ describe('LTI controller testing', function() {
   let theConsumer
   let oauth_consumer_key
   let oauth_consumer_secret
+  let theAssignment
   it('Create a tool consumer for testing ', function(done) {
+    const assignment = new Assignment(helper.sampleAssignmentSpec(seedData, assignmentKey));
     helper.createConsumer()
     .then(doc => {
       theConsumer = doc
       oauth_consumer_key = theConsumer.oauth_consumer_key
       oauth_consumer_secret = theConsumer.oauth_consumer_secret
-      done()
+      assignment
+      .save()
+      .then((doc) => {
+        // console.log('created an assignment', doc)
+        theAssignment = doc
+        return helper.createDefaultAssignment()
+      })
+      .then((doc) => {
+        console.log('created default assignment', doc)
+        done();
+      })
     })
   })
 
@@ -42,11 +59,7 @@ describe('LTI controller testing', function() {
     ltiController.should.have.property('initializeApp')
     ltiController.should.have.property('strategyVerify')
     ltiController.should.have.property('validateLti')
-    ltiController.should.have.property('findCreateUser')
-    ltiController.should.have.property('locateAssignment')
-    ltiController.should.have.property('updateToolConsumer')
-    ltiController.should.have.property('updateActivity')
-    ltiController.should.have.property('updateVisit')
+    ltiController.should.have.property('_postLtiChain')
 
     let route = ltiController.route()
     should.exist(route)
@@ -67,6 +80,7 @@ describe('LTI controller testing', function() {
     should.ok(result)
     done()
   })
+
   it('validate invalid lti data', function(done) {
     function expectErrorCallback(error){
       should.exist(error)
@@ -83,6 +97,7 @@ describe('LTI controller testing', function() {
     done()
   })
 
+  let req
   it('should return true if good headers and oauth', done => {
     let ltiData = helper.sampleValidLtiData()
     ltiData.oauth_consumer_key = oauth_consumer_key
@@ -94,7 +109,7 @@ describe('LTI controller testing', function() {
       oauth_timestamp: Math.round(Date.now() / 1000),
       oauth_nonce: Date.now() + Math.random() * 100,
     })
-    const req = {
+    req = {
       url: 'http://example.org/test',
       method: 'POST',
       connection: {
@@ -110,32 +125,34 @@ describe('LTI controller testing', function() {
     const signature = signer.build_signature(
       req,
       req.body,
-      'secret'
+      oauth_consumer_secret
     );
     req.body.oauth_signature = signature;
 
-    ltiController.strategyVerify(req, function(err, valid) {
+    ltiController.strategyVerify(req, function(err, user) {
       should.not.exist(err);
-      valid.should.equal(true);
+      should.exist(user)
+      user.should.have.property('user_id');
+      // console.log('inside strategy verify callback', user.user_id)
+      user.user_id.should.equal(ltiData.user_id)
+      req.user = user
       done();
     });
   });
 
-  // strategyVerify
-  it.skip('lti strategyVerify', function(done) {
-    let ltiData = helper.sampleValidLtiData()
-    ltiData.oauth_consumer_key = oauth_consumer_key
-    ltiData.oauth_consumer_secret = oauth_consumer_secret;
-    let req = {
-      body: ltiData,
-      connection: ''
-    }
-    function emptyCallback(error, user){
-      console.log('Inside callback', error, user)
-    }
-    let result = ltiController.strategyVerify(req,emptyCallback)
-    console.log('after strategy verify ', result)
-    done()
+  it('lti _postLtiChain', function(done) {
+    let result = ltiController._postLtiChain(req)
+    .then(() => {
+      should.exist(req.visit)
+      should.exist(req.activity)
+      should.exist(req.assignment)
+      should.exist(req.assignment.seedData)
+      req.assignment.seedData.should.have.property('foo')
+      // console.log(req.assignment)
+      //
+      // console.log('after _postLtiChain ')
+      done()
+    })
   })
 
 })

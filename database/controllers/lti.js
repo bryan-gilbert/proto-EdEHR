@@ -97,7 +97,7 @@ export default class LTIController {
             }
             let userId = ltiData['user_id']
             debug('strategyVerify find userId: ' + userId + ' consumer: ' + consumerKey)
-            _this.findCreateUser(userId, req.toolConsumer._id, ltiData).then(user => {
+            _this._findCreateUser(userId, req.toolConsumer._id, ltiData).then(user => {
               callback(null, user)
             })
           })
@@ -153,7 +153,7 @@ export default class LTIController {
     return true
   }
 
-  findCreateUser(userId, toolConsumerId, ltiData) {
+  _findCreateUser(userId, toolConsumerId, ltiData) {
     return UserModel.findOne({
       $and: [{ user_id: userId }, { toolConsumer: toolConsumerId }]
     }).then((foundUser, r) => {
@@ -252,6 +252,26 @@ export default class LTIController {
     })
   }
 
+  _postLtiChain(req) {
+    const _this = this
+    return Promise.resolve()
+    .then(() => {
+      return _this.updateToolConsumer(req)
+    })
+    .then(() => {
+      return _this.updateOutcomeManagement(req)
+    })
+    .then(() => {
+      return _this.locateAssignment(req)
+    })
+    .then(() => {
+      return _this.updateActivity(req)
+    })
+    .then(() => {
+      return _this.updateVisit(req)
+    })
+
+  }
   route() {
     const router = new Router()
     router.get('/', (req, res) => {
@@ -261,22 +281,7 @@ export default class LTIController {
       const _this = this
       req.errors = []
       debug('have authenticated user. Now process the lti launch request')
-      Promise.resolve()
-        .then(() => {
-          return _this.updateToolConsumer(req)
-        })
-        .then(() => {
-          return _this.updateOutcomeManagement(req)
-        })
-        .then(() => {
-          return _this.locateAssignment(req)
-        })
-        .then(() => {
-          return _this.updateActivity(req)
-        })
-        .then(() => {
-          return _this.updateVisit(req)
-        })
+      this._postLtiChain(req)
         .then(() => {
           if (!req.visit) {
             throw new SystemError('Missing visit while preparing to redirect')

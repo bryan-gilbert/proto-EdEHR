@@ -28,7 +28,7 @@ export default class ConsumerController extends BaseController {
     .then((found) => {
       if (found && found.length > 0) {
         const consumer = found[0]
-        console.log('Consumer key ', key, 'found consumer', consumer.tool_consumer_instance_name)
+        // console.log('Consumer key ', key, 'found consumer', consumer.tool_consumer_instance_name)
         return consumer
       }
       return null

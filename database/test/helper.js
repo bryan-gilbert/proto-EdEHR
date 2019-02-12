@@ -1,6 +1,15 @@
 import Consumer from '../models/consumer'
 import Assignment from '../models/assignment'
 const { ltiVersions, LTI_BASIC } = require('../utils/lti')
+import { DEFAULT_ASSIGNMENT_EXTERNAL_ID } from '../controllers/assignment-controller';
+
+process.on('unhandledRejection', function (error, promise) {
+  console.error('UNHANDLED REJECTION', error.stack)
+})
+
+process.on('uncaughtException', function (error) {
+  console.error('UNCAUGHT EXCEPTION', error, error.stack)
+})
 
 export default class Helper {
   constructor() {
@@ -19,7 +28,10 @@ export default class Helper {
     db.on('error', console.error.bind(console, 'connection error'))
     db.once('open', function() {
       // console.log('We are connected to test database!');
-      done()
+      mongoose.connection.db.dropDatabase(function(err) {
+        console.log('dropped dropDatabase')
+        done()
+      })
     })
   }
 
@@ -62,7 +74,7 @@ export default class Helper {
   sampleActivity(consumer, assignment) {
     return {
       toolConsumer: consumer._id,
-      resource_link_id: '1234',
+      resource_link_id: '346',
       context_id: 'context id',
       context_label: 'test context label',
       context_title: 'title',
@@ -75,7 +87,7 @@ export default class Helper {
 
   sampleAssignmentSpec(seedDataObject, key) {
     return {
-      externalId: key || '1234',
+      externalId: key || '59',
       name: 'test assignment',
       description: 'an assignment',
       ehrRoutePath: '/ehr/path',
@@ -87,7 +99,8 @@ export default class Helper {
     return {
       oauth_consumer_key: '1234',
       oauth_consumer_secret: '1234',
-      lti_version: '1.0'
+      lti_version: '1.0',
+      tool_consumer_instance_name: 'unit testing sample consumer'
     }
   }
 
@@ -101,7 +114,8 @@ export default class Helper {
       oauth_consumer_key: 'aKey',
       oauth_consumer_secret: 'aSecrete',
       context_id: 'some context id',
-      custom_assignment: '1'
+      custom_assignment: '59',
+      tool_consumer_instance_name: 'unit testing consumer'
     }
     return ltiData
   }
@@ -114,5 +128,11 @@ export default class Helper {
   createAssignment(seedData) {
     const model = new Assignment(this.sampleAssignmentSpec(seedData))
     return model.save()
+  }
+
+  createDefaultAssignment() {
+    let data = this.sampleAssignmentSpec({}, DEFAULT_ASSIGNMENT_EXTERNAL_ID)
+    const model = new Assignment(data)
+    return model.save(data)
   }
 }

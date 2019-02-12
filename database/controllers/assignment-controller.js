@@ -18,7 +18,7 @@ export default class AssignmentController extends BaseController {
     .then((result) => {
       if (!result) {
         query = { externalId: DEFAULT_ASSIGNMENT_EXTERNAL_ID }
-        console.log('Could not find assignment for ' + externalId + '. Search for ' + _this.defaultNonAssignment)
+        console.log('Could not find assignment for ' + externalId + '. Search for ' + DEFAULT_ASSIGNMENT_EXTERNAL_ID)
         return _this.findOne(query)
       }
       return result

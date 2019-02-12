@@ -29,7 +29,7 @@ describe(`${typeName} controller testing`, function () {
     done();
   });
 
-  let seedData = {foo: "bar"}
+  let seedData = {foo: 'bar'}
   let key = '1'
 
   it(`${typeName} create model`, function (done) {
