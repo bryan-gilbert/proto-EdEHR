@@ -24,46 +24,75 @@ describe(`${typeName} controller testing`, function() {
 
   it(`${typeName} create controller `, function(done) {
     let m = new UserController()
-    let id = new ObjectID('56955ca46063c5600627f393')
-    m.should.have.property('listActivitiesAsStudent')
-    m.should.have.property('listAsInstructorCourses')
-    m.should.have.property('list')
-    m.should.have.property('route')
-    m.listAsInstructorCourses(id)
-    .catch((err) => {
-      // console.log('expected err: ', err)
+    done()
+  })
+
+
+  let theConsumer
+
+  it('Create a tool consumer for testing ', function(done) {
+    Helper
+    .createConsumer()
+    .then(doc => {
+      theConsumer = doc
+      console.log('have consumer', doc)
       done()
-      })
-
-    // should(function ()  {
-    //   m.listAsInstructorCourses(id)
-    // }).throw('what were you thinking, batman?')
-    // m.list()
-    // done()
+    })
+    .catch((err) => {
+      console.log('setup unexpected err: ', err)
+      should.not.exist(err)
+      done()
+    })
   })
 
-  it(`${typeName} create model`, function(done) {
+  it(`${typeName} create controller`, function(done) {
     let m = new UserController(Model, 'user_id')
-    let data = {
-      toolConsumer: new ObjectID('56955ca46063c5600627f393'),
-      user_id: '1234'
-    }
+    let data = Helper.sampleUserSpec(theConsumer)
     m.create(data)
-      .then(doc => {
-        should.exist(doc)
-        done()
-      })
+    .then(doc => {
+      should.exist(doc)
+      done()
+    })
   })
 
-  it.skip(`${typeName} use locateAssignmentByExternalId`, function(done) {
-    let m = new UserController(Model, 'name')
-    m.locateAssignmentByExternalId(key)
-      .then(doc => {
-        // console.log('results', doc)
-        should.exist(doc)
-        doc.seedData.should.have.property('foo')
-        done()
-      })
+  it(`${typeName} route`, function(done) {
+    let m = new UserController()
+    m.should.have.property('route')
+    m.route()
+    done()
   })
+
+  it.skip(`${typeName} listActivitiesAsStudent`, function(done) {
+    let id = new ObjectID('56955ca46063c5600627f393')
+    let m = new UserController()
+    m.should.have.property('listActivitiesAsStudent')
+    m.listActivitiesAsStudent(id)
+    .then((response) => {
+      console.log('listActivitiesAsStudent', response)
+      done()
+    })
+    .catch((err) => {
+      console.log('listActivitiesAsStudent unexpected err: ', err)
+      should.not.exist(err)
+      done()
+    })
+  })
+
+  it(`${typeName} listAsInstructorCourses`, function(done) {
+    let id = new ObjectID('56955ca46063c5600627f393')
+    let m = new UserController()
+    m.should.have.property('listAsInstructorCourses')
+    m.listAsInstructorCourses(id)
+    .then((response) => {
+      console.log('listAsInstructorCourses', response)
+      done()
+    })
+    .catch((err) => {
+      console.log('listAsInstructorCourses unexpected err: ', err)
+      should.not.exist(err)
+      done()
+    })
+  })
+
 
 })

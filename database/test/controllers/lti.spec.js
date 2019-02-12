@@ -27,8 +27,8 @@ describe('LTI controller testing', function() {
   let oauth_consumer_secret
   let theAssignment
   it('Create a tool consumer for testing ', function(done) {
-    const assignment = new Assignment(helper.sampleAssignmentSpec(seedData, assignmentKey))
-    helper.createConsumer().then(doc => {
+    const assignment = new Assignment(Helper.sampleAssignmentSpec(seedData, assignmentKey))
+    Helper.createConsumer().then(doc => {
       theConsumer = doc
       oauth_consumer_key = theConsumer.oauth_consumer_key
       oauth_consumer_secret = theConsumer.oauth_consumer_secret
@@ -37,7 +37,7 @@ describe('LTI controller testing', function() {
         .then(doc => {
           // console.log('created an assignment', doc)
           theAssignment = doc
-          return helper.createDefaultAssignment()
+          return Helper.createDefaultAssignment()
         })
         .then(doc => {
           console.log('created default assignment', doc)
@@ -74,7 +74,7 @@ describe('LTI controller testing', function() {
       console.log(error.message)
       done()
     }
-    let ltiData = helper.sampleValidLtiData()
+    let ltiData = Helper.sampleValidLtiData()
     let result = ltiController.validateLti(ltiData, expectErrorCallback)
     should.ok(result)
     done()
@@ -89,7 +89,7 @@ describe('LTI controller testing', function() {
       // console.log(error.message)
       done()
     }
-    let ltiData = helper.sampleValidLtiData()
+    let ltiData = Helper.sampleValidLtiData()
     delete ltiData.custom_assignment
     let result = ltiController.validateLti(ltiData, expectErrorCallback)
     should.fail(result)
@@ -98,7 +98,7 @@ describe('LTI controller testing', function() {
 
   let req
   it('should return true if good headers and oauth', done => {
-    let ltiData = helper.sampleValidLtiData()
+    let ltiData = Helper.sampleValidLtiData()
     ltiData.oauth_consumer_key = oauth_consumer_key
     ltiData.oauth_consumer_secret = oauth_consumer_secret
     ltiData = Object.assign(ltiData, {

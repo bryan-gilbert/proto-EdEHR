@@ -30,7 +30,7 @@ describe(`${typeName} mongoose schema testing`, function() {
 
   let key
   it(`${typeName} can save one`, function(done) {
-    let data = helper.sampleAssignmentSpec(seedData)
+    let data = Helper.sampleAssignmentSpec(seedData)
     key = data.externalId
     const newUser = new Model(data)
     newUser

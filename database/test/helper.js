@@ -1,5 +1,9 @@
 import Consumer from '../models/consumer'
 import Assignment from '../models/assignment'
+import User from '../models/user'
+import Activity from '../models/activity'
+import Role from '../controllers/roles'
+const ObjectID = require('mongodb').ObjectID
 const { ltiVersions, LTI_BASIC } = require('../utils/lti')
 import { DEFAULT_ASSIGNMENT_EXTERNAL_ID } from '../controllers/assignment-controller'
 
@@ -11,6 +15,15 @@ process.on('uncaughtException', function(error) {
   console.error('UNCAUGHT EXCEPTION', error, error.stack)
 })
 
+
+let DefaultUserId = '51234'
+let Default = {
+  oauth_consumer_key: 'aKey',
+  oauth_consumer_secret: 'aSecret',
+  custom_assignment: '59',
+  tool_consumer_instance_name: 'unit testing consumer',
+  launch_presentation_return_url: 'http://some.place.org'
+}
 export default class Helper {
   constructor() {
     this.clear = true
@@ -71,7 +84,7 @@ export default class Helper {
     }
   }
 
-  sampleActivity(consumer, assignment) {
+  static sampleActivity(consumer, assignment) {
     return {
       toolConsumer: consumer._id,
       resource_link_id: '346',
@@ -85,7 +98,7 @@ export default class Helper {
     }
   }
 
-  sampleAssignmentSpec(seedDataObject, key) {
+  static sampleAssignmentSpec(seedDataObject, key) {
     return {
       externalId: key || '59',
       name: 'test assignment',
@@ -95,44 +108,89 @@ export default class Helper {
       seedData: seedDataObject
     }
   }
-  sampleConsumerSpec() {
+
+  static sampleUserSpec(consumer, user_id) {
+    let consumerId = consumer ? consumer._id : new ObjectID('56955ca46063c5600627f393')
+    let uId = user_id || DefaultUserId
     return {
-      oauth_consumer_key: '1234',
-      oauth_consumer_secret: '1234',
-      lti_version: '1.0',
-      tool_consumer_instance_name: 'unit testing sample consumer'
+      toolConsumer: consumerId,
+      user_id: uId
     }
   }
 
-  sampleValidLtiData() {
+  static sampleConsumerSpec() {
+    return {
+      lti_version: ltiVersions()[0],
+      oauth_consumer_key: Default.oauth_consumer_key,
+      oauth_consumer_secret: Default.oauth_consumer_secret,
+      tool_consumer_instance_name: Default.tool_consumer_instance_name,
+      tool_consumer_info_product_family_code: 'Test',
+      tool_consumer_info_version: '0.0',
+      tool_consumer_instance_description: 'For unit testing',
+      tool_consumer_instance_guid: 'Unique id'
+    }
+  }
+
+  static sampleValidLtiData() {
     let ltiData = {
       resource_link_id: '1234',
-      user_id: '1',
+      user_id: DefaultUserId,
       lti_version: ltiVersions()[0],
       lti_message_type: LTI_BASIC,
       roles: 'student',
-      oauth_consumer_key: 'aKey',
-      oauth_consumer_secret: 'aSecrete',
+      oauth_consumer_key: Default.oauth_consumer_key,
+      oauth_consumer_secret: Default.oauth_consumer_secret,
       context_id: 'some context id',
-      custom_assignment: '59',
-      tool_consumer_instance_name: 'unit testing consumer'
+      custom_assignment: Default.custom_assignment,
+      tool_consumer_instance_name: Default.tool_consumer_instance_name,
+      launch_presentation_return_url: Default.launch_presentation_return_url
     }
     return ltiData
   }
 
-  createConsumer() {
-    const model = new Consumer(this.sampleConsumerSpec())
+  static sampleVisit(consumer, user, activity, assignment, role, ltiData) {
+    let theRole = role ? role : new Role('Student')
+    let theLTI = ltiData ? ltiData : {
+      launch_presentation_return_url: Default.launch_presentation_return_url
+    }
+
+    let data = {
+      toolConsumer: consumer._id,
+      user: user._id,
+      activity: activity._id,
+      assignment: assignment._id,
+      isStudent: theRole.isStudent,
+      isInstructor: theRole.isInstructor,
+      returnUrl: theLTI.launch_presentation_return_url
+    }
+    return data
+  }
+
+  static createConsumer() {
+    const model = new Consumer(Helper.sampleConsumerSpec())
     return model.save()
   }
 
-  createAssignment(seedData) {
-    const model = new Assignment(this.sampleAssignmentSpec(seedData))
+  static createUser(consumer, user_id) {
+    should.exist(consumer)
+    const model = new User(Helper.sampleUserSpec(consumer, user_id))
     return model.save()
   }
 
-  createDefaultAssignment() {
-    let data = this.sampleAssignmentSpec({}, DEFAULT_ASSIGNMENT_EXTERNAL_ID)
+
+  static createAssignment(seedData) {
+    const model = new Assignment(Helper.sampleAssignmentSpec(seedData))
+    return model.save()
+  }
+
+  static createDefaultAssignment() {
+    let data = Helper.sampleAssignmentSpec({}, DEFAULT_ASSIGNMENT_EXTERNAL_ID)
     const model = new Assignment(data)
     return model.save(data)
+  }
+
+  static createActivity(consumer, assignment) {
+    const model = new Activity(Helper.sampleActivity(consumer, assignment))
+    return model.save()
   }
 }

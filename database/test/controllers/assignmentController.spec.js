@@ -34,7 +34,7 @@ describe(`${typeName} controller testing`, function() {
 
   it(`${typeName} create model`, function(done) {
     let m = new AssignmentController(Model, 'name')
-    let data = helper.sampleAssignmentSpec(seedData, key)
+    let data = Helper.sampleAssignmentSpec(seedData, key)
     m.create(data)
       .then(doc => {
         should.exist(doc)
@@ -63,7 +63,7 @@ describe(`${typeName} controller testing`, function() {
 
   it(`${typeName} ask for assignment that doesn't exist`, function(done) {
     let m = new AssignmentController(Model, 'name')
-    let data = helper.sampleAssignmentSpec(seedData, DEFAULT_ASSIGNMENT_EXTERNAL_ID)
+    let data = Helper.sampleAssignmentSpec(seedData, DEFAULT_ASSIGNMENT_EXTERNAL_ID)
     m.create(data)
       .then(doc => {
         should.exist(doc)

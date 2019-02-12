@@ -24,11 +24,11 @@ describe(`${typeName} mongoose schema testing`, function() {
   let theConsumer
   let theAssignment
   it('Create a tool consumer for testing ', function(done) {
-    helper
+    Helper
       .createConsumer()
       .then(doc => {
         theConsumer = doc
-        return helper.createAssignment(seedData)
+        return Helper.createAssignment(seedData)
       })
       .then(doc => {
         theAssignment = doc
@@ -46,7 +46,7 @@ describe(`${typeName} mongoose schema testing`, function() {
   })
 
   it(`${typeName} can save one`, function(done) {
-    const newUser = new Model(helper.sampleActivity(theConsumer, theAssignment))
+    const newUser = new Model(Helper.sampleActivity(theConsumer, theAssignment))
     newUser
       .save()
       .then(() => {
@@ -59,7 +59,7 @@ describe(`${typeName} mongoose schema testing`, function() {
   })
 
   it(`${typeName} can find one`, function(done) {
-    let activity = helper.sampleActivity(theConsumer)
+    let activity = Helper.sampleActivity(theConsumer)
     let key = activity.resource_link_id
     Model.findOne({ resource_link_id: key }, function(err, doc) {
       // console.log('results', doc)

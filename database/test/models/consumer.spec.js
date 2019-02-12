@@ -16,7 +16,7 @@ describe('Consumer mongoose schema testing', function() {
     helper.afterTests(done, mongoose, collection)
   })
 
-  it('consumer should be invalid if key and secret Are empty', function(done) {
+  it('Consumer should be invalid if key and secret Are empty', function(done) {
     var m = new Consumer()
     m.validate(function(err) {
       // console.log('Expect error: ', err)
@@ -24,8 +24,11 @@ describe('Consumer mongoose schema testing', function() {
       done()
     })
   })
-  it('can save one ', function(done) {
-    const model = new Consumer(helper.sampleConsumerSpec())
+
+  let consumerSpec = Helper.sampleConsumerSpec()
+
+  it('Consumner can save one ', function(done) {
+    const model = new Consumer(consumerSpec)
     model
       .save()
       .then(() => {
@@ -36,12 +39,12 @@ describe('Consumer mongoose schema testing', function() {
         done()
       })
   })
-  it('can find one ', function(done) {
-    Consumer.findOne({ oauth_consumer_key: '1234' }, function(err, doc) {
+  it('Consumer can find one ', function(done) {
+    Consumer.findOne({ oauth_consumer_key: consumerSpec.oauth_consumer_key }, function(err, doc) {
       // console.log('results', doc)
       should.exist(doc)
       should.not.exist(err)
-      doc.lti_version.should.equal('1.0')
+      doc.lti_version.should.equal(consumerSpec.lti_version)
       done()
     }).catch(e => {
       console.log('find one error', e)

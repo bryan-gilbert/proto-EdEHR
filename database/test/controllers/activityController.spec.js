@@ -35,11 +35,11 @@ describe(`${typeName} controller testing`, function() {
   let theConsumer
   let theAssignment
   it('Create a tool consumer for testing ', function(done) {
-    helper
+    Helper
       .createConsumer()
       .then(doc => {
         theConsumer = doc
-        return helper.createAssignment(seedData)
+        return Helper.createAssignment(seedData)
       })
       .then(doc => {
         theAssignment = doc
@@ -50,7 +50,7 @@ describe(`${typeName} controller testing`, function() {
   let theActivity
   it(`${typeName} create model`, function(done) {
     let m = new ActivityController(Activity)
-    let data = helper.sampleActivity(theConsumer, theAssignment)
+    let data = Helper.sampleActivity(theConsumer, theAssignment)
     m.create(data).then(doc => {
       should.exist(doc)
       theActivity = doc
