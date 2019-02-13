@@ -19,21 +19,19 @@
             thead
               tr
                 th Student name
-                th User id
-                th Email
+                th Student ID
                 th Date submitted
-                th Evaluation Notes
+                th Evaluation notes
                 th Status
             tbody
               tr(v-for="sv in classList")
                 td
                   div(:id="`ref-${sv._id}`",  :ref="`ref-${sv._id}`") {{ sv.user.fullName }}
                 td {{ sv.user.user_id }}
-                td {{ sv.user.emailPrimary }}
                 td some date
                 td
                   ui-button(v-on:buttonClicked="goToEhr(sv)") Evaluate in EHR {{sv.assignment.ehrRouteName}}
-                td unknown
+                td Status
 </template>
 
 <script>
