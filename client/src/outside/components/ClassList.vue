@@ -160,19 +160,22 @@ export default {
   background-color: $grey10;
   overflow: hidden;
   margin-bottom: 0;
+
   .classlist-header {
-    padding: 1rem;
-    background-color: $grey20;
-    border: 1px solid $grey80;
+    padding: .5rem 1.5rem;
+    background-color: $grey10;
+    border: 1px solid $grey20;
+    box-sizing: border-box;
   }
   .classlist-header-item {
     display: inline-block;
     margin-right: 2rem;
   }
   .classlist-body {
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     background-color: $white;
-    border: 1px solid $grey80;
+    border: 1px solid $grey20;
+    box-sizing: border-box;
     overflow: hidden;
   }
   .table {

@@ -50,7 +50,6 @@ export default {
 .as-instructor {
   .courses {
     margin-left: 0;
-    border: 1px solid $grey60;
   }
   .course-header {
     margin-bottom: 10px;
@@ -62,7 +61,8 @@ export default {
   .activities {
     margin-bottom: 2rem; /* space between activities / class lists */
     background-color: $grey03;
-    border: 1px solid $grey60;
+    border: 1px solid $grey20;
+    box-sizing: border-box;
     overflow: hidden;
   }
 }
