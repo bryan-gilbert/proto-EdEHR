@@ -123,7 +123,7 @@ export default class Helper {
       description: 'an assignment',
       ehrRoutePath: '/ehr/path',
       ehrRouteName: 'pathName',
-      seedData: seedDataObject
+      seedData: seedDataObject || {}
     }
   }
 
