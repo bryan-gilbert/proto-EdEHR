@@ -48,6 +48,9 @@ export default {
 @import '../../scss/definitions';
 
 .as-instructor {
+  &.section {
+    padding: 1.5rem;
+  }
   .courses {
     margin-left: 0;
   }
