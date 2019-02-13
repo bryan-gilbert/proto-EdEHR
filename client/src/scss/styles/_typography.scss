@@ -16,7 +16,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
 	font-size: 30px;
-	margin-bottom: 1em;
+	margin-bottom: .75em;
 }
 
 h2 {
@@ -27,4 +27,12 @@ h2 {
 h3, .fieldset_label {
 	font-size: 20px;
 	margin-bottom: .5em
+}
+
+.icon-right {
+	margin-left: 5px;
+}
+
+.icon-left {
+	margin-right: 5px;
 }

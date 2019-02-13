@@ -13,5 +13,14 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import '../../scss/definitions';
+
+a, .table_link {
+	color: $brand-primary;
+	
+	&:hover{
+		color: $brand-primary-hover;
+	}
+}
 </style>

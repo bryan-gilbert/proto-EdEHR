@@ -2,7 +2,7 @@
   div(id="activityList", class="activity-list")
     div(class="activity-list-header columns", v-on:click="activateActivity")
       div(class="header-column is-10 column")
-        div(class="header-item header-title", :title="activity._id") {{ activity.resource_link_title }}
+        h3(class="header-item", :title="activity._id") {{ activity.resource_link_title }}
         div(class="header-item") {{ activity.resource_link_description }}
         div(class="header-item") {{ assignment.name }}  (LMS configuration: assignment={{ assignment.externalId }} )
       div(class="header-column is-2 column")
@@ -11,27 +11,27 @@
       accordion-element(theme="grayTheme", :show="show")
         div(class="classlist-header")
           div(class="classlist-header-item") Student analytics placeholder
+            fas-icon(class="icon-right", icon="download")
           div(class="classlist-header-item") Evaluation notes placeholder
+            fas-icon(class="icon-right", icon="download")
         div(class="classlist-body")
           table.table
             thead
               tr
                 th Student name
-                th User id
-                th Email
+                th Student ID
                 th Date submitted
-                th Evaluation Notes
+                th Evaluation notes
                 th Status
             tbody
               tr(v-for="sv in classList")
                 td
                   div(:id="`ref-${sv._id}`",  :ref="`ref-${sv._id}`") {{ sv.user.fullName }}
                 td {{ sv.user.user_id }}
-                td {{ sv.user.emailPrimary }}
                 td some date
                 td
                   ui-button(v-on:buttonClicked="goToEhr(sv)") Evaluate in EHR {{sv.assignment.ehrRouteName}}
-                td unknown
+                td Status
 </template>
 
 <script>
@@ -138,11 +138,11 @@ export default {
   padding: 0;
 }
 .activity-list-header {
-  background-color: $grey10;
+  background-color: $grey03;
   margin-bottom: 0;
 
   .header-column {
-    padding: 1rem 2rem 1rem 2rem;
+    padding: 1rem 1.5rem;
   }
   .header-item {
     display: block;
@@ -150,10 +150,7 @@ export default {
   .header-icon {
     font-size: 2rem;
     font-weight: bold;
-  }
-  .header-title {
-    font-weight: bold;
-    font-size: 1.2rem;
+    text-align: right;
   }
 }
 
@@ -161,19 +158,22 @@ export default {
   background-color: $grey10;
   overflow: hidden;
   margin-bottom: 0;
+
   .classlist-header {
-    padding: 1rem;
-    background-color: $grey20;
-    border: 1px solid $grey80;
+    padding: .5rem 1.5rem;
+    background-color: $grey10;
+    border: 1px solid $grey20;
+    box-sizing: border-box;
   }
   .classlist-header-item {
     display: inline-block;
     margin-right: 2rem;
   }
   .classlist-body {
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     background-color: $white;
-    border: 1px solid $grey80;
+    border: 1px solid $grey20;
+    box-sizing: border-box;
     overflow: hidden;
   }
   .table {
