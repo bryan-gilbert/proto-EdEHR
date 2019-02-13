@@ -5,6 +5,7 @@ class ParameterError extends Error {
     this.name = 'ParameterError'
     this.status = 400
     this.message = message
+    // console.log('In constructor for error PE')
   }
 }
 

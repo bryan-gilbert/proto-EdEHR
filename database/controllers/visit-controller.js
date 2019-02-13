@@ -22,6 +22,15 @@ export default class VisitController extends BaseController {
     .populate('user')
   }
 
+  /**
+   * Called from LTI controller
+   * @param user
+   * @param toolConsumer
+   * @param activity
+   * @param assignment
+   * @param ltiData
+   * @return {*}
+   */
   updateCreateVisit (user, toolConsumer, activity, assignment, ltiData) {
     debugvc('Update Create Visit')
     var role = new Role(ltiData.roles)

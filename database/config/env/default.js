@@ -2,7 +2,7 @@
 
 module.exports = {
   app: {
-    title: 'TODO add and use title',
+    title: 'Ed EHR',
     description: 'TODO add and use description',
     keywords: 'TODO add and use keywords'
   },

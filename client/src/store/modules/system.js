@@ -1,4 +1,5 @@
 const state = {
+  isSeeding: false,
   isLoading: false,
   isEditing: false,
   currentPageKey: ''
@@ -14,6 +15,9 @@ const mutations = {
   },
   setEditing: (state, isEditing) => {
     state.isEditing = isEditing
+  },
+  setSeeding: (state, isSeeding) => {
+    state.isSeeding = isSeeding
   },
   setCurrentPageKey: (state, pageKey) => {
     state.currentPageKey = pageKey

@@ -12,7 +12,7 @@ Schema.pre('save', function (next) {
   next()
 })
 
-console.log('Register schema for integration ')
+
 const Integration = mongoose.model('Integration', Schema)
 
 export default Integration

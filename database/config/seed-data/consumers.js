@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose')
 var Consumer = mongoose.model('Consumer')
-const {ltiVersions} = require('../../controllers/utils')
+const {ltiVersions} = require('../../utils/lti')
 const KEY = 'edehrkey'
 const SECRET = 'edehrsecret'
 
@@ -23,7 +23,7 @@ module.exports = function () {
       }
       Consumer.create(def)
       .then((response, reject) => {
-        console.log('save results', response, reject)
+        // console.log('save results', response, reject)
         resolve()
       })
     })

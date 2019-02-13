@@ -24,6 +24,12 @@ export default {
       })
       console.log('incoming parameters', params2)
       // API return to url
+      let seeding = params2['seeding']
+      if (seeding === 'iknowwhatimdoing') {
+        console.log('The user is saying they know what they are doing so let us allow them to edit seeds, in this prototype.')
+        this.$store.commit('system/setSeeding', true)
+      }
+      // API return to url
       let apiUrl = params2['apiUrl']
       let visitId = params2['visit']
       // Visit Id

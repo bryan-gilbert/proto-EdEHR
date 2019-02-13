@@ -1,19 +1,21 @@
 'use strict'
 
 var defaultEnvConfig = require('./default')
-
+const databaseName = 'edehr-test'
 module.exports = {
-  db: {
-    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/esm-test',
-    acluri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/esm-acl-test',
-    options: {
-      user: '',
-      pass: ''
-    },
+  port: process.env.PORT || 27000,
+  apiUrl: 'http://localhost:27000',
+  // clientUrl is the url for this server that the Ed EHR client uses to make API calls
+  clientUrl: 'http://localhost:28000',
+  defaultConsumerKey: 'edehrkey',
+
+  databaseName: databaseName,
+  database: {
+    uri: 'mongodb://localhost:27018/' + databaseName,
+    options: {useNewUrlParser: true, useCreateIndex: true},
     // Enable mongoose debug mode
     debug: process.env.MONGODB_DEBUG || false
   },
-  port: process.env.PORT || 3001,
   app: {
     title: defaultEnvConfig.app.title + ' - Test Environment'
   },

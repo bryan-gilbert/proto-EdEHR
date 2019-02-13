@@ -69,4 +69,15 @@ DB Queries
    - get the user information by user id
    - has this user worked on an assignment before?
    - does an activity exist?
-   ... etc. TBContinues    
+   ... etc. TBContinues
+   
+   
+## Testing
+To test a single test 
+```
+node node_modules/mocha/bin/mocha --require @babel/register test/controllers/lti.spec.js 
+```
+To test the full suite
+```angular2html
+npm run test
+```

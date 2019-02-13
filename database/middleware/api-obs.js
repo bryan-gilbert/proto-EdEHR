@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import cors from 'cors'
-import seed from '../config/lib/seed'
+import dbSeeder from '../config/lib/dbSeeder'
 import {AssignmentMismatchError} from '../utils/errors'
 import ActivityController from '../controllers/activity-controller'
 import ActivityDataController from '../controllers/activity-data-controller'
@@ -25,9 +25,10 @@ const uuid = require('uuid/v4')
 const debug = require('debug')('server')
 
 export function apiMiddle (app, config) {
+  console.log('api middle with ', config)
   if (config.seedDB) {
     console.log('seeding')
-    seed()
+    dbSeeder()
   }
 
   const fileStoreOptions = {}
@@ -68,8 +69,9 @@ export function apiMiddle (app, config) {
   return Promise.resolve()
     .then(admin.initializeApp(app))
     .then(lti.initializeApp(app))
-    .then(cc.initializeApp(app))
+    .then(cc.initializeApp(config.defaultConsumerKey))
     .then(() => {
+      console.log('prepare to install middle api routes')
       const api = Router()
       // for local and dev only
       api.use('/admin', admin.route())
@@ -91,6 +93,7 @@ export function apiMiddle (app, config) {
       api.use('/api/consumers', cors(corsOptions), cc.route())
       api.use('/api/users', cors(corsOptions), uc.route())
       api.use('/api/visits', cors(corsOptions), vc.route())
+      console.log('all middle api routes installed')
       return api
     })
 }

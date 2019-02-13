@@ -1,9 +1,4 @@
 
-const LTI_VERSIONS = ['LTI-1p0']
-export function ltiVersions () {
-  return LTI_VERSIONS
-}
-
 /*
 the ok and fail functions are used in route controllers. See for example base.js
 */
@@ -38,7 +33,7 @@ export function fail (res) {
       case 'CastError' :
         code = 500
         message = error.name + ' ' + error.message
-        console.log('utils/fail CastError return 500.')
+        console.log('Server utils fail CastError return 500.')
         break
       default:
         console.log('Server TODO enhance error reporting for ', error)

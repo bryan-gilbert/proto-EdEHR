@@ -8,6 +8,7 @@ const Schema = new mongoose.Schema({
   description: { type: String },
   ehrRoutePath: { type: String },
   ehrRouteName: { type: String },
+  seedDataId: {type: mongoose.Schema.Types.ObjectId, ref: 'SeedData'}, //, required: true},
   seedData: {type: Object}
 })
 

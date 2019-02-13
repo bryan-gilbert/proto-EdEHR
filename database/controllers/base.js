@@ -25,9 +25,10 @@ export default class BaseController {
     this.fields = undefined
   }
 
-  setFields (fieldList) {
-    this.fields = fieldList
-  }
+  // Not used
+  // setFields (fieldList) {
+  //   this.fields = fieldList
+  // }
 
   create (data) {
     return this.model
@@ -50,7 +51,9 @@ export default class BaseController {
 
   baseFindOneQuery (id) {
     var filter = this.baseFilter(id)
-    return this.model.findOne(filter)
+    let query = this.model.findOne(filter)
+    // console.log('baseFindOneQuery for ', filter, 'query', query)
+    return query
   }
 
   read (id) {
@@ -58,6 +61,7 @@ export default class BaseController {
     return this.baseFindOneQuery(id)
     .populate(self.populate)
     .then((modelInstance) => {
+      // console.log('read(id)  ', id, 'this.modelName', this.modelName, 'modelInstance', modelInstance)
       var response = {}
       response[this.modelName] = modelInstance
       return response
