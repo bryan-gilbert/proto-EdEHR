@@ -2,7 +2,7 @@ var request = require('supertest');
 import EhrApp from '../server/app';
 import Config from '../config/config'
 
-const config = new Config('development')
+const config = new Config('test')
 const configuration = config.config
 
 const ehrApp = new EhrApp()
@@ -10,7 +10,7 @@ const ehrApp = new EhrApp()
 describe('Correct users returned', function () {
   let app
   before(function (done) {
-    ehrApp.setup(config)
+    ehrApp.setup(configuration)
     .then( () => {
       app = ehrApp.application
       done()

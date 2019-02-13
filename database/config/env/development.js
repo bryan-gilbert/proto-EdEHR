@@ -1,7 +1,7 @@
 'use strict'
 
 var defaultEnvConfig = require('./default')
-
+const databaseName = 'edehr-dev'
 module.exports = {
   port: process.env.PORT || 27000,
   apiUrl: 'http://localhost:27000',
@@ -9,9 +9,9 @@ module.exports = {
   clientUrl: 'http://localhost:28000',
   defaultConsumerKey: 'edehrkey',
 
-  databaseName: 'edehr-dev',
+  databaseName: databaseName,
   database: {
-    uri: 'mongodb://localhost:27018/' + 'edehr-dev',
+    uri: 'mongodb://localhost:27018/' + databaseName,
     options: {useNewUrlParser: true, useCreateIndex: true},
     // Enable mongoose debug mode
     debug: process.env.MONGODB_DEBUG || false
