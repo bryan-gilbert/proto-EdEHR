@@ -5,7 +5,7 @@ const ObjectID = require('mongodb').ObjectID
 import Helper from '../helper'
 const helper = new Helper()
 import BaseController from '../../controllers/base'
-import Model from '../../models/seed'
+import Model from '../../models/seed-data'
 
 const typeName = 'BaseController'
 const modelName = 'Seed'

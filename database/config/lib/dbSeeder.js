@@ -58,6 +58,7 @@ function doIntegrations () {
   })
   .then(() => {
     return checkIntegration('assignments13').then((go) => {
+      console.log('Seed assignments? ', go)
       if (go) {
         return require('../seed-data/assignments')(true)
       }

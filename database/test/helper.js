@@ -22,8 +22,10 @@ let Default = {
   oauth_consumer_secret: 'aSecret',
   custom_assignment: '59',
   tool_consumer_instance_name: 'unit testing consumer',
-  launch_presentation_return_url: 'http://some.place.org'
+  launch_presentation_return_url: 'http://some.place.org',
+  seedData: {foo:'bar'}
 }
+
 export default class Helper {
   constructor() {
     this.clear = true
@@ -33,6 +35,13 @@ export default class Helper {
   }
 
   before(done, mongoose) {
+    this.beforeDropDatabase(mongoose)
+    .then( () => {
+      done()
+    })
+  }
+
+  beforeDropDatabase(mongoose) {
     mongoose.set('useCreateIndex', true)
     mongoose.connect(
       'mongodb://localhost:27018/unittest',
@@ -41,15 +50,13 @@ export default class Helper {
     const db = mongoose.connection
     db.on('error', console.error.bind(console, 'connection error'))
     console.log('Begin connection to ' + DatabaseName);
-    db.once('open', function() {
+    return db.once('open', function() {
       console.log('We are connected to test database!');
       mongoose.connection.db.dropDatabase(function(err) {
         console.log('dropped '+DatabaseName+' dropDatabase')
-        done()
       })
     })
   }
-
   afterTests(done, mongoose, collection) {
     function close() {
       mongoose.connection.close(function() {
@@ -97,6 +104,15 @@ export default class Helper {
       resource_link_title: 'resource link title',
       resource_link_description: 'blah blah',
       assignment: assignment
+    }
+  }
+
+
+  static sampleSeedDataSpec() {
+    return {
+      name: 'test seed data object',
+      description: 'an object with seed data',
+      seedData: Default.seedData
     }
   }
 

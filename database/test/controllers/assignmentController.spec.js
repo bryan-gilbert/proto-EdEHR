@@ -4,7 +4,7 @@ import Helper from '../helper'
 const helper = new Helper()
 import AssignmentController from '../../controllers/assignment-controller'
 import { DEFAULT_ASSIGNMENT_EXTERNAL_ID } from '../../controllers/assignment-controller'
-import Model from '../../models/seed'
+import Model from '../../models/seed-data'
 
 const typeName = 'AssignmentController'
 const modelName = 'Assignment'

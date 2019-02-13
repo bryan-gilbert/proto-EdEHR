@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const ObjectID = require('mongodb').ObjectID
 import Helper from '../helper'
 const helper = new Helper()
-import Model from '../../models/seed'
+import Model from '../../models/seed-data'
 
 const typeName = 'Seed'
 const collectionName = 'seeddatas'
@@ -27,12 +27,15 @@ describe(`${typeName} mongoose schema testing`, function() {
     })
   })
 
+  let sampleData = {
+    name: '1234',
+    description: 'a test seed',
+    version: '1.0',
+    seedData: { foo: 'bar' }
+  }
+
   it(`${typeName} can save one`, function(done) {
-    const newUser = new Model({
-      name: '1234',
-      description: 'a test seed',
-      seedData: { foo: 'bar' }
-    })
+    const newUser = new Model(sampleData)
     newUser
       .save()
       .then(() => {
@@ -49,7 +52,10 @@ describe(`${typeName} mongoose schema testing`, function() {
       // console.log('results', doc)
       should.exist(doc)
       should.not.exist(err)
+      doc.should.have.property('seedData')
       doc.seedData.should.have.property('foo')
+      doc.should.have.property('version')
+      doc.version.should.equal(sampleData.version)
       done()
     }).catch(e => {
       console.log('find one error', e)

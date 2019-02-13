@@ -166,7 +166,7 @@ module.exports = function() {
 
     return Assignment.deleteMany()
       .then(() => {
-        console.log('create default', defaultDef.name)
+        // console.log('create default', defaultDef.name)
         return Assignment.create(defaultDef)
       })
       .then(() => {
