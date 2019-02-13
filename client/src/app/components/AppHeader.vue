@@ -39,7 +39,7 @@ export default {
 .apphdr {
   background: $toolbar-background-color;
   color: $toolbar-color;
-  padding: 10px 0 20px 20px;
+  padding: 10px 0 12px 20px;
 
   .wrapper {
     @include wrapper('content');
@@ -58,14 +58,15 @@ export default {
     margin-left: auto;
   }
 
-  .navItem {
+/*  .navItem {
     margin-right: 1em;
-  }
+  }*/
 
   .navLink {
     text-decoration: none;
     font-weight: bold;
     font-size: 1.2rem;
+    margin-left: 3em;
 
     &,
     &:visited {
