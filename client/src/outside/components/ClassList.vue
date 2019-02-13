@@ -2,7 +2,7 @@
   div(id="activityList", class="activity-list")
     div(class="activity-list-header columns", v-on:click="activateActivity")
       div(class="header-column is-10 column")
-        div(class="header-item header-title", :title="activity._id") {{ activity.resource_link_title }}
+        h3(class="header-item", :title="activity._id") {{ activity.resource_link_title }}
         div(class="header-item") {{ activity.resource_link_description }}
         div(class="header-item") {{ assignment.name }}  (LMS configuration: assignment={{ assignment.externalId }} )
       div(class="header-column is-2 column")
@@ -140,11 +140,11 @@ export default {
   padding: 0;
 }
 .activity-list-header {
-  background-color: $grey10;
+  background-color: $grey03;
   margin-bottom: 0;
 
   .header-column {
-    padding: 1rem 2rem 1rem 2rem;
+    padding: 1rem 1.5rem;
   }
   .header-item {
     display: block;
@@ -152,10 +152,7 @@ export default {
   .header-icon {
     font-size: 2rem;
     font-weight: bold;
-  }
-  .header-title {
-    font-weight: bold;
-    font-size: 1.2rem;
+    text-align: right;
   }
 }
 
