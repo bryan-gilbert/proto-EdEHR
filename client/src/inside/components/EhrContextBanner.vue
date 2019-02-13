@@ -27,7 +27,6 @@ export default {
   padding: $panelHeaderPadding;
   background: $context-banner-background-color;
   color: $context-banner-color;
-  padding: 0;
   @media #{$mediaQueryIpadLandscape} {
     padding: $panelHeaderPaddingSmall;
   }

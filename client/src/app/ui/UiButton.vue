@@ -42,14 +42,18 @@ button,
   font-size: $bodyFontSize;
   margin-bottom: 2em;
   padding: 0.3rem 1rem;
-}
 
-button:hover,
-.button:hover,
-.button.is-primary:hover {
+  &:hover {
   background-color: $brand-primary-hover;
-  transition-duration: 0.3s;
-  transition-property: background-color;
+    transition-duration: 0.3s;
+    transition-property: background-color;
+  }
+  
+  &:disabled {
+    background-color: $grey30;
+    color: $white;
+    cursor: default;
+  }
 }
 
 .button.is-light {
@@ -61,13 +65,18 @@ button:hover,
   font-size: $bodyFontSize;
   margin-bottom: 2em;
   padding: 0.3rem 1rem;
-}
 
-.button.is-light:hover {
-  background-color: $white;
-  border: 1px solid $brand-primary-hover;
-  color: $brand-primary-hover;
-  transition-duration: 0.3s;
-  transition-property: color, background-color;
+  &:hover {
+    background-color: $white;
+    border: 1px solid $brand-primary-hover;
+    color: $brand-primary-hover;
+    transition-duration: 0.3s;
+    transition-prop
+    }
+
+  &:disabled {
+    background-color: $grey30;
+    color: $white;
+    cursor: default;
+  }
 }
-</style>
