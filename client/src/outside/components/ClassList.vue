@@ -11,7 +11,9 @@
       accordion-element(theme="grayTheme", :show="show")
         div(class="classlist-header")
           div(class="classlist-header-item") Student analytics placeholder
+            fas-icon(class="icon-right", icon="download")
           div(class="classlist-header-item") Evaluation notes placeholder
+            fas-icon(class="icon-right", icon="download")
         div(class="classlist-body")
           table.table
             thead
