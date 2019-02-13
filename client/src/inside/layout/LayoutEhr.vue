@@ -83,13 +83,13 @@ export default {
     }
     width: 20%; /* of page width */
     padding: 0;
-    height: $contentMinHeight;
+    min-height: $contentMinHeight;
     margin: 0;
     overflow-y: auto;
   }
   &__content {
     padding: 0;
-    height: $contentMinHeight;
+    min-height: $contentMinHeight;
     margin: 0;
     overflow-y: auto;
     overflow-x: hidden;
