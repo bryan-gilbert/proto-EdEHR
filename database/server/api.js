@@ -68,7 +68,7 @@ export function apiMiddle (app, config) {
   return Promise.resolve()
     .then(admin.initializeApp(app))
     .then(lti.initializeApp(app))
-    .then(cc.initializeApp(app))
+    .then(cc.initializeApp(config.defaultConsumerKey))
     .then(() => {
       const api = Router()
       // for local and dev only

@@ -16,7 +16,7 @@ describe(' db seeding test', function () {
   it('Integrations find on empty collection', function(done) {
     IntegrationModel.findOne({ module: name })
     .then((result) => {
-      console.log('found: ', result)
+      // console.log('found: ', result)
       should.not.exist(result)
       done()
     })
@@ -49,7 +49,7 @@ describe(' db seeding test', function () {
   it('Seed the sb', function (done) {
     dbSeeder()
     .then(() => {
-      console.log('done seeding')
+      // console.log('done unit testing seeding')
       done()
     })
 

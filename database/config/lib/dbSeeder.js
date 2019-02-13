@@ -36,10 +36,8 @@ var checkIntegration = function (name, override) {
     return IntegrationModel.findOne({ module: name })
     .then((row) => {
       if (row) {
-        console.log('seeding ' + name + ' is done')
         return resolve(false)
       }
-      console.log('create integration record ' + name)
       IntegrationModel.create({ module: name })
         .then((integration) => {
           resolve(true)
@@ -55,13 +53,13 @@ function doIntegrations () {
   return checkIntegration('consumers', false)
   .then((go) => {
     if (go) {
-      require('../seed-data/consumers')(true)
+      return require('../seed-data/consumers')(true)
     }
   })
   .then(() => {
     return checkIntegration('assignments13').then((go) => {
       if (go) {
-        require('../seed-data/assignments')(true)
+        return require('../seed-data/assignments')(true)
       }
     })
   })
@@ -90,7 +88,6 @@ function doIntegrations () {
   }
 }
 export default function () {
-  console.log('begin asynchronous seeding...')
 
   return Promise.resolve()
   .then(() => {
