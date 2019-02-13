@@ -7,16 +7,22 @@
       div(class="activities", v-for="activity in course.activities")
         div(:ref="`activity-${activity._id}`")
           class-list(:activity="activity")
+    assignment-list
+    seed-data-list
     router-view
 </template>
 
 <script>
 import ClassList from './ClassList'
+import AssignmentList from '../components/AssignmentList'
+import SeedDataList from '../components/SeedDataList'
 
 export default {
   name: 'AsInstructor',
   components: {
-    ClassList
+    ClassList,
+    AssignmentList,
+    SeedDataList
   },
   computed: {
     courses() {

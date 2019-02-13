@@ -92,6 +92,7 @@ export function apiMiddle(app, config) {
       api.use('/consumers', cors(corsOptions), cc.route())
       api.use('/users', cors(corsOptions), uc.route())
       api.use('/visits', cors(corsOptions), vc.route())
+      api.use('/seed-data', cors(corsOptions), sd.route())
       // for use behind a proxy:
       api.use('/api/activities', cors(corsOptions), act.route())
       api.use('/api/activity-data', cors(corsOptions), acc.route())

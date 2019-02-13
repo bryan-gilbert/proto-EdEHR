@@ -17,6 +17,22 @@ export default class StoreHelper {
         })
     })
   }
+  postRequest(url, bodyData) {
+    console.log('POST to this url', url)
+    return new Promise((resolve, reject) => {
+      axios
+        .post(url, bodyData)
+        .then(results => {
+          console.log('success storeHelper putRequest', results)
+          resolve(results)
+        })
+        .catch(error => {
+          var msg = `Failed POST to ${url} with error: ${error.message}`
+          console.error(msg)
+          reject(msg)
+        })
+    })
+  }
   getRequest(url) {
     // console.log('GET to this url', url)
     return new Promise((resolve, reject) => {
