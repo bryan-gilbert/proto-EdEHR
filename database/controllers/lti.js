@@ -76,7 +76,7 @@ export default class LTIController {
     try {
       var consumerKey = ltiData['oauth_consumer_key']
       debug('strategyVerify find consumer by key ' + consumerKey)
-      ConsumerModel.findOneConsumerByKey(consumerKey)
+      ConsumerController.findOneConsumerByKey(consumerKey)
         .then(toolConsumer => {
           // Grave error to not have found a tool consumer
           if (!toolConsumer) {

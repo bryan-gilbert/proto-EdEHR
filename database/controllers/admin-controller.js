@@ -66,7 +66,7 @@ export default class AdminController {
         res.send('no consumerKey')
         return
       }
-      ConsumerModel.findOneConsumerByKey(consumerKey)
+      ConsumerController.findOneConsumerByKey(consumerKey)
       .then((toolConsumer) => {
         if (!toolConsumer) {
           let message = 'Unsupported consumer key ' + consumerKey
