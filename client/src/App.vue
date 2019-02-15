@@ -23,12 +23,10 @@ export default {
         params2[pair[0]] = decodeURIComponent(pair[1])
       })
       console.log('incoming parameters', params2)
-      // API return to url
-      let seeding = params2['seeding']
-      if (seeding === 'iknowwhatimdoing') {
-        console.log('The user is saying they know what they are doing so let us allow them to edit seeds, in this prototype.')
-        this.$store.commit('system/setSeeding', true)
-      }
+      // if the user wants to edit content
+      // let seeding = params2['seeding']
+      let seedId = params2['seedId']
+      console.log('this.$route.params', this.$route.params)
       // API return to url
       let apiUrl = params2['apiUrl']
       let visitId = params2['visit']
@@ -65,6 +63,13 @@ export default {
                 return _this.reloadInstructor()
               }
             })
+          }
+        })
+        .then(() => {
+          if (seedId) {
+            console.log('Found seed id in url', seedId)
+            this.$store.commit('ehrData/setSeedId', seedId)
+            return this.$store.dispatch('ehrData/loadSeedContent', seedId)
           }
         })
         .catch(err => {
@@ -145,5 +150,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

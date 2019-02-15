@@ -62,16 +62,6 @@ export default {
     showClassList() {
       return true
     },
-    isInstructor() {
-      return this.$store.getters['visit/isInstructor']
-    },
-    hasAssignmentData() {
-      return this.panelInfo.assignmentData ? 'has-assignment-data' : ''
-    },
-    hasEvaluationNotes() {
-      let edata = this.$store.getters['ehrData/evaluationData']
-      return edata && edata.trim().length > 0 ? 'has-evaluation-notes' : ''
-    },
     enablePrev() {
       let { indx } = this.findCurrentIndex()
       return indx > 0

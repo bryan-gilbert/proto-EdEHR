@@ -24,7 +24,7 @@ const actions = {
       context.commit('setAssignmentsListing', list)
     })
   },
-  loadSeedData(context) {
+  loadSeedDataList(context) {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
     let url = `${apiUrl}/seed-data`
@@ -40,12 +40,12 @@ const actions = {
   createSeedData(context, payload) {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
-    // console.log('send seed data ', apiUrl, data)
+    console.log('send seed data ', apiUrl, payload)
     let url = `${apiUrl}/seed-data`
     return helper.postRequest(url, payload).then(results => {
       let resultsData = results.data
-      // console.log('assignment commit seed data with new data', JSON.stringify(resultsData))
-      return context.dispatch('loadSeedData')
+      console.log('assignment commit seed data with new data', JSON.stringify(resultsData))
+      return context.dispatch('loadSeedDataList')
     })
   },
   updateSeedData(context, dataIdPlusPayload) {

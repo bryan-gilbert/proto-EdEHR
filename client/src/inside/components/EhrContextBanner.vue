@@ -34,7 +34,7 @@ export default {
   mounted() {
     this.showInstructor = !!this.$store.getters['visit/isInstructor']
     this.showStudent = !!this.$store.getters['visit/isStudent']
-    this.showSeeding = !!this.$store.state.system.isSeeding
+    this.showSeeding = !!this.$store.getters['visit/isDeveloper']
   },
   computed: {
   }

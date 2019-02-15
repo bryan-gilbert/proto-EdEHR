@@ -4,7 +4,6 @@
       ui-button(v-on:buttonClicked="returnToClicked", :class="`${$options.name}__button`") {{ returnButtonLabel }}
     ehr-nav-list(v-for="path in menuList" :key="path.name" :path="path" :level="1")
     ehr-scratch-pad(v-show="isStudent")
-    ehr-evaluation-pad(v-show="isInstructor")
 </template>
 <script>
 import UiLink from '../../app/ui/UiLink.vue'
@@ -41,9 +40,6 @@ export default {
     isStudent() {
       return this.$store.getters['visit/isStudent']
     },
-    isInstructor() {
-      return this.$store.getters.isInstructor
-    }
   },
   methods: {
     returnToClicked() {

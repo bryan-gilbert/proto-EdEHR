@@ -12,7 +12,7 @@ import VitalChart from '../helpers/vitalChart'
 
 const yAxisWidth = 55
 const canvasHeight = 1000
-const canvasWidth = 1200
+const canvasWidth = 3200
 
 export default {
   name: 'VitalsChart',
@@ -64,8 +64,8 @@ export default {
       // The first number is the origin of the chart relative to the top left
       // The second number is the height of the chart
       let y = 0
-      let ht = 60
-      let space = 20
+      let ht = 40
+      let space = 10
       vitalChart.drawChart(this.dates, y, ht)
       y += ht + space
       space = 35

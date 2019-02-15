@@ -44,6 +44,9 @@
             div(class="ehrdfe")
               div(class="input-element input-element-full")
                 textarea(class="textarea",v-model="aSeed.description")
+            div(class="ehrdfe")
+              div(class="input-element input-element-full")
+                textarea(class="textarea",v-model="aSeed.seedData")
 
 </template>
 
@@ -78,7 +81,7 @@ export default {
   },
   methods: {
     findSeed: function(id) {
-      return this.seedDataList.find( (e) => {
+      return this.seedDataList.find(e => {
         return e._id === id
       })
     },
@@ -91,23 +94,25 @@ export default {
         this.setShow(false)
         return
       }
-      this.loadSeedData()
+      this.loadSeedDataList()
     },
-    loadSeedData() {
+    loadSeedDataList() {
       const _this = this
-      return this.$store
-        .dispatch('assignment/loadSeedData')
-        .then(() => {
-          return this.$store.dispatch('assignment/loadSeedData')
+      return this.$store.dispatch('assignment/loadSeedDataList').then(() => {
+        _this.$nextTick(function() {
+          _this.setShow(true)
         })
-        .then(() => {
-          _this.$nextTick(function() {
-            _this.setShow(true)
-          })
-        })
+      })
     },
     gotoEhrWithSeed: function(event) {
-      console.log('gotoEhrWithSeed with seed id', event.target.value)
+      const _this = this
+      let seedId = event.target.value
+      console.log('gotoEhrWithSeed with seed id', seedId)
+      this.$store.commit('ehrData/setSeedId', seedId)
+      this.$store.dispatch('ehrData/loadSeedContent', seedId).then( () => {
+        console.log('go to demographics')
+        _this.$router.push({name: 'demographics'})
+      })
     },
     showEditDialog: function(event) {
       this.seedId = event.target.value
@@ -128,19 +133,20 @@ export default {
       this.showingDialog = false
     },
     saveDialog: function() {
+      console.log('saveDialog ', this.actionType , this.aSeed)
       const _this = this
       this.showingDialog = false
       this.expandAccordion = false
       if (this.actionType === 'edit') {
-        // console.log('Seed Data saving ', this.aSeed)
-        this.$store.dispatch('assignment/updateSeedData', {id: this.seedId, payload: this.aSeed})
-        .then( () => {
-          _this.expandAccordion = true
-        })
-      } else if (this.actionType === 'save') {
-        // console.log('Seed Data saving ', this.aSeed)
-        this.$store.dispatch('assignment/createSeedData', this.aSeed)
-        .then( () => {
+        console.log('Seed Data saving ', this.aSeed)
+        this.$store
+          .dispatch('assignment/updateSeedData', { id: this.seedId, payload: this.aSeed })
+          .then(() => {
+            _this.expandAccordion = true
+          })
+      } else if (this.actionType === 'create') {
+        console.log('Seed Data saving ', this.aSeed)
+        this.$store.dispatch('assignment/createSeedData', this.aSeed).then(() => {
           _this.expandAccordion = true
         })
       }

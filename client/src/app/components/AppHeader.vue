@@ -3,10 +3,10 @@
     div(class="wrapper")
       ul(class="navList")
         li(class="navItem")
-          span(class="apptitle") Educational Electronic Health Record - {{ username }}
+          span(class="apptitle") Educational Electronic Health Record - {{ fullName }}
         li(class="navItem push")
           a(:href="lmsUrl", class="navLink") {{lmsName}}
-        li(v-if="isInstructor", class="navItem")
+        li(v-if="showDashboard", class="navItem")
           router-link(:to="{ name: `instructor` }", class="navLink") Dashboard
         li(class="navItem")
           router-link(:to="{ name: `help` }", class="navLink") Help
@@ -16,10 +16,8 @@
 export default {
   name: 'AppHeader',
   computed: {
-    username() {
-      let n = this.$store.state.visit.sUserInfo.fullName
-      // console.log('AppHeader GET NAME visit store getter for username "' + n + '"')
-      return n
+    fullName() {
+      return this.$store.getters['visit/fullName']
     },
     lmsUrl() {
       return this.$store.getters['visit/returnUrl']
@@ -27,8 +25,8 @@ export default {
     lmsName() {
       return this.$store.getters['visit/lmsName']
     },
-    isInstructor() {
-      return this.$store.state.visit.sVisitInfo.isInstructor
+    showDashboard() {
+      return this.$store.getters['visit/hasDashboard']
     }
   }
 }
@@ -58,7 +56,7 @@ export default {
     margin-left: auto;
   }
 
-/*  .navItem {
+  /*  .navItem {
     margin-right: 1em;
   }*/
 

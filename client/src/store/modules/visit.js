@@ -11,8 +11,14 @@ const state = {
 
 const getters = {
   isInstructor: state => {
+    return state.sVisitInfo.isInstructor
+  },
+  isDeveloper: state => {
+    return state.sVisitInfo.isDeveloper
+  },
+  hasDashboard: state => {
     var vi = state.sVisitInfo
-    return vi ? vi.isInstructor : false
+    return vi ? vi.isInstructor || vi.isDeveloper : false
   },
   isStudent: state => {
     var vi = state.sVisitInfo
@@ -28,10 +34,13 @@ const getters = {
     var vi = state.sVisitInfo
     return vi ? vi.returnUrl : ''
   },
+  fullName: state => {
+    let info = state.sUserInfo
+    let name = info ? info.fullName : ''
+    return name
+  },
   username: (state, getters, rootState) => {
-    console.log('GET NAME visit store getter for username')
     let info = rootState.sUserInfo
-    console.log('GET NAME visit store getter for username ', info)
     let name = info ? info.givenName : ''
     return name
   }
