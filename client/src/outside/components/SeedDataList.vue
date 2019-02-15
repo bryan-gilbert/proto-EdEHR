@@ -46,7 +46,7 @@
                 textarea(class="textarea",v-model="aSeed.description")
             div(class="ehrdfe")
               div(class="input-element input-element-full")
-                textarea(class="textarea",v-model="aSeed.seedData")
+                textarea(class="textarea",v-model="aSeed.ehrData")
 
 </template>
 
@@ -109,9 +109,9 @@ export default {
       let seedId = event.target.value
       console.log('gotoEhrWithSeed with seed id', seedId)
       this.$store.commit('ehrData/setSeedId', seedId)
-      this.$store.dispatch('ehrData/loadSeedContent', seedId).then( () => {
+      this.$store.dispatch('ehrData/loadSeedContent', seedId).then(() => {
         console.log('go to demographics')
-        _this.$router.push({name: 'demographics'})
+        _this.$router.push({ name: 'demographics' })
       })
     },
     showEditDialog: function(event) {
@@ -120,6 +120,7 @@ export default {
       let sData = Object.assign({}, this.findSeed(this.seedId))
       this.actionType = 'edit'
       this.aSeed = sData
+      this.aSeed.ehrData = JSON.stringify(this.aSeed.ehrData,null,2)
       this.dialogHeader = 'Edit seed data properties'
       this.showingDialog = true
     },
@@ -133,8 +134,9 @@ export default {
       this.showingDialog = false
     },
     saveDialog: function() {
-      console.log('saveDialog ', this.actionType , this.aSeed)
+      console.log('saveDialog ', this.actionType, this.aSeed)
       const _this = this
+      this.aSeed.ehrData = JSON.parse(this.aSeed.ehrData)
       this.showingDialog = false
       this.expandAccordion = false
       if (this.actionType === 'edit') {

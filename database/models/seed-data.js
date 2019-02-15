@@ -6,7 +6,7 @@ const Schema = new mongoose.Schema({
   name: { type: String },
   description: { type: String },
   version: { type: String },
-  seedData: {type: Object},
+  ehrData: {type: Object},
   createDate: {type: Date, default: Date.now},
   lastUpdateDate: {type: Date, default: Date.now}
 })

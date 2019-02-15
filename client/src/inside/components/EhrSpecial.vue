@@ -3,6 +3,14 @@
     p This is the EHR special content panel.   Path: {{path}}
     div(:class="`${$options.name}__special`")
     hr
+    div(v-show="isDeveloper")
+      h3 Content Editor Data
+      p sSeedId {{ sSeedId }}
+      div(:class="`${$options.name}__data`")
+        li(v-for="(value, propertyName) in sSeedContent", v-bind:key="propertyName")
+          strong {{ propertyName }}:&nbsp;
+          span {{ value }}
+    hr
     div(v-show="isInstructor")
       h3 Instructor Data
       p sInstructorReturnUrl {{ sInstructorReturnUrl }}
@@ -144,6 +152,12 @@ export default {
     sCurrentStudentInfo() {
       return this.$store.state.ehrData.sCurrentStudentInfo
     },
+    sSeedContent() {
+      return this.$store.state.ehrData.sSeedContent || []
+    },
+    sSeedId() {
+      return this.$store.state.ehrData.sSeedId
+    },
     classList() {
       return this.$store.state.instructor.sClassList || []
     },
@@ -164,6 +178,9 @@ export default {
     },
     isInstructor() {
       return this.$store.getters['visit/isInstructor']
+    },
+    isDeveloper() {
+      return this.$store.getters['visit/isDeveloper']
     },
     apiUrl() {
       return this.$store.state.visit.apiUrl
