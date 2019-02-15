@@ -28,6 +28,17 @@ export default {
       showDialog: false
     }
   },
+  watch: {
+    // whenever question changes, this function will run
+    showDialog: function(newValue) {
+      document.body.style.position = ''
+      if (newValue) {
+        console.log('When app dialog is shown freeze the body to prevent background scrolling')
+        console.log('FREEZEEEEEEE')
+        document.body.style.position = 'fixed'
+      }
+    }
+  },
   props: {
     pageDataKey: { type: String },
     ehrHelp: { type: Object },
@@ -86,8 +97,6 @@ export default {
   },
   mounted: function() {
     console.log('EhrDialogForm mounted', this.pageDataKey)
-    console.log("When app dialog is mounted freeze the body to prevent background scrolling")
-    document.body.style.position = 'fixed'
     const _this = this
     let ch = this.ehrHelp.getCloseChannelHandle(this.tableKey)
     this.eventHandler = function(eData) {
@@ -97,7 +106,7 @@ export default {
   },
   beforeDestroy: function() {
     console.log('EhrDialogForm beforeDestroy', this.pageDataKey)
-    console.log("When app dialog is destroyed restore background scrolling")
+    console.log('When app dialog is destroyed restore background scrolling')
     document.body.style.position = ''
     let ch = this.ehrHelp.getCloseChannelHandle(this.tableKey)
     if (this.eventHandler) {
