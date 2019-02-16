@@ -207,9 +207,6 @@ export default class EhrHelp {
   }
 
   /* ********************* DIALOG  */
-  /*
-  TODO The table dialogs are still under development
-   */
   showDialog(tableDef, dialogInputs) {
     const _this = this
     let dialog = { tableDef: tableDef, inputs: dialogInputs }
@@ -348,7 +345,8 @@ export default class EhrHelp {
   _showControl(prop) {
     let show = false
     let isStudent = this.$store.getters['visit/isStudent']
-    if (isStudent) {
+    let isDevelopingContent = this.$store.state.visit.isDevelopingContent
+    if (isStudent || isDevelopingContent) {
       let pd = this.getPageDefinition(this.pageKey)
       show = pd[prop]
     }
@@ -402,14 +400,26 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
    */
   saveEdit() {
     const _this = this
-    _this.$store.commit('system/setEditing', false)
-    _this.$store.commit('system/setLoading', true)
+    let isStudent = this.$store.getters['visit/isStudent']
+    let isDevelopingContent = this.$store.state.visit.isDevelopingContent
     let payload = this.pageFormData
     // let pageKey = this.$store.state.system.currentPageKey
     // debugehr('saveEdit payload', JSON.stringify(payload))
-    _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
-      _this.$store.commit('system/setLoading', false)
-    })
+    _this.$store.commit('system/setEditing', false)
+    _this.$store.commit('system/setLoading', true)
+    if(isStudent) {
+      _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
+        _this.$store.commit('system/setLoading', false)
+      })
+    } else {
+      let seedId = _this.$store.state.sSeedId
+      let ip = { id: seedId, payload: payload }
+      console.log('saving seed data', ip)
+      _this.$store.dispatch('assignment/updateSeedData', ip).then(() => {
+        _this.$store.commit('system/setLoading', false)
+      })
+
+    }
   }
 
   /**
@@ -522,7 +532,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
 function debugehr(msg) {
   var args = Array.prototype.slice.call(arguments)
   args.shift()
-  console.log('EHRhlp', msg, args)
+  // console.log('EHRhlp', msg, args)
 }
 function errorehr(msg, ...args) {
   console.log('ERROR EHRhlp', msg, args)

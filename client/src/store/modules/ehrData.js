@@ -88,14 +88,14 @@ const actions = {
   loadActivityData(context, options) {
     // /activity-data
     let activityDataId = options.id
-    console.log('Get activityData  ', activityDataId)
+    // console.log('Get activityData  ', activityDataId)
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
     let url = `${apiUrl}/activity-data/get/${activityDataId}`
     return helper.getRequest(url).then(response => {
       let ad = response.data.activitydata
       context.commit('_setForStudent', options.forStudent)
-      console.log('Got activity information ', ad)
+      // console.log('Got activity information ', ad)
       if (options.forStudent) {
         context.commit('_setActivityData', ad)
       } else {
@@ -113,7 +113,7 @@ const actions = {
       let url = `${apiUrl}/activity-data/get/${activityDataId}`
       return helper.getRequest(url).then(response => {
         let ad = response.data.activitydata
-        console.log('Got activity information ', ad)
+        // console.log('Got activity information ', ad)
         context.commit('_setActivityData', ad)
       })
     }

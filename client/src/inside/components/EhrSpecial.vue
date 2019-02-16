@@ -5,6 +5,7 @@
     hr
     div(v-show="isDeveloper")
       h3 Content Editor Data
+      p isDevelopingContent {{ isDevelopingContent }}
       p sSeedId {{ sSeedId }}
       div(:class="`${$options.name}__data`")
         li(v-for="(value, propertyName) in sSeedContent", v-bind:key="propertyName")
@@ -14,6 +15,7 @@
     div(v-show="isInstructor")
       h3 Instructor Data
       p sInstructorReturnUrl {{ sInstructorReturnUrl }}
+      p isDevelopingContent {{ isDevelopingContent }}
       p sCurrentEvaluationStudentId: {{ sCurrentEvaluationStudentId }}
       p Class List with Student Visit
       div(:class="`${$options.name}__data`")
@@ -157,6 +159,9 @@ export default {
     },
     sSeedId() {
       return this.$store.state.ehrData.sSeedId
+    },
+    isDevelopingContent() {
+      return this.$store.state.visit.isDevelopingContent
     },
     classList() {
       return this.$store.state.instructor.sClassList || []

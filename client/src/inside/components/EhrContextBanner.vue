@@ -32,12 +32,12 @@ export default {
     }
   },
   mounted() {
-    this.showInstructor = !!this.$store.getters['visit/isInstructor']
+    this.showInstructor =
+      this.$store.getters['visit/isInstructor'] && !this.$store.state.visit.isDevelopingContent
     this.showStudent = !!this.$store.getters['visit/isStudent']
-    this.showSeeding = !!this.$store.getters['visit/isDeveloper']
+    this.showSeeding = !!this.$store.state.visit.isDevelopingContent
   },
-  computed: {
-  }
+  computed: {}
 }
 </script>
 

@@ -98,6 +98,7 @@ export default {
       // Go to the first screen related to the assignent
       let name = studentVisit.assignment.ehrRoutePath
       // console.log('Store the pathname for the instructor to return here ', window.location.pathname)
+      this.$store.commit('visit/setIsDevelopingContent', false)
       this.$store.commit('instructor/setInstructorReturnUrl', window.location.pathname)
       // console.log('Store the current student id that is being evaluated ', studentId)
       this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', studentId).then(() => {

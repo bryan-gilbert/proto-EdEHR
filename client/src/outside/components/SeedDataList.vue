@@ -19,7 +19,7 @@
               tr(v-for="sv in seedDataList")
                 td {{sv.name}}
                 td {{sv.version}}
-                td {{sv.description}}
+                td {{sv.description}} {{sv}}
                 td {{sv._id}}
                 td
                   ui-button(v-on:buttonClicked="showEditDialog", :value="sv._id")
@@ -108,6 +108,7 @@ export default {
       const _this = this
       let seedId = event.target.value
       console.log('gotoEhrWithSeed with seed id', seedId)
+      this.$store.commit('visit/setIsDevelopingContent', true)
       this.$store.commit('ehrData/setSeedId', seedId)
       this.$store.dispatch('ehrData/loadSeedContent', seedId).then(() => {
         console.log('go to demographics')
@@ -136,7 +137,9 @@ export default {
     saveDialog: function() {
       console.log('saveDialog ', this.actionType, this.aSeed)
       const _this = this
-      this.aSeed.ehrData = JSON.parse(this.aSeed.ehrData)
+      let theData = this.aSeed.ehrData || '{}'
+      console.log(`Convert seed data field '${theData}' into an object`)
+      this.aSeed.ehrData = JSON.parse(theData)
       this.showingDialog = false
       this.expandAccordion = false
       if (this.actionType === 'edit') {

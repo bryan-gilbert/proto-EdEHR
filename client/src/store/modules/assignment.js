@@ -54,7 +54,7 @@ const actions = {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
     let url = `${apiUrl}/seed-data/${id}`
-    console.log('updateSeedData', url, payload)
+    // console.log('updateSeedData', url, payload)
     return helper.putRequest(url, payload).then(results => {
       let resultsData = results.data
       // console.log('assignment commit seed data with new data', JSON.stringify(resultsData))

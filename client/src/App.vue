@@ -22,11 +22,7 @@ export default {
         let pair = p.split('=')
         params2[pair[0]] = decodeURIComponent(pair[1])
       })
-      console.log('incoming parameters', params2)
-      // if the user wants to edit content
-      // let seeding = params2['seeding']
-      let seedId = params2['seedId']
-      console.log('this.$route.params', this.$route.params)
+      // console.log('incoming parameters', params2)
       // API return to url
       let apiUrl = params2['apiUrl']
       let visitId = params2['visit']
@@ -36,45 +32,48 @@ export default {
       _this
         ._loadApiUrl(apiUrl)
         .then(() => {
-          return new Promise((resolve, reject) => {
-            if (!visitId) {
-              console.log('No visit id on query so check local storage storage?')
-              restoring = true
-              visitId = localStorage.getItem('token')
-            }
-            if (!visitId) {
-              let msg = 'No visit id on query or local storage'
-              reject(msg)
-            }
-            resolve(visitId)
-          })
-        })
-        .then(visitId => {
-          localStorage.setItem('token', visitId)
-          return this.$store.dispatch('visit/loadVisitInfo', visitId)
+          if (!visitId) {
+            console.log('No visit id on query so check local storage storage?')
+            restoring = true
+            visitId = localStorage.getItem('token')
+          }
+          if (visitId) {
+            localStorage.setItem('token', visitId)
+            return this.$store.dispatch('visit/loadVisitInfo', visitId)
+          } else {
+            return Promise.reject('No visit id available')
+          }
         })
         .then(() => {
           let isInstructor = _this.$store.getters['visit/isInstructor']
-          if (isInstructor) {
-            // console.log('Page load instructor')
+          if (this.$store.state.visit.isDeveloper) {
+            return _this._loadDeveloping(restoring)
+          } else if (isInstructor) {
+            console.log('Page load instructor')
             return _this.$store.dispatch('instructor/loadCourses').then(() => {
-              console.log('Page load instructor restoring?', restoring)
+              // console.log('Page load instructor restoring?', restoring)
               if (restoring) {
                 return _this.reloadInstructor()
               }
             })
           }
         })
-        .then(() => {
-          if (seedId) {
-            console.log('Found seed id in url', seedId)
-            this.$store.commit('ehrData/setSeedId', seedId)
-            return this.$store.dispatch('ehrData/loadSeedContent', seedId)
-          }
-        })
         .catch(err => {
           alert(err + '\nSystem Error')
         })
+    },
+    _loadDeveloping(restoring) {
+      if (restoring) {
+        /* Restore indicator that will say if the user is editing content. */
+        let isDevelopingContent = localStorage.getItem('isDevelopingContent')
+        let seedId = localStorage.getItem('seedId')
+        if (isDevelopingContent && seedId) {
+          console.log('User is developing content with seed id', seedId)
+          this.$store.commit('visit/setIsDevelopingContent', isDevelopingContent)
+          this.$store.commit('ehrData/setSeedId', seedId)
+          return this.$store.dispatch('ehrData/loadSeedContent', seedId)
+        }
+      }
     },
     /**
      * This client expects the API server to provide the url to call

@@ -6,7 +6,8 @@ const state = {
   visitId: '',
   sVisitInfo: {},
   isLoggedIn: !!localStorage.getItem('token'),
-  topLevelMenu: ''
+  topLevelMenu: '',
+  isDevelopingContent: false
 }
 
 const getters = {
@@ -104,6 +105,11 @@ const mutations = {
   apiUrl: (state, url) => {
     // console.log('visit store set api url ' + url)
     state.apiUrl = url
+  },
+  setIsDevelopingContent: (state, value) => {
+    console.log('setIsDevelopingContent', value)
+    localStorage.setItem('isDevelopingContent', value)
+    state.isDevelopingContent = value
   },
   setVisitInfo: (state, info) => {
     // console.log('visit store set visit info ' + info._id)
