@@ -11,7 +11,7 @@ export default class StoreHelper {
           resolve(results)
         })
         .catch(error => {
-          var msg = `Failed PUT to ${url} with error: ${error.message}`
+          let msg = `Failed PUT to ${url} with error: ${error.message}`
           console.error(msg)
           reject(msg)
         })
@@ -27,7 +27,7 @@ export default class StoreHelper {
           resolve(results)
         })
         .catch(error => {
-          var msg = `Failed POST to ${url} with error: ${error.message}`
+          let msg = `Failed POST to ${url} with error: ${error.message}`
           console.error(msg)
           reject(msg)
         })
@@ -43,7 +43,7 @@ export default class StoreHelper {
           resolve(results)
         })
         .catch(error => {
-          var msg = `Failed GET to ${url} with error: ${error.message}`
+          let msg = `Failed GET to ${url} with error: ${error.message}`
           console.error(msg)
           reject(msg)
         })

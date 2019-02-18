@@ -9,10 +9,6 @@ const state = {
    */
   sActivityData: {},
   forStudent: false,
-  // Seed content is only used during editing of assignment seed data.
-  // It will contain the metadata (name, version, description) plus the actual seedData
-  sSeedId: '',
-  sSeedContent: {},
   /*
   These two objects contain the information needed by the instructor to see and evaluate the student's work.
   sCurrentStudentInfo contains information about the student.
@@ -42,13 +38,21 @@ const getters = {
     }
   },
   mergedData: (state, getters, rootState) => {
-    let isInstructor = rootState.visit.sVisitInfo.isInstructor
-    if (isInstructor) {
-      return state.sCurrentStudentData.mergedData
+    let mData
+    let src
+    if (rootState.visit.isDevelopingContent) {
+      mData = getters['seedStore/seedEhrData']
+      src = 'from seed'
+    } else if (rootState.visit.sVisitInfo.isInstructor) {
+      mData = state.sCurrentStudentData.mergedData
+      src = 'instructor'
     } else {
       // mergedData is the merge of assignment data and seed
-      return state.sActivityData.mergedData
+      mData = state.sActivityData.mergedData
+      src = 'student'
     }
+    console.log('get merged data results', src, mData)
+    return mData
   },
   scratchData: state => {
     // only return for student
@@ -58,33 +62,23 @@ const getters = {
   evaluationData: state => {
     // evaluationData is the instructor's comments on the student's work
     return state.sCurrentStudentData.evaluationData
-  },
-  seedData: (state, getters, rootState) => {
-    let seedData
-    if (rootState.visit.sVisitInfo.isInstructor) {
-      seedData = state.sCurrentStudentData.seedData
-    } else if (rootState.visit.sVisitInfo.isDeveloper) {
-      seedData = state.sSeedContent.seedData
-    } else {
-      seedData = state.sActivityData.seedData
-    }
-    console.log('ehrData seedData getter returns ', seedData)
-    return seedData
   }
+  // Commenting the following out because it doesn't appear to be used any more
+  // seedData: (state, getters, rootState) => {
+  //   let seedData
+  //   if (rootState.visit.sVisitInfo.isInstructor) {
+  //     seedData = state.sCurrentStudentData.seedData
+  //   } else if (rootState.visit.sVisitInfo.isDeveloper) {
+  //     seedData = state.sSeedContent.seedData
+  //   } else {
+  //     seedData = state.sActivityData.seedData
+  //   }
+  //   console.log('ehrData seedData getter returns ', seedData)
+  //   return seedData
+  // }
 }
 
 const actions = {
-  loadSeedContent(context, options) {
-    console.log("What is in options?", options)
-    let seedId = context.state.sSeedId
-    let visitState = context.rootState.visit
-    let apiUrl = visitState.apiUrl
-    let url = `${apiUrl}/seed-data/get/${seedId}`
-    return helper.getRequest(url).then(response => {
-      let sd = response.data.seeddata
-      context.commit('setSeedContent', sd)
-    })
-  },
   loadActivityData(context, options) {
     // /activity-data
     let activityDataId = options.id
@@ -103,6 +97,7 @@ const actions = {
       }
     })
   },
+
   restoreActivityData(context) {
     let forStudent = context.state.forStudent
     // console.log('restoreActivityData ', forStudent)
@@ -118,6 +113,7 @@ const actions = {
       })
     }
   },
+
   sendAssignmentDataUpdate(context, payload) {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
@@ -156,6 +152,7 @@ const actions = {
       return activityData
     })
   },
+
   sendEvaluationNotes(context, data) {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
@@ -175,13 +172,6 @@ const actions = {
 }
 
 const mutations = {
-  setSeedId: (state, value) => {
-    state.sSeedId = value
-  },
-  setSeedContent: (state, value) => {
-    console.log('setting seed data ', value)
-    state.sSeedContent = value
-  },
   _setForStudent: (state, value) => {
     state.forStudent = value
   },

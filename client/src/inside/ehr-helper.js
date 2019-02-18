@@ -9,7 +9,6 @@ import PC from '../inside/defs/patient-chart'
 import PP from '../inside/defs/patient-profile'
 import ER from '../inside/defs/external-resources'
 
-
 const pageDefsPP = PP()
 const pageDefsCV = CV()
 const pageDefsPC = PC()
@@ -237,7 +236,6 @@ export default class EhrHelp {
     const _this = this
     if (this._validateInputs(tableKey)) {
       // debugehr('saveDialog for page/table', pageKey, tableKey)
-      _this.$store.commit('system/setLoading', true)
       let dialog = this.dialogMap[tableKey]
       // debugehr('saveDialog', dialog, 'data', data)
       let inputs = dialog.inputs
@@ -254,10 +252,35 @@ export default class EhrHelp {
         propertyName: pageKey,
         value: asLoadedPageData
       }
-      this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
+      this._saveData(payload).then(() => {
         _this._emitCloseEvent(tableKey)
+      })
+      // this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
+      //   _this._emitCloseEvent(tableKey)
+      //   _this.$store.commit('system/setLoading', false)
+      // })
+    }
+  }
+
+  _saveData(payload) {
+    const _this = this
+    _this.$store.commit('system/setLoading', true)
+    let isStudent = this.$store.getters['visit/isStudent']
+    let isDevelopingContent = this.$store.state.visit.isDevelopingContent
+    if (isStudent) {
+      console.log('saving assignment data', payload)
+      return _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
         _this.$store.commit('system/setLoading', false)
       })
+    } else if (isDevelopingContent) {
+      let seedId = _this.$store.state.seedStore.sSeedId
+      payload = { propertyName : payload.propertyName, value: payload.value, id: seedId}
+      console.log('saving seed ehr data', seedId, payload)
+      return _this.$store.dispatch('seedStore/updateSeedEhrData', payload).then(() => {
+        _this.$store.commit('system/setLoading', false)
+      })
+    } else {
+      return Promise.reject('Coding error using _saveData out of context')
     }
   }
 
@@ -399,27 +422,12 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
    * Save changes made on a page form
    */
   saveEdit() {
-    const _this = this
-    let isStudent = this.$store.getters['visit/isStudent']
-    let isDevelopingContent = this.$store.state.visit.isDevelopingContent
     let payload = this.pageFormData
     // let pageKey = this.$store.state.system.currentPageKey
     // debugehr('saveEdit payload', JSON.stringify(payload))
-    _this.$store.commit('system/setEditing', false)
-    _this.$store.commit('system/setLoading', true)
-    if(isStudent) {
-      _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
-        _this.$store.commit('system/setLoading', false)
-      })
-    } else {
-      let seedId = _this.$store.state.sSeedId
-      let ip = { id: seedId, payload: payload }
-      console.log('saving seed data', ip)
-      _this.$store.dispatch('assignment/updateSeedData', ip).then(() => {
-        _this.$store.commit('system/setLoading', false)
-      })
-
-    }
+    this._saveData(payload).then( () => {
+      this.$store.commit('system/setEditing', false)
+    })
   }
 
   /**

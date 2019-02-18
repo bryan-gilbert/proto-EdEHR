@@ -25,7 +25,7 @@ export default {
   },
   watch: {
     asStoredEvaluationNotes: function(newData) {
-      console.log('watch sees new eval data')
+      // console.log('watch sees new eval data')
       this.theNotes = newData
     }
   },

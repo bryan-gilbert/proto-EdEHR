@@ -26,8 +26,7 @@ export default {
       // API return to url
       let apiUrl = params2['apiUrl']
       let visitId = params2['visit']
-      // Visit Id
-      var restoring = false
+      let restoring = false
       const _this = this
       _this
         ._loadApiUrl(apiUrl)
@@ -38,18 +37,27 @@ export default {
             visitId = localStorage.getItem('token')
           }
           if (visitId) {
-            localStorage.setItem('token', visitId)
+            console.log('Dispatch the load visit information', visitId)
             return this.$store.dispatch('visit/loadVisitInfo', visitId)
           } else {
+            console.log('can not find a visit id so stop loading')
             return Promise.reject('No visit id available')
           }
         })
         .then(() => {
-          let isInstructor = _this.$store.getters['visit/isInstructor']
-          if (this.$store.state.visit.isDeveloper) {
+          console.log(
+            'Is user is allowed to edit content?',
+            this.$store.getters['visit/isDeveloper']
+          )
+          if (this.$store.getters['visit/isDeveloper']) {
+            console.log('User is allowed to edit content')
             return _this._loadDeveloping(restoring)
-          } else if (isInstructor) {
-            console.log('Page load instructor')
+          }
+        })
+        .then(() => {
+          console.log('Is user an instructor?')
+          if (_this.$store.getters['visit/isInstructor']) {
+            console.log('User is instructor')
             return _this.$store.dispatch('instructor/loadCourses').then(() => {
               // console.log('Page load instructor restoring?', restoring)
               if (restoring) {
@@ -58,22 +66,37 @@ export default {
             })
           }
         })
+        .then(() => {
+          console.log('App DONE loading now.')
+        })
         .catch(err => {
           alert(err + '\nSystem Error')
         })
     },
     _loadDeveloping(restoring) {
-      if (restoring) {
-        /* Restore indicator that will say if the user is editing content. */
+      return new Promise((resolve, reject) => {
+        if (!restoring) {
+          return resolve()
+        }
+        console.log('Restore indicator says the user is refreshing page')
         let isDevelopingContent = localStorage.getItem('isDevelopingContent')
         let seedId = localStorage.getItem('seedId')
+        console.log(
+          'What is in local storage isDevelopingContent and seedId',
+          isDevelopingContent,
+          seedId
+        )
         if (isDevelopingContent && seedId) {
           console.log('User is developing content with seed id', seedId)
           this.$store.commit('visit/setIsDevelopingContent', isDevelopingContent)
-          this.$store.commit('ehrData/setSeedId', seedId)
-          return this.$store.dispatch('ehrData/loadSeedContent', seedId)
+          this.$store.commit('seedStore/setSeedId', seedId)
+          this.$store.dispatch('seedStore/loadSeedContent', seedId).then(() => {
+            resolve()
+          })
+        } else {
+          return resolve()
         }
-      }
+      })
     },
     /**
      * This client expects the API server to provide the url to call

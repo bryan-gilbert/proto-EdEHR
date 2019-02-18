@@ -75,6 +75,7 @@ const actions = {
           if (!visitInfo.activityData) {
             return invalid('ERROR.  No activity data information for ' + visitId)
           }
+          localStorage.setItem('token', visitId)
           context.commit('setVisitInfo', visitInfo)
           context.commit('setUserInfo', visitInfo.user)
           // visitInfo.activityData contains the id of the ActivityData record

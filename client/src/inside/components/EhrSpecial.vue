@@ -7,6 +7,7 @@
       h3 Content Editor Data
       p isDevelopingContent {{ isDevelopingContent }}
       p sSeedId {{ sSeedId }}
+      p seedStoreData {{ seedStoreData }}
       div(:class="`${$options.name}__data`")
         li(v-for="(value, propertyName) in sSeedContent", v-bind:key="propertyName")
           strong {{ propertyName }}:&nbsp;
@@ -155,10 +156,13 @@ export default {
       return this.$store.state.ehrData.sCurrentStudentInfo
     },
     sSeedContent() {
-      return this.$store.state.ehrData.sSeedContent || []
+      return this.$store.state.seedStore.sSeedContent || []
     },
     sSeedId() {
-      return this.$store.state.ehrData.sSeedId
+      return this.$store.state.seedStore.sSeedId
+    },
+    seedStoreData() {
+      return this.$store.getters['seedStore/seedEhrData']
     },
     isDevelopingContent() {
       return this.$store.state.visit.isDevelopingContent
