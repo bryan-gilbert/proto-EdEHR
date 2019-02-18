@@ -56,6 +56,7 @@ export default class EhrHelp {
 
     this.refreshEventHandler = function(eData) {
       console.log('ehrhelper respond to page refresh')
+      _this.mergedProperty(pageKey)
       _this._loadTransposedColumns(pageKey)
     }
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
@@ -122,7 +123,7 @@ export default class EhrHelp {
     // Intentional conversion to string to object to break connection with Vuex store.
     // We need this step because the UI isn't allowed to modify the as stored value
     data = JSON.parse(JSON.stringify(data))
-    // debugehr('prepareAsLoadedData page data', data)
+    console.log('prepareAsLoadedData', pageKey, data)
     let pageData = data[pageKey]
     if (!pageData) {
       let defaultPageValue = pageDef.pageData
@@ -262,6 +263,13 @@ export default class EhrHelp {
     }
   }
 
+  removeEmptyProperties = (obj) => {
+    Object.entries(obj).forEach(([key, val]) => {
+      if (val && typeof val === 'object') this.removeEmptyProperties(val)
+      else if (val === null || val === '') delete obj[key]
+    })
+    return obj
+  }
   _saveData(payload) {
     const _this = this
     _this.$store.commit('system/setLoading', true)
@@ -269,13 +277,15 @@ export default class EhrHelp {
     let isDevelopingContent = this.$store.state.visit.isDevelopingContent
     if (isStudent) {
       console.log('saving assignment data', payload)
+      // TODO try using the clean value like below
       return _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
         _this.$store.commit('system/setLoading', false)
       })
     } else if (isDevelopingContent) {
       let seedId = _this.$store.state.seedStore.sSeedId
-      payload = { propertyName : payload.propertyName, value: payload.value, id: seedId}
-      console.log('saving seed ehr data', seedId, payload)
+      let cleanValue = this.removeEmptyProperties(payload.value)
+      payload = { propertyName : payload.propertyName, value: cleanValue, id: seedId}
+      console.log('saving seed ehr data', seedId, JSON.stringify(cleanValue))
       return _this.$store.dispatch('seedStore/updateSeedEhrData', payload).then(() => {
         _this.$store.commit('system/setLoading', false)
       })

@@ -16,14 +16,17 @@
 
       ehr-context-instructor(v-show="showInstructor")
       ehr-context-student(v-show="showStudent")
+      ehr-context-developer(v-show="showSeeding")
 </template>
 
 <script>
 import EhrContextInstructor from './EhrContextInstructor'
 import EhrContextStudent from './EhrContextStudent'
+import EhrContextDeveloper from './EhrContextDeveloper'
+
 export default {
   name: 'EhrContextBanner',
-  components: { EhrContextInstructor, EhrContextStudent },
+  components: { EhrContextInstructor, EhrContextStudent, EhrContextDeveloper },
   data: function() {
     return {
       showInstructor: false,

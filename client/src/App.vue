@@ -27,6 +27,7 @@ export default {
       let apiUrl = params2['apiUrl']
       let visitId = params2['visit']
       let restoring = false
+      this.$store.commit('system/setLoading', true)
       const _this = this
       _this
         ._loadApiUrl(apiUrl)
@@ -67,6 +68,7 @@ export default {
           }
         })
         .then(() => {
+          this.$store.commit('system/setLoading', false)
           console.log('App DONE loading now.')
         })
         .catch(err => {

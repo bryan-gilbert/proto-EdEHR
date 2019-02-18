@@ -41,7 +41,8 @@ const getters = {
     let mData
     let src
     if (rootState.visit.isDevelopingContent) {
-      mData = getters['seedStore/seedEhrData']
+      mData = rootState.seedStore.ehrData
+      //getters['seedStore/seedEhrData']
       src = 'from seed'
     } else if (rootState.visit.sVisitInfo.isInstructor) {
       mData = state.sCurrentStudentData.mergedData
@@ -51,7 +52,7 @@ const getters = {
       mData = state.sActivityData.mergedData
       src = 'student'
     }
-    console.log('get merged data results', src, mData)
+    console.log('get merged data results: ', src, mData)
     return mData
   },
   scratchData: state => {

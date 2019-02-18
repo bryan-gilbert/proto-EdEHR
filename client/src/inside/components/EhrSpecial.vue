@@ -8,6 +8,7 @@
       p isDevelopingContent {{ isDevelopingContent }}
       p sSeedId {{ sSeedId }}
       p seedStoreData {{ seedStoreData }}
+      h4 sSeedContent:
       div(:class="`${$options.name}__data`")
         li(v-for="(value, propertyName) in sSeedContent", v-bind:key="propertyName")
           strong {{ propertyName }}:&nbsp;

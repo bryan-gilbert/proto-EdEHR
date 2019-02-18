@@ -117,7 +117,7 @@ const mutations = {
     state.sSeedId = seedId
   },
   _setSeedContent: (state, value) => {
-    console.log('setting seed data ', value)
+    console.log('setting seed content ', value)
     state.sSeedContent = value
   },
   _setSeedEhrData: (state, value) => {

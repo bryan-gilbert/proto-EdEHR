@@ -54,6 +54,8 @@
 import AccordionElement from '../../app/components/AccordionElement'
 import AppDialog from '../../app/components/AppDialogShell'
 import UiButton from '../../app/ui/UiButton.vue'
+import EventBus from '../../event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from '../../event-bus'
 
 export default {
   name: 'ActivityList',
@@ -113,6 +115,7 @@ export default {
       this.$store.dispatch('seedStore/loadSeedContent', seedId).then(() => {
         console.log('go to demographics')
         _this.$router.push({ name: 'demographics' })
+        EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
       })
     },
     showEditDialog: function(event) {
