@@ -4,7 +4,8 @@ const state = {
   isEditing: false,
   currentPageKey: '',
   loadingCnt: 0,
-  apiError: 'this is an api error'
+  apiError:
+    'This is an axample api error. We show this example only during development. See the store/modules/system.js file to remove this message'
 }
 
 const getters = {}
@@ -30,7 +31,9 @@ const mutations = {
     state.currentPageKey = pageKey
   },
   setApiError: (state, error) => {
-    console.error('System api error:', error)
+    if (error) {
+      console.error('System api error:', error)
+    }
     state.apiError = error
   }
 }

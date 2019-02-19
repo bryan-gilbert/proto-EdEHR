@@ -6,7 +6,7 @@ export function getIncomingParams() {
     let pair = p.split('=')
     params2[pair[0]] = decodeURIComponent(pair[1])
   })
-  return parts
+  return params2
 }
 
 export function composeUrl(context, api) {
