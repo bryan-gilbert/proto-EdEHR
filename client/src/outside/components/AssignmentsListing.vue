@@ -136,13 +136,11 @@ export default {
       if (this.actionType === 'edit') {
         console.log('Assignment saving ', theData)
         let dataIdPlusPayload = { id: this.assignmentId, payload: theData }
-        this.$store.dispatch('assignment/updateAssignment', dataIdPlusPayload).then(() => {
-          _this.expandAccordion = true
-        })
+        this.$store.dispatch('assignment/updateAssignment', dataIdPlusPayload)
       } else if (this.actionType === 'create') {
         // console.log('Seed Data saving ', this.aSeed)
         this.$store.dispatch('assignment/createAssignment', this.aAssignment).then(() => {
-          _this.expandAccordion = true
+          console.log('update assignment completed')
         })
       }
     },

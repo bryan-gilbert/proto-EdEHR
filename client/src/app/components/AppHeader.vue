@@ -10,11 +10,15 @@
           router-link(:to="{ name: `instructor` }", class="navLink") Dashboard
         li(class="navItem")
           router-link(:to="{ name: `help` }", class="navLink") Help
+    system-error
 </template>
-
 <script>
+import SystemError from './SystemError'
+
 export default {
   name: 'AppHeader',
+  components: {SystemError},
+
   computed: {
     fullName() {
       return this.$store.getters['visit/fullName']
@@ -37,10 +41,9 @@ export default {
 .apphdr {
   background: $toolbar-background-color;
   color: $toolbar-color;
-  padding: 10px 0 12px 20px;
 
   .wrapper {
-    @include wrapper('content');
+    padding: 10px 20px;
   }
   .navList {
     display: flex;

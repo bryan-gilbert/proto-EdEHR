@@ -11,7 +11,7 @@ const getters = {}
 const actions = {
   loadAssignments(context) {
     let url = composeUrl(context, API)
-    return helper.getRequest(url).then(response => {
+    return helper.getRequest(context, url).then(response => {
       let list = response.data.assignments
       if (!list) {
         console.error('ERROR the system should have assignments')
@@ -24,7 +24,7 @@ const actions = {
   createAssignment(context, payload) {
     let url = composeUrl(context, API)
     console.log('send assignment data ', url, payload)
-    return helper.postRequest(url, payload).then(results => {
+    return helper.postRequest(context, url, payload).then(results => {
       let resultsData = results.data
       console.log('assignment post responded with:', JSON.stringify(resultsData))
       return context.dispatch('loadAssignments')
@@ -35,10 +35,12 @@ const actions = {
     let payload = dataIdPlusPayload.payload
     let url = composeUrl(context, API) + id
     console.log('updateAssignment', url, payload)
-    return helper.putRequest(url, payload).then(results => {
+    return helper.putRequest(context, url, payload).then(results => {
       let resultsData = results.data
       console.log('assignment post responded with:', JSON.stringify(resultsData))
       return context.dispatch('loadAssignments')
+    }).catch( (err) => {
+      console.log('error in update assignment ', err)
     })
   }
 }

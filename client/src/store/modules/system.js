@@ -3,7 +3,8 @@ const state = {
   isLoading: false,
   isEditing: false,
   currentPageKey: '',
-  loadingCnt: 0
+  loadingCnt: 0,
+  apiError: 'this is an api error'
 }
 
 const getters = {}
@@ -12,7 +13,7 @@ const actions = {}
 
 const mutations = {
   setLoading: (state, isLoading) => {
-    if(isLoading) {
+    if (isLoading) {
       state.loadingCnt++
     } else {
       state.loadingCnt--
@@ -27,6 +28,10 @@ const mutations = {
   },
   setCurrentPageKey: (state, pageKey) => {
     state.currentPageKey = pageKey
+  },
+  setApiError: (state, error) => {
+    console.error('System api error:', error)
+    state.apiError = error
   }
 }
 

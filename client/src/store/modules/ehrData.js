@@ -87,7 +87,7 @@ const actions = {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
     let url = `${apiUrl}/activity-data/get/${activityDataId}`
-    return helper.getRequest(url).then(response => {
+    return helper.getRequest(context, url).then(response => {
       let ad = response.data.activitydata
       context.commit('_setForStudent', options.forStudent)
       // console.log('Got activity information ', ad)
@@ -107,7 +107,7 @@ const actions = {
       let apiUrl = visitState.apiUrl
       let activityDataId = context.state.sActivityData._id
       let url = `${apiUrl}/activity-data/get/${activityDataId}`
-      return helper.getRequest(url).then(response => {
+      return helper.getRequest(context, url).then(response => {
         let ad = response.data.activitydata
         // console.log('Got activity information ', ad)
         context.commit('_setActivityData', ad)
@@ -132,7 +132,7 @@ const actions = {
     //   property: 'progressNotes',
     //   value: value
     // }
-    return helper.putRequest(url, payload).then(results => {
+    return helper.putRequest(context, url, payload).then(results => {
       let activityData = results.data
       // console.log('ehrData commit activityData with new assignmentData', JSON.stringify(activityData.assignmentData))
       context.commit('_setActivityData', activityData)
@@ -146,7 +146,7 @@ const actions = {
     let activityDataId = context.state.sActivityData._id
     // console.log('sendScratchData scratch, apiUrl ', activityDataId, apiUrl)
     let url = `${apiUrl}/activity-data/scratch-data/${activityDataId}`
-    return helper.putRequest(url, { value: data }).then(results => {
+    return helper.putRequest(context, url, { value: data }).then(results => {
       let activityData = results.data
       // console.log('ehrData commit activityData with new scratchData', JSON.stringify(activityData.scratchData))
       context.commit('_setActivityData', activityData)
@@ -160,7 +160,7 @@ const actions = {
     let activityDataId = context.state.sCurrentStudentData.activityDataId
     // console.log('sendEvaluationNotes activityDataId, apiUrl, data ', activityDataId, apiUrl, JSON.stringify(data))
     let url = `${apiUrl}/activity-data/evaluation-data/${activityDataId}`
-    return helper.putRequest(url, { value: data }).then(results => {
+    return helper.putRequest(context, url, { value: data }).then(results => {
       let activityData = results.data
       console.log(
         'ehrData update current student data with new evaluation data',

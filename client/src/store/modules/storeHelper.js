@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export default class StoreHelper {
-  putRequest(url, bodyData) {
+  putRequest(context, url, bodyData) {
     console.log('PUT to this url', url)
     return new Promise((resolve, reject) => {
       axios
@@ -12,12 +12,12 @@ export default class StoreHelper {
         })
         .catch(error => {
           let msg = `Failed PUT to ${url} with error: ${error.message}`
-          console.error(msg)
+          context.commit('system/setApiError', msg, { root: true })
           reject(msg)
         })
     })
   }
-  postRequest(url, bodyData) {
+  postRequest(context, url, bodyData) {
     console.log('POST to this url', url)
     return new Promise((resolve, reject) => {
       axios
@@ -28,12 +28,12 @@ export default class StoreHelper {
         })
         .catch(error => {
           let msg = `Failed POST to ${url} with error: ${error.message}`
-          console.error(msg)
+          context.commit('system/setApiError', msg, { root: true })
           reject(msg)
         })
     })
   }
-  getRequest(url) {
+  getRequest(context, url) {
     // console.log('GET to this url', url)
     return new Promise((resolve, reject) => {
       axios
@@ -44,7 +44,7 @@ export default class StoreHelper {
         })
         .catch(error => {
           let msg = `Failed GET to ${url} with error: ${error.message}`
-          console.error(msg)
+          context.commit('system/setApiError', msg, { root: true })
           reject(msg)
         })
     })

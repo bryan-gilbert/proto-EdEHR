@@ -24,7 +24,7 @@ const actions = {
     // let url = `${apiUrl}/seed-data/get/${seedId}`
     let url = composeUrl(context,API) + 'get/' + seedId
     console.log('loadSeedContent', seedId, url)
-    return helper.getRequest(url).then(response => {
+    return helper.getRequest(context, url).then(response => {
       let sd = response.data.seeddata
       let ehrd = sd.ehrData || {}
       context.commit('_setSeedContent', sd)
@@ -33,7 +33,7 @@ const actions = {
   },
   loadSeedDataList(context) {
     let url = composeUrl(context, API)
-    return helper.getRequest(url).then(response => {
+    return helper.getRequest(context, url).then(response => {
       let list = response.data.seeddata
       if (!list) {
         console.error('ERROR the system should have seeddata')
@@ -45,7 +45,7 @@ const actions = {
   createSeedItem(context, payload) {
     let url = composeUrl(context, API)
     console.log('send seed data ', url, payload)
-    return helper.postRequest(url, payload).then(results => {
+    return helper.postRequest(context, url, payload).then(results => {
       let resultsData = results.data
       console.log('assignment commit seed data with new data', JSON.stringify(resultsData))
       return context.dispatch('loadSeedDataList')

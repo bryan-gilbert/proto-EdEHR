@@ -70,7 +70,7 @@ const actions = {
     let url = `${context.state.apiUrl}/activity-data/evaluation-data/${vid}`
     // console.log('store save eval notes ', url, body)
     return new Promise(resolve => {
-      helper.putRequest(url, body).then(results => {
+      helper.putRequest(context, url, body).then(results => {
         let evaluationData = results.data
         resolve(evaluationData)
       })
