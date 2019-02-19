@@ -1,36 +1,36 @@
 <template lang="pug">
   div(:class="$options.name")
     h1 Ed EHR Assignments
-    div(v-if="error")
-      p Error: {{ error }}
+    div(v-if="isRespondingToError")
+      p Error: {{ isRespondingToError }}
       p Your LMS is asking for "{{ activity.custom_assignment }}".
       p Adjust your LMS to use an assignment from the listing below
     div
     table.table
       thead
         tr
-          th.name(title="Name") EdEHR Assignment Name
-          th.description(title="Description") Description
-          th.external(title="External Id") Assignment External Id
-          th.seedData(title="Seed Data") Seed Data
+          th(title="Name") EdEHR Assignment Name
+          th(title="Description") Description
+          th(title="External Id") Assignment External Id
+          th(v-show="isDeveloper", title="Seed Data") Seed Data
       tbody
         tr(v-for="item in assignmentsListing")
-          td.name {{ item.name }}
-          td.description {{ item.description}}
-          td.external {{ item.externalId}}
-          td.seedData {{ item.seedDataId}}
-    current-lms-activity
+          td {{ item.name }}
+          td {{ item.description}}
+          td {{ item.externalId}}
+          td(v-show="isDeveloper") {{ item.seedDataId}}
 </template>
 
 <script>
-  import CurrentLmsActivity from '../components/CurrentLmsActivity'
-
 import { getIncomingParams } from '../../helpers/ehr-utills'
 
 export default {
   name: 'AssignmentsListing',
-  components: {CurrentLmsActivity},
+  components: { },
   computed: {
+    isDeveloper() {
+      return this.$store.getters['visit/isDeveloper']
+    },
     assignmentsListing() {
       return this.$store.state.assignment.assignmentsListing
     },
@@ -40,7 +40,7 @@ export default {
   },
   data: function() {
     return {
-      error: null
+      isRespondingToError: null
     }
   },
   methods: {
@@ -51,13 +51,21 @@ export default {
       // return JSON.stringify(item.seedData)
     },
     loadAssignments: function() {
+      const _this = this
       console.log('load assignments for AssignmentListing component')
-      this.$store.dispatch('assignment/loadAssignments')
+      this.$store.commit('system/setLoading', true)
+      Promise.all([
+        _this.$store.dispatch('seedStore/loadSeedDataList'),
+        _this.$store.dispatch('assignment/loadAssignments')
+      ])
+      .then( () => {
+        _this.$store.commit('system/setLoading', false)
+      })
     }
   },
   mounted: function() {
     let params2 = getIncomingParams()
-    this.error = params2['error']
+    this.isRespondingToError = params2['error']
     this.loadAssignments()
   }
 }

@@ -11,8 +11,8 @@ export function outside() {
       path: '/assignments',
       name: 'assignments',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/AssignmentsListing.vue'),
-      meta: { layout: 'outside', label: 'AssignmentsListing', topLevel: 'undefined' }
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Assignments.vue'),
+      meta: { layout: 'outside', label: 'Assignments', topLevel: 'undefined' }
     },
     {
       path: '/developEhrData',
