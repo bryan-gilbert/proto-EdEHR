@@ -8,3 +8,9 @@ export function getIncomingParams() {
   })
   return parts
 }
+
+export function composeUrl(context, api) {
+  let visitState = context.rootState.visit
+  let apiUrl = visitState.apiUrl
+  return `${apiUrl}/${api}/`
+}

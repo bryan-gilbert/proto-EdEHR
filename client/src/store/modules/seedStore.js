@@ -1,5 +1,7 @@
 import StoreHelper from './storeHelper'
 const helper = new StoreHelper()
+import {composeUrl} from '../../helpers/ehr-utills'
+const API = 'seed-data'
 
 const state = {
   seedDataList: [],
@@ -15,17 +17,12 @@ const getters = {
     return state.ehrData || {}
   }
 }
-function composeUrl(context) {
-  let visitState = context.rootState.visit
-  let apiUrl = visitState.apiUrl
-  return `${apiUrl}/seed-data/`
-}
 
 const actions = {
   loadSeedContent(context, options) {
     let seedId = context.state.sSeedId
     // let url = `${apiUrl}/seed-data/get/${seedId}`
-    let url = composeUrl(context) + 'get/' + seedId
+    let url = composeUrl(context,API) + 'get/' + seedId
     console.log('loadSeedContent', seedId, url)
     return helper.getRequest(url).then(response => {
       let sd = response.data.seeddata
@@ -35,7 +32,7 @@ const actions = {
     })
   },
   loadSeedDataList(context) {
-    let url = composeUrl(context)
+    let url = composeUrl(context, API)
     return helper.getRequest(url).then(response => {
       let list = response.data.seeddata
       if (!list) {
@@ -46,7 +43,7 @@ const actions = {
     })
   },
   createSeedItem(context, payload) {
-    let url = composeUrl(context)
+    let url = composeUrl(context, API)
     console.log('send seed data ', url, payload)
     return helper.postRequest(url, payload).then(results => {
       let resultsData = results.data
@@ -64,7 +61,7 @@ const actions = {
   updateSeedItem(context, dataIdPlusPayload) {
     let id = dataIdPlusPayload.id
     let payload = dataIdPlusPayload.payload
-    let url = composeUrl(context) + id
+    let url = composeUrl(context,API) + id
     console.log('updateSeedData', url, payload)
     return helper
       .putRequest(url, payload)
@@ -93,7 +90,7 @@ const actions = {
    * @return {*}
    */
   updateSeedEhrData(context, payload) {
-    let url = composeUrl(context) + 'updateSeedEhrData/' + payload.id
+    let url = composeUrl(context, API) + 'updateSeedEhrData/' + payload.id
     console.log('updateSeedEhrData', url, payload)
     return helper
       .putRequest(url, payload)
