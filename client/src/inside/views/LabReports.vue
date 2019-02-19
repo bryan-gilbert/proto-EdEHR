@@ -11,7 +11,7 @@
           ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
     div(style="display:none")
       p This Lab Reports page is generated.
-      p Label: Lab Reports
+      p Label: Lab reports
       p Data Key: labResults
       p Component name: LabReports
       p Redirect: 

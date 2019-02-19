@@ -10,13 +10,13 @@
         div(v-if="uiProps.hasTable", v-for="tableDef in uiProps.tables", :key="tableDef.tableKey")
           ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
     div(style="display:none")
-      p This Family History page is generated.
-      p Label: Family history
-      p Data Key: familyHistory
-      p Component name: FamilyHistory
+      p This Fluid Balance page is generated.
+      p Label: Fluid balance
+      p Data Key: fluidBalance
+      p Component name: FluidBalance
       p Redirect: 
-      p Route name: family-history
-      p Full path: /ehr/patient/history/family-history
+      p Route name: fluid-balance
+      p Full path: /ehr/current/fluid-balance
 </template>
 
 <script>
@@ -28,7 +28,7 @@ import EhrPageForm from '../components/EhrPageForm.vue'
 import EhrHelp from '../ehr-helper'
 
 export default {
-  name: 'FamilyHistory',
+  name: 'FluidBalance',
   components: {
     EhrPanelHeader,
     EhrPanelContent,
@@ -38,7 +38,7 @@ export default {
   },
   data: function() {
     return {
-      pageDataKey: 'familyHistory',
+      pageDataKey: 'fluidBalance',
       theData: {},
       ehrHelp: undefined
     }

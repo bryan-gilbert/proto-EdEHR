@@ -6,12 +6,13 @@
 {path: /ehr/patient/history}	{routeName: psychosocial}	{pageDataKey: psychosocial}	{label: Psychosocial}	{redirect: }	{generateComponent: yes}
 {path: /ehr/patient/history}	{routeName: surgical}	{pageDataKey: surgical}	{label: Surgical}	{redirect: }	{generateComponent: yes}
 {path: /ehr/patient/history}	{routeName: immunization}	{pageDataKey: immunization}	{label: Immunization}	{redirect: }	{generateComponent: yes}
-{path: /ehr/patient/history}	{routeName: family-history}	{pageDataKey: familyHistory}	{label: Family History}	{redirect: }	{generateComponent: yes}
+{path: /ehr/patient/history}	{routeName: family-history}	{pageDataKey: familyHistory}	{label: Family history}	{redirect: }	{generateComponent: yes}
 {path: /ehr/patient}	{routeName: care-team}	{pageDataKey: careTeam}	{label: Care team}	{redirect: }	{generateComponent: yes}
 {path: /ehr/patient}	{routeName: past-appointments}	{pageDataKey: pastAppointments}	{label: Past appointments}	{redirect: }	{generateComponent: yes}
 {path: /ehr}	{routeName: current}	eCell	{label: Current visit}	{redirect: visit-details}	eCell
 {path: /ehr/current}	{routeName: visit-details}	{pageDataKey: visit}	{label: Visit details}	{redirect: }	{generateComponent: yes}
 {path: /ehr/current}	{routeName: vital-signs}	{pageDataKey: vitals}	{label: Vital signs}	{redirect: }	{generateComponent: custom}
+{path: /ehr/current}	{routeName: fluid-balance}	{pageDataKey: fluidBalance}	{label: Fluid balance}	eCell	{generateComponent: yes}
 {path: /ehr/current}	{routeName: assessments}	eCell	{label: Assessments}	{redirect: neurological}	eCell
 {path: /ehr/current/assessments}	{routeName: neurological}	{pageDataKey: neurological}	{label: Neurological}	{redirect: }	{generateComponent: yes}
 {path: /ehr/current/assessments}	{routeName: respiratory}	{pageDataKey: respiratory}	{label: Respiratory}	{redirect: }	{generateComponent: yes}
@@ -34,7 +35,7 @@
 {path: /ehr/chart}	{routeName: care-plan}	{pageDataKey: carePlan}	{label: Interprofessional plan of care}	{redirect: }	{generateComponent: yes}
 {path: /ehr/chart}	{routeName: reports}	eCell	{label: Reports and documents}	{redirect: consults}	eCell
 {path: /ehr/chart/reports}	{routeName: consults}	{pageDataKey: consultants}	{label: Consults}	{redirect: }	{generateComponent: yes}
-{path: /ehr/chart/reports}	{routeName: lab-reports}	{pageDataKey: labResults}	{label: Lab Reports}	{redirect: }	{generateComponent: yes}
+{path: /ehr/chart/reports}	{routeName: lab-reports}	{pageDataKey: labResults}	{label: Lab reports}	{redirect: }	{generateComponent: yes}
 {path: /ehr/chart/reports}	{routeName: diagnostic-reports}	{pageDataKey: medicalImaging}	{label: Diagnostic reports}	{redirect: }	{generateComponent: yes}
 {path: /ehr/chart/reports}	{routeName: operative-anaesthesia}	{pageDataKey: operationReports}	{label: Operative reports and anaesthesia record}	{redirect: }	{generateComponent: yes}
 {path: /ehr}	{routeName: external}	eCell	{label: External resources}	{redirect: assessment-tools}	eCell

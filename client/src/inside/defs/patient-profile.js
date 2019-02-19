@@ -1383,7 +1383,7 @@ export default function() {
       tables: [
         {
           tableKey: 'encounters',
-          addButtonText: 'Add past encounter',
+          addButtonText: 'Add new past encounter',
           tableCells: [
             {
               elementKey: 'date',
@@ -1508,7 +1508,7 @@ export default function() {
         },
         {
           tableKey: 'outpatientAppointments',
-          addButtonText: 'Add outpatient visit',
+          addButtonText: 'Add new past appointment',
           tableCells: [
             {
               elementKey: 'date',

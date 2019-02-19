@@ -61,7 +61,7 @@ export function inside() {
       name: 'family-history',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/FamilyHistory.vue'),
-      meta: { layout: 'inside', label: 'Family History', topLevel: 'patient' }
+      meta: { layout: 'inside', label: 'Family history', topLevel: 'patient' }
     },
     {
       path: '/ehr/patient/care-team',
@@ -97,6 +97,13 @@ export function inside() {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/VitalSigns.vue'),
       meta: { layout: 'inside', label: 'Vital signs', topLevel: 'current' }
+    },
+    {
+      path: '/ehr/current/fluid-balance',
+      name: 'fluid-balance',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/FluidBalance.vue'),
+      meta: { layout: 'inside', label: 'Fluid balance', topLevel: 'current' }
     },
     {
       path: '/ehr/current/assessments',
@@ -257,7 +264,7 @@ export function inside() {
       name: 'lab-reports',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/LabReports.vue'),
-      meta: { layout: 'inside', label: 'Lab Reports', topLevel: 'chart' }
+      meta: { layout: 'inside', label: 'Lab reports', topLevel: 'chart' }
     },
     {
       path: '/ehr/chart/reports/diagnostic-reports',
