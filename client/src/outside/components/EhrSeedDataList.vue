@@ -38,10 +38,14 @@
               div(class="text_input_wrapper")
                 label Version
                 input(class="input", type="text", v-model="aSeed.version")
+          div(class="input-fieldrow")
             div(class="ehrdfe")
+              label Description
               div(class="input-element input-element-full")
                 textarea(class="textarea",v-model="aSeed.description")
+          div(class="input-fieldrow")
             div(class="ehrdfe")
+              label EHR Data
               div(class="input-element input-element-full")
                 textarea(class="textarea",v-model="aSeed.ehrData")
 
