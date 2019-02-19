@@ -18,7 +18,7 @@
           td.name {{ item.name }}
           td.description {{ item.description}}
           td.external {{ item.externalId}}
-          td.seedData(v-bind:title="asString(item.seedData)") {{ item.seedData ? 'seed hover' : '&nbsp;' }}
+          td.seedData {{ item.seedDataId}}
     current-lms-activity
 </template>
 
