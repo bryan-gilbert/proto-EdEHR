@@ -127,8 +127,8 @@ export default {
     },
     saveDialog: function() {
       // console.log('saveDialog ', this.actionType, this.aSeed)
-      const _this = this
-      this.aAssignment.seedDataId = this.selectedSeed
+      let sId = this.selectedSeed && this.selectedSeed.length > 0 ? this.selectedSeed : null
+      this.aAssignment.seedDataId = sId
       let theData = this.aAssignment || '{}'
       // console.log(`Convert seed data field '${theData}' into an object`)
       // theData = JSON.parse(theData)

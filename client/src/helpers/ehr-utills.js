@@ -14,3 +14,10 @@ export function composeUrl(context, api) {
   let apiUrl = visitState.apiUrl
   return `${apiUrl}/${api}/`
 }
+
+export function composeAxiosResponseError(error, msg) {
+  msg += error.response.status ? ` status: ${error.response.status}` : ''
+  msg += error.response.statusText ? ` ${error.response.statusText}` : ''
+  msg += error.response.data ? ` ${error.response.data}` : error.message
+  return msg
+}

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { composeAxiosResponseError } from '../../helpers/ehr-utills'
 
 export default class StoreHelper {
   putRequest(context, url, bodyData) {
@@ -11,7 +12,7 @@ export default class StoreHelper {
           resolve(results)
         })
         .catch(error => {
-          let msg = `Failed PUT to ${url} with error: ${error.message}`
+          let msg = composeAxiosResponseError(error, 'Update failed: ')
           context.commit('system/setApiError', msg, { root: true })
           reject(msg)
         })
@@ -27,7 +28,7 @@ export default class StoreHelper {
           resolve(results)
         })
         .catch(error => {
-          let msg = `Failed POST to ${url} with error: ${error.message}`
+          let msg = composeAxiosResponseError(error, 'Create failed: ')
           context.commit('system/setApiError', msg, { root: true })
           reject(msg)
         })
@@ -43,7 +44,8 @@ export default class StoreHelper {
           resolve(results)
         })
         .catch(error => {
-          let msg = `Failed GET to ${url} with error: ${error.message}`
+          // let msg = `Failed GET to ${url} with error: ${error.message}`
+          let msg = composeAxiosResponseError(error, 'Get failed: ')
           context.commit('system/setApiError', msg, { root: true })
           reject(msg)
         })
