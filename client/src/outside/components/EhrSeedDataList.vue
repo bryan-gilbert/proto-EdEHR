@@ -1,32 +1,29 @@
 <template lang="pug">
   div(id="seedDataList", class="seedData-list")
     h1 Seed Data
-    div(class="seedData-list-header columns", v-on:click="activateActivity")
-      div Click here to see list of data seeds used by assignments
+    div
+      ui-button(v-on:buttonClicked="showCreateDialog") Create new seed
     div(class="seedData-list-body")
-      accordion-element(theme="grayTheme", :show="expandAccordion")
-        div
-          ui-button(v-on:buttonClicked="showCreateDialog") Create new seed
-        div(class="classlist-body")
-          table.table
-            thead
-              tr
-                th Name
-                th Version
-                th Description
-                th Seed Id
-            tbody
-              tr(v-for="sv in seedDataList")
-                td {{sv.name}}
-                td {{sv.version}}
-                td {{sv.description}} {{sv}}
-                td {{sv._id}}
-                td
-                  ui-button(v-on:buttonClicked="showEditDialog", :value="sv._id")
-                    fas-icon(icon="edit")
-                td
-                  ui-button(v-on:buttonClicked="gotoEhrWithSeed", :value="sv._id")
-                    fas-icon(icon="notes-medical")
+      div(class="classlist-body")
+        table.table
+          thead
+            tr
+              th Name
+              th Version
+              th Description
+              th Seed Id
+          tbody
+            tr(v-for="sv in seedDataList")
+              td {{sv.name}}
+              td {{sv.version}}
+              td {{sv.description}} {{sv}}
+              td {{sv._id}}
+              td
+                ui-button(v-on:buttonClicked="showEditDialog", :value="sv._id")
+                  fas-icon(icon="edit")
+              td
+                ui-button(v-on:buttonClicked="gotoEhrWithSeed", :value="sv._id")
+                  fas-icon(icon="notes-medical")
 
     app-dialog( v-if="showingDialog", :isModal="true", @cancel="cancelDialog", @save="saveDialog")
       h3(slot="header") {{dialogHeader}}
@@ -51,23 +48,19 @@
 </template>
 
 <script>
-import AccordionElement from '../../app/components/AccordionElement'
 import AppDialog from '../../app/components/AppDialogShell'
 import UiButton from '../../app/ui/UiButton.vue'
 import EventBus from '../../event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from '../../event-bus'
 
 export default {
-  name: 'ActivityList',
+  name: 'EhrSeedDataList',
   components: {
-    AccordionElement,
     AppDialog,
     UiButton
   },
   data() {
     return {
-      expandAccordion: false,
-      indicator: '+',
       showingDialog: false,
       aSeed: {},
       dialogHeader: '',
@@ -87,24 +80,8 @@ export default {
         return e._id === id
       })
     },
-    setShow: function(value) {
-      this.expandAccordion = value
-      this.indicator = value ? '-' : '+'
-    },
-    activateActivity() {
-      if (this.expandAccordion) {
-        this.setShow(false)
-        return
-      }
-      this.loadSeedDataList()
-    },
     loadSeedDataList() {
-      const _this = this
-      return this.$store.dispatch('seedStore/loadSeedDataList').then(() => {
-        _this.$nextTick(function() {
-          _this.setShow(true)
-        })
-      })
+      return this.$store.dispatch('seedStore/loadSeedDataList')
     },
     gotoEhrWithSeed: function(event) {
       const _this = this
@@ -159,7 +136,9 @@ export default {
       }
     }
   },
-  mounted: function() {}
+  mounted: function() {
+    this.loadSeedDataList()
+  }
 }
 </script>
 

@@ -8,6 +8,20 @@ export function outside() {
       meta: { layout: 'outside', label: 'Instructor', topLevel: 'undefined' }
     },
     {
+      path: '/assignments',
+      name: 'assignments',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/AssignmentsListing.vue'),
+      meta: { layout: 'outside', label: 'AssignmentsListing', topLevel: 'undefined' }
+    },
+    {
+      path: '/developEhrData',
+      name: 'developEhrData',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/DevelopEhrData.vue'),
+      meta: { layout: 'outside', label: 'DevelopEhrData', topLevel: 'undefined' }
+    },
+    {
       path: '/help',
       name: 'help',
       component: () =>

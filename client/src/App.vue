@@ -5,8 +5,10 @@
 </template>
 
 <script>
+// TODO remove configuration.
 import Configuration from './configuration'
 var config = new Configuration(process.env.NODE_ENV)
+import { getIncomingParams } from './helpers/ehr-utills'
 
 const DefaultLayout = 'outside'
 
@@ -15,14 +17,7 @@ export default {
   components: {},
   methods: {
     loadData: function() {
-      let search = window.location.search.substring(1)
-      let params2 = {}
-      let parts = search.split('&')
-      parts.forEach(p => {
-        let pair = p.split('=')
-        params2[pair[0]] = decodeURIComponent(pair[1])
-      })
-      // console.log('incoming parameters', params2)
+      let params2 = getIncomingParams()
       // API return to url
       let apiUrl = params2['apiUrl']
       let visitId = params2['visit']

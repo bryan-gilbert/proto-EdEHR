@@ -100,15 +100,11 @@
             th.name(title="Name") EdEHR Assignment Name
             th.description(title="Description") Description
             th.external(title="External Id") Assignment External Id
-            th.ehrRoute(title="Route") Internal Route
-            th.seedData(title="Seed Data") Seed Data
         tbody
           tr(v-for="item in assignmentsListing")
             td.name {{ item.name }}
             td.description {{ item.description}}
             td.external {{ item.externalId}}
-            td.ehrRoute {{ item.ehrRouteName}}
-            td.seedData(v-bind:title="asString(item.seedData)") {{ item.seedData ? 'seed hover' : '&nbsp;' }}
 </template>
 
 <script>

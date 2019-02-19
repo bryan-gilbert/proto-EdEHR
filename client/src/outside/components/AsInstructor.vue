@@ -1,28 +1,21 @@
 <template lang="pug">
-  div(class="as-instructor section")
+  div(class="as-instructor")
     div(class="courses", v-for="course in courses")
       div(class="course-header")
-        h1 Dashboard
+        h1 Instructor Dashboard
         h2(class="course-header-item") {{ course.label }} - {{ course.name }} (Id: {{ course.id }})
       div(class="activities", v-for="activity in course.activities")
         div(:ref="`activity-${activity._id}`")
           class-list(:activity="activity")
-    assignment-list
-    seed-data-list
-    router-view
 </template>
 
 <script>
 import ClassList from './ClassList'
-import AssignmentList from '../components/AssignmentList'
-import SeedDataList from '../components/SeedDataList'
 
 export default {
   name: 'AsInstructor',
   components: {
-    ClassList,
-    AssignmentList,
-    SeedDataList
+    ClassList
   },
   computed: {
     courses() {
@@ -54,9 +47,6 @@ export default {
 @import '../../scss/definitions';
 
 .as-instructor {
-  &.section {
-    padding: 1.5rem;
-  }
   .courses {
     margin-left: 0;
   }

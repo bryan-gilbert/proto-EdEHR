@@ -1,15 +1,15 @@
 <template lang="pug">
   div
-    as-instructor
+    ehr-seed-data-list
 </template>
 
 <script>
-import AsInstructor from '../components/AsInstructor'
+import EhrSeedDataList from '../components/EhrSeedDataList'
 
 export default {
-  name: 'Instructor',
+  name: 'DevelopEhrData',
   components: {
-    AsInstructor
+    EhrSeedDataList
   }
 }
 </script>

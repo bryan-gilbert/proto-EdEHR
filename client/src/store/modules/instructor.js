@@ -38,8 +38,8 @@ const actions = {
         })
       }
       if (!sv) {
-        console.error('ERROR. Cannot find student in class list. ', currentId)
-        return
+        console.log('ERROR. Cannot find student in class list. ', currentId, classList)
+        return resolve()
       }
       // console.log("What do we have here? ", sv, sv.activity)
       let sva = sv.assignment

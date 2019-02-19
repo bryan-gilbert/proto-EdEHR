@@ -12,67 +12,30 @@
           th.name(title="Name") EdEHR Assignment Name
           th.description(title="Description") Description
           th.external(title="External Id") Assignment External Id
-          th.ehrRoute(title="Route") Internal Route
           th.seedData(title="Seed Data") Seed Data
       tbody
         tr(v-for="item in assignmentsListing")
           td.name {{ item.name }}
           td.description {{ item.description}}
           td.external {{ item.externalId}}
-          td.ehrRoute {{ item.ehrRouteName}}
           td.seedData(v-bind:title="asString(item.seedData)") {{ item.seedData ? 'seed hover' : '&nbsp;' }}
-    h1 Current LMS Activity
-    table.table
-      thead
-        tr
-          th Name
-          th Value
-      tbody
-        tr
-          td Course Name
-          td {{ activity.context_title }}
-        tr
-          td Course Label
-          td {{ activity.context_label }}
-        tr
-          td Course Id
-          td {{ activity.context_id }}
-        tr
-          td Activity Name
-          td {{ activity.resource_link_title }}
-        tr
-          td Activity Description
-          td {{ activity.resource_link_description }}
-        tr
-          td Activity Id
-          td {{ activity.resource_link_id }}
-    a(:href="returnUrl") Return to LMS
+    current-lms-activity
 </template>
 
 <script>
-  /*
-              v-popover
-              button Click me
-              template(slot="popover")
-                div {{ asString(item.seedData) }}
+  import CurrentLmsActivity from '../components/CurrentLmsActivity'
 
-   */
+import { getIncomingParams } from '../../helpers/ehr-utills'
+
 export default {
   name: 'AssignmentsListing',
-  components: {},
+  components: {CurrentLmsActivity},
   computed: {
     assignmentsListing() {
       return this.$store.state.assignment.assignmentsListing
     },
-    currentVisit() {
-      return this.$store.state.sVisitInfo
-    },
     activity() {
-      var act = this.$store.state.ehrData.sActivityData
-      return act
-    },
-    returnUrl() {
-      return this.$store.getters['visit/returnUrl']
+      return this.$store.state.ehrData.sActivityData
     }
   },
   data: function() {
@@ -83,7 +46,7 @@ export default {
   methods: {
     asString: function(obj) {
       let str = JSON.stringify(obj)
-      console.log('what is here? ', str)
+      // console.log('what is here? ', str)
       return str
       // return JSON.stringify(item.seedData)
     },
@@ -93,9 +56,8 @@ export default {
     }
   },
   mounted: function() {
-    var url2 = new URL(window.location)
-    var params2 = new URLSearchParams(url2.search)
-    this.error = params2.get('error')
+    let params2 = getIncomingParams()
+    this.error = params2['error']
     this.loadAssignments()
   }
 }
@@ -111,7 +73,6 @@ export default {
 }
 .tooltip {
   &.popover {
-
     .popover-inner {
       background: $grey03;
       color: $black;
