@@ -159,14 +159,14 @@
         },
         {
           "name": "family-history",
-          "label": "Family History",
+          "label": "Family history",
           "routeName": "family-history",
           "topLevel": "patient",
           "def": {
             "path": "/ehr/patient/history",
             "routeName": "family-history",
             "pageDataKey": "familyHistory",
-            "label": "Family History",
+            "label": "Family history",
             "redirect": "",
             "generateComponent": "yes",
             "componentName": "FamilyHistory",
@@ -274,6 +274,26 @@
         "dataName": "vitalSigns",
         "fullPath": "/ehr/current/vital-signs",
         "title": "Vital Signs",
+        "topLevel": "current"
+      },
+      "children": []
+    },
+    {
+      "name": "fluid-balance",
+      "label": "Fluid balance",
+      "routeName": "fluid-balance",
+      "topLevel": "current",
+      "def": {
+        "path": "/ehr/current",
+        "routeName": "fluid-balance",
+        "pageDataKey": "fluidBalance",
+        "label": "Fluid balance",
+        "generateComponent": "yes",
+        "componentName": "FluidBalance",
+        "dataName": "fluidBalance",
+        "fullPath": "/ehr/current/fluid-balance",
+        "title": "Fluid Balance",
+        "redirect": "",
         "topLevel": "current"
       },
       "children": []
@@ -717,14 +737,14 @@
         },
         {
           "name": "lab-reports",
-          "label": "Lab Reports",
+          "label": "Lab reports",
           "routeName": "lab-reports",
           "topLevel": "chart",
           "def": {
             "path": "/ehr/chart/reports",
             "routeName": "lab-reports",
             "pageDataKey": "labResults",
-            "label": "Lab Reports",
+            "label": "Lab reports",
             "redirect": "",
             "generateComponent": "yes",
             "componentName": "LabReports",

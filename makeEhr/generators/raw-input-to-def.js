@@ -194,6 +194,8 @@ class RawInputToDef {
     let { pg, container } = this._topLevelContainerForGroup(pages, p, entry)
     let dp = container.dataParent
     let toplevel = pg.containers[dp]
+    if(!toplevel)
+    console.log(entry,dp)
     toplevel.elements.push(container)
     // console.log('subcontainer now linked into ', container, toplevel)
     // connect the sub group with it top level group
