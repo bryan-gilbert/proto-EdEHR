@@ -38,7 +38,7 @@
                 input(class="input", type="text", v-model="aAssignment.externalId")
             div(class="ehrdfe")
               div(class="input-element")
-                label Seed data
+                label Seed data {{selectedSeed}}
                 select(v-model="selectedSeed")
                   option(disabled,value="") Please select one
                   option(v-for="seed in seedOptionList", v-bind:value="seed.id", :selected="seed.selected") {{ seed.name}} {{seed.selected}}
@@ -83,43 +83,16 @@ export default {
           let sd = sdList.find(sd => {
             return sd._id === ass.seedDataId
           })
-          ass.seedDataObj = sd
+          ass.seedDataObj = sd || {}
         }
       })
       return assList
     },
-    // selectedSeed: {
-    //   get: function () {
-    //     let seed= ''
-    //     if(this.aAssignment) {
-    //       let sdList = this.$store.state.seedStore.seedDataList
-    //       let asd = this.aAssignment.seedDataId
-    //       let found = sdList.find((a)=> {
-    //         console.log('look at ', a)
-    //         return a._id === asd
-    //       })
-    //       console.log('found this ', found)
-    //       seed = found ? found : ''
-    //     }
-    //     return seed;
-    //   },
-    //   set: function (newValue) {
-    //     this.stashedSelectedSeed = newValue
-    //   }
-    // },
     seedOptionList() {
       let sdList = this.$store.state.seedStore.seedDataList
-      let asdid = this.aAssignment.seedDataId
-      let list = sdList.map((sd) => {
-        let opt =  {id: sd._id, name: sd.name, selected: false}
-        console.log('do the ids match?', asdid, opt)
-        if(asdid === sd._id) {
-          console.log('YES', sd._id)
-          opt.selected = true
-        }
-        return opt
+      return sdList.map((sd) => {
+        return {id: sd._id, name: sd.name}
       })
-      return list
     },
     activity() {
       return this.$store.state.ehrData.sActivityData
@@ -138,11 +111,13 @@ export default {
       let sData = Object.assign({}, this.findAssignment(this.assignmentId))
       this.actionType = 'edit'
       this.aAssignment = sData
+      this.selectedSeed = sData.seedDataId || ''
       this.dialogHeader = 'Edit assignment properties'
       this.showingDialog = true
     },
     showCreateDialog: function() {
       this.aAssignment = {}
+      this.selectedSeed = ''
       this.actionType = 'create'
       this.dialogHeader = 'Create a new assignment'
       this.showingDialog = true
@@ -153,9 +128,10 @@ export default {
     saveDialog: function() {
       // console.log('saveDialog ', this.actionType, this.aSeed)
       const _this = this
+      this.aAssignment.seedDataId = this.selectedSeed
       let theData = this.aAssignment || '{}'
       // console.log(`Convert seed data field '${theData}' into an object`)
-      theData = JSON.parse(theData)
+      // theData = JSON.parse(theData)
       this.showingDialog = false
       if (this.actionType === 'edit') {
         console.log('Assignment saving ', theData)

@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
  */
 
 const Schema = new mongoose.Schema({
-  externalId: {type: String},
+  externalId: {type: String, unique: true},
   name: { type: String },
   description: { type: String },
   ehrRoutePath: { type: String },

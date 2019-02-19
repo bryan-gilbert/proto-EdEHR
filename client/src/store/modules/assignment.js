@@ -33,9 +33,11 @@ const actions = {
   updateAssignment(context, dataIdPlusPayload) {
     let id = dataIdPlusPayload.id
     let payload = dataIdPlusPayload.payload
-    let url = composeUrl(context) + id
+    let url = composeUrl(context, API) + id
     console.log('updateAssignment', url, payload)
     return helper.putRequest(url, payload).then(results => {
+      let resultsData = results.data
+      console.log('assignment post responded with:', JSON.stringify(resultsData))
       return context.dispatch('loadAssignments')
     })
   }
