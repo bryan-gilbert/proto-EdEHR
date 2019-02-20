@@ -9,7 +9,8 @@
 import Configuration from './configuration'
 var config = new Configuration(process.env.NODE_ENV)
 import { getIncomingParams } from './helpers/ehr-utills'
-
+import EventBus from './event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from './event-bus'
 const DefaultLayout = 'outside'
 
 export default {
@@ -64,6 +65,7 @@ export default {
         })
         .then(() => {
           this.$store.commit('system/setLoading', false)
+          EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
           console.log('App DONE loading now.')
         })
         .catch(err => {
