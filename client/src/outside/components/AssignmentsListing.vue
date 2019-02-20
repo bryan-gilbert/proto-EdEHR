@@ -77,6 +77,8 @@ export default {
     assignmentsListing() {
       let sdList = this.$store.state.seedStore.seedDataList
       let assList = this.$store.state.assignment.assignmentsListing
+      assList = assList.filter(entry => entry.externalId != 'defaultNonAssignment')
+
       assList.forEach(ass => {
         ass.seedDataObj = {}
         if (ass.seedDataId) {
@@ -90,8 +92,8 @@ export default {
     },
     seedOptionList() {
       let sdList = this.$store.state.seedStore.seedDataList
-      return sdList.map((sd) => {
-        return {id: sd._id, name: sd.name}
+      return sdList.map(sd => {
+        return { id: sd._id, name: sd.name }
       })
     },
     activity() {
