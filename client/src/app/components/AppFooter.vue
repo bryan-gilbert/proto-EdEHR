@@ -39,10 +39,6 @@ footer {
   }
   text-align: center;
 
-  .spacer {
-    margin-left: 0.5em;
-    margin-right: 0.5em;
-  }
   a {
     color: rgba(255, 255, 255, 0.7);
     text-decoration: underline;

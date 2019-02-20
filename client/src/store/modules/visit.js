@@ -1,4 +1,5 @@
 import axios from 'axios' // '../node_modules/axios/dist/axios.min'
+import { setApiError } from '../../helpers/ehr-utills'
 
 const state = {
   apiUrl: '',
@@ -6,13 +7,20 @@ const state = {
   visitId: '',
   sVisitInfo: {},
   isLoggedIn: !!localStorage.getItem('token'),
-  topLevelMenu: ''
+  topLevelMenu: '',
+  isDevelopingContent: false
 }
 
 const getters = {
   isInstructor: state => {
+    return state.sVisitInfo.isInstructor
+  },
+  isDeveloper: state => {
+    return state.sVisitInfo.isDeveloper
+  },
+  hasDashboard: state => {
     var vi = state.sVisitInfo
-    return vi ? vi.isInstructor : false
+    return vi ? vi.isInstructor || vi.isDeveloper : false
   },
   isStudent: state => {
     var vi = state.sVisitInfo
@@ -28,10 +36,13 @@ const getters = {
     var vi = state.sVisitInfo
     return vi ? vi.returnUrl : ''
   },
+  fullName: state => {
+    let info = state.sUserInfo
+    let name = info ? info.fullName : ''
+    return name
+  },
   username: (state, getters, rootState) => {
-    console.log('GET NAME visit store getter for username')
     let info = rootState.sUserInfo
-    console.log('GET NAME visit store getter for username ', info)
     let name = info ? info.givenName : ''
     return name
   }
@@ -46,6 +57,7 @@ const actions = {
       // console.log('In load page ', url)
       function invalid(msg) {
         console.log('INVALID LoadVisit', msg)
+        setApiError(context, msg)
         reject(new Error(msg))
       }
       axios
@@ -62,20 +74,28 @@ const actions = {
           if (!visitInfo.activity) {
             return invalid('ERROR.  No activity information for ' + visitId)
           }
+          if (!visitInfo.assignment) {
+            return invalid('ERROR.  No assignment information for ' + visitId)
+          }
           if (!visitInfo.activityData) {
             return invalid('ERROR.  No activity data information for ' + visitId)
           }
+          localStorage.setItem('token', visitId)
           context.commit('setVisitInfo', visitInfo)
           context.commit('setUserInfo', visitInfo.user)
+
+          let a_id = visitInfo.assignment._id
           // visitInfo.activityData contains the id of the ActivityData record
-          console.log('dispatch load active data', visitInfo.activityData)
-          context.dispatch(
-            'ehrData/loadActivityData',
-            { forStudent: true, id: visitInfo.activityData },
-            { root: true }
-          )
-          console.log('after dispatch load active data', visitInfo.activityData)
-          resolve()
+          let ad_id = visitInfo.activityData
+          console.log('dispatch load active data and assignment', ad_id)
+          let options = { root: true }
+          return Promise.all([
+            context.dispatch('ehrData/loadActivityData', { forStudent: true, id: ad_id }, options),
+            context.dispatch('assignment/loadOneAssignmentThenSeed', a_id, options)
+          ]).then(() => {
+            console.log('after dispatch load active data, and assignment', ad_id)
+            resolve()
+          })
         })
         .catch(error => {
           console.log(error.message)
@@ -95,6 +115,11 @@ const mutations = {
   apiUrl: (state, url) => {
     // console.log('visit store set api url ' + url)
     state.apiUrl = url
+  },
+  setIsDevelopingContent: (state, value) => {
+    console.log('setIsDevelopingContent', value)
+    localStorage.setItem('isDevelopingContent', value)
+    state.isDevelopingContent = value
   },
   setVisitInfo: (state, info) => {
     // console.log('visit store set visit info ' + info._id)

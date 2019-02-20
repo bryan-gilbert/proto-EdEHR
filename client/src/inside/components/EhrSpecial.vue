@@ -3,9 +3,21 @@
     p This is the EHR special content panel.   Path: {{path}}
     div(:class="`${$options.name}__special`")
     hr
+    div
+      h3 Content Editor Data
+      p isDevelopingContent {{ isDevelopingContent }}
+      p sSeedId {{ sSeedId }}
+      p seedStoreData {{ seedStoreData }}
+      h4 sSeedContent:
+      div(:class="`${$options.name}__data`")
+        li(v-for="(value, propertyName) in sSeedContent", v-bind:key="propertyName")
+          strong {{ propertyName }}:&nbsp;
+          span {{ value }}
+    hr
     div(v-show="isInstructor")
       h3 Instructor Data
       p sInstructorReturnUrl {{ sInstructorReturnUrl }}
+      p isDevelopingContent {{ isDevelopingContent }}
       p sCurrentEvaluationStudentId: {{ sCurrentEvaluationStudentId }}
       p Class List with Student Visit
       div(:class="`${$options.name}__data`")
@@ -80,6 +92,13 @@
         strong {{ propertyName }}
         span : {{ value }}
     hr
+    h3 LTI Data
+    div(:class="`${$options.name}__data`")
+      li(v-for="(value, propertyName) in ltiData", v-bind:key="propertyName")
+        strong {{ propertyName }}
+        span : {{ value }}
+
+    hr
     h3 Assignments in system
     div(:class="`${$options.name}__data`")
       table.table
@@ -88,15 +107,11 @@
             th.name(title="Name") EdEHR Assignment Name
             th.description(title="Description") Description
             th.external(title="External Id") Assignment External Id
-            th.ehrRoute(title="Route") Internal Route
-            th.seedData(title="Seed Data") Seed Data
         tbody
           tr(v-for="item in assignmentsListing")
             td.name {{ item.name }}
             td.description {{ item.description}}
             td.external {{ item.externalId}}
-            td.ehrRoute {{ item.ehrRouteName}}
-            td.seedData(v-bind:title="asString(item.seedData)") {{ item.seedData ? 'seed hover' : '&nbsp;' }}
 </template>
 
 <script>
@@ -111,6 +126,19 @@ export default {
     },
     userInfo() {
       return this.$store.state.visit.sUserInfo || {}
+    },
+    ltiData() {
+      let usr = this.$store.state.visit.sUserInfo || {}
+      let lti = usr.ltiData || []
+      lti = lti[0]
+      // console.log('this is lti data before attempt to parse', lti)
+      try {
+        lti = JSON.parse(lti)
+      } catch(error) {
+        console.log('Could not parse lti data ', lti)
+        lti = usr.ltiData || []
+      }
+      return lti
     },
     visitInfo() {
       return this.$store.state.visit.sVisitInfo || {}
@@ -144,6 +172,18 @@ export default {
     sCurrentStudentInfo() {
       return this.$store.state.ehrData.sCurrentStudentInfo
     },
+    sSeedContent() {
+      return this.$store.state.seedStore.sSeedContent || []
+    },
+    sSeedId() {
+      return this.$store.state.seedStore.sSeedId
+    },
+    seedStoreData() {
+      return this.$store.getters['seedStore/seedEhrData']
+    },
+    isDevelopingContent() {
+      return this.$store.state.visit.isDevelopingContent
+    },
     classList() {
       return this.$store.state.instructor.sClassList || []
     },
@@ -165,6 +205,9 @@ export default {
     isInstructor() {
       return this.$store.getters['visit/isInstructor']
     },
+    isDeveloper() {
+      return this.$store.getters['visit/isDeveloper']
+    },
     apiUrl() {
       return this.$store.state.visit.apiUrl
     },
@@ -179,9 +222,9 @@ export default {
     skipVisitProp(prop) {
       return !(
         prop === 'user' ||
-        prop === 'toolConsumer' ||
-        prop === 'activity' ||
-        prop === 'assignment'
+        prop === 'toolConsumer' // ||
+        // prop === 'activity' ||
+        // prop === 'assignment'
       )
     }
   }

@@ -8,6 +8,7 @@ module.exports = {
   // clientUrl is the url for this server that the Ed EHR client uses to make API calls
   clientUrl: 'http://localhost:28000',
   defaultConsumerKey: 'edehrkey',
+  traceApiCalls: true,
 
   databaseName: databaseName,
   database: {

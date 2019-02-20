@@ -3,7 +3,7 @@ const chalk = require('chalk')
 const glob = require('glob')
 const fs = require('fs')
 const path = require('path')
-
+const debug = require('debug')('server')
 export default class Config {
   constructor(env) {
     this.env = env
@@ -21,7 +21,7 @@ export default class Config {
 
     // Validate Secure SSL mode can be used
     Config.validateSecureMode(this.configuration)
-    console.log('configuration ready ', this.configuration)
+    debug('configuration ready ', this.configuration)
   }
 
   get config() {
@@ -33,7 +33,6 @@ export default class Config {
    */
   validateEnvironmentVariable() {
     let environmentFiles = glob.sync('./config/env/' + this.env + '.js')
-    console.log()
     if (!environmentFiles.length) {
       if (this.env) {
         console.error(

@@ -31,6 +31,7 @@ export default {
   watch: {
     // whenever question changes, this function will run
     showDialog: function(newValue) {
+      console.log('UN -- FREEZEEEEEEE')
       document.body.style.position = ''
       if (newValue) {
         console.log('When app dialog is shown freeze the body to prevent background scrolling')
@@ -105,8 +106,9 @@ export default {
     EventBus.$on(ch, this.eventHandler)
   },
   beforeDestroy: function() {
-    console.log('EhrDialogForm beforeDestroy', this.pageDataKey)
-    console.log('When app dialog is destroyed restore background scrolling')
+    // console.log('EhrDialogForm beforeDestroy', this.pageDataKey)
+    // console.log('When app dialog is destroyed restore background scrolling')
+    console.log('UN -- FREEZEEEEEEE')
     document.body.style.position = ''
     let ch = this.ehrHelp.getCloseChannelHandle(this.tableKey)
     if (this.eventHandler) {

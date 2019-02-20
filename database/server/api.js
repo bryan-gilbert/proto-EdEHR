@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import moment from 'moment'
 import cors from 'cors'
 import dbSeeder from '../config/lib/dbSeeder'
 import { AssignmentMismatchError } from '../utils/errors'
@@ -39,7 +40,7 @@ export function apiMiddle(app, config) {
   app.use(
     session({
       genid: req => {
-        debug('Inside the session middleware req.sessionID ' + req.sessionID)
+        // debug('Inside the session middleware req.sessionID ' + req.sessionID)
         return uuid()
       },
       cookie: { sameSite: 'lax' },
@@ -49,6 +50,13 @@ export function apiMiddle(app, config) {
       saveUninitialized: false
     })
   )
+
+  if (config.traceApiCalls) {
+    app.use(function(req, res, next) {
+      debug(moment().format('YYYY/MM/DD, h:mm:ss.SSS a'), ' Url:', req.url)
+      next()
+    })
+  }
 
   const corsOptions = setupCors(config)
   const admin = new AdminController()
@@ -71,7 +79,7 @@ export function apiMiddle(app, config) {
     })
     .then(() => {
       if (config.seedDB) {
-        console.log('seeding done')
+        debug('seeding done')
       }
     })
     .then(admin.initializeApp(app))
@@ -92,6 +100,7 @@ export function apiMiddle(app, config) {
       api.use('/consumers', cors(corsOptions), cc.route())
       api.use('/users', cors(corsOptions), uc.route())
       api.use('/visits', cors(corsOptions), vc.route())
+      api.use('/seed-data', cors(corsOptions), sd.route())
       // for use behind a proxy:
       api.use('/api/activities', cors(corsOptions), act.route())
       api.use('/api/activity-data', cors(corsOptions), acc.route())

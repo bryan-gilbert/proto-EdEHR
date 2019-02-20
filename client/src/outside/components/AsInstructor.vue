@@ -1,13 +1,12 @@
 <template lang="pug">
-  div(class="as-instructor section")
+  div(class="as-instructor")
     div(class="courses", v-for="course in courses")
       div(class="course-header")
-        h1 Dashboard
+        h1 Instructor Dashboard
         h2(class="course-header-item") {{ course.label }} - {{ course.name }} (Id: {{ course.id }})
       div(class="activities", v-for="activity in course.activities")
         div(:ref="`activity-${activity._id}`")
           class-list(:activity="activity")
-    router-view
 </template>
 
 <script>
@@ -48,9 +47,6 @@ export default {
 @import '../../scss/definitions';
 
 .as-instructor {
-  &.section {
-    padding: 1.5rem;
-  }
   .courses {
     margin-left: 0;
   }

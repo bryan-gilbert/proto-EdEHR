@@ -16,6 +16,7 @@ const VisitSchema = new mongoose.Schema({
   assignmentId: {type: String},
   isStudent: {type: Boolean, default: false},
   isInstructor: {type: Boolean, default: false},
+  isDeveloper: {type: Boolean, default: false},
   returnUrl: {type: String},
   createDate: {type: Date, default: Date.now},
   lastVisitDate: {type: Date, default: Date.now}

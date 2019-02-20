@@ -38,8 +38,8 @@ const actions = {
         })
       }
       if (!sv) {
-        console.error('ERROR. Cannot find student in class list. ', currentId)
-        return
+        console.log('ERROR. Cannot find student in class list. ', currentId, classList)
+        return resolve()
       }
       // console.log("What do we have here? ", sv, sv.activity)
       let sva = sv.assignment
@@ -70,7 +70,7 @@ const actions = {
     let url = `${context.state.apiUrl}/activity-data/evaluation-data/${vid}`
     // console.log('store save eval notes ', url, body)
     return new Promise(resolve => {
-      helper.putRequest(url, body).then(results => {
+      helper.putRequest(context, url, body).then(results => {
         let evaluationData = results.data
         resolve(evaluationData)
       })
@@ -101,11 +101,11 @@ const actions = {
     return new Promise(resolve => {
       axios.get(url).then(response => {
         var courses = response.data['courses']
-        console.log('load courses', response.data)
-        console.log('load courses', courses)
+        // console.log('load courses', response.data)
+        // console.log('load courses', courses)
         context.commit('setCourses', courses)
         courses.forEach(course => {
-          console.log('a course ', course)
+          // console.log('a course ', course)
         })
         resolve(courses)
       })
@@ -116,9 +116,9 @@ const actions = {
     let apiUrl = visitState.apiUrl
     return new Promise(resolve => {
       let url = `${apiUrl}/activities/class/${activityId}`
-      console.log('In load instructor activities data ', url)
+      // console.log('In load instructor activities data ', url)
       axios.get(url).then(response => {
-        console.log('load activities', response.data)
+        // console.log('load activities', response.data)
         var classList = response.data['classList']
         context.commit('setClassList', classList)
         resolve(classList)

@@ -6,6 +6,7 @@
 export default {
   name: 'UiButton',
   props: {
+    value: {type: String },
     secondary: {
       type: Boolean
     }
@@ -25,7 +26,7 @@ export default {
   },
   methods: {
     buttonClicked: function(event) {
-      this.$emit('buttonClicked', event)
+      this.$emit('buttonClicked', event, this.value)
     }
   }
 }
@@ -71,7 +72,7 @@ button,
     border: 1px solid $brand-primary-hover;
     color: $brand-primary-hover;
     transition-duration: 0.3s;
-    transition-prop
+    transition-prop;
     }
 
   &:disabled {

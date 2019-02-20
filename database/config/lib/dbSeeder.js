@@ -1,6 +1,6 @@
 import IntegrationController from '../../controllers/integration-controller'
-
 const IntegrationModel = new IntegrationController()
+const debug = require('debug')('server')
 
 var chalk = require('chalk')
 console.log(chalk.bold.red('Warning:  Database seeding is turned on'))
@@ -30,41 +30,55 @@ var FORCE = false
 // check if the database seeding was performed, can override
 //
 // -------------------------------------------------------------------------
-var checkIntegration = function (name, override) {
-  return new Promise(function (resolve /* reject */) {
+var checkIntegration = function(name, override) {
+  return new Promise(function(resolve /* reject */) {
     if (override) return resolve(true)
     return IntegrationModel.findOne({ module: name })
-    .then((row) => {
-      if (row) {
-        return resolve(false)
-      }
-      IntegrationModel.create({ module: name })
-        .then((integration) => {
+      .then(row => {
+        if (row) {
+          return resolve(false)
+        }
+        IntegrationModel.create({ module: name }).then(integration => {
           resolve(true)
         })
-    })
-    .catch((err) => {
-      console.error('Error seeding ' + name + ' : ', err)
-    })
+      })
+      .catch(err => {
+        console.error('Error seeding ' + name + ' : ', err)
+      })
   })
 }
 
-function doIntegrations () {
+function doIntegrations() {
   return checkIntegration('consumers', false)
-  .then((go) => {
-    if (go) {
-      return require('../seed-data/consumers')(true)
-    }
-  })
-  .then(() => {
-    return checkIntegration('assignments13').then((go) => {
-      console.log('Seed assignments? ', go)
+    .then(go => {
+      if (go) {
+        return require('../seed-data/consumers')(true)
+      }
+    })
+    .then(() => {
+      return checkIntegration('ehrseed')
+    })
+    .then(go => {
+      debug('Seed ehr seed data? ', go)
+      if (go) {
+        return require('../seed-data/ehrSeeds')(true)
+      }
+    })
+    .then(() => {
+      return checkIntegration('assignments')
+    })
+    .then(go => {
+      debug('Seed assignments? ', go)
       if (go) {
         return require('../seed-data/assignments')(true)
       }
     })
-  })
-
+    .then(() => {
+      debug('DONE integrations')
+    })
+    .catch(err => {
+      console.error(err)
+    })
 
   // =========================================================================
   //
@@ -88,15 +102,14 @@ function doIntegrations () {
     // -------------------------------------------------------------------------
   }
 }
-export default function () {
-
+export default function() {
   return Promise.resolve()
-  .then(() => {
-    if (FORCE) {
-      return IntegrationModel.clearAll()
-    }
-  })
-  .then(() => {
-    return doIntegrations()
-  })
+    .then(() => {
+      if (FORCE) {
+        return IntegrationModel.clearAll()
+      }
+    })
+    .then(() => {
+      return doIntegrations()
+    })
 }

@@ -71,7 +71,7 @@ export default {
       cols = Math.max(0, cols)
       cols = Math.min(cols, clses.length)
       let css = clses[cols]
-      console.log('EhrPageForm CSS based on col count', css, this.formDefs.columnsCount)
+      // console.log('EhrPageForm CSS based on col count', css, this.formDefs.columnsCount)
       return element.formCss ? element.formCss : css
     },
     refresh() {
