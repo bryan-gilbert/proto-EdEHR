@@ -40,7 +40,8 @@ export default class VisitController extends BaseController {
         {activity: activity._id},
         {toolConsumer: toolConsumer._id},
         {isStudent: role.isStudent},
-        {isInstructor: role.isInstructor}
+        {isInstructor: role.isInstructor},
+        {isDeveloper: role.isDeveloper}
       ]
     }
     var theVisit
@@ -62,6 +63,9 @@ export default class VisitController extends BaseController {
           assignment: assignment._id,
           isStudent: role.isStudent,
           isInstructor: role.isInstructor,
+          // TODO use the actual incoming role to set isDeveloper
+          isDeveloper: role.isInstructor,
+          // isDeveloper: role.isDeveloper,
           returnUrl: ltiData.launch_presentation_return_url
         }
         return Visit.create(data)

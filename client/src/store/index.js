@@ -5,6 +5,7 @@ import instructor from './modules/instructor'
 import assignment from './modules/assignment'
 import ehrData from './modules/ehrData'
 import system from './modules/system'
+import seedStore from './modules/seedStore'
 import createLogger from 'vuex/dist/logger'
 
 Vue.use(Vuex)
@@ -17,7 +18,8 @@ export default new Vuex.Store({
     instructor,
     assignment,
     system,
-    ehrData
+    ehrData,
+    seedStore
   },
   strict: debug,
   plugins: debug ? [createLogger()] : []

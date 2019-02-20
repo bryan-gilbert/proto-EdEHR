@@ -9,7 +9,6 @@ import PC from '../inside/defs/patient-chart'
 import PP from '../inside/defs/patient-profile'
 import ER from '../inside/defs/external-resources'
 
-
 const pageDefsPP = PP()
 const pageDefsCV = CV()
 const pageDefsPC = PC()
@@ -57,6 +56,7 @@ export default class EhrHelp {
 
     this.refreshEventHandler = function(eData) {
       console.log('ehrhelper respond to page refresh')
+      _this.mergedProperty(pageKey)
       _this._loadTransposedColumns(pageKey)
     }
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
@@ -123,7 +123,7 @@ export default class EhrHelp {
     // Intentional conversion to string to object to break connection with Vuex store.
     // We need this step because the UI isn't allowed to modify the as stored value
     data = JSON.parse(JSON.stringify(data))
-    // debugehr('prepareAsLoadedData page data', data)
+    console.log('prepareAsLoadedData', pageKey, data)
     let pageData = data[pageKey]
     if (!pageData) {
       let defaultPageValue = pageDef.pageData
@@ -207,9 +207,6 @@ export default class EhrHelp {
   }
 
   /* ********************* DIALOG  */
-  /*
-  TODO The table dialogs are still under development
-   */
   showDialog(tableDef, dialogInputs) {
     const _this = this
     let dialog = { tableDef: tableDef, inputs: dialogInputs }
@@ -240,7 +237,6 @@ export default class EhrHelp {
     const _this = this
     if (this._validateInputs(tableKey)) {
       // debugehr('saveDialog for page/table', pageKey, tableKey)
-      _this.$store.commit('system/setLoading', true)
       let dialog = this.dialogMap[tableKey]
       // debugehr('saveDialog', dialog, 'data', data)
       let inputs = dialog.inputs
@@ -257,10 +253,46 @@ export default class EhrHelp {
         propertyName: pageKey,
         value: asLoadedPageData
       }
-      this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
+      this._saveData(payload).then(() => {
         _this._emitCloseEvent(tableKey)
+      })
+      // this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
+      //   _this._emitCloseEvent(tableKey)
+      //   _this.$store.commit('system/setLoading', false)
+      // })
+    }
+  }
+
+  removeEmptyProperties = (obj) => {
+    Object.entries(obj).forEach(([key, val]) => {
+      if (val && typeof val === 'object') this.removeEmptyProperties(val)
+      else if (val === null || val === '') delete obj[key]
+    })
+    return obj
+  }
+  _saveData(payload) {
+    const _this = this
+    _this.$store.commit('system/setLoading', true)
+    let isStudent = this.$store.getters['visit/isStudent']
+    let isDevelopingContent = this.$store.state.visit.isDevelopingContent
+    if (isStudent) {
+      console.log('saving assignment data', payload)
+      let cleanValue = this.removeEmptyProperties(payload.value)
+      payload.value = cleanValue
+      return _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
         _this.$store.commit('system/setLoading', false)
       })
+    } else if (isDevelopingContent) {
+      let seedId = _this.$store.state.seedStore.sSeedId
+      let cleanValue = this.removeEmptyProperties(payload.value)
+      payload.value = cleanValue
+      payload.id = seedId
+      console.log('saving seed ehr data', seedId, JSON.stringify(cleanValue))
+      return _this.$store.dispatch('seedStore/updateSeedEhrData', payload).then(() => {
+        _this.$store.commit('system/setLoading', false)
+      })
+    } else {
+      return Promise.reject('Coding error using _saveData out of context')
     }
   }
 
@@ -348,7 +380,8 @@ export default class EhrHelp {
   _showControl(prop) {
     let show = false
     let isStudent = this.$store.getters['visit/isStudent']
-    if (isStudent) {
+    let isDevelopingContent = this.$store.state.visit.isDevelopingContent
+    if (isStudent || isDevelopingContent) {
       let pd = this.getPageDefinition(this.pageKey)
       show = pd[prop]
     }
@@ -401,14 +434,11 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
    * Save changes made on a page form
    */
   saveEdit() {
-    const _this = this
-    _this.$store.commit('system/setEditing', false)
-    _this.$store.commit('system/setLoading', true)
     let payload = this.pageFormData
     // let pageKey = this.$store.state.system.currentPageKey
     // debugehr('saveEdit payload', JSON.stringify(payload))
-    _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
-      _this.$store.commit('system/setLoading', false)
+    this._saveData(payload).then( () => {
+      this.$store.commit('system/setEditing', false)
     })
   }
 
@@ -522,7 +552,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
 function debugehr(msg) {
   var args = Array.prototype.slice.call(arguments)
   args.shift()
-  console.log('EHRhlp', msg, args)
+  // console.log('EHRhlp', msg, args)
 }
 function errorehr(msg, ...args) {
   console.log('ERROR EHRhlp', msg, args)

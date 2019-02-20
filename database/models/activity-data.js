@@ -16,7 +16,6 @@ on tool consumer (e.g. locate all records for a particular consumer, or shard da
 const ActivityDataSchema = new mongoose.Schema({
   toolConsumer: {type: ObjectId, ref: 'Consumer', required: true},
   visit: {type: ObjectId, ref: 'Visit', required: true},
-  seedData: {type: Object}, //assignment original data
   assignmentData: {type: Object}, // place for student's data
   evaluationData: {type: Object}, //place for instructor to mark the work
   scratchData: {type: Object}, // place for student to add notes
@@ -27,13 +26,13 @@ const ActivityDataSchema = new mongoose.Schema({
   toJSON: { virtuals: true }
 })
 
-ActivityDataSchema.virtual('mergedData')
-.get(function () {
-  var aData = this.assignmentData || {}
-  var sData = this.seedData || {}
-  var mergedData = merge(sData, aData)
-  return mergedData
-})
+// ActivityDataSchema.virtual('mergedData')
+// .get(function () {
+//   var aData = this.assignmentData || {}
+//   var sData = this.seedData || {}
+//   var mergedData = merge(sData, aData)
+//   return mergedData
+// })
 
 const ActivityData = mongoose.model('ActivityData', ActivityDataSchema)
 

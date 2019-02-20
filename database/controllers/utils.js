@@ -35,8 +35,13 @@ export function fail (res) {
         message = error.name + ' ' + error.message
         console.log('Server utils fail CastError return 500.')
         break
+      case 'MongoError' :
+        code = 400
+        message = error.message
+        console.log('Server utils fail CastError return 500.')
+        break
       default:
-        console.log('Server TODO enhance error reporting for ', error)
+        console.log('Server TODO enhance error reporting for name:', error.name, ' msg:', error.message)
     }
     // ...
     console.log(code, message)

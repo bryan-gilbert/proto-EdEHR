@@ -8,7 +8,7 @@ export default class VisitController extends BaseController {
   constructor () {
     super(ActivityData, '_id')
   }
-  updateAssignmentData (id, data) {
+    updateAssignmentData (id, data) {
     var propertyName = data.propertyName
     var value = data.value
     debug(`ActivityData update ${id} assignmentData[${data.propertyName}] with data:`)

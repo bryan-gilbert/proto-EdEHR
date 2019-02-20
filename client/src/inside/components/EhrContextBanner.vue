@@ -16,14 +16,17 @@
 
       ehr-context-instructor(v-show="showInstructor")
       ehr-context-student(v-show="showStudent")
+      ehr-context-developer(v-show="showSeeding")
 </template>
 
 <script>
 import EhrContextInstructor from './EhrContextInstructor'
 import EhrContextStudent from './EhrContextStudent'
+import EhrContextDeveloper from './EhrContextDeveloper'
+
 export default {
   name: 'EhrContextBanner',
-  components: { EhrContextInstructor, EhrContextStudent },
+  components: { EhrContextInstructor, EhrContextStudent, EhrContextDeveloper },
   data: function() {
     return {
       showInstructor: false,
@@ -32,12 +35,12 @@ export default {
     }
   },
   mounted() {
-    this.showInstructor = !!this.$store.getters['visit/isInstructor']
-    this.showStudent = !!this.$store.getters['visit/isStudent']
-    this.showSeeding = !!this.$store.state.system.isSeeding
+    this.showInstructor =
+      this.$store.getters['visit/isInstructor'] && !this.$store.state.visit.isDevelopingContent
+    this.showStudent = false;// !!this.$store.getters['visit/isStudent']
+    this.showSeeding = !!this.$store.state.visit.isDevelopingContent
   },
-  computed: {
-  }
+  computed: {}
 }
 </script>
 

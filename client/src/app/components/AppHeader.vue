@@ -3,23 +3,25 @@
     div(class="wrapper")
       ul(class="navList")
         li(class="navItem")
-          span(class="apptitle") Educational Electronic Health Record - {{ username }}
+          span(class="apptitle") Educational Electronic Health Record - {{ fullName }}
         li(class="navItem push")
           a(:href="lmsUrl", class="navLink") {{lmsName}}
-        li(v-if="isInstructor", class="navItem")
+        li(v-if="showDashboard", class="navItem")
           router-link(:to="{ name: `instructor` }", class="navLink") Dashboard
         li(class="navItem")
           router-link(:to="{ name: `help` }", class="navLink") Help
+    system-error
 </template>
-
 <script>
+import SystemError from './SystemError'
+
 export default {
   name: 'AppHeader',
+  components: {SystemError},
+
   computed: {
-    username() {
-      let n = this.$store.state.visit.sUserInfo.fullName
-      // console.log('AppHeader GET NAME visit store getter for username "' + n + '"')
-      return n
+    fullName() {
+      return this.$store.getters['visit/fullName']
     },
     lmsUrl() {
       return this.$store.getters['visit/returnUrl']
@@ -27,8 +29,8 @@ export default {
     lmsName() {
       return this.$store.getters['visit/lmsName']
     },
-    isInstructor() {
-      return this.$store.state.visit.sVisitInfo.isInstructor
+    showDashboard() {
+      return this.$store.getters['visit/hasDashboard']
     }
   }
 }
@@ -39,10 +41,9 @@ export default {
 .apphdr {
   background: $toolbar-background-color;
   color: $toolbar-color;
-  padding: 10px 0 12px 20px;
 
   .wrapper {
-    @include wrapper('content');
+    padding: 10px 20px;
   }
   .navList {
     display: flex;
@@ -58,7 +59,7 @@ export default {
     margin-left: auto;
   }
 
-/*  .navItem {
+  /*  .navItem {
     margin-right: 1em;
   }*/
 

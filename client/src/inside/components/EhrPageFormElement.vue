@@ -115,14 +115,9 @@ export default {
       // and be ready to send the changes to the server.
       let pageDataKey = this.element.pageDataKey
       let pfuEventChannel = PAGE_FORM_INPUT_EVENT + pageDataKey
-      console.log('EhrPageFormElement watch inputValue', pfuEventChannel, val, this.element)
+      // console.log('EhrPageFormElement watch inputValue', pfuEventChannel, val, this.element)
       EventBus.$emit(pfuEventChannel, { value: val, element: this.element })
     }
-    // ,
-    // initialValue(val) {
-    //   // TODO why watch?
-    //   console.log('EhrPageFormElement page form element (TODO WHY) watching initial value', val)
-    // }
   },
   mounted: function() {
     const _this = this

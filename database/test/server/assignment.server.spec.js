@@ -51,7 +51,6 @@ describe(`Make server calls on ${TYPE}`, function() {
     })
   })
 
-
   it(`create ${NAME}`, function(done) {
     let url = BASE
     if(theSeedId) {

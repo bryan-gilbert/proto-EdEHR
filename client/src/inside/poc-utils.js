@@ -1,3 +1,4 @@
+// TODO remove this file
 export function getPhrase(cnt) {
   let p = []
   for (var i = 0; i < cnt; i++) {

@@ -1,7 +1,12 @@
 import StoreHelper from './storeHelper'
 import EventBus from '../../event-bus'
 import { ACTIVITY_DATA_EVENT } from '../../event-bus'
+import { composeUrl, decoupleObject } from '../../helpers/ehr-utills'
+import assignDeep from 'assign-deep'
+
 const helper = new StoreHelper()
+const API_ACTIVITY = 'activity-data'
+const API_SEED = 'seed-data'
 
 const state = {
   /*
@@ -38,13 +43,37 @@ const getters = {
     }
   },
   mergedData: (state, getters, rootState) => {
-    let isInstructor = rootState.visit.sVisitInfo.isInstructor
-    if (isInstructor) {
-      return state.sCurrentStudentData.mergedData
+    let mData
+    let src
+    let ehrSeedData = rootState.seedStore.ehrSeedData
+    // console.log('mergedData sActivityData', state.sActivityData)
+    // console.log('mergedData ehrSeedData', ehrSeedData)
+    let assignmentData = state.sActivityData.assignmentData
+    if (rootState.visit.isDevelopingContent) {
+      console.log('mergedData: Develop seed', ehrSeedData)
+      mData = ehrSeedData
+      //getters['seedStore/seedEhrData']
+      src = 'from seed'
+    } else if (rootState.visit.sVisitInfo.isInstructor) {
+      // TODO the whole instructor side is broken after changing the seed system
+      mData = state.sCurrentStudentData.mergedData
+      console.log('mergedData: Instructor result', mData)
+      src = 'instructor'
     } else {
       // mergedData is the merge of assignment data and seed
-      return state.sActivityData.mergedData
+      // Not always sure about Vue object whether the system has proxied them and added stuff.
+      // So decouple the objects ... just in case
+      let dseed = decoupleObject(ehrSeedData)
+      let dass = decoupleObject(assignmentData)
+      console.log('mergedData: Compose merged data from seed', dseed)
+      console.log('mergedData: Compose merged data from student', dass)
+      // Use https://www.npmjs.com/package/assign-deep to overcome limits of Object.assign
+      mData = assignDeep(dseed, dass)
+      console.log('mergedData: Compose merged data result', mData)
+      src = 'student'
     }
+    // console.log('get merged data results: ', src, mData)
+    return mData
   },
   scratchData: state => {
     // only return for student
@@ -54,26 +83,15 @@ const getters = {
   evaluationData: state => {
     // evaluationData is the instructor's comments on the student's work
     return state.sCurrentStudentData.evaluationData
-  },
-  seedData: (state, getters, rootState) => {
-    let isInstructor = rootState.visit.sVisitInfo.isInstructor
-    if (isInstructor) {
-      return state.sCurrentStudentData.seedData
-    } else {
-      return state.sActivityData.seedData
-    }
   }
 }
 
 const actions = {
   loadActivityData(context, options) {
-    // /activity-data
     let activityDataId = options.id
     console.log('Get activityData  ', activityDataId)
-    let visitState = context.rootState.visit
-    let apiUrl = visitState.apiUrl
-    let url = `${apiUrl}/activity-data/get/${activityDataId}`
-    return helper.getRequest(url).then(response => {
+    let url = composeUrl(context, API_ACTIVITY) + `get/${activityDataId}`
+    return helper.getRequest(context, url).then(response => {
       let ad = response.data.activitydata
       context.commit('_setForStudent', options.forStudent)
       console.log('Got activity information ', ad)
@@ -84,6 +102,7 @@ const actions = {
       }
     })
   },
+
   restoreActivityData(context) {
     let forStudent = context.state.forStudent
     // console.log('restoreActivityData ', forStudent)
@@ -92,13 +111,14 @@ const actions = {
       let apiUrl = visitState.apiUrl
       let activityDataId = context.state.sActivityData._id
       let url = `${apiUrl}/activity-data/get/${activityDataId}`
-      return helper.getRequest(url).then(response => {
+      return helper.getRequest(context, url).then(response => {
         let ad = response.data.activitydata
-        console.log('Got activity information ', ad)
+        // console.log('Got activity information ', ad)
         context.commit('_setActivityData', ad)
       })
     }
   },
+
   sendAssignmentDataUpdate(context, payload) {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
@@ -116,7 +136,7 @@ const actions = {
     //   property: 'progressNotes',
     //   value: value
     // }
-    return helper.putRequest(url, payload).then(results => {
+    return helper.putRequest(context, url, payload).then(results => {
       let activityData = results.data
       // console.log('ehrData commit activityData with new assignmentData', JSON.stringify(activityData.assignmentData))
       context.commit('_setActivityData', activityData)
@@ -130,20 +150,21 @@ const actions = {
     let activityDataId = context.state.sActivityData._id
     // console.log('sendScratchData scratch, apiUrl ', activityDataId, apiUrl)
     let url = `${apiUrl}/activity-data/scratch-data/${activityDataId}`
-    return helper.putRequest(url, { value: data }).then(results => {
+    return helper.putRequest(context, url, { value: data }).then(results => {
       let activityData = results.data
       // console.log('ehrData commit activityData with new scratchData', JSON.stringify(activityData.scratchData))
       context.commit('_setActivityData', activityData)
       return activityData
     })
   },
+
   sendEvaluationNotes(context, data) {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
     let activityDataId = context.state.sCurrentStudentData.activityDataId
     // console.log('sendEvaluationNotes activityDataId, apiUrl, data ', activityDataId, apiUrl, JSON.stringify(data))
     let url = `${apiUrl}/activity-data/evaluation-data/${activityDataId}`
-    return helper.putRequest(url, { value: data }).then(results => {
+    return helper.putRequest(context, url, { value: data }).then(results => {
       let activityData = results.data
       console.log(
         'ehrData update current student data with new evaluation data',
@@ -160,7 +181,7 @@ const mutations = {
     state.forStudent = value
   },
   _setActivityData: (state, cData) => {
-    // console.log('_setActivityData', cData)
+    console.log('_setActivityData', cData)
     // console.log('_setActivityData\'s assignment', cData.assignment)
     state.sActivityData = cData
     EventBus.$emit(ACTIVITY_DATA_EVENT)
