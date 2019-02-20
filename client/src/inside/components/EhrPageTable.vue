@@ -72,7 +72,7 @@ export default {
       let css = hide
       column.forEach(cell => {
         if (!cell.tableCss.includes(hide)) {
-          console.log('cell css ', cell.tableCss)
+          // console.log('cell css ', cell.tableCss)
           css = ''
         }
       })
