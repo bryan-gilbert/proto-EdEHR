@@ -64,19 +64,6 @@ const getters = {
     // evaluationData is the instructor's comments on the student's work
     return state.sCurrentStudentData.evaluationData
   }
-  // Commenting the following out because it doesn't appear to be used any more
-  // seedData: (state, getters, rootState) => {
-  //   let seedData
-  //   if (rootState.visit.sVisitInfo.isInstructor) {
-  //     seedData = state.sCurrentStudentData.seedData
-  //   } else if (rootState.visit.sVisitInfo.isDeveloper) {
-  //     seedData = state.sSeedContent.seedData
-  //   } else {
-  //     seedData = state.sActivityData.seedData
-  //   }
-  //   console.log('ehrData seedData getter returns ', seedData)
-  //   return seedData
-  // }
 }
 
 const actions = {
