@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import moment from 'moment'
 import cors from 'cors'
 import dbSeeder from '../config/lib/dbSeeder'
 import { AssignmentMismatchError } from '../utils/errors'
@@ -49,6 +50,13 @@ export function apiMiddle(app, config) {
       saveUninitialized: false
     })
   )
+
+  if (config.traceApiCalls) {
+    app.use(function(req, res, next) {
+      debug(moment().format('YYYY/MM/DD, h:mm:ss.SSS a'), ' Url:', req.url)
+      next()
+    })
+  }
 
   const corsOptions = setupCors(config)
   const admin = new AdminController()
