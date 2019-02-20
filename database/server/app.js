@@ -20,12 +20,12 @@ export default class EhrApp {
         return apiMiddle(app, config)
       })
       .then(api => {
-        console.log('api middle is set up next set up the final routing')
+        debug('api middle is set up next set up the final routing')
         app.use('/', api)
         return EhrApp._setupFinalMiddle(app, config)
       })
     .then(api => {
-      console.log('EhrApp setup complete')
+      debug('EhrApp setup complete')
     })
   }
 

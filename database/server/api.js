@@ -71,7 +71,7 @@ export function apiMiddle(app, config) {
     })
     .then(() => {
       if (config.seedDB) {
-        console.log('seeding done')
+        debug('seeding done')
       }
     })
     .then(admin.initializeApp(app))

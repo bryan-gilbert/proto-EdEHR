@@ -5,10 +5,11 @@ var Consumer = mongoose.model('Consumer')
 const {ltiVersions} = require('../../utils/lti')
 const KEY = 'edehrkey'
 const SECRET = 'edehrsecret'
+const debug = require('debug')('server')
 
 module.exports = function () {
   return new Promise(function (resolve, reject) {
-    console.log('Running application consumer seeding')
+    debug('Running application consumer seeding')
     Consumer.deleteMany()
     .then(() => {
       const def = {

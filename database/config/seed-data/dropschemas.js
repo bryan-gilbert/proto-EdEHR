@@ -13,12 +13,15 @@ var schemas = [
 
 var dropSchema = function (name) {
   return new Promise(function (resolve, reject) {
-    mongoose.connection.collections[name].drop(function (/* err */) {
-      //
-      // do not care about errors
-      //
-      resolve(true)
-    })
+    let col = mongoose.connection.collections[name]
+    if(col) {
+      col.drop(function (/* err */) {
+        //
+        // do not care about errors
+        //
+        resolve(true)
+      })
+    }
   })
 }
 
