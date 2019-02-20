@@ -1,7 +1,9 @@
 import StoreHelper from './storeHelper'
 import EventBus from '../../event-bus'
 import { ACTIVITY_DATA_EVENT } from '../../event-bus'
-import { composeUrl } from '../../helpers/ehr-utills'
+import { composeUrl, decoupleObject } from '../../helpers/ehr-utills'
+import assignDeep from 'assign-deep'
+
 const helper = new StoreHelper()
 const API_ACTIVITY = 'activity-data'
 const API_SEED = 'seed-data'
@@ -44,24 +46,33 @@ const getters = {
     let mData
     let src
     let ehrSeedData = rootState.seedStore.ehrSeedData
-    console.log('mergedData sActivityData', state.sActivityData)
-    console.log('mergedData ehrSeedData', ehrSeedData)
+    // console.log('mergedData sActivityData', state.sActivityData)
+    // console.log('mergedData ehrSeedData', ehrSeedData)
     let assignmentData = state.sActivityData.assignmentData
     if (rootState.visit.isDevelopingContent) {
+      console.log('mergedData: Develop seed', ehrSeedData)
       mData = ehrSeedData
       //getters['seedStore/seedEhrData']
       src = 'from seed'
     } else if (rootState.visit.sVisitInfo.isInstructor) {
+      // TODO the whole instructor side is broken after changing the seed system
       mData = state.sCurrentStudentData.mergedData
+      console.log('mergedData: Instructor result', mData)
       src = 'instructor'
     } else {
       // mergedData is the merge of assignment data and seed
-      console.log('mergedData: Compose merged data', ehrSeedData, assignmentData)
-      mData = Object.assign({}, ehrSeedData, assignmentData)
-      console.log('mergedData mData', mData)
+      // Not always sure about Vue object whether the system has proxied them and added stuff.
+      // So decouple the objects ... just in case
+      let dseed = decoupleObject(ehrSeedData)
+      let dass = decoupleObject(assignmentData)
+      console.log('mergedData: Compose merged data from seed', dseed)
+      console.log('mergedData: Compose merged data from student', dass)
+      // Use https://www.npmjs.com/package/assign-deep to overcome limits of Object.assign
+      mData = assignDeep(dseed, dass)
+      console.log('mergedData: Compose merged data result', mData)
       src = 'student'
     }
-    console.log('get merged data results: ', src, mData)
+    // console.log('get merged data results: ', src, mData)
     return mData
   },
   scratchData: state => {

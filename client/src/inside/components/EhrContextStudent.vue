@@ -23,7 +23,7 @@ export default {
     panelInfo() {
       let visitInfo = this.$store.state.visit.sVisitInfo || {}
       let assignment = visitInfo.assignment || {}
-      let activity = visitInfo.activity
+      let activity = visitInfo.activity || {}
       let name = this.$store.state.visit.sUserInfo.fullName
       // console.log('assignment', JSON.stringify(assignment))
       // console.log('visitInfo', JSON.stringify(visitInfo, null, 2))

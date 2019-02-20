@@ -126,18 +126,13 @@ export default {
       // console.log(`Convert seed data field '${theData}' into an object`)
       this.aSeed.ehrData = JSON.parse(theData)
       this.showingDialog = false
-      this.expandAccordion = false
       if (this.actionType === 'edit') {
         // console.log('Seed Data saving ', this.aSeed)
         let dataIdPlusPayload = { id: this.seedId, payload: this.aSeed }
-        this.$store.dispatch('seedStore/updateSeedItem', dataIdPlusPayload).then(() => {
-          _this.expandAccordion = true
-        })
+        this.$store.dispatch('seedStore/updateSeedItem', dataIdPlusPayload)
       } else if (this.actionType === 'create') {
         // console.log('Seed Data saving ', this.aSeed)
-        this.$store.dispatch('seedStore/createSeedItem', this.aSeed).then(() => {
-          _this.expandAccordion = true
-        })
+        this.$store.dispatch('seedStore/createSeedItem', this.aSeed)
       }
     }
   },

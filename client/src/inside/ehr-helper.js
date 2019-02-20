@@ -277,14 +277,16 @@ export default class EhrHelp {
     let isDevelopingContent = this.$store.state.visit.isDevelopingContent
     if (isStudent) {
       console.log('saving assignment data', payload)
-      // TODO try using the clean value like below
+      let cleanValue = this.removeEmptyProperties(payload.value)
+      payload.value = cleanValue
       return _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
         _this.$store.commit('system/setLoading', false)
       })
     } else if (isDevelopingContent) {
       let seedId = _this.$store.state.seedStore.sSeedId
       let cleanValue = this.removeEmptyProperties(payload.value)
-      payload = { propertyName : payload.propertyName, value: cleanValue, id: seedId}
+      payload.value = cleanValue
+      payload.id = seedId
       console.log('saving seed ehr data', seedId, JSON.stringify(cleanValue))
       return _this.$store.dispatch('seedStore/updateSeedEhrData', payload).then(() => {
         _this.$store.commit('system/setLoading', false)
