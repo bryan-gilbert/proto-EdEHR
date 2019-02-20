@@ -87,7 +87,7 @@ export default {
           console.log('User is developing content with seed id', seedId)
           this.$store.commit('visit/setIsDevelopingContent', isDevelopingContent)
           this.$store.commit('seedStore/setSeedId', seedId)
-          this.$store.dispatch('seedStore/loadSeedContent', seedId).then(() => {
+          this.$store.dispatch('seedStore/loadSeedContent').then(() => {
             resolve()
           })
         } else {

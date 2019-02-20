@@ -1,4 +1,5 @@
 import axios from 'axios' // '../node_modules/axios/dist/axios.min'
+import { setApiError } from '../../helpers/ehr-utills'
 
 const state = {
   apiUrl: '',
@@ -56,7 +57,7 @@ const actions = {
       // console.log('In load page ', url)
       function invalid(msg) {
         console.log('INVALID LoadVisit', msg)
-        context.commit('system/setApiError', msg, { root: true })
+        setApiError(context, msg)
         reject(new Error(msg))
       }
       axios
@@ -73,21 +74,28 @@ const actions = {
           if (!visitInfo.activity) {
             return invalid('ERROR.  No activity information for ' + visitId)
           }
+          if (!visitInfo.assignment) {
+            return invalid('ERROR.  No assignment information for ' + visitId)
+          }
           if (!visitInfo.activityData) {
             return invalid('ERROR.  No activity data information for ' + visitId)
           }
           localStorage.setItem('token', visitId)
           context.commit('setVisitInfo', visitInfo)
           context.commit('setUserInfo', visitInfo.user)
+
+          let a_id = visitInfo.assignment._id
           // visitInfo.activityData contains the id of the ActivityData record
-          console.log('dispatch load active data', visitInfo.activityData)
-          context.dispatch(
-            'ehrData/loadActivityData',
-            { forStudent: true, id: visitInfo.activityData },
-            { root: true }
-          )
-          console.log('after dispatch load active data', visitInfo.activityData)
-          resolve()
+          let ad_id = visitInfo.activityData
+          console.log('dispatch load active data and assignment', ad_id)
+          let options = { root: true }
+          return Promise.all([
+            context.dispatch('ehrData/loadActivityData', { forStudent: true, id: ad_id }, options),
+            context.dispatch('assignment/loadOneAssignmentThenSeed', a_id, options)
+          ]).then(() => {
+            console.log('after dispatch load active data, and assignment', ad_id)
+            resolve()
+          })
         })
         .catch(error => {
           console.log(error.message)

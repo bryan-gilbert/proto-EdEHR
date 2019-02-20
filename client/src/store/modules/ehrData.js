@@ -1,7 +1,10 @@
 import StoreHelper from './storeHelper'
 import EventBus from '../../event-bus'
 import { ACTIVITY_DATA_EVENT } from '../../event-bus'
+import { composeUrl } from '../../helpers/ehr-utills'
 const helper = new StoreHelper()
+const API_ACTIVITY = 'activity-data'
+const API_SEED = 'seed-data'
 
 const state = {
   /*
@@ -40,8 +43,12 @@ const getters = {
   mergedData: (state, getters, rootState) => {
     let mData
     let src
+    let ehrSeedData = rootState.seedStore.ehrSeedData
+    console.log('mergedData sActivityData', state.sActivityData)
+    console.log('mergedData ehrSeedData', ehrSeedData)
+    let assignmentData = state.sActivityData.assignmentData
     if (rootState.visit.isDevelopingContent) {
-      mData = rootState.seedStore.ehrData
+      mData = ehrSeedData
       //getters['seedStore/seedEhrData']
       src = 'from seed'
     } else if (rootState.visit.sVisitInfo.isInstructor) {
@@ -49,7 +56,9 @@ const getters = {
       src = 'instructor'
     } else {
       // mergedData is the merge of assignment data and seed
-      mData = state.sActivityData.mergedData
+      console.log('mergedData: Compose merged data', ehrSeedData, assignmentData)
+      mData = Object.assign({}, ehrSeedData, assignmentData)
+      console.log('mergedData mData', mData)
       src = 'student'
     }
     console.log('get merged data results: ', src, mData)
@@ -68,16 +77,13 @@ const getters = {
 
 const actions = {
   loadActivityData(context, options) {
-    // /activity-data
     let activityDataId = options.id
-    // console.log('Get activityData  ', activityDataId)
-    let visitState = context.rootState.visit
-    let apiUrl = visitState.apiUrl
-    let url = `${apiUrl}/activity-data/get/${activityDataId}`
+    console.log('Get activityData  ', activityDataId)
+    let url = composeUrl(context, API_ACTIVITY) + `get/${activityDataId}`
     return helper.getRequest(context, url).then(response => {
       let ad = response.data.activitydata
       context.commit('_setForStudent', options.forStudent)
-      // console.log('Got activity information ', ad)
+      console.log('Got activity information ', ad)
       if (options.forStudent) {
         context.commit('_setActivityData', ad)
       } else {
@@ -164,7 +170,7 @@ const mutations = {
     state.forStudent = value
   },
   _setActivityData: (state, cData) => {
-    // console.log('_setActivityData', cData)
+    console.log('_setActivityData', cData)
     // console.log('_setActivityData\'s assignment', cData.assignment)
     state.sActivityData = cData
     EventBus.$emit(ACTIVITY_DATA_EVENT)

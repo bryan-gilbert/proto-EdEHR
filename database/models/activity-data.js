@@ -26,13 +26,13 @@ const ActivityDataSchema = new mongoose.Schema({
   toJSON: { virtuals: true }
 })
 
-ActivityDataSchema.virtual('mergedData')
-.get(function () {
-  var aData = this.assignmentData || {}
-  var sData = this.seedData || {}
-  var mergedData = merge(sData, aData)
-  return mergedData
-})
+// ActivityDataSchema.virtual('mergedData')
+// .get(function () {
+//   var aData = this.assignmentData || {}
+//   var sData = this.seedData || {}
+//   var mergedData = merge(sData, aData)
+//   return mergedData
+// })
 
 const ActivityData = mongoose.model('ActivityData', ActivityDataSchema)
 

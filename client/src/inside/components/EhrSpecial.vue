@@ -3,7 +3,7 @@
     p This is the EHR special content panel.   Path: {{path}}
     div(:class="`${$options.name}__special`")
     hr
-    div(v-show="isDeveloper")
+    div
       h3 Content Editor Data
       p isDevelopingContent {{ isDevelopingContent }}
       p sSeedId {{ sSeedId }}
@@ -92,6 +92,13 @@
         strong {{ propertyName }}
         span : {{ value }}
     hr
+    h3 LTI Data
+    div(:class="`${$options.name}__data`")
+      li(v-for="(value, propertyName) in ltiData", v-bind:key="propertyName")
+        strong {{ propertyName }}
+        span : {{ value }}
+
+    hr
     h3 Assignments in system
     div(:class="`${$options.name}__data`")
       table.table
@@ -119,6 +126,19 @@ export default {
     },
     userInfo() {
       return this.$store.state.visit.sUserInfo || {}
+    },
+    ltiData() {
+      let usr = this.$store.state.visit.sUserInfo || {}
+      let lti = usr.ltiData || []
+      lti = lti[0]
+      console.log('this is lti data before attempt to parse', lti)
+      try {
+        lti = JSON.parse(lti)
+      } catch(error) {
+        console.log('Could not parse lti data ', lti)
+        lti = usr.ltiData || []
+      }
+      return lti
     },
     visitInfo() {
       return this.$store.state.visit.sVisitInfo || {}
@@ -202,9 +222,9 @@ export default {
     skipVisitProp(prop) {
       return !(
         prop === 'user' ||
-        prop === 'toolConsumer' ||
-        prop === 'activity' ||
-        prop === 'assignment'
+        prop === 'toolConsumer' // ||
+        // prop === 'activity' ||
+        // prop === 'assignment'
       )
     }
   }

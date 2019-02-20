@@ -29,7 +29,7 @@ export default class SeedDataController extends BaseController {
   route () {
     const router = super.route()
     router.put('/updateSeedEhrData/:key/', (req, res) => {
-      var id = req.params.key
+      let id = req.params.key
       /*
       For example in caller:
       let data = {
@@ -37,7 +37,8 @@ export default class SeedDataController extends BaseController {
         value: model.ehrData.progressNotes || []
       }
       */
-      var data = req.body
+      let data = req.body
+      debug('seed-data updateSeedEhrData with key', id)
       this.updateSeedEhrData(id, data)
       .then(ok(res))
       .catch(fail(res))

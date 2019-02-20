@@ -7,6 +7,7 @@
 
 <script>
 import UiClose from '../ui/UiClose'
+import { setApiError } from '../../helpers/ehr-utills'
 
 export default {
   name: 'SystemError',
@@ -21,7 +22,8 @@ export default {
   },
   methods: {
     clearMessage() {
-      this.$store.commit('system/setApiError', '')
+      setApiError(this.$store, '')
+      // this.$store.commit('system/setApiError', '')
     }
   }
 }

@@ -1,6 +1,6 @@
 import StoreHelper from './storeHelper'
 const helper = new StoreHelper()
-import {composeUrl} from '../../helpers/ehr-utills'
+import { composeUrl } from '../../helpers/ehr-utills'
 const API = 'seed-data'
 
 const state = {
@@ -9,20 +9,25 @@ const state = {
   // It will contain the metadata (name, version, description) plus the actual seedData
   sSeedId: '',
   sSeedContent: {},
-  ehrData: {}
+  ehrSeedData: {}
 }
 
 const getters = {
   seedEhrData: state => {
-    return state.ehrData || {}
+    return state.ehrSeedData || {}
   }
 }
 
 const actions = {
-  loadSeedContent(context, options) {
+  /**
+   * Loading a seed record requires setting the seed id first.
+   * Must preceed this load with a commit('seedStore/setSeedId', seedId)
+   * @param context
+   * @return {*}
+   */
+  loadSeedContent(context) {
     let seedId = context.state.sSeedId
-    // let url = `${apiUrl}/seed-data/get/${seedId}`
-    let url = composeUrl(context,API) + 'get/' + seedId
+    let url = composeUrl(context, API) + 'get/' + seedId
     console.log('loadSeedContent', seedId, url)
     return helper.getRequest(context, url).then(response => {
       let sd = response.data.seeddata
@@ -61,10 +66,10 @@ const actions = {
   updateSeedItem(context, dataIdPlusPayload) {
     let id = dataIdPlusPayload.id
     let payload = dataIdPlusPayload.payload
-    let url = composeUrl(context,API) + id
+    let url = composeUrl(context, API) + id
     console.log('updateSeedData', url, payload)
     return helper
-      .putRequest(url, payload)
+      .putRequest(context, url, payload)
       .then(results => {
         let resultsData = results.data
         console.log('after seed update reload seed list')
@@ -93,7 +98,7 @@ const actions = {
     let url = composeUrl(context, API) + 'updateSeedEhrData/' + payload.id
     console.log('updateSeedEhrData', url, payload)
     return helper
-      .putRequest(url, payload)
+      .putRequest(context, url, payload)
       .then(results => {
         let resultsData = results.data
         console.log('after seed update ehr data reload seed list')
@@ -119,7 +124,7 @@ const mutations = {
   },
   _setSeedEhrData: (state, value) => {
     console.log('setting seed data _setSeedEhrData ', value)
-    state.ehrData = value
+    state.ehrSeedData = value
   },
   _setSeedDataList: (state, list) => {
     state.seedDataList = list

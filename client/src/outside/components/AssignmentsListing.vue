@@ -107,8 +107,8 @@ export default {
         return e._id === id
       })
     },
-    showEditDialog: function(event) {
-      this.assignmentId = event.target.value
+    showEditDialog: function(event, value) {
+      this.assignmentId = value // event.target.value
       // clone to decouple data from storage before using in dialog
       let sData = Object.assign({}, this.findAssignment(this.assignmentId))
       this.actionType = 'edit'

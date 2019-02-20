@@ -39,7 +39,7 @@ export function apiMiddle(app, config) {
   app.use(
     session({
       genid: req => {
-        debug('Inside the session middleware req.sessionID ' + req.sessionID)
+        // debug('Inside the session middleware req.sessionID ' + req.sessionID)
         return uuid()
       },
       cookie: { sameSite: 'lax' },

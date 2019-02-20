@@ -15,6 +15,9 @@ export function composeUrl(context, api) {
   return `${apiUrl}/${api}/`
 }
 
+export function setApiError(context, msg) {
+  context.commit('system/setApiError', msg, { root: true })
+}
 export function composeAxiosResponseError(error, msg) {
   msg += error.response.status ? ` status: ${error.response.status}` : ''
   msg += error.response.statusText ? ` ${error.response.statusText}` : ''
