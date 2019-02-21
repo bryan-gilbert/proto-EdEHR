@@ -2,11 +2,11 @@
   transition(name="dialog")
     div
       div(:class="modalClass")
-      div(class="dialog-wrapper")
-        div(class="dialog-header columns")
-          div(class="dialog-header-element column is-11")
+      div(:class="['dialog-wrapper', { moused: moused }]", ref="wrapper", v-resized="onResize", v-bind:style="{ top: top + 'px', left: left + 'px', width: width + 'px', height: height + 'px' }")
+        div(class="dialog-header columns", v-dragged="onDragged")
+          div(class="dialog-header-content column is-11")
             slot(name="header") default header
-          div(class="dialog-header-element  column is-1")
+          div(class="dialog-header-menu  column is-1")
             ui-close(v-on:close="$emit('cancel')")
         div(class="dialog-container")
           div(class="dialog-body")
@@ -67,9 +67,96 @@ export default {
     }
   },
   data() {
-    return {}
+    return {
+      top: 70, // offset from top (to center need to compute dialog ht on mount)
+      left: (window.innerWidth - 800) / 2, // center on open
+      width: 800, // width match CSS on .dialog-wrapper
+      height: window.innerHeight * 0.8, // 80% of visible area
+      resizeDirection: '',
+      moused: false
+    }
   },
-  methods: {}
+  methods: {
+    onResize({ el, deltaX, deltaY, start, end, resizeDirection }) {
+      // console.log('onResize', deltaX, deltaY, start, end, resizeDirection)
+      if (start) {
+        this.moused = true
+        this.resizeDirection = resizeDirection
+        return
+      }
+      if (end) {
+        // console.log('end resize')
+        this.moused = false
+        this.resizeDirection = ''
+        return
+      }
+      // console.log('resizeDirection', this.resizeDirection)
+      const MIN_WIDTH = 200
+      const MIN_HEIGHT = 300
+      const vm = this
+      function north() {
+        vm.height -= deltaY
+        vm.height = Math.max(MIN_HEIGHT, vm.height)
+        if (vm.height > MIN_HEIGHT) {
+          vm.top += deltaY
+        }
+      }
+      function south() {
+        vm.height += deltaY
+        vm.height = Math.max(MIN_HEIGHT, vm.height)
+      }
+      function east() {
+        vm.width += deltaX
+        vm.width = Math.max(MIN_WIDTH, vm.width)
+      }
+      function west() {
+        vm.width -= deltaX
+        vm.width = Math.max(MIN_WIDTH, vm.width)
+        if (vm.width > MIN_WIDTH) {
+          vm.left += deltaX
+        }
+      }
+      switch (this.resizeDirection) {
+        case 'n':
+          north()
+          break
+        case 's':
+          south()
+          break
+        case 'e':
+          east()
+          break
+        case 'w':
+          west()
+          break
+        case 'nw':
+          north()
+          west()
+          break
+        case 'se':
+          south()
+          east()
+          break
+        case 'ne':
+          north()
+          east()
+          break
+        case 'sw':
+          south()
+          west()
+          break
+      }
+    },
+    onDragged({ el, deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last }) {
+      // console.log('on drag', deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last )
+      if (first || last) {
+        this.moused = first
+        return
+      }
+      this.left += deltaX
+      this.top += deltaY
+    }
+  }
 }
 </script>
 
@@ -90,10 +177,10 @@ export default {
 .dialog-wrapper {
   position: fixed;
   // See the data properties
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+  width: 800px;
   max-width: 95%;
   max-height: 95%;
   overflow: auto;
@@ -103,7 +190,7 @@ export default {
   border-radius: 5px;
   box-sizing: border-box;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  padding: 15px 30px;
+  padding: 30px;
 }
 
 .dialog-wrapper.moused {
@@ -114,11 +201,9 @@ export default {
 }
 
 .dialog-header {
+  cursor: pointer;
 }
 
-.dialog-header-element {
-  padding: 0;
-}
 .dialog-body {
   /*margin: 20px 0;*/
   /*width: 100%;*/
