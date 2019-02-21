@@ -263,7 +263,7 @@ export default class EhrHelp {
     }
   }
 
-  removeEmptyProperties = (obj) => {
+  removeEmptyProperties(obj) {
     Object.entries(obj).forEach(([key, val]) => {
       if (val && typeof val === 'object') this.removeEmptyProperties(val)
       else if (val === null || val === '') delete obj[key]
@@ -439,7 +439,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
     let payload = this.pageFormData
     // let pageKey = this.$store.state.system.currentPageKey
     // debugehr('saveEdit payload', JSON.stringify(payload))
-    this._saveData(payload).then( () => {
+    this._saveData(payload).then(() => {
       this.$store.commit('system/setEditing', false)
     })
   }

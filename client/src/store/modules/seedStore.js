@@ -71,7 +71,7 @@ const actions = {
     return helper
       .putRequest(context, url, payload)
       .then(results => {
-        let resultsData = results.data
+        // let resultsData = results.data
         console.log('after seed update reload seed list')
         return context.dispatch('loadSeedDataList')
       })
@@ -100,7 +100,6 @@ const actions = {
     return helper
       .putRequest(context, url, payload)
       .then(results => {
-        let resultsData = results.data
         console.log('after seed update ehr data reload seed list')
         return context.dispatch('loadSeedDataList')
       })
