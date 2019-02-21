@@ -1,4 +1,4 @@
-import VitalChart from '@/helpers/vitalChart'
+import VitalChart from '../../src/inside/helpers/vitalChart'
 import CanvasMock from './CanvasMock'
 
 const POINT_TYPES = {
