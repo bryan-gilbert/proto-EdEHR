@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
-import Vitals from '@/views/Vitals.vue'
-import VitalModel from '@/helpers/vitalModel'
+import Vitals from '../../src/inside/components/Vitals.vue'
+import VitalModel from '../../src/inside/helpers/vitalModel'
 
 describe('Vitals Model', () => {
   let vitalsModel

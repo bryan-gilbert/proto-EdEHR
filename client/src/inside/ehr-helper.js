@@ -270,6 +270,7 @@ export default class EhrHelp {
     })
     return obj
   }
+
   _saveData(payload) {
     const _this = this
     _this.$store.commit('system/setLoading', true)
@@ -383,6 +384,7 @@ export default class EhrHelp {
     let isDevelopingContent = this.$store.state.visit.isDevelopingContent
     if (isStudent || isDevelopingContent) {
       let pd = this.getPageDefinition(this.pageKey)
+      console.log('decide to show or not this page def', prop, pd[prop], pd)
       show = pd[prop]
     }
     return show
