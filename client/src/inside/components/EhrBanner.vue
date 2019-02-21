@@ -7,35 +7,35 @@
           ul
             li 
               b {{ lastFirstMiddle }}
-            li Date of Birth:
+            li Date of Birth: &nbsp;
               b {{ demographics.dateOfBirth }}
-            li Age:
+            li Age: &nbsp;
               b {{ demographics.personAge }}
-            li Gender:
+            li Gender: &nbsp;
               b {{ demographics.gender }}
-            li Weight:
+            li Weight: &nbsp;
               b to link in
         div( class="column EhrBanner__content_row--2")
           ul
-            li Code Status:
+            li Code Status: &nbsp;
               b {{ demographics.codeStatus }}
-            li PHN:
+            li PHN: &nbsp;
               b {{ demographics.phn }}
-            li  MRN:
+            li  MRN: &nbsp;
               b {{ demographics.mrn }}
-            li MRP:
+            li MRP: &nbsp;
               b to link in
-            li MRP Phone:
+            li MRP Phone: &nbsp;
               b to link in
         div( class="column EhrBanner__content_row--3")
           ul
-            li Admitting Diagnosis:
+            li Admitting Diagnosis: &nbsp;
               b {{ visitDetails.admittingDiagnosis }}
-            li Allergies:
+            li Allergies: &nbsp;
               b to link in
-            li Location:
+            li Location: &nbsp;
               b {{ location }}
-            li Isolation Precautions:
+            li Isolation Precautions: &nbsp;
               b to link in
 </template>
 

@@ -3,7 +3,7 @@
     div(class="wrapper")
       ul(class="navList")
         li(class="navItem")
-          span(class="apptitle") Educational Electronic Health Record - {{ fullName }}
+          router-link(:to="{ name: `${home}` }", class="navLink app-title") Educational Electronic Health Record - {{ fullName }}
         li(class="navItem push")
           a(:href="lmsUrl", class="navLink") {{lmsName}}
         li(v-if="showDashboard", class="navItem")
@@ -17,9 +17,22 @@ import SystemError from './SystemError'
 
 export default {
   name: 'AppHeader',
-  components: {SystemError},
+  components: { SystemError },
 
   computed: {
+    home() {
+      let isStudent = this.$store.getters['visit/isStudent']
+      let isDevelopingContent = this.$store.state.visit.isDevelopingContent
+      let isInstructor = this.$store.getters['visit/isInstructor']
+      let home = isStudent
+        ? 'demographics'
+        : isInstructor
+          ? 'instructor'
+          : isDevelopingContent
+            ? 'assignments'
+            : 'home'
+      return home
+    },
     fullName() {
       return this.$store.getters['visit/fullName']
     },
@@ -50,9 +63,10 @@ export default {
     /* default is flow in row without wrap */
   }
 
-  .apptitle {
+  .app-title {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 2.2rem;
+    color: white;
   }
 
   .push {
