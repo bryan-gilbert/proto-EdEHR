@@ -65,6 +65,6 @@ describe('VitalChart', () => {
     let chartData = getMockChartData()
     vitalChart.drawChart(chartData, 0, 200)
     // console.log('canvas',canvas.mock)
-    console.log('axis',axis.mock)
+    // console.log('axis',axis.mock)
   })
 })
