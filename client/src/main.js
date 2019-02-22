@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import App from './App.vue'
-import VueScrollTo from 'vue-scrollto'
 import router from './router'
 import store from './store'
 import outsideLayout from './outside/layout/LayoutOutside.vue'
@@ -39,9 +38,6 @@ Configure Vue
  */
 Vue.config.productionTip = false
 Vue.use(require('vue-moment'))
-Vue.use(require('v-tooltip'))
-/* See note in asInstructor mounted */
-Vue.use(VueScrollTo)
 
 Vue.component('outside-layout', outsideLayout)
 Vue.component('inside-layout', insideLayout)
