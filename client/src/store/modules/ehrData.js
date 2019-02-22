@@ -2,7 +2,7 @@ import StoreHelper from './storeHelper'
 import EventBus from '../../event-bus'
 import { ACTIVITY_DATA_EVENT } from '../../event-bus'
 import { composeUrl, decoupleObject } from '../../helpers/ehr-utills'
-import assignDeep from 'assign-deep'
+import { ehrMergeEhrData, ehrMarkSeed } from '../../helpers/ehr-utills'
 
 const helper = new StoreHelper()
 const API_ACTIVITY = 'activity-data'
@@ -65,10 +65,12 @@ const getters = {
       // So decouple the objects ... just in case
       let dseed = decoupleObject(ehrSeedData)
       let dass = decoupleObject(assignmentData)
+      // mark all elements in the page arrays with a marked to allow us to
+      // strip the seed data out before saving
+      dseed = ehrMarkSeed(dseed)
       console.log('mergedData: Compose merged data from seed', dseed)
       console.log('mergedData: Compose merged data from student', dass)
-      // Use https://www.npmjs.com/package/assign-deep to overcome limits of Object.assign
-      mData = assignDeep(dseed, dass)
+      mData = ehrMergeEhrData(dseed, dass)
       console.log('mergedData: Compose merged data result', mData)
       src = 'student'
     }

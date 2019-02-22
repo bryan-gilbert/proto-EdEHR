@@ -8,6 +8,7 @@ import CV from '../inside/defs/current-visit'
 import PC from '../inside/defs/patient-chart'
 import PP from '../inside/defs/patient-profile'
 import ER from '../inside/defs/external-resources'
+import { removeEmptyProperties, prepareAssignmentPageDataForSave } from '../helpers/ehr-utills'
 
 const pageDefsPP = PP()
 const pageDefsCV = CV()
@@ -263,13 +264,6 @@ export default class EhrHelp {
     }
   }
 
-  removeEmptyProperties(obj) {
-    Object.entries(obj).forEach(([key, val]) => {
-      if (val && typeof val === 'object') this.removeEmptyProperties(val)
-      else if (val === null || val === '') delete obj[key]
-    })
-    return obj
-  }
 
   _saveData(payload) {
     const _this = this
@@ -278,17 +272,14 @@ export default class EhrHelp {
     let isDevelopingContent = this.$store.state.visit.isDevelopingContent
     if (isStudent) {
       console.log('saving assignment data', payload)
-      let cleanValue = this.removeEmptyProperties(payload.value)
-      payload.value = cleanValue
+      payload.value = prepareAssignmentPageDataForSave(payload.value)
       return _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
         _this.$store.commit('system/setLoading', false)
       })
     } else if (isDevelopingContent) {
-      let seedId = _this.$store.state.seedStore.sSeedId
-      let cleanValue = this.removeEmptyProperties(payload.value)
-      payload.value = cleanValue
-      payload.id = seedId
-      console.log('saving seed ehr data', seedId, JSON.stringify(cleanValue))
+      payload.id = _this.$store.state.seedStore.sSeedId
+      payload.value = removeEmptyProperties(payload.value)
+      console.log('saving seed ehr data', payload.id, JSON.stringify(payload.value))
       return _this.$store.dispatch('seedStore/updateSeedEhrData', payload).then(() => {
         _this.$store.commit('system/setLoading', false)
       })

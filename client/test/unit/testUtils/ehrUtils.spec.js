@@ -1,6 +1,73 @@
 import should from 'should'
-import EhrMerge from '../../../src/helpers/ehr-merge'
-const ehrMerge = new EhrMerge()
+import {
+  removeEmptyProperties,
+  ehrMarkSeed,
+  ehrRemoveMarkedSeed,
+  ehrMergeEhrData,
+  prepareAssignmentPageDataForSave,
+  SEED_MARK
+} from '../../../src/helpers/ehr-utills'
+
+describe('Test ehr utils', () => {
+  it('Remove Empty Properties', () => {
+    let one = getOne()
+    should.exist(one.aPage1)
+    should.exist(one.aPage1.p1)
+    one.aPage1.should.have.property('emptyProp')
+    one.aPage1.should.have.property('nullProp')
+    // should.exist(one.aPage1.nullProp)
+    should.exist(one.aPage1.emptyString)
+    one = removeEmptyProperties(one)
+    one.aPage1.should.not.have.property('emptyProp')
+    one.aPage1.should.not.have.property('nullProp')
+    should.not.exist(one.aPage1.emptyProp)
+  })
+})
+
+describe('Test seed marking', () => {
+  it('Mark seed', () => {
+    let one = getOne()
+    one = ehrMarkSeed(one)
+    // console.log('marked one', one)
+    let two = getTwo()
+    let pages = ehrMergeEhrData(one, two)
+    // verify we get pages from one or the other or both
+    pages.should.have.property('aPage1')
+    pages.should.have.property('cardiovascular')
+    pages.should.have.property('visit')
+
+    // confirm that arrays are merged
+    pages.visit.should.have.property('location')
+    pages.visit.location.should.have.length(2)
+
+    let v = pages.visit.location[0]
+    v.should.have.property(SEED_MARK)
+    // console.log('merged object', JSON.stringify(pages, null, 2))
+  })
+
+  it('Remove Marked Properties', () => {
+    let one = ehrMarkSeed(getOne())
+    let two = getTwo()
+    let pages = ehrMergeEhrData(one, two)
+    pages.visit.should.have.property('location')
+    pages.visit.location.should.have.length(2)
+    let visit = ehrRemoveMarkedSeed(pages.visit)
+    visit.should.have.property('location')
+    visit.location.should.have.length(1)
+  })
+
+  it('Prepare Assignment Data For Save', () => {
+    let one = ehrMarkSeed(getOne())
+    let two = getTwo()
+    let pages = ehrMergeEhrData(one, two)
+    pages.visit.should.have.property('location')
+    pages.visit.location.should.have.length(2)
+    let page = prepareAssignmentPageDataForSave(pages.visit)
+    page.should.have.property('location')
+    page.location.should.have.length(1)
+  })
+
+})
 
 describe('Test merging two EHR data object', () => {
   it('Object assign does not concat arrays', () => {
@@ -12,16 +79,18 @@ describe('Test merging two EHR data object', () => {
     should.exist(mstr.visit.location)
     mstr.visit.location.should.have.length(1)
   })
-  it('Get all pages', () => {
+
+  it('Merge seed with empty object', () => {
     let one = getOne()
-    let two = getTwo()
-    let pages = ehrMerge._ehrMergeObjectChildKeys(one, two)
-    pages.should.have.length(4)
+    let two = undefined
+    let pages = ehrMergeEhrData(one, two)
+    should.exist(pages)
   })
-  it('Merge objects', () => {
+
+  it('Merge seed and assignment data', () => {
     let one = getOne()
     let two = getTwo()
-    let pages = ehrMerge.ehrMergeEhrData(one, two)
+    let pages = ehrMergeEhrData(one, two)
     // verify we get pages from one or the other or both
     pages.should.have.property('aPage1')
     pages.should.have.property('aPage2')
@@ -51,7 +120,10 @@ describe('Test merging two EHR data object', () => {
 function getOne() {
   return {
     aPage1: {
-      p1: 1
+      p1: 1,
+      emptyString: '',
+      nullProp: null,
+      emptyProp: undefined
     },
     visit: {
       location: [{ location: 'in one', transferInDay: '1', transferInTime: '1' }],
