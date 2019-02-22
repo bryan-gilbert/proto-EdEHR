@@ -1,14 +1,14 @@
-import EventBus from '../event-bus'
+import EventBus from './event-bus'
 import Vue from 'vue'
-import { ACTIVITY_DATA_EVENT } from '../event-bus'
-import { DIALOG_INPUT_EVENT } from '../event-bus'
-import { PAGE_FORM_INPUT_EVENT } from '../event-bus'
-import { PAGE_DATA_REFRESH_EVENT } from '../event-bus'
+import { ACTIVITY_DATA_EVENT } from './event-bus'
+import { DIALOG_INPUT_EVENT } from './event-bus'
+import { PAGE_FORM_INPUT_EVENT } from './event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from './event-bus'
 import CV from '../inside/defs/current-visit'
 import PC from '../inside/defs/patient-chart'
 import PP from '../inside/defs/patient-profile'
 import ER from '../inside/defs/external-resources'
-import { removeEmptyProperties, prepareAssignmentPageDataForSave } from '../helpers/ehr-utills'
+import { removeEmptyProperties, prepareAssignmentPageDataForSave } from './ehr-utills'
 
 const pageDefsPP = PP()
 const pageDefsCV = CV()

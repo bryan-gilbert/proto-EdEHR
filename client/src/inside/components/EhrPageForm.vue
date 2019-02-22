@@ -8,8 +8,8 @@
 
 <script>
 import EhrPageFormElement from '../components/EhrPageFormElement.vue'
-import EventBus from '../../event-bus'
-import { PAGE_DATA_REFRESH_EVENT } from '../../event-bus'
+import EventBus from '../../helpers/event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
 /*
 TODO on the History Immunization page we need a header label above all the dates.
 

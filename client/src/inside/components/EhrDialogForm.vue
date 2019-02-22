@@ -15,7 +15,7 @@
 <script>
 import AppDialog from '../../app/components/AppDialogShell'
 import EhrDialogFormElement from '../components/EhrDialogFormElement.vue'
-import EventBus from '../../event-bus'
+import EventBus from '../../helpers/event-bus'
 
 export default {
   name: 'EhrDialogForm',

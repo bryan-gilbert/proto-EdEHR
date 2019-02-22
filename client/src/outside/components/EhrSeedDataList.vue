@@ -54,8 +54,8 @@
 <script>
 import AppDialog from '../../app/components/AppDialogShell'
 import UiButton from '../../app/ui/UiButton.vue'
-import EventBus from '../../event-bus'
-import { PAGE_DATA_REFRESH_EVENT } from '../../event-bus'
+import EventBus from '../../helpers/event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
 
 export default {
   name: 'EhrSeedDataList',

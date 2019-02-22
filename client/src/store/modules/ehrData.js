@@ -1,6 +1,6 @@
 import StoreHelper from './storeHelper'
-import EventBus from '../../event-bus'
-import { ACTIVITY_DATA_EVENT } from '../../event-bus'
+import EventBus from '../../helpers/event-bus'
+import { ACTIVITY_DATA_EVENT } from '../../helpers/event-bus'
 import { composeUrl, decoupleObject } from '../../helpers/ehr-utills'
 import { ehrMergeEhrData, ehrMarkSeed } from '../../helpers/ehr-utills'
 

@@ -1,8 +1,8 @@
 import axios from 'axios' // '../node_modules/axios/dist/axios.min'
 import StoreHelper from './storeHelper'
 const helper = new StoreHelper()
-import EventBus from '../../event-bus'
-import { PAGE_DATA_REFRESH_EVENT } from '../../event-bus'
+import EventBus from '../../helpers/event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
 
 const state = {
   sInstructorReturnUrl: '/instructor',

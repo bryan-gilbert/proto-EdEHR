@@ -7,8 +7,8 @@
 <script>
 import { getIncomingParams } from './helpers/ehr-utills'
 import { setApiError } from './helpers/ehr-utills'
-import EventBus from './event-bus'
-import { PAGE_DATA_REFRESH_EVENT } from './event-bus'
+import EventBus from './helpers/event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from './helpers/event-bus'
 const DefaultLayout = 'outside'
 
 export default {
@@ -106,7 +106,7 @@ export default {
      * @private
      */
     _loadApiUrl(apiUrl) {
-      return new Promise( (resolve, reject) => {
+      return new Promise((resolve, reject) => {
         if (apiUrl) {
           // console.log('API url provided in query: ', apiUrl)
         } else {
@@ -174,4 +174,5 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+</style>
