@@ -66,7 +66,6 @@ describe('Test seed marking', () => {
     page.should.have.property('location')
     page.location.should.have.length(1)
   })
-
 })
 
 describe('Test merging two EHR data object', () => {

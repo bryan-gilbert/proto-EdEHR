@@ -28,17 +28,12 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run start-dev
+npm run start
 ```
 
 ### Compiles and minifies for production
 ```
 npm run build
-```
-
-### Run your tests
-```
-npm run test
 ```
 
 ### Lints and fixes files
@@ -55,6 +50,3 @@ npm run test:e2e
 ```
 npm run test:unit
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

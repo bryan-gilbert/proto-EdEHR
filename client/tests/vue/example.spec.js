@@ -1,6 +1,6 @@
 import Vitals from '../../src/inside/components/Vitals.vue'
 import VitalModel from '../../src/helpers/vitalModel'
-// import { shallowMount } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 
 describe('Vitals Model', () => {
   let vitalsModel
@@ -43,5 +43,3 @@ describe('Vitals.vue', () => {
     expect(wrapper.vm.vitals.table.length).toBe(1)
   })
 })
-
-

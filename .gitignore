@@ -26,3 +26,4 @@ makeEhr/util/camelcase-input\.txt
 **/coverage/**
 **/\.nyc_output/**
 client/test/e2e/**
+prototyping/hello-world/**
