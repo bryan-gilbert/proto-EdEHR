@@ -1,41 +1,29 @@
 # EdEHR API Server
 
-> This sub-project provides access to the database and the application API.
+> This sub-project provides application API.
 
 ## Project setup
-Assumes your system has node, npm, and docker installed.
+Assumes your system has node, and npm installed.
 ```
 npm install
 ```
-Once the install is done set up the database which is easily done via a docker container.
-
-## Docker MongoDB Database
-
-> Run Mongodb in a Docker container
-
-Download for Mac
-https://store.docker.com/editions/community/docker-ce-desktop-mac
-
-You will need to create an account with Docker
+Be sure the mongoDB is running in its docker container. See the database subdirectory.
 
 
-```bash
-# Run in Docker
-docker-compose up
-# use -d flag to run in background
-docker-compose up -d
-
-# Tear down
-docker-compose down
-
-# To be able to edit files, add volume to compose file
-volumes: ['./:/usr/src/app']
-
-# To re-build
-docker-compose build
+This project depends on another project that provides LTI support
+outside of the project directory 
+```
+cd /your/development/area
+git clone https://github.com/bryan-gilbert/ims-lti.git
+cd ims-lti.git 
+npm install
+cd ../proto-EdEHR
+# Do the next step in the server subdirectory
+# Install the local copy of the LTI project
+cd database
+npm install ../../ims-lti --save
 ```
 
-Add the volumes when deployed on a production server.  It does not work nor is it necessary on Macs.
 
 ## Run Server - Dev
 ```
@@ -78,6 +66,6 @@ To test a single test
 node node_modules/mocha/bin/mocha --require @babel/register test/controllers/lti.spec.js 
 ```
 To test the full suite
-```angular2html
+```
 npm run test
 ```
