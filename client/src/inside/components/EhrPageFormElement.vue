@@ -25,9 +25,9 @@
 <script>
 import EhrPageFormElement from '../components/EhrPageFormElement.vue'
 import Datepicker from 'vuejs-datepicker'
-import EventBus from '../../event-bus'
-import { PAGE_FORM_INPUT_EVENT } from '../../event-bus'
-import { PAGE_DATA_REFRESH_EVENT } from '../../event-bus'
+import EventBus from '../../helpers/event-bus'
+import { PAGE_FORM_INPUT_EVENT } from '../../helpers/event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
 /*
 TODO perhaps the markup could be a series of divs selected by inputType
 and their content could then be clean and clear markup for each of the input types.
@@ -135,5 +135,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

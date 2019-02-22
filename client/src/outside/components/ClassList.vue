@@ -96,7 +96,7 @@ export default {
     goToEhr(studentVisit) {
       let studentId = studentVisit._id
       // Go to the first screen related to the assignent
-      let name = studentVisit.assignment.ehrRoutePath
+      let name = '/ehr/patient/demographics' // studentVisit.assignment.ehrRoutePath
       // console.log('Store the pathname for the instructor to return here ', window.location.pathname)
       this.$store.commit('visit/setIsDevelopingContent', false)
       this.$store.commit('instructor/setInstructorReturnUrl', window.location.pathname)
@@ -161,7 +161,7 @@ export default {
   margin-bottom: 0;
 
   .classlist-header {
-    padding: .5rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     background-color: $grey10;
     border: 1px solid $grey20;
     box-sizing: border-box;

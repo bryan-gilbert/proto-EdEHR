@@ -114,6 +114,7 @@ const actions = {
 const mutations = {
   apiUrl: (state, url) => {
     // console.log('visit store set api url ' + url)
+    localStorage.setItem('apiUrl', url)
     state.apiUrl = url
   },
   setIsDevelopingContent: (state, value) => {

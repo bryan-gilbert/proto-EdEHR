@@ -23,5 +23,7 @@ makeEhr/generated/
 makeEhr/util/camelcase-output\.txt
 
 makeEhr/util/camelcase-input\.txt
-**/coverage/***
+**/coverage/**
 **/\.nyc_output/**
+client/test/e2e/**
+prototyping/hello-world/**

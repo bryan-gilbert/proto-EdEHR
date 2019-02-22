@@ -23,7 +23,7 @@ import EhrPanelContent from '../components/EhrPanelContent.vue'
 import EhrEditControls from '../components/EhrEditControls.vue'
 import EhrPageTable from '../components/EhrPageTable'
 import EhrPageForm from '../components/EhrPageForm.vue'
-import EhrHelp from '../ehr-helper'
+import EhrHelp from '../../helpers/ehr-helper'
 import Vitals from '../components/Vitals'
 
 export default {
@@ -73,5 +73,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

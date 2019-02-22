@@ -6,7 +6,7 @@
 export default {
   name: 'UiButton',
   props: {
-    value: {type: String },
+    value: { type: String },
     secondary: {
       type: Boolean
     }
@@ -45,13 +45,13 @@ button,
   padding: 0.3rem 1rem;
 
   &:hover {
-  background-color: $brand-primary-hover;
+    background-color: $brand-primary-hover;
     transition-duration: 0.3s;
     transition-property: background-color;
   }
-  
+
   &:disabled {
-    background-color: $grey30;
+    background-color: $grey20;
     color: $white;
     cursor: default;
   }
@@ -72,12 +72,12 @@ button,
     border: 1px solid $brand-primary-hover;
     color: $brand-primary-hover;
     transition-duration: 0.3s;
-    transition-prop;
-    }
+  }
 
   &:disabled {
-    background-color: $grey30;
+    background-color: $grey20;
     color: $white;
     cursor: default;
   }
 }
+</style>

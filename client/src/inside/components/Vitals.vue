@@ -16,7 +16,7 @@
 import Tabs from './Tabs'
 import Tab from './Tab'
 import VitalsChart from './VitalsChart'
-import VitalModel from '../helpers/vitalModel'
+import VitalModel from '../../helpers/vitalModel'
 
 export default {
   name: 'home',

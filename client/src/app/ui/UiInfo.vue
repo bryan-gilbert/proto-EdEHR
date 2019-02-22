@@ -41,10 +41,10 @@ export default {
   display: inline;
   margin-left: 10px;
   .info-button {
-    padding:0;
+    padding: 0;
     border: none;
-    border-radius: 50%;  /* to encircle the circle icon*/
-    height: 1em;/* to match height of fas icon*/
+    border-radius: 50%; /* to encircle the circle icon*/
+    height: 1em; /* to match height of fas icon*/
   }
   .info-icon {
     vertical-align: 0;

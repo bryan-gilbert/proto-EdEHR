@@ -1,4 +1,4 @@
-// Generated VUE file. Before modifying see docs about Vue file generation 
+// Generated VUE file. Before modifying see docs about Vue file generation
 <template lang="pug">
   div(class="ehr-page")
     ehr-panel-header {{ uiProps.pageTitle }}
@@ -25,7 +25,7 @@ import EhrPanelContent from '../components/EhrPanelContent.vue'
 import EhrEditControls from '../components/EhrEditControls.vue'
 import EhrPageTable from '../components/EhrPageTable'
 import EhrPageForm from '../components/EhrPageForm.vue'
-import EhrHelp from '../ehr-helper'
+import EhrHelp from '../../helpers/ehr-helper'
 
 export default {
   name: 'Demographics',
@@ -73,5 +73,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

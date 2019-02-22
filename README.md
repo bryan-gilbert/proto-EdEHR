@@ -25,20 +25,6 @@ cd ../database
 npm install
 ```
 
-This project depends on another project that provides LTI support
-outside of the project directory 
-```
-cd /your/development/area
-git clone https://github.com/bryan-gilbert/ims-lti.git
-cd ims-lti.git 
-npm install
-cd ../proto-EdEHR
-# Do the next step in the server subdirectory
-# Install the local copy of the LTI project
-cd database
-npm install ../../ims-lti --save
-```
-
 ## Run Development
 
 First install packages as described above.

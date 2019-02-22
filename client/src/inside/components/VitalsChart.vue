@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import VitalChart from '../helpers/vitalChart'
+import VitalChart from '../../helpers/vitalChart'
 
 const yAxisWidth = 55
 const canvasHeight = 1000
