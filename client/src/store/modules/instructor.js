@@ -1,6 +1,8 @@
 import axios from 'axios' // '../node_modules/axios/dist/axios.min'
 import StoreHelper from './storeHelper'
 const helper = new StoreHelper()
+import EventBus from '../../event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from '../../event-bus'
 
 const state = {
   sInstructorReturnUrl: '/instructor',
@@ -30,7 +32,7 @@ const actions = {
       // TODO store the id in localstorage to support page refresh
       context.commit('setCurrentEvaluationStudentId', currentId)
       var classList = context.state.sClassList
-      // console.log('changeCurrentEvaluationStudentId', currentId, ' classList: ', classList)
+      console.log('changeCurrentEvaluationStudentId', currentId, ' classList: ', classList)
       var sv // a student's visit information
       if (currentId && classList) {
         sv = classList.find(elem => {
@@ -57,6 +59,9 @@ const actions = {
           { forStudent: false, id: sv.activityData },
           { root: true }
         )
+        .then(() => {
+          EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
+        })
         .then(() => {
           resolve(currentStudentInfo)
         })

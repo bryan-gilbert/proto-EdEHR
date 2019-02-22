@@ -121,9 +121,6 @@ export default class EhrHelp {
   prepareAsLoadedData(pageKey) {
     let pageDef = this.getPageDefinition(pageKey)
     let data = this.$store.getters['ehrData/mergedData'] || {}
-    // Intentional conversion to string to object to break connection with Vuex store.
-    // We need this step because the UI isn't allowed to modify the as stored value
-    data = JSON.parse(JSON.stringify(data))
     console.log('prepareAsLoadedData', pageKey, data)
     let pageData = data[pageKey]
     if (!pageData) {

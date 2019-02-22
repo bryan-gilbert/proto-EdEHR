@@ -43,45 +43,34 @@ const getters = {
     }
   },
   mergedData: (state, getters, rootState) => {
+    // Not always sure about Vue object whether the system has proxied them and added stuff.
+    // So decouple the objects ... just in case
+    let ehrSeedData = decoupleObject(rootState.seedStore.ehrSeedData)
+    let studentAssignmentData = decoupleObject(state.sActivityData.assignmentData)
+    let evalAssignmentData = decoupleObject(state.sCurrentStudentData.assignmentData)
     let mData
-    let src
-    let ehrSeedData = rootState.seedStore.ehrSeedData
-    // console.log('mergedData sActivityData', state.sActivityData)
-    // console.log('mergedData ehrSeedData', ehrSeedData)
-    let assignmentData = state.sActivityData.assignmentData
-    if (rootState.visit.isDevelopingContent) {
-      console.log('mergedData: Develop seed', ehrSeedData)
+    if (rootState.visit.isDevelopingContent === true) {
       mData = ehrSeedData
-      //getters['seedStore/seedEhrData']
-      src = 'from seed'
+      console.log('mergedData: Develop seed', ehrSeedData)
     } else if (rootState.visit.sVisitInfo.isInstructor) {
-      // TODO the whole instructor side is broken after changing the seed system
-      mData = state.sCurrentStudentData.mergedData
+      mData = ehrMergeEhrData(ehrSeedData, evalAssignmentData)
       console.log('mergedData: Instructor result', mData)
-      src = 'instructor'
     } else {
-      // mergedData is the merge of assignment data and seed
-      // Not always sure about Vue object whether the system has proxied them and added stuff.
-      // So decouple the objects ... just in case
-      let dseed = decoupleObject(ehrSeedData)
-      let dass = decoupleObject(assignmentData)
-      // mark all elements in the page arrays with a marked to allow us to
+      // mark all elements in the page arrays to allow us to
       // strip the seed data out before saving
-      dseed = ehrMarkSeed(dseed)
-      console.log('mergedData: Compose merged data from seed', dseed)
-      console.log('mergedData: Compose merged data from student', dass)
-      mData = ehrMergeEhrData(dseed, dass)
-      console.log('mergedData: Compose merged data result', mData)
-      src = 'student'
+      ehrSeedData = ehrMarkSeed(ehrSeedData)
+      mData = ehrMergeEhrData(ehrSeedData, studentAssignmentData)
+      console.log('mergedData: Student result', mData)
     }
-    // console.log('get merged data results: ', src, mData)
     return mData
   },
+
   scratchData: state => {
     // only return for student
     // scratchData is the student's notes
     return state.sActivityData.scratchData
   },
+
   evaluationData: state => {
     // evaluationData is the instructor's comments on the student's work
     return state.sCurrentStudentData.evaluationData
@@ -189,15 +178,13 @@ const mutations = {
     EventBus.$emit(ACTIVITY_DATA_EVENT)
   },
   _setCurrentStudentData: (state, activitydata) => {
-    let _sCurrentStudentData = {
+    state.sCurrentStudentData = {
       activityDataId: activitydata._id,
       evaluationData: activitydata.evaluationData || '',
       assignmentData: activitydata.assignmentData || {},
-      mergedData: activitydata.mergedData || {},
       lastDate: activitydata.lastDate
     }
-    // console.log('set sCurrentStudentData', _sCurrentStudentData)
-    state.sCurrentStudentData = _sCurrentStudentData
+    console.log('set state.sCurrentStudentData.assignmentData', state.sCurrentStudentData.assignmentData)
   },
   setCurrentStudentInfo: (state, cData) => {
     // console.log('set setCurrentStudentInfo', cData)
