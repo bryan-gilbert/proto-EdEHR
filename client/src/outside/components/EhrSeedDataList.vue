@@ -121,7 +121,6 @@ export default {
     },
     saveDialog: function() {
       // console.log('saveDialog ', this.actionType, this.aSeed)
-      const _this = this
       let theData = this.aSeed.ehrData || '{}'
       // console.log(`Convert seed data field '${theData}' into an object`)
       this.aSeed.ehrData = JSON.parse(theData)

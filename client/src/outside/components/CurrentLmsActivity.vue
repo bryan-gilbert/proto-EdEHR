@@ -28,8 +28,8 @@
 </template>
 
 <script>
-  import UiButton from '../../app/ui/UiButton'
-  import UiLink from '../../app/ui/UiLink'
+import UiButton from '../../app/ui/UiButton'
+import UiLink from '../../app/ui/UiLink'
 export default {
   name: 'OutPanelNav',
   components: {
@@ -46,7 +46,6 @@ export default {
     activity() {
       return this.$store.state.ehrData.sActivityData
     }
-
   }
 }
 </script>

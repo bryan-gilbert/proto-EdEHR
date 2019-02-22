@@ -12,7 +12,7 @@ import Spinner from 'vue-spinner-component/src/Spinner.vue'
 export default {
   name: 'UiSpinner',
   props: {
-    loading: { type: Boolean, default: false}
+    loading: { type: Boolean, default: false }
   },
   components: {
     Spinner
@@ -38,14 +38,14 @@ export default {
   vertical-align: middle;
 }
 .modal-container {
-  margin-left:auto;
-  margin-right:auto;
+  margin-left: auto;
+  margin-right: auto;
   width: 120px;
   height: 120px;
   padding: 10px;
   border-radius: 60px;
   background-color: lightgrey;
 }
-spinner{
+spinner {
 }
 </style>

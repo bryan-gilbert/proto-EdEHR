@@ -39,7 +39,7 @@ export default {
     },
     isStudent() {
       return this.$store.getters['visit/isStudent']
-    },
+    }
   },
   methods: {
     returnToClicked() {

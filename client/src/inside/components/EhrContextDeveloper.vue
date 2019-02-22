@@ -17,10 +17,9 @@ export default {
   computed: {
     sSeedContent() {
       return this.$store.state.seedStore.sSeedContent || {}
-    },
+    }
   },
-  methods: {
-  }
+  methods: {}
 }
 </script>
 

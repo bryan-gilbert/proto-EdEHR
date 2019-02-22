@@ -1,4 +1,4 @@
-// Generated VUE file. Before modifying see docs about Vue file generation 
+// Generated VUE file. Before modifying see docs about Vue file generation
 <template lang="pug">
   div(class="ehr-page")
     ehr-panel-header {{ uiProps.pageTitle }}

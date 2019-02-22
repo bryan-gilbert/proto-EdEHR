@@ -12,7 +12,7 @@
 import UiButton from '../../app/ui/UiButton'
 export default {
   name: 'EhrEvaluationInput',
-  components: { UiButton},
+  components: { UiButton },
   data: function() {
     return {
       theNotes: ''

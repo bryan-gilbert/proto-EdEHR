@@ -261,7 +261,6 @@ export default class EhrHelp {
     }
   }
 
-
   _saveData(payload) {
     const _this = this
     _this.$store.commit('system/setLoading', true)
@@ -307,7 +306,6 @@ export default class EhrHelp {
     })
   }
 
-  // TODO clear dialog when used by cancel should restore values as stored in db
   _clearDialogInputs(key) {
     // debugehr('clear dialog for key' + key)
     let d = this.dialogMap[key]

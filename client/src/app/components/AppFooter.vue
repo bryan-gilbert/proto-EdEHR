@@ -45,7 +45,7 @@ footer {
     &:hover {
       color: rgba(255, 255, 255, 1);
       transition: 350ms ease-out;
-    };
+    }
   }
 }
 </style>

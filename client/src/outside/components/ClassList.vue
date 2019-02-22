@@ -161,7 +161,7 @@ export default {
   margin-bottom: 0;
 
   .classlist-header {
-    padding: .5rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     background-color: $grey10;
     border: 1px solid $grey20;
     box-sizing: border-box;

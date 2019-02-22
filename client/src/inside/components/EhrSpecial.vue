@@ -134,7 +134,7 @@ export default {
       // console.log('this is lti data before attempt to parse', lti)
       try {
         lti = JSON.parse(lti)
-      } catch(error) {
+      } catch (error) {
         console.log('Could not parse lti data ', lti)
         lti = usr.ltiData || []
       }
@@ -220,12 +220,9 @@ export default {
   },
   methods: {
     skipVisitProp(prop) {
-      return !(
-        prop === 'user' ||
-        prop === 'toolConsumer' // ||
-        // prop === 'activity' ||
-        // prop === 'assignment'
-      )
+      return !(prop === 'user' || prop === 'toolConsumer') // ||
+      // prop === 'activity' ||
+      // prop === 'assignment'
     }
   }
 }

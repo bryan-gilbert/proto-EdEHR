@@ -53,8 +53,7 @@ export default {
     },
     isDeveloper() {
       return this.$store.getters['visit/isDeveloper']
-    },
-
+    }
   }
 }
 </script>
@@ -79,7 +78,7 @@ body {
   .outside-content {
     margin: 0;
   }
-  .outside-nav{
+  .outside-nav {
     padding: 1.5rem 0 0 1.5rem;
   }
 }

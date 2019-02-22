@@ -6,7 +6,6 @@ import { ehrMergeEhrData, ehrMarkSeed } from '../../helpers/ehr-utills'
 
 const helper = new StoreHelper()
 const API_ACTIVITY = 'activity-data'
-const API_SEED = 'seed-data'
 
 const state = {
   /*
@@ -184,7 +183,10 @@ const mutations = {
       assignmentData: activitydata.assignmentData || {},
       lastDate: activitydata.lastDate
     }
-    console.log('set state.sCurrentStudentData.assignmentData', state.sCurrentStudentData.assignmentData)
+    console.log(
+      'set state.sCurrentStudentData.assignmentData',
+      state.sCurrentStudentData.assignmentData
+    )
   },
   setCurrentStudentInfo: (state, cData) => {
     // console.log('set setCurrentStudentInfo', cData)

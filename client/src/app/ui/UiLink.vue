@@ -16,11 +16,12 @@ export default {
 <style lang="scss">
 @import '../../scss/definitions';
 
-a, .table_link {
-	color: $brand-primary;
-	
-	&:hover{
-		color: $brand-primary-hover;
-	}
+a,
+.table_link {
+  color: $brand-primary;
+
+  &:hover {
+    color: $brand-primary-hover;
+  }
 }
 </style>

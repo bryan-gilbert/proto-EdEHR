@@ -42,8 +42,7 @@ export default {
       return data
     }
   },
-  methods: {
-  }
+  methods: {}
 }
 </script>
 
