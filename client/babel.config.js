@@ -9,7 +9,7 @@ module.exports = {
       comments: false
     },
     test: {
-      presets: ['@babel/env']
+      presets: ['@vue/app', '@babel/env']
     }
   }
 }
