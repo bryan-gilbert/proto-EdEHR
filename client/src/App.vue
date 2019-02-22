@@ -5,10 +5,8 @@
 </template>
 
 <script>
-// TODO remove configuration.
-import Configuration from './configuration'
-var config = new Configuration(process.env.NODE_ENV)
 import { getIncomingParams } from './helpers/ehr-utills'
+import { setApiError } from './helpers/ehr-utills'
 import EventBus from './event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from './event-bus'
 const DefaultLayout = 'outside'
@@ -108,20 +106,25 @@ export default {
      * @private
      */
     _loadApiUrl(apiUrl) {
-      return Promise.resolve().then(() => {
+      return new Promise( (resolve, reject) => {
         if (apiUrl) {
           // console.log('API url provided in query: ', apiUrl)
         } else {
           // console.log('No API url in query')
-          if (this.$store.state.visit.apiUrl) {
-            apiUrl = this.$store.state.visit.apiUrl
-            // console.log('Use API URL from $store', apiUrl)
-          } else {
-            apiUrl = config.getApiUrl()
-            // console.log('Use API URL from configuration: ', apiUrl)
+          // console.log('Can we use API URL from $store', apiUrl)
+          let l_apiUrl = localStorage.getItem('apiUrl')
+          let s_apiUrl = this.$store.state.visit.apiUrl
+          apiUrl = s_apiUrl || l_apiUrl
+          if (!apiUrl) {
+            let msg = 'System requires the URL to the API'
+            console.error(msg)
+            setApiError(this.$store, msg)
+            return reject(msg)
           }
         }
+        // console.log('Store API URL in $store', apiUrl)
         this.$store.commit('visit/apiUrl', apiUrl)
+        resolve(apiUrl)
       })
     },
     reloadInstructor: function() {
@@ -171,5 +174,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>
