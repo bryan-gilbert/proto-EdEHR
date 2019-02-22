@@ -39,7 +39,7 @@ describe(`${typeName} controller testing`, function() {
       .createConsumer()
       .then(doc => {
         theConsumer = doc
-        return Helper.createAssignment(seedData)
+        return Helper.createAssignment()
       })
       .then(doc => {
         theAssignment = doc
@@ -62,10 +62,9 @@ describe(`${typeName} controller testing`, function() {
     let m = new ActivityController(Activity, 'name')
     m.findActivity(theActivity._id).then(doc => {
       // console.log('findActivity results', doc)
-      should.exist(doc)
+      // should.exist(doc)
       doc.should.have.property('assignment')
-      doc.assignment.should.have.property('seedData')
-      doc.assignment.seedData.should.have.property('foo')
+      doc.assignment.should.have.property('seedDataId')
       done()
     })
   })
@@ -74,7 +73,7 @@ describe(`${typeName} controller testing`, function() {
     let m = new ActivityController(Activity, 'name')
     // use an id from the wrong type of object to cause a fail
     m.findActivity(theConsumer._id).then(doc => {
-      console.log('findActivity results', doc)
+      // console.log('findActivity results', doc)
       should.not.exist(doc)
       done()
     })

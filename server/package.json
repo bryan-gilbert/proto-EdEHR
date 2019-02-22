@@ -4,8 +4,8 @@
   "description": "The POC EdEHR database run inside a Docker container",
   "main": "dev-server.js.js",
   "scripts": {
-    "start": "node index.js",
-    "start-dev": "NODE_ENV=development DEBUG=server node index.js",
+    "serve": "node index.js",
+    "serve-dev": "NODE_ENV=development DEBUG=server node index.js",
     "test": "nyc mocha --require @babel/register test/**/*.spec.js"
   },
   "author": "Bryan Gilbert",

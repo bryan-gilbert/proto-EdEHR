@@ -35,21 +35,22 @@ describe(`${typeName} controller testing`, function() {
     done()
   })
 
-  it(`${typeName} create model`, function(done) {
+  it(`${typeName} create a ${modelName}`, function(done) {
     let m = new BaseController(Model, 'name')
     let data = {
       name: '1234',
       description: 'a test seed',
-      seedData: { foo: 'bar' }
+      ehrData: { foo: 'bar' }
     }
     m.create(data)
       .then(doc => {
         should.exist(doc)
-        doc.seedData.should.have.property('foo')
+        doc.should.have.property('ehrData')
+        doc.ehrData.should.have.property('foo')
         done()
       })
       .catch(err => {
-        console.log(`${typeName} create ${modelName} error ${err}`)
+        console.log(`${typeName} create one ${modelName} error ${err}`)
         done()
       })
   })
@@ -60,7 +61,8 @@ describe(`${typeName} controller testing`, function() {
       .then(doc => {
         // console.log('results', doc)
         should.exist(doc)
-        doc.seedData.should.have.property('foo')
+        doc.should.have.property('ehrData')
+        doc.ehrData.should.have.property('foo')
         done()
       })
       .catch(e => {
@@ -74,14 +76,14 @@ describe(`${typeName} controller testing`, function() {
     let data = {
       name: key,
       description: 'a test seed',
-      seedData: { foo: 'bar' }
+      ehrData: { foo: 'bar' }
     }
     let id
     m.create(data)
       .then(doc => {
         should.exist(doc)
-        should.exist(doc.seedData)
-        doc.seedData.should.have.property('foo')
+        should.exist(doc.ehrData)
+        doc.ehrData.should.have.property('foo')
         return doc
       })
       .then(doc => {
@@ -95,16 +97,15 @@ describe(`${typeName} controller testing`, function() {
         should.exist(doc)
         should.exist(doc.seeddata)
         let model = doc.seeddata
-        // console.log('results of read model:', model)
-        should.exist(model.seedData)
-        model.seedData.should.have.property('foo')
+        console.log('results of read model:', model)
+        model.should.have.property('ehrData')
         return m.delete(id)
       })
       .then(() => {
         done()
       })
       .catch(err => {
-        console.log(`${typeName} create ${modelName} error: ${err}`)
+        console.log(`${typeName} create a ${modelName} error: ${err}`)
         done()
       })
   })

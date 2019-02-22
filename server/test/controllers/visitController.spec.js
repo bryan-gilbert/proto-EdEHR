@@ -35,7 +35,7 @@ describe(`${typeName} controller testing`, function() {
     .then(doc => {
       should.exist(doc,'consumer')
       theConsumer = doc
-      return Helper.createAssignment(seedData)
+      return Helper.createAssignment()
     })
     .then(doc => {
       should.exist(doc,'assignment')

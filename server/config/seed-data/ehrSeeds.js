@@ -1,6 +1,4 @@
 'use strict'
-import { getPhrase, getName } from './poc-utils'
-
 const mongoose = require('mongoose')
 const SeedData = mongoose.model('SeedData')
 

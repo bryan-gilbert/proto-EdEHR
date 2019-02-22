@@ -27,12 +27,12 @@ npm install ../../ims-lti --save
 
 ## Run Server - Dev
 ```
-npm run start-dev
+npm run serve-dev
 ```
 
 ## Run Server - Prod
 ```
-npm run start
+npm run serve
 ```
 
 ## LTI 

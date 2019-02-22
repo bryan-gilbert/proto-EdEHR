@@ -27,7 +27,7 @@ describe('LTI controller testing', function() {
   let oauth_consumer_secret
   let theAssignment
   it('Create a tool consumer for testing ', function(done) {
-    const assignment = new Assignment(Helper.sampleAssignmentSpec(seedData, assignmentKey))
+    const assignment = new Assignment(Helper.sampleAssignmentSpec(undefined, assignmentKey))
     Helper.createConsumer().then(doc => {
       theConsumer = doc
       oauth_consumer_key = theConsumer.oauth_consumer_key
@@ -140,8 +140,7 @@ describe('LTI controller testing', function() {
       should.exist(req.visit)
       should.exist(req.activity)
       should.exist(req.assignment)
-      should.exist(req.assignment.seedData)
-      req.assignment.seedData.should.have.property('foo')
+      should.exist(req.assignment.seedDataId)
       // console.log(req.assignment)
       //
       // console.log('after _postLtiChain ')

@@ -19,18 +19,18 @@ describe(`${typeName} mongoose schema testing`, function() {
     helper.afterTests(done, mongoose, collectionName)
   })
 
-  it(`${typeName} be valid params are empty`, function(done) {
+  it(`${typeName} be invalid if params are empty`, function(done) {
     let m = new Model()
     m.validate(function(err) {
       // console.log('Expect error: ', err)
-      should.not.exist(err)
+      should.exist(err)
       done()
     })
   })
 
   let key
+  let data = Helper.sampleAssignmentSpec()
   it(`${typeName} can save one`, function(done) {
-    let data = Helper.sampleAssignmentSpec(seedData)
     key = data.externalId
     const newUser = new Model(data)
     newUser
@@ -45,7 +45,7 @@ describe(`${typeName} mongoose schema testing`, function() {
       // console.log('results', doc)
       should.not.exist(err)
       should.exist(doc)
-      doc.seedData.should.have.property('foo')
+      doc.should.have.property('seedDataId')
       done()
     }).catch(e => {
       console.log('find one error', e)

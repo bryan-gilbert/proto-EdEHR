@@ -112,18 +112,23 @@ export default class Helper {
     return {
       name: 'test seed data object',
       description: 'an object with seed data',
-      seedData: Default.seedData
+      ehrData: Default.seedData
     }
   }
 
-  static sampleAssignmentSpec(seedDataObject, key) {
+  static sampleAssignmentSpec(seedDataId, externalId) {
+    // if empty use something that works and ObjectID
+    seedDataId = seedDataId || '56955ca46063c5600627f393'
+    if(typeof  seedDataId === 'string') {
+      seedDataId = new ObjectID(seedDataId)
+    }
     return {
-      externalId: key || '59',
+      externalId: externalId || '59',
       name: 'test assignment',
       description: 'an assignment',
       ehrRoutePath: '/ehr/path',
       ehrRouteName: 'pathName',
-      seedData: seedDataObject || {}
+      seedDataId: seedDataId
     }
   }
 
@@ -197,13 +202,17 @@ export default class Helper {
   }
 
 
-  static createAssignment(seedData) {
-    const model = new Assignment(Helper.sampleAssignmentSpec(seedData))
+  static createAssignment(externalId, seedId) {
+    externalId = externalId || '59'
+    seedId = seedId || '56955ca46063c5600627f393'
+    const model = new Assignment(Helper.sampleAssignmentSpec(seedId,externalId))
     return model.save()
   }
 
   static createDefaultAssignment() {
-    let data = Helper.sampleAssignmentSpec({}, DEFAULT_ASSIGNMENT_EXTERNAL_ID)
+    // use any valid id for seed
+    let seedId = '56955ca46063c5600627f393'
+    let data = Helper.sampleAssignmentSpec(seedId, DEFAULT_ASSIGNMENT_EXTERNAL_ID)
     const model = new Assignment(data)
     return model.save(data)
   }

@@ -28,7 +28,7 @@ describe(`${typeName} mongoose schema testing`, function() {
       .createConsumer()
       .then(doc => {
         theConsumer = doc
-        return Helper.createAssignment(seedData)
+        return Helper.createAssignment()
       })
       .then(doc => {
         theAssignment = doc

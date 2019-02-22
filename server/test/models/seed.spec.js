@@ -5,7 +5,7 @@ import Helper from '../helper'
 const helper = new Helper()
 import Model from '../../models/seed-data'
 
-const typeName = 'Seed'
+const typeName = 'SeedData'
 const collectionName = 'seeddatas'
 
 /* global describe it */
@@ -18,11 +18,11 @@ describe(`${typeName} mongoose schema testing`, function() {
     helper.afterTests(done, mongoose, collectionName)
   })
 
-  it(`${typeName} be valid params are empty`, function(done) {
+  it(`${typeName} create without name is not allowed`, function(done) {
     let m = new Model()
     m.validate(function(err) {
       // console.log('Expect error: ', err)
-      should.not.exist(err)
+      should.exist(err)
       done()
     })
   })
@@ -31,7 +31,7 @@ describe(`${typeName} mongoose schema testing`, function() {
     name: '1234',
     description: 'a test seed',
     version: '1.0',
-    seedData: { foo: 'bar' }
+    ehrData: { foo: 'bar' }
   }
 
   it(`${typeName} can save one`, function(done) {
@@ -52,8 +52,8 @@ describe(`${typeName} mongoose schema testing`, function() {
       // console.log('results', doc)
       should.exist(doc)
       should.not.exist(err)
-      doc.should.have.property('seedData')
-      doc.seedData.should.have.property('foo')
+      doc.should.have.property('ehrData')
+      doc.ehrData.should.have.property('foo')
       doc.should.have.property('version')
       doc.version.should.equal(sampleData.version)
       done()

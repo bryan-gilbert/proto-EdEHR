@@ -27,8 +27,8 @@ describe(`${typeName} controller testing`, function() {
     m.create(data)
       .then(doc => {
         should.exist(doc)
-        doc.should.have.property('seedData')
-        doc.seedData.should.have.property('foo');
+        doc.should.have.property('ehrData')
+        doc.ehrData.should.have.property('foo');
         done()
       })
       .catch(err => {
